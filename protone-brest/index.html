@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Автосервис «Протон» (PRO TONE) в Бресте — Автостёкла, СТО, кондиционеры и автоэлектрика</title>
+  <meta name="description" content="Автосервис «Протон» в Бресте (ул. Мошенского, 95): продажа, замена в день обращения, ремонт сколов и тонировка автостёкол с выездом, ремонт подвески и ГРМ, заправка кондиционеров, промывка охлаждения РС1100+ и автоэлектрика." />
+
+  <!-- Google Fonts: Exo 2 (индустриальный автомобильный display) + Inter (чистый UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Exo 2', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            proton: {
+              copper: '#E77817',      // Фирменный медный акцент protone.by
+              copperHover: '#CC650C',
+              copperLight: '#FF9838',
+              copperTint: '#FFF4EA',
+              obsidian: '#0A0A0C',    // Глубокий угольно-чёрный
+              carbon: '#121317',
+              graphite: '#1B1D24',
+              steel: '#2A2D37',
+              ice: '#F4F6F9',
+            },
+            viber: '#7360F2',
+            telegram: '#229ED9',
+          },
+          boxShadow: {
+            copperGlow: '0 14px 34px -10px rgba(231, 120, 23, 0.5)',
+            darkPanel: '0 24px 60px -20px rgba(0, 0, 0, 0.65)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Exo 2', system-ui, sans-serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    /* Глубокая графитовая виньетка Hero с акцентом на лобовое стекло и фары */
+    .hero-vignette {
+      background:
+        radial-gradient(ellipse 66% 54% at 50% 48%, rgba(10, 10, 12, 0.24) 0%, rgba(10, 10, 12, 0.78) 72%, rgba(10, 10, 12, 0.95) 100%),
+        linear-gradient(180deg, rgba(10, 10, 12, 0.86) 0%, rgba(10, 10, 12, 0.34) 35%, rgba(10, 10, 12, 0.44) 68%, rgba(10, 10, 12, 0.96) 100%);
+    }
+    .hero-copper-rim {
+      background: radial-gradient(circle at 50% 10%, rgba(231, 120, 23, 0.16), transparent 55%);
+    }
+    .glass-bar {
+      background: linear-gradient(180deg, rgba(20, 22, 28, 0.82) 0%, rgba(12, 13, 17, 0.92) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-dock-glass {
+      background: rgba(14, 15, 19, 0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Архитектурная микро-сетка для тёмных секций */
+    .tech-grid {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+  </style>
+</head>
+<body class="bg-proton-ice text-proton-obsidian antialiased selection:bg-proton-copper selection:text-white overflow-x-hidden">
+
+  <!-- ==================== ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если строка пустая "", форма работает в безопасном демо-режиме с предпросмотром.
+      googleScriptUrl: '',
+      viberPhone: '+375292247111',
+      telegramUsername: 'protone_brest_demo', // Замените на реальный username Telegram при запуске
+      displayPhone: '+375 (29) 224-71-11',
+      secondaryPhone: '+375 (29) 334-71-11',
+      telHref: 'tel:+375292247111',
+      secondaryTelHref: 'tel:+375293347111',
+      email: 'ed-protone@mail.ru',
+      address: '224009, г. Брест, ул. Мошенского, 95',
+      schedule: 'Пн–Пт: 9:00–18:00'
+    };
+  </script>
+
+  <!-- ==================== ШАПКА (СТРОГО 1 СТРОКА НА 1280px И 1440px) ==================== -->
+  <header class="sticky top-0 z-40 bg-[#0A0A0C]/95 backdrop-blur-xl border-b border-white/10 text-white">
+    <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[68px] lg:h-[72px] gap-3 xl:gap-5">
+
+        <!-- Фирменный логотип PRO TONE (в духе оригинала protone.by) -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0 whitespace-nowrap group" aria-label="Автосервис Протон — На главную">
+          <div class="flex items-center font-display font-black italic tracking-tight text-lg sm:text-xl leading-none select-none">
+            <span class="px-2 py-1 rounded-md bg-proton-copper text-white shadow-copperGlow transition group-hover:bg-proton-copperLight">PRO</span>
+            <span class="ml-1.5 text-white tracking-wide not-italic">TONE</span>
+          </div>
+          <span class="hidden sm:inline-block h-5 w-px bg-white/15"></span>
+          <span class="hidden sm:inline-block text-[11px] uppercase tracking-wider text-slate-400 font-medium leading-none">Брест</span>
+        </a>
+
+        <!-- 5 коротких пунктов навигации (строго в 1 строку) -->
+        <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[13px] xl:text-sm font-medium text-slate-300 shrink-0" aria-label="Основная навигация">
+          <a href="#glass-focus" class="whitespace-nowrap hover:text-proton-copper transition">Автостёкла</a>
+          <a href="#services" class="whitespace-nowrap hover:text-proton-copper transition">Услуги СТО</a>
+          <a href="#quick-select" class="whitespace-nowrap hover:text-proton-copper transition">Подбор</a>
+          <a href="#advantages" class="whitespace-nowrap hover:text-proton-copper transition">О сервисе</a>
+          <a href="#contacts" class="whitespace-nowrap hover:text-proton-copper transition">Контакты</a>
+        </nav>
+
+        <!-- Правая группа: Живой статус + Телефон + Тонкие графитовые иконки + CTA -->
+        <div class="flex items-center gap-2 xl:gap-3 shrink-0">
+          <!-- Живой статус по времени Беларуси (Europe/Minsk, Пн–Пт 9:00–18:00) -->
+          <div id="liveStatusBadge" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] xl:text-xs font-medium text-slate-300 whitespace-nowrap shrink-0" title="График работы: Пн–Пт 9:00–18:00 (время Беларуси)">
+            <span id="liveStatusDot" class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+            <span id="liveStatusText">Пн–Пт 9:00–18:00</span>
+          </div>
+
+          <!-- Главный телефон строго в 1 строку -->
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375292247111" class="hidden sm:inline-flex items-center font-display font-bold text-[13px] xl:text-[15px] tracking-wide text-white hover:text-proton-copper transition whitespace-nowrap shrink-0">
+            +375 (29) 224-71-11
+          </a>
+
+          <!-- Тонкие тёмно-графитовые иконки Viber / Telegram (без кричащих пилюль!) -->
+          <div class="hidden xl:flex items-center gap-1.5 shrink-0">
+            <a data-contact="viber" href="viber://chat?number=%2B375292247111" aria-label="Написать в Viber" title="Написать в Viber" class="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/15 text-slate-300 hover:border-proton-copper hover:text-proton-copper flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            </a>
+            <a data-contact="telegram" href="https://t.me/protone_brest_demo" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Написать в Telegram" class="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/15 text-slate-300 hover:border-proton-copper hover:text-proton-copper flex items-center justify-center transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            </a>
+          </div>
+
+          <!-- Одна акцентная медная кнопка -->
+          <a href="#quick-select" class="hidden sm:inline-flex items-center justify-center px-3.5 xl:px-4 py-2 rounded-lg bg-proton-copper hover:bg-proton-copperHover text-white text-[13px] xl:text-sm font-semibold transition whitespace-nowrap shrink-0 shadow-copperGlow">
+            Узнать цену
+          </a>
+
+          <!-- Мобильный статус + звонок + бургер -->
+          <a data-contact="phone" href="tel:+375292247111" aria-label="Позвонить в Автосервис Протон" class="sm:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-proton-copper text-white text-xs font-semibold whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>Позвонить</span>
+          </a>
+
+          <button type="button" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.06] hover:bg-white/10 border border-white/15 text-white transition shrink-0">
+            <svg id="mobileMenuIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="mobileMenuIconClose" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мобильное выпадающее меню -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-proton-obsidian border-t border-white/10">
+      <div class="max-w-[1380px] mx-auto px-4 py-4 space-y-3.5">
+        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+          <span>г. Брест, ул. Мошенского, 95</span>
+          <span id="mobileLiveStatusText" class="text-emerald-400 font-medium">Пн–Пт 9:00–18:00</span>
+        </div>
+        <nav class="grid grid-cols-2 gap-2 text-sm font-medium">
+          <a href="#glass-focus" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">Автостёкла</a>
+          <a href="#services" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">Услуги СТО</a>
+          <a href="#quick-select" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">Подбор</a>
+          <a href="#advantages" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">О сервисе</a>
+          <a href="#gallery" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">Галерея</a>
+          <a href="#contacts" data-mobile-link class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 text-slate-100">Контакты</a>
+        </nav>
+        <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-sm font-display font-bold">
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375292247111" class="text-white">+375 (29) 224-71-11</a>
+          <a data-contact="secondaryPhone" data-contact-text="secondaryPhone" href="tel:+375293347111" class="text-slate-300">+375 (29) 334-71-11</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== ПОЛНОЭКРАННЫЙ ЦЕНТРИРОВАННЫЙ DARK-AUTOMOTIVE HERO ==================== -->
+    <section class="relative min-h-[680px] lg:min-h-[calc(100vh-72px)] bg-proton-obsidian text-white flex flex-col justify-between overflow-hidden">
+      <!-- Полноширинное атмосферное фото автомобиля спереди в сервисном боксе (вид на лобовое и фары) -->
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1658244535411-92c887137240?auto=format&fit=crop&w=1800&q=85"
+          alt="Автомобиль в сервисном боксе — лобовое стекло и оптика, Автосервис Протон в Бресте"
+          class="w-full h-full object-cover object-[center_58%] scale-[1.02]"
+        />
+        <div class="absolute inset-0 hero-vignette"></div>
+        <div class="absolute inset-0 hero-copper-rim"></div>
+      </div>
+
+      <!-- Деликатная подпись о демо-фото в верхнем углу -->
+      <div class="relative z-10 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-5 flex items-center justify-between text-[11px] text-slate-400">
+        <span class="hidden sm:inline-flex items-center gap-2 tracking-wider uppercase text-slate-300/80">
+          <span class="w-1.5 h-1.5 rounded-full bg-proton-copper"></span>
+          г. Брест, ул. Мошенского, 95 • Пн–Пт 9:00–18:00
+        </span>
+        <span class="ml-auto px-2.5 py-0.5 rounded bg-black/55 border border-white/10 text-[10px] sm:text-[11px] text-slate-300">
+          Демо-фото, заменим на фото вашего бокса
+        </span>
+      </div>
+
+      <!-- Центральная кинематографичная композиция (наследует и усиливает идею protone.by) -->
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14 text-center my-auto">
+        <div class="inline-flex items-center justify-center gap-2.5 sm:gap-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.22em] text-proton-copperLight mb-3.5 sm:mb-5">
+          <span class="hidden sm:inline-block w-8 h-px bg-proton-copper/70"></span>
+          <span>Более 10 лет опыта • Собственный магазин запчастей</span>
+          <span class="hidden sm:inline-block w-8 h-px bg-proton-copper/70"></span>
+        </div>
+
+        <h1 class="font-display font-black uppercase text-[28px] sm:text-5xl lg:text-[58px] leading-[1.06] tracking-tight text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.9)]">
+          АВТОСТЁКЛА И СТО <span class="text-proton-copper">«ПРОТОН»</span> В&nbsp;БРЕСТЕ
+        </h1>
+
+        <p class="mt-3.5 sm:mt-5 font-display font-semibold text-[11px] sm:text-sm md:text-[15px] tracking-[0.12em] sm:tracking-[0.22em] uppercase text-slate-200/95">
+          ПРОДАЖА • ЗАМЕНА В ДЕНЬ ОБРАЩЕНИЯ • РЕМОНТ СКОЛОВ • ТОНИРОВКА • СТО
+        </p>
+
+        <p class="mt-3.5 text-[13px] sm:text-base text-slate-200/90 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+          Вклейка и ремонт автостёкол с гарантией на ул. Мошенского, 95 и на выезде, а также ремонт подвески и ГРМ, заправка кондиционеров, промывка охлаждения <strong class="text-white font-semibold">РС1100+</strong> и автоэлектрика.
+        </p>
+
+        <!-- Две чёткие контрастные кнопки действия -->
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-md sm:max-w-none mx-auto">
+          <a href="#quick-select" class="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-sm sm:text-base shadow-copperGlow transition">
+            <span>Подобрать стекло и узнать цену</span>
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/25 hover:border-proton-copper text-white font-semibold text-sm sm:text-base transition">
+            <svg class="w-5 h-5 text-proton-copper shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            <span>Отправить фото трещины в Viber</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Нижняя тёмно-стеклянная полоса из 4 проверенных фактов с медными акцентами -->
+      <div class="relative z-10 max-w-[1380px] w-full mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+        <div class="glass-bar border border-white/15 rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-white/10 shadow-darkPanel overflow-hidden">
+          <div class="p-4 sm:p-5 flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-proton-copper/15 border border-proton-copper/35 text-proton-copper flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm sm:text-base text-white leading-snug">Замена в день обращения</div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Установка и ремонт сколов без лишних ожиданий</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-5 flex items-start gap-3.5 border-l border-white/10 lg:border-l-0">
+            <div class="w-10 h-10 rounded-xl bg-proton-copper/15 border border-proton-copper/35 text-proton-copper flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm sm:text-base text-white leading-snug">Гарантия на стекло и установку</div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Надёжные производители и контроль герметичности</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-5 flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-proton-copper/15 border border-proton-copper/35 text-proton-copper flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm sm:text-base text-white leading-snug">Выезд к авто</div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Выездная установка лобового стекла в Бресте</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-5 flex items-start gap-3.5 border-l border-white/10 lg:border-l-0">
+            <div class="w-10 h-10 rounded-xl bg-proton-copper/15 border border-proton-copper/35 text-proton-copper flex items-center justify-center shrink-0">
+              <span class="font-display font-extrabold text-sm">0%</span>
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm sm:text-base text-proton-copperLight leading-snug">Рассрочка 0%</div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Оплата картами рассрочек — условия уточняйте</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ФОКУС: ОЦЕНКА СКОЛА ПО ФОТО + УТРЕННЯЯ ДИАГНОСТИКА ==================== -->
+    <section id="glass-focus" class="bg-proton-carbon text-white border-y border-white/10 tech-grid">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+          <!-- Главная карточка: Прислать фото скола / трещины -->
+          <div class="lg:col-span-8 rounded-2xl bg-gradient-to-br from-proton-graphite to-proton-obsidian border border-white/10 p-6 sm:p-8 flex flex-col justify-between gap-6">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5">
+              <div class="w-12 h-12 rounded-xl bg-proton-copper/15 border border-proton-copper/40 text-proton-copper flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs font-bold uppercase tracking-widest text-proton-copper">Быстрая оценка без длинных анкет</div>
+                <h2 class="mt-1.5 font-display font-extrabold text-xl sm:text-2xl lg:text-[28px] leading-tight text-white">
+                  Поймали камень в лобовое? Пришлите фото трещины и VIN в мессенджер
+                </h2>
+                <p class="mt-2.5 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                  Сфотографируйте скол или трещину снаружи (можно рядом с монетой для масштаба) — мастер посмотрит фото и сразу подскажет, удастся ли остановить трещину ремонтом или лучше заменить стекло, а также проверит наличие на складе.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2 border-t border-white/10">
+              <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-viber hover:opacity-90 text-white text-sm font-semibold transition">
+                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                <span>Отправить фото в Viber</span>
+              </a>
+              <a data-contact="telegram" href="https://t.me/protone_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-telegram hover:opacity-90 text-white text-sm font-semibold transition">
+                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                <span>Отправить в Telegram</span>
+              </a>
+              <span class="text-xs text-slate-400 sm:ml-auto">Работаем со всеми марками и годами выпуска</span>
+            </div>
+          </div>
+
+          <!-- Боковая карточка: Утренняя бесплатная диагностика подвески -->
+          <div class="lg:col-span-4 rounded-2xl bg-proton-copper/10 border border-proton-copper/35 p-6 sm:p-7 flex flex-col justify-between gap-5">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-proton-copper text-white text-[11px] font-bold uppercase tracking-wider">
+                Утренний час СТО
+              </div>
+              <h3 class="mt-3.5 font-display font-extrabold text-xl sm:text-2xl text-white leading-snug">
+                Бесплатная диагностика подвески с&nbsp;9:00 до&nbsp;10:00
+              </h3>
+              <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                Заезжайте в первый час работы автосервиса на ул. Мошенского, 95 — проверим ходовую часть на подъёмнике и при необходимости сразу подберём детали в нашем магазине запчастей.
+              </p>
+            </div>
+            <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-proton-copper border border-white/15 hover:border-proton-copper text-white text-sm font-semibold transition">
+              Записаться на диагностику →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4 НАПРАВЛЕНИЯ УСЛУГ С ИНТЕРАКТИВНЫМИ ВКЛАДКАМИ ==================== -->
+    <section id="services" class="py-16 sm:py-20 bg-proton-ice">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-proton-copper">
+              <span class="w-7 h-0.5 bg-proton-copper"></span>
+              4 направления под одной крышей
+            </span>
+            <h2 class="mt-2.5 font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-proton-obsidian leading-tight">
+              От вклейки лобового стекла до&nbsp;капитального ремонта и&nbsp;автоэлектрики
+            </h2>
+          </div>
+          <p class="text-sm text-slate-600 max-w-md">
+            Нажмите на нужный раздел или конкретную услугу — она автоматически подставится в быструю форму расчёта ниже.
+          </p>
+        </div>
+
+        <!-- Вкладки 4 направлений -->
+        <div class="mt-8 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" role="tablist" aria-label="Направления Автосервиса Протон">
+          <button type="button" role="tab" aria-selected="true" data-tab="glass" class="service-tab shrink-0 px-5 py-3 rounded-xl font-display font-bold text-sm bg-proton-obsidian text-white shadow-sm transition whitespace-nowrap">
+            01. Автостёкла и оптика
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab="sto" class="service-tab shrink-0 px-5 py-3 rounded-xl font-display font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:border-proton-copper transition whitespace-nowrap">
+            02. Ремонт авто (СТО)
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab="ac" class="service-tab shrink-0 px-5 py-3 rounded-xl font-display font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:border-proton-copper transition whitespace-nowrap">
+            03. Кондиционеры и РС1100+
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab="electro" class="service-tab shrink-0 px-5 py-3 rounded-xl font-display font-bold text-sm bg-white text-slate-700 border border-slate-200 hover:border-proton-copper transition whitespace-nowrap">
+            04. Автоэлектрика и форсунки
+          </button>
+        </div>
+
+        <!-- ВКЛАДКА 1: АВТОСТЁКЛА И ОПТИКА -->
+        <div id="tab-glass" class="service-panel mt-7 grid lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-proton-obsidian text-white rounded-2xl overflow-hidden flex flex-col border border-white/10">
+            <div class="relative aspect-[16/10] bg-proton-graphite">
+              <img src="https://images.unsplash.com/photo-1754471319299-fd77c52fdc9c?auto=format&fit=crop&w=1200&q=82" alt="Замена, ремонт и тонировка автостёкол в Бресте" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/75 text-[11px] text-slate-200 border border-white/10">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Профильное направление</span>
+                <h3 class="mt-1.5 font-display font-bold text-2xl leading-snug">Продажа, установка, ремонт и тонировка автостёкол</h3>
+                <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                  Подбираем лобовые, боковые и задние стёкла различных производителей в наличии и под заказ. Выполняем замену и ремонт сколов в день обращения с гарантией на стекло и установку.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-proton-copper/35 text-xs text-slate-200 space-y-1.5">
+                <div class="font-semibold text-proton-copperLight">Удобные условия:</div>
+                <div>• Рассрочка 0% по картам рассрочек (актуальные условия уточняйте у мастера)</div>
+                <div>• Скидка на заправку кондиционера при замене автостекла</div>
+              </div>
+              <button type="button" data-preset-service="Замена лобового стекла" class="w-full py-3.5 px-5 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-sm transition">
+                Узнать наличие и стоимость стекла →
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Замена автостёкол</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Продажа и профессиональная вклейка лобовых, боковых и задних стёкол с соблюдением технологии и герметичности.</p>
+              </div>
+              <button type="button" data-preset-service="Замена лобового стекла" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Запросить стоимость →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Ремонт сколов и трещин</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Остановка и полимерный ремонт повреждений лобового стекла в день обращения — часто позволяет избежать замены.</p>
+              </div>
+              <button type="button" data-preset-service="Ремонт скола или трещины" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Оценить ремонт скола →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Выездная установка лобового</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Выезд мастера к автомобилю в Бресте, если машина не может приехать в бокс своим ходом.</p>
+              </div>
+              <button type="button" data-preset-service="Замена лобового стекла" data-preset-format="Нужен выезд к авто" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Согласовать выезд →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Тонировка и растонировка</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Аккуратная оклейка автостёкол плёнками и бережная растонировка без повреждения нитей обогрева.</p>
+              </div>
+              <button type="button" data-preset-service="Тонировка / оптика" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить стоимость →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Полировка и регулировка фар</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Восстановление прозрачности помутневшей оптики и правильная настройка света фар для безопасности ночью и техосмотра.</p>
+              </div>
+              <button type="button" data-preset-service="Тонировка / оптика" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на оптику →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Изготовление зеркал</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Изготовление и замена зеркальных элементов для боковых зеркал легковых и коммерческих автомобилей.</p>
+              </div>
+              <button type="button" data-preset-service="Тонировка / оптика" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить изготовление →</button>
+            </article>
+          </div>
+        </div>
+
+        <!-- ВКЛАДКА 2: РЕМОНТ АВТО (СТО) -->
+        <div id="tab-sto" class="service-panel hidden mt-7 grid lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-proton-obsidian text-white rounded-2xl overflow-hidden flex flex-col border border-white/10">
+            <div class="relative aspect-[16/10] bg-proton-graphite">
+              <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=82" alt="Ремонт двигателя, подвески и ГРМ в Бресте" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/75 text-[11px] text-slate-200 border border-white/10">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Опыт более 10 лет</span>
+                <h3 class="mt-1.5 font-display font-bold text-2xl leading-snug">Ремонт легковых авто и свой магазин запчастей</h3>
+                <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                  От планового ТО, замены масла и тормозов до ремонта подвески, сцепления, ДВС и замены ремней/цепей ГРМ. Нужные запчасти бесплатно подбираем в нашем магазине прямо при СТО.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-proton-copper/35 text-xs text-slate-200 space-y-1.5">
+                <div class="font-semibold text-proton-copperLight">Преимущества для клиента:</div>
+                <div>• Бесплатная диагностика подвески с 9:00 до 10:00</div>
+                <div>• Запчасти в наличии и под заказ прямо в сервисе</div>
+              </div>
+              <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="w-full py-3.5 px-5 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-sm transition">
+                Записаться на СТО →
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Диагностика и ремонт подвески</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Замена амортизаторов, пружин, ШРУСов, шаровых, рулевых наконечников, опорных чашек, ремонт и замена рулевых реек.</p>
+              </div>
+              <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на подвеску →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Замена ремней и цепей ГРМ</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Профессиональная замена комплектов ГРМ и натяжных роликов с бесплатным подбором запчастей в нашем магазине.</p>
+              </div>
+              <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить стоимость ГРМ →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Двигатель и плановое ТО</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Замена масла и фильтров, устранение течей, ремонт ГБЦ и ДВС, замена подушек, распредвалов, гидрокомпенсаторов и колпачков.</p>
+              </div>
+              <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Запросить расчёт →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Тормозная система и сцепление</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Замена дисков, колодок, суппортов, тормозных трубок и жидкости; ремонт и замена комплекта сцепления и маховика.</p>
+              </div>
+              <button type="button" data-preset-service="Ремонт подвески / ГРМ / СТО" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на ремонт →</button>
+            </article>
+          </div>
+        </div>
+
+        <!-- ВКЛАДКА 3: КОНДИЦИОНЕРЫ И ПРОМЫВКА ОХЛАЖДЕНИЯ РС1100+ -->
+        <div id="tab-ac" class="service-panel hidden mt-7 grid lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-proton-obsidian text-white rounded-2xl overflow-hidden flex flex-col border border-white/10">
+            <div class="relative aspect-[16/10] bg-proton-graphite">
+              <img src="https://images.unsplash.com/photo-1769178938570-7d8442f88538?auto=format&fit=crop&w=1200&q=82" alt="Обслуживание автокондиционера и климата салона в Бресте" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/75 text-[11px] text-slate-200 border border-white/10">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Климат и система охлаждения</span>
+                <h3 class="mt-1.5 font-display font-bold text-2xl leading-snug">Кондиционеры и промывка охлаждения на РС1100+</h3>
+                <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                  Заправляем кондиционеры на автоматической станции с вакуумированием и проверкой герметичности. Возвращаем тепло в салон промывкой печки и контура охлаждения на стенде <strong class="text-white">РС1100+</strong>.
+                </p>
+              </div>
+              <button type="button" data-preset-service="Кондиционер / РС1100+" class="w-full py-3.5 px-5 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-sm transition">
+                Записаться на климат / РС1100+ →
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Автоматическая заправка кондиционера</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Полный цикл: диагностика, откачка старого хладагента, вакуумирование, тест герметичности и точная заправка.</p>
+              </div>
+              <button type="button" data-preset-service="Кондиционер / РС1100+" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить стоимость →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Поиск утечек с УФ и ремонт узлов</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Поиск утечек фреона с УФ-добавкой, замена радиаторов и ремонт компрессоров с заказом деталей в нашем магазине.</p>
+              </div>
+              <button type="button" data-preset-service="Кондиционер / РС1100+" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на диагностику →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Антибактериальная очистка</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Удаление неприятного запаха, грибка и бактерий в испарителе и воздуховодах системы кондиционирования.</p>
+              </div>
+              <button type="button" data-preset-service="Кондиционер / РС1100+" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Узнать цену →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <span class="inline-block px-2 py-0.5 rounded bg-proton-copperTint text-proton-copper text-[11px] font-bold mb-1.5">Стенд РС1100+</span>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Промывка системы охлаждения</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Промывка радиатора печки (отопителя), основного радиатора, блока цилиндров и теплообменников ДВС/АКПП.</p>
+              </div>
+              <button type="button" data-preset-service="Кондиционер / РС1100+" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на промывку →</button>
+            </article>
+          </div>
+        </div>
+
+        <!-- ВКЛАДКА 4: АВТОЭЛЕКТРИКА, CAN-ДИАГНОСТИКА И ФОРСУНКИ -->
+        <div id="tab-electro" class="service-panel hidden mt-7 grid lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-proton-obsidian text-white rounded-2xl overflow-hidden flex flex-col border border-white/10">
+            <div class="relative aspect-[16/10] bg-proton-graphite">
+              <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=82" alt="Компьютерная диагностика и ремонт автоэлектрики в Бресте" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded bg-black/75 text-[11px] text-slate-200 border border-white/10">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Электроника и топливная аппаратура</span>
+                <h3 class="mt-1.5 font-display font-bold text-2xl leading-snug">Диагностика CAN-шины и чистка форсунок</h3>
+                <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                  Проводим точную компьютерную диагностику по CAN-шине, ремонтируем электрооборудование и очищаем бензиновые форсунки прямого и распределённого впрыска.
+                </p>
+              </div>
+              <button type="button" data-preset-service="Электрика / форсунки" class="w-full py-3.5 px-5 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-sm transition">
+                Записаться к автоэлектрику →
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Компьютерная диагностика (CAN)</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Чтение и расшифровка ошибок CAN-шины, проверка датчиков и исполнительных механизмов для точного поиска поломки.</p>
+              </div>
+              <button type="button" data-preset-service="Электрика / форсунки" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Записаться на диагностику →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Чистка бензиновых форсунок</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Диагностика и чистка форсунок SPI, MPI, GDI, FSI, JTS, CGI, HPi, Ecotec, DISI, TSI, TFSI, IDE (ультразвук и промывка инжектора).</p>
+              </div>
+              <button type="button" data-preset-service="Электрика / форсунки" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить стоимость →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Ремонт электронных систем</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Поиск и устранение неисправностей электропроводки, блоков управления и электрооборудования любой сложности.</p>
+              </div>
+              <button type="button" data-preset-service="Электрика / форсунки" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Описать проблему →</button>
+            </article>
+
+            <article class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-proton-copper transition">
+              <div>
+                <h4 class="font-display font-bold text-lg text-proton-obsidian">Сигнализация и свет</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">Аккуратная установка автосигнализаций, ксенона и дополнительного электрооборудования с проверкой работы.</p>
+              </div>
+              <button type="button" data-preset-service="Электрика / форсунки" class="mt-4 text-left text-sm font-semibold text-proton-copper hover:text-proton-copperHover">Уточнить установку →</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== О СЕРВИСЕ И МАГАЗИН АВТОЗАПЧАСТЕЙ ==================== -->
+    <section id="advantages" class="py-16 sm:py-20 bg-white border-y border-slate-200">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div class="lg:col-span-5">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-proton-copper">
+              <span class="w-7 h-0.5 bg-proton-copper"></span>
+              О сервисе «Протон»
+            </span>
+            <h2 class="mt-2.5 font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-proton-obsidian leading-tight">
+              Автосервис и магазин запчастей в&nbsp;одном боксе
+            </h2>
+            <p class="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+              Более 10 лет команда «Протон» на ул. Мошенского, 95 обслуживает автомобили всех марок в Бресте. Вам не придётся самостоятельно объезжать рынки и искать нужное стекло, ролики ГРМ или радиатор — всё подбираем прямо на месте.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#quick-select" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-proton-obsidian hover:bg-proton-graphite text-white text-sm font-semibold transition">
+                Подобрать услугу
+              </a>
+              <a href="#contacts" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-proton-obsidian text-sm font-semibold transition">
+                Как проехать
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <div class="p-6 rounded-2xl bg-proton-ice border border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-proton-copper/15 text-proton-copper font-display font-extrabold flex items-center justify-center mb-4">01</div>
+              <h3 class="font-display font-bold text-lg text-proton-obsidian">Свой магазин автозапчастей</h3>
+              <p class="mt-1.5 text-sm text-slate-600 leading-relaxed">
+                Автостёкла, комплекты ГРМ, элементы подвески, компрессоры и радиаторы кондиционеров в наличии и под заказ с бесплатным подбором.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-proton-ice border border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-proton-copper/15 text-proton-copper font-display font-extrabold flex items-center justify-center mb-4">02</div>
+              <h3 class="font-display font-bold text-lg text-proton-obsidian">Оперативность и гарантия</h3>
+              <p class="mt-1.5 text-sm text-slate-600 leading-relaxed">
+                Замена и ремонт сколов лобовых стёкол выполняются в день обращения. Предоставляем гарантию на стекло и работу.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-proton-ice border border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-proton-copper/15 text-proton-copper font-display font-extrabold flex items-center justify-center mb-4">03</div>
+              <h3 class="font-display font-bold text-lg text-proton-obsidian">Профессиональные стенды</h3>
+              <p class="mt-1.5 text-sm text-slate-600 leading-relaxed">
+                Установка промывки охлаждения РС1100+, автоматическая станция кондиционеров, CAN-диагностика и ультразвуковая чистка форсунок.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-proton-obsidian text-white border border-proton-obsidian">
+              <div class="w-10 h-10 rounded-xl bg-proton-copper text-white font-display font-extrabold flex items-center justify-center mb-4">0%</div>
+              <h3 class="font-display font-bold text-lg">Рассрочка 0% на автостёкла</h3>
+              <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">
+                Работаем с картами рассрочек — комфортная оплата покупки и установки стекла. Актуальный список карт уточняйте у мастера.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ФОТОГАЛЕРЕЯ С ЛАЙТБОКСОМ ==================== -->
+    <section id="gallery" class="py-16 sm:py-20 bg-proton-ice">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-proton-copper">
+              <span class="w-7 h-0.5 bg-proton-copper"></span>
+              Фотогалерея
+            </span>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl text-proton-obsidian">
+              Боксы, оптика и оборудование сервиса
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 max-w-md sm:text-right">
+            В прототипе используются тематические демо-фото. При запуске сайта загрузим ваши реальные фото боксов на Мошенского, 95, склада стёкол и работ.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1658244535411-92c887137240?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Подготовка и установка лобового стекла в чистом сервисном боксе (демо-фото)" class="gallery-item group relative aspect-[4/3] rounded-2xl overflow-hidden bg-proton-graphite text-left focus:outline-none focus:ring-2 focus:ring-proton-copper">
+            <img src="https://images.unsplash.com/photo-1658244535411-92c887137240?auto=format&fit=crop&w=900&q=80" alt="Автомобиль в сервисном боксе" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-[11px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3 py-1.5 rounded-lg bg-white text-proton-obsidian text-xs font-semibold">Открыть</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1763567881820-021c09b234f6?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Полировка, восстановление прозрачности и регулировка оптики (демо-фото)" class="gallery-item group relative aspect-[4/3] rounded-2xl overflow-hidden bg-proton-graphite text-left focus:outline-none focus:ring-2 focus:ring-proton-copper">
+            <img src="https://images.unsplash.com/photo-1763567881820-021c09b234f6?auto=format&fit=crop&w=900&q=80" alt="Полировка и настройка автомобильной оптики" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-[11px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3 py-1.5 rounded-lg bg-white text-proton-obsidian text-xs font-semibold">Открыть</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Диагностика подвески, замена ГРМ и ремонт автомобиля на подъёмнике (демо-фото)" class="gallery-item group relative aspect-[4/3] rounded-2xl overflow-hidden bg-proton-graphite text-left focus:outline-none focus:ring-2 focus:ring-proton-copper">
+            <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=900&q=80" alt="Диагностика автомобиля в боксе СТО" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-[11px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3 py-1.5 rounded-lg bg-white text-proton-obsidian text-xs font-semibold">Открыть</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Профессиональный инструмент и диагностические стенды автосервиса (демо-фото)" class="gallery-item group relative aspect-[4/3] rounded-2xl overflow-hidden bg-proton-graphite text-left focus:outline-none focus:ring-2 focus:ring-proton-copper">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="Инструмент и оборудование автосервиса" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 text-[11px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3 py-1.5 rounded-lg bg-white text-proton-obsidian text-xs font-semibold">Открыть</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧЕСТНЫЙ БЛОК ОТЗЫВОВ (ДЕМО-СЛОТЫ БЕЗ ВЫДУМАННЫХ РЕЙТИНГОВ) ==================== -->
+    <section id="reviews" class="py-16 sm:py-20 bg-white border-t border-slate-200">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-proton-copper">
+              <span class="w-7 h-0.5 bg-proton-copper"></span>
+              Отзывы автовладельцев
+            </span>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl text-proton-obsidian">
+              Впечатления клиентов из Бреста
+            </h2>
+          </div>
+          <a href="https://yandex.by/maps/?text=Брест%20улица%20Мошенского%2095%20Автосервис%20Протон" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-proton-ice border border-slate-300 hover:border-proton-copper text-sm font-semibold text-proton-obsidian transition shrink-0">
+            <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Открыть реальные отзывы на Яндекс Картах</span>
+          </a>
+        </div>
+
+        <div class="mt-8 bg-proton-ice border border-dashed border-slate-300 rounded-2xl p-6 sm:p-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-proton-copperTint border border-orange-200 text-amber-900 text-xs font-semibold mb-6">
+            <svg class="w-4 h-4 text-proton-copper shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Мы не выдумываем отзывы и рейтинги в демо — при запуске подключим живой виджет Яндекс Карт</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-proton-ice border border-slate-200 flex items-center justify-center text-proton-copper font-display font-bold text-sm">01</div>
+                <div>
+                  <div class="font-semibold text-sm text-proton-obsidian">Отзыв с Яндекс Карт (демо-слот)</div>
+                  <div class="text-xs text-slate-400">Замена / ремонт автостекла</div>
+                </div>
+              </div>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                Место под реальный отзыв клиента о скорости замены лобового стекла в день обращения, качестве вклейки и подборе по наличию.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-proton-ice border border-slate-200 flex items-center justify-center text-proton-copper font-display font-bold text-sm">02</div>
+                <div>
+                  <div class="font-semibold text-sm text-proton-obsidian">Отзыв с Яндекс Карт (демо-слот)</div>
+                  <div class="text-xs text-slate-400">Ремонт подвески / ГРМ / СТО</div>
+                </div>
+              </div>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                Место под подтверждённый отзыв автовладельца о ремонте автомобиля и удобстве заказа запчастей на месте.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-white border border-slate-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-proton-ice border border-slate-200 flex items-center justify-center text-proton-copper font-display font-bold text-sm">03</div>
+                <div>
+                  <div class="font-semibold text-sm text-proton-obsidian">Отзыв с Яндекс Карт (демо-слот)</div>
+                  <div class="text-xs text-slate-400">Кондиционер / РС1100+ / Электрика</div>
+                </div>
+              </div>
+              <p class="text-sm text-slate-500 leading-relaxed">
+                Здесь также можно вывести реальные примеры работ «до и после» по ремонту сколов, полировке фар и промывке печки.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ЕДИНАЯ ФОРМА ЗАЯВКИ ==================== -->
+    <section id="quick-select" class="py-16 sm:py-20 bg-proton-obsidian text-white border-t border-white/10 tech-grid">
+      <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10">
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-proton-copper">
+            <span class="w-7 h-0.5 bg-proton-copper"></span>
+            Быстрый подбор за 2 клика
+          </span>
+          <h2 class="mt-2.5 font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
+            Узнайте наличие и стоимость без&nbsp;капч и&nbsp;длинных анкет
+          </h2>
+          <p class="mt-2.5 text-sm sm:text-base text-slate-400">
+            Выберите задачу и удобный формат в 2 клика — параметры автоматически подставятся в заявку. Актуально для всех марок и любых годов выпуска автомобиля.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Левая колонка: 2-кликовый выбор (без громоздких калькуляторов) -->
+          <div class="lg:col-span-6 space-y-7">
+            <!-- Клик 1: Что нужно? -->
+            <div class="p-6 rounded-2xl bg-proton-carbon border border-white/10">
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Клик 1 • Что нужно сделать?</span>
+                <span class="text-[11px] text-slate-400">Выберите пункт</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="step1Options">
+                <button type="button" data-step1="Замена лобового стекла" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-proton-copper bg-proton-copper/20 text-white text-sm font-semibold transition flex items-center justify-between gap-2">
+                  <span>Замена лобового стекла</span>
+                  <span class="w-2 h-2 rounded-full bg-proton-copper shrink-0"></span>
+                </button>
+                <button type="button" data-step1="Ремонт скола или трещины" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-2">
+                  <span>Ремонт скола или трещины</span>
+                  <span class="w-2 h-2 rounded-full bg-white/15 shrink-0"></span>
+                </button>
+                <button type="button" data-step1="Тонировка / оптика" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-2">
+                  <span>Тонировка / оптика</span>
+                  <span class="w-2 h-2 rounded-full bg-white/15 shrink-0"></span>
+                </button>
+                <button type="button" data-step1="Ремонт подвески / ГРМ / СТО" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-2">
+                  <span>Ремонт подвески / ГРМ / СТО</span>
+                  <span class="w-2 h-2 rounded-full bg-white/15 shrink-0"></span>
+                </button>
+                <button type="button" data-step1="Кондиционер / РС1100+" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-2">
+                  <span>Кондиционер / РС1100+</span>
+                  <span class="w-2 h-2 rounded-full bg-white/15 shrink-0"></span>
+                </button>
+                <button type="button" data-step1="Электрика / форсунки" class="step1-btn text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-2">
+                  <span>Электрика / форсунки</span>
+                  <span class="w-2 h-2 rounded-full bg-white/15 shrink-0"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Клик 2: Формат визита -->
+            <div class="p-6 rounded-2xl bg-proton-carbon border border-white/10">
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-proton-copper">Клик 2 • Удобный формат визита</span>
+                <span class="text-[11px] text-slate-400">Автоподстановка в форму</span>
+              </div>
+              <div class="space-y-2.5" id="step2Options">
+                <button type="button" data-step2="Приеду в бокс на Мошенского, 95" class="step2-btn w-full text-left px-4 py-3.5 rounded-xl border border-proton-copper bg-proton-copper/20 text-white text-sm font-semibold transition flex items-center justify-between gap-3">
+                  <span>Приеду в бокс на Мошенского, 95</span>
+                  <span class="text-xs text-proton-copperLight shrink-0">Выбрано</span>
+                </button>
+                <button type="button" data-step2="Нужен выезд к авто" class="step2-btn w-full text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-3">
+                  <span>Нужен выезд к авто</span>
+                  <span class="text-xs text-slate-500 shrink-0">Брест</span>
+                </button>
+                <button type="button" data-step2="Сначала хочу узнать цену по фото" class="step2-btn w-full text-left px-4 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-proton-copper/60 text-slate-200 text-sm font-medium transition flex items-center justify-between gap-3">
+                  <span>Сначала хочу узнать цену по фото</span>
+                  <span class="text-xs text-slate-500 shrink-0">Viber / TG</span>
+                </button>
+              </div>
+
+              <!-- Живая сводка подбора -->
+              <div class="mt-5 p-4 rounded-xl bg-proton-obsidian border border-white/10">
+                <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Передано в заявку:</div>
+                <div id="quickSelectionSummary" class="mt-1 text-sm font-semibold text-white">
+                  Замена лобового стекла • Приеду в бокс на Мошенского, 95
+                </div>
+                <div id="photoHintBar" class="hidden mt-3 pt-3 border-t border-white/10 flex flex-wrap items-center gap-2">
+                  <span class="text-xs text-slate-300">Удобнее сразу скинуть фото?</span>
+                  <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="px-3 py-1.5 rounded-lg bg-viber text-white text-xs font-semibold hover:opacity-90 transition">Открыть Viber</a>
+                  <a data-contact="telegram" href="https://t.me/protone_brest_demo" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-telegram text-white text-xs font-semibold hover:opacity-90 transition">Открыть Telegram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Прямая связь -->
+            <div class="p-5 rounded-2xl bg-proton-carbon border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div class="text-xs text-slate-400">Позвонить напрямую (Пн–Пт 9:00–18:00):</div>
+                <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-display font-bold text-base text-white">
+                  <a data-contact="phone" data-contact-text="phone" href="tel:+375292247111" class="hover:text-proton-copper transition whitespace-nowrap">+375 (29) 224-71-11</a>
+                  <a data-contact="secondaryPhone" data-contact-text="secondaryPhone" href="tel:+375293347111" class="text-slate-300 hover:text-proton-copper transition whitespace-nowrap">+375 (29) 334-71-11</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="px-3.5 py-2 rounded-lg bg-viber hover:opacity-90 text-white text-xs font-semibold transition">Viber</a>
+                <a data-contact="telegram" href="https://t.me/protone_brest_demo" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg bg-telegram hover:opacity-90 text-white text-xs font-semibold transition">Telegram</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Единая чистая форма заявки -->
+          <div class="lg:col-span-6" id="request-form">
+            <form id="leadForm" novalidate class="bg-white text-proton-obsidian border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-darkPanel space-y-5">
+              <div>
+                <h3 class="font-display font-extrabold text-xl sm:text-2xl text-proton-obsidian">Запрос стоимости и запись</h3>
+                <p class="mt-1 text-xs sm:text-sm text-slate-500">Оставьте контакт — мастер уточнит наличие стекла или запчастей и назовёт точную стоимость.</p>
+              </div>
+
+              <!-- Honeypot от спам-ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Не заполняйте это поле</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-sm font-semibold text-proton-obsidian mb-1.5">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Александр" class="w-full px-4 py-3 rounded-xl bg-proton-ice border border-slate-300 text-proton-obsidian placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-proton-copper focus:border-proton-copper transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-sm font-semibold text-proton-obsidian mb-1.5">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (29) 123-45-67" class="w-full px-4 py-3 rounded-xl bg-proton-ice border border-slate-300 text-proton-obsidian placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-proton-copper focus:border-proton-copper transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadService" class="block text-sm font-semibold text-proton-obsidian mb-1.5">Выбранная услуга *</label>
+                  <select id="leadService" name="service" required class="w-full px-4 py-3 rounded-xl bg-proton-ice border border-slate-300 text-proton-obsidian focus:outline-none focus:ring-2 focus:ring-proton-copper focus:border-proton-copper transition">
+                    <option value="Замена лобового стекла">Замена лобового стекла</option>
+                    <option value="Ремонт скола или трещины">Ремонт скола или трещины</option>
+                    <option value="Тонировка / оптика">Тонировка / оптика</option>
+                    <option value="Ремонт подвески / ГРМ / СТО">Ремонт подвески / ГРМ / СТО</option>
+                    <option value="Кондиционер / РС1100+">Кондиционер / РС1100+</option>
+                    <option value="Электрика / форсунки">Электрика / форсунки</option>
+                    <option value="Консультация мастера">Консультация мастера</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="leadFormat" class="block text-sm font-semibold text-proton-obsidian mb-1.5">Формат визита</label>
+                  <select id="leadFormat" name="format" class="w-full px-4 py-3 rounded-xl bg-proton-ice border border-slate-300 text-proton-obsidian focus:outline-none focus:ring-2 focus:ring-proton-copper focus:border-proton-copper transition">
+                    <option value="Приеду в бокс на Мошенского, 95">Приеду в бокс на Мошенского, 95</option>
+                    <option value="Нужен выезд к авто">Нужен выезд к авто</option>
+                    <option value="Сначала хочу узнать цену по фото">Сначала хочу узнать цену по фото</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <span class="block text-sm font-semibold text-proton-obsidian mb-2">Где удобнее получить ответ?</span>
+                <div class="grid grid-cols-3 gap-2.5">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Звонок по телефону" checked class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 rounded-xl border border-slate-300 bg-proton-ice text-xs sm:text-sm font-medium text-slate-700 peer-checked:border-proton-copper peer-checked:bg-proton-copperTint peer-checked:text-proton-copper transition">Телефон</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 rounded-xl border border-slate-300 bg-proton-ice text-xs sm:text-sm font-medium text-slate-700 peer-checked:border-viber peer-checked:bg-indigo-50 peer-checked:text-indigo-700 transition">Viber</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 rounded-xl border border-slate-300 bg-proton-ice text-xs sm:text-sm font-medium text-slate-700 peer-checked:border-telegram peer-checked:bg-sky-50 peer-checked:text-sky-700 transition">Telegram</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-sm font-semibold text-proton-obsidian mb-1.5">Автомобиль, год выпуска, VIN или комментарий</label>
+                <textarea id="leadComment" name="comment" rows="3" placeholder="Например: VW Tiguan 2021, лобовое с датчиком дождя и обогревом" class="w-full px-4 py-3 rounded-xl bg-proton-ice border border-slate-300 text-proton-obsidian placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-proton-copper focus:border-proton-copper transition"></textarea>
+              </div>
+
+              <!-- Обязательный НЕЗАПОЛНЕННЫЙ чекбокс по Закону РБ № 99-З (БЕЗ checked!) -->
+              <div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-1 w-4 h-4 rounded border-slate-400 accent-[#E77817] shrink-0" />
+                  <span class="text-xs text-slate-600 leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-proton-obsidian underline hover:text-proton-copper font-medium">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-proton-obsidian underline hover:text-proton-copper font-medium">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white font-semibold text-base shadow-copperGlow transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Узнать стоимость и свободное окно
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ (КОНТАКТЫ И ЮРИДИЧЕСКИЙ КОМПЛАЕНС РБ) ==================== -->
+  <footer id="contacts" class="bg-[#070709] text-slate-300 pt-14 pb-36 md:pb-24 border-t border-white/10">
+    <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <!-- Контакты -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <div class="flex items-center font-display font-black italic tracking-tight text-2xl leading-none">
+              <span class="px-2 py-1 rounded-md bg-proton-copper text-white">PRO</span>
+              <span class="ml-1.5 text-white not-italic">TONE</span>
+              <span class="ml-2.5 text-sm font-bold not-italic text-slate-400">Автосервис «Протон»</span>
+            </div>
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+              Продажа, замена, ремонт и тонировка автостёкол, ремонт автомобилей, заправка кондиционеров, промывка охлаждения РС1100+, автоэлектрика и магазин запчастей в Бресте.
+            </p>
+          </div>
+
+          <div class="space-y-2.5 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Адрес:</span>
+              <span class="text-white font-medium">224009, г. Брест, ул. Мошенского, 95</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Телефоны:</span>
+              <div class="flex flex-col gap-1">
+                <a data-contact="phone" data-contact-text="phone" href="tel:+375292247111" class="text-white font-semibold hover:text-proton-copper transition whitespace-nowrap">+375 (29) 224-71-11</a>
+                <a data-contact="secondaryPhone" data-contact-text="secondaryPhone" href="tel:+375293347111" class="text-white font-semibold hover:text-proton-copper transition whitespace-nowrap">+375 (29) 334-71-11</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">E-mail:</span>
+              <a href="mailto:ed-protone@mail.ru" class="text-slate-200 hover:text-proton-copper transition">ed-protone@mail.ru</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">График:</span>
+              <div>
+                <div class="text-white">Понедельник – Пятница: 9:00–18:00</div>
+                <div class="text-xs text-slate-500">Суббота, Воскресенье — выходной (уточняйте по телефону)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-viber hover:opacity-90 text-white text-xs font-semibold transition">
+              Написать в Viber
+            </a>
+            <a data-contact="telegram" href="https://t.me/protone_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-telegram hover:opacity-90 text-white text-xs font-semibold transition">
+              Написать в Telegram
+            </a>
+          </div>
+        </div>
+
+        <!-- Схема проезда -->
+        <div class="lg:col-span-7">
+          <div class="bg-proton-carbon border border-white/10 rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-bold text-base text-white">Как проехать в Автосервис «Протон»</div>
+                <div class="text-xs text-slate-400">г. Брест, ул. Мошенского, 95</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Брест%20улица%20Мошенского%2095%20Автосервис%20Протон" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-proton-copper hover:bg-proton-copperHover text-white text-xs font-semibold transition">
+                Построить маршрут в Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="relative rounded-xl overflow-hidden bg-proton-obsidian border border-white/10 h-56 flex items-center justify-center">
+              <svg class="w-full h-full opacity-35" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 140 L600 108" stroke="#64748B" stroke-width="16" />
+                <path d="M165 0 L215 220" stroke="#475569" stroke-width="10" />
+                <path d="M430 0 L395 220" stroke="#475569" stroke-width="8" />
+                <path d="M0 52 L600 38" stroke="#334155" stroke-width="6" />
+                <rect x="255" y="70" width="96" height="46" rx="8" fill="#1B1D24" stroke="#E77817" stroke-width="2" />
+                <text x="80" y="130" fill="#94A3B8" font-size="11" font-family="Inter, sans-serif">ул. Мошенского</text>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-11 h-11 rounded-full bg-proton-copper text-white flex items-center justify-center shadow-copperGlow mb-2">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-3.5 py-1.5 rounded-lg bg-proton-obsidian/90 border border-white/15 text-xs sm:text-sm font-semibold text-white">
+                  Автосервис «Протон» • ул. Мошенского, 95
+                </div>
+                <div class="mt-1.5 text-[11px] text-slate-400">При запуске встроим живую интерактивную карту Яндекс с точкой заезда</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридический блок и заглушки под реквизиты РБ -->
+      <div class="pt-8 space-y-5 text-xs text-slate-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-slate-300 font-semibold">Реквизиты организации (заполняются при запуске):</div>
+            <div>[ФИО ИП / Наименование ООО или ЧУП], УНП [XXXXXXXXX]</div>
+            <div>Юридический адрес: [224009, г. Брест, ул. Мошенского, 95 / юр. адрес]</div>
+            <div>Режим работы: [Пн–Пт 9:00–18:00, Сб–Вс — выходной]</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-white transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-white transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-white transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Информация на сайте носит справочный характер и не является публичной офертой в соответствии со статьёй 407 Гражданского кодекса Республики Беларусь. Точная стоимость автостёкол, запчастей и работ, а также условия акций и рассрочки уточняются после подбора и осмотра автомобиля. © Автосервис «Протон» (Брест).
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Скрыт, пока открыт cookie-баннер; расположен строго выше нижней демо-плашки -->
+  <div id="mobileStickyDock" class="hidden md:hidden fixed inset-x-3 bottom-12 z-40">
+    <div class="mobile-dock-glass border border-white/15 rounded-2xl p-1.5 shadow-darkPanel grid grid-cols-3 gap-1.5">
+      <a data-contact="phone" href="tel:+375292247111" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-white/[0.06] active:bg-white/15 text-white text-xs font-semibold whitespace-nowrap transition">
+        <svg class="w-4 h-4 text-proton-copper shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span>Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375292247111" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-white/[0.06] active:bg-white/15 text-white text-xs font-semibold whitespace-nowrap transition">
+        <svg class="w-4 h-4 text-viber shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span>Viber</span>
+      </a>
+      <a href="#quick-select" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-proton-copper active:bg-proton-copperHover text-white text-xs font-semibold whitespace-nowrap transition shadow-copperGlow">
+        <span>Записаться</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР (НЦЗПД РБ: ДВЕ РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-12 sm:bottom-9 z-50 px-3 sm:px-6 pb-1">
+    <div class="max-w-4xl mx-auto bg-[#121317]/95 backdrop-blur-xl border border-white/15 text-slate-200 rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="text-xs leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта и сохранения настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-white underline hover:text-proton-copper">настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-3.5 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold transition whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-3.5 py-2 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white text-xs font-semibold transition whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ПОЛУПРОЗРАЧНАЯ ДЕМО-ПЛАШКА ВНИЗУ ЭКРАНА ==================== -->
+  <div class="fixed inset-x-0 bottom-0 z-30 bg-[#0A0A0C]/95 backdrop-blur-md border-t border-white/10 text-slate-400 text-center py-2 px-3 text-[10px] sm:text-xs leading-tight">
+    Демо-прототип нового сайта для Автосервиса «Протон» (Брест). После согласования добавим ваши реальные фото и реквизиты.
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс галереи -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-proton-carbon rounded-2xl overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-proton-copper flex items-center justify-center transition">✕</button>
+      <button type="button" id="lightboxPrev" aria-label="Предыдущее фото" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-proton-copper flex items-center justify-center transition">‹</button>
+      <button type="button" id="lightboxNext" aria-label="Следующее фото" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-proton-copper flex items-center justify-center transition">›</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-slate-300 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white text-proton-obsidian rounded-2xl p-6 sm:p-8 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">✕</button>
+      <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-extrabold text-2xl text-proton-obsidian">Заявка отправлена</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-slate-600 leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-xl bg-proton-ice border border-slate-200 text-xs text-slate-700 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 rounded-xl bg-proton-obsidian hover:bg-proton-graphite text-white font-semibold text-sm transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white text-proton-obsidian rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-proton-obsidian">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает владелец Автосервиса «Протон» ([ФИО ИП / Наименование ООО или ЧУП], УНП [XXXXXXXXX], 224009, г. Брест, ул. Мошенского, 95).</p>
+        <p><strong>2. Цели и перечень данных.</strong> Оператор обрабатывает имя, номер телефона, выбранную услугу, формат визита, способ связи и сведения об автомобиле (марка, год, VIN/комментарий) исключительно для обратной связи, подбора автостёкол или запчастей, расчёта стоимости и записи на сервис.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта в мессенджер мастера используются сервисы Google (Google Apps Script / Google LLC) и Telegram (Telegram Messenger Inc.), серверы которых могут находиться на территории иностранных государств, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. С такой передачей связаны риски отсутствия специального законодательства о защите ПД, отсутствия независимого надзорного органа и возможного доступа третьих лиц по законодательству иностранных государств. Передача осуществляется только при наличии вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З).</strong> Вы вправе в любое время без объяснения причин отозвать согласие; получать информацию об обработке ПД; требовать внесения изменений; требовать прекращения обработки и (или) удаления ПД; обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-xl bg-proton-obsidian text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white text-proton-obsidian rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-proton-obsidian">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p>Проставляя отметку в форме заявки на сайте Автосервиса «Протон» и отправляя заявку, я свободно, однозначно и информированно даю согласие оператору ([ФИО ИП / Наименование ООО или ЧУП], УНП [XXXXXXXXX], 224009, г. Брест, ул. Мошенского, 95) на обработку моих персональных данных: имени, номера телефона, выбранной услуги, формата визита, способа связи и сведений об автомобиле.</p>
+        <p><strong>Цель обработки:</strong> рассмотрение обращения, подбор автостекла или запчастей, расчёт стоимости услуг автосервиса и обратная связь для записи.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что доставка заявки осуществляется с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, инфраструктура которых находится в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов ПД. Мне разъяснены связанные с этим риски (различия в правовом регулировании, отсутствие независимого надзорного органа и ограниченные возможности защиты прав в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и права субъекта (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами на отзыв согласия, получение информации, изменение и удаление ПД, а также обжалование в НЦЗПД. Отозвать согласие можно письмом на e-mail ed-protone@mail.ru или по контактам в подвале сайта.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-xl bg-proton-obsidian text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white text-proton-obsidian rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-proton-obsidian">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-4 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-proton-ice border border-slate-200 flex items-center justify-between gap-2">
+          <span class="font-semibold text-proton-obsidian">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded-md bg-white border border-slate-300 text-xs font-semibold text-proton-obsidian">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie и локальное хранилище:</strong> запоминают ваш выбор настроек cookie и обеспечивают работу интерфейса. Персональные данные третьим лицам не передаются.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> могут использоваться после подключения веб-аналитики для улучшения работы сайта. Вы можете в любой момент принять их или отклонить.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-proton-obsidian text-sm font-semibold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 rounded-xl bg-proton-copper hover:bg-proton-copperHover text-white text-sm font-semibold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЕДИНЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Привязка контактов из SITE_CONFIG (без target="_blank" на tel: и viber://)
+      const encodedViberPhone = encodeURIComponent(SITE_CONFIG.viberPhone);
+      const viberHref = `viber://chat?number=${encodedViberPhone}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+      document.querySelectorAll('[data-contact="secondaryPhone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.secondaryTelHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="secondaryPhone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.secondaryPhone;
+      });
+
+      // 2. Живой статус в шапке по времени Беларуси (Europe/Minsk, Пн–Пт 9:00–18:00)
+      function updateLiveStatus() {
+        const dot = document.getElementById('liveStatusDot');
+        const text = document.getElementById('liveStatusText');
+        const mobText = document.getElementById('mobileLiveStatusText');
+        if (!dot || !text) return;
+
+        try {
+          const now = new Date();
+          const formatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Minsk',
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+          const parts = {};
+          formatter.formatToParts(now).forEach((p) => { parts[p.type] = p.value; });
+          const day = parts.weekday; // Mon, Tue, Wed, Thu, Fri, Sat, Sun
+          const hour = parseInt(parts.hour, 10);
+          const isWeekday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].includes(day);
+          const isOpen = isWeekday && hour >= 9 && hour < 18;
+
+          if (isOpen) {
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0';
+            text.textContent = 'Открыто сейчас';
+            if (mobText) {
+              mobText.textContent = '● Открыто сейчас (до 18:00)';
+              mobText.className = 'text-emerald-400 font-medium';
+            }
+          } else {
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-proton-copper shrink-0';
+            const isWeekendOrFriEvening = day === 'Sat' || day === 'Sun' || (day === 'Fri' && hour >= 18);
+            const label = isWeekendOrFriEvening ? 'Ответим в Пн с 9:00' : 'Ответим с 9:00';
+            text.textContent = label;
+            if (mobText) {
+              mobText.textContent = `● ${label}`;
+              mobText.className = 'text-proton-copperLight font-medium';
+            }
+          }
+        } catch (_) {
+          text.textContent = 'Пн–Пт 9:00–18:00';
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const iconOpen = document.getElementById('mobileMenuIconOpen');
+      const iconClose = document.getElementById('mobileMenuIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+      document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Интерактивные вкладки 4 направлений услуг
+      const serviceTabs = document.querySelectorAll('.service-tab');
+      const servicePanels = document.querySelectorAll('.service-panel');
+
+      function activateServiceTab(tabId) {
+        serviceTabs.forEach((btn) => {
+          const isActive = btn.getAttribute('data-tab') === tabId;
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          btn.classList.toggle('bg-proton-obsidian', isActive);
+          btn.classList.toggle('text-white', isActive);
+          btn.classList.toggle('shadow-sm', isActive);
+          btn.classList.toggle('bg-white', !isActive);
+          btn.classList.toggle('text-slate-700', !isActive);
+          btn.classList.toggle('border', !isActive);
+          btn.classList.toggle('border-slate-200', !isActive);
+        });
+        servicePanels.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.id !== `tab-${tabId}`);
+        });
+      }
+
+      serviceTabs.forEach((btn) => {
+        btn.addEventListener('click', () => activateServiceTab(btn.getAttribute('data-tab')));
+      });
+
+      // 5. Лёгкий мини-интерактив за 2 клика с автоподстановкой в форму
+      const quickState = {
+        service: 'Замена лобового стекла',
+        format: 'Приеду в бокс на Мошенского, 95'
+      };
+
+      const step1Btns = document.querySelectorAll('.step1-btn');
+      const step2Btns = document.querySelectorAll('.step2-btn');
+      const quickSummary = document.getElementById('quickSelectionSummary');
+      const photoHintBar = document.getElementById('photoHintBar');
+      const serviceSelect = document.getElementById('leadService');
+      const formatSelect = document.getElementById('leadFormat');
+
+      function syncQuickSelectUI() {
+        step1Btns.forEach((btn) => {
+          const active = btn.getAttribute('data-step1') === quickState.service;
+          btn.classList.toggle('border-proton-copper', active);
+          btn.classList.toggle('bg-proton-copper/20', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('border-white/10', !active);
+          btn.classList.toggle('bg-white/[0.03]', !active);
+          btn.classList.toggle('text-slate-200', !active);
+          btn.classList.toggle('font-medium', !active);
+          const dot = btn.querySelector('span:last-child');
+          if (dot) {
+            dot.classList.toggle('bg-proton-copper', active);
+            dot.classList.toggle('bg-white/15', !active);
+          }
+        });
+
+        step2Btns.forEach((btn) => {
+          const active = btn.getAttribute('data-step2') === quickState.format;
+          btn.classList.toggle('border-proton-copper', active);
+          btn.classList.toggle('bg-proton-copper/20', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('border-white/10', !active);
+          btn.classList.toggle('bg-white/[0.03]', !active);
+          btn.classList.toggle('text-slate-200', !active);
+          btn.classList.toggle('font-medium', !active);
+          const tag = btn.querySelector('span:last-child');
+          if (tag) {
+            if (active) {
+              tag.textContent = 'Выбрано';
+              tag.className = 'text-xs text-proton-copperLight shrink-0';
+            } else {
+              const val = btn.getAttribute('data-step2');
+              tag.textContent = val.includes('выезд') ? 'Брест' : (val.includes('фото') ? 'Viber / TG' : 'ул. Мошенского, 95');
+              tag.className = 'text-xs text-slate-500 shrink-0';
+            }
+          }
+        });
+
+        if (quickSummary) {
+          quickSummary.textContent = `${quickState.service} • ${quickState.format}`;
+        }
+        if (photoHintBar) {
+          photoHintBar.classList.toggle('hidden', !quickState.format.includes('фото'));
+        }
+        if (serviceSelect) {
+          const hasOpt = Array.from(serviceSelect.options).some((o) => o.value === quickState.service);
+          if (hasOpt) serviceSelect.value = quickState.service;
+        }
+        if (formatSelect) {
+          const hasFmt = Array.from(formatSelect.options).some((o) => o.value === quickState.format);
+          if (hasFmt) formatSelect.value = quickState.format;
+        }
+      }
+
+      step1Btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          quickState.service = btn.getAttribute('data-step1');
+          syncQuickSelectUI();
+        });
+      });
+
+      step2Btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          quickState.format = btn.getAttribute('data-step2');
+          syncQuickSelectUI();
+        });
+      });
+
+      if (serviceSelect) {
+        serviceSelect.addEventListener('change', () => {
+          quickState.service = serviceSelect.value;
+          syncQuickSelectUI();
+        });
+      }
+      if (formatSelect) {
+        formatSelect.addEventListener('change', () => {
+          quickState.format = formatSelect.value;
+          syncQuickSelectUI();
+        });
+      }
+
+      // Клик по любой карточке услуги -> автоподстановка + плавный скролл к форме
+      const quickSection = document.getElementById('quick-select');
+      document.querySelectorAll('[data-preset-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          quickState.service = btn.getAttribute('data-preset-service');
+          const fmt = btn.getAttribute('data-preset-format');
+          if (fmt) quickState.format = fmt;
+          syncQuickSelectUI();
+          if (quickSection) {
+            quickSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      syncQuickSelectUI();
+
+      // 6. Модальные окна и лайтбокс галереи
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      let currentLightboxIndex = 0;
+
+      function showLightboxAt(index) {
+        if (!galleryItems.length) return;
+        currentLightboxIndex = (index + galleryItems.length) % galleryItems.length;
+        const item = galleryItems[currentLightboxIndex];
+        lightboxImg.src = item.getAttribute('data-lightbox-src');
+        lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Фото Автосервиса Протон';
+        lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+        openModal(lightboxModal);
+      }
+
+      galleryItems.forEach((item, idx) => {
+        item.addEventListener('click', () => showLightboxAt(idx));
+      });
+      document.getElementById('lightboxPrev').addEventListener('click', () => showLightboxAt(currentLightboxIndex - 1));
+      document.getElementById('lightboxNext').addEventListener('click', () => showLightboxAt(currentLightboxIndex + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllModals();
+        } else if (!lightboxModal.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') showLightboxAt(currentLightboxIndex - 1);
+          if (e.key === 'ArrowRight') showLightboxAt(currentLightboxIndex + 1);
+        }
+      });
+
+      // 7. Cookie-баннер (НЦЗПД РБ) + разведение с мобильным Sticky Glass Dock
+      const COOKIE_KEY = 'protone_brest_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 8. Валидация и отправка формы заявки (Google Apps Script + демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const serviceVal = document.getElementById('leadService').value;
+        const formatVal = document.getElementById('leadFormat').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Звонок по телефону';
+        const commentVal = document.getElementById('leadComment').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'Автосервис «Протон» (Брест)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          format: formatVal,
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+              throw new Error('Ошибка сервера при отправке заявки');
+            }
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили вашу заявку. Мастер свяжется с вами в ближайшее рабочее время.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения вашего Telegram-бота заявка будет мгновенно приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — Автосервис «Протон» (Брест)\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Услуга: ${payload.service}\n` +
+              `Формат: ${payload.format}\n` +
+              `Способ связи: ${payload.contactMethod}\n` +
+              `Авто / комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          syncQuickSelectUI();
+          openModal(modalSuccess);
+        } catch (err) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните нам по номеру +375 (29) 224-71-11 или напишите в Viber.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Узнать стоимость и свободное окно';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>СТО «Автофикс» (12в.бел) — Автоэлектрика и компьютерная диагностика в Бресте</title>
+  <meta name="description" content="Специализированный сервис по автоэлектрике СТО «Автофикс» (12в.бел) в Бресте, ул. Краснознамённая, 6А-3. Компьютерная диагностика, ремонт стартеров, генераторов, блоков ЭБУ, щитков приборов, выезд к спецтехнике 24V, автостёкла и полировка фар." />
+
+  <!-- Google Fonts: Space Grotesk (tech display) + Inter (UI/cyrillic) + JetBrains Mono (telemetry/codes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            carbon: {
+              950: '#0B0D10',
+              900: '#111418',
+              850: '#161B22',
+              800: '#1C222B',
+              700: '#27303D',
+            },
+            alloy: {
+              50: '#F5F7FA',
+              100: '#E6EAF0',
+              200: '#CFD6E0',
+              300: '#B5C0CE',
+            },
+            diag: {
+              400: '#38D4F5',
+              500: '#0FC6EE',
+              600: '#089EC0',
+            },
+            rpm: {
+              500: '#EF4444',
+              600: '#DC2626',
+            },
+            viber: '#7360F2',
+            telegram: '#229ED9',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    /* Карбоновая диагональная фактура (прямая отсылка к фону оригинального 12в.бел) */
+    .carbon-weave {
+      background-color: #111418;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.022) 0px,
+          rgba(255, 255, 255, 0.022) 2px,
+          transparent 2px,
+          transparent 7px
+        ),
+        radial-gradient(circle at 18% 0%, rgba(15, 198, 238, 0.11), transparent 44%),
+        radial-gradient(circle at 86% 10%, rgba(239, 68, 68, 0.08), transparent 36%);
+    }
+    /* Матовая металлическая полоса (эволюция стальной навигации оригинала) */
+    .brushed-alloy {
+      background: linear-gradient(180deg, #EEF1F6 0%, #E6EAF0 55%, #DCE2EB 100%);
+    }
+    /* Телеметрические уголки рамки диагностики */
+    .hud-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: rgba(15, 198, 238, 0.85);
+      pointer-events: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-alloy-50 text-carbon-900 antialiased overflow-x-hidden selection:bg-diag-500 selection:text-carbon-950">
+
+  <!-- ==================== ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL развёрнутого веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Пока строка пустая "", форма работает в безопасном демо-режиме с предпросмотром заявки.
+      googleScriptUrl: '',
+      viberPhone: '+375295554949',
+      telegramUsername: 'autofix_brest_demo', // Замените на реальный username Telegram-аккаунта СТО
+      displayPhone: '+375 (29) 555-49-49',
+      telHref: 'tel:+375295554949',
+      email: 'autofix.brest@gmail.com',
+      address: 'г. Брест, ул. Краснознамённая, 6А-3',
+      workHours: 'Пн–Пт 9:00–18:00'
+    };
+  </script>
+
+  <!-- ==================== ВЕРХНЯЯ ТЕХНИЧЕСКАЯ ПОЛОСА (ДЕСКТОП) ==================== -->
+  <div class="hidden lg:block bg-carbon-950 border-b border-white/10 text-[11px] text-slate-400">
+    <div class="max-w-7xl mx-auto px-6 h-8 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <span class="inline-flex items-center gap-1.5 text-slate-300 whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-diag-500 shrink-0"></span>
+          г. Брест, ул. Краснознамённая, 6А-3 <span class="text-slate-500">(ориентир — Кобринский мост / маг. «Светофор»)</span>
+        </span>
+        <span class="text-slate-700">|</span>
+        <span class="font-mono text-slate-300 whitespace-nowrap">Пн–Пт 9:00–18:00</span>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <span class="text-slate-400 whitespace-nowrap">Физ. и юр. лица • Наличный и безналичный расчёт</span>
+        <a data-contact="email" href="mailto:autofix.brest@gmail.com" class="font-mono text-slate-300 hover:text-diag-400 transition whitespace-nowrap">autofix.brest@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ШАПКА САЙТА (СТРОГО 1 СТРОКА НА ДЕСКТОПЕ) ==================== -->
+  <header class="sticky top-0 z-40 bg-carbon-900/95 backdrop-blur-md border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 lg:h-[70px] gap-3">
+
+        <!-- Фирменный логотип: тахометр с красной стрелкой + 12V (преемственность 12в.бел) -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+          <div class="w-10 h-10 rounded-lg bg-carbon-800 border border-white/15 group-hover:border-diag-500/70 transition flex items-center justify-center shrink-0">
+            <svg class="w-8 h-8" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M7.5 25.5A12 12 0 1 1 28.5 25.5" stroke="#64748B" stroke-width="2" stroke-linecap="round" />
+              <path d="M26.5 11.2A12 12 0 0 1 28.5 25.5" stroke="#EF4444" stroke-width="2.4" stroke-linecap="round" />
+              <path d="M18 19.5L25.6 11.8" stroke="#EF4444" stroke-width="2.2" stroke-linecap="round" />
+              <circle cx="18" cy="19.5" r="2.1" fill="#0FC6EE" />
+              <text x="18" y="30.5" text-anchor="middle" fill="#0FC6EE" font-family="JetBrains Mono, monospace" font-size="6.5" font-weight="700">12V</text>
+            </svg>
+          </div>
+          <div class="leading-none">
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-bold text-[15px] sm:text-base tracking-tight text-white whitespace-nowrap">СТО «Автофикс»</span>
+              <span class="hidden sm:inline-block px-1.5 py-0.5 rounded bg-diag-500/15 border border-diag-500/30 font-mono text-[10px] font-bold text-diag-400 whitespace-nowrap">12в.бел</span>
+            </div>
+            <div class="mt-1 text-[11px] text-slate-400 whitespace-nowrap">Автоэлектрика · Брест</div>
+          </div>
+        </a>
+
+        <!-- Навигация: 5 коротких 1-словных пунктов, строго whitespace-nowrap -->
+        <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-5 text-[13px] font-medium text-slate-300 shrink-0">
+          <a href="#services" class="whitespace-nowrap hover:text-diag-400 transition">Направления</a>
+          <a href="#symptoms" class="whitespace-nowrap hover:text-diag-400 transition">Симптомы</a>
+          <a href="#expertise" class="whitespace-nowrap hover:text-diag-400 transition">Памятка</a>
+          <a href="#route" class="whitespace-nowrap hover:text-diag-400 transition">Маршрут</a>
+          <a href="#contacts" class="whitespace-nowrap hover:text-diag-400 transition">Контакты</a>
+        </nav>
+
+        <!-- Правый блок: живой статус (Europe/Minsk) + неразрывный телефон + стальные иконки + CTA -->
+        <div class="flex items-center gap-2 lg:gap-2.5 shrink-0">
+          <!-- Живой статус по времени Беларуси -->
+          <div data-live-status-badge class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-carbon-850 border border-white/10 text-[11px] font-mono text-slate-200 whitespace-nowrap shrink-0" title="График работы: Пн–Пт 9:00–18:00 (время Беларуси)">
+            <span data-live-status-dot class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span data-live-status-text class="whitespace-nowrap">Пн–Пт 9:00–18:00</span>
+          </div>
+
+          <!-- Телефон строго в 1 строку -->
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375295554949" class="hidden sm:inline-flex items-center font-mono font-bold text-[13px] lg:text-[14px] text-white hover:text-diag-400 transition whitespace-nowrap shrink-0 px-1">
+            +375 (29) 555-49-49
+          </a>
+
+          <!-- Тёмно-стальные иконки Viber и Telegram (без кричащих пилюль) -->
+          <div class="hidden sm:flex items-center gap-1.5 shrink-0">
+            <a data-contact="viber" href="viber://chat?number=%2B375295554949" aria-label="Написать в Viber" title="Viber — отправить фото ошибки" class="w-9 h-9 rounded-lg bg-carbon-800 border border-white/10 text-slate-300 hover:border-diag-500/70 hover:text-diag-400 transition inline-flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            </a>
+            <a data-contact="telegram" href="https://t.me/autofix_brest_demo" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram" class="w-9 h-9 rounded-lg bg-carbon-800 border border-white/10 text-slate-300 hover:border-diag-500/70 hover:text-diag-400 transition inline-flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            </a>
+          </div>
+
+          <!-- Чёткая кнопка записи -->
+          <a href="#request-form" class="hidden sm:inline-flex items-center justify-center px-3.5 py-2 rounded-lg bg-rpm-500 hover:bg-rpm-600 text-white text-[13px] font-semibold transition whitespace-nowrap shrink-0">
+            Диагностика
+          </a>
+
+          <!-- Быстрый звонок на мобильных -->
+          <a data-contact="phone" href="tel:+375295554949" aria-label="Позвонить мастеру" class="sm:hidden inline-flex items-center justify-center gap-1.5 px-3 h-9 rounded-lg bg-rpm-500 text-white text-xs font-semibold whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            Позвонить
+          </a>
+
+          <!-- Бургер для экранов < 1280px -->
+          <button type="button" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню" class="xl:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg bg-carbon-800 border border-white/15 text-slate-200 hover:border-diag-500 transition shrink-0">
+            <svg id="burgerIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="closeMenuIcon" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное / планшетное меню -->
+    <div id="mobileMenu" class="hidden xl:hidden bg-carbon-950 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3">
+        <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-white/10 text-xs">
+          <div class="inline-flex items-center gap-1.5 font-mono text-slate-200">
+            <span data-live-status-dot class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span data-live-status-text>Пн–Пт 9:00–18:00</span>
+          </div>
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375295554949" class="font-mono font-bold text-diag-400 whitespace-nowrap">+375 (29) 555-49-49</a>
+        </div>
+        <nav class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-sm font-medium">
+          <a href="#services" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-carbon-900 border border-white/5 text-slate-200 hover:border-diag-500/50 hover:text-diag-400 transition">Направления</a>
+          <a href="#symptoms" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-carbon-900 border border-white/5 text-slate-200 hover:border-diag-500/50 hover:text-diag-400 transition">Симптомы</a>
+          <a href="#expertise" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-carbon-900 border border-white/5 text-slate-200 hover:border-diag-500/50 hover:text-diag-400 transition">Памятка</a>
+          <a href="#gallery" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-carbon-900 border border-white/5 text-slate-200 hover:border-diag-500/50 hover:text-diag-400 transition">Фотогалерея</a>
+          <a href="#route" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-carbon-900 border border-white/5 text-slate-200 hover:border-diag-500/50 hover:text-diag-400 transition">Маршрут</a>
+          <a href="#request-form" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-rpm-500/15 border border-rpm-500/40 text-white hover:bg-rpm-500 transition">Записаться</a>
+        </nav>
+        <div class="pt-2 text-[11px] text-slate-400">
+          г. Брест, ул. Краснознамённая, 6А-3 • Ориентир: Кобринский мост / маг. «Светофор»
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== HERO: ШИРОКАЯ ДИАГНОСТИЧЕСКАЯ СЦЕНА + 4-КОЛОНОЧНАЯ ЛЕНТА ==================== -->
+    <section class="relative carbon-weave border-b border-white/10 overflow-hidden">
+      <!-- Тонкие декоративные дорожки печатной платы в верхней зоне (отсылка к фирменному баннеру 12в.бел) -->
+      <svg class="hidden lg:block absolute inset-x-0 top-0 w-full h-36 opacity-20 pointer-events-none" viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 34 H180 L215 68 H340" stroke="#0FC6EE" stroke-width="1.2" />
+        <circle cx="344" cy="68" r="3" fill="#0FC6EE" />
+        <path d="M0 56 H145 L175 86 H260" stroke="#94A3B8" stroke-width="1" />
+        <circle cx="264" cy="86" r="2.5" stroke="#EF4444" stroke-width="1.5" />
+        <path d="M1440 34 H1260 L1225 68 H1100" stroke="#0FC6EE" stroke-width="1.2" />
+        <circle cx="1096" cy="68" r="3" fill="#EF4444" />
+        <path d="M1440 56 H1295 L1265 86 H1180" stroke="#94A3B8" stroke-width="1" />
+        <circle cx="1176" cy="86" r="2.5" stroke="#0FC6EE" stroke-width="1.5" />
+      </svg>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-7 lg:pt-5 lg:pb-8">
+
+        <!-- ЕДИНАЯ МОНОЛИТНАЯ ДИАГНОСТИЧЕСКАЯ СЦЕНА (эволюция слайдера 12в.бел до уровня Bosch/BMW) -->
+        <div class="rounded-2xl overflow-hidden border border-white/15 bg-carbon-900 shadow-[0_24px_70px_rgba(0,0,0,0.55)]">
+
+          <!-- Верхний шильдик телеметрии -->
+          <div class="px-4 sm:px-6 py-2 bg-carbon-950 border-b border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+            <div class="flex items-center gap-2 text-slate-300 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-rpm-500 shrink-0"></span>
+              <span class="uppercase tracking-wider font-semibold text-white truncate">Диагностический пост · СТО «Автофикс»</span>
+              <span class="hidden sm:inline text-slate-600">/</span>
+              <span class="hidden sm:inline text-slate-400">ул. Краснознамённая, 6А-3</span>
+            </div>
+            <div class="flex items-center gap-3 text-diag-400 shrink-0">
+              <span class="tracking-wider">OBD-II · CAN · 12V / 24V</span>
+              <span class="hidden md:inline-flex items-center gap-1.5 text-slate-300 border-l border-white/10 pl-3">
+                <span>Гарантия на работы</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Горизонтальная сцена: слева 60% фото диагностики в HUD-рамке, справа 40% матово-стальная панель -->
+          <div class="grid lg:grid-cols-12 lg:h-[405px]">
+
+            <!-- Левая часть (7 колонок): широкое фото компьютерной диагностики -->
+            <div class="lg:col-span-7 relative h-52 sm:h-72 lg:h-full bg-carbon-950 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1400&q=85"
+                alt="Компьютерная диагностика и ремонт автоэлектрики в СТО Автофикс Брест"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <!-- Градиентная виньетка для читаемости телеметрии -->
+              <div class="absolute inset-0 bg-gradient-to-t from-carbon-950/90 via-carbon-950/25 to-carbon-950/20"></div>
+
+              <!-- Тонкая телеметрическая рамка по углам -->
+              <div class="hud-corner top-3.5 left-3.5 border-t-2 border-l-2"></div>
+              <div class="hud-corner top-3.5 right-3.5 border-t-2 border-r-2"></div>
+              <div class="hud-corner bottom-3.5 left-3.5 border-b-2 border-l-2"></div>
+              <div class="hud-corner bottom-3.5 right-3.5 border-b-2 border-r-2"></div>
+
+              <!-- Честная пометка демо-фото -->
+              <span class="absolute top-5 left-6 px-2.5 py-1 rounded bg-carbon-950/80 backdrop-blur text-[10px] sm:text-[11px] text-slate-200 border border-white/15">
+                Демо-фото, заменим на ваши
+              </span>
+
+              <!-- Марки-специализации поверх нижнего края фото -->
+              <div class="absolute bottom-5 left-6 right-6 flex flex-wrap items-end justify-between gap-2">
+                <div class="min-w-0">
+                  <div class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-diag-400 font-semibold">
+                    Любой ремонт начинается с диагностики!
+                  </div>
+                  <div class="mt-0.5 text-[11px] sm:text-xs text-slate-200 font-medium leading-snug">
+                    BMW · Mercedes-Benz · VAG · Renault · Peugeot · Citroen · Ford · Porsche · Volvo
+                  </div>
+                </div>
+                <span class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-carbon-950/85 border border-diag-500/35 font-mono text-[10px] text-diag-400 shrink-0">
+                  SCAN ACTIVE
+                </span>
+              </div>
+            </div>
+
+            <!-- Правая часть (5 колонок): контрастная матово-стальная панель (#E6EAF0) -->
+            <div class="lg:col-span-5 brushed-alloy text-carbon-900 p-5 sm:p-6 lg:p-7 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-carbon-900/15">
+              <div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
+                  <span class="w-1 h-3.5 bg-rpm-500 rounded-full shrink-0"></span>
+                  <span>Специализированный сервис · Брест</span>
+                </div>
+
+                <h1 class="mt-2.5 font-display font-bold text-[22px] sm:text-[27px] lg:text-[29px] leading-[1.12] tracking-tight text-carbon-950">
+                  Автоэлектрика и диагностика любой сложности в Бресте
+                </h1>
+
+                <p class="mt-2.5 text-[13px] sm:text-sm text-slate-700 leading-relaxed">
+                  Точная компьютерная диагностика, ремонт стартеров, генераторов, проводки, блоков ЭБУ / ABS / ESP / Airbag и щитков приборов. Легковые авто и выезд к спецтехнике 24V.
+                </p>
+
+                <!-- Кнопки действий -->
+                <div class="mt-4 flex flex-col gap-2">
+                  <a href="#request-form" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-rpm-500 hover:bg-rpm-600 text-white font-semibold text-sm shadow-lg shadow-rpm-500/20 transition">
+                    Записаться на диагностику
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                  <a data-contact="viber" href="viber://chat?number=%2B375295554949" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-carbon-900 hover:bg-carbon-800 text-white font-semibold text-xs sm:text-sm transition">
+                    <svg class="w-4 h-4 text-diag-400 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                    Прислать фото ошибки в Viber
+                  </a>
+                </div>
+              </div>
+
+              <!-- Нижние факты внутри стальной панели -->
+              <div class="mt-4 pt-3.5 border-t border-carbon-900/12 grid grid-cols-3 gap-2 text-[10px] sm:text-[11px] leading-snug">
+                <div>
+                  <div class="font-mono font-bold text-carbon-950">ГАРАНТИЯ</div>
+                  <div class="text-slate-600 mt-0.5">На все работы</div>
+                </div>
+                <div class="border-l border-carbon-900/12 pl-2">
+                  <div class="font-mono font-bold text-carbon-950">НАЛ / БЕЗНАЛ</div>
+                  <div class="text-slate-600 mt-0.5">Физ. и юр. лица</div>
+                </div>
+                <div class="border-l border-carbon-900/12 pl-2">
+                  <div class="font-mono font-bold text-carbon-950">12V / 24V</div>
+                  <div class="text-slate-600 mt-0.5">Бокс и выезд</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 4-КОЛОНОЧНАЯ ИНТЕРАКТИВНАЯ ФОТО-ЛЕНТА НАПРАВЛЕНИЙ (точная композиционная связь с оригиналом!) -->
+        <div class="mt-3.5 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+          <button type="button" data-hero-tab="diagn" class="group text-left rounded-xl overflow-hidden bg-carbon-850 border border-white/10 hover:border-diag-500/80 transition focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <div class="relative h-20 sm:h-24 overflow-hidden bg-carbon-950">
+              <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=900&q=80" alt="Компьютерная диагностика" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85 group-hover:opacity-100" />
+              <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-transparent to-transparent"></div>
+              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-carbon-950/85 font-mono text-[10px] font-bold text-diag-400 border border-white/10">01</span>
+            </div>
+            <div class="p-2.5 sm:p-3">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-display font-bold text-xs sm:text-sm text-white group-hover:text-diag-400 transition truncate">Диагностика</span>
+                <span class="text-slate-500 group-hover:text-diag-400 text-xs transition shrink-0">→</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400 truncate">Двигатель, АКПП, сканеры ПО</p>
+            </div>
+          </button>
+
+          <button type="button" data-hero-tab="elect" class="group text-left rounded-xl overflow-hidden bg-carbon-850 border border-white/10 hover:border-diag-500/80 transition focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <div class="relative h-20 sm:h-24 overflow-hidden bg-carbon-950">
+              <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80" alt="Электрооборудование" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85 group-hover:opacity-100" />
+              <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-transparent to-transparent"></div>
+              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-carbon-950/85 font-mono text-[10px] font-bold text-diag-400 border border-white/10">02</span>
+            </div>
+            <div class="p-2.5 sm:p-3">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-display font-bold text-xs sm:text-sm text-white group-hover:text-diag-400 transition truncate">Электрооборудование</span>
+                <span class="text-slate-500 group-hover:text-diag-400 text-xs transition shrink-0">→</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400 truncate">Стартеры, генераторы, проводка</p>
+            </div>
+          </button>
+
+          <button type="button" data-hero-tab="electronics" class="group text-left rounded-xl overflow-hidden bg-carbon-850 border border-white/10 hover:border-diag-500/80 transition focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <div class="relative h-20 sm:h-24 overflow-hidden bg-carbon-950">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="ЭБУ и электроника" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85 group-hover:opacity-100" />
+              <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-transparent to-transparent"></div>
+              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-carbon-950/85 font-mono text-[10px] font-bold text-diag-400 border border-white/10">03</span>
+            </div>
+            <div class="p-2.5 sm:p-3">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-display font-bold text-xs sm:text-sm text-white group-hover:text-diag-400 transition truncate">ЭБУ и электроника</span>
+                <span class="text-slate-500 group-hover:text-diag-400 text-xs transition shrink-0">→</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400 truncate">ABS, ESP, Airbag, DPF, щитки</p>
+            </div>
+          </button>
+
+          <button type="button" data-hero-tab="commercial" class="group text-left rounded-xl overflow-hidden bg-carbon-850 border border-white/10 hover:border-diag-500/80 transition focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <div class="relative h-20 sm:h-24 overflow-hidden bg-carbon-950">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Спецтехника 24V" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85 group-hover:opacity-100" />
+              <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-transparent to-transparent"></div>
+              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-carbon-950/85 font-mono text-[10px] font-bold text-diag-400 border border-white/10">04 · 24V</span>
+            </div>
+            <div class="p-2.5 sm:p-3">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-display font-bold text-xs sm:text-sm text-white group-hover:text-diag-400 transition truncate">Спецтехника 24V</span>
+                <span class="text-slate-500 group-hover:text-diag-400 text-xs transition shrink-0">→</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400 truncate">Выезд на объект, GOMACO, безнал</p>
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5 ПРОФИЛЬНЫХ НАПРАВЛЕНИЙ (ИНТЕРАКТИВНЫЕ ВКЛАДКИ) ==================== -->
+    <section id="services" class="py-14 sm:py-18 bg-alloy-100 border-b border-alloy-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+          <div>
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-diag-600">
+              <span class="w-2 h-2 rounded-full bg-diag-500"></span>
+              <span>5 профильных направлений СТО «Автофикс»</span>
+            </div>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-carbon-950">
+              Подробно по каждому направлению работ
+            </h2>
+          </div>
+          <p class="text-sm text-slate-600 max-w-md">
+            Все реальные направления сайта <span class="font-mono font-semibold text-carbon-900">12в.бел</span> — от дилерской диагностики до выезда к спецтехнике и 3-этапной полировки фар.
+          </p>
+        </div>
+
+        <!-- Переключатели вкладок -->
+        <div role="tablist" aria-label="Направления ремонта" class="mt-7 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <button type="button" role="tab" aria-selected="true" data-tab-btn="diagn" class="tab-btn shrink-0 px-4 sm:px-5 py-3 rounded-xl font-display font-semibold text-sm transition bg-carbon-900 text-diag-400 border border-carbon-900 shadow-sm whitespace-nowrap">
+            01. Диагностика
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="elect" class="tab-btn shrink-0 px-4 sm:px-5 py-3 rounded-xl font-display font-semibold text-sm transition bg-white text-carbon-900 border border-alloy-200 hover:border-carbon-700 whitespace-nowrap">
+            02. Электрооборудование
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="electronics" class="tab-btn shrink-0 px-4 sm:px-5 py-3 rounded-xl font-display font-semibold text-sm transition bg-white text-carbon-900 border border-alloy-200 hover:border-carbon-700 whitespace-nowrap">
+            03. ЭБУ и электроника
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="commercial" class="tab-btn shrink-0 px-4 sm:px-5 py-3 rounded-xl font-display font-semibold text-sm transition bg-white text-carbon-900 border border-alloy-200 hover:border-carbon-700 whitespace-nowrap">
+            04. Спецтехника 24V
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="glass" class="tab-btn shrink-0 px-4 sm:px-5 py-3 rounded-xl font-display font-semibold text-sm transition bg-white text-carbon-900 border border-alloy-200 hover:border-carbon-700 whitespace-nowrap">
+            05. Автостёкла и фары
+          </button>
+        </div>
+
+        <!-- Содержимое вкладок -->
+        <div class="mt-5">
+
+          <!-- TAB 1: КОМПЬЮТЕРНАЯ ДИАГНОСТИКА -->
+          <div data-tab-panel="diagn" class="tab-panel bg-white border border-alloy-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="grid lg:grid-cols-12">
+              <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-xs text-diag-600 font-bold uppercase tracking-wider">Раздел 01 · Сканеры с оригинальным ПО</div>
+                  <h3 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-carbon-950">Компьютерная диагностика автомобилей</h3>
+                  <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Выявляем неисправности на раннем этапе с помощью многофункциональных сканеров и точной расшифровки кодов. Работаем с марками <strong>BMW, Mercedes-Benz (SMART), Audi, VW, Ford, Renault, Peugeot, Citroen, Porsche, Volvo</strong> и др.
+                  </p>
+                  <div class="mt-6 grid sm:grid-cols-2 gap-3.5">
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">Диагностика двигателя</h4>
+                      <p class="mt-1 text-xs text-slate-600 leading-relaxed">Проверка системы впрыска и питания, замер компрессии и давления бензонасоса, поиск причины перебоев, дыма и перерасхода.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">Диагностика АКПП</h4>
+                      <p class="mt-1 text-xs text-slate-600 leading-relaxed">Чтение кодов блока АКПП при рывках и пробуксовке, проверка датчиков температур, дроссельной заслонки и селектора.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">Все электронные системы</h4>
+                      <p class="mt-1 text-xs text-slate-600 leading-relaxed">Подвеска, климат- и круиз-контроль, парктроники, навигация, а также проверка АКБ, генератора, жгутов и контактов.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">Перед покупкой / профилактика</h4>
+                      <p class="mt-1 text-xs text-slate-600 leading-relaxed">Проверка авто перед сделкой и ежегодная профилактическая диагностика, чтобы не довести до дорогого ремонта.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-7 pt-5 border-t border-alloy-200 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div class="text-xs text-slate-500">Стоимость работ</div>
+                    <div class="font-display font-bold text-sm sm:text-base text-carbon-950">Уточняется по марке и объёму проверки</div>
+                  </div>
+                  <button type="button" data-select-service="Компьютерная диагностика" class="px-5 py-3 rounded-xl bg-carbon-900 hover:bg-diag-600 text-white font-semibold text-sm transition">
+                    Записаться на диагностику →
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 relative min-h-[240px] bg-carbon-900">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=85" alt="Компьютерная диагностика авто" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-carbon-950/80 text-[11px] text-white border border-white/15">Демо-фото, заменим на ваши</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: ЭЛЕКТРООБОРУДОВАНИЕ -->
+          <div data-tab-panel="elect" class="tab-panel hidden bg-white border border-alloy-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="grid lg:grid-cols-12">
+              <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-xs text-diag-600 font-bold uppercase tracking-wider">Раздел 02 · Ремонт, восстановление и замена</div>
+                  <h3 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-carbon-950">Ремонт электрооборудования и проводки</h3>
+                  <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Профессиональное оборудование и наличие комплектующих позволяют оперативно восстанавливать агрегаты (существенно дешевле покупки нового узла) или подобрать замену.
+                  </p>
+                  <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-carbon-900">
+                    <li class="flex items-start gap-2.5 p-3.5 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <span class="text-diag-600 font-bold">✓</span>
+                      <span><strong>Стартеры:</strong> ремонт, восстановление и замена; бесплатная консультация, если авто не заводится.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5 p-3.5 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <span class="text-diag-600 font-bold">✓</span>
+                      <span><strong>Генераторы:</strong> замена диодных мостов, регуляторов напряжения, подшипников или узла целиком.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5 p-3.5 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <span class="text-diag-600 font-bold">✓</span>
+                      <span><strong>Бензонасосы и дроссель:</strong> замена бензонасосов, ремонт дроссельных заслонок и замена шестерён.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5 p-3.5 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <span class="text-diag-600 font-bold">✓</span>
+                      <span><strong>Проводка и приводы:</strong> поиск утечек тока и КЗ, ремонт жгутов, печки, оптики, стеклоподъёмников, круиз-контроля.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-7 pt-5 border-t border-alloy-200 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div class="text-xs text-slate-500">Гарантия</div>
+                    <div class="font-display font-bold text-sm sm:text-base text-carbon-950">На все виды работ по электрооборудованию</div>
+                  </div>
+                  <button type="button" data-select-service="Ремонт электрооборудования (стартер, генератор, проводка)" class="px-5 py-3 rounded-xl bg-carbon-900 hover:bg-diag-600 text-white font-semibold text-sm transition">
+                    Запросить стоимость ремонта →
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 relative min-h-[240px] bg-carbon-900">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85" alt="Ремонт стартеров, генераторов и проводки" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-carbon-950/80 text-[11px] text-white border border-white/15">Демо-фото, заменим на ваши</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ЭБУ И ЭЛЕКТРОНИКА -->
+          <div data-tab-panel="electronics" class="tab-panel hidden bg-white border border-alloy-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="grid lg:grid-cols-12">
+              <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-xs text-diag-600 font-bold uppercase tracking-wider">Раздел 03 · Микроэлектроника, блоки и прошивка</div>
+                  <h3 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-carbon-950">Блоки ЭБУ, щитки приборов и магнитолы</h3>
+                  <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Сложные задачи с автомобильной электроникой: восстановление родных блоков управления, перенос прошивок и привязка б/у комплектующих с разборки.
+                  </p>
+                  <div class="mt-6 grid sm:grid-cols-2 gap-3.5 text-xs sm:text-sm">
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <div class="font-display font-bold text-carbon-950">Блоки ECU / ABS / ESP / Airbag</div>
+                      <p class="mt-1 text-slate-600">Ремонт блоков двигателя, АКПП, ABS, ESP, Airbag, климата. Привязка б/у блоков к иммобилайзеру и клонирование ПО.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <div class="font-display font-bold text-carbon-950">DPF / FAP, EGR, лямбда-зонд</div>
+                      <p class="mt-1 text-slate-600">Корректное программное решение неисправностей сажевого фильтра (DPF/FAP), клапана EGR и второго лямбда-зонда.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <div class="font-display font-bold text-carbon-950">Ремонт приборных панелей</div>
+                      <p class="mt-1 text-slate-600">Renault/Peugeot/Citroen (стрелки), VAG (датчики/иммо), Volvo, подсветка Mercedes/Touareg/Renault. Перевод мили→км, °F→°C.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <div class="font-display font-bold text-carbon-950">Магнитолы и доп. оснащение</div>
+                      <p class="mt-1 text-slate-600">Раскодировка магнитол и навигаций (<span class="font-mono">SAFE / CODE / SECURITY</span>, возможен выезд). Сигнализации, парктроники, камеры.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-7 pt-5 border-t border-alloy-200 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div class="text-xs text-slate-500">Согласование</div>
+                    <div class="font-display font-bold text-sm sm:text-base text-carbon-950">Диагностика и оценка до начала работ</div>
+                  </div>
+                  <button type="button" data-select-service="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)" class="px-5 py-3 rounded-xl bg-carbon-900 hover:bg-diag-600 text-white font-semibold text-sm transition">
+                    Описать проблему мастеру →
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 relative min-h-[240px] bg-carbon-900">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85" alt="Ремонт блоков ЭБУ и микроэлектроники" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-carbon-950/80 text-[11px] text-white border border-white/15">Демо-фото, заменим на ваши</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: КОММЕРЧЕСКАЯ И СПЕЦТЕХНИКА 24V -->
+          <div data-tab-panel="commercial" class="tab-panel hidden bg-white border border-alloy-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="grid lg:grid-cols-12">
+              <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-xs text-diag-600 font-bold uppercase tracking-wider">Раздел 04 · Выезд на объект · Безнал с юрлицами</div>
+                  <h3 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-carbon-950">Электрика коммерческого транспорта и спецтехники</h3>
+                  <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Обслуживаем не только легковые авто: выполняем диагностику и восстановление электрооборудования и проводки коммерческой и строительной техники <strong>с выездом на вашу территорию</strong>.
+                  </p>
+                  <div class="mt-6 space-y-3">
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200 flex items-start gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-carbon-900 text-diag-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">B2B</div>
+                      <div class="text-sm text-slate-700">
+                        <strong class="text-carbon-950">Официальная работа с организациями:</strong> безналичный расчёт, договор и закрывающие документы.
+                      </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200 flex items-start gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-carbon-900 text-diag-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">24V</div>
+                      <div class="text-sm text-slate-700">
+                        <strong class="text-carbon-950">Практический опыт на сложной технике:</strong> включая диагностику и ремонт электрики бетоноукладчиков <strong>GOMACO</strong> и другой строительной/грузовой техники.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-7 pt-5 border-t border-alloy-200 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div class="text-xs text-slate-500">Формат работы</div>
+                    <div class="font-display font-bold text-sm sm:text-base text-carbon-950">Выезд мастера по согласованию</div>
+                  </div>
+                  <button type="button" data-select-service="Коммерческая и спецтехника (с выездом)" class="px-5 py-3 rounded-xl bg-carbon-900 hover:bg-diag-600 text-white font-semibold text-sm transition">
+                    Запросить выезд мастера →
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 relative min-h-[240px] bg-carbon-900">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85" alt="Диагностика и ремонт спецтехники" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-carbon-950/80 text-[11px] text-white border border-white/15">Демо-фото, заменим на ваши</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: АВТОСТЁКЛА И 3-ЭТАПНАЯ ПОЛИРОВКА ФАР -->
+          <div data-tab-panel="glass" class="tab-panel hidden bg-white border border-alloy-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="grid lg:grid-cols-12">
+              <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="font-mono text-xs text-diag-600 font-bold uppercase tracking-wider">Раздел 05 · Обзорность и свет в Бресте</div>
+                  <h3 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-carbon-950">Замена автостёкол и 3-этапная полировка фар</h3>
+                  <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Появился скол или трещина на лобовом, помутнели и пожелтели фары? Вернём чёткую видимость дороги и правильный световой пучок.
+                  </p>
+                  <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">Замена и ремонт автостёкол</h4>
+                      <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">Оценим повреждение: если скол можно отремонтировать без замены — подскажем; при серьёзной трещине аккуратно заменим лобовое или боковое стекло.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-alloy-50 border border-alloy-200">
+                      <h4 class="font-display font-bold text-sm text-carbon-950">3-этапная полировка фар</h4>
+                      <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">Защитная оклейка кузова, шлифовка глубоких потёртостей и жёлтого налёта, полировка пастами и нанесение защитного слоя (керамика / жидкое стекло).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-7 pt-5 border-t border-alloy-200 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div class="text-xs text-slate-500">Результат</div>
+                    <div class="font-display font-bold text-sm sm:text-base text-carbon-950">Яркий свет и чистый обзор без бликов</div>
+                  </div>
+                  <button type="button" data-select-service="Замена автостёкол и полировка фар" class="px-5 py-3 rounded-xl bg-carbon-900 hover:bg-diag-600 text-white font-semibold text-sm transition">
+                    Уточнить стоимость →
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 relative min-h-[240px] bg-carbon-900">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85" alt="Полировка фар и замена автостёкол" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-carbon-950/80 text-[11px] text-white border border-white/15">Демо-фото, заменим на ваши</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧАСТЫЕ СИМПТОМЫ И ПОЛОМКИ ==================== -->
+    <section id="symptoms" class="py-14 sm:py-18 bg-white border-b border-alloy-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-rpm-500">Типовые симптомы</span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-carbon-950">
+              С какими неисправностями к нам обращаются чаще всего
+            </h2>
+          </div>
+          <p class="text-sm text-slate-600 max-w-sm">
+            Нажмите на нужную карточку — проблема автоматически подставится в форму записи ниже.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <button type="button" data-quick-issue="Окисление, перетирание или перегрев проводки / горят предохранители" data-quick-service="Ремонт электрооборудования (стартер, генератор, проводка)" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">01 / ПРОВОДКА И КОНТАКТЫ</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Окисление или перетирание жгутов</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Трещины на изоляции, коррозия разъёмов после влаги, повреждения после ДТП, постоянно перегорающие предохранители.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+
+          <button type="button" data-quick-issue="Быстро садится аккумулятор / нет зарядки генератора" data-quick-service="Ремонт электрооборудования (стартер, генератор, проводка)" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">02 / УТЕЧКА ТОКА И ЗАРЯДКА</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Разряжается АКБ или пропала зарядка</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Повышенный ток утечки на стоянке, подкорачивание цепи либо неисправность генератора и регулятора напряжения.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+
+          <button type="button" data-quick-issue="Не заводится авто / стартер щёлкает или не крутит" data-quick-service="Ремонт электрооборудования (стартер, генератор, проводка)" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">03 / ЗАПУСК ДВИГАТЕЛЯ</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Машина не заводится / отказ стартера</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Стартер не реагирует или щёлкает, не качает бензонасос, не приходит питание или сработал иммобилайзер.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+
+          <button type="button" data-quick-issue="Горит Check Engine, ABS, ESP или Airbag" data-quick-service="Компьютерная диагностика" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">04 / ОШИБКИ ПРИБОРКИ</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Горит «Check», ABS, ESP или Airbag</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Точная расшифровка ошибок сканером, поиск первопричины (датчик, жгут или блок управления) и восстановление узла.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+
+          <button type="button" data-quick-issue="Не работает щиток приборов или заблокирована магнитола SAFE/CODE" data-quick-service="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">05 / ЩИТОК И МАГНИТОЛА</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Погасла панель, стрелки или код магнитолы</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Ремонт приборных панелей VAG, Renault, Peugeot, Citroen, Volvo, Mercedes и безопасная раскодировка магнитол.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+
+          <button type="button" data-quick-issue="Пропала тяга: проблема с DPF/FAP, клапаном EGR или дроссельной заслонкой" data-quick-service="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)" class="text-left p-5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-diag-500 hover:bg-white hover:shadow-md transition flex flex-col justify-between group">
+            <div>
+              <div class="font-mono text-[11px] font-bold text-diag-600">06 / DPF, EGR, ДРОССЕЛЬ</div>
+              <h3 class="mt-2 font-display font-bold text-base sm:text-lg text-carbon-950">Потеря тяги: DPF / EGR / дроссель</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">Ремонт дроссельных заслонок (включая замену шестерён), корректное программное решение по DPF/FAP, EGR и лямбда-зонду.</p>
+            </div>
+            <span class="mt-4 text-xs font-semibold text-carbon-900 group-hover:text-diag-600 transition">Выбрать и перейти к записи →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ПАМЯТКА МАСТЕРОВ «АВТОФИКС» ==================== -->
+    <section id="expertise" class="py-14 sm:py-18 carbon-weave text-white border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-diag-400">Памятка от мастеров «Автофикс»</span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl leading-tight tracking-tight">
+              3 правила, которые берегут электронику авто от дорогого ремонта
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+              Бортовая электрика работает от −40 °C зимой до +60 °C под капотом летом. Несколько простых правил часто спасают узел, который можно починить недорого.
+            </p>
+            <div class="mt-6 p-4 rounded-xl bg-carbon-850 border border-diag-500/30 text-sm text-slate-200">
+              <strong class="text-diag-400">Сомневаетесь, можно ли ехать своим ходом?</strong><br />
+              Позвоните <a data-contact="phone" data-contact-text="phone" href="tel:+375295554949" class="font-mono font-bold text-white underline hover:text-diag-400 whitespace-nowrap">+375 (29) 555-49-49</a> или скиньте фото приборки в Viber — подскажем бесплатно.
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+            <div class="bg-carbon-850 border border-white/10 rounded-xl p-5">
+              <div class="inline-flex items-center justify-center px-2.5 h-8 rounded-md bg-rpm-500/15 border border-rpm-500/35 text-rpm-500 font-mono text-xs font-bold mb-4">MAX 15–20 с</div>
+              <h3 class="font-display font-bold text-base text-white">Не крутите стартер без пауз</h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Если мотор не схватил в мороз — сделайте паузу и дайте стартеру остыть. Главная причина сгоревшего стартера — непрерывный запуск «до победного».
+              </p>
+            </div>
+
+            <div class="bg-carbon-850 border border-white/10 rounded-xl p-5">
+              <div class="inline-flex items-center justify-center px-2.5 h-8 rounded-md bg-diag-500/15 border border-diag-500/35 text-diag-400 font-mono text-xs font-bold mb-4">12V / ECU</div>
+              <h3 class="font-display font-bold text-base text-white">Не снимайте клемму на заведённом авто</h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                «Проверка зарядки» снятием клеммы и прикуривание на работающем моторе нередко выводят из строя регулятор, диодный мост и блоки ЭБУ.
+              </p>
+            </div>
+
+            <div class="bg-carbon-850 border border-white/10 rounded-xl p-5">
+              <div class="inline-flex items-center justify-center px-2.5 h-8 rounded-md bg-amber-500/15 border border-amber-500/35 text-amber-400 font-mono text-xs font-bold mb-4">PIN / SAFE</div>
+              <h3 class="font-display font-bold text-base text-white">Не подбирайте код магнитолы наугад</h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                После 3–10 неверных попыток магнитола полностью блокируется (<span class="font-mono">SAFE</span>), и её раскодировка занимает больше времени.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ФОТОГАЛЕРЕЯ + ЧЕСТНЫЙ БЛОК ОТЗЫВОВ ==================== -->
+    <section id="gallery" class="py-14 sm:py-18 bg-alloy-50 border-b border-alloy-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-diag-600">Фотогалерея и доверие</span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl tracking-tight text-carbon-950">Диагностический пост и рабочие процессы</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500">Демо-фотографии. При запуске заменим на реальные снимки вашего бокса на Краснознамённой, 6А-3.</p>
+        </div>
+
+        <div class="mt-7 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Компьютерная диагностика и проверка электросистем (демо-фото)" class="group relative aspect-[4/3] rounded-xl overflow-hidden bg-carbon-900 text-left focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=900&q=80" alt="Компьютерная диагностика" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-carbon-950/80 text-[10px] text-white">Демо-фото</span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Профессиональный инструмент и рабочее место автоэлектрика (демо-фото)" class="group relative aspect-[4/3] rounded-xl overflow-hidden bg-carbon-900 text-left focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="Инструмент автоэлектрика" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-carbon-950/80 text-[10px] text-white">Демо-фото</span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Восстановление электронных блоков управления и плат (демо-фото)" class="group relative aspect-[4/3] rounded-xl overflow-hidden bg-carbon-900 text-left focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Электроника и блоки управления" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-carbon-950/80 text-[10px] text-white">Демо-фото</span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="3-этапная полировка фар и замена автостёкол (демо-фото)" class="group relative aspect-[4/3] rounded-xl overflow-hidden bg-carbon-900 text-left focus:outline-none focus:ring-2 focus:ring-diag-500">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="Полировка фар и оптика" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-carbon-950/80 text-[10px] text-white">Демо-фото</span>
+          </button>
+        </div>
+
+        <!-- Честный слот под реальные отзывы (без фейков и выдуманных оценок) -->
+        <div class="mt-8 bg-white border border-dashed border-alloy-300 rounded-2xl p-5 sm:p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase text-diag-600">
+                <span class="w-2 h-2 rounded-full bg-diag-500"></span>
+                <span>Честная демо-заглушка · без выдуманных рейтингов</span>
+              </div>
+              <h3 class="mt-1.5 font-display font-bold text-lg text-carbon-950">Отзывы автовладельцев Бреста и примеры выполненных работ</h3>
+              <p class="mt-1 text-sm text-slate-600">
+                При запуске на вашем домене подключим живой виджет отзывов с Яндекс Карт / Google Карт и 2–3 реальных кейса (например, выезд к спецтехнике или ремонт сложного блока ЭБУ).
+              </p>
+            </div>
+            <a href="https://yandex.by/maps/?text=Брест%20Краснознаменная%206А-3%20Автофикс" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-alloy-50 border border-alloy-200 hover:border-carbon-900 text-xs sm:text-sm font-semibold text-carbon-900 transition shrink-0 whitespace-nowrap">
+              Карточка на Яндекс Картах →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ФОРМА ЗАПИСИ ==================== -->
+    <section id="request-form" class="py-14 sm:py-18 bg-alloy-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Левая часть: Быстрый выбор за 2 клика + прямая связь в Viber/TG -->
+          <div class="lg:col-span-5 space-y-5">
+            <div>
+              <span class="font-mono text-xs font-bold uppercase tracking-widest text-rpm-500">Запись за 2 клика</span>
+              <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl tracking-tight text-carbon-950">
+                Укажите задачу — мастер сразу поймёт суть
+              </h2>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Выберите неисправность и тип техники в 2 нажатия — данные подставятся в заявку автоматически.
+              </p>
+            </div>
+
+            <!-- ЛЁГКИЙ МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА (без сложных формул и выдуманных цен) -->
+            <div class="bg-white border border-alloy-200 rounded-2xl p-5 shadow-sm space-y-5">
+              <!-- Клик 1 -->
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="font-mono text-[11px] font-bold uppercase text-diag-600">Шаг 1 · Что беспокоит?</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="quickStepIssue">
+                  <button type="button" data-step-issue="Ошибка CHECK / диагностика" data-step-service="Компьютерная диагностика" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Ошибка CHECK / диагностика
+                  </button>
+                  <button type="button" data-step-issue="Стартер / генератор / зарядка" data-step-service="Ремонт электрооборудования (стартер, генератор, проводка)" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Стартер / генератор / зарядка
+                  </button>
+                  <button type="button" data-step-issue="ЭБУ / ABS / Airbag / DPF" data-step-service="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    ЭБУ / ABS / Airbag / DPF
+                  </button>
+                  <button type="button" data-step-issue="Щиток приборов / код магнитолы" data-step-service="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Щиток приборов / код магнитолы
+                  </button>
+                  <button type="button" data-step-issue="Выезд к спецтехнике 24V" data-step-service="Коммерческая и спецтехника (с выездом)" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Выезд к спецтехнике 24V
+                  </button>
+                  <button type="button" data-step-issue="Стёкла / полировка фар" data-step-service="Замена автостёкол и полировка фар" class="step-issue-btn text-left px-3 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Стёкла / полировка фар
+                  </button>
+                </div>
+              </div>
+
+              <!-- Клик 2 -->
+              <div class="pt-4 border-t border-alloy-200">
+                <div class="font-mono text-[11px] font-bold uppercase text-diag-600 mb-2.5">Шаг 2 · Тип транспорта</div>
+                <div class="grid grid-cols-3 gap-2" id="quickStepVehicle">
+                  <button type="button" data-step-vehicle="Легковое авто" class="step-vehicle-btn text-center px-2.5 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Легковое авто
+                  </button>
+                  <button type="button" data-step-vehicle="Микроавтобус / бус" class="step-vehicle-btn text-center px-2.5 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Микроавтобус
+                  </button>
+                  <button type="button" data-step-vehicle="Грузовик / спецтехника" class="step-vehicle-btn text-center px-2.5 py-2.5 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-carbon-900 hover:border-diag-500 transition">
+                    Спецтехника
+                  </button>
+                </div>
+              </div>
+
+              <!-- Статус автоподстановки -->
+              <div id="quickSummaryBox" class="hidden p-3 rounded-xl bg-carbon-900 text-slate-200 text-xs flex items-center justify-between gap-2">
+                <div>
+                  <span class="font-mono text-diag-400">Подставлено в заявку:</span>
+                  <div id="quickSummaryText" class="mt-0.5 text-white font-medium"></div>
+                </div>
+                <span class="text-emerald-400 font-mono font-bold shrink-0">OK</span>
+              </div>
+            </div>
+
+            <!-- Карточка отправки фото в Viber / Telegram -->
+            <div class="p-5 rounded-2xl bg-carbon-900 text-white border border-white/10 space-y-3.5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-diag-500"></span>
+                <span class="font-display font-bold text-sm sm:text-base">Проще скинуть фото ошибки с приборки?</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Сфотографируйте индикатор на щитке, код магнитолы (<span class="font-mono text-diag-400">SAFE/CODE</span>) или шильдик блока — ответим в мессенджере.
+              </p>
+              <div class="grid grid-cols-2 gap-2.5">
+                <a data-contact="viber" href="viber://chat?number=%2B375295554949" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-viber hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                  Viber
+                </a>
+                <a data-contact="telegram" href="https://t.me/autofix_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-telegram hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                  Telegram
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая часть: Форма онлайн-записи (с комплаенсом РБ № 99-З) -->
+          <div class="lg:col-span-7">
+            <form id="leadForm" novalidate class="bg-white border border-alloy-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
+              <!-- Honeypot против ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Оставьте это поле пустым</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-sm font-semibold text-carbon-900 mb-1.5">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Сергей" class="w-full px-4 py-3 rounded-xl bg-alloy-50 border border-alloy-200 text-carbon-950 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-diag-500 focus:border-diag-500 transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-sm font-semibold text-carbon-900 mb-1.5">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (29) 123-45-67" class="w-full px-4 py-3 rounded-xl bg-alloy-50 border border-alloy-200 text-carbon-950 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-diag-500 focus:border-diag-500 transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadService" class="block text-sm font-semibold text-carbon-900 mb-1.5">Направление работ *</label>
+                  <select id="leadService" name="service" required class="w-full px-4 py-3 rounded-xl bg-alloy-50 border border-alloy-200 text-carbon-950 focus:bg-white focus:outline-none focus:ring-2 focus:ring-diag-500 focus:border-diag-500 transition">
+                    <option value="Компьютерная диагностика">Компьютерная диагностика</option>
+                    <option value="Ремонт электрооборудования (стартер, генератор, проводка)">Ремонт электрооборудования (стартер, генератор, проводка)</option>
+                    <option value="Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)">Ремонт электроники и блоков управления (ЭБУ, щитки, магнитолы)</option>
+                    <option value="Коммерческая и спецтехника (с выездом)">Коммерческая и спецтехника (с выездом)</option>
+                    <option value="Замена автостёкол и полировка фар">Замена автостёкол и полировка фар</option>
+                    <option value="Нужна консультация автоэлектрика">Нужна консультация автоэлектрика</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="leadDate" class="block text-sm font-semibold text-carbon-900 mb-1.5">Желаемая дата визита</label>
+                  <input type="date" id="leadDate" name="date" class="w-full px-4 py-3 rounded-xl bg-alloy-50 border border-alloy-200 text-carbon-950 focus:bg-white focus:outline-none focus:ring-2 focus:ring-diag-500 focus:border-diag-500 transition" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <span class="block text-sm font-semibold text-carbon-900 mb-2">Удобный способ связи</span>
+                  <div class="grid grid-cols-3 gap-2">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Звонок по телефону" checked class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-slate-700 peer-checked:border-carbon-900 peer-checked:bg-carbon-900 peer-checked:text-diag-400 transition">Звонок</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-slate-700 peer-checked:border-viber peer-checked:bg-viber peer-checked:text-white transition">Viber</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-slate-700 peer-checked:border-telegram peer-checked:bg-telegram peer-checked:text-white transition">Telegram</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <span class="block text-sm font-semibold text-carbon-900 mb-2">Статус клиента</span>
+                  <div class="grid grid-cols-2 gap-2">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="clientType" value="Физ. лицо" checked class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-slate-700 peer-checked:border-carbon-900 peer-checked:bg-carbon-900 peer-checked:text-white transition">Физ. лицо</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="clientType" value="Юр. лицо (безнал)" class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-xl border border-alloy-200 bg-alloy-50 text-xs font-semibold text-slate-700 peer-checked:border-carbon-900 peer-checked:bg-carbon-900 peer-checked:text-white transition">Юр. лицо (безнал)</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-sm font-semibold text-carbon-900 mb-1.5">Марка, год авто и описание неисправности</label>
+                <textarea id="leadComment" name="comment" rows="3" placeholder="Например: BMW E60, горит ABS / Renault Scenic, погасла панель приборов" class="w-full px-4 py-3 rounded-xl bg-alloy-50 border border-alloy-200 text-carbon-950 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-diag-500 focus:border-diag-500 transition"></textarea>
+              </div>
+
+              <!-- Чекбокс согласия по Закону РБ № 99-З (СТРОГО без checked) -->
+              <div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-1 w-4 h-4 rounded border-slate-400 text-diag-600 focus:ring-diag-500 shrink-0" />
+                  <span class="text-xs text-slate-600 leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-carbon-950 underline hover:text-diag-600 font-medium">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-carbon-950 underline hover:text-diag-600 font-medium">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 rounded-xl bg-rpm-500 hover:bg-rpm-600 text-white font-semibold text-base shadow-lg shadow-rpm-500/20 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Отправить заявку мастеру
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ, КОНТАКТЫ И СХЕМА ПРОЕЗДА ==================== -->
+  <footer id="contacts" class="bg-carbon-950 text-slate-300 pt-14 pb-32 md:pb-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div id="route" class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10 scroll-mt-24">
+
+        <!-- Контакты -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <span class="font-display font-bold text-xl text-white">СТО «Автофикс»</span>
+              <span class="px-2 py-0.5 rounded bg-diag-500/15 border border-diag-500/30 font-mono text-xs text-diag-400">12в.бел</span>
+            </div>
+            <p class="mt-1.5 text-sm text-slate-400">
+              Специализированный сервис по автоэлектрике, компьютерной диагностике, ремонту блоков ЭБУ, спецтехнике 24V и автостёклам в Бресте.
+            </p>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Адрес:</span>
+              <div>
+                <div class="text-white font-semibold">г. Брест, ул. Краснознамённая, 6А-3</div>
+                <div class="text-xs text-slate-400 mt-0.5">Ориентир: со стороны Кобринского моста, поворот у магазина «Светофор»</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Телефон:</span>
+              <a data-contact="phone" data-contact-text="phone" href="tel:+375295554949" class="font-mono text-base font-bold text-white hover:text-diag-400 transition whitespace-nowrap">+375 (29) 555-49-49</a>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">E-mail:</span>
+              <a data-contact="email" href="mailto:autofix.brest@gmail.com" class="text-slate-200 hover:text-diag-400 transition">autofix.brest@gmail.com</a>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">График:</span>
+              <div>
+                <div class="text-white">Понедельник – Пятница: 9:00 – 18:00</div>
+                <div class="text-xs text-slate-500">Суббота, Воскресенье: выходной</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Оплата:</span>
+              <div class="text-slate-200">Физические и юридические лица • Наличный и безналичный расчёт</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375295554949" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-viber hover:opacity-90 text-white text-xs font-semibold transition">
+              Написать в Viber
+            </a>
+            <a data-contact="telegram" href="https://t.me/autofix_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-telegram hover:opacity-90 text-white text-xs font-semibold transition">
+              Написать в Telegram
+            </a>
+          </div>
+        </div>
+
+        <!-- Схема проезда (Кобринский мост -> маг. «Светофор» -> Краснознамённая, 6А-3) -->
+        <div class="lg:col-span-7">
+          <div class="bg-carbon-900 border border-white/10 rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-bold text-base text-white">Схема проезда к СТО «Автофикс»</div>
+                <div class="text-xs text-slate-400">г. Брест, ул. Краснознамённая, 6А-3</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Брест%20улица%20Краснознаменная%206А-3" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-diag-500 hover:bg-diag-600 text-carbon-950 text-xs font-bold transition whitespace-nowrap">
+                Маршрут в Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="relative rounded-xl overflow-hidden bg-carbon-950 border border-white/10 p-4">
+              <svg class="w-full h-44 sm:h-48" viewBox="0 0 640 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема проезда от Кобринского моста через поворот у магазина Светофор к СТО Автофикс">
+                <path d="M0 52 H640 M0 104 H640 M0 156 H640 M160 0 V210 M320 0 V210 M480 0 V210" stroke="#1C222B" stroke-width="1" />
+                <path d="M350 198 L620 135" stroke="#334155" stroke-width="16" stroke-linecap="round" />
+                <text x="485" y="190" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" font-weight="600">Кобринский мост</text>
+                <path d="M460 172 L315 56 L205 90" stroke="#475569" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M510 160 L460 172 L315 56 L205 90" stroke="#EF4444" stroke-width="3.2" stroke-dasharray="7 5" stroke-linecap="round" stroke-linejoin="round" />
+                <rect x="255" y="18" width="128" height="24" rx="6" fill="#1C222B" stroke="#0FC6EE" stroke-width="1.2" />
+                <text x="319" y="34" text-anchor="middle" fill="#38D4F5" font-family="Inter, sans-serif" font-size="11" font-weight="600">Маг. «Светофор»</text>
+                <circle cx="205" cy="90" r="14" fill="#EF4444" fill-opacity="0.22" />
+                <circle cx="205" cy="90" r="6.5" fill="#EF4444" stroke="#FFFFFF" stroke-width="2" />
+                <rect x="48" y="72" width="140" height="44" rx="8" fill="#111418" stroke="#EF4444" stroke-width="1.5" />
+                <text x="118" y="91" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, sans-serif" font-size="12" font-weight="700">СТО «Автофикс»</text>
+                <text x="118" y="107" text-anchor="middle" fill="#94A3B8" font-family="Inter, sans-serif" font-size="10">Краснознамённая, 6А-3</text>
+              </svg>
+              <div class="mt-2 text-center text-[11px] text-slate-400">
+                При запуске на вашем домене подключим интерактивную карту Яндекс прямо до ворот бокса
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Юридический блок и реквизиты (комплаенс РБ) -->
+      <div class="pt-8 space-y-5 text-xs text-slate-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-slate-200 font-semibold">Реквизиты исполнителя (заполняются при запуске):</div>
+            <div>[ФИО ИП / Наименование ООО или ЧУП], УНП [XXXXXXXXX]</div>
+            <div>Юридический адрес: [Юридический адрес организации / ИП]</div>
+            <div>Режим работы: [Пн–Пт 9:00–18:00, Сб–Вс — выходной]</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-diag-400 transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-diag-400 transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-diag-400 transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Информация, размещённая на данном сайте, носит исключительно справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Окончательная стоимость и сроки выполнения работ определяются после диагностики и согласования с клиентом.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px, скрыт при открытом cookie-баннере) ==================== -->
+  <div id="mobileGlassDock" class="hidden md:hidden fixed inset-x-3 bottom-14 z-40">
+    <div class="bg-carbon-900/90 backdrop-blur-xl border border-diag-500/30 rounded-2xl p-1.5 shadow-[0_12px_35px_rgba(0,0,0,0.55)] grid grid-cols-3 gap-1.5">
+      <a data-contact="phone" href="tel:+375295554949" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl text-slate-100 hover:bg-white/10 transition">
+        <svg class="w-4 h-4 text-diag-400 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+        <span class="text-[11px] font-semibold">Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375295554949" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl text-slate-100 hover:bg-white/10 transition">
+        <svg class="w-4 h-4 text-diag-400 mb-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span class="text-[11px] font-semibold">Viber</span>
+      </a>
+      <a href="#request-form" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-rpm-500 hover:bg-rpm-600 text-white transition">
+        <svg class="w-4 h-4 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        <span class="text-[11px] font-bold">Записаться</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР (НЦЗПД РБ: 2 равнозначные кнопки) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-14 sm:bottom-9 z-50 px-2.5 sm:px-6 pb-1">
+    <div class="max-w-5xl mx-auto bg-carbon-900/95 backdrop-blur-md border border-white/15 text-slate-200 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-3">
+      <div class="text-[11px] sm:text-xs leading-snug sm:leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта и сохранения настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-diag-400 underline hover:text-white">Политику и настройки cookie</button>.
+      </div>
+      <div class="grid grid-cols-2 gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-2.5 sm:px-3.5 py-2 rounded-lg bg-carbon-800 hover:bg-carbon-700 border border-white/15 text-white text-[11px] sm:text-xs font-semibold transition leading-tight text-center">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-2.5 sm:px-3.5 py-2 rounded-lg bg-diag-500 hover:bg-diag-600 text-carbon-950 text-[11px] sm:text-xs font-bold transition leading-tight text-center">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ДЕМО-ПЛАШКА В САМОМ НИЗУ ЭКРАНА ==================== -->
+  <div class="fixed inset-x-0 bottom-0 z-40 bg-carbon-950/95 backdrop-blur-md border-t border-white/10 text-slate-400 text-center py-1.5 px-3 text-[10px] sm:text-[11px]">
+    Демо-концепт обновлённого сайта СТО «Автофикс» (12в.бел). После согласования добавим ваши реальные фото, реквизиты и Telegram-уведомления.
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс галереи -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-carbon-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-carbon-900 rounded-2xl overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-carbon-950/85 text-white hover:bg-rpm-500 flex items-center justify-center transition">✕</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-slate-300 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка принята -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-carbon-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white rounded-2xl p-6 sm:p-8 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-alloy-100 hover:bg-alloy-200 text-slate-600 flex items-center justify-center transition">✕</button>
+      <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-bold text-2xl text-carbon-950">Заявка принята</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-slate-600 leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-xl bg-alloy-50 border border-alloy-200 text-xs text-carbon-900 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 rounded-xl bg-carbon-900 hover:bg-carbon-800 text-white font-semibold text-sm transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-carbon-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-alloy-200">
+        <h3 class="font-display font-bold text-lg text-carbon-950">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-alloy-100 hover:bg-alloy-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает владелец СТО «Автофикс» ([ФИО ИП / Наименование юрлица], УНП [XXXXXXXXX], г. Брест, ул. Краснознамённая, 6А-3).</p>
+        <p><strong>2. Цели и перечень обрабатываемых данных.</strong> Оператор обрабатывает имя, номер телефона, выбранное направление работ, статус клиента (физ./юр. лицо), желаемую дату визита, предпочтительный способ связи и комментарий (сведения об автомобиле и неисправности) исключительно для обратной связи, консультации и записи на обслуживание.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в иностранных государствах, на территории которых не обеспечивается надлежащий уровень защиты прав субъектов персональных данных. В связи с этим существуют риски отсутствия специального законодательства о защите ПД в таких государствах, отсутствия независимого уполномоченного органа по защите прав субъектов ПД и ограниченного контроля со стороны государственных органов Республики Беларусь. Передача данных осуществляется только при наличии вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта персональных данных (ст. 10–15 Закона № 99-З).</strong> Вы вправе: в любое время без объяснения причин отозвать своё согласие; получать информацию, касающуюся обработки ваших ПД; требовать внесения изменений в ПД, если они являются неполными, устаревшими или неточными; требовать прекращения обработки и (или) удаления ПД; обжаловать действия (бездействие) оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-alloy-200 bg-alloy-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-xl bg-carbon-900 text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-carbon-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-alloy-200">
+        <h3 class="font-display font-bold text-lg text-carbon-950">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-alloy-100 hover:bg-alloy-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме заявки на сайте СТО «Автофикс» (12в.бел) и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору ([ФИО ИП / Наименование юрлица], УНП [XXXXXXXXX], г. Брест, ул. Краснознамённая, 6А-3) на обработку моих персональных данных: имени, номера телефона, выбранного направления работ, статуса клиента, желаемой даты визита, способа связи и описания автомобиля/неисправности.</p>
+        <p><strong>Цель обработки:</strong> обработка обращения, предварительная консультация автоэлектрика и запись на диагностику или ремонт.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я проинформирован(а) и согласен(на) с тем, что доставка заявки осуществляется с использованием сервисов Google (Google Apps Script / Google LLC) и мессенджера Telegram (Telegram Messenger Inc.), инфраструктура которых находится в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены связанные с этим риски (различия в законодательстве о защите данных, возможное отсутствие независимого надзорного органа и ограниченные возможности защиты прав в юрисдикции иностранного государства).</p>
+        <p><strong>Срок действия и права субъекта (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) со своими правами на отзыв согласия в любое время, получение информации об обработке ПД, внесение изменений, прекращение обработки/удаление данных и обжалование в НЦЗПД. Отозвать согласие можно, направив обращение по контактам, указанным в подвале сайта (включая e-mail autofix.brest@gmail.com).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-alloy-200 bg-alloy-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-xl bg-carbon-900 text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-carbon-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-alloy-200">
+        <h3 class="font-display font-bold text-lg text-carbon-950">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-alloy-100 hover:bg-alloy-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-4 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-alloy-100 border border-alloy-200 flex items-center justify-between gap-2">
+          <span class="font-semibold text-carbon-900">Текущий статус выбора:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded-md bg-white border border-alloy-200 text-xs font-semibold text-carbon-950">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie и локальное хранилище:</strong> используются для сохранения вашего выбора настроек cookie и корректной работы интерфейса сайта. Они не передают ваши персональные данные третьим лицам.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> могут использоваться после подключения систем веб-аналитики для оценки посещаемости и улучшения удобства сайта. Вы вправе принять их или отклонить в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-alloy-200 bg-alloy-50 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-xl bg-alloy-200 hover:bg-alloy-300 text-carbon-950 text-sm font-semibold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 rounded-xl bg-diag-500 hover:bg-diag-600 text-carbon-950 text-sm font-bold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЕДИНЫЙ БЛОК JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Привязка контактов из SITE_CONFIG (без target="_blank" на tel: и viber://)
+      const encodedViberPhone = encodeURIComponent(SITE_CONFIG.viberPhone);
+      const viberHref = `viber://chat?number=${encodedViberPhone}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+        el.textContent = SITE_CONFIG.email;
+      });
+
+      // 2. Живой статус работы по времени Беларуси (Europe/Minsk, график Пн–Пт 9:00–18:00)
+      function updateBelarusLiveStatus() {
+        let statusText = 'Пн–Пт 9:00–18:00';
+        let isOpen = false;
+
+        try {
+          const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Minsk',
+            weekday: 'short',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          }).formatToParts(new Date());
+
+          const weekday = (parts.find((p) => p.type === 'weekday') || {}).value;
+          const hour = parseInt((parts.find((p) => p.type === 'hour') || {}).value, 10);
+          const isWeekday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].includes(weekday);
+
+          if (isWeekday && hour >= 9 && hour < 18) {
+            isOpen = true;
+            statusText = 'Открыто сейчас';
+          } else if (weekday === 'Sat' || weekday === 'Sun' || (weekday === 'Fri' && hour >= 18)) {
+            statusText = 'Ответим в Пн с 9:00';
+          } else {
+            statusText = 'Ответим с 9:00';
+          }
+        } catch (_) {
+          statusText = 'Пн–Пт 9:00–18:00';
+        }
+
+        document.querySelectorAll('[data-live-status-text]').forEach((el) => {
+          el.textContent = statusText;
+        });
+
+        document.querySelectorAll('[data-live-status-dot]').forEach((dot) => {
+          dot.classList.remove('bg-emerald-400', 'bg-diag-400', 'bg-amber-400');
+          dot.classList.add(isOpen ? 'bg-emerald-400' : 'bg-diag-400');
+        });
+      }
+
+      updateBelarusLiveStatus();
+      setInterval(updateBelarusLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const burgerIcon = document.getElementById('burgerIcon');
+      const closeMenuIcon = document.getElementById('closeMenuIcon');
+
+      function setMobileMenuOpen(isOpen) {
+        if (!mobileMenu || !mobileMenuToggle) return;
+        mobileMenu.classList.toggle('hidden', !isOpen);
+        burgerIcon.classList.toggle('hidden', isOpen);
+        closeMenuIcon.classList.toggle('hidden', !isOpen);
+        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+          setMobileMenuOpen(mobileMenu.classList.contains('hidden'));
+        });
+      }
+
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenuOpen(false));
+      });
+
+      // 4. Вкладки направлений + связь с 4-колоночной фото-лентой в Hero
+      const tabButtons = document.querySelectorAll('[data-tab-btn]');
+      const tabPanels = document.querySelectorAll('[data-tab-panel]');
+      const servicesSection = document.getElementById('services');
+
+      function activateServiceTab(target, shouldScroll) {
+        tabButtons.forEach((b) => {
+          const active = b.getAttribute('data-tab-btn') === target;
+          b.setAttribute('aria-selected', String(active));
+          b.classList.toggle('bg-carbon-900', active);
+          b.classList.toggle('text-diag-400', active);
+          b.classList.toggle('border-carbon-900', active);
+          b.classList.toggle('shadow-sm', active);
+          b.classList.toggle('bg-white', !active);
+          b.classList.toggle('text-carbon-900', !active);
+          b.classList.toggle('border-alloy-200', !active);
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.getAttribute('data-tab-panel') !== target);
+        });
+
+        if (shouldScroll && servicesSection) {
+          servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => activateServiceTab(btn.getAttribute('data-tab-btn'), false));
+      });
+
+      document.querySelectorAll('[data-hero-tab]').forEach((card) => {
+        card.addEventListener('click', () => activateServiceTab(card.getAttribute('data-hero-tab'), true));
+      });
+
+      // 5. Минимальная дата в форме = сегодня
+      const dateInput = document.getElementById('leadDate');
+      if (dateInput) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // 6. Мини-интерактив за 2 клика + быстрый выбор из карточек
+      const serviceSelect = document.getElementById('leadService');
+      const commentField = document.getElementById('leadComment');
+      const formSection = document.getElementById('request-form');
+      const quickSummaryBox = document.getElementById('quickSummaryBox');
+      const quickSummaryText = document.getElementById('quickSummaryText');
+
+      const quickState = { issue: '', vehicle: '', service: '' };
+
+      function applyQuickSelectionToForm() {
+        if (serviceSelect && quickState.service) {
+          const exists = Array.from(serviceSelect.options).some((opt) => opt.value === quickState.service);
+          if (exists) serviceSelect.value = quickState.service;
+        }
+
+        const parts = [];
+        if (quickState.issue) parts.push(`Задача: ${quickState.issue}`);
+        if (quickState.vehicle) parts.push(`Транспорт: ${quickState.vehicle}`);
+
+        if (parts.length > 0) {
+          if (commentField) {
+            commentField.value = `${parts.join(' · ')}. Марка и год авто: `;
+          }
+          if (quickSummaryBox && quickSummaryText) {
+            quickSummaryText.textContent = parts.join(' · ');
+            quickSummaryBox.classList.remove('hidden');
+          }
+        }
+      }
+
+      const issueBtns = document.querySelectorAll('.step-issue-btn');
+      issueBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          issueBtns.forEach((b) => {
+            b.classList.remove('bg-carbon-900', 'text-white', 'border-carbon-900');
+            b.classList.add('bg-alloy-50', 'text-carbon-900', 'border-alloy-200');
+          });
+          btn.classList.remove('bg-alloy-50', 'text-carbon-900', 'border-alloy-200');
+          btn.classList.add('bg-carbon-900', 'text-white', 'border-carbon-900');
+
+          quickState.issue = btn.getAttribute('data-step-issue') || '';
+          quickState.service = btn.getAttribute('data-step-service') || '';
+          applyQuickSelectionToForm();
+        });
+      });
+
+      const vehicleBtns = document.querySelectorAll('.step-vehicle-btn');
+      vehicleBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          vehicleBtns.forEach((b) => {
+            b.classList.remove('bg-carbon-900', 'text-diag-400', 'border-carbon-900');
+            b.classList.add('bg-alloy-50', 'text-carbon-900', 'border-alloy-200');
+          });
+          btn.classList.remove('bg-alloy-50', 'text-carbon-900', 'border-alloy-200');
+          btn.classList.add('bg-carbon-900', 'text-diag-400', 'border-carbon-900');
+
+          quickState.vehicle = btn.getAttribute('data-step-vehicle') || '';
+          if (quickState.vehicle === 'Грузовик / спецтехника' && !quickState.service) {
+            quickState.service = 'Коммерческая и спецтехника (с выездом)';
+          }
+          applyQuickSelectionToForm();
+        });
+      });
+
+      function selectServiceAndScroll(serviceValue, issueText) {
+        if (serviceSelect && serviceValue) {
+          const exists = Array.from(serviceSelect.options).some((opt) => opt.value === serviceValue);
+          if (exists) serviceSelect.value = serviceValue;
+        }
+        if (commentField && issueText) {
+          commentField.value = `${issueText}. Марка и год авто: `;
+        }
+        if (formSection) {
+          formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (commentField && issueText) {
+            setTimeout(() => {
+              commentField.focus();
+              commentField.setSelectionRange(commentField.value.length, commentField.value.length);
+            }, 450);
+          }
+        }
+      }
+
+      document.querySelectorAll('[data-select-service]').forEach((btn) => {
+        btn.addEventListener('click', () => selectServiceAndScroll(btn.getAttribute('data-select-service'), ''));
+      });
+
+      document.querySelectorAll('[data-quick-issue]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectServiceAndScroll(btn.getAttribute('data-quick-service'), btn.getAttribute('data-quick-issue'));
+        });
+      });
+
+      // 7. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => openModal(document.getElementById(trigger.getAttribute('data-open-modal'))));
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Фото СТО Автофикс';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 8. Cookie-баннер (НЦЗПД) и скрытие мобильного Glass Dock пока баннер открыт
+      const COOKIE_KEY = 'autofix_12v_cookie_choice';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileGlassDock = document.getElementById('mobileGlassDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileGlassDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileGlassDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileGlassDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 9. Валидация и отправка формы заявки (Google Apps Script -> Telegram + демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') return;
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const serviceVal = document.getElementById('leadService').value;
+        const dateVal = document.getElementById('leadDate').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Звонок по телефону';
+        const clientTypeVal = (leadForm.querySelector('input[name="clientType"]:checked') || {}).value || 'Физ. лицо';
+        const commentVal = document.getElementById('leadComment').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'СТО «Автофикс» (12в.бел, Брест)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          clientType: clientTypeVal,
+          date: dateVal || 'Не указана',
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error('Ошибка сервера');
+
+            modalSuccessDesc.textContent = 'Спасибо! Заявка отправлена. Мастер СТО «Автофикс» свяжется с вами в ближайшее рабочее время (Пн–Пт 9:00–18:00).';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения Telegram-бота заявки с сайта будут мгновенно приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Клиент: ${payload.clientType}\n` +
+              `Направление: ${payload.service}\n` +
+              `Дата: ${payload.date}\n` +
+              `Способ связи: ${payload.contactMethod}\n` +
+              `Описание: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          openModal(modalSuccess);
+        } catch (err) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните по номеру +375 (29) 555-49-49 или напишите в Viber / Telegram.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку мастеру';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

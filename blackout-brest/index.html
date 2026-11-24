@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLACKOUT — Салон штор и солнцезащитных систем в Бресте</title>
+  <meta name="description" content="Салон штор и солнцезащиты «Blackout» в Бресте (бульвар Шевченко, 9): рольшторы, «День-Ночь», шторы плиссе COSIFLOR и BLISS, жалюзи, римские и классические шторы, карнизы ZEGAR и WinDeco, террасные маркизы, перголы Suntech, москитные сетки и автоматика Somfy." />
+
+  <!-- Google Fonts: Cormorant Garamond (editorial serif) & Manrope (clean Cyrillic geometric sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          },
+          colors: {
+            brand: {
+              linen: '#FAF9F6',
+              paper: '#FFFFFF',
+              stone: '#F1EFE9',
+              line: '#E4E0D7',
+              graphite: '#232624',
+              ink: '#1A1D1B',
+              muted: '#5D625E',
+              green: '#3B6B1E',
+              greenHover: '#2E5517',
+              sageTint: '#EDF3E7',
+              botanical: '#C4E4A8',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      background-color: #FAF9F6;
+      color: #232624;
+    }
+    .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Эффекты светопропускания для панорамной витрины Hero */
+    .showcase-img {
+      transition: filter 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s ease;
+    }
+    .showcase-sheer-img {
+      filter: brightness(1.04) contrast(1.01) saturate(1.02);
+    }
+    .showcase-daynight-img {
+      filter: brightness(0.76) contrast(1.06) saturate(0.95);
+    }
+    .showcase-blackout-img {
+      filter: brightness(0.28) contrast(1.12) saturate(0.75);
+    }
+
+    .light-layer-sheer {
+      background: linear-gradient(120deg, rgba(255, 252, 245, 0.22) 0%, rgba(250, 249, 246, 0.05) 55%, rgba(35, 38, 36, 0.14) 100%);
+    }
+    .light-layer-daynight {
+      background-image: repeating-linear-gradient(
+        180deg,
+        rgba(26, 29, 27, 0.56) 0px,
+        rgba(26, 29, 27, 0.56) 20px,
+        rgba(255, 252, 246, 0.08) 20px,
+        rgba(255, 252, 246, 0.08) 38px
+      );
+    }
+    .light-layer-blackout {
+      background: linear-gradient(180deg, rgba(17, 20, 18, 0.72) 0%, rgba(17, 20, 18, 0.82) 100%);
+    }
+
+    /* Деликатная горизонтальная прокрутка табов на мобильных */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Анимация каталога */
+    .editorial-card {
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .editorial-card:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-brand-linen text-brand-graphite antialiased selection:bg-brand-green selection:text-white">
+
+  <!-- ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если оставить пустым "", форма работает в демонстрационном режиме с предпросмотром заявки.
+      googleScriptUrl: '',
+      companyName: 'Салон штор и солнцезащитных систем «Blackout»',
+      city: 'г. Брест',
+      address: 'г. Брест, бульвар Шевченко, 9 (ориентир — обувной магазин «Наши Боты»)',
+      shortAddress: 'г. Брест, б-р Шевченко, 9',
+      email: 'kdg2@mail.ru',
+      instagramUrl: 'https://www.instagram.com/blackout_brest/',
+      instagramHandle: '@blackout_brest',
+      viberPhone: '+375333221255',
+      telegramUsername: 'blackout_brest_demo', // Замените на актуальный username Telegram-аккаунта при запуске
+      primaryPhone: '+375 (33) 322-12-55',
+      primaryTelHref: 'tel:+375333221255',
+      secondaryPhone: '+375 (29) 608-63-60',
+      secondaryTelHref: 'tel:+375296086360',
+      thirdPhone: '+375 (29) 508-63-60',
+      thirdTelHref: 'tel:+375295086360',
+      // Ориентировочный график для индикатора «Живой статус» по времени Беларуси (уточняется при запуске)
+      workHours: { open: 9, close: 20 }
+    };
+  </script>
+
+  <!-- ЕДИНАЯ ОДНОСТРОЧНАЯ ЖУРНАЛЬНАЯ ШАПКА -->
+  <header class="sticky top-0 z-40 bg-brand-linen/95 backdrop-blur-md border-b border-brand-graphite/10">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-[76px] gap-3 lg:gap-4">
+
+        <!-- Фирменный логотип [B]LACKOUT со стилизованным скайлайном оригинала -->
+        <a href="#top" class="flex items-center shrink-0 whitespace-nowrap group" aria-label="Салон штор Blackout, Брест">
+          <div class="flex flex-col">
+            <!-- Тонкий архитектурный скайлайн над логотипом (отсылка к оригиналу blackout-brest.by) -->
+            <svg class="w-[106px] sm:w-[126px] h-[12px] sm:h-[14px] text-brand-graphite/80 group-hover:text-brand-green transition-colors mb-0.5" viewBox="0 0 180 20" fill="currentColor" aria-hidden="true">
+              <path d="M0 20V14H7V11H11V14H15V9H22V13H26V6H31V11H36V4H40V1H42V4H47V10H52V7H58V12H63V5H70V11H75V8H81V13H86V6H92V3H96V9H102V13H108V5H114V2H118V7H124V12H130V6H136V9H142V4H148V11H154V8H161V13H168V10H174V14H180V20H0Z"/>
+            </svg>
+            <div class="flex items-center leading-none">
+              <span class="w-5 h-5 sm:w-6 sm:h-6 border-[1.5px] border-brand-graphite group-hover:border-brand-green flex items-center justify-center font-sans font-bold text-xs sm:text-sm text-brand-graphite group-hover:text-brand-green transition-colors">B</span>
+              <span class="ml-1 font-sans font-semibold text-[13px] sm:text-[15px] tracking-[0.18em] sm:tracking-[0.22em] text-brand-graphite border-t border-b border-brand-graphite/25 py-[2px] sm:py-[3px] pr-0.5">LACKOUT</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Навигация (строго 5 коротких пунктов в 1 строку) -->
+        <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-[13px] font-medium text-brand-graphite/80 whitespace-nowrap">
+          <a href="#catalog" class="hover:text-brand-green transition-colors whitespace-nowrap">Каталог</a>
+          <a href="#craft" class="hover:text-brand-green transition-colors whitespace-nowrap">Ткани и Somfy</a>
+          <a href="#process" class="hover:text-brand-green transition-colors whitespace-nowrap">Процесс</a>
+          <a href="#reviews" class="hover:text-brand-green transition-colors whitespace-nowrap">Отзывы</a>
+          <a href="#contacts" class="hover:text-brand-green transition-colors whitespace-nowrap">Контакты</a>
+        </nav>
+
+        <!-- Правая часть: Живой статус, тонкие монохромные иконки, телефон в 1 строку, CTA -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0 whitespace-nowrap">
+
+          <!-- Живой статус по времени Беларуси (Europe/Minsk, ориентир 09:00–20:00) -->
+          <div class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-brand-stone/90 border border-brand-graphite/10 text-[11px] font-medium text-brand-graphite/85 whitespace-nowrap" title="Ориентир по времени Беларуси (09:00–20:00), точный график уточним при запуске">
+            <span data-live-dot class="w-1.5 h-1.5 rounded-full bg-brand-green shrink-0"></span>
+            <span data-live-text>Открыто сейчас</span>
+          </div>
+
+          <!-- Тонкие монохромные иконки Instagram и Viber в графитовой палитре -->
+          <div class="hidden sm:flex items-center gap-1.5 shrink-0">
+            <a data-contact="instagram" href="https://www.instagram.com/blackout_brest/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @blackout_brest" title="Instagram @blackout_brest" class="w-8 h-8 rounded-sm border border-brand-graphite/15 bg-white/70 hover:border-brand-green hover:text-brand-green text-brand-graphite/80 inline-flex items-center justify-center transition-colors">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a data-contact="viber" href="viber://chat?number=%2B375333221255" aria-label="Написать в Viber" title="Написать в Viber" class="w-8 h-8 rounded-sm border border-brand-graphite/15 bg-white/70 hover:border-brand-green hover:text-brand-green text-brand-graphite/80 inline-flex items-center justify-center transition-colors">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            </a>
+          </div>
+
+          <!-- Телефон строго в 1 строку -->
+          <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375333221255" class="hidden md:inline-flex items-center text-[13px] font-semibold tracking-tight text-brand-graphite hover:text-brand-green transition-colors whitespace-nowrap">
+            +375 (33) 322-12-55
+          </a>
+
+          <!-- Аккуратный CTA «Замер» -->
+          <a href="#request-form" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-sm bg-brand-graphite hover:bg-brand-green text-white text-xs font-semibold tracking-wide transition-colors whitespace-nowrap">
+            Замер
+          </a>
+
+          <!-- Мобильный статус + бургер (< 1024px) -->
+          <a data-contact="phonePrimary" href="tel:+375333221255" aria-label="Позвонить в салон Blackout" class="sm:hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm border border-brand-graphite/15 bg-white text-[12px] font-semibold text-brand-graphite whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 text-brand-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            Позвонить
+          </a>
+
+          <button type="button" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-sm border border-brand-graphite/15 bg-white text-brand-graphite hover:border-brand-green transition-colors">
+            <svg id="burgerIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg id="burgerIconClose" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное меню -->
+    <div id="mobileMenuPanel" class="hidden lg:hidden bg-brand-linen border-t border-brand-graphite/10 shadow-xl">
+      <div class="max-w-[1360px] mx-auto px-4 py-5 space-y-5">
+        <div class="flex items-center justify-between text-xs pb-3 border-b border-brand-graphite/10">
+          <div class="inline-flex items-center gap-1.5 font-medium text-brand-graphite">
+            <span data-live-dot class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+            <span data-live-text>Открыто сейчас</span>
+            <span class="text-brand-muted">(ориентир 09:00–20:00)</span>
+          </div>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-2 text-sm font-medium text-brand-graphite">
+          <a href="#catalog" class="mobile-nav-link px-3.5 py-2.5 rounded-sm bg-white border border-brand-graphite/10 hover:border-brand-green transition">Каталог</a>
+          <a href="#craft" class="mobile-nav-link px-3.5 py-2.5 rounded-sm bg-white border border-brand-graphite/10 hover:border-brand-green transition">Ткани и Somfy</a>
+          <a href="#process" class="mobile-nav-link px-3.5 py-2.5 rounded-sm bg-white border border-brand-graphite/10 hover:border-brand-green transition">Процесс</a>
+          <a href="#reviews" class="mobile-nav-link px-3.5 py-2.5 rounded-sm bg-white border border-brand-graphite/10 hover:border-brand-green transition">Отзывы</a>
+          <a href="#contacts" class="mobile-nav-link col-span-2 px-3.5 py-2.5 rounded-sm bg-white border border-brand-graphite/10 hover:border-brand-green transition">Контакты и адрес салона</a>
+        </nav>
+
+        <div class="pt-4 border-t border-brand-graphite/10 space-y-2.5">
+          <div class="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-muted">Салон в Бресте · б-р Шевченко, 9</div>
+          <div class="flex flex-col gap-1.5 text-sm font-semibold text-brand-graphite">
+            <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375333221255" class="hover:text-brand-green">+375 (33) 322-12-55 <span class="font-normal text-xs text-brand-muted">(МТС)</span></a>
+            <a data-contact="phoneSecondary" data-contact-text="phoneSecondary" href="tel:+375296086360" class="hover:text-brand-green">+375 (29) 608-63-60 <span class="font-normal text-xs text-brand-muted">(A1)</span></a>
+            <a data-contact="phoneThird" data-contact-text="phoneThird" href="tel:+375295086360" class="hover:text-brand-green">+375 (29) 508-63-60 <span class="font-normal text-xs text-brand-muted">(МТС)</span></a>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a data-contact="viber" href="viber://chat?number=%2B375333221255" class="inline-flex items-center justify-center py-2.5 rounded-sm border border-brand-graphite/20 bg-white text-brand-graphite text-xs font-semibold">Viber</a>
+            <a data-contact="instagram" href="https://www.instagram.com/blackout_brest/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center py-2.5 rounded-sm border border-brand-graphite/20 bg-white text-brand-graphite text-xs font-semibold">Instagram</a>
+          </div>
+          <a href="#request-form" class="mobile-nav-link block text-center py-3 rounded-sm bg-brand-green text-white text-sm font-semibold">
+            Пригласить замерщика с образцами
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== EDITORIAL MASTHEAD + ПАНОРАМНАЯ ВИТРИНА HERO ==================== -->
+    <section class="pt-5 pb-12 sm:pt-7 sm:pb-16 lg:pt-8 lg:pb-16 border-b border-brand-graphite/10">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Журнальная верхняя строка метаданных -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 sm:pb-4 border-b border-brand-graphite/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.14em] sm:tracking-[0.16em] text-brand-muted">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-3.5 h-[1px] bg-brand-green shrink-0"></span>
+            <span class="truncate">Салон штор · Брест, б-р Шевченко, 9</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-4 shrink-0">
+            <span>COSIFLOR</span>
+            <span class="text-brand-graphite/25">/</span>
+            <span>ZEGAR</span>
+            <span class="text-brand-graphite/25">/</span>
+            <span>SOMFY</span>
+            <span class="text-brand-graphite/25">/</span>
+            <span>SUNTECH</span>
+          </div>
+        </div>
+
+        <!-- Верхняя половина Hero: Журнальный Masthead (Architectural Digest) -->
+        <div class="pt-5 sm:pt-6 lg:pt-7 pb-5 sm:pb-7 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-end">
+          <div class="lg:col-span-7">
+            <h1 class="font-editorial font-medium text-[2.45rem] sm:text-[3.35rem] lg:text-[3.85rem] xl:text-[4.15rem] leading-[1.01] tracking-[-0.015em] text-brand-graphite">
+              Управляем светом <br class="hidden sm:inline" />
+              в <span class="italic font-normal text-brand-green">интерьерах Бреста</span>
+            </h1>
+          </div>
+
+          <div class="lg:col-span-5 lg:pl-3">
+            <p class="text-[13px] sm:text-[14.5px] text-brand-muted leading-relaxed">
+              Изготавливаем под размер и устанавливаем солнцезащитные системы из европейских тканей, дерева и алюминия: рольшторы, «День-Ночь», шторы плиссе, жалюзи, портьеры, карнизы, маркизы и автоматику Somfy.
+            </p>
+            <div class="mt-4 sm:mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <a href="#request-form" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm bg-brand-green hover:bg-brand-greenHover text-white text-[13px] sm:text-sm font-semibold tracking-wide transition-colors">
+                <span>Пригласить замерщика с образцами</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="#catalog" class="inline-flex items-center gap-1 text-[13px] sm:text-sm font-semibold text-brand-graphite hover:text-brand-green border-b border-brand-graphite/35 hover:border-brand-green pb-0.5 transition-colors whitespace-nowrap">
+                Каталог систем ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Нижняя половина Hero: Полноширинная панорамная витрина окна со встроенным интерактивом светозащиты -->
+        <div class="relative rounded-sm overflow-hidden border border-brand-graphite/15 bg-brand-ink">
+          <div class="relative w-full h-[250px] sm:h-[390px] lg:h-[430px] overflow-hidden">
+            <img
+              id="lightSimImage"
+              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85"
+              alt="Панорамные окна в современной гостиной с натуральным светом и текстилем"
+              class="w-full h-full object-cover object-center showcase-img showcase-sheer-img"
+            />
+
+            <!-- Слой интерактивного затемнения и полос -->
+            <div id="lightSimOverlay" class="absolute inset-0 transition-all duration-700 pointer-events-none light-layer-sheer"></div>
+
+            <!-- Верхние деликатные пометки -->
+            <div class="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex items-center justify-between gap-2 pointer-events-none">
+              <span class="px-2.5 py-1 rounded-sm bg-brand-ink/75 backdrop-blur-md text-[10px] sm:text-[11px] font-medium text-stone-100 border border-white/15">
+                Демо-фото · заменим на ваши работы
+              </span>
+              <span id="lightSimBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-brand-linen/95 backdrop-blur-md text-[11px] font-semibold text-brand-graphite border border-brand-graphite/10">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                <span id="lightSimBadgeText">~15% тени · Мягкий свет</span>
+              </span>
+            </div>
+
+            <!-- Встроенный панорамный пульт управления светом (на ПК поверх низа витрины) -->
+            <div class="hidden sm:block absolute inset-x-4 bottom-4 bg-brand-linen/95 backdrop-blur-xl border border-brand-graphite/15 rounded-sm p-3.5 shadow-2xl">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-green">
+                    Интерактивный пример светозащиты
+                  </div>
+                  <div class="mt-0.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
+                    <span data-sim-title class="font-editorial font-semibold text-xl lg:text-2xl text-brand-graphite leading-tight">Тюль и мягкий свет</span>
+                    <span data-sim-desc class="text-xs text-brand-muted">Комфортный рассеянный дневной свет без бликов и визуальный уют</span>
+                  </div>
+                </div>
+
+                <!-- Переключатель 3 сценариев (ПК) -->
+                <div class="grid grid-cols-3 gap-1.5 shrink-0 bg-brand-stone p-1 rounded-sm border border-brand-graphite/10" role="group" aria-label="Сценарии светозащиты">
+                  <button type="button" data-light-mode="sheer" class="light-mode-btn px-3.5 py-2 rounded-[2px] text-xs font-semibold transition-all bg-brand-graphite text-white whitespace-nowrap">
+                    Тюль и мягкий свет
+                  </button>
+                  <button type="button" data-light-mode="daynight" class="light-mode-btn px-3.5 py-2 rounded-[2px] text-xs font-semibold transition-all text-brand-graphite hover:bg-white/80 whitespace-nowrap">
+                    День-Ночь
+                  </button>
+                  <button type="button" data-light-mode="blackout" class="light-mode-btn px-3.5 py-2 rounded-[2px] text-xs font-semibold transition-all text-brand-graphite hover:bg-white/80 whitespace-nowrap">
+                    100% Blackout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Мобильный пульт управления светом (аккуратно под панорамой, без переполнения на 390px) -->
+          <div class="sm:hidden bg-brand-linen border-t border-brand-graphite/15 p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green">
+              <span>Пример светозащиты</span>
+              <span id="lightSimBadgeMobile" class="text-brand-muted font-semibold">~15% тени</span>
+            </div>
+            <div>
+              <div data-sim-title class="font-editorial font-semibold text-xl text-brand-graphite leading-tight">Тюль и мягкий свет</div>
+              <div data-sim-desc class="text-xs text-brand-muted mt-0.5 leading-snug">Комфортный рассеянный дневной свет без бликов и визуальный уют</div>
+            </div>
+            <div class="grid grid-cols-3 gap-1 bg-brand-stone p-1 rounded-sm border border-brand-graphite/10" role="group" aria-label="Сценарии светозащиты">
+              <button type="button" data-light-mode="sheer" class="light-mode-btn px-1.5 py-2 rounded-[2px] text-[11px] font-semibold leading-tight text-center transition-all bg-brand-graphite text-white">
+                Тюль и свет
+              </button>
+              <button type="button" data-light-mode="daynight" class="light-mode-btn px-1.5 py-2 rounded-[2px] text-[11px] font-semibold leading-tight text-center transition-all text-brand-graphite">
+                День-Ночь
+              </button>
+              <button type="button" data-light-mode="blackout" class="light-mode-btn px-1.5 py-2 rounded-[2px] text-[11px] font-semibold leading-tight text-center transition-all text-brand-graphite">
+                100% Blackout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Строгая редакционная полоса фактов с blackout-brest.by -->
+        <div class="mt-6 sm:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6 pt-5 border-t border-brand-graphite/15">
+          <div class="lg:pr-6 lg:border-r lg:border-brand-graphite/15">
+            <div class="font-editorial font-semibold text-3xl sm:text-4xl text-brand-graphite leading-none">300+</div>
+            <div class="mt-1.5 text-xs text-brand-muted leading-snug">европейских тканей для рольштор (Германия, Голландия, Бельгия)</div>
+          </div>
+          <div class="lg:pr-6 lg:border-r lg:border-brand-graphite/15">
+            <div class="font-editorial font-semibold text-3xl sm:text-4xl text-brand-graphite leading-none">250+</div>
+            <div class="mt-1.5 text-xs text-brand-muted leading-snug">тканей для штор плиссе COSIFLOR и BLISS (складка 20 мм)</div>
+          </div>
+          <div class="lg:pr-6 lg:border-r lg:border-brand-graphite/15">
+            <div class="font-editorial font-semibold text-3xl sm:text-4xl text-brand-graphite leading-none">Somfy</div>
+            <div class="mt-1.5 text-xs text-brand-muted leading-snug">обученные специалисты по электроприводам и «Умному дому»</div>
+          </div>
+          <div>
+            <div class="font-editorial font-semibold text-3xl sm:text-4xl text-brand-graphite leading-none">5 лет</div>
+            <div class="mt-1.5 text-xs text-brand-muted leading-snug">гарантии на террасные маркизы (УФ-защита UV-Standard 801)</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== КАТАЛОГ СИСТЕМ (ЖУРНАЛЬНАЯ СЕТКА С ФИЛЬТРОМ) ==================== -->
+    <section id="catalog" class="py-16 sm:py-24 bg-white border-b border-brand-graphite/10">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pb-8 border-b border-brand-graphite/15">
+          <div class="lg:col-span-7">
+            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-green">Каталог решений</div>
+            <h2 class="mt-2 font-editorial font-medium text-3xl sm:text-4xl lg:text-[3.1rem] leading-[1.08] text-brand-graphite">
+              Солнцезащита и текстиль, подобранные под архитектуру окна
+            </h2>
+          </div>
+          <div class="lg:col-span-5 lg:pl-6">
+            <p class="text-sm text-brand-muted leading-relaxed">
+              Стоимость каждого изделия рассчитывается индивидуально после замера проёма и выбора ткани — мастер привозит с собой реальные каталоги материалов прямо к вам домой или в офис.
+            </p>
+          </div>
+        </div>
+
+        <!-- Минималистичные журнальные табы с подчёркиванием -->
+        <div class="mt-6 flex items-center gap-6 overflow-x-auto no-scrollbar border-b border-brand-graphite/10" role="tablist" aria-label="Категории солнцезащитных систем">
+          <button type="button" role="tab" aria-selected="true" data-filter="all" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-semibold border-b-2 border-brand-green text-brand-graphite transition-colors whitespace-nowrap">
+            Все направления (8)
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="roller" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Рольшторы и День-Ночь
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="plisse" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Шторы плиссе
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="blinds" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Жалюзи
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="curtains" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Шторы, тюль и карнизы
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="outdoor" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Внешняя защита и Somfy
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-filter="extra" class="catalog-tab shrink-0 pb-3.5 text-xs sm:text-sm font-medium border-b-2 border-transparent text-brand-muted hover:text-brand-graphite transition-colors whitespace-nowrap">
+            Сетки и офис
+          </button>
+        </div>
+
+        <!-- Сетка карточек каталога (чистая журнальная подача) -->
+        <div id="catalogGrid" class="mt-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9">
+
+          <!-- 1. Рольшторы -->
+          <article data-category="roller" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80" alt="Рольшторы Мини, Макси и Кассетные" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-linen/95 text-brand-graphite text-[11px] font-semibold">300+ тканей</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Внутренняя солнцезащита</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Рольшторы</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Мини (с направляющими струнами для откидных створок), Макси, Кассетные и автоматические. Европейские ткани (Германия, Голландия, Бельгия), сертифицированные в РБ.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Рольшторы / День-Ночь" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Рольшторы День-Ночь -->
+          <article data-category="roller" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Рольшторы День-Ночь и Силуэт" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-linen/95 text-brand-graphite text-[11px] font-semibold">Мини · Макси · Силуэт</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Плавный свет</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Рольшторы «День-Ночь»</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Чередование прозрачных и плотных полос для точной регулировки освещённости без поднятия полотна. Варианты Мини, Макси, Кассетные, «Силуэт» и с приводом.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Рольшторы / День-Ночь" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Шторы плиссе COSIFLOR и BLISS -->
+          <article data-category="plisse" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Шторы плиссе COSIFLOR и BLISS для мансардных и сложных окон" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-sageTint text-brand-green text-[11px] font-semibold">COSIFLOR · BLISS</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Включая мансарды</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Шторы плиссе</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Горизонтальные, вертикальные, «День-Ночь» и автоматические (складка 20 мм, 250+ тканей). Для круглых, трапециевидных, наклонных и мансардных окон. Монтаж со сверлением и без.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Шторы плиссе" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Жалюзи -->
+          <article data-category="blinds" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1609423433459-a65b330ef5da?auto=format&fit=crop&w=800&q=80" alt="Горизонтальные, деревянные и вертикальные жалюзи" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-linen/95 text-brand-graphite text-[11px] font-semibold">Алюминий · Дерево</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Геометрия света</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Жалюзи всех видов</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Горизонтальные алюминиевые «Стандарт» (25 мм), кассетные, MAGNUS и натуральные деревянные жалюзи; вертикальные тканевые, пластиковые и нитяные жалюзи «Бриз».
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Жалюзи" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Классические и римские шторы, тюль -->
+          <article data-category="curtains" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=800&q=80" alt="Пошив классических штор, тюля и римских штор" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-sageTint text-brand-green text-[11px] font-semibold">Пошив под заказ</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Интерьерный текстиль</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Шторы, тюль и римские</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Индивидуальный пошив портьер и воздушного тюля под интерьер, а также римские шторы Мини (возможен монтаж на створку без сверления), Макси и автоматические.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Классические / римские шторы" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Карнизы ZEGAR и WinDeco -->
+          <article data-category="curtains" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Карнизы ZEGAR и WinDeco для штор" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-linen/95 text-brand-graphite text-[11px] font-semibold">ZEGAR · WinDeco</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Фурнитура и монтаж</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Карнизы для штор</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Коллекции ZEGAR (Classic, Art Deco, Royal, Techno, Modern) и WinDeco: латунные, металлические, деревянные карнизы и профильные U-шины с установкой.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Подбор под интерьер</span>
+                <button type="button" data-select-service="Классические / римские шторы" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Внешняя солнцезащита и Somfy -->
+          <article data-category="outdoor" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Террасные маркизы, перголы Suntech, Zip-системы и автоматика Somfy" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-sageTint text-brand-green text-[11px] font-semibold">Suntech · Somfy</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Террасы и автоматика</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Маркизы, перголы и Zip</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Террасные маркизы (до 70 000 циклов, UV-Standard 801, гарантия 5 лет), рефлексоли, Zip-системы, перголы Suntech и электроприводы Somfy с датчиками солнца и пультами.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Проектный расчёт</span>
+                <button type="button" data-select-service="Маркизы / перголы / Zip" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Москитные сетки, офис Screen/Louvolite и фотопечать -->
+          <article data-category="extra" class="editorial-card group flex flex-col bg-brand-linen border border-brand-graphite/10 rounded-sm overflow-hidden hover:border-brand-green/50">
+            <div class="relative aspect-[16/11] bg-brand-stone overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Москитные сетки, офисные системы Louvolite и ткани Screen" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-[2px] bg-brand-ink/75 text-[10px] font-medium text-stone-100">Демо-фото</span>
+              <span class="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-[2px] bg-brand-linen/95 text-brand-graphite text-[11px] font-semibold">Screen · Louvolite</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">Защита и коммерция</div>
+              <h3 class="mt-1.5 font-editorial font-semibold text-2xl text-brand-graphite leading-snug">Москитные сетки и офис</h3>
+              <p class="mt-2 text-xs sm:text-[13px] text-brand-muted leading-relaxed flex-1">
+                Сетки Стандарт, раздвижные балконные, дверные, рулонные, плиссе и на магнитах. Офисные системы Louvolite и ткани Screen (EN 14501). Фотопечать на рольшторах, жалюзи и МДФ.
+              </p>
+              <div class="mt-4 pt-3.5 border-t border-brand-graphite/10 flex items-center justify-between gap-2">
+                <span class="text-[11px] text-brand-muted">Индивидуальный расчёт</span>
+                <button type="button" data-select-service="Москитные сетки" class="text-xs font-semibold text-brand-graphite hover:text-brand-green transition-colors">
+                  Подобрать →
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ТЁМНЫЙ РЕДАКЦИОННЫЙ РАЗВОРОТ: ТКАНИ, МАНСАРДЫ И SOMFY ==================== -->
+    <section id="craft" class="py-16 sm:py-24 bg-brand-ink text-stone-100">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+          <!-- Левая редакционная колонка с атмосферным фото жалюзи -->
+          <div class="lg:col-span-5 space-y-7">
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-botanical">Инженерия и материалы</div>
+              <h2 class="mt-2.5 font-editorial font-medium text-3xl sm:text-4xl lg:text-[3rem] leading-[1.06] text-white">
+                Точность под сложные окна и проверенные бренды Европы
+              </h2>
+              <p class="mt-4 text-sm text-stone-300 leading-relaxed">
+                Работаем с жилыми и коммерческими объектами любой геометрии: от стандартных поворотно-откидных стеклопакетов до наклонных мансард, зимних садов и просторных террас.
+              </p>
+            </div>
+
+            <!-- Строгий перечень брендов с оригинала -->
+            <div class="pt-5 border-t border-white/15">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-stone-400 mb-3">Партнёрские бренды в салоне</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">COSIFLOR</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">BLISS</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">ZEGAR</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">WinDeco</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">Suntech</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-brand-botanical">Somfy</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">Louvolite</span>
+                <span class="px-3 py-1.5 rounded-sm bg-white/5 border border-white/15 text-xs font-semibold tracking-wider text-stone-200">Screen</span>
+              </div>
+            </div>
+
+            <div class="relative aspect-[16/10] rounded-sm overflow-hidden border border-white/15">
+              <img src="https://images.unsplash.com/photo-1609423433459-a65b330ef5da?auto=format&fit=crop&w=1000&q=80" alt="Тонкая игра света через ламели горизонтальных жалюзи" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-ink/60 via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 text-[11px] text-stone-200">Демо-фото · точный контроль направления лучей</span>
+            </div>
+          </div>
+
+          <!-- Правая колонка: 4 архитектурных принципа с деликатными линиями -->
+          <div class="lg:col-span-7 divide-y divide-white/15 border-t border-b border-white/15">
+            <div class="py-6 sm:py-7 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6">
+              <div class="sm:col-span-2 font-editorial text-3xl text-brand-botanical leading-none">01</div>
+              <div class="sm:col-span-10">
+                <h3 class="font-editorial font-semibold text-2xl sm:text-[1.75rem] text-white leading-snug">Сертифицированные ткани из Европы</h3>
+                <p class="mt-2 text-sm text-stone-300 leading-relaxed">
+                  Полотна производителей Германии, Голландии и Бельгии: свыше 300 фактур для рольштор и более 250 тканей для штор плиссе. Цветоустойчивые экологичные красители, огнестойкие офисные ткани Screen по стандарту EN 14501.
+                </p>
+              </div>
+            </div>
+
+            <div class="py-6 sm:py-7 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6">
+              <div class="sm:col-span-2 font-editorial text-3xl text-brand-botanical leading-none">02</div>
+              <div class="sm:col-span-10">
+                <h3 class="font-editorial font-semibold text-2xl sm:text-[1.75rem] text-white leading-snug">Мансардные, круглые и трапециевидные окна</h3>
+                <p class="mt-2 text-sm text-stone-300 leading-relaxed">
+                  Проектируем решения для окон нестандартных форм — наклонных, арочных, потолочных и мансардных. Используем системы плиссе COSIFLOR и BLISS с надёжной натяжной фиксацией полотна без провисания.
+                </p>
+              </div>
+            </div>
+
+            <div class="py-6 sm:py-7 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6">
+              <div class="sm:col-span-2 font-editorial text-3xl text-brand-botanical leading-none">03</div>
+              <div class="sm:col-span-10">
+                <h3 class="font-editorial font-semibold text-2xl sm:text-[1.75rem] text-white leading-snug">Автоматика и сценарии «Умный дом» Somfy</h3>
+                <p class="mt-2 text-sm text-stone-300 leading-relaxed">
+                  Моторизация рольштор, римских штор, карнизов, плиссе и наружных маркиз. Управление с пульта, по таймеру рассвета или датчику солнца и ветра. Специалисты салона регулярно проходят обучение в Somfy.
+                </p>
+              </div>
+            </div>
+
+            <div class="py-6 sm:py-7 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6">
+              <div class="sm:col-span-2 font-editorial text-3xl text-brand-botanical leading-none">04</div>
+              <div class="sm:col-span-10">
+                <h3 class="font-editorial font-semibold text-2xl sm:text-[1.75rem] text-white leading-snug">Гарантия и забота спустя годы</h3>
+                <p class="mt-2 text-sm text-stone-300 leading-relaxed">
+                  Аккуратная установка на пластиковые, деревянные и алюминиевые окна (в том числе без сверления), а также гарантийное и постгарантийное обслуживание — помогаем с фурнитурой и настройкой даже через много лет эксплуатации.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КАК ПРОХОДИТ РАБОТА (4 ЧЁТКИХ ЭТАПА) ==================== -->
+    <section id="process" class="py-16 sm:py-24 bg-brand-linen border-b border-brand-graphite/10">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-green">Процесс работы</div>
+            <h2 class="mt-2 font-editorial font-medium text-3xl sm:text-4xl lg:text-[2.9rem] leading-tight text-brand-graphite">
+              От выбора ткани при вашем свете до чистого монтажа
+            </h2>
+          </div>
+          <a href="#request-form" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-graphite hover:text-brand-green border-b border-brand-graphite/30 hover:border-brand-green pb-0.5 transition-colors shrink-0">
+            Записаться на бесплатный замер →
+          </a>
+        </div>
+
+        <div class="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="pt-5 border-t-2 border-brand-green">
+            <div class="font-editorial text-4xl font-medium text-brand-green leading-none">01</div>
+            <h3 class="mt-3 font-semibold text-base text-brand-graphite">Заявка или визит в салон</h3>
+            <p class="mt-2 text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Оставьте короткую заявку на сайте, позвоните или загляните в салон в Бресте на бульваре Шевченко, 9 (ориентир — «Наши Боты»).
+            </p>
+          </div>
+          <div class="pt-5 border-t border-brand-graphite/20">
+            <div class="font-editorial text-4xl font-medium text-brand-graphite/70 leading-none">02</div>
+            <h3 class="mt-3 font-semibold text-base text-brand-graphite">Бесплатный выезд с образцами</h3>
+            <p class="mt-2 text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Приезжаем с каталогами тканей и профилей: вы прикладываете фактуру прямо к окну, видите реальный оттенок и сразу получаете точный расчёт.
+            </p>
+          </div>
+          <div class="pt-5 border-t border-brand-graphite/20">
+            <div class="font-editorial text-4xl font-medium text-brand-graphite/70 leading-none">03</div>
+            <h3 class="mt-3 font-semibold text-base text-brand-graphite">Изготовление по размеру</h3>
+            <p class="mt-2 text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Собираем солнцезащитные конструкции или отшиваем текстиль с точностью до миллиметра и заранее согласуем дату готовности.
+            </p>
+          </div>
+          <div class="pt-5 border-t border-brand-graphite/20">
+            <div class="font-editorial text-4xl font-medium text-brand-graphite/70 leading-none">04</div>
+            <h3 class="mt-3 font-semibold text-base text-brand-graphite">Монтаж и сервис</h3>
+            <p class="mt-2 text-xs sm:text-sm text-brand-muted leading-relaxed">
+              Устанавливаем системы без пыли (включая крепления без сверления), проверяем плавность хода и остаёмся на связи по обслуживанию.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== АСИММЕТРИЧНАЯ ЖУРНАЛЬНАЯ ГАЛЕРЕЯ С ЛАЙТБОКСОМ ==================== -->
+    <section id="gallery" class="py-16 sm:py-24 bg-white border-b border-brand-graphite/10">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-green">Интерьеры и свет</div>
+            <h2 class="mt-2 font-editorial font-medium text-3xl sm:text-4xl lg:text-[2.9rem] leading-tight text-brand-graphite">
+              Настроение живых пространств
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-brand-muted max-w-md">
+            Демонстрационные интерьерные фотографии. При запуске сайта наполним этот раздел вашими реализованными проектами из Бреста.
+          </p>
+        </div>
+
+        <!-- Редакционная асимметричная сетка -->
+        <div class="mt-9 grid grid-cols-1 md:grid-cols-12 gap-5">
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85" data-lightbox-caption="Высокие панорамные окна в гостиной — мягкая работа с естественным светом (демо-фото)" class="md:col-span-7 group relative aspect-[16/10] rounded-sm overflow-hidden bg-brand-stone text-left focus:outline-none focus:ring-2 focus:ring-brand-green">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Гостиная с панорамными окнами и солнечным светом" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] bg-brand-ink/70 text-[10px] font-medium text-white">Демо-фото</span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/25 to-transparent p-5 text-white">
+              <span class="block font-editorial text-2xl font-medium">Панорамное остекление и гостиные</span>
+              <span class="block text-[11px] text-stone-200 mt-0.5">Открыть в полном размере →</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Воздушный тюль и натуральные фактуры текстиля (демо-фото)" class="md:col-span-5 group relative aspect-[16/10] md:aspect-auto rounded-sm overflow-hidden bg-brand-stone text-left focus:outline-none focus:ring-2 focus:ring-brand-green">
+            <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1000&q=80" alt="Шторы и тюль в мягком дневном свете" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] bg-brand-ink/70 text-[10px] font-medium text-white">Демо-фото</span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/25 to-transparent p-5 text-white">
+              <span class="block font-editorial text-2xl font-medium">Тюль и пошив штор на заказ</span>
+              <span class="block text-[11px] text-stone-200 mt-0.5">Открыть в полном размере →</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Плотные портьеры и рольшторы Blackout для спокойного сна в спальне (демо-фото)" class="md:col-span-4 group relative aspect-[4/3] rounded-sm overflow-hidden bg-brand-stone text-left focus:outline-none focus:ring-2 focus:ring-brand-green">
+            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80" alt="Спальня с плотными шторами Blackout" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] bg-brand-ink/70 text-[10px] font-medium text-white">Демо-фото</span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/25 to-transparent p-4 text-white">
+              <span class="block font-editorial text-xl font-medium">Затемнение Blackout в спальне</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Внешняя солнцезащита: маркизы, перголы Suntech и Zip-системы для террас (демо-фото)" class="md:col-span-4 group relative aspect-[4/3] rounded-sm overflow-hidden bg-brand-stone text-left focus:outline-none focus:ring-2 focus:ring-brand-green">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Террасные маркизы и наружная солнцезащита" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] bg-brand-ink/70 text-[10px] font-medium text-white">Демо-фото</span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/25 to-transparent p-4 text-white">
+              <span class="block font-editorial text-xl font-medium">Террасные маркизы и перголы</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Офисные солнцезащитные системы Louvolite и ткани Screen (демо-фото)" class="md:col-span-4 group relative aspect-[4/3] rounded-sm overflow-hidden bg-brand-stone text-left focus:outline-none focus:ring-2 focus:ring-brand-green">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" alt="Офисные солнцезащитные системы Screen" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-700" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] bg-brand-ink/70 text-[10px] font-medium text-white">Демо-фото</span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/25 to-transparent p-4 text-white">
+              <span class="block font-editorial text-xl font-medium">Офисные решения Screen</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== РЕАЛЬНЫЕ ОТЗЫВЫ КЛИЕНТОВ (BLACKOUT-BREST.BY/KOMMENTS.HTML) ==================== -->
+    <section id="reviews" class="py-16 sm:py-24 bg-brand-linen border-b border-brand-graphite/10">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-green">Реальные отзывы</div>
+            <h2 class="mt-2 font-editorial font-medium text-3xl sm:text-4xl lg:text-[2.9rem] leading-tight text-brand-graphite">
+              Слово клиентов из Бреста
+            </h2>
+            <p class="mt-2 text-xs sm:text-sm text-brand-muted">
+              Подлинные отзывы заказчиков со страницы <span class="font-semibold text-brand-graphite">blackout-brest.by/komments.html</span>. При запуске перенесём весь архив.
+            </p>
+          </div>
+          <a href="https://yandex.by/maps/?text=Брест%20бульвар%20Шевченко%209" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-sm bg-white border border-brand-graphite/15 hover:border-brand-green text-xs sm:text-sm font-semibold text-brand-graphite transition-colors shrink-0">
+            <svg class="w-4 h-4 text-brand-green" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Салон на Яндекс Картах
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-white p-7 rounded-sm border border-brand-graphite/10 flex flex-col justify-between">
+            <div>
+              <div class="font-editorial text-5xl text-brand-green/50 leading-none select-none">“</div>
+              <p class="mt-2 text-sm text-brand-graphite/90 leading-relaxed">
+                Спасибо большое компании! Индивидуальный подход, клиентоориентированность, чёткая работа! Особая благодарность директору компании!
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-graphite/10 flex items-center justify-between text-xs">
+              <div>
+                <div class="font-semibold text-brand-graphite">Алеся</div>
+                <div class="text-[11px] text-brand-muted">blackout-brest.by/komments.html</div>
+              </div>
+              <span class="text-brand-muted">30.10.2025</span>
+            </div>
+          </article>
+
+          <article class="bg-white p-7 rounded-sm border border-brand-graphite/10 flex flex-col justify-between">
+            <div>
+              <div class="font-editorial text-5xl text-brand-green/50 leading-none select-none">“</div>
+              <p class="mt-2 text-sm text-brand-graphite/90 leading-relaxed">
+                Благодарю за внимание к давним клиентам. Шторы плиссе от Blackout отлично нам служат ежедневно восемь лет. Обратилась спустя годы, когда надломилась маленькая ручка-направляющая. В Blackout сразу отзывчиво решили наш вопрос. С удовольствием рекомендую вашу фирму!
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-graphite/10 flex items-center justify-between text-xs">
+              <div>
+                <div class="font-semibold text-brand-graphite">Лариса Жаркевич</div>
+                <div class="text-[11px] text-brand-muted">blackout-brest.by/komments.html</div>
+              </div>
+              <span class="text-brand-muted">27.10.2022</span>
+            </div>
+          </article>
+
+          <article class="bg-white p-7 rounded-sm border border-brand-graphite/10 flex flex-col justify-between">
+            <div>
+              <div class="font-editorial text-5xl text-brand-green/50 leading-none select-none">“</div>
+              <p class="mt-2 text-sm text-brand-graphite/90 leading-relaxed">
+                Заказывали шторы плиссе в 3 комнаты, на замер приехали с образцами, помогли подобрать, обговорили срок, по готовности позвонили и договорились о монтаже, приехали и установили, большое спасибо за работу, всем довольны.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-graphite/10 flex items-center justify-between text-xs">
+              <div>
+                <div class="font-semibold text-brand-graphite">Дмитрий</div>
+                <div class="text-[11px] text-brand-muted">blackout-brest.by/komments.html</div>
+              </div>
+              <span class="text-brand-muted">14.01.2022</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ЗАПИСЬ НА ЗАМЕР ==================== -->
+    <section id="request-form" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+          <!-- Левая колонка: редакционный заголовок и контакты салона -->
+          <div class="lg:col-span-5 space-y-7">
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-green">Бесплатный замер в Бресте</div>
+              <h2 class="mt-2 font-editorial font-medium text-3xl sm:text-4xl lg:text-[2.85rem] leading-[1.08] text-brand-graphite">
+                Подберём систему и привезём каталоги тканей к вашим окнам
+              </h2>
+              <p class="mt-3.5 text-sm text-brand-muted leading-relaxed">
+                Выберите за 2 клика, что именно подбираем и для какого помещения — параметры автоматически подставятся в заявку, и мастер возьмёт с собой нужные образцы.
+              </p>
+            </div>
+
+            <div class="p-6 bg-brand-linen border border-brand-graphite/10 rounded-sm space-y-5">
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-muted mb-2.5">Телефоны салона</div>
+                <div class="space-y-2 text-[15px] font-semibold text-brand-graphite">
+                  <div>
+                    <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375333221255" class="hover:text-brand-green transition-colors">+375 (33) 322-12-55</a>
+                    <span class="text-xs font-normal text-brand-muted ml-2">МТС</span>
+                  </div>
+                  <div>
+                    <a data-contact="phoneSecondary" data-contact-text="phoneSecondary" href="tel:+375296086360" class="hover:text-brand-green transition-colors">+375 (29) 608-63-60</a>
+                    <span class="text-xs font-normal text-brand-muted ml-2">A1</span>
+                  </div>
+                  <div>
+                    <a data-contact="phoneThird" data-contact-text="phoneThird" href="tel:+375295086360" class="hover:text-brand-green transition-colors">+375 (29) 508-63-60</a>
+                    <span class="text-xs font-normal text-brand-muted ml-2">МТС</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-brand-graphite/10">
+                <div class="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-muted mb-2.5">Мессенджеры и соцсети</div>
+                <div class="grid grid-cols-3 gap-2">
+                  <a data-contact="viber" href="viber://chat?number=%2B375333221255" class="inline-flex items-center justify-center py-2.5 px-3 rounded-sm bg-white border border-brand-graphite/15 hover:border-brand-green hover:text-brand-green text-xs font-semibold text-brand-graphite transition-colors">
+                    Viber
+                  </a>
+                  <a data-contact="telegram" href="https://t.me/blackout_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center py-2.5 px-3 rounded-sm bg-white border border-brand-graphite/15 hover:border-brand-green hover:text-brand-green text-xs font-semibold text-brand-graphite transition-colors">
+                    Telegram
+                  </a>
+                  <a data-contact="instagram" href="https://www.instagram.com/blackout_brest/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center py-2.5 px-3 rounded-sm bg-white border border-brand-graphite/15 hover:border-brand-green hover:text-brand-green text-xs font-semibold text-brand-graphite transition-colors">
+                    Instagram
+                  </a>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-brand-graphite/10 text-xs sm:text-[13px] text-brand-muted space-y-1.5">
+                <div><span class="font-semibold text-brand-graphite">Салон:</span> г. Брест, бульвар Шевченко, 9 (ориентир — обувной магазин «Наши Боты»)</div>
+                <div><span class="font-semibold text-brand-graphite">E-mail:</span> <a data-contact="email" href="mailto:kdg2@mail.ru" class="underline hover:text-brand-green">kdg2@mail.ru</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: 2-кликовый мини-интерактив + форма заявки -->
+          <div class="lg:col-span-7">
+            <div class="bg-brand-linen border border-brand-graphite/15 rounded-sm p-5 sm:p-8 space-y-6">
+
+              <!-- Мини-интерактив за 2 клика (без расчётных формул цен) -->
+              <div class="space-y-5 pb-6 border-b border-brand-graphite/15">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span class="text-xs font-bold uppercase tracking-[0.15em] text-brand-green">Быстрый подбор за 2 клика</span>
+                  <span id="pickerSummary" class="text-xs font-medium text-brand-graphite bg-white px-3 py-1 rounded-sm border border-brand-graphite/10">
+                    Выбрано: Рольшторы / День-Ночь · Квартира / дом
+                  </span>
+                </div>
+
+                <!-- Клик 1: Что подбираем -->
+                <div>
+                  <div class="text-xs font-semibold text-brand-graphite mb-2.5">1. Что подбираем?</div>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" role="group" aria-label="Что подбираем">
+                    <button type="button" data-pick-system="Рольшторы / День-Ночь" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-semibold transition-all bg-brand-graphite text-white border-brand-graphite">
+                      Рольшторы / День-Ночь
+                    </button>
+                    <button type="button" data-pick-system="Шторы плиссе" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Шторы плиссе
+                    </button>
+                    <button type="button" data-pick-system="Жалюзи" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Жалюзи
+                    </button>
+                    <button type="button" data-pick-system="Классические / римские шторы" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Классические / римские шторы
+                    </button>
+                    <button type="button" data-pick-system="Маркизы / перголы / Zip" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Маркизы / перголы / Zip
+                    </button>
+                    <button type="button" data-pick-system="Москитные сетки" class="pick-system-btn text-left px-3.5 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Москитные сетки
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Клик 2: Куда устанавливаем -->
+                <div>
+                  <div class="text-xs font-semibold text-brand-graphite mb-2.5">2. Куда устанавливаем?</div>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="group" aria-label="Куда устанавливаем">
+                    <button type="button" data-pick-place="Квартира / дом" class="pick-place-btn text-center px-3 py-2.5 rounded-sm border text-xs font-semibold transition-all bg-brand-green text-white border-brand-green">
+                      Квартира / дом
+                    </button>
+                    <button type="button" data-pick-place="Мансардные окна" class="pick-place-btn text-center px-3 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Мансардные окна
+                    </button>
+                    <button type="button" data-pick-place="Офис / коммерция" class="pick-place-btn text-center px-3 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Офис / коммерция
+                    </button>
+                    <button type="button" data-pick-place="Терраса / балкон" class="pick-place-btn text-center px-3 py-2.5 rounded-sm border text-xs font-medium transition-all bg-white text-brand-graphite border-brand-graphite/15 hover:border-brand-green">
+                      Терраса / балкон
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Форма вызова замерщика с образцами -->
+              <form id="leadForm" novalidate class="space-y-4">
+                <!-- Honeypot против спам-ботов -->
+                <div class="hidden" aria-hidden="true">
+                  <label for="website_hp">Не заполняйте это поле</label>
+                  <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <!-- Автоподставляемые поля из 2-кликового интерактива -->
+                <input type="hidden" id="leadSystem" name="system" value="Рольшторы / День-Ночь" />
+                <input type="hidden" id="leadPlace" name="place" value="Квартира / дом" />
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="leadName" class="block text-xs font-semibold text-brand-graphite mb-1.5">Ваше имя *</label>
+                    <input type="text" id="leadName" name="name" required placeholder="Например, Ольга" class="w-full px-3.5 py-3 rounded-sm bg-white border border-brand-graphite/15 text-sm text-brand-graphite placeholder-brand-muted/60 focus:outline-none focus:ring-1 focus:ring-brand-green focus:border-brand-green transition" />
+                    <p id="errName" class="hidden mt-1 text-xs text-red-700"></p>
+                  </div>
+
+                  <div>
+                    <label for="leadPhone" class="block text-xs font-semibold text-brand-graphite mb-1.5">Телефон *</label>
+                    <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (33) 123-45-67" class="w-full px-3.5 py-3 rounded-sm bg-white border border-brand-graphite/15 text-sm text-brand-graphite placeholder-brand-muted/60 focus:outline-none focus:ring-1 focus:ring-brand-green focus:border-brand-green transition" />
+                    <p id="errPhone" class="hidden mt-1 text-xs text-red-700"></p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="leadDate" class="block text-xs font-semibold text-brand-graphite mb-1.5">Удобный день для замера</label>
+                    <input type="date" id="leadDate" name="date" class="w-full px-3.5 py-3 rounded-sm bg-white border border-brand-graphite/15 text-sm text-brand-graphite focus:outline-none focus:ring-1 focus:ring-brand-green focus:border-brand-green transition" />
+                  </div>
+
+                  <div>
+                    <span class="block text-xs font-semibold text-brand-graphite mb-1.5">Удобный способ связи</span>
+                    <div class="grid grid-cols-3 gap-2">
+                      <label class="cursor-pointer">
+                        <input type="radio" name="contactMethod" value="Звонок по телефону" checked class="peer sr-only" />
+                        <span class="block text-center py-3 px-2 rounded-sm border border-brand-graphite/15 bg-white text-xs font-semibold text-brand-graphite peer-checked:border-brand-green peer-checked:bg-brand-sageTint peer-checked:text-brand-green transition">Телефон</span>
+                      </label>
+                      <label class="cursor-pointer">
+                        <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                        <span class="block text-center py-3 px-2 rounded-sm border border-brand-graphite/15 bg-white text-xs font-semibold text-brand-graphite peer-checked:border-brand-green peer-checked:bg-brand-sageTint peer-checked:text-brand-green transition">Viber</span>
+                      </label>
+                      <label class="cursor-pointer">
+                        <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                        <span class="block text-center py-3 px-2 rounded-sm border border-brand-graphite/15 bg-white text-xs font-semibold text-brand-graphite peer-checked:border-brand-green peer-checked:bg-brand-sageTint peer-checked:text-brand-green transition">Telegram</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="leadComment" class="block text-xs font-semibold text-brand-graphite mb-1.5">Комментарий (количество окон, желаемый оттенок или степень затемнения)</label>
+                  <textarea id="leadComment" name="comment" rows="2" placeholder="Например: 3 окна в квартире, нужна ткань 100% блэкаут в спальню, монтаж без сверления" class="w-full px-3.5 py-3 rounded-sm bg-white border border-brand-graphite/15 text-sm text-brand-graphite placeholder-brand-muted/60 focus:outline-none focus:ring-1 focus:ring-brand-green focus:border-brand-green transition"></textarea>
+                </div>
+
+                <!-- Чекбокс согласия по Закону РБ № 99-З (строго БЕЗ атрибута checked) -->
+                <div>
+                  <label class="flex items-start gap-2.5 cursor-pointer">
+                    <input type="checkbox" id="leadConsent" name="consent" required class="mt-0.5 w-4 h-4 rounded-sm border-brand-graphite/30 text-brand-green focus:ring-brand-green shrink-0" />
+                    <span class="text-xs text-brand-muted leading-relaxed">
+                      Я даю <button type="button" data-open-modal="modalConsent" class="text-brand-graphite underline hover:text-brand-green font-semibold">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-brand-graphite underline hover:text-brand-green font-semibold">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                    </span>
+                  </label>
+                  <p id="errConsent" class="hidden mt-1 text-xs text-red-700"></p>
+                </div>
+
+                <p id="formGeneralError" class="hidden p-3 rounded-sm bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+                <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 rounded-sm bg-brand-green hover:bg-brand-greenHover text-white font-semibold text-sm sm:text-base tracking-wide transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                  Пригласить замерщика с образцами
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ (ФУТЕР + РЕКВИЗИТЫ РБ) ==================== -->
+  <footer id="contacts" class="bg-brand-ink text-stone-300 pt-16 pb-36 md:pb-20 border-t border-white/10">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+
+        <!-- Колонка контактов -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="inline-flex flex-col">
+            <svg class="w-[126px] h-[14px] text-stone-400 mb-0.5" viewBox="0 0 180 20" fill="currentColor" aria-hidden="true">
+              <path d="M0 20V14H7V11H11V14H15V9H22V13H26V6H31V11H36V4H40V1H42V4H47V10H52V7H58V12H63V5H70V11H75V8H81V13H86V6H92V3H96V9H102V13H108V5H114V2H118V7H124V12H130V6H136V9H142V4H148V11H154V8H161V13H168V10H174V14H180V20H0Z"/>
+            </svg>
+            <div class="flex items-center leading-none">
+              <span class="w-6 h-6 border-[1.5px] border-brand-botanical flex items-center justify-center font-sans font-bold text-sm text-white">B</span>
+              <span class="ml-1 font-sans font-semibold text-[15px] tracking-[0.22em] text-white border-t border-b border-white/25 py-[3px] pr-0.5">LACKOUT</span>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-md">
+            Салон штор и солнцезащитных систем в Бресте: рольшторы, «День-Ночь», плиссе COSIFLOR и BLISS, жалюзи, шторы, карнизы ZEGAR и WinDeco, маркизы, перголы Suntech, москитные сетки и автоматика Somfy.
+          </p>
+
+          <div class="space-y-2.5 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-stone-500 w-24 shrink-0">Адрес:</span>
+              <span class="text-white font-medium">г. Брест, бульвар Шевченко, 9<br /><span class="text-xs text-stone-400 font-normal">ориентир — обувной магазин «Наши Боты»</span></span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-stone-500 w-24 shrink-0">Телефоны:</span>
+              <div class="flex flex-col gap-1">
+                <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375333221255" class="text-white font-semibold hover:text-brand-botanical transition-colors">+375 (33) 322-12-55</a>
+                <a data-contact="phoneSecondary" data-contact-text="phoneSecondary" href="tel:+375296086360" class="text-white font-semibold hover:text-brand-botanical transition-colors">+375 (29) 608-63-60</a>
+                <a data-contact="phoneThird" data-contact-text="phoneThird" href="tel:+375295086360" class="text-white font-semibold hover:text-brand-botanical transition-colors">+375 (29) 508-63-60</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-stone-500 w-24 shrink-0">E-mail:</span>
+              <a data-contact="email" href="mailto:kdg2@mail.ru" class="text-white hover:text-brand-botanical transition-colors">kdg2@mail.ru</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-stone-500 w-24 shrink-0">График:</span>
+              <span class="text-stone-400 text-xs sm:text-sm">[Режим работы салона: заполняется при запуске; в шапке указан ориентир 09:00–20:00]</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375333221255" class="inline-flex items-center px-3.5 py-2 rounded-sm bg-white/10 hover:bg-brand-green border border-white/15 text-white text-xs font-semibold transition-colors">
+              Viber
+            </a>
+            <a data-contact="telegram" href="https://t.me/blackout_brest_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3.5 py-2 rounded-sm bg-white/10 hover:bg-brand-green border border-white/15 text-white text-xs font-semibold transition-colors">
+              Telegram
+            </a>
+            <a data-contact="instagram" href="https://www.instagram.com/blackout_brest/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3.5 py-2 rounded-sm bg-white/10 hover:bg-brand-green border border-white/15 text-white text-xs font-semibold transition-colors">
+              Instagram @blackout_brest
+            </a>
+          </div>
+        </div>
+
+        <!-- Схема ориентира в Бресте -->
+        <div class="lg:col-span-7">
+          <div class="bg-white/[0.04] border border-white/15 rounded-sm p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-editorial font-medium text-2xl text-white">Салон в Бресте</div>
+                <div class="text-xs text-stone-400">бульвар Шевченко, 9 · ориентир — магазин «Наши Боты»</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Брест%20бульвар%20Шевченко%209" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-brand-botanical hover:bg-white text-brand-ink text-xs font-bold transition-colors">
+                Построить маршрут в Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="relative rounded-sm overflow-hidden bg-brand-graphite/70 border border-white/10 h-52 flex items-center justify-center">
+              <svg class="w-full h-full opacity-30" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 140 L600 118" stroke="#6B746D" stroke-width="18" />
+                <path d="M0 140 L600 118" stroke="#C4E4A8" stroke-width="1.5" stroke-dasharray="10 8" />
+                <path d="M210 0 L245 220" stroke="#454D47" stroke-width="10" />
+                <path d="M430 0 L405 220" stroke="#454D47" stroke-width="10" />
+                <rect x="275" y="66" width="96" height="44" rx="2" fill="#1A1D1B" stroke="#C4E4A8" stroke-width="1.5" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-10 h-10 rounded-sm bg-brand-green text-white flex items-center justify-center shadow-lg mb-2.5">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-4 py-1.5 rounded-sm bg-brand-ink/90 border border-brand-botanical/35 text-xs sm:text-sm font-semibold text-white">
+                  Салон «Blackout» · б-р Шевченко, 9
+                </div>
+                <div class="mt-1.5 text-[11px] text-stone-400">При запуске подключим интерактивную карту Яндекс с точкой входа</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридический блок и комплаенс РБ -->
+      <div class="pt-8 space-y-5 text-xs text-stone-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-stone-200 font-semibold">Реквизиты организации (заполняются при запуске):</div>
+            <div>[ФИО ИП / Наименование юрлица], УНП [XXXXXXXXX]</div>
+            <div>Юридический адрес: [Юридический адрес организации / ИП]</div>
+            <div>Режим работы: [Режим работы салона в Бресте]</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-brand-botanical transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-brand-botanical transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-brand-botanical transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-stone-500 leading-relaxed">
+          Информация, размещённая на данном сайте, носит исключительно справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Окончательная стоимость изготовления и монтажа солнцезащитных систем определяется после замера и выбора тканей.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Автоматически скрывается, пока открыт cookie-баннер; расположен аккуратно над демо-плашкой -->
+  <nav id="mobileStickyDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-14 z-40">
+    <div class="bg-[#FAF9F6]/95 backdrop-blur-xl border border-brand-graphite/15 rounded-sm p-1.5 shadow-2xl grid grid-cols-3 gap-1.5">
+      <a data-contact="phonePrimary" href="tel:+375333221255" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-[2px] bg-white border border-brand-graphite/10 text-brand-graphite text-xs font-semibold active:scale-[0.98] transition">
+        <svg class="w-3.5 h-3.5 text-brand-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span>Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375333221255" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-[2px] bg-white border border-brand-graphite/10 text-brand-graphite text-xs font-semibold active:scale-[0.98] transition">
+        <svg class="w-3.5 h-3.5 text-brand-graphite/80 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span>Viber</span>
+      </a>
+      <a href="#request-form" class="inline-flex items-center justify-center py-2.5 px-2 rounded-[2px] bg-brand-green text-white text-xs font-semibold active:scale-[0.98] transition">
+        Замер
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==================== COOKIE-БАННЕР (НЦЗПД РБ, 2 РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-14 sm:bottom-10 z-50 px-3 sm:px-6 pb-1">
+    <div class="max-w-4xl mx-auto bg-brand-ink/95 backdrop-blur-md border border-white/15 text-stone-200 rounded-sm p-4 sm:p-5 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4">
+      <div class="text-xs sm:text-[13px] leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта и сохранения ваших настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-white underline hover:text-brand-botanical">Политику и настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-4 py-2.5 rounded-sm bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs font-semibold transition whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-4 py-2.5 rounded-sm bg-brand-green hover:bg-brand-greenHover border border-brand-green text-white text-xs font-semibold transition whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЕЛИКАТНАЯ ДЕМО-ПЛАШКА В САМОМ НИЗУ ЭКРАНА -->
+  <div class="fixed inset-x-0 bottom-0 z-40 bg-brand-ink/95 backdrop-blur-md border-t border-white/10 text-stone-300 text-center py-2 px-3 text-[11px] leading-tight">
+    Демо-концепт для «Blackout» (Брест). При запуске добавим ваши фото работ, график и реквизиты.
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс галереи -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-brand-ink/95 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-brand-ink rounded-sm overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-sm bg-brand-ink/80 text-white hover:bg-brand-green flex items-center justify-center transition">✕</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-stone-300 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-brand-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white rounded-sm p-6 sm:p-8 shadow-2xl border border-brand-graphite/10" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-8 h-8 rounded-sm bg-brand-linen hover:bg-brand-stone text-brand-graphite flex items-center justify-center transition">✕</button>
+      <div class="w-11 h-11 rounded-sm bg-brand-sageTint text-brand-green flex items-center justify-center mb-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-editorial font-semibold text-3xl text-brand-graphite">Заявка отправлена</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-brand-muted leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-sm bg-brand-linen border border-brand-graphite/10 text-xs text-brand-graphite space-y-1 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 rounded-sm bg-brand-graphite hover:bg-brand-green text-white font-semibold text-sm transition-colors">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-brand-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-sm shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-brand-graphite/10">
+        <h3 class="font-editorial font-semibold text-2xl text-brand-graphite">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-sm bg-brand-linen hover:bg-brand-stone text-brand-graphite flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-brand-graphite/85 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает салон штор и солнцезащитных систем «Blackout» ([ФИО ИП / Наименование юрлица], УНП [XXXXXXXXX], г. Брест, бульвар Шевченко, 9).</p>
+        <p><strong>2. Цели и перечень обрабатываемых данных.</strong> Оператор обрабатывает имя, номер телефона, выбранную категорию солнцезащитной системы, тип объекта, желаемую дату замера, способ связи и комментарий исключительно для обратной связи, консультации по материалам и организации выезда специалиста на замер.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для мгновенной доставки заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых расположены в иностранных государствах, где может не обеспечиваться надлежащий уровень защиты прав субъектов персональных данных. С такой передачей связаны риски отсутствия специального законодательства о защите персональных данных в таких государствах, ограниченного контроля со стороны уполномоченных органов РБ и возможного доступа к данным в соответствии с законодательством этих государств. Передача осуществляется исключительно при наличии вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта персональных данных (ст. 10–15 Закона № 99-З).</strong> Вы вправе: в любое время без объяснения причин отозвать своё согласие; получать информацию, касающуюся обработки ваших персональных данных; требовать внесения изменений в персональные данные, если они неполные, устаревшие или неточные; требовать прекращения обработки и (или) удаления персональных данных; обжаловать действия (бездействие) и решения оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-brand-graphite/10 bg-brand-linen text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-sm bg-brand-graphite text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-brand-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-sm shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-brand-graphite/10">
+        <h3 class="font-editorial font-semibold text-2xl text-brand-graphite">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-sm bg-brand-linen hover:bg-brand-stone text-brand-graphite flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-brand-graphite/85 space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме заявки на сайте салона «Blackout» и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору ([ФИО ИП / Наименование юрлица], УНП [XXXXXXXXX], г. Брест, бульвар Шевченко, 9) на обработку моих персональных данных: имени, номера телефона, сведений о выбранной солнцезащитной системе, типе помещения, желаемой дате замера, предпочтительном способе связи и комментарии.</p>
+        <p><strong>Цель обработки:</strong> обработка обращения, консультация по тканям и конструкциям, индивидуальный расчёт стоимости после замера и организация выезда специалиста с образцами.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что передача заявки с сайта может осуществляться с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, серверная инфраструктура которых находится в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены риски такой передачи (отличия в законодательстве о защите данных, возможное отсутствие независимого надзорного органа и ограниченные возможности защиты прав в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и отзыв согласия:</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами субъекта персональных данных, предусмотренными статьями 10–15 Закона РБ № 99-З (право на отзыв согласия, получение информации об обработке, внесение изменений, прекращение обработки/удаление данных и обжалование в НЦЗПД). Отозвать согласие можно, направив обращение по контактам в подвале сайта (включая e-mail kdg2@mail.ru).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-brand-graphite/10 bg-brand-linen text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-sm bg-brand-graphite text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-brand-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white rounded-sm shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-brand-graphite/10">
+        <h3 class="font-editorial font-semibold text-2xl text-brand-graphite">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-sm bg-brand-linen hover:bg-brand-stone text-brand-graphite flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-brand-graphite/85 space-y-4 leading-relaxed">
+        <div class="p-3.5 rounded-sm bg-brand-linen border border-brand-graphite/10 flex items-center justify-between gap-2">
+          <span class="font-semibold text-brand-graphite">Текущий статус выбора:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded-sm bg-white border border-brand-graphite/15 text-xs font-semibold text-brand-graphite">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie и локальное хранилище:</strong> используются исключительно для запоминания вашего выбора по настройкам cookie и стабильной работы интерфейса сайта. Они не передают ваши персональные данные третьим лицам.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> могут задействоваться при подключении систем веб-аналитики для анализа посещаемости и улучшения удобства сайта. Вы можете принять их либо отклонить в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-brand-graphite/10 bg-brand-linen flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-sm bg-brand-stone hover:bg-brand-graphite/15 text-brand-graphite text-sm font-semibold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 rounded-sm bg-brand-green hover:bg-brand-greenHover text-white text-sm font-semibold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЕДИНЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Синхронизация контактов из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const encodedViberPhone = encodeURIComponent(SITE_CONFIG.viberPhone);
+      const viberHref = `viber://chat?number=${encodedViberPhone}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+        el.removeAttribute('target');
+      });
+
+      const phoneBindings = [
+        { attr: 'phonePrimary', href: SITE_CONFIG.primaryTelHref, text: SITE_CONFIG.primaryPhone },
+        { attr: 'phoneSecondary', href: SITE_CONFIG.secondaryTelHref, text: SITE_CONFIG.secondaryPhone },
+        { attr: 'phoneThird', href: SITE_CONFIG.thirdTelHref, text: SITE_CONFIG.thirdPhone }
+      ];
+
+      phoneBindings.forEach(({ attr, href, text }) => {
+        document.querySelectorAll(`[data-contact="${attr}"]`).forEach((el) => {
+          el.setAttribute('href', href);
+          el.removeAttribute('target');
+        });
+        document.querySelectorAll(`[data-contact-text="${attr}"]`).forEach((el) => {
+          const firstChild = el.firstChild;
+          if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
+            firstChild.textContent = text + (el.children.length ? ' ' : '');
+          } else {
+            el.textContent = text;
+          }
+        });
+      });
+
+      // 2. «Живой статус» в шапке по времени Беларуси (Europe/Minsk, ориентир 09:00–20:00)
+      function updateLiveStatus() {
+        let minskHour = 12;
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            hour: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+          const hourPart = parts.find((p) => p.type === 'hour');
+          if (hourPart) {
+            minskHour = parseInt(hourPart.value, 10) % 24;
+          }
+        } catch (_) {}
+
+        const openHour = SITE_CONFIG.workHours.open;
+        const closeHour = SITE_CONFIG.workHours.close;
+        const isOpen = minskHour >= openHour && minskHour < closeHour;
+
+        document.querySelectorAll('[data-live-dot]').forEach((dot) => {
+          dot.classList.toggle('bg-brand-green', isOpen);
+          dot.classList.toggle('bg-amber-600', !isOpen);
+        });
+        document.querySelectorAll('[data-live-text]').forEach((label) => {
+          label.textContent = isOpen ? 'Открыто сейчас' : `Ответим с 0${openHour}:00`;
+        });
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+      const burgerIconOpen = document.getElementById('burgerIconOpen');
+      const burgerIconClose = document.getElementById('burgerIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenuPanel || !mobileMenuBtn) return;
+        mobileMenuPanel.classList.toggle('hidden', !open);
+        burgerIconOpen.classList.toggle('hidden', open);
+        burgerIconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenuPanel.classList.contains('hidden'));
+        });
+      }
+
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Интерактивный переключатель светозащиты в панорамной витрине Hero
+      const lightModes = {
+        sheer: {
+          title: 'Тюль и мягкий свет',
+          desc: 'Комфортный рассеянный дневной свет без бликов и визуальный уют',
+          badge: '~15% тени · Мягкий свет',
+          mobileBadge: '· ~15% тени',
+          imgClass: 'w-full h-full object-cover object-center showcase-img showcase-sheer-img',
+          overlayClass: 'absolute inset-0 transition-all duration-700 pointer-events-none light-layer-sheer'
+        },
+        daynight: {
+          title: 'Режим «День-Ночь»',
+          desc: 'Чередование полос плавно дозирует солнце и защищает от взглядов с улицы',
+          badge: '~55% тени · День-Ночь',
+          mobileBadge: '· ~55% тени',
+          imgClass: 'w-full h-full object-cover object-center showcase-img showcase-daynight-img',
+          overlayClass: 'absolute inset-0 transition-all duration-700 pointer-events-none light-layer-daynight'
+        },
+        blackout: {
+          title: '100% Blackout',
+          desc: 'Глубокое затемнение спальни, детской или домашнего кинотеатра даже в полдень',
+          badge: '100% затемнение · Blackout',
+          mobileBadge: '· 100% Blackout',
+          imgClass: 'w-full h-full object-cover object-center showcase-img showcase-blackout-img',
+          overlayClass: 'absolute inset-0 transition-all duration-700 pointer-events-none light-layer-blackout'
+        }
+      };
+
+      const lightSimImage = document.getElementById('lightSimImage');
+      const lightSimOverlay = document.getElementById('lightSimOverlay');
+      const lightSimTitles = document.querySelectorAll('[data-sim-title]');
+      const lightSimDescs = document.querySelectorAll('[data-sim-desc]');
+      const lightSimBadgeText = document.getElementById('lightSimBadgeText');
+      const lightSimBadgeMobile = document.getElementById('lightSimBadgeMobile');
+      const lightModeBtns = document.querySelectorAll('.light-mode-btn');
+
+      lightModeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const modeKey = btn.getAttribute('data-light-mode');
+          const mode = lightModes[modeKey];
+          if (!mode) return;
+
+          lightSimImage.className = mode.imgClass;
+          lightSimOverlay.className = mode.overlayClass;
+          lightSimTitles.forEach((el) => { el.textContent = mode.title; });
+          lightSimDescs.forEach((el) => { el.textContent = mode.desc; });
+          if (lightSimBadgeText) lightSimBadgeText.textContent = mode.badge;
+          if (lightSimBadgeMobile) lightSimBadgeMobile.textContent = mode.mobileBadge.replace(/^·\s*/, '');
+
+          lightModeBtns.forEach((b) => {
+            const active = b.getAttribute('data-light-mode') === modeKey;
+            b.classList.toggle('bg-brand-graphite', active);
+            b.classList.toggle('text-white', active);
+            b.classList.toggle('text-brand-graphite', !active);
+            b.classList.toggle('hover:bg-white/80', !active);
+          });
+        });
+      });
+
+      // 5. Фильтрация каталога
+      const catalogTabs = document.querySelectorAll('.catalog-tab');
+      const catalogCards = document.querySelectorAll('#catalogGrid [data-category]');
+
+      catalogTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+
+          catalogTabs.forEach((t) => {
+            const active = t === tab;
+            t.setAttribute('aria-selected', String(active));
+            t.classList.toggle('border-brand-green', active);
+            t.classList.toggle('text-brand-graphite', active);
+            t.classList.toggle('font-semibold', active);
+            t.classList.toggle('border-transparent', !active);
+            t.classList.toggle('text-brand-muted', !active);
+            t.classList.toggle('font-medium', !active);
+          });
+
+          catalogCards.forEach((card) => {
+            const show = filter === 'all' || card.getAttribute('data-category') === filter;
+            card.classList.toggle('hidden', !show);
+          });
+        });
+      });
+
+      // 6. Лёгкий мини-интерактив за 2 клика + синхронизация с формой и карточками каталога
+      const leadSystemInput = document.getElementById('leadSystem');
+      const leadPlaceInput = document.getElementById('leadPlace');
+      const pickerSummary = document.getElementById('pickerSummary');
+      const systemBtns = document.querySelectorAll('.pick-system-btn');
+      const placeBtns = document.querySelectorAll('.pick-place-btn');
+      const formSection = document.getElementById('request-form');
+
+      function updatePickerSummary() {
+        if (pickerSummary && leadSystemInput && leadPlaceInput) {
+          pickerSummary.textContent = `Выбрано: ${leadSystemInput.value} · ${leadPlaceInput.value}`;
+        }
+      }
+
+      function selectSystem(value) {
+        if (!leadSystemInput) return;
+        leadSystemInput.value = value;
+        systemBtns.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-system') === value;
+          btn.classList.toggle('bg-brand-graphite', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('border-brand-graphite', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('bg-white', !active);
+          btn.classList.toggle('text-brand-graphite', !active);
+          btn.classList.toggle('border-brand-graphite/15', !active);
+          btn.classList.toggle('font-medium', !active);
+        });
+        updatePickerSummary();
+      }
+
+      function selectPlace(value) {
+        if (!leadPlaceInput) return;
+        leadPlaceInput.value = value;
+        placeBtns.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-place') === value;
+          btn.classList.toggle('bg-brand-green', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('border-brand-green', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('bg-white', !active);
+          btn.classList.toggle('text-brand-graphite', !active);
+          btn.classList.toggle('border-brand-graphite/15', !active);
+          btn.classList.toggle('font-medium', !active);
+        });
+        updatePickerSummary();
+      }
+
+      systemBtns.forEach((btn) => {
+        btn.addEventListener('click', () => selectSystem(btn.getAttribute('data-pick-system')));
+      });
+
+      placeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => selectPlace(btn.getAttribute('data-pick-place')));
+      });
+
+      document.querySelectorAll('[data-select-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-select-service');
+          if (val) selectSystem(val);
+          if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // 7. Минимальная дата замера = сегодня
+      const dateInput = document.getElementById('leadDate');
+      if (dateInput) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // 8. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllModals();
+          setMobileMenu(false);
+        }
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Фото интерьера';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 9. Cookie-баннер и автоматическое скрытие мобильного стеклянного дока, пока открыт баннер
+      const COOKIE_KEY = 'blackout_brest_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 10. Валидация и отправка формы записи на замер (Google Apps Script / Демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        // Проверка honeypot
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const systemVal = leadSystemInput.value;
+        const placeVal = leadPlaceInput.value;
+        const dateVal = document.getElementById('leadDate').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Телефон';
+        const commentVal = document.getElementById('leadComment').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'Салон штор «Blackout» (Брест)',
+          name: nameVal,
+          phone: phoneVal,
+          system: systemVal,
+          place: placeVal,
+          date: dateVal || 'Не указана',
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+              throw new Error('Ошибка сервера при отправке заявки');
+            }
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили вашу заявку. Специалист салона «Blackout» свяжется с вами в ближайшее рабочее время.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения вашего Telegram-бота заявка будет мгновенно приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Система: ${payload.system}\n` +
+              `Объект: ${payload.place}\n` +
+              `Удобная дата: ${payload.date}\n` +
+              `Способ связи: ${payload.contactMethod}\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          selectSystem('Рольшторы / День-Ночь');
+          selectPlace('Квартира / дом');
+          openModal(modalSuccess);
+        } catch (err) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните нам напрямую или напишите в Viber.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Пригласить замерщика с образцами';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

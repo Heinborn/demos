@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клининговая компания «7 Гномов» — Уборка квартир, домов и офисов в Гродно и области</title>
+  <meta name="description" content="Клининговая компания «7 Гномов» в Гродно и Гродненской области с 2014 года: поддерживающая и генеральная уборка, уборка после ремонта, мойка окон пароочистителем и химчистка мебели экстрактором Sabrina SW 15. Бесплатный выезд менеджера." />
+
+  <!-- Google Fonts: Golos Text & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Golos Text', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              mint: '#F7FCFB',
+              mintSoft: '#EAF7F4',
+              teal: '#29C4A9',
+              tealDark: '#199781',
+              aqua: '#7EBEC5',
+              orange: '#FE5A13',
+              orangeHover: '#E04A09',
+              navy: '#1E2E3E',
+              navyDeep: '#13202C',
+              slate: '#526577',
+            },
+            viber: '#7360F2',
+            telegram: '#229ED9',
+            whatsapp: '#25D366',
+          },
+          boxShadow: {
+            nordic: '0 24px 60px -24px rgba(30, 46, 62, 0.16)',
+            card: '0 6px 24px -8px rgba(30, 46, 62, 0.08)',
+            dock: '0 10px 32px -6px rgba(19, 32, 44, 0.18)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E2E3E;
+      background-color: #FFFFFF;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Golos Text', system-ui, sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    .nordic-grid-bg {
+      background-image:
+        radial-gradient(circle at 18% 12%, rgba(41, 196, 169, 0.09), transparent 42%),
+        radial-gradient(circle at 82% 8%, rgba(254, 90, 19, 0.06), transparent 38%),
+        linear-gradient(180deg, #F7FCFB 0%, #F7FCFB 68%, #FFFFFF 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-brand-navy antialiased selection:bg-brand-teal selection:text-white">
+
+  <!-- ==================== ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если оставить пустым "", форма работает в безопасном демонстрационном режиме.
+      googleScriptUrl: '',
+      companyName: 'Клининговая компания «7 Гномов»',
+      city: 'г. Гродно и Гродненская область',
+      address: 'г. Гродно, ул. Дзержинского, 129-57',
+      displayPhone: '+375 (29) 782-41-80',
+      telHref: 'tel:+375297824180',
+      viberPhone: '+375297824180',
+      telegramUsername: 'MarusyaAvhim',
+      whatsappPhone: '375297824180',
+      instagramUrl: 'https://www.instagram.com/cleaning_7_gnomov/',
+      email: '77gnomov@inbox.ru',
+      // Ориентировочные часы приёма заявок по времени Минска (уточняется при запуске)
+      workHours: { start: 9, end: 20, timezone: 'Europe/Minsk' }
+    };
+  </script>
+
+  <!-- ==================== 1-СТРОЧНАЯ СВЕТЛАЯ ШАПКА ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-teal-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-[64px] lg:h-[68px] flex items-center justify-between gap-2.5 lg:gap-3 xl:gap-4">
+        <!-- Логотип -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0 group whitespace-nowrap">
+          <span class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-brand-teal to-brand-tealDark flex items-center justify-center shadow-sm shadow-teal-600/20 group-hover:scale-105 transition">
+            <span class="font-display font-extrabold text-lg text-white leading-none">7</span>
+            <svg class="w-3 h-3 text-brand-orange absolute -top-1 -right-1 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1l2.8 7.2L22 11l-7.2 2.8L12 21l-2.8-7.2L2 11l7.2-2.8L12 1z" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display font-extrabold text-[17px] tracking-tight text-brand-navy whitespace-nowrap">7 Гномов</span>
+            <span class="text-[11px] font-medium text-brand-slate mt-0.5 whitespace-nowrap">Клининг · Гродно</span>
+          </span>
+        </a>
+
+        <!-- Десктоп-навигация: 5 коротких 1-словных пунктов, строго в 1 строку -->
+        <nav aria-label="Основная навигация" class="hidden lg:flex items-center gap-5 xl:gap-7 text-[14px] font-medium text-brand-slate">
+          <a href="#services" class="whitespace-nowrap hover:text-brand-tealDark transition">Услуги</a>
+          <a href="#pricing" class="whitespace-nowrap hover:text-brand-tealDark transition">Цены</a>
+          <a href="#checklist" class="whitespace-nowrap hover:text-brand-tealDark transition">Чек-лист</a>
+          <a href="#faq" class="whitespace-nowrap hover:text-brand-tealDark transition">Вопросы</a>
+          <a href="#contacts" class="whitespace-nowrap hover:text-brand-tealDark transition">Контакты</a>
+        </nav>
+
+        <!-- Правая группа: Живой статус + Неразрывный телефон + Монохромные иконки + CTA -->
+        <div class="flex items-center gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
+          <!-- Живой статус по времени Минска (ориентир 09:00–20:00) -->
+          <div
+            data-live-status
+            title="Ориентир 09:00–20:00 по времени Минска (точный график уточняется при запуске)"
+            class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-mint border border-teal-900/10 text-[12px] font-medium text-brand-navy whitespace-nowrap shrink-0"
+          >
+            <span data-status-dot class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+            <span data-status-text class="whitespace-nowrap">Открыто сейчас</span>
+          </div>
+
+          <!-- Компактный живой статус для мобилки -->
+          <div
+            data-live-status
+            title="Ориентир 09:00–20:00 по времени Минска (уточняется)"
+            class="inline-flex lg:hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-mint border border-teal-900/10 text-[11px] font-medium text-brand-navy whitespace-nowrap shrink-0"
+          >
+            <span data-status-dot class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+            <span data-status-short class="whitespace-nowrap">Открыто</span>
+          </div>
+
+          <!-- Неразрывный номер телефона (без target="_blank") -->
+          <a
+            data-contact="phone"
+            data-contact-text="phone"
+            href="tel:+375297824180"
+            class="hidden md:inline-flex items-center font-display font-bold text-[14px] xl:text-[15px] text-brand-navy hover:text-brand-orange transition whitespace-nowrap shrink-0 tabular-nums"
+          >+375 (29) 782-41-80</a>
+
+          <!-- Аккуратные монохромные иконки Viber и Telegram в бирюзово-сланцевой палитре -->
+          <div class="hidden lg:flex items-center gap-1.5 shrink-0">
+            <a
+              data-contact="viber"
+              href="viber://chat?number=%2B375297824180"
+              aria-label="Написать в Viber"
+              title="Написать в Viber"
+              class="w-9 h-9 rounded-full bg-brand-mint border border-teal-900/10 text-brand-navy hover:bg-brand-mintSoft hover:border-brand-teal hover:text-brand-tealDark flex items-center justify-center transition shrink-0"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+              </svg>
+            </a>
+            <a
+              data-contact="telegram"
+              href="https://t.me/MarusyaAvhim"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Написать в Telegram"
+              title="Написать в Telegram"
+              class="w-9 h-9 rounded-full bg-brand-mint border border-teal-900/10 text-brand-navy hover:bg-brand-mintSoft hover:border-brand-teal hover:text-brand-tealDark flex items-center justify-center transition shrink-0"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Оранжевая CTA-кнопка -->
+          <a
+            href="#quick-pick"
+            class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white text-[13px] xl:text-[14px] font-semibold shadow-sm shadow-orange-500/20 transition whitespace-nowrap shrink-0"
+          >Заказать</a>
+
+          <!-- Бургер для мобильных -->
+          <button
+            type="button"
+            id="mobileMenuBtn"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-teal-900/15 bg-brand-mint text-brand-navy hover:bg-brand-mintSoft transition shrink-0"
+          >
+            <svg id="menuIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menuIconClose" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное меню -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-teal-900/10 bg-white px-4 pt-3 pb-5 shadow-xl">
+      <nav class="flex flex-col space-y-1 text-sm font-semibold text-brand-navy">
+        <a href="#services" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Услуги</a>
+        <a href="#pricing" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Цены</a>
+        <a href="#checklist" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Чек-лист уборки</a>
+        <a href="#quick-pick" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Подобрать за 2 клика</a>
+        <a href="#faq" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Вопросы</a>
+        <a href="#contacts" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-brand-mint">Контакты</a>
+      </nav>
+      <div class="mt-4 pt-4 border-t border-slate-100 space-y-2.5">
+        <div class="text-[11px] text-brand-slate text-center">Ориентир работы: 09:00–20:00 (точный график уточняется)</div>
+        <a data-contact="phone" data-contact-text="phone" href="tel:+375297824180" class="block text-center py-2.5 rounded-xl bg-brand-mint border border-teal-900/10 font-display font-bold text-brand-navy tabular-nums">+375 (29) 782-41-80</a>
+        <div class="grid grid-cols-2 gap-2">
+          <a data-contact="viber" href="viber://chat?number=%2B375297824180" class="py-2.5 rounded-xl bg-viber text-white text-center text-xs font-semibold">Viber</a>
+          <a data-contact="telegram" href="https://t.me/MarusyaAvhim" target="_blank" rel="noopener noreferrer" class="py-2.5 rounded-xl bg-telegram text-white text-center text-xs font-semibold">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== ЦЕНТРИРОВАННЫЙ NORDIC CLEAN HERO + ПАНОРАМА ИНТЕРЬЕРА ==================== -->
+    <section class="nordic-grid-bg pt-6 pb-12 sm:pt-8 sm:pb-14 lg:pt-8 lg:pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Верхняя центрированная типографика -->
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="inline-flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] text-brand-tealDark">
+            <span>С 2014 года в Гродно и области</span>
+            <span class="w-1 h-1 rounded-full bg-brand-teal" aria-hidden="true"></span>
+            <span>2000+ объектов</span>
+          </p>
+
+          <h1 class="mt-3 font-display font-extrabold text-[28px] sm:text-[42px] lg:text-[50px] leading-[1.08] tracking-[-0.025em] text-brand-navy">
+            Сказочная чистота в доме — <br class="hidden sm:inline" /><span class="text-brand-tealDark">без траты выходных</span>
+          </h1>
+
+          <p class="mt-3.5 text-[14px] sm:text-[16px] text-brand-slate leading-relaxed max-w-2xl mx-auto">
+            Уборка квартир, коттеджей и офисов в Гродно и области: поддерживающая, генеральная, после ремонта, мойка окон пароочистителем и химчистка мебели экстрактором Sabrina&nbsp;SW&nbsp;15.
+          </p>
+
+          <!-- Две кнопки по центру -->
+          <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3">
+            <a
+              href="#quick-pick"
+              class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-semibold text-sm sm:text-[15px] shadow-lg shadow-orange-500/20 transition"
+            >
+              <span>Подобрать уборку за 2 клика</span>
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            <a
+              data-contact="telegram"
+              href="https://t.me/MarusyaAvhim"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-brand-mint border border-slate-300 hover:border-brand-teal text-brand-navy font-semibold text-sm sm:text-[15px] transition"
+            >
+              <svg class="w-4 h-4 text-brand-tealDark shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+              </svg>
+              <span>Написать в Telegram</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Широкая полноширинная панорама сияющей квартиры -->
+        <div class="mt-6 sm:mt-7 relative rounded-[24px] sm:rounded-[32px] overflow-hidden border border-teal-900/10 shadow-nordic bg-slate-100">
+          <div class="relative h-[200px] sm:h-[310px] lg:h-[355px] w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85"
+              alt="Сияющая светлая гостиная и кухня после клининга «7 Гномов»"
+              class="w-full h-full object-cover object-center"
+            />
+            <!-- Мягкое затемнение нижней кромки только на планшете/десктопе -->
+            <div class="hidden sm:block pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navyDeep/40 via-brand-navyDeep/10 to-transparent"></div>
+            <span class="absolute top-3 left-3 sm:top-4 sm:left-4 px-3 py-1 rounded-full bg-brand-navyDeep/70 backdrop-blur-sm text-[11px] font-medium text-white/95">
+              Демо-фото · заменим на ваши
+            </span>
+          </div>
+
+          <!-- Тонкая светло-стеклянная полоса реальных цифр и акции внутри нижней кромки -->
+          <div class="sm:absolute sm:inset-x-4 lg:inset-x-5 sm:bottom-4 bg-white/95 sm:bg-white/90 backdrop-blur-xl border-t sm:border border-teal-900/10 sm:border-white/80 sm:rounded-2xl px-4 py-3 sm:px-5 sm:py-3 shadow-sm">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
+              <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-1 text-[11px] sm:text-[13px]">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5">
+                  <span class="text-brand-slate">Поддерживающая</span>
+                  <strong class="font-display font-bold text-brand-navy tabular-nums">от 95 BYN</strong>
+                </div>
+                <span class="hidden sm:inline text-teal-900/20">·</span>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5">
+                  <span class="text-brand-slate">Генеральная</span>
+                  <strong class="font-display font-bold text-brand-navy tabular-nums">от 260 BYN</strong>
+                </div>
+                <span class="hidden sm:inline text-teal-900/20">·</span>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-1.5">
+                  <span class="text-brand-slate">Химчистка</span>
+                  <strong class="font-display font-bold text-brand-navy tabular-nums">от 70 BYN</strong>
+                </div>
+              </div>
+
+              <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 border border-orange-200/80 text-[11px] sm:text-xs font-semibold text-brand-navy shrink-0">
+                <span aria-hidden="true">🎁</span>
+                <span>Микроволновка в подарок к генеральной с окнами</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Сдержанная архитектурная полоса проверенных фактов -->
+        <div class="mt-8 sm:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div class="rounded-2xl bg-white border border-teal-900/10 px-4 py-4 sm:px-5">
+            <div class="font-display font-extrabold text-xl sm:text-2xl text-brand-tealDark tabular-nums">с 2014 года</div>
+            <p class="mt-1 text-xs sm:text-[13px] text-brand-slate leading-snug">работаем в Гродно и Гродненской области</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-teal-900/10 px-4 py-4 sm:px-5">
+            <div class="font-display font-extrabold text-xl sm:text-2xl text-brand-navy tabular-nums">2000+</div>
+            <p class="mt-1 text-xs sm:text-[13px] text-brand-slate leading-snug">убранных квартир, коттеджей и офисов</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-teal-900/10 px-4 py-4 sm:px-5">
+            <div class="font-display font-extrabold text-xl sm:text-2xl text-brand-orange tabular-nums">0 BYN</div>
+            <p class="mt-1 text-xs sm:text-[13px] text-brand-slate leading-snug">бесплатный выезд менеджера на оценку</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-teal-900/10 px-4 py-4 sm:px-5">
+            <div class="font-display font-extrabold text-xl sm:text-2xl text-brand-navy">Нал / безнал</div>
+            <p class="mt-1 text-xs sm:text-[13px] text-brand-slate leading-snug">физ. и юр. лица · гарантия сохранности имущества</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== УСЛУГИ И РЕАЛЬНЫЕ АКЦИИ ==================== -->
+    <section id="services" class="py-14 sm:py-20 bg-white border-t border-teal-900/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Направления работы</p>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[38px] leading-tight text-brand-navy">
+              Все виды клининга в одном месте
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-brand-slate">
+              Приезжаем со своим профессиональным оборудованием и безопасной европейской химией. Работаем аккуратно и по заранее согласованному объёму.
+            </p>
+          </div>
+          <a href="#pricing" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover shrink-0 whitespace-nowrap">
+            Смотреть полный прайс →
+          </a>
+        </div>
+
+        <div class="mt-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 1. Генеральная уборка -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80" alt="Генеральная уборка квартир и коттеджей в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm tabular-nums">от 260 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Генеральная уборка</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Глубокая уборка от потолка до плинтусов: фасады кухни и техника снаружи, удаление налёта и водного камня в санузле, полировка зеркал, радиаторы и двери.
+              </p>
+              <button type="button" data-pick-service="Генеральная (от 260 BYN)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Выбрать генеральную →
+              </button>
+            </div>
+          </article>
+
+          <!-- 2. Поддерживающая уборка -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Поддерживающая уборка квартиры в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm tabular-nums">95–140 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Поддерживающая уборка</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Регулярное поддержание свежести за 2–3 часа: сухая и влажная уборка, пыль на высоте до 1,8 м, зеркала, рабочие поверхности кухни и дезинфекция сантехники.
+              </p>
+              <button type="button" data-pick-service="Поддерживающая (от 95 BYN)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Выбрать поддерживающую →
+              </button>
+            </div>
+          </article>
+
+          <!-- 3. После ремонта -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Уборка после ремонта и строительства в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm tabular-nums">5–10 BYN / м²</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Уборка после ремонта</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Удаляем строительную пыль, следы цементного клея, фуги, грунтовки и краски со стен, полов, плитки, окон и сантехники. Бесплатный выезд менеджера на оценку.
+              </p>
+              <button type="button" data-pick-service="После ремонта (5–10 BYN/м²)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Оценить после ремонта →
+              </button>
+            </div>
+          </article>
+
+          <!-- 4. Мойка окон -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" alt="Профессиональная мойка окон пароочистителем в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm tabular-nums">10–55 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Мойка окон и лоджий</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Моем стёкла без разводов, очищаем рамы, откосы и труднодоступные стыки пароочистителем, снимаем строительную плёнку. Мин. отдельный заказ — 60 BYN.
+              </p>
+              <button type="button" data-pick-service="Мойка окон (от 10 BYN)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Заказать мойку окон →
+              </button>
+            </div>
+          </article>
+
+          <!-- 5. Химчистка мягкой мебели -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80" alt="Химчистка мягкой мебели и диванов в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm tabular-nums">диван 50–90 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Химчистка мягкой мебели</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Выездная глубинная чистка диванов, кресел, матрасов и ковролина итальянским экстрактором Sabrina SW 15 с химией Chemspec и Global Pro. Мин. выезд — 70 BYN.
+              </p>
+              <button type="button" data-pick-service="Химчистка мебели (от 50 BYN)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Заказать химчистку →
+              </button>
+            </div>
+          </article>
+
+          <!-- 6. Офисы и коммерция -->
+          <article class="group bg-white rounded-3xl border border-teal-900/10 overflow-hidden shadow-card hover:border-brand-teal/70 transition flex flex-col">
+            <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" alt="Уборка офисов, магазинов и кафе в Гродно" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-navyDeep/70 text-[10px] font-medium text-white">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 text-xs font-bold text-brand-navy shadow-sm">Юр. лица · Безнал</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-bold text-xl text-brand-navy">Офисы, магазины и кафе</h3>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed flex-1">
+                Разовая, генеральная, послестроительная и постоянная уборка офисов, магазинов, складов, кафе и ресторанов. Договор, наличный и безналичный расчёт.
+              </p>
+              <button type="button" data-pick-service="Офис / коммерция" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:text-brand-orangeHover">
+                Запросить расчёт →
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- 2 реальные акции со старого сайта -->
+        <div class="mt-9 grid md:grid-cols-2 gap-5">
+          <div class="rounded-3xl bg-brand-mint border border-brand-teal/30 p-6 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-teal text-white flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-tealDark">Подарок к заказу</span>
+              <h3 class="font-display font-bold text-lg text-brand-navy mt-0.5">Микроволновка в подарок</h3>
+              <p class="mt-1 text-sm text-brand-slate leading-relaxed">
+                При заказе генеральной уборки вместе с мойкой окон — тщательно вымоем микроволновую печь внутри бесплатно.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-orange-50/70 border border-orange-200/80 p-6 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center shrink-0 font-display font-extrabold text-sm">
+              −20%
+            </div>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-orange">Спецпредложение</span>
+              <h3 class="font-display font-bold text-lg text-brand-navy mt-0.5">Пакет «Идеальная кухня» −20%</h3>
+              <p class="mt-1 text-sm text-brand-slate leading-relaxed">
+                Генеральная уборка кухни + мойка бытовой техники + мойка кухонных шкафчиков внутри — со скидкой 20%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== АДАПТИВНЫЙ ПРАЙС-ЛИСТ (БЕЗ СДВИГА ТАБЛИЦ НА 390px) ==================== -->
+    <section id="pricing" class="py-14 sm:py-20 bg-brand-mint border-y border-teal-900/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Актуальные цены в BYN</p>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[38px] leading-tight text-brand-navy">
+              Открытый прайс-лист — удобно читать даже с телефона
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-brand-slate">
+              Реальные расценки «7 Гномов» по категориям. Минимальная сумма выезда: уборка — 100 BYN, химчистка — 70 BYN, мойка окон отдельно — 60 BYN.
+            </p>
+          </div>
+
+          <!-- Переключатель вкладок прайса -->
+          <div class="flex flex-wrap gap-2" role="tablist">
+            <button type="button" data-price-tab="apartments" class="price-tab-btn px-4 py-2.5 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-semibold transition">Квартиры и дома</button>
+            <button type="button" data-price-tab="windows" class="price-tab-btn px-4 py-2.5 rounded-full bg-white border border-teal-900/15 hover:border-brand-teal text-brand-navy text-xs sm:text-sm font-semibold transition">Мойка окон</button>
+            <button type="button" data-price-tab="dryclean" class="price-tab-btn px-4 py-2.5 rounded-full bg-white border border-teal-900/15 hover:border-brand-teal text-brand-navy text-xs sm:text-sm font-semibold transition">Химчистка</button>
+            <button type="button" data-price-tab="extras" class="price-tab-btn px-4 py-2.5 rounded-full bg-white border border-teal-900/15 hover:border-brand-teal text-brand-navy text-xs sm:text-sm font-semibold transition">Доп. услуги</button>
+          </div>
+        </div>
+
+        <!-- Вкладка 1: Квартиры и дома -->
+        <div id="pricePanel-apartments" class="price-panel mt-8 grid lg:grid-cols-3 gap-6">
+          <!-- Генеральная -->
+          <div class="rounded-3xl bg-white border-2 border-brand-teal/40 p-6 shadow-card flex flex-col">
+            <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-100">
+              <h3 class="font-display font-bold text-lg text-brand-navy">Генеральная уборка</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-brand-mintSoft text-brand-tealDark text-[11px] font-bold">Популярно</span>
+            </div>
+            <div class="divide-y divide-slate-100 text-sm flex-1 mt-1">
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">1-комн. (30–40 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">от 260 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">2-комн. (40–60 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">от 300 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">3-комн. (50–80 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">от 340 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">4-комн. (до 90 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">от 380 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">Коттедж до 110 м²</span><strong class="text-brand-navy tabular-nums shrink-0">от 500 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">Коттедж от 110 м²</span><strong class="text-brand-navy tabular-nums shrink-0">от 4,5 BYN/м²</strong></div>
+            </div>
+            <button type="button" data-pick-service="Генеральная (от 260 BYN)" class="mt-5 w-full py-3 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white text-sm font-semibold transition">Выбрать генеральную</button>
+          </div>
+
+          <!-- Поддерживающая -->
+          <div class="rounded-3xl bg-white border border-teal-900/10 p-6 shadow-card flex flex-col">
+            <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-100">
+              <h3 class="font-display font-bold text-lg text-brand-navy">Поддерживающая</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-brand-slate text-[11px] font-semibold">2–3 часа</span>
+            </div>
+            <div class="divide-y divide-slate-100 text-sm flex-1 mt-1">
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">1-комн. (30–40 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">95 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">2-комн. (40–60 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">110 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">3-комн. (60–80 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">125 BYN</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">4-комн. (80–100 м²)</span><strong class="text-brand-navy tabular-nums shrink-0">140 BYN</strong></div>
+            </div>
+            <p class="mt-4 text-xs text-brand-slate leading-relaxed">Рекомендуется после генеральной уборки. Минимальный выезд на уборку — 100 BYN.</p>
+            <button type="button" data-pick-service="Поддерживающая (от 95 BYN)" class="mt-4 w-full py-3 rounded-full bg-brand-navy hover:bg-brand-navyDeep text-white text-sm font-semibold transition">Выбрать поддерживающую</button>
+          </div>
+
+          <!-- После ремонта и офисы -->
+          <div class="rounded-3xl bg-white border border-teal-900/10 p-6 shadow-card flex flex-col">
+            <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-100">
+              <h3 class="font-display font-bold text-lg text-brand-navy">После ремонта и офисы</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-orange-50 text-brand-orange text-[11px] font-semibold">По осмотру</span>
+            </div>
+            <div class="divide-y divide-slate-100 text-sm flex-1 mt-1">
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">После строительства / ремонта</span><strong class="text-brand-navy tabular-nums shrink-0">5–10 BYN/м²</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">Офисы, магазины, склады</span><strong class="text-brand-navy shrink-0">По расчёту</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">Кафе и рестораны</span><strong class="text-brand-navy shrink-0">По расчёту</strong></div>
+              <div class="py-3 flex items-center justify-between gap-3"><span class="text-brand-slate">Выезд менеджера на осмотр</span><strong class="text-brand-tealDark shrink-0">Бесплатно</strong></div>
+            </div>
+            <p class="mt-4 text-xs text-brand-slate leading-relaxed">Стоимость зависит от площади, степени загрязнения, числа санузлов и высоты потолков.</p>
+            <button type="button" data-pick-service="После ремонта (5–10 BYN/м²)" class="mt-4 w-full py-3 rounded-full bg-brand-navy hover:bg-brand-navyDeep text-white text-sm font-semibold transition">Пригласить менеджера</button>
+          </div>
+        </div>
+
+        <!-- Вкладка 2: Мойка окон (адаптивные карточки-строки без сдвига на 390px) -->
+        <div id="pricePanel-windows" class="price-panel hidden mt-8 bg-white rounded-3xl border border-teal-900/10 p-5 sm:p-7 shadow-card">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100">
+            <h3 class="font-display font-bold text-lg text-brand-navy">Сезонная мойка окон и лоджий</h3>
+            <span class="text-xs text-brand-slate">Минимальный отдельный заказ: <strong class="text-brand-navy">60 BYN</strong></span>
+          </div>
+
+          <div class="hidden sm:grid grid-cols-12 gap-3 py-3 border-b border-slate-100 text-xs font-bold uppercase tracking-wider text-slate-400">
+            <div class="col-span-6">Вид окна</div>
+            <div class="col-span-3 text-right">С генеральной</div>
+            <div class="col-span-3 text-right">Отдельно</div>
+          </div>
+
+          <div class="divide-y divide-slate-100 text-sm">
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Окно стандартное 1-створчатое</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">10 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">15 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Балконная дверь</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">20 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">25 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Окно 2-створчатое</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">20 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">30 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Окно 3-створчатое</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">30 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">45 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Окно 2-ств. с балконной дверью</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">40 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">55 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Лоджия (за 1 створку)</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">от 15 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">20 BYN</strong></div>
+              </div>
+            </div>
+
+            <div class="py-3.5 flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:items-center">
+              <div class="sm:col-span-6 font-medium text-brand-navy">Жалюзи (1 шт. на 1 створке)</div>
+              <div class="sm:col-span-6 grid grid-cols-2 gap-2 sm:gap-3">
+                <div class="flex items-center justify-between sm:justify-end bg-brand-mint sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">С генеральной</span><strong class="text-brand-tealDark tabular-nums">5–10 BYN</strong></div>
+                <div class="flex items-center justify-between sm:justify-end bg-slate-50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-xl"><span class="sm:hidden text-xs text-brand-slate">Отдельно</span><strong class="text-brand-navy tabular-nums">5–10 BYN</strong></div>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-xs text-brand-slate">Послестроительные загрязнения и снятие защитной плёнки рассчитываются с коэффициентом 1,3–3.</p>
+        </div>
+
+        <!-- Вкладка 3: Химчистка -->
+        <div id="pricePanel-dryclean" class="price-panel hidden mt-8 bg-white rounded-3xl border border-teal-900/10 p-5 sm:p-7 shadow-card">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100">
+            <h3 class="font-display font-bold text-lg text-brand-navy">Химчистка мягкой мебели и ковролина</h3>
+            <span class="text-xs text-brand-slate">Минимальный заказ: <strong class="text-brand-navy">70 BYN</strong></span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-x-10 text-sm">
+            <div class="divide-y divide-slate-100">
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Пуфик</span><strong class="text-brand-navy tabular-nums shrink-0">10–15 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Стул</span><strong class="text-brand-navy tabular-nums shrink-0">10–15 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Кресло</span><strong class="text-brand-navy tabular-nums shrink-0">30 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Кухонный уголок</span><strong class="text-brand-navy tabular-nums shrink-0">30–40 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Диван 2-местный</span><strong class="text-brand-navy tabular-nums shrink-0">50 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Диван 3-местный</span><strong class="text-brand-navy tabular-nums shrink-0">70 BYN</strong></div>
+            </div>
+            <div class="divide-y divide-slate-100 border-t md:border-t-0 border-slate-100">
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Диван угловой 4-местный</span><strong class="text-brand-navy tabular-nums shrink-0">80 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Диван угловой 5-местный</span><strong class="text-brand-navy tabular-nums shrink-0">90 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Матрас (1 сторона, 1 место)</span><strong class="text-brand-navy tabular-nums shrink-0">25 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Матрас 2-спальный с 2 сторон</span><strong class="text-brand-navy tabular-nums shrink-0">80 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Ковролин</span><strong class="text-brand-navy tabular-nums shrink-0">от 10 BYN/м²</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Удаление запаха / мочи (за ед.)</span><strong class="text-brand-navy tabular-nums shrink-0">20–30 BYN</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка 4: Дополнительные услуги -->
+        <div id="pricePanel-extras" class="price-panel hidden mt-8 bg-white rounded-3xl border border-teal-900/10 p-5 sm:p-7 shadow-card">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100">
+            <h3 class="font-display font-bold text-lg text-brand-navy">Дополнительные услуги</h3>
+            <span class="text-xs text-brand-slate">К основному заказу или отдельно</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-x-10 text-sm">
+            <div class="divide-y divide-slate-100">
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Генеральная уборка кухни отдельно</span><strong class="text-brand-navy tabular-nums shrink-0">от 150 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Генеральная уборка санузла отдельно</span><strong class="text-brand-navy tabular-nums shrink-0">от 120 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мойка холодильника внутри</span><strong class="text-brand-navy tabular-nums shrink-0">50 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мойка духовки / гриля внутри</span><strong class="text-brand-navy tabular-nums shrink-0">50 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мойка вытяжки</span><strong class="text-brand-navy tabular-nums shrink-0">35 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мойка микроволновки внутри</span><strong class="text-brand-navy tabular-nums shrink-0">15 BYN</strong></div>
+            </div>
+            <div class="divide-y divide-slate-100 border-t md:border-t-0 border-slate-100">
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Кухонные шкафчики внутри (1 шт.)</span><strong class="text-brand-navy tabular-nums shrink-0">от 5 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мытьё посуды (за час)</span><strong class="text-brand-navy tabular-nums shrink-0">15–20 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Глажка белья (за час)</span><strong class="text-brand-navy tabular-nums shrink-0">20 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Мойка натяжных потолков (1 шт.)</span><strong class="text-brand-navy tabular-nums shrink-0">от 20 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Снять и повесить тюль и шторы</span><strong class="text-brand-navy tabular-nums shrink-0">10 BYN</strong></div>
+              <div class="py-3 flex justify-between gap-3"><span class="text-brand-slate">Замена постельного / мойка лотка</span><strong class="text-brand-navy tabular-nums shrink-0">5 BYN</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧЕК-ЛИСТ ПО ЗОНАМ + ЧТО МЫ НЕ ДЕЛАЕМ ==================== -->
+    <section id="checklist" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Честный регламент</p>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[38px] leading-tight text-brand-navy">
+              Что входит в уборку по зонам
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-brand-slate">
+              Переключайте тип уборки и комнату — вы заранее видите точный список работ клинеров.
+            </p>
+          </div>
+
+          <div class="inline-flex flex-wrap p-1 rounded-2xl bg-brand-mint border border-teal-900/10 self-start" role="tablist">
+            <button type="button" data-cl-mode="general" class="cl-mode-btn px-4 py-2 rounded-xl bg-brand-navy text-white text-xs sm:text-sm font-semibold transition">Генеральная</button>
+            <button type="button" data-cl-mode="maintenance" class="cl-mode-btn px-4 py-2 rounded-xl text-brand-slate hover:text-brand-navy text-xs sm:text-sm font-semibold transition">Поддерживающая</button>
+            <button type="button" data-cl-mode="renovation" class="cl-mode-btn px-4 py-2 rounded-xl text-brand-slate hover:text-brand-navy text-xs sm:text-sm font-semibold transition">После ремонта</button>
+          </div>
+        </div>
+
+        <div class="mt-8 grid lg:grid-cols-12 gap-6 items-start">
+          <!-- Зоны -->
+          <div class="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
+            <button type="button" data-cl-zone="rooms" class="cl-zone-btn flex items-center gap-3 p-4 rounded-2xl border-2 border-brand-teal bg-brand-mint text-left transition">
+              <span class="w-10 h-10 rounded-xl bg-white text-brand-tealDark border border-teal-900/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+              </span>
+              <span>
+                <span class="block font-display font-bold text-sm sm:text-base text-brand-navy">Комнаты и коридор</span>
+                <span class="block text-xs text-brand-slate">Полы, мебель, зеркала, двери</span>
+              </span>
+            </button>
+
+            <button type="button" data-cl-zone="kitchen" class="cl-zone-btn flex items-center gap-3 p-4 rounded-2xl border-2 border-transparent bg-slate-50/80 hover:bg-brand-mint/70 text-left transition">
+              <span class="w-10 h-10 rounded-xl bg-white text-brand-orange border border-teal-900/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </span>
+              <span>
+                <span class="block font-display font-bold text-sm sm:text-base text-brand-navy">Кухня</span>
+                <span class="block text-xs text-brand-slate">Гарнитур, плита, рабочие зоны</span>
+              </span>
+            </button>
+
+            <button type="button" data-cl-zone="bathroom" class="cl-zone-btn flex items-center gap-3 p-4 rounded-2xl border-2 border-transparent bg-slate-50/80 hover:bg-brand-mint/70 text-left transition">
+              <span class="w-10 h-10 rounded-xl bg-white text-brand-tealDark border border-teal-900/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              </span>
+              <span>
+                <span class="block font-display font-bold text-sm sm:text-base text-brand-navy">Санузел и ванная</span>
+                <span class="block text-xs text-brand-slate">Сантехника, плитка, налёт</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Содержимое чек-листа -->
+          <div class="lg:col-span-8 bg-brand-mint/60 rounded-3xl border border-teal-900/10 p-6 sm:p-8">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-teal-900/10">
+              <h3 id="clTitle" class="font-display font-bold text-xl text-brand-navy">Комнаты и коридор — Генеральная уборка</h3>
+              <span id="clBadge" class="px-3 py-1 rounded-full bg-white border border-teal-900/10 text-brand-tealDark text-xs font-semibold">От потолка до пола</span>
+            </div>
+            <ul id="clList" class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-brand-navy"></ul>
+            <p id="clFootNote" class="mt-6 pt-4 border-t border-teal-900/10 text-xs text-brand-slate leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Честно заранее: Что мы НЕ делаем -->
+        <div class="mt-8 rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-7">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
+            <div class="md:max-w-xs shrink-0">
+              <span class="inline-block px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-brand-slate text-[11px] font-bold uppercase tracking-wider">Честно заранее</span>
+              <h3 class="mt-2 font-display font-bold text-lg text-brand-navy">Что мы НЕ делаем</h3>
+              <p class="mt-1 text-xs text-brand-slate leading-relaxed">
+                Сразу обозначаем границы ответственности, чтобы в день уборки не было сюрпризов.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2.5 text-xs sm:text-sm text-brand-slate flex-1">
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не двигаем крупную корпусную мебель (мягкую и тумбочки — передвинем)</span></div>
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не разбираем мебель и не снимаем плафоны светильников</span></div>
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не моем розетки внутри, удлинители и вилки электроприборов</span></div>
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не проводим дезинсекцию и строительные / ремонтные работы</span></div>
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не чистим шторы (можем снять и повесить после стирки)</span></div>
+              <div class="flex items-start gap-2"><span class="text-slate-400 font-bold">✕</span><span>Не моем комнатные растения и домашних питомцев</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ОБОРУДОВАНИЕ, ХИМИЯ И ГАЛЕРЕЯ ==================== -->
+    <section id="equipment" class="py-14 sm:py-20 bg-brand-mint border-y border-teal-900/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Профессиональный подход -->
+        <div class="bg-brand-navy text-white rounded-[28px] sm:rounded-[34px] p-6 sm:p-10 overflow-hidden relative">
+          <div class="pointer-events-none absolute -right-20 -top-20 w-72 h-72 rounded-full bg-brand-teal/15 blur-3xl"></div>
+          <div class="relative grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5">
+              <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-teal">Профессиональный арсенал</p>
+              <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl leading-tight">
+                Европейская химия и техника — безопасно для детей и питомцев
+              </h2>
+              <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+                Не используем бытовые средства из масс-маркета. Подбираем гипоаллергенные составы под каждое покрытие и тип обивки без резкого запаха.
+              </p>
+            </div>
+            <div class="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+                <div class="text-brand-teal font-display font-bold text-base">Sabrina SW 15</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Экстрактор · Италия</div>
+                <p class="mt-2.5 text-xs text-slate-300 leading-relaxed">Глубокая промывка мягкой мебели и ковролина под давлением с быстрой сушкой.</p>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+                <div class="text-brand-teal font-display font-bold text-base">Chemspec & Global Pro</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Великобритания · Италия</div>
+                <p class="mt-2.5 text-xs text-slate-300 leading-relaxed">Профессиональные составы против жира, известкового налёта, пятен кофе, вина и следов животных.</p>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+                <div class="text-brand-teal font-display font-bold text-base">Пароочиститель</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Швы, рамы, дезинфекция</div>
+                <p class="mt-2.5 text-xs text-slate-300 leading-relaxed">Вычищаем паром стыки оконных рам, межплиточные швы и труднодоступные зоны без царапин.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Галерея с лайтбоксом -->
+        <div class="mt-12 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Фотогалерея</p>
+            <h2 class="mt-1.5 font-display font-extrabold text-2xl sm:text-3xl text-brand-navy">Атмосфера чистоты после выезда клинеров</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-brand-slate">Демо-фотографии · при запуске заменим на ваши реальные снимки «до и после».</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Сияющий санузел: дезинфекция сантехники, удаление налёта и полировка стёкол (демо-фото)" class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 text-left focus:outline-none focus:ring-2 focus:ring-brand-teal shadow-card">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85" alt="Чистая ванная комната" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-brand-navyDeep/70 text-[10px] text-white">Демо-фото</span>
+            <span class="absolute inset-0 bg-brand-navyDeep/0 group-hover:bg-brand-navyDeep/30 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3.5 py-1.5 rounded-full bg-white text-brand-navy text-xs font-semibold shadow">Увеличить</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Кухня без жира и разводов: фасады, столешницы, плита и вытяжка (демо-фото)" class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 text-left focus:outline-none focus:ring-2 focus:ring-brand-teal shadow-card">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=85" alt="Чистая современная кухня" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-brand-navyDeep/70 text-[10px] text-white">Демо-фото</span>
+            <span class="absolute inset-0 bg-brand-navyDeep/0 group-hover:bg-brand-navyDeep/30 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3.5 py-1.5 rounded-full bg-white text-brand-navy text-xs font-semibold shadow">Увеличить</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Свежая гостиная и чистая мягкая мебель после выездной химчистки (демо-фото)" class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 text-left focus:outline-none focus:ring-2 focus:ring-brand-teal shadow-card">
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=85" alt="Чистая светлая гостиная" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-brand-navyDeep/70 text-[10px] text-white">Демо-фото</span>
+            <span class="absolute inset-0 bg-brand-navyDeep/0 group-hover:bg-brand-navyDeep/30 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3.5 py-1.5 rounded-full bg-white text-brand-navy text-xs font-semibold shadow">Увеличить</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=1200&q=85" data-lightbox-caption="Деликатная обработка поверхностей профессиональными составами (демо-фото)" class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 text-left focus:outline-none focus:ring-2 focus:ring-brand-teal shadow-card">
+            <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=1200&q=85" alt="Профессиональный клининг поверхностей" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-brand-navyDeep/70 text-[10px] text-white">Демо-фото</span>
+            <span class="absolute inset-0 bg-brand-navyDeep/0 group-hover:bg-brand-navyDeep/30 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-3.5 py-1.5 rounded-full bg-white text-brand-navy text-xs font-semibold shadow">Увеличить</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧЕСТНАЯ СТРУКТУРА ОТЗЫВОВ ==================== -->
+    <section id="reviews" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Отзывы клиентов</p>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl text-brand-navy">Живые благодарности жителей Гродно</h2>
+          </div>
+          <a data-contact="instagram" href="https://www.instagram.com/cleaning_7_gnomov/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-brand-mint border border-teal-900/15 hover:border-brand-teal text-xs sm:text-sm font-semibold text-brand-navy transition shrink-0 self-start">
+            Смотреть работы в Instagram (@cleaning_7_gnomov) →
+          </a>
+        </div>
+
+        <div class="mt-7 rounded-3xl border border-dashed border-brand-teal/50 bg-brand-mint/50 p-6 sm:p-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-teal-900/10 text-brand-tealDark text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-teal"></span>
+            Демо-блок · при запуске перенесём ваши реальные отзывы с 7-gnomov.by, Яндекс Карт, Google Карт и Instagram
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="p-5 rounded-2xl bg-white border border-teal-900/10">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-tealDark">Слот отзыва 01</div>
+              <div class="mt-1 font-display font-bold text-base text-brand-navy">Уборка после ремонта</div>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed">
+                Место под реальную благодарность клиента из Гродно или области — без выдуманных оценок и шаблонных звёздочек.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-teal-900/10">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-orange">Слот отзыва 02</div>
+              <div class="mt-1 font-display font-bold text-base text-brand-navy">Генеральная и окна</div>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed">
+                Сюда добавим подтверждённые отзывы и скриншоты переписок из Viber / Telegram / Instagram.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-teal-900/10">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-navy">Слот кейса 03</div>
+              <div class="mt-1 font-display font-bold text-base text-brand-navy">Фото «До / После»</div>
+              <p class="mt-2 text-sm text-brand-slate leading-relaxed">
+                Реальные снимки химчистки диванов экстрактором Sabrina SW 15, чистых кухонь и санузлов.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧАСТЫЕ ВОПРОСЫ (АККОРДЕОН) ==================== -->
+    <section id="faq" class="py-14 sm:py-20 bg-brand-mint border-y border-teal-900/10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Частые вопросы</p>
+          <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[38px] text-brand-navy">
+            Отвечаем честно до выезда бригады
+          </h2>
+        </div>
+
+        <div class="mt-9 space-y-3" id="faqAccordion">
+          <div class="faq-item rounded-2xl border border-teal-900/10 bg-white overflow-hidden">
+            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left font-display font-bold text-base text-brand-navy hover:bg-brand-mint/50 transition" aria-expanded="true">
+              <span>Как узнать точную стоимость моей уборки? Не вырастет ли цена в процессе?</span>
+              <span class="faq-icon w-7 h-7 rounded-full bg-brand-mintSoft text-brand-tealDark flex items-center justify-center shrink-0 font-bold transition-transform rotate-45">+</span>
+            </button>
+            <div class="faq-body px-5 pb-5 text-sm text-brand-slate leading-relaxed">
+              Мы работаем по открытым расценкам сайта. Для сложных объектов (после ремонта, нестандартная отделка, высокие потолки или сильные загрязнения) менеджер <strong>бесплатно выезжает на осмотр</strong> и заранее фиксирует итоговую сумму. Выезд ни к чему не обязывает.
+            </div>
+          </div>
+
+          <div class="faq-item rounded-2xl border border-teal-900/10 bg-white overflow-hidden">
+            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left font-display font-bold text-base text-brand-navy hover:bg-brand-mint/50 transition" aria-expanded="false">
+              <span>Есть ли минимальная сумма заказа?</span>
+              <span class="faq-icon w-7 h-7 rounded-full bg-brand-mintSoft text-brand-tealDark flex items-center justify-center shrink-0 font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-body hidden px-5 pb-5 text-sm text-brand-slate leading-relaxed">
+              Да: минимальная сумма выезда на уборку — <strong>100 BYN</strong>, на химчистку мягкой мебели — <strong>70 BYN</strong>, на отдельную мойку окон — <strong>60 BYN</strong>. При желании заказ всегда можно дополнить чисткой стульев, пуфиков или техникой на кухне.
+            </div>
+          </div>
+
+          <div class="faq-item rounded-2xl border border-teal-900/10 bg-white overflow-hidden">
+            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left font-display font-bold text-base text-brand-navy hover:bg-brand-mint/50 transition" aria-expanded="false">
+              <span>Можно ли оставить ключи и уйти по делам?</span>
+              <span class="faq-icon w-7 h-7 rounded-full bg-brand-mintSoft text-brand-tealDark flex items-center justify-center shrink-0 font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-body hidden px-5 pb-5 text-sm text-brand-slate leading-relaxed">
+              Все наши клинеры трудоустроены официально, и мы гарантируем сохранность вашего имущества. Можно встретиться с менеджером накануне, показать объект и передать ключи — а вернуться уже в чистую квартиру и принять работу.
+            </div>
+          </div>
+
+          <div class="faq-item rounded-2xl border border-teal-900/10 bg-white overflow-hidden">
+            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left font-display font-bold text-base text-brand-navy hover:bg-brand-mint/50 transition" aria-expanded="false">
+              <span>За сколько дней лучше бронировать уборку или химчистку?</span>
+              <span class="faq-icon w-7 h-7 rounded-full bg-brand-mintSoft text-brand-tealDark flex items-center justify-center shrink-0 font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-body hidden px-5 pb-5 text-sm text-brand-slate leading-relaxed">
+              Уборку рекомендуем планировать за несколько дней (а перед крупными праздниками — заранее), хотя иногда есть свободные окна и на завтра. На выездную химчистку диванов часто удаётся записаться в ближайшие 1–2 дня.
+            </div>
+          </div>
+
+          <div class="faq-item rounded-2xl border border-teal-900/10 bg-white overflow-hidden">
+            <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-5 text-left font-display font-bold text-base text-brand-navy hover:bg-brand-mint/50 transition" aria-expanded="false">
+              <span>Что если я замечу недочёт после уборки?</span>
+              <span class="faq-icon w-7 h-7 rounded-full bg-brand-mintSoft text-brand-tealDark flex items-center justify-center shrink-0 font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-body hidden px-5 pb-5 text-sm text-brand-slate leading-relaxed">
+              Вы принимаете работу по факту выполнения — если заметите любой недочёт, клинеры сразу же устраняют его на месте.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЛЁГКИЙ МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ФОРМА ЗАЯВКИ ==================== -->
+    <section id="quick-pick" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-bold uppercase tracking-[0.15em] text-brand-tealDark">Подбор за 2 клика</p>
+          <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[38px] leading-tight text-brand-navy">
+            Выберите вид уборки и помещение — назовём точную цену
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-brand-slate">
+            Без сложных расчётов и длинных анкет: отметьте 2 пункта — выбор сразу подставится в заявку. Для сложных объектов менеджер приедет на осмотр по Гродно бесплатно.
+          </p>
+        </div>
+
+        <div class="mt-8 grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Левая часть: 2 простых шага выбора + прямые мессенджеры -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="rounded-3xl bg-brand-mint border border-teal-900/10 p-5 sm:p-6 space-y-6">
+              <!-- Клик 1: Вид уборки -->
+              <div>
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-tealDark mb-3">
+                  <span class="w-5 h-5 rounded-full bg-brand-teal text-white inline-flex items-center justify-center text-[11px]">1</span>
+                  <span>Выберите вид уборки</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="pickServiceGroup">
+                  <button type="button" data-step1="Поддерживающая (от 95 BYN)" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Поддерживающая <span class="block text-xs font-medium text-brand-slate mt-0.5">от 95 BYN</span>
+                  </button>
+                  <button type="button" data-step1="Генеральная (от 260 BYN)" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-brand-teal bg-brand-mintSoft text-sm font-semibold text-brand-navy transition">
+                    Генеральная <span class="block text-xs font-medium text-brand-tealDark mt-0.5">от 260 BYN</span>
+                  </button>
+                  <button type="button" data-step1="После ремонта (5–10 BYN/м²)" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    После ремонта <span class="block text-xs font-medium text-brand-slate mt-0.5">5–10 BYN/м²</span>
+                  </button>
+                  <button type="button" data-step1="Мойка окон (от 10 BYN)" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Мойка окон <span class="block text-xs font-medium text-brand-slate mt-0.5">от 10 BYN</span>
+                  </button>
+                  <button type="button" data-step1="Химчистка мебели (от 50 BYN)" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Химчистка мебели <span class="block text-xs font-medium text-brand-slate mt-0.5">от 50 BYN</span>
+                  </button>
+                  <button type="button" data-step1="Офис / коммерция" class="step1-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Офис / коммерция <span class="block text-xs font-medium text-brand-slate mt-0.5">нал и безнал</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Клик 2: Формат помещения -->
+              <div>
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-tealDark mb-3">
+                  <span class="w-5 h-5 rounded-full bg-brand-teal text-white inline-flex items-center justify-center text-[11px]">2</span>
+                  <span>Формат помещения</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="pickFormatGroup">
+                  <button type="button" data-step2="1–2 комн. квартира" class="step2-btn text-left px-4 py-3 rounded-2xl border-2 border-brand-teal bg-brand-mintSoft text-sm font-semibold text-brand-navy transition">
+                    1–2 комн. квартира
+                  </button>
+                  <button type="button" data-step2="3+ комн. квартира" class="step2-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    3+ комн. квартира
+                  </button>
+                  <button type="button" data-step2="Частный дом / коттедж" class="step2-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Частный дом / коттедж
+                  </button>
+                  <button type="button" data-step2="Офис / помещение" class="step2-btn text-left px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-teal text-sm font-semibold text-brand-navy transition">
+                    Офис / помещение
+                  </button>
+                </div>
+              </div>
+
+              <!-- Итоговая плашка выбора -->
+              <div class="rounded-2xl bg-white border border-teal-900/10 p-4 flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-brand-slate">Подставлено в заявку</div>
+                  <div id="pickSummaryText" class="mt-0.5 font-display font-bold text-sm sm:text-base text-brand-navy">
+                    Генеральная (от 260 BYN) · 1–2 комн. квартира
+                  </div>
+                </div>
+                <a href="#request-form" class="lg:hidden px-3.5 py-2 rounded-full bg-brand-orange text-white text-xs font-semibold shrink-0">К форме ↓</a>
+              </div>
+            </div>
+
+            <!-- Быстрые мессенджеры в блоке контактов / заявки -->
+            <div class="rounded-3xl bg-slate-50 border border-slate-200/80 p-5 sm:p-6">
+              <div class="text-sm font-semibold text-brand-navy">Удобнее прислать фото объекта напрямую в мессенджер?</div>
+              <div class="mt-3.5 grid grid-cols-3 gap-2.5">
+                <a data-contact="viber" href="viber://chat?number=%2B375297824180" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-viber hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition">
+                  Viber
+                </a>
+                <a data-contact="telegram" href="https://t.me/MarusyaAvhim" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-telegram hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition">
+                  Telegram
+                </a>
+                <a data-contact="whatsapp" href="https://api.whatsapp.com/send?phone=375297824180" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-whatsapp hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition">
+                  WhatsApp
+                </a>
+              </div>
+              <div class="mt-4 pt-3.5 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-sm">
+                <span class="text-brand-slate">Прямой номер:</span>
+                <a data-contact="phone" data-contact-text="phone" href="tel:+375297824180" class="font-display font-bold text-brand-navy hover:text-brand-orange transition tabular-nums">+375 (29) 782-41-80</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая часть: Форма заявки -->
+          <div id="request-form" class="lg:col-span-6 scroll-mt-24">
+            <form id="leadForm" novalidate class="bg-white border border-teal-900/15 rounded-3xl p-6 sm:p-8 shadow-nordic space-y-5">
+              <!-- Honeypot от спама -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Оставьте это поле пустым</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div>
+                <h3 class="font-display font-bold text-xl text-brand-navy">Заявка на точный расчёт</h3>
+                <p class="mt-1 text-xs sm:text-sm text-brand-slate">Ответим и согласуем удобное время выезда.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Ольга" class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (29) 123-45-67" class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadService" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Вид уборки *</label>
+                  <select id="leadService" name="service" required class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition">
+                    <option value="Поддерживающая (от 95 BYN)">Поддерживающая (от 95 BYN)</option>
+                    <option value="Генеральная (от 260 BYN)" selected>Генеральная (от 260 BYN)</option>
+                    <option value="После ремонта (5–10 BYN/м²)">После ремонта (5–10 BYN/м²)</option>
+                    <option value="Мойка окон (от 10 BYN)">Мойка окон (от 10 BYN)</option>
+                    <option value="Химчистка мебели (от 50 BYN)">Химчистка мебели (от 50 BYN)</option>
+                    <option value="Офис / коммерция">Офис / коммерция</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="leadFormat" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Формат помещения</label>
+                  <select id="leadFormat" name="format" class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition">
+                    <option value="1–2 комн. квартира" selected>1–2 комн. квартира</option>
+                    <option value="3+ комн. квартира">3+ комн. квартира</option>
+                    <option value="Частный дом / коттедж">Частный дом / коттедж</option>
+                    <option value="Офис / помещение">Офис / помещение</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadDate" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Желаемая дата</label>
+                  <input type="date" id="leadDate" name="date" class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition" />
+                </div>
+
+                <div>
+                  <span class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Как удобнее ответить</span>
+                  <div class="grid grid-cols-3 gap-1.5">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Звонок" checked class="peer sr-only" />
+                      <span class="block text-center py-3 px-1 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-brand-slate peer-checked:border-brand-teal peer-checked:bg-brand-mintSoft peer-checked:text-brand-tealDark transition">Звонок</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                      <span class="block text-center py-3 px-1 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-brand-slate peer-checked:border-brand-teal peer-checked:bg-brand-mintSoft peer-checked:text-brand-tealDark transition">Viber</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                      <span class="block text-center py-3 px-1 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-brand-slate peer-checked:border-brand-teal peer-checked:bg-brand-mintSoft peer-checked:text-brand-tealDark transition">Telegram</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-xs font-semibold uppercase tracking-wider text-brand-slate mb-1.5">Комментарий и пожелания</label>
+                <textarea id="leadComment" name="comment" rows="3" placeholder="Например: Гродно, нужны дополнительно 3 окна или химчистка дивана" class="w-full px-4 py-3 rounded-xl bg-brand-mint/50 border border-slate-300 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-brand-teal transition"></textarea>
+              </div>
+
+              <!-- Обязательный незаполненный чекбокс по Закону РБ № 99-З (БЕЗ checked) -->
+              <div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-0.5 w-4 h-4 rounded border-slate-400 text-brand-teal focus:ring-brand-teal shrink-0" />
+                  <span class="text-xs text-brand-slate leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-brand-navy underline hover:text-brand-orange font-medium">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-brand-navy underline hover:text-brand-orange font-medium">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-semibold text-base shadow-lg shadow-orange-500/20 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Получить точный расчёт
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ И ЮРИДИЧЕСКИЙ КОМПЛАЕНС РБ ==================== -->
+  <footer id="contacts" class="bg-brand-navyDeep text-slate-300 pt-14 pb-36 md:pb-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+        <!-- Контакты -->
+        <div class="lg:col-span-6 space-y-5">
+          <div>
+            <div class="font-display font-extrabold text-xl text-white">Клининговая компания «7 Гномов»</div>
+            <p class="mt-1.5 text-sm text-slate-400 leading-relaxed max-w-lg">
+              Профессиональная уборка квартир, коттеджей, офисов, мойка окон и химчистка мягкой мебели в Гродно и Гродненской области с 2014 года.
+            </p>
+          </div>
+
+          <div class="space-y-2.5 text-sm">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+              <span class="text-slate-400 sm:w-28 shrink-0">География:</span>
+              <span class="text-white font-medium">г. Гродно и Гродненская область</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+              <span class="text-slate-400 sm:w-28 shrink-0">Адрес:</span>
+              <span class="text-white font-medium">г. Гродно, ул. Дзержинского, 129-57</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+              <span class="text-slate-400 sm:w-28 shrink-0">Телефон:</span>
+              <a data-contact="phone" data-contact-text="phone" href="tel:+375297824180" class="text-white font-semibold hover:text-brand-teal transition tabular-nums">+375 (29) 782-41-80</a>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+              <span class="text-slate-400 sm:w-28 shrink-0">Почта:</span>
+              <a data-contact="email" href="mailto:77gnomov@inbox.ru" class="text-white hover:text-brand-teal transition">77gnomov@inbox.ru</a>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+              <span class="text-slate-400 sm:w-28 shrink-0">Режим работы:</span>
+              <span class="text-slate-300">По предварительной записи (ориентир 09:00–20:00 · [точный график уточнить при запуске])</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375297824180" class="inline-flex items-center px-4 py-2 rounded-full bg-viber hover:opacity-90 text-white text-xs font-semibold transition">Viber</a>
+            <a data-contact="telegram" href="https://t.me/MarusyaAvhim" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 rounded-full bg-telegram hover:opacity-90 text-white text-xs font-semibold transition">Telegram</a>
+            <a data-contact="whatsapp" href="https://api.whatsapp.com/send?phone=375297824180" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 rounded-full bg-whatsapp hover:opacity-90 text-white text-xs font-semibold transition">WhatsApp</a>
+            <a data-contact="instagram" href="https://www.instagram.com/cleaning_7_gnomov/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition">Instagram</a>
+          </div>
+        </div>
+
+        <!-- Карточка зоны выезда -->
+        <div class="lg:col-span-6">
+          <div class="bg-brand-navy border border-white/10 rounded-3xl p-5 sm:p-6 h-full flex flex-col justify-between">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-bold text-base text-white">Выезд бригад по Гродно и области</div>
+                <div class="text-xs text-slate-400 mt-0.5">ул. Дзержинского, 129-57 · нал / безнал</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Гродно%20улица%20Дзержинского%20129" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-brand-teal hover:bg-brand-tealDark text-white text-xs font-semibold transition">
+                Яндекс Карты →
+              </a>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden bg-brand-navyDeep border border-white/10 h-44 flex items-center justify-center">
+              <svg class="w-full h-full opacity-25" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="300" cy="90" r="78" stroke="#29C4A9" stroke-width="2" stroke-dasharray="6 6" />
+                <circle cx="300" cy="90" r="42" stroke="#29C4A9" stroke-width="2" />
+                <path d="M0 128 Q 220 78, 600 112" stroke="#7EBEC5" stroke-width="5" />
+                <path d="M210 0 L 290 180" stroke="#64748B" stroke-width="4" />
+                <path d="M420 0 L 360 180" stroke="#64748B" stroke-width="3" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-lg shadow-orange-500/40 mb-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-3.5 py-1.5 rounded-xl bg-brand-navy/95 border border-white/15 text-xs sm:text-sm font-semibold text-white">
+                  «7 Гномов» · Гродно и Гродненская область
+                </div>
+                <div class="mt-1 text-[11px] text-slate-400">Приезжаем со всем оборудованием и европейской химией</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Реквизиты и ссылки на юридические документы РБ -->
+      <div class="pt-7 space-y-5 text-xs text-slate-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-slate-200 font-semibold">Реквизиты исполнителя (сверяются при запуске):</div>
+            <div>[ИП Авхимков А.В. / уточнить актуальные реквизиты при запуске]</div>
+            <div>[УНП] · Юр. адрес: г. Гродно, ул. Дзержинского, 129-57 · [Режим работы]</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-brand-teal transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-brand-teal transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-brand-teal transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Информация, размещённая на данном сайте, носит справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Боевая версия сайта размещается на хостинге на территории Республики Беларусь (Указ Президента РБ № 60).
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Автоматически скрыт, пока открыт cookie-баннер; расположен строго над демо-плашкой -->
+  <div id="mobileStickyDock" class="hidden md:hidden fixed inset-x-3 bottom-[46px] z-40">
+    <div class="bg-white/90 backdrop-blur-xl border border-teal-200/80 rounded-2xl p-1.5 shadow-dock grid grid-cols-3 gap-1.5">
+      <a
+        data-contact="phone"
+        href="tel:+375297824180"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-brand-navy hover:bg-brand-mint text-xs font-semibold transition"
+      >
+        <svg class="w-4 h-4 text-brand-tealDark shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span>Позвонить</span>
+      </a>
+
+      <a
+        data-contact="viber"
+        href="viber://chat?number=%2B375297824180"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-brand-navy hover:bg-brand-mint text-xs font-semibold transition"
+      >
+        <svg class="w-4 h-4 text-brand-tealDark shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+        </svg>
+        <span>Viber</span>
+      </a>
+
+      <a
+        href="#quick-pick"
+        class="flex items-center justify-center py-2.5 px-2 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white text-xs font-semibold shadow-sm transition"
+      >
+        Заказать
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР С ДВУМЯ РАВНОЗНАЧНЫМИ КНОПКАМИ (НЦЗПД РБ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-[42px] sm:bottom-[32px] z-50 px-3 sm:px-6 pb-2">
+    <div class="max-w-5xl mx-auto bg-brand-navyDeep/95 backdrop-blur-md border border-white/15 text-slate-200 rounded-2xl px-3.5 py-3 sm:px-5 sm:py-3 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-3">
+      <div class="text-[11px] sm:text-xs leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все cookie, отклонить необязательные или открыть
+        <button type="button" data-open-modal="modalCookie" class="text-white underline hover:text-brand-teal">настройки cookie</button>.
+      </div>
+      <div class="grid grid-cols-2 sm:flex items-center gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-[11px] sm:text-xs font-semibold leading-tight text-center transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-brand-teal hover:bg-brand-tealDark text-white text-[11px] sm:text-xs font-semibold leading-tight text-center transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ПОЛУПРОЗРАЧНАЯ ДЕМО-ПЛАШКА В САМОМ НИЗУ ==================== -->
+  <div class="fixed inset-x-0 bottom-0 z-30 bg-brand-navyDeep/95 backdrop-blur-md border-t border-white/10 text-slate-300 text-center py-1.5 px-3 text-[10px] sm:text-[11px] leading-tight">
+    Демо-концепт сайта «7 Гномов» · После согласования добавим ваши реальные фотографии и перенесём подтверждённые отзывы.
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-brand-navyDeep/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-brand-navy rounded-3xl overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-brand-navyDeep/80 text-white hover:bg-brand-orange flex items-center justify-center transition">✕</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-slate-200 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-brand-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">✕</button>
+      <div class="w-12 h-12 rounded-2xl bg-brand-mintSoft text-brand-tealDark flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-extrabold text-2xl text-brand-navy">Заявка отправлена</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-brand-slate leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-2xl bg-brand-mint border border-teal-900/10 text-xs text-brand-navy space-y-1 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 rounded-full bg-brand-navy hover:bg-brand-navyDeep text-white font-semibold text-sm transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-brand-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-brand-navy">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает клининговая компания «7 Гномов» ([ИП Авхимков А.В. / уточнить актуальные реквизиты и УНП при запуске], г. Гродно, ул. Дзержинского, 129-57).</p>
+        <p><strong>2. Цели и перечень данных.</strong> Оператор обрабатывает имя, номер телефона, выбранный вид уборки, формат помещения, желаемую дату, способ связи и комментарий исключительно для расчёта стоимости, согласования бесплатного выезда менеджера и оказания клининговых услуг.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в иностранных государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Риски включают различия законодательства о защите данных и ограниченные возможности контроля в иностранной юрисдикции. Передача осуществляется только с вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Данные хранятся не дольше, чем этого требуют цели их обработки, либо до отзыва вашего согласия.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З).</strong> Вы вправе в любое время без объяснения причин отозвать согласие, получить информацию об обработке ПД, потребовать внесения изменений, прекращения обработки или удаления данных, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-full bg-brand-navy text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-brand-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-brand-navy">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме заявки на сайте клининговой компании «7 Гномов» и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору ([ИП Авхимков А.В. / уточнить актуальные реквизиты и УНП при запуске], г. Гродно, ул. Дзержинского, 129-57) на обработку моих персональных данных: имени, телефона, выбранной услуги, формата помещения, желаемой даты, способа связи и комментария.</p>
+        <p><strong>Цель обработки:</strong> расчёт стоимости клининговых услуг, согласование бесплатного выезда менеджера и запись на уборку или химчистку.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я проинформирован(а) и согласен(на) с тем, что передача заявки с сайта может осуществляться через сервисы Google (Google Apps Script) и мессенджер Telegram, серверы которых расположены в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены связанные риски (различия правового регулирования и ограниченные механизмы защиты в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и права субъекта (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами на отзыв согласия, получение информации, изменение, прекращение обработки и удаление ПД, а также на обращение в НЦЗПД. Отозвать согласие можно письмом на 77gnomov@inbox.ru.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-full bg-brand-navy text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-brand-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <h3 class="font-display font-bold text-lg text-brand-navy">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-4 leading-relaxed">
+        <div class="p-3.5 rounded-2xl bg-brand-mint border border-teal-900/10 flex items-center justify-between gap-2">
+          <span class="font-semibold text-brand-navy">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded-lg bg-white border border-teal-900/10 text-xs font-semibold text-brand-navy">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie:</strong> нужны для запоминания ваших настроек cookie и стабильной работы интерфейса. Персональные данные третьим лицам не передаются.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> могут применяться после подключения веб-аналитики для улучшения работы сайта. Вы можете в любой момент принять их или отклонить.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-full bg-slate-200 hover:bg-slate-300 text-brand-navy text-sm font-semibold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 rounded-full bg-brand-teal hover:bg-brand-tealDark text-white text-sm font-semibold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЧИСТЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Синхронизация контактов из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+      const whatsappHref = `https://api.whatsapp.com/send?phone=${SITE_CONFIG.whatsappPhone}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+      document.querySelectorAll('[data-contact="whatsapp"]').forEach((el) => {
+        el.setAttribute('href', whatsappHref);
+      });
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+      });
+
+      // 2. Живой статус в шапке по времени Беларуси (Europe/Minsk, ориентир 09:00–20:00)
+      function updateMinskLiveStatus() {
+        let hour = 12;
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: SITE_CONFIG.workHours.timezone,
+            hour: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+          const hPart = parts.find((p) => p.type === 'hour');
+          if (hPart) hour = parseInt(hPart.value, 10) % 24;
+        } catch (_) {
+          hour = new Date().getHours();
+        }
+        const isOpen = hour >= SITE_CONFIG.workHours.start && hour < SITE_CONFIG.workHours.end;
+
+        document.querySelectorAll('[data-live-status]').forEach((badge) => {
+          const dot = badge.querySelector('[data-status-dot]');
+          const fullText = badge.querySelector('[data-status-text]');
+          const shortText = badge.querySelector('[data-status-short]');
+          if (dot) {
+            dot.classList.toggle('bg-emerald-500', isOpen);
+            dot.classList.toggle('bg-amber-400', !isOpen);
+          }
+          if (fullText) {
+            fullText.textContent = isOpen ? 'Открыто сейчас' : 'Ответим с 09:00';
+          }
+          if (shortText) {
+            shortText.textContent = isOpen ? 'Открыто' : 'С 09:00';
+          }
+        });
+      }
+      updateMinskLiveStatus();
+      setInterval(updateMinskLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        menuIconOpen.classList.toggle('hidden', open);
+        menuIconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Минимальная дата в форме = сегодня
+      const dateInput = document.getElementById('leadDate');
+      if (dateInput) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // 5. Лёгкий мини-интерактив за 2 клика с автоподстановкой в форму
+      const pickState = {
+        service: 'Генеральная (от 260 BYN)',
+        format: '1–2 комн. квартира'
+      };
+      const step1Buttons = document.querySelectorAll('.step1-btn');
+      const step2Buttons = document.querySelectorAll('.step2-btn');
+      const pickSummaryText = document.getElementById('pickSummaryText');
+      const leadService = document.getElementById('leadService');
+      const leadFormat = document.getElementById('leadFormat');
+      const leadComment = document.getElementById('leadComment');
+      let userEditedComment = false;
+
+      if (leadComment) {
+        leadComment.addEventListener('input', () => {
+          userEditedComment = leadComment.value.trim().length > 0;
+        });
+      }
+
+      function syncTwoClickPicker(updateSelects) {
+        step1Buttons.forEach((btn) => {
+          const active = btn.getAttribute('data-step1') === pickState.service;
+          btn.classList.toggle('border-brand-teal', active);
+          btn.classList.toggle('bg-brand-mintSoft', active);
+          btn.classList.toggle('border-slate-200', !active);
+          btn.classList.toggle('bg-white', !active);
+        });
+        step2Buttons.forEach((btn) => {
+          const active = btn.getAttribute('data-step2') === pickState.format;
+          btn.classList.toggle('border-brand-teal', active);
+          btn.classList.toggle('bg-brand-mintSoft', active);
+          btn.classList.toggle('border-slate-200', !active);
+          btn.classList.toggle('bg-white', !active);
+        });
+        if (pickSummaryText) {
+          pickSummaryText.textContent = `${pickState.service} · ${pickState.format}`;
+        }
+        if (updateSelects) {
+          if (leadService) leadService.value = pickState.service;
+          if (leadFormat) leadFormat.value = pickState.format;
+        }
+        if (leadComment && !userEditedComment) {
+          leadComment.placeholder = `Выбрано: ${pickState.service}, ${pickState.format}. Укажите площадь или пожелания.`;
+        }
+      }
+
+      step1Buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          pickState.service = btn.getAttribute('data-step1');
+          syncTwoClickPicker(true);
+        });
+      });
+
+      step2Buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          pickState.format = btn.getAttribute('data-step2');
+          syncTwoClickPicker(true);
+        });
+      });
+
+      if (leadService) {
+        leadService.addEventListener('change', () => {
+          pickState.service = leadService.value;
+          syncTwoClickPicker(false);
+        });
+      }
+      if (leadFormat) {
+        leadFormat.addEventListener('change', () => {
+          pickState.format = leadFormat.value;
+          syncTwoClickPicker(false);
+        });
+      }
+
+      // Кнопки выбора услуги из карточек и прайса
+      document.querySelectorAll('[data-pick-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-pick-service');
+          if (val) {
+            pickState.service = val;
+            syncTwoClickPicker(true);
+          }
+          const target = document.getElementById('quick-pick');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      syncTwoClickPicker(true);
+
+      // 6. Вкладки прайс-листа
+      document.querySelectorAll('.price-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const tab = btn.getAttribute('data-price-tab');
+          document.querySelectorAll('.price-tab-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('bg-brand-navy', active);
+            b.classList.toggle('text-white', active);
+            b.classList.toggle('bg-white', !active);
+            b.classList.toggle('border', !active);
+            b.classList.toggle('border-teal-900/15', !active);
+            b.classList.toggle('text-brand-navy', !active);
+          });
+          document.querySelectorAll('.price-panel').forEach((p) => p.classList.add('hidden'));
+          const panel = document.getElementById(`pricePanel-${tab}`);
+          if (panel) panel.classList.remove('hidden');
+        });
+      });
+
+      // 7. Интерактивный чек-лист по зонам (реальные списки с 7-gnomov.by)
+      const CHECKLIST_DATA = {
+        general: {
+          label: 'Генеральная уборка',
+          badge: 'От потолка до пола',
+          foot: 'При генеральной уборке 1–3 комн. квартиры обычно работают 2 клинера в течение 6–9 часов.',
+          rooms: [
+            'Удаление пыли со стен и потолков',
+            'Удаление пыли и грязи со светильников, карнизов, кондиционеров, розеток и выключателей',
+            'Сухая уборка пылесосом всех напольных покрытий',
+            'Чистка пылесосом мягкой мебели',
+            'Удаление пыли с предметов интерьера (вазы, рамы картин) и бытовой техники',
+            'Мойка и полировка всех стеклянных поверхностей и зеркал',
+            'Влажная уборка корпусной мебели с уходовыми и защитными средствами',
+            'Мытьё межкомнатных и входных дверей, включая фурнитуру',
+            'Влажная уборка полов, плинтусов, радиаторов, труб и подоконников'
+          ],
+          kitchen: [
+            'Мытьё кухонного гарнитура снаружи и сверху',
+            'Мытьё шкафчика для мусора внутри',
+            'Тщательное мытьё всех рабочих поверхностей и фартука',
+            'Мытьё бытовой техники снаружи: вытяжки, холодильника, плиты, духовки, микроволновки',
+            'Мойка и полировка стеклянных поверхностей и хрома',
+            'Влажная уборка полов, плинтусов, радиаторов и подоконников'
+          ],
+          bathroom: [
+            'Чистка и дезинфекция всей сантехники (ванна, душевая, раковина, унитаз, смесители)',
+            'Мытьё стеновой плитки в санузлах на всю высоту',
+            'Удаление известкового налёта и водного камня',
+            'Полировка зеркал и стеклянных перегородок душевой',
+            'Мытьё дверей, труб, полотенцесушителя и пола'
+          ]
+        },
+        maintenance: {
+          label: 'Поддерживающая уборка',
+          badge: 'До высоты 1,8 м',
+          foot: 'Рекомендуется после генеральной уборки (1–3 комн. квартиру убирает 1 клинер за 2–3 часа, без стремянки).',
+          rooms: [
+            'Удаление пыли с мебели, предметов интерьера, бытовой техники и светильников до 1,8 м',
+            'Удаление локальных загрязнений с межкомнатных и входных дверей',
+            'Мытьё стеклянных и зеркальных поверхностей',
+            'Сухая уборка пылесосом',
+            'Влажная уборка полов, плинтусов, радиаторов, труб и подоконников',
+            'Вынос мусора и замена пакетов в мусорных корзинах'
+          ],
+          kitchen: [
+            'Мытьё внешних фасадов кухонного гарнитура',
+            'Мытьё рабочих поверхностей и плиты, удаление свежего жира',
+            'Удаление пыли с кухонной бытовой техники',
+            'Уборка места для хранения мусора и замена пакета',
+            'Влажная уборка пола и плинтусов'
+          ],
+          bathroom: [
+            'Чистка и дезинфекция сантехники (смесители, раковины, унитаз, биде)',
+            'Мытьё душевой кабины и ванны',
+            'Локальное мытьё кафельной плитки в местах загрязнений',
+            'Полировка зеркал и влажная уборка пола'
+          ]
+        },
+        renovation: {
+          label: 'Уборка после ремонта',
+          badge: 'Строительная пыль и следы',
+          foot: 'Оценивается индивидуально (5–10 BYN/м²). Бесплатный выезд менеджера на осмотр по Гродно.',
+          rooms: [
+            'Удаление послестроительных загрязнений: цементного клея, фуги, грунтовки, краски',
+            'Удаление строительной пыли со всех поверхностей (потолок, стены, пол и мебель)',
+            'Чистка подоконников, дверей, наличников и радиаторов отопления',
+            'Мытьё окон, зеркал и осветительных приборов',
+            'Мытьё мебели и полировка лакированных поверхностей',
+            'Чистовая мойка полов спецсредствами и нанесение защитных покрытий'
+          ],
+          kitchen: [
+            'Удаление строительной пыли со всех фасадов, столешниц и встраиваемой техники',
+            'Очистка плиточного фартука от остатков затирки, клея и налёта',
+            'Деликатная мойка сантехники, мойки и хромированных элементов',
+            'Чистовая влажная уборка пола и плинтусов'
+          ],
+          bathroom: [
+            'Очистка кафельной плитки и швов от фуги, затирки, клея и строительной пыли',
+            'Тщательная мойка и дезинфекция новой ванны, душевой кабины, раковины и унитаза',
+            'Полировка зеркал, стеклянных экранов и хромированных смесителей',
+            'Чистовая мойка напольной плитки'
+          ]
+        }
+      };
+
+      const ZONE_TITLES = {
+        rooms: 'Комнаты и коридор',
+        kitchen: 'Кухня',
+        bathroom: 'Санузел и ванная'
+      };
+
+      let curClMode = 'general';
+      let curClZone = 'rooms';
+      const clTitle = document.getElementById('clTitle');
+      const clBadge = document.getElementById('clBadge');
+      const clList = document.getElementById('clList');
+      const clFootNote = document.getElementById('clFootNote');
+
+      function renderChecklist() {
+        const modeObj = CHECKLIST_DATA[curClMode];
+        const items = modeObj[curClZone] || [];
+        clTitle.textContent = `${ZONE_TITLES[curClZone]} — ${modeObj.label}`;
+        clBadge.textContent = modeObj.badge;
+        clFootNote.textContent = modeObj.foot;
+        clList.innerHTML = items.map((text) => `
+          <li class="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-teal-900/10">
+            <svg class="w-4 h-4 text-brand-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="leading-snug">${text}</span>
+          </li>
+        `).join('');
+      }
+
+      document.querySelectorAll('.cl-mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          curClMode = btn.getAttribute('data-cl-mode');
+          document.querySelectorAll('.cl-mode-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('bg-brand-navy', active);
+            b.classList.toggle('text-white', active);
+            b.classList.toggle('text-brand-slate', !active);
+          });
+          renderChecklist();
+        });
+      });
+
+      document.querySelectorAll('.cl-zone-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          curClZone = btn.getAttribute('data-cl-zone');
+          document.querySelectorAll('.cl-zone-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('border-brand-teal', active);
+            b.classList.toggle('bg-brand-mint', active);
+            b.classList.toggle('border-transparent', !active);
+            b.classList.toggle('bg-slate-50/80', !active);
+          });
+          renderChecklist();
+        });
+      });
+
+      renderChecklist();
+
+      // 8. Аккордеон FAQ
+      document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.faq-item');
+          const body = item.querySelector('.faq-body');
+          const icon = trigger.querySelector('.faq-icon');
+          const isOpen = !body.classList.contains('hidden');
+          body.classList.toggle('hidden', isOpen);
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          if (icon) icon.classList.toggle('rotate-45', !isOpen);
+        });
+      });
+
+      // 9. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Фото клининга';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 10. Cookie-баннер и автоматическое скрытие мобильного Sticky Dock пока открыт баннер
+      const COOKIE_KEY = '7gnomov_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 11. Валидация и отправка формы заявки (Google Apps Script / демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const serviceVal = leadService.value;
+        const formatVal = leadFormat.value;
+        const dateVal = document.getElementById('leadDate').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Звонок';
+        const commentVal = leadComment.value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите имя (от 2 символов).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона.';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: '7 Гномов (Гродно)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          format: formatVal,
+          date: dateVal || 'Не указана',
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error('Ошибка сервера');
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили заявку и свяжемся с вами для точного расчёта.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения Telegram-бота заявки будут приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Услуга: ${payload.service}\n` +
+              `Помещение: ${payload.format}\n` +
+              `Дата: ${payload.date}\n` +
+              `Связь: ${payload.contactMethod}\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          userEditedComment = false;
+          syncTwoClickPicker(true);
+          openModal(modalSuccess);
+        } catch (_) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Позвоните нам или напишите в Viber / Telegram.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Получить точный расчёт';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

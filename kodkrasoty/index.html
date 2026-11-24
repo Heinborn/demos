@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Код Красоты — Премиальный салон красоты и SPA в Барановичах</title>
+  <meta name="description" content="Салон красоты, эстетической косметологии и SPA «Код Красоты» в Барановичах (ул. Мицкевича, 9). Уходы Biologique Recherche и Geneo+, пилинги, чистки, массажи лица и тела, стоунтерапия, 9 SPA-ритуалов, подарочные сертификаты." />
+
+  <!-- Google Fonts: Cormorant Garamond (Luxury Serif) & Jost (Geometric Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Jost', 'system-ui', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          },
+          colors: {
+            obsidian: {
+              950: '#090807',
+              900: '#100E0C',
+              850: '#171411',
+              800: '#211D18',
+            },
+            marble: {
+              50: '#FDFCFA',
+              100: '#FAF7F2',
+              200: '#F1EAE0',
+              300: '#E4D8C7',
+            },
+            gold: {
+              200: '#F3DFB8',
+              300: '#E4C488',
+              400: '#D4AF6A',
+              500: '#B8914D',
+              600: '#947035',
+              700: '#725424',
+            },
+            ink: {
+              900: '#1B1917',
+              700: '#46403A',
+              500: '#716A61',
+            },
+          },
+          boxShadow: {
+            editorial: '0 22px 50px -28px rgba(27, 25, 23, 0.16)',
+            champagne: '0 16px 40px -16px rgba(212, 175, 106, 0.32)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Jost', system-ui, sans-serif;
+    }
+    h1, h2, h3, .font-serif-lux {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    @keyframes kenBurnsSlow {
+      0% {
+        transform: scale(1.0) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale(1.08) translate3d(0, -1.2%, 0);
+      }
+    }
+    .hero-ken-burns {
+      animation: kenBurnsSlow 24s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-ken-burns {
+        animation: none;
+      }
+    }
+    .gold-gradient-text {
+      background: linear-gradient(180deg, #F6E5C3 0%, #DFBC7B 55%, #B88F48 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gold-rule {
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 106, 0.55), transparent);
+      height: 1px;
+    }
+    .tab-panel {
+      animation: fadeTab 0.35s ease;
+    }
+    @keyframes fadeTab {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .quick-choice-active {
+      background-color: #100E0C !important;
+      border-color: #D4AF6A !important;
+      color: #F3DFB8 !important;
+    }
+    .form-highlight-pulse {
+      box-shadow: 0 0 0 2px rgba(212, 175, 106, 0.75);
+      transition: box-shadow 0.4s ease;
+    }
+  </style>
+</head>
+<body class="bg-marble-100 text-ink-900 antialiased selection:bg-gold-400 selection:text-obsidian-950">
+
+  <!-- ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL веб-приложения Google Apps Script для мгновенной отправки заявок в Telegram.
+      // Если оставить "", форма работает в безопасном демо-режиме с предпросмотром заявки.
+      googleScriptUrl: '',
+      viberPhone: '+375333237575',
+      telegramUrl: 'https://t.me/+375333237575',
+      instagramUrl: 'https://www.instagram.com/kod_krasoty_studio',
+      shopUrl: 'https://kodkrasoty.online',
+      yandexMapsUrl: 'https://yandex.by/maps/org/kod_krasoty/12205721205/',
+      displayPhone: '+375 (33) 323-75-75',
+      telHref: 'tel:+375333237575',
+      email: 'kodkrasoty.online@gmail.com'
+    };
+  </script>
+
+  <!-- ==================== ВЕРХНЯЯ СТРОКА: ЖИВОЙ СТАТУС (EUROPE/MINSK) + АДРЕС (ПК) ==================== -->
+  <div class="hidden lg:block bg-obsidian-950 text-marble-200/70 text-[11px] tracking-[0.06em] border-b border-gold-400/20">
+    <div class="max-w-[1360px] mx-auto px-6 lg:px-8 h-9 flex items-center justify-between gap-6">
+      <div class="flex items-center gap-4 min-w-0">
+        <!-- Живой статус работы по времени Беларуси -->
+        <div id="liveStatusDesktop" class="inline-flex items-center gap-2 whitespace-nowrap text-marble-100/90">
+          <span class="live-status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+          <span class="live-status-text">Открыто сейчас</span>
+        </div>
+        <span class="text-gold-400/40 shrink-0">·</span>
+        <span class="whitespace-nowrap text-marble-200/70">г. Барановичи, ул. Мицкевича, 9</span>
+        <span class="text-gold-400/40 shrink-0 hidden xl:inline">·</span>
+        <span class="whitespace-nowrap text-marble-200/60 hidden xl:inline">Пн–Пт 10:00–20:00 · Сб 10:00–16:00 · Вс выходной</span>
+      </div>
+
+      <div class="flex items-center gap-5 shrink-0">
+        <a data-contact="shop" href="https://kodkrasoty.online" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap text-gold-300/90 hover:text-gold-200 transition">
+          Интернет-магазин kodkrasoty.online ↗
+        </a>
+        <span class="text-gold-400/30">·</span>
+        <a data-contact="instagram" href="https://www.instagram.com/kod_krasoty_studio" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap hover:text-white transition">
+          @kod_krasoty_studio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ШАПКА САЙТА (СТРОГО В 1 СТРОКУ НА ДЕСКТОПЕ) ==================== -->
+  <header class="sticky top-0 z-40 bg-obsidian-900/95 backdrop-blur-md border-b border-gold-400/20 text-marble-50">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-[72px] gap-3 sm:gap-4">
+        <!-- Логотип -->
+        <a href="#top" class="flex items-center gap-2.5 sm:gap-3 shrink-0 whitespace-nowrap group">
+          <span class="w-9 h-9 border border-gold-400/60 bg-obsidian-950/80 flex items-center justify-center group-hover:border-gold-300 transition shrink-0">
+            <span class="font-serif-lux text-gold-300 text-base tracking-[0.14em] leading-none">КК</span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-serif-lux text-base sm:text-[20px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-gold-200 group-hover:text-white transition whitespace-nowrap">Код Красоты</span>
+            <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.22em] sm:tracking-[0.26em] text-marble-200/60 mt-1 whitespace-nowrap">Салон красоты и SPA</span>
+          </span>
+        </a>
+
+        <!-- Навигация (строго 5 коротких пунктов, 1 строка) -->
+        <nav aria-label="Основная навигация" class="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] uppercase tracking-[0.14em] text-marble-200/80 font-normal">
+          <a href="#services" class="whitespace-nowrap hover:text-gold-300 transition">Услуги и цены</a>
+          <a href="#services" data-jump-tab="spa" class="whitespace-nowrap hover:text-gold-300 transition">SPA</a>
+          <a href="#brands" class="whitespace-nowrap hover:text-gold-300 transition">Бренды</a>
+          <a href="#team" class="whitespace-nowrap hover:text-gold-300 transition">Команда</a>
+          <a href="#contacts" class="whitespace-nowrap hover:text-gold-300 transition">Контакты</a>
+        </nav>
+
+        <!-- Контакты в люкс-палитре шампанского золота + Записаться -->
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375333237575" class="hidden xl:inline-block whitespace-nowrap text-[13px] tracking-[0.04em] text-marble-100 hover:text-gold-300 transition font-normal mr-1">
+            +375 (33) 323-75-75
+          </a>
+
+          <!-- Тонкие эстетичные иконки мессенджеров в палитре шампанского золота (без кричащих пилюль) -->
+          <a data-contact="viber" href="viber://chat?number=%2B375333237575" aria-label="Написать в Viber" title="Написать в Viber" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gold-400/40 text-gold-300 hover:border-gold-300 hover:bg-gold-400/10 hover:text-gold-200 transition shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+          </a>
+
+          <a data-contact="telegram" href="https://t.me/+375333237575" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Написать в Telegram" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gold-400/40 text-gold-300 hover:border-gold-300 hover:bg-gold-400/10 hover:text-gold-200 transition shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+
+          <a href="#booking" class="hidden sm:inline-flex items-center justify-center px-5 h-9 border border-gold-400/80 text-gold-200 hover:bg-gold-400 hover:text-obsidian-950 text-[11px] uppercase tracking-[0.2em] font-medium whitespace-nowrap transition shrink-0">
+            Записаться
+          </a>
+
+          <!-- Кнопка мобильного меню -->
+          <button type="button" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню" class="lg:hidden inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-gold-400/40 text-gold-300 hover:bg-obsidian-800 transition shrink-0">
+            <svg id="menuIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg id="menuIconClose" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мобильное выдвижное меню -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-obsidian-950 border-t border-gold-400/20">
+      <div class="max-w-[1360px] mx-auto px-5 py-6 space-y-5">
+        <div class="flex items-center justify-between text-xs pb-3 border-b border-gold-400/20">
+          <div id="liveStatusMenu" class="inline-flex items-center gap-2 whitespace-nowrap text-marble-100">
+            <span class="live-status-dot w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span class="live-status-text">Открыто сейчас</span>
+          </div>
+          <span class="text-marble-200/60 whitespace-nowrap">ул. Мицкевича, 9</span>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-2.5 text-xs uppercase tracking-[0.12em]">
+          <a href="#services" data-mobile-link class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">Услуги и цены</a>
+          <a href="#services" data-mobile-link data-jump-tab="spa" class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">SPA и массажи</a>
+          <a href="#atmosphere" data-mobile-link class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">Атмосфера</a>
+          <a href="#brands" data-mobile-link class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">Бренды</a>
+          <a href="#team" data-mobile-link class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">Команда</a>
+          <a href="#contacts" data-mobile-link class="px-4 py-3 bg-obsidian-850 border border-gold-400/20 text-marble-100 hover:border-gold-400/50 hover:text-gold-300 transition">Контакты</a>
+        </nav>
+
+        <div class="pt-3 border-t border-gold-400/20 flex flex-col gap-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-marble-200/75">
+            <span>Пн–Пт 10:00–20:00 · Сб 10:00–16:00</span>
+            <a data-contact="phone" data-contact-text="phone" href="tel:+375333237575" class="text-gold-300 font-medium whitespace-nowrap">+375 (33) 323-75-75</a>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <a href="#booking" data-mobile-link class="text-center py-3 bg-gold-400 text-obsidian-950 text-[11px] uppercase tracking-[0.16em] font-semibold">Онлайн-запись</a>
+            <a data-contact="shop" href="https://kodkrasoty.online" target="_blank" rel="noopener noreferrer" class="text-center py-3 border border-gold-400/50 text-gold-300 text-[11px] uppercase tracking-[0.12em]">Магазин ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== КИНЕМАТОГРАФИЧНЫЙ ПОЛНОЭКРАННЫЙ HERO ==================== -->
+    <section class="relative min-h-[calc(100svh-64px)] sm:min-h-[680px] lg:min-h-[calc(100vh-108px)] lg:max-h-[820px] flex items-center justify-center overflow-hidden bg-obsidian-950 text-marble-50">
+      <!-- Полноэкранный атмосферный SPA-фон с золотистым маслом и плавным Ken Burns zoom -->
+      <div class="absolute inset-0 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1920&q=85"
+          alt="Атмосферный SPA-ритуал с тёплым золотистым маслом в салоне Код Красоты"
+          class="w-full h-full object-cover object-center hero-ken-burns opacity-80"
+        />
+        <!-- Многослойная благородная тёмно-обсидиановая виньетка -->
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950/75 via-obsidian-950/50 to-obsidian-950/90"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,14,12,0.22)_0%,rgba(9,8,7,0.8)_78%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,106,0.14),transparent_56%)]"></div>
+      </div>
+
+      <!-- Деликатная пометка демо-фона в углу -->
+      <span class="hidden sm:inline-block absolute top-5 right-6 z-20 px-2.5 py-1 bg-obsidian-950/60 backdrop-blur-sm border border-gold-400/20 text-[10px] tracking-[0.12em] uppercase text-marble-200/60">
+        Демо-фото · заменим на ваше
+      </span>
+
+      <!-- Центральная монументальная композиция (в духе оригинала, возведённая в 10×) -->
+      <div class="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-28 sm:pt-12 sm:pb-32 lg:pt-10 lg:pb-28 text-center">
+        <!-- Мобильный живой статус + локация -->
+        <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.26em] text-gold-300/90">
+          <span id="liveStatusMobile" class="lg:hidden inline-flex items-center gap-1.5 px-2.5 py-1 bg-obsidian-950/70 backdrop-blur-sm border border-gold-400/30 text-marble-100 tracking-[0.12em] whitespace-nowrap">
+            <span class="live-status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+            <span class="live-status-text">Открыто сейчас</span>
+          </span>
+          <span class="whitespace-nowrap">Барановичи · ул. Мицкевича, 9</span>
+        </div>
+
+        <!-- Золотая декоративная линия -->
+        <div class="w-16 gold-rule mx-auto my-4 sm:my-5"></div>
+
+        <!-- Монументальный золотой заголовок -->
+        <h1 class="font-serif-lux font-normal uppercase tracking-[0.07em] sm:tracking-[0.14em] text-[36px] sm:text-7xl lg:text-[82px] leading-[1.04] gold-gradient-text drop-shadow-[0_6px_28px_rgba(0,0,0,0.45)]">
+          Код Красоты
+        </h1>
+
+        <!-- Подзаголовок в благородную разрядку -->
+        <p class="mt-3 sm:mt-4 text-[10px] sm:text-sm md:text-[15px] uppercase tracking-[0.2em] sm:tracking-[0.34em] text-marble-100/90 font-light">
+          Премиальный салон красоты и SPA
+        </p>
+
+        <!-- Лаконичное описание атмосферы (строго согласовано с тёмным кинематографичным фоном) -->
+        <p class="mt-4 sm:mt-5 max-w-xl mx-auto text-[13px] sm:text-base text-marble-200/80 font-light leading-relaxed">
+          Эстетическая косметология без инъекций, авторские SPA-ритуалы с тёплыми маслами и стоунтерапией, VIP-уходы <span class="text-marble-50 font-normal">Biologique Recherche</span> и <span class="text-marble-50 font-normal">Geneo+</span> — искусство заботы о себе без спешки.
+        </p>
+
+        <!-- Утончённые кнопки действий -->
+        <div class="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 max-w-xs sm:max-w-none mx-auto">
+          <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-3.5 sm:py-4 bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-xs uppercase tracking-[0.22em] font-medium shadow-champagne transition whitespace-nowrap">
+            Записаться
+          </a>
+          <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center px-9 py-3.5 sm:py-4 bg-obsidian-950/40 hover:bg-gold-400/10 border border-gold-400/70 hover:border-gold-300 text-marble-100 text-xs uppercase tracking-[0.2em] font-light backdrop-blur-sm transition whitespace-nowrap">
+            Услуги и цены
+          </a>
+        </div>
+
+        <!-- Деликатная архитектурная строка фактов -->
+        <div class="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-gold-400/20 grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto">
+          <div>
+            <div class="font-serif-lux text-xl sm:text-3xl text-gold-300 leading-none">1 700+</div>
+            <div class="mt-1.5 text-[9px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.14em] text-marble-200/60">гостей студии</div>
+          </div>
+          <div class="border-x border-gold-400/20 px-1.5 sm:px-2">
+            <div class="font-serif-lux text-xl sm:text-3xl text-gold-300 leading-none">12+</div>
+            <div class="mt-1.5 text-[9px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.14em] text-marble-200/60">мировых брендов</div>
+          </div>
+          <div>
+            <div class="font-serif-lux text-xl sm:text-3xl text-gold-300 leading-none">Без уколов</div>
+            <div class="mt-1.5 text-[9px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.14em] text-marble-200/60">эстетика и SPA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== АТМОСФЕРА САЛОНА: СВЕТЛАЯ МРАМОРНО-КРЕМОВАЯ СЕКЦИЯ (БЕЛО-ЗОЛОТОЙ ИНТЕРЬЕР) ==================== -->
+    <section id="atmosphere" class="py-16 sm:py-24 bg-marble-100 border-b border-marble-300/80">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Редакционный верхний блок -->
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-end">
+          <div class="lg:col-span-6">
+            <span class="text-[11px] uppercase tracking-[0.26em] text-gold-600 font-medium">Атмосфера салона</span>
+            <h2 class="mt-3 font-serif-lux text-4xl sm:text-5xl lg:text-[54px] text-ink-900 leading-[1.08] font-normal">
+              Бело-золотой интерьер <span class="italic text-gold-600">и тихая роскошь</span>
+            </h2>
+          </div>
+
+          <div class="lg:col-span-6 space-y-4 text-ink-700 text-[15px] sm:text-base leading-relaxed font-light">
+            <p>
+              На ул. Мицкевича, 9 мы создали светлое <strong class="font-medium text-ink-900">бело-золотое пространство спокойствия</strong>, где соединены три направления: косметология, массажи и нутрициология. Здесь не работают по шаблону — визит начинается с внимательной диагностики кожи на аппарате <strong class="font-medium text-ink-900">SKIN SMART</strong> и подбора персонального протокола.
+            </p>
+            <p>
+              Приглушённый свет в SPA-кабинетах, натуральные тёплые масла, неспешное чаепитие после процедур и профессиональная космецевтика мировых домов — чтобы вы выходили от нас отдохнувшей, сияющей и уверенной в себе.
+            </p>
+          </div>
+        </div>
+
+        <!-- Редакционная галерея (4 светлых и атмосферных SPA-кадра + лайтбокс) -->
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5">
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Светлый бело-золотой интерьер и спокойная атмосфера студии на ул. Мицкевича, 9 (демо-фото)" class="lg:col-span-5 group relative aspect-[4/3.4] lg:aspect-auto lg:h-[390px] overflow-hidden bg-marble-200 border border-marble-300 text-left focus:outline-none focus:ring-2 focus:ring-gold-500">
+            <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=85" alt="Светлый мраморно-кремовый интерьер SPA-пространства" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/65 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 px-2.5 py-1 bg-obsidian-950/65 backdrop-blur-sm text-[10px] uppercase tracking-[0.14em] text-marble-100">Демо-фото</span>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2 text-white">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gold-200">Бело-золотая эстетика</div>
+                <div class="font-serif-lux text-xl leading-snug mt-0.5">Светлые кабинеты тишины</div>
+              </div>
+              <span class="text-xs text-gold-200 opacity-80 group-hover:opacity-100">↗</span>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Тёплые натуральные масла и деликатные техники расслабляющего массажа (демо-фото)" class="lg:col-span-4 group relative aspect-[4/3.4] lg:aspect-auto lg:h-[390px] overflow-hidden bg-marble-200 border border-marble-300 text-left focus:outline-none focus:ring-2 focus:ring-gold-500">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=85" alt="SPA-массаж с тёплым золотым маслом" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/65 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 px-2.5 py-1 bg-obsidian-950/65 backdrop-blur-sm text-[10px] uppercase tracking-[0.14em] text-marble-100">Демо-фото</span>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2 text-white">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gold-200">SPA-ритуалы</div>
+                <div class="font-serif-lux text-xl leading-snug mt-0.5">Тёплые масла и релакс</div>
+              </div>
+              <span class="text-xs text-gold-200 opacity-80 group-hover:opacity-100">↗</span>
+            </div>
+          </button>
+
+          <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-5">
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Стоунтерапия горячими камнями — глубокое снятие напряжения (демо-фото)" class="group relative aspect-[4/3.4] lg:aspect-auto lg:h-[185px] overflow-hidden bg-marble-200 border border-marble-300 text-left focus:outline-none focus:ring-2 focus:ring-gold-500">
+              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=85" alt="Стоунтерапия горячими камнями с белыми орхидеями" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/65 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3.5 right-3.5 text-white">
+                <div class="font-serif-lux text-lg leading-tight">Стоунтерапия</div>
+              </div>
+            </button>
+
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Свечи, ароматы и неспешное чаепитие после SPA-программ (демо-фото)" class="group relative aspect-[4/3.4] lg:aspect-auto lg:h-[185px] overflow-hidden bg-marble-200 border border-marble-300 text-left focus:outline-none focus:ring-2 focus:ring-gold-500">
+              <img src="https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=1000&q=85" alt="Тёплая ароматическая свеча для SPA-атмосферы" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/65 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3.5 right-3.5 text-white">
+                <div class="font-serif-lux text-lg leading-tight">Свечи и чаепитие</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Плашка-привилегия первого визита -->
+        <div class="mt-8 bg-marble-50 border border-gold-400/40 px-6 sm:px-9 py-6 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-editorial">
+          <div class="space-y-1">
+            <div class="text-[11px] uppercase tracking-[0.22em] text-gold-600 font-medium">Привилегия первого визита · Аппарат SKIN SMART DIAGNOSIS</div>
+            <div class="font-serif-lux text-2xl sm:text-[28px] text-ink-900 leading-snug">
+              Консультация косметолога — <span class="italic text-gold-600">бесплатно</span> при проведении первичной процедуры
+            </div>
+          </div>
+          <button type="button" data-select-service="Консультация косметолога с первичной процедурой" class="shrink-0 px-8 py-3.5 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition whitespace-nowrap">
+            Записаться →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МЕНЮ ПРОЦЕДУР И РЕАЛЬНЫЙ ПРАЙС (СВЕТЛЫЕ ВКЛАДКИ) ==================== -->
+    <section id="services" class="py-16 sm:py-24 bg-marble-50">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-marble-300">
+          <div class="max-w-lg xl:max-w-xl">
+            <span class="text-[11px] uppercase tracking-[0.26em] text-gold-600 font-medium">Меню процедур и прайс</span>
+            <h2 class="mt-2 font-serif-lux text-4xl sm:text-5xl text-ink-900 leading-tight font-normal">
+              Все услуги студии — <span class="italic text-gold-600">на одном экране</span>
+            </h2>
+            <p class="mt-3 text-ink-500 text-sm sm:text-base font-light">
+              Выберите направление и нажмите на нужную услугу — она автоматически подставится в форму записи.
+            </p>
+          </div>
+
+          <!-- Переключатель вкладок (в 1 строку на десктопе) -->
+          <div role="tablist" aria-label="Направления услуг" class="flex flex-wrap lg:flex-nowrap gap-2 shrink-0">
+            <button type="button" role="tab" aria-selected="true" data-tab-target="cosmetology" class="tab-btn px-4 xl:px-5 py-3 text-[11px] xl:text-xs uppercase tracking-[0.14em] font-medium border transition bg-obsidian-900 border-obsidian-900 text-gold-200 whitespace-nowrap">
+              Косметология
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="spa" class="tab-btn px-4 xl:px-5 py-3 text-[11px] xl:text-xs uppercase tracking-[0.14em] font-medium border transition bg-marble-100 border-marble-300 text-ink-700 hover:border-gold-500 hover:text-ink-900 whitespace-nowrap">
+              Массажи и SPA
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="figure" class="tab-btn px-4 xl:px-5 py-3 text-[11px] xl:text-xs uppercase tracking-[0.14em] font-medium border transition bg-marble-100 border-marble-300 text-ink-700 hover:border-gold-500 hover:text-ink-900 whitespace-nowrap">
+              Фигура и комплексы
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="certificates" class="tab-btn px-4 xl:px-5 py-3 text-[11px] xl:text-xs uppercase tracking-[0.14em] font-medium border transition bg-marble-100 border-marble-300 text-ink-700 hover:border-gold-500 hover:text-ink-900 whitespace-nowrap">
+              Сертификаты
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== ВКЛАДКА 1: КОСМЕТОЛОГИЯ ===== -->
+        <div id="tab-cosmetology" data-tab-panel="cosmetology" class="tab-panel mt-10 space-y-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Карточка 1: Консультация и диагностика -->
+            <article class="bg-marble-100 border border-marble-300/90 overflow-hidden shadow-editorial flex flex-col">
+              <div class="relative aspect-[16/8.2] bg-marble-200 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=1200&q=85" alt="Консультация косметолога и эстетическая диагностика кожи" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 bg-obsidian-950/70 text-[10px] uppercase tracking-[0.12em] text-marble-100">Демо-фото</span>
+                <span class="absolute bottom-3 left-3 px-3 py-1 bg-marble-50/95 text-[10px] uppercase tracking-[0.18em] font-medium text-gold-700">SKIN SMART DIAGNOSIS</span>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <h3 class="font-serif-lux text-3xl text-ink-900 font-normal">Консультация и нутрициология</h3>
+                <p class="mt-2 text-sm text-ink-500 font-light">Разбор домашнего ухода, аппаратный анализ фотостарения и пигментации, составление персонального плана.</p>
+                <ul class="mt-5 divide-y divide-marble-300/75 text-sm flex-1">
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Консультация косметолога</div>
+                      <div class="text-xs text-ink-500">Бесплатно при проведении первичной процедуры</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">65 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Консультация + первичная процедура</div>
+                      <div class="text-xs text-ink-500">С подбором средств для домашнего ухода</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">85–120 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Аппаратная диагностика SKIN SMART</div>
+                      <div class="text-xs text-ink-500">Компьютерный анализ кожи + рекомендации</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">80 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Консультация нутрициолога</div>
+                      <div class="text-xs text-ink-500">Питание, образ жизни, анализы / + подбор косметики</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">120 / 150 BYN</span>
+                  </li>
+                </ul>
+                <button type="button" data-select-service="Консультация косметолога / SKIN SMART" class="mt-6 w-full py-3.5 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.18em] font-medium transition">
+                  Записаться на консультацию
+                </button>
+              </div>
+            </article>
+
+            <!-- Карточка 2: VIP-уходы за лицом -->
+            <article class="bg-marble-100 border border-marble-300/90 overflow-hidden shadow-editorial flex flex-col">
+              <div class="relative aspect-[16/8.2] bg-marble-200 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=85" alt="VIP-уходовые процедуры и маски для лица" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 bg-obsidian-950/70 text-[10px] uppercase tracking-[0.12em] text-marble-100">Демо-фото</span>
+                <span class="absolute bottom-3 left-3 px-3 py-1 bg-obsidian-900/90 text-[10px] uppercase tracking-[0.18em] font-medium text-gold-200">Хит студии · VIP-уходы</span>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <h3 class="font-serif-lux text-3xl text-ink-900 font-normal">Уходовые процедуры и экзосомы</h3>
+                <p class="mt-2 text-sm text-ink-500 font-light">Авторские неинъекционные протоколы для лифтинга, сияния и глубокого клеточного восстановления.</p>
+                <ul class="mt-5 divide-y divide-marble-300/75 text-sm flex-1">
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Biologique Recherche</div>
+                      <div class="text-xs text-ink-500">Топовый мировой уход: мощный лифтинг и сияние</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">350 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Карбокситерапия Geneo+</div>
+                      <div class="text-xs text-ink-500">Против пигментации, тусклости и возрастных изменений</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">160–220 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">A.G.E. STOP / Ultraceuticals</div>
+                      <div class="text-xs text-ink-500">Питание, ровный тон и anti-age восстановление</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">130–160 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Comfort Zone / Уход с экзосомами</div>
+                      <div class="text-xs text-ink-500">Вкл. зону вокруг глаз, биорегенерацию и микронидлинг</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">120–160 BYN</span>
+                  </li>
+                </ul>
+                <button type="button" data-select-service="Уходовая процедура (Biologique Recherche / Geneo+ / VIP)" class="mt-6 w-full py-3.5 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.18em] font-medium transition">
+                  Выбрать VIP-уход
+                </button>
+              </div>
+            </article>
+
+            <!-- Карточка 3: Пилинги -->
+            <article class="bg-marble-100 border border-marble-300/90 p-6 sm:p-8 shadow-editorial flex flex-col">
+              <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">30–60 минут · Без долгой реабилитации</span>
+              <h3 class="mt-2 font-serif-lux text-3xl text-ink-900 font-normal">Пилинги и обновление кожи</h3>
+              <p class="mt-1.5 text-sm text-ink-500 font-light">Поверхностные составы премиум-класса для лица, шеи и декольте. Работа с акне, постакне, морщинами и пигментацией.</p>
+              <div class="mt-5 grid sm:grid-cols-2 gap-x-7 divide-y sm:divide-y-0 divide-marble-300/75 text-sm flex-1">
+                <ul class="divide-y divide-marble-300/75">
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>PRX T-33</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">130–160 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>BioRePeelCL3</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">105–130 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Peach Peel</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">120 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>pHformula</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">130–170 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Jalupro Glow Peel</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">120–170 BYN</strong></li>
+                </ul>
+                <ul class="divide-y divide-marble-300/75">
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Азелаиновый пилинг</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">95 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Пилинг Джесснера</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">105 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Comfort Zone экспресс</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">105 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Comfort Zone + массаж 20м</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">120 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Безинъекционная мезотерапия</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">105–170 BYN</strong></li>
+                </ul>
+              </div>
+              <button type="button" data-select-service="Пилинг (PRX T-33 / BioRePeelCL3 / pHformula)" class="mt-6 w-full py-3.5 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.18em] font-medium transition">
+                Подобрать пилинг
+              </button>
+            </article>
+
+            <!-- Карточка 4: Чистки, Трихология и Брови -->
+            <article class="bg-marble-100 border border-marble-300/90 p-6 sm:p-8 shadow-editorial flex flex-col justify-between space-y-6">
+              <div>
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">Очищение · Волосы · Выразительный взгляд</span>
+                <h3 class="mt-2 font-serif-lux text-3xl text-ink-900 font-normal">Чистки, трихология и брови</h3>
+                <ul class="mt-4 divide-y divide-marble-300/75 text-sm">
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Комбинированная чистка лица</div>
+                      <div class="text-xs text-ink-500">Ультразвук + механическое очищение + восстановление</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">75–95 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Комбинированная чистка лица с пилингом</div>
+                      <div class="text-xs text-ink-500">Двухфазный протокол для проблемной кожи</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">105–130 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div class="font-medium text-ink-900">Чистка спины и зоны декольте</div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">95–150 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Трихология (трихолог-эстетист, трихоскоп)</div>
+                      <div class="text-xs text-ink-500">Первичная консультация / повторная с разбором анализов</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">120 / 70 BYN</span>
+                  </li>
+                  <li class="py-3 flex items-start justify-between gap-4">
+                    <div>
+                      <div class="font-medium text-ink-900">Уход за бровями и ресницами (ZARA BROWS)</div>
+                      <div class="text-xs text-ink-500">Коррекция 20 BYN · с хной 35 BYN · комплексы 40–50 BYN</div>
+                    </div>
+                    <span class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">от 20 BYN</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <button type="button" data-select-service="Комбинированная чистка лица" class="py-3.5 px-4 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.14em] font-medium transition">
+                  На чистку
+                </button>
+                <button type="button" data-select-service="Консультация трихолога-эстетиста" class="py-3.5 px-4 border border-marble-300 hover:border-gold-600 text-ink-700 hover:text-ink-900 text-xs uppercase tracking-[0.14em] font-medium transition">
+                  К трихологу
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <p class="text-xs text-ink-500 italic">
+            * Все услуги в студии носят косметический, эстетический характер и не являются медицинскими манипуляциями. Точная стоимость зависит от состояния кожи и выбранного протокола.
+          </p>
+        </div>
+
+        <!-- ===== ВКЛАДКА 2: МАССАЖИ И SPA ===== -->
+        <div id="tab-spa" data-tab-panel="spa" class="tab-panel hidden mt-10 space-y-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Массаж лица -->
+            <article class="lg:col-span-5 bg-marble-100 border border-marble-300/90 overflow-hidden shadow-editorial flex flex-col">
+              <div class="relative aspect-[16/9] bg-marble-200">
+                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85" alt="Омолаживающий и лифтинг-массаж лица" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 bg-obsidian-950/70 text-[10px] uppercase tracking-[0.12em] text-marble-100">Демо-фото</span>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">Подтяжка без инъекций</span>
+                <h3 class="mt-1 font-serif-lux text-3xl text-ink-900 font-normal">Массаж лица</h3>
+                <p class="mt-2 text-xs sm:text-sm text-ink-500 font-light">В каждый сеанс включены демакияж, сыворотка под тип кожи и завершающий крем для лица, шеи и декольте.</p>
+                <ul class="mt-5 divide-y divide-marble-300/75 text-sm flex-1">
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Омолаживающий (60 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">110 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Лифтинг-массаж (60 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">110 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Испанский Хиро (60 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">110 BYN</strong></li>
+                  <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Комбинированный: лицо + ШВЗ + декольте (90 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">140 BYN</strong></li>
+                </ul>
+                <button type="button" data-select-service="Массаж лица (омолаживающий / лифтинг / Испанский Хиро)" class="mt-6 w-full py-3.5 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.18em] font-medium transition">
+                  Записаться на массаж лица
+                </button>
+              </div>
+            </article>
+
+            <!-- Массаж тела -->
+            <article class="lg:col-span-7 bg-marble-100 border border-marble-300/90 overflow-hidden shadow-editorial flex flex-col">
+              <div class="relative aspect-[16/7.2] bg-marble-200">
+                <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=85" alt="Массаж тела и стоунтерапия горячими камнями" class="w-full h-full object-cover" loading="lazy" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 bg-obsidian-950/70 text-[10px] uppercase tracking-[0.12em] text-marble-100">Демо-фото</span>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">Расслабление с заботой</span>
+                <h3 class="mt-1 font-serif-lux text-3xl text-ink-900 font-normal">Массаж тела и стоунтерапия</h3>
+                <div class="mt-5 grid sm:grid-cols-2 gap-x-7 text-sm flex-1">
+                  <ul class="divide-y divide-marble-300/75">
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Релакс головы (20 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">40 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Массаж кистей / стоп (20 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">40 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Лёгкая шея (25 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">45 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Здоровая спина (40 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">65 BYN</strong></li>
+                  </ul>
+                  <ul class="divide-y divide-marble-300/75 border-t sm:border-t-0 border-marble-300/75">
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Антистресс всего тела (60 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">90 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Комбинированный (60 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">120 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Стоунтерапия камнями (70 мин)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">150 BYN</strong></li>
+                    <li class="py-2.5 flex items-baseline justify-between gap-2"><span>Биоэнергомассаж Fohow (40–60м)</span><strong class="font-serif-lux text-lg font-medium text-gold-700 whitespace-nowrap">70–95 BYN</strong></li>
+                  </ul>
+                </div>
+                <button type="button" data-select-service="Массаж тела / Стоунтерапия" class="mt-6 w-full py-3.5 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.18em] font-medium transition">
+                  Записаться на массаж тела
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- 9 SPA-уходов «обёртывание + массаж» -->
+          <div class="bg-obsidian-900 text-marble-50 p-7 sm:p-10 border border-gold-400/25">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-7 border-b border-gold-400/20">
+              <div>
+                <span class="text-[11px] uppercase tracking-[0.24em] text-gold-300">SPAQUATORIA & Diego dalla Palma Professional</span>
+                <h3 class="mt-2 font-serif-lux text-3xl sm:text-4xl text-white font-normal">9 авторских SPA-уходов «Обёртывание + массаж»</h3>
+                <p class="mt-1.5 text-sm text-marble-200/70 font-light">Длительность каждого ритуала — 1,5 часа. Обёртывание и вид массажа можно комбинировать под ваш запрос.</p>
+              </div>
+              <div class="shrink-0 text-left md:text-right">
+                <div class="text-[10px] uppercase tracking-[0.22em] text-gold-300/80">Любая из 9 программ</div>
+                <div class="font-serif-lux text-4xl text-gold-200">140 BYN</div>
+              </div>
+            </div>
+
+            <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Лавандовый рай</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Лавандовое обёртывание + антистресс-массаж. Глубокий релакс и здоровый сон.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Марципановый каприз</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Марципановое обёртывание + антистресс-массаж. Бархатная, напитанная кожа.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Аюрведческий нектар</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Обёртывание «Панча-Амрита» + комбинированный массаж. Глубокое увлажнение.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Льняная свежесть</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Льняное обёртывание + лимфодренажный массаж. Вывод лишней жидкости и лёгкость.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Морской детокс</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Обёртывание «Прана-Океана» + лимфодренаж. Уходят отёки и тяжесть.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Шоколадная мечта</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Шоколадное обёртывание + антицеллюлитный массаж. Гладкость и уменьшение объёмов.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Хвойное восстановление</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Обёртывание «Сила Леса» + антицеллюлитный массаж. Тонус и восстановление сил.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Минус размер</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Бандажное обёртывание + лимфодренажный массаж. Подтянутые контуры сразу.</p>
+              </div>
+              <div class="p-5 bg-obsidian-850 border border-gold-400/15 hover:border-gold-400/45 transition">
+                <div class="font-serif-lux text-xl text-gold-200">Упругая кожа</div>
+                <p class="mt-1.5 text-xs text-marble-200/70 font-light leading-relaxed">Водоросли + комбо антицеллюлитного и лимфодренажного массажа.</p>
+              </div>
+            </div>
+
+            <div class="mt-7 flex justify-end">
+              <button type="button" data-select-service="SPA-уход за телом «Обёртывание + массаж» (140 BYN)" class="px-8 py-4 bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-xs uppercase tracking-[0.2em] font-medium transition">
+                Выбрать SPA-уход за 140 BYN →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== ВКЛАДКА 3: КОРРЕКЦИЯ ФИГУРЫ И КОМПЛЕКСЫ ===== -->
+        <div id="tab-figure" data-tab-panel="figure" class="tab-panel hidden mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Коррекция фигуры в SPA-капсуле -->
+          <article class="lg:col-span-6 bg-marble-100 border border-marble-300/90 p-7 sm:p-9 shadow-editorial flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">SPA-капсула + массаж + 20 мин чаепитие</span>
+              <h3 class="mt-2 font-serif-lux text-3xl sm:text-4xl text-ink-900 font-normal">Коррекция фигуры</h3>
+              <p class="mt-2 text-sm text-ink-500 font-light">Две фирменные программы: лимфодренажная <strong class="font-medium text-ink-900">«Из булочки в конфетку»</strong> и антицеллюлитная <strong class="font-medium text-ink-900">«К лету готова»</strong>.</p>
+
+              <div class="mt-6 space-y-4">
+                <div class="p-5 bg-marble-50 border border-marble-300">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <span class="font-medium text-ink-900">Формат «Актив» (70 + 20 мин)</span>
+                    <span class="font-serif-lux text-2xl text-gold-700">145 BYN</span>
+                  </div>
+                  <p class="mt-1.5 text-xs text-ink-500 leading-relaxed">SPA-капсула + массаж (талия, живот, ягодицы, ноги) + 20 мин отдых и чаепитие.</p>
+                </div>
+                <div class="p-5 bg-obsidian-900 text-marble-50 border border-gold-400/40">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <span class="font-medium text-gold-200">Формат «Максимум» (100 + 20 мин)</span>
+                    <span class="font-serif-lux text-2xl text-white">250 BYN</span>
+                  </div>
+                  <p class="mt-1.5 text-xs text-marble-200/75 leading-relaxed">SPA-капсула + обёртывание (шоколад, водоросли или бандажное) + массаж + 20 мин чаепитие.</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 bg-gold-200/25 border border-gold-400/40 text-xs text-ink-700 leading-relaxed">
+                <strong class="text-ink-900">Бонус при курсе от 5 процедур:</strong> скидка 10% и 2 консультации нутрициолога в подарок, чтобы закрепить результат питанием.
+              </div>
+            </div>
+
+            <button type="button" data-select-service="Программа коррекции фигуры (SPA-капсула)" class="mt-6 w-full py-3.5 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.18em] font-medium transition">
+              Записаться на программу коррекции
+            </button>
+          </article>
+
+          <!-- Выгодные комплексы массажа -->
+          <article class="lg:col-span-6 bg-marble-100 border border-marble-300/90 p-7 sm:p-9 shadow-editorial flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-gold-600 font-medium">Выгода до 13% + 10 мин чаепитие</span>
+              <h3 class="mt-2 font-serif-lux text-3xl sm:text-4xl text-ink-900 font-normal">Выгодные комплексы массажа</h3>
+              <p class="mt-2 text-sm text-ink-500 font-light">Проработка сразу нескольких зон за один визит — для полной перезагрузки после рабочей недели.</p>
+
+              <ul class="mt-6 divide-y divide-marble-300/75 text-sm">
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Массаж стоп + массаж кистей (40 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">70 BYN</strong></li>
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Релакс головы + лёгкая шея (45 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">75 BYN</strong></li>
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Голова + лёгкая шея + кисти (65 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">115 BYN</strong></li>
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Голова + спина + омолаживающий лица (80 / 100 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">130 / 150 BYN</strong></li>
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Голова + лицо + тело + стопы (100 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">150 BYN</strong></li>
+                <li class="py-3 flex items-baseline justify-between gap-3"><span>Голова + лицо + массаж тела 60м (100 мин)</span><strong class="font-serif-lux text-xl font-medium text-gold-700 whitespace-nowrap">170 BYN</strong></li>
+              </ul>
+            </div>
+
+            <button type="button" data-select-service="Выгодный комплекс массажа" class="mt-6 w-full py-3.5 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.18em] font-medium transition">
+              Выбрать комплекс массажей
+            </button>
+          </article>
+        </div>
+
+        <!-- ===== ВКЛАДКА 4: ПОДАРОЧНЫЕ СЕРТИФИКАТЫ ===== -->
+        <div id="tab-certificates" data-tab-panel="certificates" class="tab-panel hidden mt-10">
+          <div class="bg-obsidian-900 text-marble-50 overflow-hidden border border-gold-400/30 grid lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[280px]">
+              <img src="https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=1200&q=85" alt="Подарочный сертификат в салон Код Красоты" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent to-obsidian-900/50 hidden lg:block"></div>
+              <span class="absolute top-3.5 left-3.5 px-2.5 py-1 bg-obsidian-950/75 text-[10px] uppercase tracking-[0.12em] text-marble-100">Демо-фото</span>
+            </div>
+            <div class="lg:col-span-7 p-8 sm:p-11 flex flex-col justify-center">
+              <span class="text-[11px] uppercase tracking-[0.26em] text-gold-300">Подарок со вкусом и заботой</span>
+              <h3 class="mt-2 font-serif-lux text-3xl sm:text-5xl text-white font-normal leading-tight">Подарочный сертификат «Код Красоты»</h3>
+              <p class="mt-4 text-sm sm:text-base text-marble-200/75 font-light leading-relaxed">
+                Подходит женщинам и мужчинам любого возраста. Оформляется на любую удобную сумму — тогда получатель сам выберет косметологию, массаж или SPA-ритуал — либо на конкретную процедуру или комплекс.
+              </p>
+              <div class="mt-7 grid sm:grid-cols-3 gap-4 text-xs">
+                <div class="p-4 bg-obsidian-850 border border-gold-400/20">
+                  <div class="text-gold-300 uppercase tracking-[0.16em]">Формат</div>
+                  <div class="mt-1.5 text-marble-100 font-light">Бумажный на ул. Мицкевича, 9 или электронный</div>
+                </div>
+                <div class="p-4 bg-obsidian-850 border border-gold-400/20">
+                  <div class="text-gold-300 uppercase tracking-[0.16em]">Номинал</div>
+                  <div class="mt-1.5 text-marble-100 font-light">Любая сумма или конкретная услуга</div>
+                </div>
+                <div class="p-4 bg-obsidian-850 border border-gold-400/20">
+                  <div class="text-gold-300 uppercase tracking-[0.16em]">Срок действия</div>
+                  <div class="mt-1.5 text-marble-100 font-light">3 месяца с даты покупки</div>
+                </div>
+              </div>
+              <div class="mt-8 flex flex-wrap gap-3.5">
+                <button type="button" data-select-service="Подарочный сертификат" class="px-8 py-4 bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-xs uppercase tracking-[0.2em] font-medium transition">
+                  Заказать сертификат
+                </button>
+                <a data-contact="viber" href="viber://chat?number=%2B375333237575" class="px-7 py-4 border border-gold-400/45 hover:border-gold-300 hover:bg-gold-400/10 text-marble-100 text-xs uppercase tracking-[0.18em] font-light transition">
+                  Уточнить в Viber
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ПРЕМИАЛЬНЫЕ БРЕНДЫ И ИНТЕРНЕТ-МАГАЗИН ==================== -->
+    <section id="brands" class="py-16 sm:py-24 bg-obsidian-900 text-marble-50 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_85%_15%,rgba(212,175,106,0.12),transparent_48%)]"></div>
+      <div class="relative max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="text-[11px] uppercase tracking-[0.26em] text-gold-300">Косметика, на которой мы работаем</span>
+            <h2 class="mt-2 font-serif-lux text-4xl sm:text-5xl text-white font-normal leading-tight">
+              Мировые бренды салонного и <span class="italic text-gold-300">домашнего ухода</span>
+            </h2>
+          </div>
+          <a data-contact="shop" href="https://kodkrasoty.online" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gold-400/55 hover:bg-gold-400 hover:text-obsidian-950 text-gold-200 text-xs uppercase tracking-[0.18em] font-medium transition shrink-0 whitespace-nowrap">
+            Магазин kodkrasoty.online ↗
+          </a>
+        </div>
+
+        <div class="mt-11 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Biologique Recherche</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Франция · Клеточный уход и лифтинг</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">[ comfort zone ]</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Италия · SPA-пилинги и антиэйдж</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Ultraceuticals</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Австралия · Против пигментации и старения</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">pHformula</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Испания · Дерматологическое обновление</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">A.G.E. STOP</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Швейцария · Питание и pro-age протоколы</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Diego dalla Palma</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Италия · Профессиональные SPA-уходы</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">SPAQUATORIA</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Натуральные водоросли, грязи, масла</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Dermaceutic</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Франция · Космецевтика и уход</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Janssen Cosmetics</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Германия · Космецевтический уход</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Nimue & Magiray</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Здоровье и восстановление кожи</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">Hadat Cosmetics</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Профессиональный уход за волосами</div>
+          </div>
+          <div class="p-5 sm:p-6 bg-obsidian-850/90 border border-gold-400/20 hover:border-gold-400/60 transition">
+            <div class="font-serif-lux text-xl sm:text-2xl text-white">MONE Professional</div>
+            <div class="mt-1 text-xs text-gold-300/75 font-light">Уход и стайлинг для волос</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КОМАНДА СПЕЦИАЛИСТОВ ==================== -->
+    <section id="team" class="py-16 sm:py-24 bg-marble-100 border-b border-marble-300/80">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-gold-600 font-medium">Специалисты студии</span>
+          <h2 class="mt-2 font-serif-lux text-4xl sm:text-5xl text-ink-900 font-normal">
+            За результатами <span class="italic text-gold-600">всегда стоят люди</span>
+          </h2>
+          <p class="mt-3 text-ink-500 text-sm sm:text-base font-light">
+            Мастера постоянно повышают квалификацию и работают в связке: эстетическая косметология + массаж + нутрициология.
+          </p>
+        </div>
+
+        <div class="mt-11 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Ольга Чагина -->
+          <article class="bg-marble-50 border border-marble-300 p-7 sm:p-8 flex flex-col justify-between shadow-editorial">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="w-14 h-14 bg-obsidian-900 text-gold-200 border border-gold-400/50 flex items-center justify-center font-serif-lux text-2xl tracking-wider">
+                  ОЧ
+                </div>
+                <span class="px-3 py-1 bg-marble-200 text-gold-700 text-[11px] uppercase tracking-[0.14em] font-medium">Опыт 14+ лет</span>
+              </div>
+              <h3 class="mt-6 font-serif-lux text-3xl text-ink-900 font-normal">Ольга Чагина</h3>
+              <div class="text-[11px] uppercase tracking-[0.16em] text-gold-600 font-medium mt-1">Косметолог-эстетист-нутрициолог</div>
+              <p class="mt-4 text-sm text-ink-700 leading-relaxed font-light">
+                Pro-age эксперт, интегративный и превентивный специалист. Работает со всеми признаками биологического старения кожи, включая пигментацию и розацеа — от диагностики до полной реабилитации.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-marble-300/80 flex items-center justify-between text-xs">
+              <span class="text-ink-500">Фото добавим при запуске</span>
+              <button type="button" data-select-service="Консультация косметолога / SKIN SMART" class="uppercase tracking-[0.14em] font-medium text-gold-700 hover:text-ink-900 transition">Записаться →</button>
+            </div>
+          </article>
+
+          <!-- Валерия Чагина -->
+          <article class="bg-marble-50 border border-marble-300 p-7 sm:p-8 flex flex-col justify-between shadow-editorial">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="w-14 h-14 bg-obsidian-900 text-gold-200 border border-gold-400/50 flex items-center justify-center font-serif-lux text-2xl tracking-wider">
+                  ВЧ
+                </div>
+                <span class="px-3 py-1 bg-marble-200 text-gold-700 text-[11px] uppercase tracking-[0.14em] font-medium">Опыт 8 лет</span>
+              </div>
+              <h3 class="mt-6 font-serif-lux text-3xl text-ink-900 font-normal">Валерия Чагина</h3>
+              <div class="text-[11px] uppercase tracking-[0.16em] text-gold-600 font-medium mt-1">Косметик</div>
+              <p class="mt-4 text-sm text-ink-700 leading-relaxed font-light">
+                Эксперт по уходу за проблемной кожей и постакне, в том числе у подростков. Бережный индивидуальный подход и безопасные профессиональные методики восстановления.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-marble-300/80 flex items-center justify-between text-xs">
+              <span class="text-ink-500">Фото добавим при запуске</span>
+              <button type="button" data-select-service="Комбинированная чистка лица" class="uppercase tracking-[0.14em] font-medium text-gold-700 hover:text-ink-900 transition">Записаться →</button>
+            </div>
+          </article>
+
+          <!-- Наталья Комар -->
+          <article class="bg-marble-50 border border-marble-300 p-7 sm:p-8 flex flex-col justify-between shadow-editorial">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="w-14 h-14 bg-obsidian-900 text-gold-200 border border-gold-400/50 flex items-center justify-center font-serif-lux text-2xl tracking-wider">
+                  НК
+                </div>
+                <span class="px-3 py-1 bg-marble-200 text-gold-700 text-[11px] uppercase tracking-[0.14em] font-medium">Стаж 30+ лет</span>
+              </div>
+              <h3 class="mt-6 font-serif-lux text-3xl text-ink-900 font-normal">Наталья Комар</h3>
+              <div class="text-[11px] uppercase tracking-[0.16em] text-gold-600 font-medium mt-1">Массажист и SPA-специалист</div>
+              <p class="mt-4 text-sm text-ink-700 leading-relaxed font-light">
+                Владеет ручным и аппаратным массажем тела: классический, моделирующий, лимфодренажный, антицеллюлитный, комбинированный массаж, стоунтерапия и восстановление после травм.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-marble-300/80 flex items-center justify-between text-xs">
+              <span class="text-ink-500">Фото добавим при запуске</span>
+              <button type="button" data-select-service="Массаж тела / Стоунтерапия" class="uppercase tracking-[0.14em] font-medium text-gold-700 hover:text-ink-900 transition">Записаться →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧЕСТНЫЙ БЛОК ОТЗЫВОВ ==================== -->
+    <section id="reviews" class="py-16 sm:py-20 bg-marble-50 border-b border-marble-300/80">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div>
+            <span class="text-[11px] uppercase tracking-[0.26em] text-gold-600 font-medium">Впечатления гостей</span>
+            <h2 class="mt-2 font-serif-lux text-4xl sm:text-5xl text-ink-900 font-normal">Реальные отзывы о студии</h2>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a data-contact="yandexMaps" href="https://yandex.by/maps/org/kod_krasoty/12205721205/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.16em] font-medium transition">
+              Отзывы на Яндекс Картах ↗
+            </a>
+            <a data-contact="instagram" href="https://www.instagram.com/kod_krasoty_studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 border border-gold-500/60 hover:bg-marble-200 text-ink-900 text-xs uppercase tracking-[0.16em] font-medium transition">
+              Instagram @kod_krasoty_studio
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-marble-100 border border-dashed border-gold-500/45 p-6 sm:p-8">
+          <div class="text-xs text-gold-700 font-medium mb-6">
+            Демо-раздел: мы не выдумываем отзывы и рейтинги — при запуске перенесём сюда ваши подтверждённые отзывы гостей со ссылками на источники.
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="p-6 bg-marble-50 border border-marble-300/80">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-gold-600">Демо-слот 01 · Косметология</div>
+              <p class="mt-3 text-sm text-ink-500 font-light leading-relaxed">
+                Место для реального отзыва гостьи о чистке, пилинге или уходе Biologique Recherche / Geneo+.
+              </p>
+            </div>
+            <div class="p-6 bg-marble-50 border border-marble-300/80">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-gold-600">Демо-слот 02 · Массаж и SPA</div>
+              <p class="mt-3 text-sm text-ink-500 font-light leading-relaxed">
+                Место для отзыва о массаже лица, стоунтерапии или SPA-ритуале с обёртыванием и чаепитием.
+              </p>
+            </div>
+            <div class="p-6 bg-marble-50 border border-marble-300/80">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-gold-600">Демо-слот 03 · Нутрициология</div>
+              <p class="mt-3 text-sm text-ink-500 font-light leading-relaxed">
+                Место для кейса комплексного сопровождения: диагностика SKIN SMART, домашний уход и результат.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ОНЛАЙН-ЗАПИСЬ ==================== -->
+    <section id="booking" class="py-16 sm:py-24 bg-marble-100">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Лёгкий мини-интерактив за 2 клика (автоподстановка в форму) -->
+        <div class="mb-10 bg-obsidian-900 text-marble-50 border border-gold-400/25 p-6 sm:p-9">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-6 border-b border-gold-400/20">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.26em] text-gold-300">Быстрый подбор за 2 клика</span>
+              <h2 class="mt-2 font-serif-lux text-3xl sm:text-4xl text-white font-normal">
+                Выберите направление и удобное время
+              </h2>
+            </div>
+            <div id="quickPickSummary" class="text-xs text-gold-200/90 bg-obsidian-850 border border-gold-400/25 px-4 py-2.5">
+              Нажмите на варианты ниже — они сразу подставятся в заявку
+            </div>
+          </div>
+
+          <div class="mt-6 grid lg:grid-cols-2 gap-6">
+            <!-- Клик 1: Направление -->
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.2em] text-marble-200/60 mb-3">1. Что вас интересует?</div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" data-quick-dir="Косметология" data-quick-service="Консультация косметолога / SKIN SMART" class="quick-dir-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Косметология</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Уходы, пилинги, чистки</span>
+                </button>
+                <button type="button" data-quick-dir="Массажи и SPA" data-quick-service="SPA-уход за телом «Обёртывание + массаж» (140 BYN)" class="quick-dir-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Массажи и SPA</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Лицо, тело, 9 SPA-уходов</span>
+                </button>
+                <button type="button" data-quick-dir="Коррекция фигуры" data-quick-service="Программа коррекции фигуры (SPA-капсула)" class="quick-dir-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Коррекция фигуры</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">SPA-капсула и комплексы</span>
+                </button>
+                <button type="button" data-quick-dir="Подарочный сертификат" data-quick-service="Подарочный сертификат" class="quick-dir-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Подарочный сертификат</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Бумажный или онлайн</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Клик 2: Удобное время -->
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.2em] text-marble-200/60 mb-3">2. Когда вам удобно?</div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" data-quick-time="Будни днём (10:00–17:00)" class="quick-time-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Будни днём</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Пн–Пт · 10:00–17:00</span>
+                </button>
+                <button type="button" data-quick-time="Будни вечером (17:00–20:00)" class="quick-time-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Будни вечером</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Пн–Пт · 17:00–20:00</span>
+                </button>
+                <button type="button" data-quick-time="Суббота (10:00–16:00)" class="quick-time-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Суббота</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Сб · 10:00–16:00</span>
+                </button>
+                <button type="button" data-quick-time="Подберу время с администратором" class="quick-time-btn px-4 py-3.5 text-left bg-obsidian-850 border border-gold-400/20 hover:border-gold-400/65 text-xs sm:text-sm text-marble-100 transition">
+                  <span class="block font-medium">Подберу с админом</span>
+                  <span class="block text-[11px] text-marble-200/55 mt-0.5">Ближайшее свободное окно</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Левая колонка: Прямая связь -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.26em] text-gold-600 font-medium">Онлайн-запись</span>
+              <h3 class="mt-2 font-serif-lux text-4xl text-ink-900 leading-tight font-normal">
+                Оставьте заявку — <span class="italic text-gold-600">мы подберём окно</span>
+              </h3>
+              <p class="mt-3 text-ink-500 text-sm sm:text-base font-light leading-relaxed">
+                Администратор ответит в удобном мессенджере или перезвонит, уточнит пожелания и подтвердит время визита.
+              </p>
+            </div>
+
+            <div class="p-6 sm:p-7 bg-marble-50 border border-marble-300 shadow-editorial space-y-5">
+              <div class="text-xs uppercase tracking-[0.18em] text-gold-700 font-medium">Написать напрямую в мессенджер</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a data-contact="viber" href="viber://chat?number=%2B375333237575" class="inline-flex items-center justify-center gap-2 py-3.5 px-4 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.16em] font-medium transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                  Viber
+                </a>
+                <a data-contact="telegram" href="https://t.me/+375333237575" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 py-3.5 px-4 border border-obsidian-900 hover:bg-obsidian-900 hover:text-gold-200 text-ink-900 text-xs uppercase tracking-[0.16em] font-medium transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                  Telegram
+                </a>
+              </div>
+              <div class="pt-5 border-t border-marble-200 space-y-1.5">
+                <div class="text-[11px] uppercase tracking-[0.18em] text-ink-500">Телефон администратора</div>
+                <a data-contact="phone" data-contact-text="phone" href="tel:+375333237575" class="inline-block font-serif-lux text-3xl text-ink-900 hover:text-gold-600 transition whitespace-nowrap">
+                  +375 (33) 323-75-75
+                </a>
+                <div class="text-xs text-ink-500 font-light">Пн–Пт 10:00–20:00 · Сб 10:00–16:00 · Вс выходной</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма заявки -->
+          <div class="lg:col-span-7">
+            <form id="bookingForm" novalidate class="bg-marble-50 border border-marble-300 p-6 sm:p-9 shadow-editorial space-y-5">
+              <!-- Honeypot от спама -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Оставьте поле пустым</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="clientName" class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-1.5">Ваше имя *</label>
+                  <input type="text" id="clientName" name="name" required placeholder="Например, Анна" class="w-full px-4 py-3 bg-white border border-marble-300 text-ink-900 placeholder-ink-500/45 focus:outline-none focus:border-gold-500 transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="clientPhone" class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-1.5">Телефон *</label>
+                  <input type="tel" id="clientPhone" name="phone" required placeholder="+375 (33) 000-00-00" class="w-full px-4 py-3 bg-white border border-marble-300 text-ink-900 placeholder-ink-500/45 focus:outline-none focus:border-gold-500 transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="clientService" class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-1.5">Услуга или направление *</label>
+                  <select id="clientService" name="service" required class="w-full px-4 py-3 bg-white border border-marble-300 text-ink-900 focus:outline-none focus:border-gold-500 transition">
+                    <option value="Консультация косметолога / SKIN SMART">Консультация косметолога / SKIN SMART</option>
+                    <option value="Консультация косметолога с первичной процедурой">Консультация + первичная процедура</option>
+                    <option value="Уходовая процедура (Biologique Recherche / Geneo+ / VIP)">VIP-уход (Biologique Recherche / Geneo+ / Экзосомы)</option>
+                    <option value="Комбинированная чистка лица">Комбинированная чистка лица</option>
+                    <option value="Пилинг (PRX T-33 / BioRePeelCL3 / pHformula)">Пилинг (PRX T-33 / BioRePeelCL3 / pHformula)</option>
+                    <option value="Консультация трихолога-эстетиста">Консультация трихолога-эстетиста</option>
+                    <option value="Уход за бровями и ресницами">Уход за бровями и ресницами</option>
+                    <option value="Массаж лица (омолаживающий / лифтинг / Испанский Хиро)">Массаж лица (60–90 мин)</option>
+                    <option value="Массаж тела / Стоунтерапия">Массаж тела / Стоунтерапия</option>
+                    <option value="SPA-уход за телом «Обёртывание + массаж» (140 BYN)">SPA-уход «Обёртывание + массаж» (140 BYN)</option>
+                    <option value="Программа коррекции фигуры (SPA-капсула)">Программа коррекции фигуры (SPA-капсула)</option>
+                    <option value="Выгодный комплекс массажа">Выгодный комплекс массажа</option>
+                    <option value="Подарочный сертификат">Подарочный сертификат</option>
+                    <option value="Помогите подобрать процедуру">Помогите подобрать процедуру</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="clientDate" class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-1.5">Желаемая дата визита</label>
+                  <input type="date" id="clientDate" name="date" class="w-full px-4 py-3 bg-white border border-marble-300 text-ink-900 focus:outline-none focus:border-gold-500 transition" />
+                </div>
+              </div>
+
+              <div>
+                <span class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-2">Как удобнее ответить?</span>
+                <div class="grid grid-cols-3 gap-2.5">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Viber" checked class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 border border-marble-300 bg-white text-xs sm:text-sm font-medium text-ink-700 peer-checked:border-obsidian-900 peer-checked:bg-obsidian-900 peer-checked:text-gold-200 transition">Viber</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 border border-marble-300 bg-white text-xs sm:text-sm font-medium text-ink-700 peer-checked:border-obsidian-900 peer-checked:bg-obsidian-900 peer-checked:text-gold-200 transition">Telegram</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Звонок по телефону" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-3 border border-marble-300 bg-white text-xs sm:text-sm font-medium text-ink-700 peer-checked:border-obsidian-900 peer-checked:bg-obsidian-900 peer-checked:text-gold-200 transition">Звонок</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="clientComment" class="block text-[11px] uppercase tracking-[0.16em] font-medium text-ink-700 mb-1.5">Пожелания по времени или процедуре</label>
+                <textarea id="clientComment" name="comment" rows="3" placeholder="Например: удобно в будни после 17:00, интересует SPA-уход «Лавандовый рай»" class="w-full px-4 py-3 bg-white border border-marble-300 text-ink-900 placeholder-ink-500/45 focus:outline-none focus:border-gold-500 transition"></textarea>
+              </div>
+
+              <!-- Обязательный незаполненный чекбокс согласия по Закону РБ № 99-З (БЕЗ checked!) -->
+              <div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="clientConsent" name="consent" required class="mt-1 w-4 h-4 border-marble-300 text-gold-600 focus:ring-gold-500 shrink-0" />
+                  <span class="text-xs text-ink-500 leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-ink-900 underline hover:text-gold-600 font-medium">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-ink-900 underline hover:text-gold-600 font-medium">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3.5 bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="bookingSubmitBtn" class="w-full py-4 px-6 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs sm:text-sm uppercase tracking-[0.2em] font-medium transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Отправить заявку на запись
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ (КОНТАКТЫ + КОМПЛАЕНС РБ) ==================== -->
+  <footer id="contacts" class="bg-obsidian-950 text-marble-200/75 pt-16 pb-36 md:pb-24 border-t border-gold-400/20">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-gold-400/15">
+        <!-- Контакты -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <div class="font-serif-lux text-3xl uppercase tracking-[0.14em] text-gold-200">Код Красоты</div>
+            <p class="mt-1.5 text-sm text-marble-200/60 font-light">Салон красоты, эстетической косметологии и SPA в центре Барановичей.</p>
+          </div>
+
+          <div class="space-y-3 text-sm font-light">
+            <div class="flex items-start gap-3">
+              <span class="text-gold-400/80 w-24 shrink-0">Адрес:</span>
+              <span class="text-white">г. Барановичи, ул. Мицкевича, 9</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-gold-400/80 w-24 shrink-0">Телефон:</span>
+              <a data-contact="phone" data-contact-text="phone" href="tel:+375333237575" class="text-white font-normal hover:text-gold-300 transition whitespace-nowrap">+375 (33) 323-75-75</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-gold-400/80 w-24 shrink-0">Email:</span>
+              <a data-contact="email" data-contact-text="email" href="mailto:kodkrasoty.online@gmail.com" class="text-marble-100 hover:text-gold-300 transition">kodkrasoty.online@gmail.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-gold-400/80 w-24 shrink-0">График:</span>
+              <div>
+                <div>Пн – Пт: 10:00 – 20:00</div>
+                <div>Суббота: 10:00 – 16:00</div>
+                <div class="text-marble-200/45">Воскресенье: выходной</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <a data-contact="viber" href="viber://chat?number=%2B375333237575" class="px-4 py-2 border border-gold-400/45 hover:bg-gold-400 hover:text-obsidian-950 text-gold-200 text-xs uppercase tracking-[0.14em] transition">Viber</a>
+            <a data-contact="telegram" href="https://t.me/+375333237575" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-gold-400/45 hover:bg-gold-400 hover:text-obsidian-950 text-gold-200 text-xs uppercase tracking-[0.14em] transition">Telegram</a>
+            <a data-contact="instagram" href="https://www.instagram.com/kod_krasoty_studio" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/15 hover:border-gold-400 text-marble-200 text-xs uppercase tracking-[0.14em] transition">Instagram</a>
+            <a data-contact="shop" href="https://kodkrasoty.online" target="_blank" rel="noopener noreferrer" class="px-4 py-2 border border-white/15 hover:border-gold-400 text-marble-200 text-xs uppercase tracking-[0.14em] transition">kodkrasoty.online ↗</a>
+          </div>
+        </div>
+
+        <!-- Карта расположения -->
+        <div class="lg:col-span-7">
+          <div class="bg-obsidian-900 border border-gold-400/20 p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-serif-lux text-2xl text-white">Как нас найти</div>
+                <div class="text-xs text-marble-200/55">г. Барановичи, ул. Мицкевича, 9 (центр города)</div>
+              </div>
+              <a data-contact="yandexMaps" href="https://yandex.by/maps/org/kod_krasoty/12205721205/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-[11px] uppercase tracking-[0.16em] font-medium transition">
+                Маршрут в Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="relative overflow-hidden bg-obsidian-950 border border-gold-400/15 h-52 flex items-center justify-center">
+              <svg class="w-full h-full opacity-25" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 140 Q 240 120 600 132" stroke="#D4AF6A" stroke-width="8" />
+                <path d="M210 0 L235 220" stroke="#947035" stroke-width="6" />
+                <path d="M420 0 L395 220" stroke="#574734" stroke-width="5" />
+                <path d="M0 60 L600 50" stroke="#443F3A" stroke-width="4" />
+                <rect x="275" y="78" width="66" height="36" fill="#171411" stroke="#D4AF6A" stroke-width="1.5" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-11 h-11 rounded-full bg-gold-400 text-obsidian-950 flex items-center justify-center shadow-champagne mb-2.5">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-4 py-1.5 bg-obsidian-900/95 border border-gold-400/35 text-xs sm:text-sm font-normal text-white">
+                  Салон «Код Красоты» · ул. Мицкевича, 9
+                </div>
+                <div class="mt-1.5 text-[11px] text-marble-200/55">При запуске подключим интерактивную карту Яндекс и перенесём сайт на ваш хостинг</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридический блок и реквизиты РБ -->
+      <div class="pt-8 space-y-5 text-xs text-marble-200/55 font-light">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-marble-200/85 font-normal">Реквизиты исполнителя (уточняются перед запуском):</div>
+            <div>ИП Чагина О.И. ([ФИО полностью]), УНП [XXXXXXXXX]</div>
+            <div>Юридический адрес: [Юридический адрес ИП / организации]</div>
+            <div>Режим работы: Пн–Пт 10:00–20:00, Сб 10:00–16:00, Вс — выходной</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-gold-300 transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-gold-300 transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-gold-300 transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-marble-200/45 leading-relaxed">
+          Информация и цены, размещённые на данном сайте, носят исключительно справочный характер и ни при каких условиях не являются публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Все услуги студии носят косметический, эстетический характер и не являются медицинскими манипуляциями.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ФИРМЕННЫЙ МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Строго скрыт пока открыт cookie-баннер; находится над демо-плашкой (bottom-[44px]), не перекрывая её -->
+  <nav id="mobileStickyDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-[44px] z-40">
+    <div class="bg-obsidian-900/90 backdrop-blur-xl border border-gold-400/35 shadow-[0_14px_34px_rgba(0,0,0,0.58)] rounded-2xl p-1.5 grid grid-cols-3 gap-1.5">
+      <a data-contact="phone" href="tel:+375333237575" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl text-marble-100 hover:bg-white/5 transition">
+        <svg class="w-4 h-4 text-gold-300 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span class="text-[10px] uppercase tracking-[0.12em]">Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375333237575" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl text-marble-100 hover:bg-white/5 transition">
+        <svg class="w-4 h-4 text-gold-300 mb-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span class="text-[10px] uppercase tracking-[0.12em]">Viber</span>
+      </a>
+      <a href="#booking" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-gold-400 text-obsidian-950 font-medium transition">
+        <svg class="w-4 h-4 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span class="text-[10px] uppercase tracking-[0.12em]">Записаться</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ДЕСКТОПНЫЕ ПЛАВАЮЩИЕ КНОПКИ В ЛЮКС-ПАЛИТРЕ (скрыты пока открыт cookie-баннер) -->
+  <div id="floatingDesktop" class="hidden fixed right-5 bottom-12 z-40 flex-col gap-2.5">
+    <a data-contact="telegram" href="https://t.me/+375333237575" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram" class="w-11 h-11 rounded-full bg-obsidian-900/90 backdrop-blur-md border border-gold-400/50 text-gold-300 hover:bg-gold-400 hover:text-obsidian-950 shadow-xl flex items-center justify-center transition">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+    </a>
+    <a data-contact="viber" href="viber://chat?number=%2B375333237575" aria-label="Написать в Viber" title="Viber" class="w-11 h-11 rounded-full bg-obsidian-900/90 backdrop-blur-md border border-gold-400/50 text-gold-300 hover:bg-gold-400 hover:text-obsidian-950 shadow-xl flex items-center justify-center transition">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+    </a>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР (РЕКОМЕНДАЦИИ НЦЗПД РБ: ДВЕ РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-[40px] z-50 px-3 sm:px-6">
+    <div class="max-w-4xl mx-auto bg-obsidian-900/95 backdrop-blur-xl border border-gold-400/40 text-marble-200 px-3.5 py-3 sm:px-5 sm:py-3.5 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="text-[11px] sm:text-xs leading-snug font-light">
+        Мы используем файлы cookie для корректной работы сайта и настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-gold-300 underline hover:text-white">настройки cookie</button>.
+      </div>
+      <div class="grid grid-cols-2 sm:flex sm:flex-row gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-2.5 sm:px-4 py-2 bg-obsidian-800 hover:bg-obsidian-850 border border-gold-400/50 text-marble-100 text-[10px] sm:text-[11px] uppercase tracking-[0.06em] sm:tracking-[0.12em] font-medium text-center leading-tight transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-2.5 sm:px-4 py-2 bg-gold-400 hover:bg-gold-300 border border-gold-400 text-obsidian-950 text-[10px] sm:text-[11px] uppercase tracking-[0.06em] sm:tracking-[0.12em] font-medium text-center leading-tight transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЕМО-ПЛАШКА В САМОМ НИЗУ (h-9, ничего не перекрывает) -->
+  <div class="fixed inset-x-0 bottom-0 z-40 h-9 bg-obsidian-950/95 backdrop-blur-md border-t border-gold-400/20 text-marble-200/70 flex items-center justify-center px-3 text-[10px] sm:text-xs text-center">
+    <span class="truncate max-w-full">Демо-концепт сайта для студии «Код Красоты» · Заменим фото на ваши при запуске</span>
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс галереи -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-obsidian-950/95 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-obsidian-900 overflow-hidden border border-gold-400/30 shadow-2xl">
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3.5 right-3.5 z-10 w-10 h-10 bg-obsidian-950/85 border border-gold-400/35 text-marble-100 hover:bg-gold-400 hover:text-obsidian-950 flex items-center justify-center transition">
+        ✕
+      </button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-obsidian-950" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-marble-200 text-center border-t border-gold-400/15 font-light"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-marble-50 p-7 sm:p-8 shadow-2xl border border-gold-400/40">
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 bg-marble-200 hover:bg-marble-300 text-ink-700 flex items-center justify-center transition">✕</button>
+      <div class="w-12 h-12 bg-obsidian-900 text-gold-300 flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-serif-lux text-3xl text-ink-900">Заявка принята</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-ink-700 leading-relaxed font-light"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 bg-marble-100 border border-marble-300 text-xs text-ink-700 whitespace-pre-wrap font-mono"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3.5 bg-obsidian-900 hover:bg-gold-600 text-gold-200 hover:text-white text-xs uppercase tracking-[0.18em] font-medium transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-marble-50 shadow-2xl border border-gold-400/35 flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-marble-200">
+        <h3 class="font-serif-lux text-2xl text-ink-900">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-marble-200 hover:bg-marble-300 text-ink-700 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-ink-700 space-y-3 leading-relaxed font-light">
+        <p><strong class="font-medium text-ink-900">1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает владелец студии «Код Красоты» (ИП Чагина О.И., УНП [XXXXXXXXX], г. Барановичи, ул. Мицкевича, 9).</p>
+        <p><strong class="font-medium text-ink-900">2. Цели и состав данных.</strong> Оператор обрабатывает имя, номер телефона, выбранную услугу, желаемую дату визита, способ обратной связи и комментарий исключительно для обратной связи, консультации по услугам, оформления подарочных сертификатов и записи в студию.</p>
+        <p><strong class="font-medium text-ink-900">3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта используются сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в иностранных государствах, где не обеспечивается надлежащий уровень защиты прав субъектов ПД. Существуют риски отсутствия специального законодательства о защите ПД в таких государствах, ограниченного контроля со стороны уполномоченных органов РБ и доступа третьих лиц по законодательству этих стран. Передача осуществляется исключительно при наличии вашего отдельного согласия.</p>
+        <p><strong class="font-medium text-ink-900">4. Сроки хранения.</strong> Данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong class="font-medium text-ink-900">5. Права субъекта ПД (ст. 10–15 Закона № 99-З).</strong> Вы имеете право в любое время без объяснения причин отозвать согласие; получать информацию об обработке ваших ПД; требовать изменения неполных или устаревших данных; требовать прекращения обработки и (или) удаления ПД; обжаловать действия (бездействие) оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-marble-200 bg-marble-100 text-right">
+        <button type="button" data-close-modal class="px-6 py-2.5 bg-obsidian-900 text-gold-200 text-xs uppercase tracking-[0.16em] font-medium">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-marble-50 shadow-2xl border border-gold-400/35 flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-marble-200">
+        <h3 class="font-serif-lux text-2xl text-ink-900">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-marble-200 hover:bg-marble-300 text-ink-700 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-ink-700 space-y-3 leading-relaxed font-light">
+        <p>Проставляя отметку (галочку) в форме записи на сайте студии «Код Красоты» и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору (ИП Чагина О.И., УНП [XXXXXXXXX], г. Барановичи, ул. Мицкевича, 9) на обработку моих персональных данных: имени, номера телефона, выбранной услуги, желаемой даты визита, способа связи и комментария.</p>
+        <p><strong class="font-medium text-ink-900">Цель обработки:</strong> обработка обращения, консультация по косметологическим, массажным и SPA-услугам, запись на приём и оформление подарочных сертификатов.</p>
+        <p><strong class="font-medium text-ink-900">Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что доставка заявки осуществляется с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, инфраструктура которых находится в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены связанные с этим риски (различия в правовом регулировании защиты данных, возможное отсутствие независимого надзорного органа и ограниченные возможности защиты прав в иностранной юрисдикции).</p>
+        <p><strong class="font-medium text-ink-900">Срок действия и отзыв:</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) со своими правами по статьям 10–15 Закона РБ № 99-З (отзыв согласия, доступ к информации, изменение, удаление данных, обжалование в НЦЗПД). Отозвать согласие можно по контактам, указанным в подвале сайта.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-marble-200 bg-marble-100 text-right">
+        <button type="button" data-close-modal class="px-6 py-2.5 bg-obsidian-900 text-gold-200 text-xs uppercase tracking-[0.16em] font-medium">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-marble-50 shadow-2xl border border-gold-400/35 flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-marble-200">
+        <h3 class="font-serif-lux text-2xl text-ink-900">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-marble-200 hover:bg-marble-300 text-ink-700 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-ink-700 space-y-4 leading-relaxed font-light">
+        <div class="p-3.5 bg-marble-100 border border-marble-300 flex items-center justify-between gap-2">
+          <span class="font-medium text-ink-900">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-3 py-1 bg-white border border-marble-300 text-xs font-medium text-ink-900">Не выбран</span>
+        </div>
+        <p><strong class="font-medium text-ink-900">Технические (необходимые) cookie и локальное хранилище:</strong> обеспечивают корректную работу сайта и сохраняют ваш выбор настроек cookie. Не передают ваши персональные данные третьим лицам.</p>
+        <p><strong class="font-medium text-ink-900">Необязательные (аналитические) cookie:</strong> могут использоваться при подключении систем веб-аналитики (например, Яндекс Метрики) для улучшения удобства сайта. Вы вправе принять их или отклонить в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-marble-200 bg-marble-100 flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-5 py-2.5 bg-marble-200 hover:bg-marble-300 text-ink-900 text-xs uppercase tracking-[0.12em] font-medium transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-5 py-2.5 bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-xs uppercase tracking-[0.12em] font-medium transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЕДИНЫЙ БЛОК JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Синхронизация контактов из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telegramUrl);
+      });
+
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+
+      document.querySelectorAll('[data-contact="shop"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.shopUrl);
+      });
+
+      document.querySelectorAll('[data-contact="yandexMaps"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.yandexMapsUrl);
+      });
+
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+      });
+
+      document.querySelectorAll('[data-contact-text="email"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.email;
+      });
+
+      // 2. Живой статус работы в шапке по времени Беларуси (Europe/Minsk)
+      // Пн–Пт 10:00–20:00, Сб 10:00–16:00, Вс выходной
+      function updateLiveStatus() {
+        let isOpen = false;
+        let label = 'Ответим с 10:00';
+
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+
+          const weekday = (parts.find((p) => p.type === 'weekday') || {}).value || 'Mon';
+          const hour = parseInt((parts.find((p) => p.type === 'hour') || {}).value || '12', 10);
+          const minute = parseInt((parts.find((p) => p.type === 'minute') || {}).value || '0', 10);
+          const totalMins = hour * 60 + minute;
+
+          if (weekday === 'Sun') {
+            isOpen = false;
+            label = 'Ответим в Пн с 10:00';
+          } else if (weekday === 'Sat') {
+            if (totalMins >= 600 && totalMins < 960) {
+              isOpen = true;
+              label = 'Открыто сейчас · до 16:00';
+            } else if (totalMins < 600) {
+              isOpen = false;
+              label = 'Ответим с 10:00';
+            } else {
+              isOpen = false;
+              label = 'Ответим в Пн с 10:00';
+            }
+          } else {
+            if (totalMins >= 600 && totalMins < 1200) {
+              isOpen = true;
+              label = 'Открыто сейчас · до 20:00';
+            } else {
+              isOpen = false;
+              label = 'Ответим с 10:00';
+            }
+          }
+        } catch (_) {
+          isOpen = false;
+          label = 'Ответим с 10:00';
+        }
+
+        document.querySelectorAll('.live-status-text').forEach((el) => {
+          el.textContent = label;
+        });
+
+        document.querySelectorAll('.live-status-dot').forEach((dot) => {
+          dot.classList.toggle('bg-emerald-400', isOpen);
+          dot.classList.toggle('shadow-[0_0_8px_rgba(52,211,153,0.75)]', isOpen);
+          dot.classList.toggle('bg-gold-400', !isOpen);
+        });
+      }
+
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 3. Адаптивное мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        menuIconOpen.classList.toggle('hidden', open);
+        menuIconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+          setMobileMenu(!isOpen);
+        });
+      }
+
+      document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Интерактивные вкладки услуг
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('[data-tab-panel]');
+
+      function activateTab(tabName) {
+        tabBtns.forEach((btn) => {
+          const isActive = btn.getAttribute('data-tab-target') === tabName;
+          btn.setAttribute('aria-selected', String(isActive));
+          btn.classList.toggle('bg-obsidian-900', isActive);
+          btn.classList.toggle('border-obsidian-900', isActive);
+          btn.classList.toggle('text-gold-200', isActive);
+          btn.classList.toggle('bg-marble-100', !isActive);
+          btn.classList.toggle('border-marble-300', !isActive);
+          btn.classList.toggle('text-ink-700', !isActive);
+        });
+
+        tabPanels.forEach((panel) => {
+          const isMatch = panel.getAttribute('data-tab-panel') === tabName;
+          panel.classList.toggle('hidden', !isMatch);
+        });
+      }
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activateTab(btn.getAttribute('data-tab-target'));
+        });
+      });
+
+      document.querySelectorAll('[data-jump-tab]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const targetTab = link.getAttribute('data-jump-tab');
+          if (targetTab) {
+            e.preventDefault();
+            activateTab(targetTab);
+            const servicesEl = document.getElementById('services');
+            if (servicesEl) {
+              servicesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+      // 5. Мини-интерактив за 2 клика перед формой (направление + удобное время -> автоподстановка)
+      const serviceSelect = document.getElementById('clientService');
+      const commentField = document.getElementById('clientComment');
+      const quickPickSummary = document.getElementById('quickPickSummary');
+      const bookingFormEl = document.getElementById('bookingForm');
+      let selectedDir = null;
+      let selectedTime = null;
+
+      function applyQuickSelection() {
+        const parts = [];
+        if (selectedDir) parts.push(selectedDir);
+        if (selectedTime) parts.push(selectedTime);
+
+        if (quickPickSummary) {
+          quickPickSummary.textContent = parts.length
+            ? `Выбрано: ${parts.join(' · ')} — подставлено в форму ниже`
+            : 'Нажмите на варианты ниже — они сразу подставятся в заявку';
+        }
+
+        if (commentField && selectedTime) {
+          commentField.value = `Удобное время: ${selectedTime}${selectedDir ? ` (${selectedDir})` : ''}`;
+        }
+
+        if (bookingFormEl && parts.length) {
+          bookingFormEl.classList.add('form-highlight-pulse');
+          setTimeout(() => bookingFormEl.classList.remove('form-highlight-pulse'), 900);
+        }
+      }
+
+      document.querySelectorAll('.quick-dir-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.quick-dir-btn').forEach((b) => b.classList.remove('quick-choice-active'));
+          btn.classList.add('quick-choice-active');
+          selectedDir = btn.getAttribute('data-quick-dir');
+          const svcVal = btn.getAttribute('data-quick-service');
+          if (serviceSelect && svcVal) {
+            const exists = Array.from(serviceSelect.options).some((opt) => opt.value === svcVal);
+            if (exists) serviceSelect.value = svcVal;
+          }
+          applyQuickSelection();
+        });
+      });
+
+      document.querySelectorAll('.quick-time-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.quick-time-btn').forEach((b) => b.classList.remove('quick-choice-active'));
+          btn.classList.add('quick-choice-active');
+          selectedTime = btn.getAttribute('data-quick-time');
+          applyQuickSelection();
+        });
+      });
+
+      // 6. Минимальная дата в форме = сегодня
+      const dateInput = document.getElementById('clientDate');
+      if (dateInput) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // 7. Автоподстановка услуги из карточек прайса в форму
+      const bookingSection = document.getElementById('booking');
+
+      document.querySelectorAll('[data-select-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-select-service');
+          if (serviceSelect && val) {
+            const exists = Array.from(serviceSelect.options).some((opt) => opt.value === val);
+            if (exists) {
+              serviceSelect.value = val;
+            }
+          }
+          if (bookingSection) {
+            bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // 8. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Салон Код Красоты';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 9. Cookie-баннер: строго скрывает мобильный sticky dock и плавающие десктопные кнопки пока баннер открыт
+      const COOKIE_KEY = 'kod_krasoty_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const floatingDesktop = document.getElementById('floatingDesktop');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        const hasChoice = choice === 'all' || choice === 'essential';
+        if (hasChoice) {
+          cookieBanner.classList.add('hidden');
+          if (mobileStickyDock) mobileStickyDock.classList.remove('hidden');
+          if (floatingDesktop) {
+            floatingDesktop.classList.remove('hidden');
+            floatingDesktop.classList.add('hidden', 'md:flex');
+          }
+          cookieStatusLabel.textContent = choice === 'all' ? 'Приняты все cookie' : 'Только необходимые';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          if (mobileStickyDock) mobileStickyDock.classList.add('hidden');
+          if (floatingDesktop) {
+            floatingDesktop.classList.remove('md:flex');
+            floatingDesktop.classList.add('hidden');
+          }
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 10. Валидация и отправка формы записи (Google Apps Script -> Telegram + демо-режим)
+      const bookingForm = document.getElementById('bookingForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('bookingSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      bookingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('clientName').value.trim();
+        const phoneVal = document.getElementById('clientPhone').value.trim();
+        const serviceVal = document.getElementById('clientService').value;
+        const dateVal = document.getElementById('clientDate').value;
+        const contactMethodVal = (bookingForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Viber';
+        const commentVal = document.getElementById('clientComment').value.trim();
+        const consentChecked = document.getElementById('clientConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digits = phoneVal.replace(/\D/g, '');
+        if (digits.length < 9 || digits.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'Салон красоты и SPA «Код Красоты» (Барановичи)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          date: dateVal || 'Не указана',
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем заявку...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+              throw new Error('Ошибка сервера при отправке заявки');
+            }
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили вашу заявку. Администратор свяжется с вами в ближайшее рабочее время.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения вашего Telegram-бота заявки с сайта будут мгновенно приходить вам в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая запись — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Услуга: ${payload.service}\n` +
+              `Дата: ${payload.date}\n` +
+              `Удобный способ связи: ${payload.contactMethod}\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          bookingForm.reset();
+          openModal(modalSuccess);
+        } catch (_) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Пожалуйста, напишите нам в Viber / Telegram или позвоните напрямую.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку на запись';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

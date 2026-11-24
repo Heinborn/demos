@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HDStroi — Ремонт квартир и домов под ключ в Гродно</title>
+  <meta name="description" content="HDStroi (ИП Хмелевский М.Ю., г. Гродно и район) — ремонт квартир и домов под ключ, ванная и санузел под ключ, укладка плитки от 25 м². Работаем по договору, фиксируем стоимость в смете, соблюдаем сроки." />
+
+  <!-- Google Fonts: Montserrat & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Montserrat', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            hd: {
+              ink: '#0D0E10',
+              graphite: '#17191C',
+              slate: '#26292F',
+              paper: '#F8F7F4',
+              line: '#E3E1DA',
+              yellow: '#F2C90C',
+              yellowHover: '#DFB700',
+              ochre: '#8C6F00',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #F8F7F4;
+      color: #0D0E10;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Montserrat', system-ui, sans-serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    /* Деликатная миллиметровая чертёжная сетка на фирменном жёлтом плакате */
+    .swiss-poster-grid {
+      background-color: #F2C90C;
+      background-image:
+        linear-gradient(to right, rgba(13, 14, 16, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(13, 14, 16, 0.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(13, 14, 16, 0.095) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(13, 14, 16, 0.095) 1px, transparent 1px);
+      background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+      background-position: center top;
+    }
+    /* Тонкая архитектурная сетка на светлом бетонном полотне */
+    .swiss-paper-grid {
+      background-image:
+        linear-gradient(to right, rgba(13, 14, 16, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(13, 14, 16, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    /* Чертёжная сетка для тёмных акцентов */
+    .swiss-dark-grid {
+      background-image:
+        linear-gradient(to right, rgba(242, 201, 12, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(242, 201, 12, 0.055) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    /* Плавный пульс живого статуса */
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+    .status-dot-live {
+      animation: statusPulse 2.2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-hd-paper text-hd-ink antialiased overflow-x-hidden selection:bg-hd-ink selection:text-hd-yellow">
+
+  <!-- ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL развёрнутого веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если оставить пустым "", форма работает в безопасном демонстрационном режиме с предпросмотром заявки.
+      googleScriptUrl: '',
+      companyName: 'HDStroi',
+      legalName: 'ИП Хмелевский М.Ю.',
+      city: 'г. Гродно и Гродненский район',
+      displayPhone: '+375 (29) 582-94-32',
+      telHref: 'tel:+375295829432',
+      secondaryDisplayPhone: '+375 (33) 382-45-13',
+      secondaryTelHref: 'tel:+375333824513',
+      viberPhone: '+375295829432',
+      telegramHref: 'https://t.me/+375295829432',
+      email: 'index.hdstroi@gmail.com',
+      instagramUrl: 'https://instagram.com/hd_stroi?igshid=1jzpm83edlj0c',
+      instagramHandle: '@hd_stroi',
+      // Ориентир рабочего времени по Беларуси (уточняется при запуске)
+      workHours: {
+        start: 9,
+        end: 20
+      }
+    };
+  </script>
+
+  <!-- ==================== ШАПКА САЙТА (СТРОГО В 1 СТРОКУ НА 1280px И 1440px) ==================== -->
+  <header class="sticky top-0 z-40 bg-hd-ink/95 backdrop-blur-md border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-[72px] gap-3">
+        <!-- Логотип: прямая преемственность чёрно-жёлтого HDStroi -->
+        <a href="#top" class="inline-flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+          <span class="w-8 h-8 bg-hd-yellow text-hd-ink flex items-center justify-center font-display font-black text-xs tracking-tighter rounded-sm group-hover:bg-hd-yellowHover transition">
+            HD
+          </span>
+          <span class="font-display font-black text-lg lg:text-xl tracking-tight leading-none whitespace-nowrap">
+            <span class="text-hd-yellow">HD</span><span class="text-white">Stroi</span>
+          </span>
+        </a>
+
+        <!-- Навигация: ровно 5 коротких пунктов, whitespace-nowrap -->
+        <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-[13px] font-medium text-neutral-300 whitespace-nowrap" aria-label="Основная навигация">
+          <a href="#services" class="hover:text-hd-yellow transition whitespace-nowrap">Услуги</a>
+          <a href="#quick-pick" class="hover:text-hd-yellow transition whitespace-nowrap">Подбор</a>
+          <a href="#stages" class="hover:text-hd-yellow transition whitespace-nowrap">Этапы</a>
+          <a href="#gallery" class="hover:text-hd-yellow transition whitespace-nowrap">Объекты</a>
+          <a href="#contacts" class="hover:text-hd-yellow transition whitespace-nowrap">Контакты</a>
+        </nav>
+
+        <!-- Правый блок: живой статус BY, тонкие микро-иконки, телефон в 1 строку, жёлтая кнопка -->
+        <div class="flex items-center gap-2 xl:gap-3 shrink-0 whitespace-nowrap">
+          <!-- Живой статус по времени Беларуси (Europe/Minsk, ориентир 09:00–20:00) -->
+          <span
+            data-live-status-badge
+            title="Ориентир по времени Беларуси: 09:00–20:00 (точный график уточняется при запуске)"
+            class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[11px] font-medium text-neutral-200 whitespace-nowrap shrink-0 cursor-help"
+          >
+            <span data-live-status-dot class="w-1.5 h-1.5 rounded-full bg-emerald-400 status-dot-live shrink-0"></span>
+            <span data-live-status-text class="whitespace-nowrap">Открыто сейчас</span>
+          </span>
+
+          <!-- Тонкие монохромные/жёлтые микро-иконки Viber и Instagram в стилистике бренда -->
+          <div class="hidden sm:flex items-center gap-1.5 shrink-0">
+            <a
+              data-contact="viber"
+              href="viber://chat?number=%2B375295829432"
+              aria-label="Написать в Viber"
+              title="Написать в Viber"
+              class="w-8 h-8 rounded-sm border border-white/15 bg-white/[0.04] hover:border-hd-yellow hover:text-hd-yellow text-neutral-300 inline-flex items-center justify-center transition shrink-0"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            </a>
+            <a
+              data-contact="instagram"
+              href="https://instagram.com/hd_stroi?igshid=1jzpm83edlj0c"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram @hd_stroi"
+              title="Instagram @hd_stroi"
+              class="w-8 h-8 rounded-sm border border-white/15 bg-white/[0.04] hover:border-hd-yellow hover:text-hd-yellow text-neutral-300 inline-flex items-center justify-center transition shrink-0"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- Телефон строго в 1 строку -->
+          <a
+            data-contact="phone"
+            data-contact-text="phone"
+            href="tel:+375295829432"
+            class="hidden sm:inline-flex items-center font-display font-bold text-[13px] xl:text-sm text-white hover:text-hd-yellow transition whitespace-nowrap shrink-0"
+          >
+            +375 (29) 582-94-32
+          </a>
+
+          <!-- Жёлтая кнопка в шапке -->
+          <a
+            href="#quick-pick"
+            class="hidden md:inline-flex items-center justify-center px-3.5 xl:px-4 py-2 bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink font-display font-extrabold text-[11px] xl:text-xs uppercase tracking-wider rounded-sm transition whitespace-nowrap shrink-0"
+          >
+            Обсудить объект
+          </a>
+
+          <!-- Мобильный быстрый звонок -->
+          <a
+            data-contact="phone"
+            href="tel:+375295829432"
+            aria-label="Позвонить в HDStroi"
+            class="sm:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-hd-yellow text-hd-ink font-display font-bold text-xs whitespace-nowrap shrink-0"
+          >
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span>Позвонить</span>
+          </a>
+
+          <!-- Бургер для мобильных и планшетов -->
+          <button
+            type="button"
+            id="mobileMenuBtn"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Открыть меню"
+            class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-sm border border-white/15 bg-white/[0.04] hover:border-hd-yellow text-white transition shrink-0"
+          >
+            <svg id="burgerIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="burgerIconClose" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-hd-graphite border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 py-5 space-y-4">
+        <div class="flex items-center justify-between gap-2 pb-3 border-b border-white/10 text-xs">
+          <span class="inline-flex items-center gap-1.5 text-neutral-200 font-medium">
+            <span data-live-status-dot class="w-2 h-2 rounded-full bg-emerald-400 status-dot-live"></span>
+            <span data-live-status-text>Открыто сейчас</span>
+          </span>
+          <span class="text-neutral-400">Ориентир 09:00–20:00 (уточняется)</span>
+        </div>
+        <nav class="grid grid-cols-2 gap-2 text-sm font-semibold text-neutral-200">
+          <a href="#services" data-mobile-link class="px-3.5 py-2.5 rounded-sm bg-hd-ink/70 hover:text-hd-yellow transition">Услуги</a>
+          <a href="#quick-pick" data-mobile-link class="px-3.5 py-2.5 rounded-sm bg-hd-ink/70 hover:text-hd-yellow transition">Подбор</a>
+          <a href="#stages" data-mobile-link class="px-3.5 py-2.5 rounded-sm bg-hd-ink/70 hover:text-hd-yellow transition">Этапы</a>
+          <a href="#gallery" data-mobile-link class="px-3.5 py-2.5 rounded-sm bg-hd-ink/70 hover:text-hd-yellow transition">Объекты</a>
+          <a href="#contacts" data-mobile-link class="col-span-2 px-3.5 py-2.5 rounded-sm bg-hd-ink/70 hover:text-hd-yellow transition">Контакты и реквизиты</a>
+        </nav>
+        <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375295829432" class="font-display font-bold text-base text-hd-yellow whitespace-nowrap">+375 (29) 582-94-32</a>
+          <a href="#quick-pick" data-mobile-link class="px-4 py-2 rounded-sm bg-hd-yellow text-hd-ink font-display font-extrabold text-xs uppercase tracking-wider">Обсудить объект</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== HERO: ШВЕЙЦАРСКИЙ ЧЁРНО-ЖЁЛТЫЙ АРХИТЕКТУРНЫЙ ПЛАКАТ ==================== -->
+    <section class="relative swiss-poster-grid text-hd-ink border-b border-hd-ink/15">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pt-8 sm:pb-36 lg:pt-10 lg:pb-44">
+        <!-- Тонкая чертёжная шапка плаката -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-hd-ink/15 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-hd-ink/70">
+          <span>Гродно и Гродненский район</span>
+          <span class="hidden md:inline">Квартиры · Дома · Санузлы · Плитка от 25 м²</span>
+          <span>ИП Хмелевский М.Ю.</span>
+        </div>
+
+        <!-- Центрированная монументальная типографика плаката -->
+        <div class="max-w-4xl mx-auto text-center pt-8 sm:pt-14 lg:pt-16">
+          <h1 class="font-display font-black text-[30px] sm:text-5xl lg:text-[60px] leading-[1.08] sm:leading-[1.06] tracking-[-0.03em] text-hd-ink">
+            Ремонт квартир и домов<br class="hidden sm:inline" /> под ключ в Гродно
+          </h1>
+
+          <p class="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-[19px] font-medium text-hd-ink/85 max-w-3xl mx-auto leading-relaxed">
+            Работаем по договору · Фиксируем стоимость в смете · Соблюдаем сроки
+          </p>
+
+          <!-- Две контрастные швейцарские кнопки -->
+          <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="#quick-pick"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-sm transition shadow-xl shadow-black/15"
+            >
+              <span>Обсудить объект и смету</span>
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            <a
+              data-contact="viber"
+              href="viber://chat?number=%2B375295829432"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 sm:py-4 bg-transparent hover:bg-hd-ink border-2 border-hd-ink text-hd-ink hover:text-white font-display font-bold text-xs sm:text-sm uppercase tracking-wider rounded-sm transition"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+              <span>Прислать планировку в Viber</span>
+            </a>
+          </div>
+
+          <!-- Компактный живой статус на мобильных / планшетах -->
+          <div class="xl:hidden mt-4 inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-hd-ink/10 text-[11px] font-semibold text-hd-ink">
+            <span data-live-status-dot="light" class="w-2 h-2 rounded-full bg-emerald-700 status-dot-live shrink-0"></span>
+            <span data-live-status-text>Открыто сейчас</span>
+            <span class="text-hd-ink/65 font-normal">· ориентир 09:00–20:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4-КОЛОНОЧНАЯ АРХИТЕКТУРНАЯ ВИТРИНА НАПРАВЛЕНИЙ (НА ГРАНИЦЕ ЖЁЛТОГО И БЕЛОГО) ==================== -->
+    <section id="services" class="relative z-10 -mt-20 sm:-mt-28 lg:-mt-32 pb-14 sm:pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          <!-- Направление 01 -->
+          <article class="group bg-white border border-hd-ink/15 hover:border-hd-ink shadow-lg shadow-black/5 flex flex-col transition duration-300">
+            <div class="relative aspect-[4/3] bg-neutral-200 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+                alt="Квартиры под ключ в Гродно"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-hd-ink/80 backdrop-blur-sm text-[10px] font-medium text-neutral-100">
+                Демо-фото, заменим на ваши
+              </span>
+              <span class="absolute bottom-0 right-0 px-2.5 py-1 bg-hd-ink text-hd-yellow font-display font-black text-xs tracking-wider">
+                01
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h2 class="font-display font-extrabold text-[17px] leading-snug text-hd-ink">
+                Квартиры под ключ
+              </h2>
+              <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed flex-1">
+                Новостройки и вторичное жильё. Полный цикл отделки: от подготовки оснований и инженерии до финишной сдачи.
+              </p>
+              <button
+                type="button"
+                data-quick-service="Квартира (новостройка)"
+                class="mt-4 pt-3.5 border-t border-hd-line inline-flex items-center justify-between text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink group-hover:text-hd-ochre transition"
+              >
+                <span>Выбрать направление</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Направление 02 -->
+          <article class="group bg-white border border-hd-ink/15 hover:border-hd-ink shadow-lg shadow-black/5 flex flex-col transition duration-300">
+            <div class="relative aspect-[4/3] bg-neutral-200 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                alt="Дома и коттеджи под ключ"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-hd-ink/80 backdrop-blur-sm text-[10px] font-medium text-neutral-100">
+                Демо-фото, заменим на ваши
+              </span>
+              <span class="absolute bottom-0 right-0 px-2.5 py-1 bg-hd-ink text-hd-yellow font-display font-black text-xs tracking-wider">
+                02
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h2 class="font-display font-extrabold text-[17px] leading-snug text-hd-ink">
+                Дома и коттеджи
+              </h2>
+              <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed flex-1">
+                Внутренняя отделка частных домов в Гродно и районе с поэтапным планированием и контролем качества.
+              </p>
+              <button
+                type="button"
+                data-quick-service="Частный дом"
+                class="mt-4 pt-3.5 border-t border-hd-line inline-flex items-center justify-between text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink group-hover:text-hd-ochre transition"
+              >
+                <span>Выбрать направление</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Направление 03 -->
+          <article class="group bg-white border border-hd-ink/15 hover:border-hd-ink shadow-lg shadow-black/5 flex flex-col transition duration-300">
+            <div class="relative aspect-[4/3] bg-neutral-200 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80"
+                alt="Ванная и санузел под ключ"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-hd-ink/80 backdrop-blur-sm text-[10px] font-medium text-neutral-100">
+                Демо-фото, заменим на ваши
+              </span>
+              <span class="absolute bottom-0 right-0 px-2.5 py-1 bg-hd-ink text-hd-yellow font-display font-black text-xs tracking-wider">
+                03
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h2 class="font-display font-extrabold text-[17px] leading-snug text-hd-ink">
+                Ванная и санузел
+              </h2>
+              <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed flex-1">
+                Комплексная отделка санузла: гидроизоляция, разводка труб, электрика, укладка плитки и монтаж сантехники.
+              </p>
+              <button
+                type="button"
+                data-quick-service="Ванная / санузел"
+                class="mt-4 pt-3.5 border-t border-hd-line inline-flex items-center justify-between text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink group-hover:text-hd-ochre transition"
+              >
+                <span>Выбрать направление</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Направление 04 -->
+          <article class="group bg-white border border-hd-ink/15 hover:border-hd-ink shadow-lg shadow-black/5 flex flex-col transition duration-300">
+            <div class="relative aspect-[4/3] bg-neutral-200 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80"
+                alt="Укладка плитки от 25 м²"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 bg-hd-ink/80 backdrop-blur-sm text-[10px] font-medium text-neutral-100">
+                Демо-фото, заменим на ваши
+              </span>
+              <span class="absolute bottom-0 right-0 px-2.5 py-1 bg-hd-yellow text-hd-ink font-display font-black text-xs tracking-wider">
+                от 25 м²
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h2 class="font-display font-extrabold text-[17px] leading-snug text-hd-ink">
+                Плитка от 25 м²
+              </h2>
+              <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed flex-1">
+                Укладка керамогранита и плитки в квартирах и домах. Точная геометрия плоскостей, аккуратные стыки и швы.
+              </p>
+              <button
+                type="button"
+                data-quick-service="Укладка плитки от 25 м²"
+                class="mt-4 pt-3.5 border-t border-hd-line inline-flex items-center justify-between text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink group-hover:text-hd-ochre transition"
+              >
+                <span>Выбрать направление</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- 4 ПРИНЦИПА ДОВЕРИЯ (АПГРЕЙД 4 БЕЛЫХ ПЛАШЕК ОРИГИНАЛА В ШВЕЙЦАРСКОЙ СЕТКЕ) -->
+        <div class="mt-6 lg:mt-8 bg-white border border-hd-line grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-hd-line">
+          <div class="p-5 sm:p-6 flex items-start gap-3.5">
+            <div class="w-9 h-9 bg-hd-yellow/25 border border-hd-yellow/60 text-hd-ink flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-hd-ink">Работа по договору</div>
+              <p class="mt-1 text-xs text-neutral-600 leading-relaxed">Официальный договор с ИП Хмелевский М.Ю. и фиксированная смета.</p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 flex items-start gap-3.5">
+            <div class="w-9 h-9 bg-hd-yellow/25 border border-hd-yellow/60 text-hd-ink flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-hd-ink">Реальные сроки</div>
+              <p class="mt-1 text-xs text-neutral-600 leading-relaxed">Согласуем честный график ремонта без нереалистичных обещаний.</p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 flex items-start gap-3.5">
+            <div class="w-9 h-9 bg-hd-yellow/25 border border-hd-yellow/60 text-hd-ink flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-hd-ink">Поэтапная оплата</div>
+              <p class="mt-1 text-xs text-neutral-600 leading-relaxed">Расчёт происходит частями по факту приёмки выполненных этапов.</p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 flex items-start gap-3.5">
+            <div class="w-9 h-9 bg-hd-yellow/25 border border-hd-yellow/60 text-hd-ink flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-hd-ink">Гарантия на работы</div>
+              <p class="mt-1 text-xs text-neutral-600 leading-relaxed">Соблюдаем технологию отделки и отвечаем за результат после сдачи.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СОСТАВ РАБОТ (ИНТЕРАКТИВНЫЕ ВКЛАДКИ ПО ФОРМАТАМ) ==================== -->
+    <section id="formats" class="py-14 sm:py-20 bg-white border-y border-hd-line">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 text-[11px] font-display font-extrabold uppercase tracking-[0.16em] text-hd-ochre">
+              <span class="w-5 h-0.5 bg-hd-yellow inline-block"></span>
+              Состав работ
+            </div>
+            <h2 class="mt-2 font-display font-black text-2xl sm:text-3xl lg:text-4xl text-hd-ink tracking-tight">
+              Что именно входит в каждый формат ремонта
+            </h2>
+          </div>
+          <p class="text-sm text-neutral-600 max-w-md leading-relaxed">
+            Точный перечень работ и смета составляются индивидуально после осмотра объекта — без надуманных тарифов и скрытых доплат.
+          </p>
+        </div>
+
+        <!-- Вкладки -->
+        <div class="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Форматы ремонта">
+          <button type="button" role="tab" aria-selected="true" data-tab-btn="newbuild" class="px-4 sm:px-5 py-3 font-display font-bold text-xs uppercase tracking-wider border transition bg-hd-ink text-hd-yellow border-hd-ink">
+            01 · Новостройка
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="secondary" class="px-4 sm:px-5 py-3 font-display font-bold text-xs uppercase tracking-wider border transition bg-hd-paper text-hd-ink border-hd-line hover:border-hd-ink">
+            02 · Вторичка
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="house" class="px-4 sm:px-5 py-3 font-display font-bold text-xs uppercase tracking-wider border transition bg-hd-paper text-hd-ink border-hd-line hover:border-hd-ink">
+            03 · Частный дом
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-tab-btn="bath" class="px-4 sm:px-5 py-3 font-display font-bold text-xs uppercase tracking-wider border transition bg-hd-paper text-hd-ink border-hd-line hover:border-hd-ink">
+            04 · Ванная и плитка
+          </button>
+        </div>
+
+        <!-- Контейнер вкладок -->
+        <div class="mt-5 bg-hd-paper border border-hd-line">
+          <!-- Панель 1 -->
+          <div data-tab-panel="newbuild" class="grid lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[240px] bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=80" alt="Ремонт квартиры в новостройке" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-hd-line">
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-hd-ink">Квартира в новостройке под ключ</h3>
+                  <span class="px-2.5 py-1 bg-hd-yellow text-hd-ink font-display font-extrabold text-[11px] uppercase tracking-wider">Полный цикл</span>
+                </div>
+                <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Инженерия и черновой этап</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Разметка, возведение и выравнивание стен по уровню</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Разводка электрики, розеточных групп и сценариев света</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Разводка водоснабжения, канализации и сантехнических узлов</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Подготовка оснований пола под финишные покрытия</span></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Чистовая отделка</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Шпатлевание, покраска стен или оклейка обоями</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Укладка плитки в санузле, кухонной зоне и прихожей</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Монтаж напольных покрытий, откосов и плинтусов</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Установка сантехники, электрофурнитуры и сдача ключей</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 pt-5 border-t border-hd-line flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <span class="text-xs text-neutral-500">Точный объём и сроки фиксируем в договоре после замера.</span>
+                <button type="button" data-quick-service="Квартира (новостройка)" class="shrink-0 px-5 py-3 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs uppercase tracking-wider transition">
+                  Подобрать формат →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 2 -->
+          <div data-tab-panel="secondary" class="hidden grid lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[240px] bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=80" alt="Ремонт квартиры во вторичном жилье" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-hd-line">
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-hd-ink">Ремонт вторичного жилья под ключ</h3>
+                  <span class="px-2.5 py-1 bg-hd-yellow text-hd-ink font-display font-extrabold text-[11px] uppercase tracking-wider">Полное обновление</span>
+                </div>
+                <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Демонтаж и коммуникации</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Аккуратный демонтаж старых покрытий и конструкций</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Замена старой электропроводки и электрощитка</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Обновление разводки труб в санузле и на кухне</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Выравнивание стен, углов, откосов и полов в единый уровень</span></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Современная отделка</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Ванная и санузел под ключ с укладкой плитки</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Чистовая отделка стен, потолков и примыканий</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Укладка напольных покрытий без лишних перепадов</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Порядок на объекте и поэтапная сдача работ</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 pt-5 border-t border-hd-line flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <span class="text-xs text-neutral-500">Оцениваем состояние стен и коммуникаций до начала ремонта.</span>
+                <button type="button" data-quick-service="Квартира (вторичка)" class="shrink-0 px-5 py-3 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs uppercase tracking-wider transition">
+                  Подобрать формат →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 3 -->
+          <div data-tab-panel="house" class="hidden grid lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[240px] bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Внутренняя отделка частного дома" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-hd-line">
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-hd-ink">Внутренняя отделка домов и коттеджей</h3>
+                  <span class="px-2.5 py-1 bg-hd-yellow text-hd-ink font-display font-extrabold text-[11px] uppercase tracking-wider">Гродно и район</span>
+                </div>
+                <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Работа с большими площадями</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Последовательная организация работ по этажам и зонам</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Отделка санузлов, котельных, холлов и жилых помещений</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Точная геометрия плоскостей, откосов и дверных проёмов</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Укладка керамогранита и плитки на больших площадях</span></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Прозрачный процесс</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Фиксация этапов, сроков и стоимости в официальном договоре</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Поэтапная оплата после проверки выполненных разделов</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Работаем по дизайн-проекту или согласованному плану</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Гарантия на выполненные отделочные работы</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 pt-5 border-t border-hd-line flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <span class="text-xs text-neutral-500">Выезжаем на замер в Гродно и Гродненский район.</span>
+                <button type="button" data-quick-service="Частный дом" class="shrink-0 px-5 py-3 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs uppercase tracking-wider transition">
+                  Подобрать формат →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 4 -->
+          <div data-tab-panel="bath" class="hidden grid lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[240px] bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80" alt="Ванная под ключ и укладка плитки" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-hd-line">
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-hd-ink">Ванная под ключ и укладка плитки от 25 м²</h3>
+                  <span class="px-2.5 py-1 bg-hd-yellow text-hd-ink font-display font-extrabold text-[11px] uppercase tracking-wider">Точная геометрия</span>
+                </div>
+                <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Ванная и санузел под ключ</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Разводка труб водоснабжения, канализации и инсталляций</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Электрика, вентиляция и тёплый пол во влажных зонах</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Выравнивание углов 90° и обязательная гидроизоляция</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Монтаж ванны, душевой зоны, сантехники и люков скрытого монтажа</span></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="font-display font-bold text-[11px] uppercase tracking-widest text-hd-ochre mb-3">Укладка плитки от 25 м²</div>
+                    <ul class="space-y-2 text-sm text-neutral-700">
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Керамогранит и керамическая плитка в квартирах и домах</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Соблюдение технологии подготовки оснований и клея</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Аккуратные запилы, ровные швы и чистые примыкания</span></li>
+                      <li class="flex items-start gap-2"><span class="text-hd-ink font-black">—</span><span>Работаем с объёмами плиточных работ от 25 м²</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 pt-5 border-t border-hd-line flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <span class="text-xs text-neutral-500">Можно сразу прислать фото или план санузла в Viber.</span>
+                <button type="button" data-quick-service="Ванная / санузел" class="shrink-0 px-5 py-3 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs uppercase tracking-wider transition">
+                  Подобрать формат →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЭТАПЫ РАБОТЫ (5 ПРОЗРАЧНЫХ ШАГОВ) ==================== -->
+    <section id="stages" class="py-14 sm:py-20 bg-hd-paper swiss-paper-grid border-b border-hd-line">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 text-[11px] font-display font-extrabold uppercase tracking-[0.16em] text-hd-ochre">
+              <span class="w-5 h-0.5 bg-hd-yellow inline-block"></span>
+              Порядок работы
+            </div>
+            <h2 class="mt-2 font-display font-black text-2xl sm:text-3xl lg:text-4xl text-hd-ink tracking-tight">
+              Понятный ремонт в 5 прозрачных этапов
+            </h2>
+          </div>
+          <p class="text-sm text-neutral-600 max-w-md leading-relaxed">
+            Вы заранее знаете последовательность работ, сроки каждого шага и за какой результат проводится поэтапная оплата.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div class="bg-white border border-hd-line p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-display font-black text-2xl text-hd-ink/20 leading-none">01</span>
+              <span class="w-6 h-1 bg-hd-yellow"></span>
+            </div>
+            <h3 class="mt-4 font-display font-extrabold text-base text-hd-ink">Обсуждение</h3>
+            <p class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+              Вы звоните, пишете в Viber или оставляете заявку — уточняем тип объекта, задачи и удобное время встречи.
+            </p>
+          </div>
+
+          <div class="bg-white border border-hd-line p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-display font-black text-2xl text-hd-ink/20 leading-none">02</span>
+              <span class="w-6 h-1 bg-hd-yellow"></span>
+            </div>
+            <h3 class="mt-4 font-display font-extrabold text-base text-hd-ink">Осмотр и замер</h3>
+            <p class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+              Выезжаем на объект в Гродно и районе, оцениваем основания, инженерные узлы и реальный объём работ.
+            </p>
+          </div>
+
+          <div class="bg-white border border-hd-line p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-display font-black text-2xl text-hd-ink/20 leading-none">03</span>
+              <span class="w-6 h-1 bg-hd-yellow"></span>
+            </div>
+            <h3 class="mt-4 font-display font-extrabold text-base text-hd-ink">Договор и смета</h3>
+            <p class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+              Оформляем договор с ИП Хмелевский М.Ю., фиксируем стоимость работ, реальные сроки и разбивку по этапам.
+            </p>
+          </div>
+
+          <div class="bg-white border border-hd-line p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-display font-black text-2xl text-hd-ink/20 leading-none">04</span>
+              <span class="w-6 h-1 bg-hd-yellow"></span>
+            </div>
+            <h3 class="mt-4 font-display font-extrabold text-base text-hd-ink">Поэтапный ремонт</h3>
+            <p class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+              Выполняем работы по технологии, показываем ключевые узлы и принимаем оплату по завершённым этапам.
+            </p>
+          </div>
+
+          <div class="bg-hd-ink text-white border border-hd-ink p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-display font-black text-2xl text-hd-yellow/45 leading-none">05</span>
+              <span class="w-6 h-1 bg-hd-yellow"></span>
+            </div>
+            <h3 class="mt-4 font-display font-extrabold text-base text-white">Сдача и гарантия</h3>
+            <p class="mt-2 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              Проводим совместную приёмку готового объекта, передаём ключи и оформляем гарантию на выполненные работы.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ГАЛЕРЕЯ ОБЪЕКТОВ + ЛАЙТБОКС + INSTAGRAM @hd_stroi ==================== -->
+    <section id="gallery" class="py-14 sm:py-20 bg-white border-b border-hd-line">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-[11px] font-display font-extrabold uppercase tracking-[0.16em] text-hd-ochre">
+              <span class="w-5 h-0.5 bg-hd-yellow inline-block"></span>
+              Объекты
+            </div>
+            <h2 class="mt-2 font-display font-black text-2xl sm:text-3xl lg:text-4xl text-hd-ink tracking-tight">
+              Примеры выполненных ремонтов
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600">
+              Сейчас здесь демонстрационные фото — при запуске загрузим ваши реальные объекты из Гродно и фото из <span class="font-semibold text-hd-ink">@hd_stroi</span>.
+            </p>
+          </div>
+
+          <!-- Фильтр -->
+          <div class="flex flex-wrap gap-2" id="galleryFilter">
+            <button type="button" data-filter="all" class="gallery-filter-btn px-4 py-2 text-xs font-display font-bold uppercase tracking-wider border border-hd-ink bg-hd-ink text-hd-yellow transition">Все</button>
+            <button type="button" data-filter="flat" class="gallery-filter-btn px-4 py-2 text-xs font-display font-bold uppercase tracking-wider border border-hd-line bg-hd-paper text-hd-ink hover:border-hd-ink transition">Квартиры</button>
+            <button type="button" data-filter="house" class="gallery-filter-btn px-4 py-2 text-xs font-display font-bold uppercase tracking-wider border border-hd-line bg-hd-paper text-hd-ink hover:border-hd-ink transition">Дома</button>
+            <button type="button" data-filter="bath" class="gallery-filter-btn px-4 py-2 text-xs font-display font-bold uppercase tracking-wider border border-hd-line bg-hd-paper text-hd-ink hover:border-hd-ink transition">Ванная и плитка</button>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="galleryGrid">
+          <!-- Объект 1 -->
+          <button type="button" data-category="flat" data-lightbox-src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Квартира под ключ: гостиная и чистовая отделка (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Гостиная после ремонта квартиры" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Квартира под ключ</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Жилая зона и чистовая отделка</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+
+          <!-- Объект 2 -->
+          <button type="button" data-category="bath" data-lightbox-src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Ванная и санузел под ключ: керамогранит и скрытая сантехника (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80" alt="Ванная комната под ключ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Ванная и санузел</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Керамогранит и монтаж сантехники</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+
+          <!-- Объект 3 -->
+          <button type="button" data-category="house" data-lightbox-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Частный дом под ключ: комплексная внутренняя отделка (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Внутренняя отделка частного дома" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Частный дом</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Комплексная отделка коттеджа</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+
+          <!-- Объект 4 -->
+          <button type="button" data-category="flat" data-lightbox-src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Квартира под ключ: отделка кухни-гостиной и света (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80" alt="Кухня-гостиная после ремонта" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Квартира под ключ</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Кухня-гостиная и освещение</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+
+          <!-- Объект 5 -->
+          <button type="button" data-category="bath" data-lightbox-src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Укладка плитки от 25 м²: точная геометрия и швы (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" alt="Укладка плитки в санузле" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Плитка от 25 м²</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Точная геометрия и стыковка</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+
+          <!-- Объект 6 -->
+          <button type="button" data-category="house" data-lightbox-src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Частный дом: светлая отделка холла и жилых комнат (демо-фото, заменим на ваши)" class="gallery-card group relative aspect-[4/3] bg-neutral-200 overflow-hidden text-left border border-hd-line focus:outline-none focus:ring-2 focus:ring-hd-yellow">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="Отделка жилых комнат частного дома" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2 py-0.5 bg-hd-ink/80 text-[10px] text-white">Демо-фото, заменим на ваши</span>
+            <span class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-hd-ink/90 via-hd-ink/45 to-transparent text-white flex items-end justify-between gap-2">
+              <span>
+                <span class="block text-[10px] uppercase tracking-widest text-hd-yellow font-semibold">Частный дом</span>
+                <span class="block font-display font-bold text-sm mt-0.5">Светлая отделка и полы</span>
+              </span>
+              <span class="shrink-0 w-7 h-7 bg-hd-yellow text-hd-ink flex items-center justify-center font-bold text-sm group-hover:scale-110 transition">+</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Плашка живого Instagram @hd_stroi -->
+        <div class="mt-8 bg-hd-ink text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border-l-4 border-hd-yellow">
+          <div>
+            <div class="text-[11px] font-display font-bold uppercase tracking-[0.16em] text-hd-yellow">Живой процесс со строек</div>
+            <h3 class="mt-1 font-display font-extrabold text-xl sm:text-2xl">
+              Больше реальных объектов — в Instagram <span class="text-hd-yellow">@hd_stroi</span>
+            </h3>
+            <p class="mt-1.5 text-sm text-neutral-300">
+              Показываем черновые этапы, стыки плитки и готовые квартиры и дома в Гродно.
+            </p>
+          </div>
+          <a
+            data-contact="instagram"
+            href="https://instagram.com/hd_stroi?igshid=1jzpm83edlj0c"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="shrink-0 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-sm transition"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Открыть @hd_stroi</span>
+          </a>
+        </div>
+
+        <!-- Честный блок отзывов (демо-слоты без выдуманных оценок и рейтингов) -->
+        <div class="mt-10 bg-hd-paper border border-dashed border-neutral-400 p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <div>
+              <h3 class="font-display font-extrabold text-lg sm:text-xl text-hd-ink">Отзывы заказчиков из Гродно</h3>
+              <p class="mt-1 text-xs text-neutral-600">
+                Мы не придумываем оценки и отзывы: после согласования разместим здесь реальные отзывы ваших клиентов или скриншоты благодарностей.
+              </p>
+            </div>
+            <span class="shrink-0 px-3 py-1 bg-hd-yellow/35 border border-hd-yellow text-hd-ink font-display font-bold text-[11px] uppercase tracking-wider self-start sm:self-center">
+              Демо-слоты
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white border border-hd-line p-5">
+              <div class="flex items-center justify-between pb-2.5 border-b border-hd-line mb-3">
+                <span class="font-display font-bold text-xs text-hd-ink">Отзыв клиента (демо-слот)</span>
+                <span class="text-[10px] font-bold uppercase text-hd-ochre">Квартира</span>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                Место под реальный отзыв владельца новостройки или вторичного жилья в Гродно о сроках, смете и качестве отделки.
+              </p>
+            </div>
+            <div class="bg-white border border-hd-line p-5">
+              <div class="flex items-center justify-between pb-2.5 border-b border-hd-line mb-3">
+                <span class="font-display font-bold text-xs text-hd-ink">Отзыв клиента (демо-слот)</span>
+                <span class="text-[10px] font-bold uppercase text-hd-ochre">Дом</span>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                Место под отзыв по внутренней отделке частного дома: организация этапов, аккуратность мастеров и прозрачность договора.
+              </p>
+            </div>
+            <div class="bg-white border border-hd-line p-5">
+              <div class="flex items-center justify-between pb-2.5 border-b border-hd-line mb-3">
+                <span class="font-display font-bold text-xs text-hd-ink">Отзыв клиента (демо-слот)</span>
+                <span class="text-[10px] font-bold uppercase text-hd-ochre">Санузел / плитка</span>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                Место под отзыв о ремонте ванной под ключ или укладке плитки (или скрин переписки в Viber с разрешения заказчика).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЛЁГКИЙ ПОДБОР ЗА 2 КЛИКА + ФОРМА ЗАЯВКИ НА ЗАМЕР И СМЕТУ ==================== -->
+    <section id="quick-pick" class="py-14 sm:py-20 bg-hd-paper swiss-paper-grid">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-extrabold uppercase tracking-[0.16em] text-hd-ochre">
+            <span class="w-5 h-0.5 bg-hd-yellow inline-block"></span>
+            Быстрый подбор за 2 клика
+          </div>
+          <h2 class="mt-2 font-display font-black text-2xl sm:text-3xl lg:text-4xl text-hd-ink tracking-tight">
+            Отметьте задачу — и сразу отправьте заявку на замер
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-neutral-600 leading-relaxed">
+            Без сложных калькуляторов и цен «с потолка»: выберите объект и планируемый старт — параметры мгновенно подставятся в форму заявки.
+          </p>
+        </div>
+
+        <div class="mt-9 grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <!-- Левая колонка: 2-кликовый мини-интерактив + быстрая связь -->
+          <div class="lg:col-span-6 space-y-5">
+            <div class="bg-hd-ink text-white swiss-dark-grid border-t-4 border-hd-yellow p-6 sm:p-8 space-y-7 shadow-xl">
+              <!-- Клик 1 -->
+              <div>
+                <div class="flex items-center gap-2.5 mb-3.5">
+                  <span class="px-2 py-0.5 bg-hd-yellow text-hd-ink font-display font-black text-[11px] uppercase">Клик 1</span>
+                  <span class="font-display font-bold text-sm sm:text-base text-white">Что нужно отремонтировать?</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="pickObjectGroup">
+                  <button type="button" data-pick-object="Квартира (новостройка)" class="pick-object-btn text-left px-4 py-3 border text-xs sm:text-sm font-semibold rounded-sm transition border-hd-yellow bg-hd-yellow text-hd-ink">
+                    Квартира (новостройка)
+                  </button>
+                  <button type="button" data-pick-object="Квартира (вторичка)" class="pick-object-btn text-left px-4 py-3 border text-xs sm:text-sm font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    Квартира (вторичка)
+                  </button>
+                  <button type="button" data-pick-object="Частный дом" class="pick-object-btn text-left px-4 py-3 border text-xs sm:text-sm font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    Частный дом
+                  </button>
+                  <button type="button" data-pick-object="Ванная / санузел" class="pick-object-btn text-left px-4 py-3 border text-xs sm:text-sm font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    Ванная / санузел
+                  </button>
+                  <button type="button" data-pick-object="Укладка плитки от 25 м²" class="pick-object-btn sm:col-span-2 text-left px-4 py-3 border text-xs sm:text-sm font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    Укладка плитки от 25 м²
+                  </button>
+                </div>
+              </div>
+
+              <!-- Клик 2 -->
+              <div>
+                <div class="flex items-center gap-2.5 mb-3.5">
+                  <span class="px-2 py-0.5 bg-hd-yellow text-hd-ink font-display font-black text-[11px] uppercase">Клик 2</span>
+                  <span class="font-display font-bold text-sm sm:text-base text-white">Когда планируете старт?</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="pickTimelineGroup">
+                  <button type="button" data-pick-timeline="В ближайший месяц" class="pick-timeline-btn text-center px-3 py-3 border text-xs font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    В ближайший месяц
+                  </button>
+                  <button type="button" data-pick-timeline="Через 1–3 месяца" class="pick-timeline-btn text-center px-3 py-3 border text-xs font-semibold rounded-sm transition border-white/15 bg-white/[0.04] text-neutral-200 hover:border-hd-yellow/60">
+                    Через 1–3 месяца
+                  </button>
+                  <button type="button" data-pick-timeline="Нужен замер и смета" class="pick-timeline-btn text-center px-3 py-3 border text-xs font-semibold rounded-sm transition border-hd-yellow bg-hd-yellow text-hd-ink">
+                    Нужен замер и смета
+                  </button>
+                </div>
+              </div>
+
+              <!-- Пояснение по честной смете -->
+              <div class="pt-5 border-t border-white/15 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-sm bg-hd-yellow/20 text-hd-yellow flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <p class="text-xs text-neutral-300 leading-relaxed">
+                  Точную стоимость и сроки фиксируем в смете и договоре после осмотра вашего объекта в Гродно или районе — без скрытых доплат в процессе.
+                </p>
+              </div>
+            </div>
+
+            <!-- Карточка прямой связи и отправки планировки -->
+            <div class="bg-white border border-hd-line p-6 space-y-4">
+              <div class="text-xs font-display font-extrabold uppercase tracking-wider text-hd-ink">
+                Проще скинуть планировку в мессенджер?
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  data-contact="viber"
+                  href="viber://chat?number=%2B375295829432"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#7360F2] hover:opacity-90 text-white text-xs sm:text-sm font-semibold rounded-sm transition"
+                >
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                  <span>Viber</span>
+                </a>
+                <a
+                  data-contact="telegram"
+                  href="https://t.me/+375295829432"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#229ED9] hover:opacity-90 text-white text-xs sm:text-sm font-semibold rounded-sm transition"
+                >
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                  <span>Telegram</span>
+                </a>
+              </div>
+              <div class="pt-3 border-t border-hd-line grid sm:grid-cols-2 gap-2 text-xs text-neutral-600">
+                <div>
+                  <span class="text-neutral-400">Основной:</span>
+                  <a data-contact="phone" data-contact-text="phone" href="tel:+375295829432" class="ml-1 font-display font-bold text-hd-ink hover:text-hd-ochre transition whitespace-nowrap">+375 (29) 582-94-32</a>
+                </div>
+                <div>
+                  <span class="text-neutral-400">Доп. номер:</span>
+                  <a data-contact="phone2" data-contact-text="phone2" href="tel:+375333824513" class="ml-1 font-display font-bold text-hd-ink hover:text-hd-ochre transition whitespace-nowrap">+375 (33) 382-45-13</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма заявки (автоматически синхронизирована с 2 кликами) -->
+          <div id="request-form" class="lg:col-span-6">
+            <form id="leadForm" novalidate class="bg-white border border-hd-ink/15 p-6 sm:p-8 shadow-sm space-y-5">
+              <!-- Honeypot от спам-ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Оставьте это поле пустым</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Автоподставленная сводка 2 кликов -->
+              <div class="p-3.5 bg-hd-yellow/20 border border-hd-yellow/70 flex items-center justify-between gap-3">
+                <div class="text-xs leading-snug">
+                  <span class="font-display font-extrabold uppercase tracking-wider text-hd-ink block text-[10px]">Подставлено в заявку:</span>
+                  <span id="quickPickSummaryBadge" class="font-semibold text-hd-ink mt-0.5 block">Квартира (новостройка) · Нужен замер и смета</span>
+                </div>
+                <span class="shrink-0 px-2 py-0.5 bg-hd-ink text-hd-yellow font-display font-bold text-[10px] uppercase">Авто</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink mb-1.5">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Алексей" class="w-full px-3.5 py-3 bg-hd-paper border border-neutral-300 text-sm text-hd-ink placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-hd-yellow focus:border-hd-ink transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink mb-1.5">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (29) 123-45-67" class="w-full px-3.5 py-3 bg-hd-paper border border-neutral-300 text-sm text-hd-ink placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-hd-yellow focus:border-hd-ink transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadService" class="block text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink mb-1.5">Направление работ *</label>
+                <select id="leadService" name="service" required class="w-full px-3.5 py-3 bg-hd-paper border border-neutral-300 text-sm text-hd-ink focus:outline-none focus:ring-2 focus:ring-hd-yellow focus:border-hd-ink transition">
+                  <option value="Ремонт квартир под ключ">Ремонт квартир под ключ</option>
+                  <option value="Ремонт домов под ключ">Ремонт домов под ключ</option>
+                  <option value="Ванная и санузел под ключ">Ванная и санузел под ключ</option>
+                  <option value="Укладка плитки от 25 м²">Укладка плитки от 25 м²</option>
+                  <option value="Нужна консультация и замер">Нужна консультация и замер</option>
+                </select>
+              </div>
+
+              <div>
+                <span class="block text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink mb-2">Как удобнее ответить?</span>
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Звонок по телефону" checked class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-2 border border-neutral-300 bg-hd-paper text-xs font-semibold text-neutral-700 peer-checked:border-hd-ink peer-checked:bg-hd-yellow peer-checked:text-hd-ink transition">Звонок</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-2 border border-neutral-300 bg-hd-paper text-xs font-semibold text-neutral-700 peer-checked:border-hd-ink peer-checked:bg-hd-ink peer-checked:text-hd-yellow transition">Viber</span>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                    <span class="block text-center py-2.5 px-2 border border-neutral-300 bg-hd-paper text-xs font-semibold text-neutral-700 peer-checked:border-hd-ink peer-checked:bg-hd-ink peer-checked:text-hd-yellow transition">Telegram</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-[11px] font-display font-extrabold uppercase tracking-wider text-hd-ink mb-1.5">Объект и пожелания</label>
+                <textarea id="leadComment" name="comment" rows="3" placeholder="Например: Грандичи, новостройка, планируем старт в следующем месяце" class="w-full px-3.5 py-3 bg-hd-paper border border-neutral-300 text-sm text-hd-ink placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-hd-yellow focus:border-hd-ink transition"></textarea>
+              </div>
+
+              <!-- Обязательный НЕЗАПОЛНЕННЫЙ чекбокс по Закону РБ № 99-З (БЕЗ checked) -->
+              <div>
+                <label class="flex items-start gap-2.5 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-0.5 w-4 h-4 border-neutral-400 text-hd-ink focus:ring-hd-yellow shrink-0" />
+                  <span class="text-xs text-neutral-600 leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-hd-ink underline hover:text-hd-ochre font-semibold">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-hd-ink underline hover:text-hd-ochre font-semibold">Политикой обработки ПД</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-sm transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Отправить заявку на замер и смету
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ (ФУТЕР) И КОМПЛАЕНС РБ ==================== -->
+  <footer id="contacts" class="bg-hd-ink text-neutral-300 pt-14 pb-36 md:pb-20 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+        <!-- Контакты -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <div class="font-display font-black text-2xl tracking-tight">
+              <span class="text-hd-yellow">HD</span><span class="text-white">Stroi</span>
+            </div>
+            <p class="mt-1.5 text-sm text-neutral-400 leading-relaxed">
+              Ремонт квартир и домов под ключ, ванная и санузел под ключ, укладка плитки от 25 м² в Гродно и Гродненском районе.
+            </p>
+          </div>
+
+          <div class="space-y-2 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-neutral-500 w-24 shrink-0">Регион:</span>
+              <span class="text-white font-medium">г. Гродно и Гродненский район</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-neutral-500 w-24 shrink-0">Телефон:</span>
+              <div class="flex flex-col gap-1">
+                <a data-contact="phone" data-contact-text="phone" href="tel:+375295829432" class="font-display font-bold text-hd-yellow hover:text-white transition whitespace-nowrap">+375 (29) 582-94-32</a>
+                <a data-contact="phone2" data-contact-text="phone2" href="tel:+375333824513" class="font-display font-semibold text-neutral-200 hover:text-hd-yellow transition text-xs whitespace-nowrap">+375 (33) 382-45-13</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-neutral-500 w-24 shrink-0">Email:</span>
+              <a data-contact="email" href="mailto:index.hdstroi@gmail.com" class="text-white hover:text-hd-yellow transition">index.hdstroi@gmail.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-neutral-500 w-24 shrink-0">Instagram:</span>
+              <a data-contact="instagram" href="https://instagram.com/hd_stroi?igshid=1jzpm83edlj0c" target="_blank" rel="noopener noreferrer" class="text-white hover:text-hd-yellow transition">@hd_stroi</a>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375295829432" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border border-white/15 bg-white/[0.05] hover:border-hd-yellow hover:text-hd-yellow text-white text-xs font-semibold transition">
+              Viber
+            </a>
+            <a data-contact="telegram" href="https://t.me/+375295829432" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border border-white/15 bg-white/[0.05] hover:border-hd-yellow hover:text-hd-yellow text-white text-xs font-semibold transition">
+              Telegram
+            </a>
+            <a data-contact="instagram" href="https://instagram.com/hd_stroi?igshid=1jzpm83edlj0c" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink text-xs font-display font-extrabold transition">
+              @hd_stroi
+            </a>
+          </div>
+        </div>
+
+        <!-- География выезда по Гродно -->
+        <div class="lg:col-span-7">
+          <div class="bg-hd-graphite border border-white/10 p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-bold text-base text-white">География выезда HDStroi</div>
+                <div class="text-xs text-neutral-400">Осмотр, замер и составление сметы по всему Гродно и пригороду</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Гродно" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink font-display font-extrabold text-[11px] uppercase tracking-wider rounded-sm transition">
+                Гродно на карте →
+              </a>
+            </div>
+
+            <div class="relative bg-hd-ink border border-white/10 h-44 overflow-hidden flex items-center justify-center swiss-dark-grid">
+              <svg class="w-full h-full opacity-35" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 120 C160 80, 310 140, 600 72" stroke="#F2C90C" stroke-width="2" stroke-dasharray="6 6" />
+                <circle cx="300" cy="90" r="62" stroke="#F2C90C" stroke-opacity="0.4" stroke-width="1.5" />
+                <circle cx="300" cy="90" r="105" stroke="#525252" stroke-opacity="0.45" stroke-width="1" />
+                <line x1="300" y1="8" x2="300" y2="172" stroke="#404040" stroke-width="1" />
+                <line x1="120" y1="90" x2="480" y2="90" stroke="#404040" stroke-width="1" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-10 h-10 bg-hd-yellow text-hd-ink flex items-center justify-center font-display font-black text-xs rounded-sm shadow-lg mb-2">
+                  HD
+                </div>
+                <div class="px-3.5 py-1 bg-hd-ink/95 border border-white/15 text-xs sm:text-sm font-display font-bold text-white">
+                  г. Гродно и Гродненский район
+                </div>
+                <div class="mt-1.5 text-[11px] text-neutral-400">Грандичи · Ольшанка · Вишневец · Девятовка · Центр · Зарица · Пригород</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридические реквизиты и ссылки РБ -->
+      <div class="pt-7 space-y-5 text-xs text-neutral-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-neutral-200 font-semibold">Реквизиты исполнителя (данные с hdstroi.by + поля к заполнению):</div>
+            <div>ИП Хмелевский М.Ю., УНП [XXXXXXXXX — уточняется при запуске]</div>
+            <div>Юридический адрес: г. Гродно, [адрес регистрации ИП]</div>
+            <div>Режим работы: ориентир 09:00–20:00 (точный график уточняется при запуске)</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-hd-yellow transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-hd-yellow transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-hd-yellow transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-neutral-500 leading-relaxed">
+          Информация, размещённая на данном сайте, носит справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Точный состав работ, стоимость и сроки выполнения фиксируются в договоре после осмотра и замера объекта.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px, СКРЫТ ПРИ ОТКРЫТОМ COOKIE-БАННЕРЕ) ==================== -->
+  <nav id="mobileDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-12 z-40">
+    <div class="bg-[#121418]/90 backdrop-blur-xl border border-white/15 rounded-2xl p-1.5 shadow-2xl shadow-black/50 grid grid-cols-3 gap-1.5">
+      <a
+        data-contact="phone"
+        href="tel:+375295829432"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-white hover:bg-white/10 text-xs font-semibold transition whitespace-nowrap"
+      >
+        <svg class="w-4 h-4 text-hd-yellow shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span>Позвонить</span>
+      </a>
+
+      <a
+        data-contact="viber"
+        href="viber://chat?number=%2B375295829432"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-white hover:bg-white/10 text-xs font-semibold transition whitespace-nowrap"
+      >
+        <svg class="w-4 h-4 text-hd-yellow shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span>Viber</span>
+      </a>
+
+      <a
+        href="#quick-pick"
+        class="flex items-center justify-center py-2.5 px-2 rounded-xl bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink font-display font-extrabold text-xs transition whitespace-nowrap"
+      >
+        Записаться
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==================== COOKIE-БАННЕР (РАВНОЗНАЧНЫЕ КНОПКИ ПО НЦЗПД РБ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-10 sm:bottom-8 z-50 px-3 sm:px-6 pb-1.5">
+    <div class="max-w-5xl mx-auto bg-hd-graphite/95 backdrop-blur-md border border-white/15 text-neutral-200 p-3.5 sm:px-5 sm:py-3.5 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="text-[11px] sm:text-xs leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта. Аналитические cookie (включая Google Analytics) подключаются только с вашего согласия. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-hd-yellow underline hover:text-white">настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="w-full sm:w-auto px-3.5 py-2.5 border border-white/30 bg-hd-slate hover:bg-neutral-600 text-white text-xs font-display font-bold rounded-sm transition sm:whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="w-full sm:w-auto px-3.5 py-2.5 border border-hd-yellow bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink text-xs font-display font-bold rounded-sm transition sm:whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЕМО-ПЛАШКА В САМОМ НИЗУ -->
+  <div class="fixed inset-x-0 bottom-0 z-30 bg-hd-ink/95 backdrop-blur-md border-t border-white/10 text-neutral-300 text-center py-1.5 px-3 text-[10px] sm:text-[11px] leading-tight">
+    Демо-концепт HDStroi · После согласования добавим ваши реальные фото и реквизиты
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-hd-graphite border border-white/15 shadow-2xl overflow-hidden" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-10 h-10 bg-hd-ink/90 text-white hover:bg-hd-yellow hover:text-hd-ink font-bold flex items-center justify-center transition">
+        ✕
+      </button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-neutral-200 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white p-6 sm:p-8 shadow-2xl border-t-4 border-hd-yellow" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 bg-neutral-100 hover:bg-neutral-200 text-neutral-600 flex items-center justify-center transition">✕</button>
+      <div class="w-11 h-11 bg-hd-yellow text-hd-ink flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-extrabold text-2xl text-hd-ink">Заявка отправлена</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-neutral-600 leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 bg-hd-paper border border-hd-line text-xs text-neutral-700 space-y-1 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 bg-hd-ink hover:bg-hd-graphite text-hd-yellow font-display font-extrabold text-xs uppercase tracking-wider transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hd-line bg-hd-ink text-white">
+        <h3 class="font-display font-bold text-base sm:text-lg">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-hd-slate hover:bg-hd-yellow hover:text-hd-ink text-white flex items-center justify-center transition">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-neutral-700 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60 (размещение боевого сайта осуществляется на хостинге в Республике Беларусь). Оператором персональных данных выступает <strong>ИП Хмелевский М.Ю.</strong> (HDStroi), УНП [XXXXXXXXX], г. Гродно, Республика Беларусь, тел.: +375 (29) 582-94-32, email: index.hdstroi@gmail.com.</p>
+        <p><strong>2. Цели и состав данных.</strong> Оператор обрабатывает имя, номер телефона, выбранное направление ремонта, предпочтительный способ связи и сведения об объекте из комментария исключительно для обратной связи, согласования осмотра, составления сметы и заключения договора.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта используются сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в иностранных государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. С такой передачей связаны риски отсутствия специального законодательства о защите ПД, ограниченного контроля со стороны уполномоченных органов Республики Беларусь и возможного доступа третьих лиц по законодательству иностранных государств. Передача осуществляется исключительно при наличии вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З).</strong> Вы вправе: в любое время без объяснения причин отозвать согласие; получать информацию об обработке своих ПД; требовать внесения изменений в ПД; требовать прекращения обработки и (или) удаления ПД; обжаловать действия (бездействие) оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hd-line bg-hd-paper text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-hd-ink text-hd-yellow font-display font-bold text-xs uppercase tracking-wider">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hd-line bg-hd-ink text-white">
+        <h3 class="font-display font-bold text-base sm:text-lg">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-hd-slate hover:bg-hd-yellow hover:text-hd-ink text-white flex items-center justify-center transition">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-neutral-700 space-y-3 leading-relaxed">
+        <p>Проставляя отметку в форме заявки на сайте <strong>HDStroi</strong> и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору (<strong>ИП Хмелевский М.Ю.</strong>, УНП [XXXXXXXXX], г. Гродно, email: index.hdstroi@gmail.com) на обработку моих персональных данных: имени, номера телефона, выбранного направления работ, способа связи и комментария об объекте.</p>
+        <p><strong>Цель обработки:</strong> обратная связь, согласование осмотра и замера объекта, подготовка сметы и обсуждение договора на ремонт.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что доставка заявки осуществляется через Google Apps Script (Google LLC) и Telegram (Telegram Messenger Inc.), чья инфраструктура располагается в том числе в государствах без надлежащего уровня защиты прав субъектов ПД. Мне разъяснены риски такой передачи (отсутствие аналогичного законодательства о ПД, отсутствие независимого надзорного органа и ограниченные механизмы защиты прав в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и права (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами на отзыв согласия, получение информации, изменение, прекращение обработки и удаление ПД, а также на обжалование в НЦЗПД. Отозвать согласие можно обращением на email index.hdstroi@gmail.com или по телефону в подвале сайта.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hd-line bg-hd-paper text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-hd-ink text-hd-yellow font-display font-bold text-xs uppercase tracking-wider">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hd-line bg-hd-ink text-white">
+        <h3 class="font-display font-bold text-base sm:text-lg">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 bg-hd-slate hover:bg-hd-yellow hover:text-hd-ink text-white flex items-center justify-center transition">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-neutral-700 space-y-4 leading-relaxed">
+        <div class="p-3.5 bg-hd-paper border border-hd-line flex items-center justify-between gap-2">
+          <span class="font-semibold text-hd-ink">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 bg-white border border-neutral-300 text-xs font-semibold text-hd-ink">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie и локальное хранилище:</strong> обеспечивают работу интерфейса и запоминают ваш выбор настроек cookie. Не передают персональные данные третьим лицам.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> используются для статистики посещений (например, Google Analytics / Яндекс.Метрика после запуска сайта) исключительно при выборе «Принять все». При отказе аналитические скрипты не активируются.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hd-line bg-hd-paper flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="w-full sm:w-auto px-4 py-2.5 border border-neutral-400 bg-neutral-200 hover:bg-neutral-300 text-hd-ink text-xs font-display font-bold rounded-sm transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="w-full sm:w-auto px-4 py-2.5 border border-hd-yellow bg-hd-yellow hover:bg-hd-yellowHover text-hd-ink font-display font-bold text-xs rounded-sm transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЧИСТЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Привязка контактов из SITE_CONFIG (без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telegramHref);
+      });
+
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+
+      document.querySelectorAll('[data-contact="phone2"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.secondaryTelHref);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact-text="phone2"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.secondaryDisplayPhone;
+      });
+
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+        el.removeAttribute('target');
+      });
+
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+
+      // 2. Живой статус по времени Беларуси (Europe/Minsk, ориентир 09:00–20:00)
+      function updateBelarusLiveStatus() {
+        let minskHour = 12;
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            hour: '2-digit',
+            hour12: false,
+          }).formatToParts(new Date());
+          const hourPart = parts.find((p) => p.type === 'hour');
+          if (hourPart) minskHour = parseInt(hourPart.value, 10);
+        } catch (_) {
+          const now = new Date();
+          minskHour = (now.getUTCHours() + 3) % 24;
+        }
+
+        const isOpen = minskHour >= SITE_CONFIG.workHours.start && minskHour < SITE_CONFIG.workHours.end;
+        const label = isOpen ? 'Открыто сейчас' : 'Ответим с 09:00';
+
+        document.querySelectorAll('[data-live-status-text]').forEach((el) => {
+          el.textContent = label;
+        });
+
+        document.querySelectorAll('[data-live-status-dot]').forEach((dot) => {
+          const isLightSurface = dot.getAttribute('data-live-status-dot') === 'light';
+          dot.classList.remove('bg-emerald-400', 'bg-emerald-700', 'bg-amber-400', 'bg-hd-ink', 'status-dot-live');
+          if (isOpen) {
+            dot.classList.add(isLightSurface ? 'bg-emerald-700' : 'bg-emerald-400', 'status-dot-live');
+          } else {
+            dot.classList.add(isLightSurface ? 'bg-hd-ink' : 'bg-amber-400');
+          }
+        });
+      }
+      updateBelarusLiveStatus();
+      setInterval(updateBelarusLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const burgerIconOpen = document.getElementById('burgerIconOpen');
+      const burgerIconClose = document.getElementById('burgerIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+        burgerIconOpen.classList.toggle('hidden', open);
+        burgerIconClose.classList.toggle('hidden', !open);
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+
+      document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Интерактивные вкладки «Состав работ»
+      const tabBtns = document.querySelectorAll('[data-tab-btn]');
+      const tabPanels = document.querySelectorAll('[data-tab-panel]');
+
+      function activateTab(tabKey) {
+        tabBtns.forEach((btn) => {
+          const isActive = btn.getAttribute('data-tab-btn') === tabKey;
+          btn.setAttribute('aria-selected', String(isActive));
+          btn.classList.toggle('bg-hd-ink', isActive);
+          btn.classList.toggle('text-hd-yellow', isActive);
+          btn.classList.toggle('border-hd-ink', isActive);
+          btn.classList.toggle('bg-hd-paper', !isActive);
+          btn.classList.toggle('text-hd-ink', !isActive);
+          btn.classList.toggle('border-hd-line', !isActive);
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.getAttribute('data-tab-panel') !== tabKey);
+        });
+      }
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => activateTab(btn.getAttribute('data-tab-btn')));
+      });
+
+      // 5. Мини-интерактив за 2 клика с мгновенной автоподстановкой в форму заявки
+      const pickObjectBtns = document.querySelectorAll('.pick-object-btn');
+      const pickTimelineBtns = document.querySelectorAll('.pick-timeline-btn');
+      const summaryBadge = document.getElementById('quickPickSummaryBadge');
+      const serviceSelect = document.getElementById('leadService');
+      const commentField = document.getElementById('leadComment');
+      const quickPickSection = document.getElementById('quick-pick');
+
+      const quickPickState = {
+        object: 'Квартира (новостройка)',
+        timeline: 'Нужен замер и смета',
+      };
+
+      function mapObjectToService(objText) {
+        if (objText.includes('дом')) return 'Ремонт домов под ключ';
+        if (objText.includes('Ванная')) return 'Ванная и санузел под ключ';
+        if (objText.includes('плитки')) return 'Укладка плитки от 25 м²';
+        return 'Ремонт квартир под ключ';
+      }
+
+      function syncQuickPickToForm() {
+        if (summaryBadge) {
+          summaryBadge.textContent = `${quickPickState.object} · ${quickPickState.timeline}`;
+        }
+        if (serviceSelect) {
+          serviceSelect.value = mapObjectToService(quickPickState.object);
+        }
+        if (commentField) {
+          commentField.value = `Объект: ${quickPickState.object}. Старт: ${quickPickState.timeline}.`;
+        }
+      }
+
+      function selectPickObject(objText) {
+        quickPickState.object = objText;
+        pickObjectBtns.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-object') === objText;
+          btn.classList.toggle('border-hd-yellow', active);
+          btn.classList.toggle('bg-hd-yellow', active);
+          btn.classList.toggle('text-hd-ink', active);
+          btn.classList.toggle('border-white/15', !active);
+          btn.classList.toggle('bg-white/[0.04]', !active);
+          btn.classList.toggle('text-neutral-200', !active);
+        });
+        syncQuickPickToForm();
+      }
+
+      function selectPickTimeline(timeText) {
+        quickPickState.timeline = timeText;
+        pickTimelineBtns.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-timeline') === timeText;
+          btn.classList.toggle('border-hd-yellow', active);
+          btn.classList.toggle('bg-hd-yellow', active);
+          btn.classList.toggle('text-hd-ink', active);
+          btn.classList.toggle('border-white/15', !active);
+          btn.classList.toggle('bg-white/[0.04]', !active);
+          btn.classList.toggle('text-neutral-200', !active);
+        });
+        syncQuickPickToForm();
+      }
+
+      pickObjectBtns.forEach((btn) => {
+        btn.addEventListener('click', () => selectPickObject(btn.getAttribute('data-pick-object')));
+      });
+
+      pickTimelineBtns.forEach((btn) => {
+        btn.addEventListener('click', () => selectPickTimeline(btn.getAttribute('data-pick-timeline')));
+      });
+
+      // Кнопки из карточек услуг и вкладок сразу выбирают объект и прокручивают к подбору/форме
+      document.querySelectorAll('[data-quick-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const obj = btn.getAttribute('data-quick-service');
+          if (obj) selectPickObject(obj);
+          if (quickPickSection) {
+            quickPickSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      syncQuickPickToForm();
+
+      // 6. Фильтр галереи объектов
+      const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+      const galleryCards = document.querySelectorAll('.gallery-card');
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filterBtns.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('bg-hd-ink', active);
+            b.classList.toggle('text-hd-yellow', active);
+            b.classList.toggle('border-hd-ink', active);
+            b.classList.toggle('bg-hd-paper', !active);
+            b.classList.toggle('text-hd-ink', !active);
+            b.classList.toggle('border-hd-line', !active);
+          });
+
+          galleryCards.forEach((card) => {
+            const cat = card.getAttribute('data-category');
+            card.classList.toggle('hidden', !(filter === 'all' || cat === filter));
+          });
+        });
+      });
+
+      // 7. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllModals();
+          setMobileMenu(false);
+        }
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Объект HDStroi';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 8. Cookie-баннер (НЦЗПД РБ) и автоматическое скрытие мобильного док-бара пока баннер открыт
+      const COOKIE_KEY = 'hdstroi_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileDock = document.getElementById('mobileDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (аналитика отклонена)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 9. Валидация и отправка формы заявки (Google Apps Script -> Telegram / Демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        // Проверка honeypot
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const serviceVal = document.getElementById('leadService').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Звонок по телефону';
+        const commentVal = document.getElementById('leadComment').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо отметить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'HDStroi (Гродно)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          contactMethod: contactMethodVal,
+          comment: commentVal || `${quickPickState.object} · ${quickPickState.timeline}`,
+          createdAt: new Date().toLocaleString('ru-BY'),
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+              throw new Error('Ошибка сервера при отправке заявки');
+            }
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили вашу заявку и скоро свяжемся с вами, чтобы обсудить объект и замер.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения вашего Telegram-бота заявка будет приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Направление: ${payload.service}\n` +
+              `Способ связи: ${payload.contactMethod}\n` +
+              `Объект и старт: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          syncQuickPickToForm();
+          openModal(modalSuccess);
+        } catch (_) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Позвоните напрямую или напишите нам в Viber / Telegram.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку на замер и смету';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

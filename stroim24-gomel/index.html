@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ООО «СТРОИМ24 Гомель» — Строительство, кровля, фасады и заборы в Гомеле</title>
+  <meta name="description" content="ООО «СТРОИМ24 Гомель» (УНП 491390721): кровельные работы, монтаж сайдинга и фасады, установка заборов и ворот, общестроительные работы, каркасное строительство и стройматериалы с доставкой по Гомелю и Гомельской области. Договор без авансов и предоплат." />
+
+  <!-- Google Fonts: Rubik, IBM Plex Sans & IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            display: ['Rubik', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace'],
+          },
+          colors: {
+            eng: {
+              navy: '#0B2545',
+              navyDeep: '#07172E',
+              cobalt: '#145CA8',
+              steel: '#1D6FB8',
+              steelSoft: '#EBF3FB',
+              paper: '#F4F7FB',
+              border: '#D3DFEC',
+              ink: '#132030',
+              muted: '#4B5D71',
+              orange: '#EA580C',
+              orangeBright: '#FF6A14',
+              orangeHover: '#C2410C',
+            },
+            viber: '#7360F2',
+            telegram: '#229ED9',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      color: #132030;
+      background-color: #F4F7FB;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Rubik', system-ui, sans-serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    /* Светлое инженерно-чертёжное полотно */
+    .drafting-grid {
+      background-color: #F4F7FB;
+      background-image:
+        linear-gradient(to right, rgba(20, 92, 168, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20, 92, 168, 0.055) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    /* Кобальтовая чертёжная сетка для блока официального договора */
+    .blueprint-dark-grid {
+      background-color: #0B2545;
+      background-image:
+        linear-gradient(to right, rgba(147, 197, 253, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(147, 197, 253, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    /* Архитектурные угловые засечки */
+    .corner-marks {
+      position: relative;
+    }
+    .corner-marks::before,
+    .corner-marks::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+    }
+    .corner-marks::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid #145CA8;
+      border-left: 2px solid #145CA8;
+      border-top-left-radius: 6px;
+    }
+    .corner-marks::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid #EA580C;
+      border-right: 2px solid #EA580C;
+      border-bottom-right-radius: 6px;
+    }
+    /* Мобильная стеклянная панель в тёмно-кобальтовом стекле */
+    .cobalt-glass {
+      background: rgba(8, 28, 56, 0.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-eng-orange selection:text-white">
+
+  <!-- ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА -->
+  <script>
+    const SITE_CONFIG = {
+      // URL веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если пусто "", форма работает в безопасном демо-режиме с предпросмотром заявки.
+      googleScriptUrl: '',
+      companyName: 'ООО «СТРОИМ24 Гомель»',
+      shortName: 'СТРОИМ24',
+      director: 'Лапшин Евгений Николаевич',
+      unp: '491390721',
+      region: 'Гомель и Гомельская область',
+      address: 'г. Гомель, ул. 5-я Техническая, д. 1А/1',
+      landmark: 'ост. «Завод химических изделий» (Тролл. 3, 5; Авт. 12, 18, 35)',
+      scheduleText: 'Ежедневно 08:00–21:00',
+      workHours: { start: 8, end: 21 },
+      viberPhone: '+375293632830',
+      telegramUsername: 'stroim24_gomel_demo', // Замените на реальный username Telegram при запуске
+      primaryPhone: '+375 (29) 363-28-30',
+      primaryTelHref: 'tel:+375293632830',
+      mtsPhone: '+375 (33) 363-28-30',
+      mtsTelHref: 'tel:+375333632830',
+      secondaryPhone: '+375 (29) 697-41-01',
+      secondaryTelHref: 'tel:+375296974101',
+      instagramUrl: 'https://www.instagram.com/stroykagomel.by/',
+      tiktokUrl: 'https://www.tiktok.com/@.24001597',
+      youtubeUrl: 'https://youtube.com/channel/UCV6yT1gv4zF4cz2ATiPkj_g',
+      yandexMapsUrl: 'https://yandex.by/maps/?text=Гомель%205-я%20Техническая%201А%20СТРОИМ24'
+    };
+  </script>
+
+  <!-- ЕДИНАЯ 1-СТРОЧНАЯ ТЁМНО-КОБАЛЬТОВАЯ ШАПКА (1280px и 1440px без переносов) -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-[#071A36] via-[#0D2E5E] to-[#134685] border-b border-white/10 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-3">
+
+        <!-- Логотип -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+          <div class="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center relative overflow-hidden group-hover:bg-white/15 transition shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5M5 9.5V20h14V9.5M9 20v-6h6v6" />
+            </svg>
+            <span class="absolute bottom-0 inset-x-0 h-[3px] bg-eng-orangeBright"></span>
+          </div>
+          <span class="font-display font-extrabold text-lg tracking-tight text-white whitespace-nowrap">
+            СТРОИМ<span class="text-eng-orangeBright">24</span>
+          </span>
+        </a>
+
+        <!-- 5 коротких 1-словных пунктов навигации -->
+        <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13px] xl:text-sm font-medium text-slate-200" aria-label="Основная навигация">
+          <a href="#catalog" class="whitespace-nowrap shrink-0 hover:text-white transition">Направления</a>
+          <a href="#prices" class="whitespace-nowrap shrink-0 hover:text-white transition">Расценки</a>
+          <a href="#official" class="whitespace-nowrap shrink-0 hover:text-white transition">Договор</a>
+          <a href="#materials" class="whitespace-nowrap shrink-0 hover:text-white transition">Материалы</a>
+          <a href="#contacts" class="whitespace-nowrap shrink-0 hover:text-white transition">Контакты</a>
+        </nav>
+
+        <!-- Живой статус Минска + Телефон + Монохромные иконки + Кнопка -->
+        <div class="flex items-center gap-2 xl:gap-2.5 shrink-0">
+          <!-- Живой статус по времени Минска (08:00–21:00) -->
+          <div data-live-status class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] font-medium text-slate-100 whitespace-nowrap shrink-0" title="Ежедневно 08:00–21:00 (Europe/Minsk)">
+            <span data-status-dot class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span data-status-text>Открыто сейчас</span>
+          </div>
+
+          <!-- Неразрывный основной телефон A1 -->
+          <a data-contact="primaryPhone" href="tel:+375293632830" class="hidden md:inline-flex items-center gap-1.5 px-2 py-1 font-mono font-semibold text-[13px] xl:text-sm text-white hover:text-eng-orangeBright transition whitespace-nowrap shrink-0">
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/12 text-eng-orangeBright border border-white/15 leading-none">A1</span>
+            <span data-contact-text="primaryPhone">+375 (29) 363-28-30</span>
+          </a>
+
+          <!-- Аккуратные монохромные иконки Viber и Telegram (без ярких цветных пилюль) -->
+          <div class="hidden sm:flex items-center gap-1.5 shrink-0">
+            <a data-contact="viber" href="viber://chat?number=%2B375293632830" aria-label="Написать в Viber" title="Написать в Viber" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-slate-100 hover:text-white flex items-center justify-center transition shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+            </a>
+            <a data-contact="telegram" href="https://t.me/stroim24_gomel_demo" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Написать в Telegram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-slate-100 hover:text-white flex items-center justify-center transition shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            </a>
+          </div>
+
+          <!-- Оранжевая кнопка «Смета» -->
+          <a href="#estimate" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white font-display font-semibold text-sm shadow-sm transition whitespace-nowrap shrink-0">
+            Смета
+          </a>
+
+          <!-- Телефон-иконка и бургер для мобильных -->
+          <a data-contact="primaryPhone" href="tel:+375293632830" aria-label="Позвонить" class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg bg-eng-orange text-white shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+          </a>
+          <button type="button" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 border border-white/15 text-white hover:bg-white/20 transition shrink-0">
+            <svg id="burgerIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="burgerIconClose" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-eng-navyDeep border-t border-white/10 shadow-xl">
+      <div class="max-w-7xl mx-auto px-4 py-4 space-y-3.5">
+        <div class="flex items-center justify-between gap-2 text-xs text-slate-300 pb-2 border-b border-white/10">
+          <span data-live-status class="inline-flex items-center gap-1.5 font-medium text-white">
+            <span data-status-dot class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span data-status-text>Открыто сейчас</span>
+          </span>
+          <span class="font-mono text-slate-400">Ежедневно 08:00–21:00</span>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-2 text-sm font-medium text-white">
+          <a href="#catalog" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Направления</a>
+          <a href="#prices" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Расценки</a>
+          <a href="#official" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Договор и УНП</a>
+          <a href="#materials" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Материалы</a>
+          <a href="#gallery" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Объекты</a>
+          <a href="#contacts" data-mobile-link class="px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition">Контакты</a>
+        </nav>
+
+        <div class="pt-2 border-t border-white/10 space-y-2 text-xs font-mono text-slate-200">
+          <a data-contact="primaryPhone" href="tel:+375293632830" class="flex items-center justify-between px-3 py-2 rounded-lg bg-white/5">
+            <span>A1 / Viber</span>
+            <span data-contact-text="primaryPhone" class="text-white font-semibold">+375 (29) 363-28-30</span>
+          </a>
+          <a data-contact="mtsPhone" href="tel:+375333632830" class="flex items-center justify-between px-3 py-2 rounded-lg bg-white/5">
+            <span>МТС</span>
+            <span data-contact-text="mtsPhone" class="text-white font-semibold">+375 (33) 363-28-30</span>
+          </a>
+          <a data-contact="secondaryPhone" href="tel:+375296974101" class="flex items-center justify-between px-3 py-2 rounded-lg bg-white/5">
+            <span>A1 доп.</span>
+            <span data-contact-text="secondaryPhone" class="text-white font-semibold">+375 (29) 697-41-01</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== ПЕРВЫЙ ЭКРАН: ИНЖЕНЕРНЫЙ MASTHEAD + 6-МОДУЛЬНЫЙ BENTO-КАТАЛОГ ==================== -->
+    <section id="catalog" class="drafting-grid border-b border-eng-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-9 sm:pt-8 sm:pb-12">
+
+        <!-- Инженерный центрированный Masthead (преемственность stroim24.by в современном исполнении) -->
+        <div class="max-w-5xl mx-auto text-center">
+          <div class="inline-block px-3 py-1 rounded-md bg-white border border-eng-border shadow-xs font-mono text-[10px] sm:text-xs font-semibold tracking-wide text-eng-navy uppercase">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-eng-orange mr-1.5 align-middle"></span>ГОМЕЛЬ И ГОМЕЛЬСКАЯ ОБЛАСТЬ · ПО ДОГОВОРУ БЕЗ АВАНСОВ И ПРЕДОПЛАТ
+          </div>
+
+          <h1 class="mt-2.5 font-display font-extrabold text-[24px] sm:text-3xl lg:text-[36px] xl:text-[40px] leading-[1.15] tracking-tight text-eng-navy">
+            Строительство, кровля, фасады и заборы в Гомеле
+          </h1>
+
+          <p class="mt-2 text-xs sm:text-[15px] text-eng-muted max-w-2xl mx-auto leading-snug">
+            ООО «СТРОИМ24 Гомель» (УНП 491390721) — работы под ключ для частных заказчиков и организаций со своими стройматериалами с доставкой или материалами заказчика.
+          </p>
+
+          <!-- Компактная строка действий + живой статус на мобильных -->
+          <div class="mt-3.5 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
+            <a href="#estimate" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white font-display font-semibold text-sm sm:text-[15px] shadow-md shadow-orange-600/20 transition sm:whitespace-nowrap">
+              Вызвать прораба на бесплатный замер
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#prices" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 sm:py-3 rounded-lg bg-white hover:bg-eng-steelSoft border border-eng-steel/35 text-eng-navy font-display font-semibold text-sm sm:text-[15px] transition sm:whitespace-nowrap">
+              Смотреть расценки ↓
+            </a>
+            <a data-contact="primaryPhone" href="tel:+375293632830" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg bg-white border border-eng-border hover:border-eng-orange/50 font-mono text-sm font-semibold text-eng-orange transition whitespace-nowrap">
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-orange-50 text-eng-orange border border-orange-200">A1</span>
+              <span data-contact-text="primaryPhone">+375 (29) 363-28-30</span>
+            </a>
+          </div>
+
+          <!-- Живой статус на экранах < xl -->
+          <div class="mt-2.5 xl:hidden flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-eng-muted">
+            <span data-live-status class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white border border-eng-border font-medium text-eng-navy">
+              <span data-status-dot class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span data-status-text>Открыто сейчас</span>
+            </span>
+            <span>· Ежедневно 08:00–21:00</span>
+          </div>
+        </div>
+
+        <!-- ФИРМЕННАЯ 6-МОДУЛЬНАЯ АРХИТЕКТУРНАЯ СЕТКА (3×2 НА ПК — СРАЗУ НА ПЕРВОМ ЭКРАНЕ!) -->
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <!-- Модуль 01: Кровельные работы -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Кровельные работы в Гомеле" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">01</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Кровельные работы</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Металлочерепица, профнастил, шифер и его замена, мягкая и вальмовая кровля, стропила, водостоки.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-navy">от <span class="text-eng-orange">30 BYN</span>/м²</span>
+                <button type="button" data-jump-price="roofing" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Прайс по кровле →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Модуль 02: Сайдинг и фасады -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80" alt="Монтаж сайдинга и фасадные работы" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">02</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Сайдинг и фасады</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Виниловый и металл. сайдинг, панели под кирпич/камень, утепление фасада, фронтоны, софиты и цоколь.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-navy">от <span class="text-eng-orange">10 BYN</span>/м²</span>
+                <button type="button" data-jump-price="siding" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Прайс по фасадам →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Модуль 03: Заборы и ворота -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80" alt="Установка заборов, ворот и благоустройство участка" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">03</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Заборы и ворота</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Профнастил, евроштакетник, сетка-рабица, фундамент под забор, распашные и откатные ворота, калитки.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-navy">от <span class="text-eng-orange">11 BYN</span>/м.п.</span>
+                <button type="button" data-jump-price="fences" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Прайс по заборам →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Модуль 04: Стройка и фундаменты -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" alt="Строительные работы, кладка ПГС и фундаменты" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">04</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Стройка и фундаменты</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Дома под ключ, кладка блоков ПГС и кирпича, фундамент и армопояс, пристройки, ремонт квартир и балконов.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-navy">от <span class="text-eng-orange">50 BYN</span>/м²</span>
+                <button type="button" data-jump-price="construction" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Прайс по стройке →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Модуль 05: Каркасные дома -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80" alt="Каркасное строительство и деревянные дома" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">05</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Каркасные дома</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Каркасные дома для сезонного и круглогодичного проживания, деревянные террасы, веранды, сараи и бытовки.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-navy">от <span class="text-eng-orange">200 BYN</span>/м²</span>
+                <button type="button" data-jump-price="frame" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Прайс по каркасу →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Модуль 06: Стройматериалы с доставкой -->
+          <article class="group bg-white border border-eng-border hover:border-eng-cobalt/60 rounded-xl overflow-hidden shadow-xs hover:shadow-lg hover:shadow-eng-navy/8 transition flex flex-col">
+            <div class="relative h-28 sm:h-[122px] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Строительные материалы и металлопрокат с доставкой в Гомеле" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-eng-navyDeep/75 via-transparent to-transparent"></div>
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/90 text-white font-mono text-[11px] font-semibold tracking-wider">06</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-eng-navyDeep/65 backdrop-blur-xs text-[10px] text-slate-200">Демо-фото</span>
+              <div class="absolute bottom-2 left-3 right-3 flex items-baseline justify-between gap-2">
+                <h2 class="font-display font-bold text-base sm:text-[17px] text-white leading-tight">Стройматериалы с доставкой</h2>
+              </div>
+            </div>
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <p class="text-xs sm:text-[13px] text-eng-muted leading-snug">
+                Docke, VOX, Ю-Пласт, ШИНГЛАС, PAROC, URSA, Rehau, всё для забора и доборные планки из металла под размер.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-eng-border/80 flex items-center justify-between gap-2">
+                <span class="font-mono text-xs sm:text-[13px] font-semibold text-eng-orange">Доставка по области</span>
+                <a href="#materials" class="inline-flex items-center gap-1 text-xs font-semibold text-eng-cobalt hover:text-eng-orange transition whitespace-nowrap">
+                  Бренды и заказ →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Компактная полоса инженерных принципов -->
+        <div class="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="bg-white/95 border border-eng-border rounded-lg px-4 py-3 flex items-center gap-3">
+            <span class="font-mono text-xs font-bold text-eng-cobalt bg-eng-steelSoft px-2 py-1 rounded shrink-0">01</span>
+            <div>
+              <div class="font-display font-bold text-xs sm:text-sm text-eng-navy leading-tight">Бесплатный замер</div>
+              <div class="text-[11px] text-eng-muted">Гомель и вся область</div>
+            </div>
+          </div>
+          <div class="bg-white/95 border border-eng-border rounded-lg px-4 py-3 flex items-center gap-3">
+            <span class="font-mono text-xs font-bold text-eng-cobalt bg-eng-steelSoft px-2 py-1 rounded shrink-0">02</span>
+            <div>
+              <div class="font-display font-bold text-xs sm:text-sm text-eng-navy leading-tight">Без авансов</div>
+              <div class="text-[11px] text-eng-muted">Поэтапная оплата по факту</div>
+            </div>
+          </div>
+          <div class="bg-white/95 border border-eng-border rounded-lg px-4 py-3 flex items-center gap-3">
+            <span class="font-mono text-xs font-bold text-eng-cobalt bg-eng-steelSoft px-2 py-1 rounded shrink-0">03</span>
+            <div>
+              <div class="font-display font-bold text-xs sm:text-sm text-eng-navy leading-tight">Договор и гарантия</div>
+              <div class="text-[11px] text-eng-muted">Физ. и юр. лица (безнал)</div>
+            </div>
+          </div>
+          <div class="bg-white/95 border border-eng-border rounded-lg px-4 py-3 flex items-center gap-3">
+            <span class="font-mono text-xs font-bold text-eng-cobalt bg-eng-steelSoft px-2 py-1 rounded shrink-0">04</span>
+            <div>
+              <div class="font-display font-bold text-xs sm:text-sm text-eng-navy leading-tight">Своё снабжение</div>
+              <div class="text-[11px] text-eng-muted">Доставка материалов на объект</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СПРАВОЧНИК РЕАЛЬНЫХ РАСЦЕНОК (АДАПТИВНЫЕ ВКЛАДКИ) ==================== -->
+    <section id="prices" class="py-14 sm:py-18 bg-white border-b border-eng-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-eng-cobalt">
+              <span class="w-6 h-0.5 bg-eng-orange"></span>
+              Ориентировочные расценки
+            </div>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-eng-navy leading-tight">
+              Прозрачный прайс по направлениям работ
+            </h2>
+            <p class="mt-2 text-sm sm:text-base text-eng-muted">
+              Выберите нужную категорию и добавьте позиции кнопкой «+ В смету» — они автоматически подставятся в вашу заявку.
+            </p>
+          </div>
+
+          <div id="selectedWorksCounter" class="hidden items-center gap-3 px-4 py-2.5 rounded-lg bg-eng-navy text-white text-xs sm:text-sm font-medium shrink-0">
+            <span>Выбрано: <strong id="selectedWorksCountNum" class="font-mono text-eng-orangeBright">0</strong></span>
+            <a href="#estimate" class="px-3 py-1 rounded bg-eng-orange hover:bg-eng-orangeHover text-white font-semibold transition whitespace-nowrap">К заявке →</a>
+          </div>
+        </div>
+
+        <!-- Вкладки прайса -->
+        <div role="tablist" aria-label="Категории расценок" class="mt-7 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <button type="button" role="tab" aria-selected="true" data-price-tab="roofing" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-navy text-white transition whitespace-nowrap">Кровельные работы</button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="siding" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-paper border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition whitespace-nowrap">Сайдинг и фасады</button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="fences" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-paper border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition whitespace-nowrap">Заборы и ворота</button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="construction" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-paper border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition whitespace-nowrap">Стройка и фундаменты</button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="frame" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-paper border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition whitespace-nowrap">Каркасные дома</button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="interior" class="price-tab shrink-0 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-eng-paper border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition whitespace-nowrap">Ремонт и балконы</button>
+        </div>
+
+        <!-- Адаптивный список расценок (строго по реальным данным stroim24.by/tseny.html) -->
+        <div class="mt-4 bg-white border border-eng-border rounded-xl shadow-xs overflow-hidden">
+          <div class="hidden sm:grid sm:grid-cols-12 gap-4 px-6 py-3 bg-eng-navy text-white text-xs font-mono uppercase tracking-wider">
+            <div class="col-span-6">Вид строительных работ</div>
+            <div class="col-span-2 text-right">Ориентир, BYN</div>
+            <div class="col-span-1 text-center">Ед.</div>
+            <div class="col-span-3 text-right">Добавить</div>
+          </div>
+          <div id="priceRowsContainer" class="divide-y divide-eng-border"></div>
+        </div>
+
+        <p class="mt-3.5 text-xs text-eng-muted leading-relaxed">
+          * Приведены ориентировочные базовые расценки на работы (без учёта сложности объекта, высотности и стоимости материалов, если не указано «с материалами / под ключ»). Информация не является публичной офертой (ст. 407 ГК РБ). Точная смета фиксируется бесплатно после выезда прораба на замер.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== ОФИЦИАЛЬНЫЙ ДОГОВОР И КАРТОЧКА ООО ==================== -->
+    <section id="official" class="py-16 sm:py-20 blueprint-dark-grid text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div class="lg:col-span-6">
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-sky-300">
+              <span class="w-6 h-0.5 bg-eng-orangeBright"></span>
+              Официальный подряд
+            </div>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] leading-tight">
+              Работаем по договору без авансов — с частными заказчиками и юрлицами
+            </h2>
+            <p class="mt-3.5 text-slate-300 text-sm sm:text-base leading-relaxed">
+              Заранее согласовываем смету и график, не берём предоплату за невыполненную работу и даём официальную гарантию ООО «СТРОИМ24 Гомель» на результат.
+            </p>
+
+            <div class="mt-6 grid sm:grid-cols-2 gap-3.5">
+              <div class="bg-white/6 border border-white/12 rounded-xl p-4">
+                <div class="font-display font-bold text-base text-white">Частным клиентам</div>
+                <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Официальный договор подряда, поэтапный расчёт без авансов, гибкие скидки на объём и доставка стройматериалов на участок.
+                </p>
+              </div>
+              <div class="bg-white/6 border border-white/12 rounded-xl p-4">
+                <div class="font-display font-bold text-base text-white">Юридическим лицам</div>
+                <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Безналичный расчёт в ЗАО «Альфа-Банк», полный пакет закрывающих документов и чёткое соблюдение сроков сдачи.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Актуальные единые реквизиты ООО (УНП 491390721) -->
+          <div class="lg:col-span-6">
+            <div class="bg-eng-navyDeep/95 border border-sky-400/25 rounded-xl p-5 sm:p-7 shadow-xl">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+                <div>
+                  <div class="font-mono text-[11px] text-sky-300 uppercase tracking-wider">Актуальные реквизиты</div>
+                  <div class="font-display font-bold text-lg text-white mt-0.5">ООО «СТРОИМ24 Гомель»</div>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 font-mono text-xs font-semibold whitespace-nowrap">
+                  УНП 491390721
+                </span>
+              </div>
+
+              <dl class="mt-4 space-y-2.5 text-xs sm:text-sm">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 pb-2.5 border-b border-white/10">
+                  <dt class="text-slate-400">Директор</dt>
+                  <dd class="font-medium text-white sm:text-right">Лапшин Евгений Николаевич</dd>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 pb-2.5 border-b border-white/10">
+                  <dt class="text-slate-400">Офис</dt>
+                  <dd class="font-medium text-white sm:text-right">г. Гомель, ул. 5-я Техническая, д. 1А/1</dd>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 pb-2.5 border-b border-white/10">
+                  <dt class="text-slate-400">Счёт (BYN)</dt>
+                  <dd class="font-mono text-sky-200 sm:text-right text-xs">BY55 ALFA 3012 2F96 4400 1027 0000</dd>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                  <dt class="text-slate-400">Банк</dt>
+                  <dd class="font-medium text-white sm:text-right">ЗАО «Альфа-Банк», БИК ALFABY2X</dd>
+                </div>
+              </dl>
+
+              <div class="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                <span class="text-xs text-slate-400">Подготовим смету и договор под ваш объект</span>
+                <a href="#estimate" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white text-xs sm:text-sm font-semibold transition whitespace-nowrap">
+                  Запросить смету →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 этапа работы -->
+        <div class="mt-10 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div class="font-mono text-xs font-bold text-eng-orangeBright">ЭТАП 01</div>
+            <h3 class="mt-1.5 font-display font-bold text-base text-white">Бесплатный замер</h3>
+            <p class="mt-1 text-xs sm:text-sm text-slate-300">Прораб выезжает на объект по Гомелю или области, снимает размеры и консультирует по узлам.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div class="font-mono text-xs font-bold text-eng-orangeBright">ЭТАП 02</div>
+            <h3 class="mt-1.5 font-display font-bold text-base text-white">Смета и договор</h3>
+            <p class="mt-1 text-xs sm:text-sm text-slate-300">Фиксируем понятный перечень работ, сроки и стоимость в официальном договоре.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div class="font-mono text-xs font-bold text-eng-orangeBright">ЭТАП 03</div>
+            <h3 class="mt-1.5 font-display font-bold text-base text-white">Комплектация и монтаж</h3>
+            <p class="mt-1 text-xs sm:text-sm text-slate-300">Доставляем проверенные материалы (или работаем с вашими) и выполняем монтаж по технологии.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div class="font-mono text-xs font-bold text-eng-orangeBright">ЭТАП 04</div>
+            <h3 class="mt-1.5 font-display font-bold text-base text-white">Приёмка и гарантия</h3>
+            <p class="mt-1 text-xs sm:text-sm text-slate-300">Вы принимаете этап работы, рассчитываетесь по факту без авансов и получаете гарантию.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СТРОЙМАТЕРИАЛЫ И ПРОИЗВОДИТЕЛИ ==================== -->
+    <section id="materials" class="py-14 sm:py-18 bg-white border-b border-eng-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-eng-cobalt">
+              <span class="w-6 h-0.5 bg-eng-orange"></span>
+              Снабжение и комплектация
+            </div>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl text-eng-navy">
+              Стройматериалы ведущих брендов с доставкой на участок
+            </h2>
+          </div>
+          <button type="button" data-quick-materials class="self-start md:self-auto px-5 py-2.5 rounded-lg bg-eng-steelSoft hover:bg-eng-cobalt text-eng-cobalt hover:text-white font-semibold text-sm transition whitespace-nowrap">
+            Заказать материалы с доставкой →
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-5 rounded-xl bg-eng-paper border border-eng-border">
+            <div class="font-mono text-[11px] font-semibold uppercase text-eng-cobalt">Сайдинг и фасады</div>
+            <div class="mt-2 font-display font-bold text-base text-eng-navy">Docke, VOX, Ю-Пласт, Альта-Профиль</div>
+            <p class="mt-1.5 text-xs sm:text-sm text-eng-muted">Виниловый и металлический сайдинг, фасадные панели под кирпич и камень, софиты.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-eng-paper border border-eng-border">
+            <div class="font-mono text-[11px] font-semibold uppercase text-eng-cobalt">Кровля и водостоки</div>
+            <div class="mt-2 font-display font-bold text-base text-eng-navy">Docke, ШИНГЛАС, Технониколь, Альта-Профиль</div>
+            <p class="mt-1.5 text-xs sm:text-sm text-eng-muted">Металлочерепица, профнастил, гибкая кровля, шифер, ондулин, водостоки и доборные планки.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-eng-paper border border-eng-border">
+            <div class="font-mono text-[11px] font-semibold uppercase text-eng-cobalt">Теплоизоляция</div>
+            <div class="mt-2 font-display font-bold text-base text-eng-navy">PAROC, HOTROCK, URSA, Пеноплекс, Белтеп</div>
+            <p class="mt-1.5 text-xs sm:text-sm text-eng-muted">Каменная и минеральная вата, экструдированный пенополистирол, плёнки и мембраны.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-eng-paper border border-eng-border">
+            <div class="font-mono text-[11px] font-semibold uppercase text-eng-cobalt">Окна ПВХ и общестрой</div>
+            <div class="mt-2 font-display font-bold text-base text-eng-navy">Rehau, Salamander, BrusBox</div>
+            <p class="mt-1.5 text-xs sm:text-sm text-eng-muted">Окна и двери ПВХ, металлопрофиль, штакетник, профильная труба, ОСБ, брус и блоки ПГС.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ГАЛЕРЕЯ ОБЪЕКТОВ (ЛАЙТБОКС) И ЧЕСТНЫЕ ОТЗЫВЫ ==================== -->
+    <section id="gallery" class="py-14 sm:py-18 bg-eng-paper border-b border-eng-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-eng-cobalt">
+              <span class="w-6 h-0.5 bg-eng-orange"></span>
+              Портфолио объектов
+            </div>
+            <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl text-eng-navy">
+              Галерея выполненных работ
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-eng-muted max-w-md">
+            Демонстрационные снимки для показа структуры каталога. При запуске заменим на реальные фотографии ваших объектов по Гомелю и области.
+          </p>
+        </div>
+
+        <!-- Фильтр -->
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button type="button" data-gallery-filter="all" class="gallery-filter px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-eng-navy text-white transition">Все</button>
+          <button type="button" data-gallery-filter="roofing" class="gallery-filter px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition">Кровля</button>
+          <button type="button" data-gallery-filter="siding" class="gallery-filter px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition">Фасады</button>
+          <button type="button" data-gallery-filter="fences" class="gallery-filter px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition">Заборы</button>
+          <button type="button" data-gallery-filter="construction" class="gallery-filter px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white border border-eng-border text-eng-navy hover:bg-eng-steelSoft transition">Стройка и отделка</button>
+        </div>
+
+        <!-- Сетка -->
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <button type="button" data-gallery-item data-category="roofing" data-lightbox-src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" data-lightbox-caption="Кровельные работы: монтаж покрытия, стропильной системы и доборных элементов (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Кровельные работы" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Кровля</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Монтаж и реконструкция кровли под ключ</div>
+            </div>
+          </button>
+
+          <button type="button" data-gallery-item data-category="siding" data-lightbox-src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80" data-lightbox-caption="Фасадные работы: обшивка сайдингом с утеплением и подшивкой свесов (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80" alt="Фасад и сайдинг" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Фасады и сайдинг</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Обшивка сайдингом и утепление стен</div>
+            </div>
+          </button>
+
+          <button type="button" data-gallery-item data-category="fences" data-lightbox-src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80" data-lightbox-caption="Установка заборов, распашных и откатных ворот с калиткой (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80" alt="Заборы и ворота" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Заборы и ворота</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Заборы из профнастила и штакетника под ключ</div>
+            </div>
+          </button>
+
+          <button type="button" data-gallery-item data-category="construction" data-lightbox-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" data-lightbox-caption="Общестроительные работы: фундамент, кладка ПГС и армопояс (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" alt="Строительство и кладка" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Строительство</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Фундамент, кладка блоков ПГС и кирпича</div>
+            </div>
+          </button>
+
+          <button type="button" data-gallery-item data-category="construction" data-lightbox-src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80" data-lightbox-caption="Каркасные дома, пристройки и деревянные террасы к дому (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80" alt="Каркасные дома и террасы" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Каркасные дома</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Каркасные дома, террасы и пристройки</div>
+            </div>
+          </button>
+
+          <button type="button" data-gallery-item data-category="construction" data-lightbox-src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=80" data-lightbox-caption="Внутренний ремонт квартир, отделка балконов, лоджий и бань (демо-фото)" class="group bg-white border border-eng-border rounded-xl overflow-hidden text-left shadow-xs hover:shadow-md transition">
+            <div class="relative aspect-[16/10] bg-slate-200 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=80" alt="Внутренняя отделка" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-eng-navy/85 text-[10px] font-medium text-white">Демо-фото, заменим на ваши</span>
+            </div>
+            <div class="p-4">
+              <div class="font-mono text-[11px] text-eng-cobalt font-semibold uppercase">Ремонт и отделка</div>
+              <div class="mt-0.5 font-display font-bold text-sm sm:text-base text-eng-navy">Ремонт квартир, отделка балконов и лоджий</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Честные демо-слоты отзывов (без придуманных цифр рейтинга) -->
+        <div id="reviews" class="mt-12 pt-10 border-t border-eng-border">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <div class="font-mono text-xs font-semibold uppercase tracking-widest text-eng-cobalt">Обратная связь клиентов</div>
+              <h3 class="mt-1 font-display font-extrabold text-xl sm:text-2xl text-eng-navy">Отзывы заказчиков из Гомеля и области</h3>
+            </div>
+            <a href="https://yandex.by/maps/?text=Гомель%205-я%20Техническая%201А%20СТРОИМ24" target="_blank" rel="noopener noreferrer" class="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white border border-eng-border hover:border-eng-cobalt text-xs sm:text-sm font-semibold text-eng-navy transition whitespace-nowrap">
+              Открыть Яндекс Карты →
+            </a>
+          </div>
+
+          <div class="bg-white border border-dashed border-eng-cobalt/40 rounded-xl p-5 sm:p-6">
+            <div class="inline-flex items-center gap-2 text-xs font-semibold text-eng-navy mb-4">
+              <span class="w-2 h-2 rounded-full bg-eng-cobalt shrink-0"></span>
+              Честные слоты под реальные отзывы: при запуске сайта перенесём сюда проверенные отзывы ваших клиентов с Яндекс Карт.
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-eng-paper border border-eng-border rounded-lg p-4">
+                <div class="flex items-center justify-between text-[11px] font-mono text-eng-muted mb-2">
+                  <span class="font-semibold text-eng-cobalt">ОТЗЫВ 01</span>
+                  <span>Кровельные работы</span>
+                </div>
+                <p class="text-xs sm:text-sm text-eng-muted leading-relaxed">
+                  Слот под реальный отзыв клиента о замене шифера или монтаже кровли под ключ с указанием района и ссылкой на источник.
+                </p>
+              </div>
+              <div class="bg-eng-paper border border-eng-border rounded-lg p-4">
+                <div class="flex items-center justify-between text-[11px] font-mono text-eng-muted mb-2">
+                  <span class="font-semibold text-eng-cobalt">ОТЗЫВ 02</span>
+                  <span>Сайдинг и фасады</span>
+                </div>
+                <p class="text-xs sm:text-sm text-eng-muted leading-relaxed">
+                  Слот под реальный отзыв об обшивке дома сайдингом с утеплением, подшивке коробов и монтаже водостоков.
+                </p>
+              </div>
+              <div class="bg-eng-paper border border-eng-border rounded-lg p-4">
+                <div class="flex items-center justify-between text-[11px] font-mono text-eng-muted mb-2">
+                  <span class="font-semibold text-eng-cobalt">ОТЗЫВ 03</span>
+                  <span>Заборы / Строительство</span>
+                </div>
+                <p class="text-xs sm:text-sm text-eng-muted leading-relaxed">
+                  Слот под реальный отзыв об установке забора с воротами или возведении каркасной пристройки и террасы.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЛЁГКИЙ МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА + ФОРМА ЗАЯВКИ ==================== -->
+    <section id="estimate" class="py-14 sm:py-20 drafting-grid">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+          <!-- Левая колонка: пояснение + быстрые каналы связи -->
+          <div class="lg:col-span-5 space-y-5">
+            <div>
+              <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-eng-cobalt">
+                <span class="w-6 h-0.5 bg-eng-orange"></span>
+                Быстрый расчёт за 2 клика
+              </div>
+              <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-eng-navy leading-tight">
+                Запросите смету или бесплатный выезд прораба
+              </h2>
+              <p class="mt-2.5 text-sm sm:text-base text-eng-muted leading-relaxed">
+                Отметьте направление и стадию задачи — параметры автоматически попадут в заявку. Прораб перезвонит, подскажет по материалам и сориентирует по срокам.
+              </p>
+            </div>
+
+            <div class="bg-white border border-eng-border rounded-xl p-5 space-y-4 shadow-xs">
+              <div class="text-sm font-display font-bold text-eng-navy">Есть фото дома, схема или размеры? Отправьте напрямую:</div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <a data-contact="viber" href="viber://chat?number=%2B375293632830" class="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-viber hover:opacity-90 text-white text-sm font-semibold transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                  Viber
+                </a>
+                <a data-contact="telegram" href="https://t.me/stroim24_gomel_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-telegram hover:opacity-90 text-white text-sm font-semibold transition">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                  Telegram
+                </a>
+              </div>
+              <div class="pt-3 border-t border-eng-border space-y-1.5 text-sm">
+                <div class="text-xs text-eng-muted">Прямые телефоны (ежедневно 08:00–21:00):</div>
+                <div class="flex flex-col gap-1 font-mono font-semibold text-eng-navy">
+                  <a data-contact="primaryPhone" href="tel:+375293632830" class="hover:text-eng-orange transition">A1: <span data-contact-text="primaryPhone">+375 (29) 363-28-30</span> (Viber)</a>
+                  <a data-contact="mtsPhone" href="tel:+375333632830" class="hover:text-eng-orange transition">МТС: <span data-contact-text="mtsPhone">+375 (33) 363-28-30</span></a>
+                  <a data-contact="secondaryPhone" href="tel:+375296974101" class="hover:text-eng-orange transition">A1: <span data-contact-text="secondaryPhone">+375 (29) 697-41-01</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: 2-кликовый мини-подбор + единая чистая форма -->
+          <div class="lg:col-span-7">
+            <form id="estimateForm" novalidate class="corner-marks bg-white border border-eng-border rounded-xl p-5 sm:p-7 shadow-md space-y-5">
+              <!-- Honeypot от спама -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Не заполняйте это поле</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- КЛИК 1: Направление работ (6 реальных направлений) -->
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="font-display font-bold text-sm text-eng-navy">
+                    <span class="font-mono text-eng-orange mr-1">01.</span> Направление работ
+                  </span>
+                  <span class="text-[11px] text-eng-muted">1 клик</span>
+                </div>
+                <div id="pickerDirections" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <button type="button" data-pick-dir="Кровельные работы" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-semibold border-eng-cobalt bg-eng-steelSoft text-eng-navy transition">
+                    Кровельные работы
+                  </button>
+                  <button type="button" data-pick-dir="Монтаж сайдинга и фасады" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-cobalt/50 transition">
+                    Сайдинг и фасады
+                  </button>
+                  <button type="button" data-pick-dir="Установка заборов и ворот" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-cobalt/50 transition">
+                    Заборы и ворота
+                  </button>
+                  <button type="button" data-pick-dir="Строительные работы и ремонт" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-cobalt/50 transition">
+                    Стройка и фундаменты
+                  </button>
+                  <button type="button" data-pick-dir="Каркасное строительство" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-cobalt/50 transition">
+                    Каркасные дома
+                  </button>
+                  <button type="button" data-pick-dir="Стройматериалы с доставкой" class="pick-dir-btn px-3 py-2.5 rounded-lg border text-left text-xs sm:text-[13px] font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-cobalt/50 transition">
+                    Стройматериалы
+                  </button>
+                </div>
+                <input type="hidden" id="leadService" name="service" value="Кровельные работы" />
+              </div>
+
+              <!-- КЛИК 2: Стадия задачи (3 понятных варианта) -->
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="font-display font-bold text-sm text-eng-navy">
+                    <span class="font-mono text-eng-orange mr-1">02.</span> Что нужно сейчас?
+                  </span>
+                  <span class="text-[11px] text-eng-muted">2 клик</span>
+                </div>
+                <div id="pickerStages" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <button type="button" data-pick-stage="Нужен бесплатный выезд прораба на замер" class="pick-stage-btn px-3 py-2.5 rounded-lg border text-left text-xs font-semibold border-eng-orange bg-orange-50 text-eng-orangeHover transition leading-snug">
+                    Нужен бесплатный выезд прораба на замер
+                  </button>
+                  <button type="button" data-pick-stage="Есть проект/размеры — нужна смета" class="pick-stage-btn px-3 py-2.5 rounded-lg border text-left text-xs font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-orange/50 transition leading-snug">
+                    Есть проект/размеры — нужна смета
+                  </button>
+                  <button type="button" data-pick-stage="Нужны стройматериалы с доставкой" class="pick-stage-btn px-3 py-2.5 rounded-lg border text-left text-xs font-medium border-eng-border bg-eng-paper text-eng-ink hover:border-eng-orange/50 transition leading-snug">
+                    Нужны стройматериалы с доставкой
+                  </button>
+                </div>
+                <input type="hidden" id="leadStage" name="stage" value="Нужен бесплатный выезд прораба на замер" />
+              </div>
+
+              <!-- Автоподстановка выбранной связки -->
+              <div id="selectionBadge" class="px-3.5 py-2.5 rounded-lg bg-eng-steelSoft border border-eng-cobalt/20 text-xs text-eng-navy flex flex-wrap items-center gap-x-2 gap-y-1">
+                <span class="font-mono font-semibold text-eng-cobalt uppercase">В заявке:</span>
+                <span id="selectionSummaryText" class="font-medium">Кровельные работы · Нужен бесплатный выезд прораба на замер</span>
+              </div>
+
+              <!-- Контактные поля -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="leadName" class="block text-xs font-semibold text-eng-navy mb-1">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Александр" class="w-full px-3.5 py-2.5 rounded-lg bg-eng-paper border border-eng-border text-sm text-eng-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-eng-cobalt focus:bg-white transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+                <div>
+                  <label for="leadPhone" class="block text-xs font-semibold text-eng-navy mb-1">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (29) 123-45-67" class="w-full px-3.5 py-2.5 rounded-lg bg-eng-paper border border-eng-border text-sm text-eng-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-eng-cobalt focus:bg-white transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="leadLocation" class="block text-xs font-semibold text-eng-navy mb-1">Где находится объект?</label>
+                  <select id="leadLocation" name="location" class="w-full px-3.5 py-2.5 rounded-lg bg-eng-paper border border-eng-border text-sm text-eng-navy focus:outline-none focus:ring-2 focus:ring-eng-cobalt focus:bg-white transition">
+                    <option value="г. Гомель">г. Гомель</option>
+                    <option value="Гомельский район">Гомельский район</option>
+                    <option value="Гомельская область">Гомельская область</option>
+                  </select>
+                </div>
+                <div>
+                  <span class="block text-xs font-semibold text-eng-navy mb-1">Удобный способ связи</span>
+                  <div class="grid grid-cols-3 gap-1.5">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Звонок" checked class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-lg border border-eng-border bg-eng-paper text-xs font-medium text-eng-ink peer-checked:border-eng-navy peer-checked:bg-eng-steelSoft peer-checked:text-eng-navy transition">Звонок</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Viber" class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-lg border border-eng-border bg-eng-paper text-xs font-medium text-eng-ink peer-checked:border-viber peer-checked:bg-indigo-50 peer-checked:text-indigo-700 transition">Viber</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                      <span class="block text-center py-2.5 px-2 rounded-lg border border-eng-border bg-eng-paper text-xs font-medium text-eng-ink peer-checked:border-telegram peer-checked:bg-sky-50 peer-checked:text-sky-700 transition">Telegram</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-xs font-semibold text-eng-navy mb-1">Комментарий или выбранные позиции из прайса</label>
+                <textarea id="leadComment" name="comment" rows="2" placeholder="Например: кровля ~110 м², замена шифера на металлочерепицу" class="w-full px-3.5 py-2.5 rounded-lg bg-eng-paper border border-eng-border text-sm text-eng-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-eng-cobalt focus:bg-white transition"></textarea>
+              </div>
+
+              <!-- Обязательный незаполненный чекбокс по Закону РБ № 99-З (БЕЗ checked!) -->
+              <div>
+                <label class="flex items-start gap-2.5 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-0.5 w-4 h-4 rounded border-slate-400 text-eng-orange focus:ring-eng-orange shrink-0" />
+                  <span class="text-xs text-eng-muted leading-relaxed">
+                    Даю <button type="button" data-open-modal="modalConsent" class="text-eng-navy underline hover:text-eng-orange font-semibold">согласие на обработку и трансграничную передачу ПД</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-eng-navy underline hover:text-eng-orange font-semibold">Политикой обработки ПД</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-3.5 px-6 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white font-display font-semibold text-base shadow-md shadow-orange-600/20 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Отправить заявку на расчёт сметы
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ, КОНТАКТЫ И КОМПЛАЕНС РБ ==================== -->
+  <footer id="contacts" class="bg-eng-navyDeep text-slate-300 pt-14 pb-36 md:pb-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10">
+        <!-- Контакты -->
+        <div class="lg:col-span-5 space-y-4">
+          <div>
+            <div class="font-display font-extrabold text-xl text-white">ООО «СТРОИМ<span class="text-eng-orangeBright">24</span> Гомель»</div>
+            <p class="mt-1.5 text-sm text-slate-400">
+              Кровельные, фасадные и общестроительные работы, заборы, каркасное строительство и поставка стройматериалов по Гомелю и области.
+            </p>
+          </div>
+
+          <div class="space-y-2.5 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Офис:</span>
+              <div>
+                <div class="text-white font-medium">г. Гомель, ул. 5-я Техническая, д. 1А/1</div>
+                <div class="text-xs text-slate-400 mt-0.5">Ост. «Завод химических изделий» (Тролл. 3, 5; Авт. 12, 18, 35)</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Телефоны:</span>
+              <div class="flex flex-col gap-1 font-mono text-xs sm:text-sm">
+                <a data-contact="primaryPhone" href="tel:+375293632830" class="text-white font-semibold hover:text-eng-orangeBright transition">A1: <span data-contact-text="primaryPhone">+375 (29) 363-28-30</span> (Viber)</a>
+                <a data-contact="mtsPhone" href="tel:+375333632830" class="text-slate-200 font-semibold hover:text-eng-orangeBright transition">МТС: <span data-contact-text="mtsPhone">+375 (33) 363-28-30</span></a>
+                <a data-contact="secondaryPhone" href="tel:+375296974101" class="text-slate-200 font-semibold hover:text-eng-orangeBright transition">A1: <span data-contact-text="secondaryPhone">+375 (29) 697-41-01</span></a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-slate-500 w-24 shrink-0">Звонки:</span>
+              <div class="text-white">Ежедневно 08:00–21:00 без выходных</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375293632830" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-viber hover:opacity-90 text-white text-xs font-semibold transition">Viber</a>
+            <a data-contact="telegram" href="https://t.me/stroim24_gomel_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-telegram hover:opacity-90 text-white text-xs font-semibold transition">Telegram</a>
+            <a href="https://www.instagram.com/stroykagomel.by/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition">Instagram @stroykagomel.by</a>
+            <a href="https://www.tiktok.com/@.24001597" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition">TikTok</a>
+            <a href="https://youtube.com/channel/UCV6yT1gv4zF4cz2ATiPkj_g" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition">YouTube</a>
+          </div>
+        </div>
+
+        <!-- Ориентир проезда -->
+        <div class="lg:col-span-7">
+          <div class="bg-eng-navy border border-white/10 rounded-xl p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-bold text-base text-white">Офис в Гомеле</div>
+                <div class="text-xs text-slate-400">ул. 5-я Техническая, д. 1А/1 · ост. «Завод химических изделий»</div>
+              </div>
+              <a href="https://yandex.by/maps/?text=Гомель%205-я%20Техническая%201А%20СТРОИМ24" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white text-xs font-semibold transition whitespace-nowrap">
+                Открыть Яндекс Карты →
+              </a>
+            </div>
+            <div class="relative rounded-lg overflow-hidden bg-eng-navyDeep border border-white/10 h-44 flex items-center justify-center">
+              <svg class="w-full h-full opacity-35" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 150 L600 120" stroke="#4A6B8A" stroke-width="12" />
+                <path d="M165 0 L215 200" stroke="#334E68" stroke-width="9" />
+                <path d="M430 0 L395 200" stroke="#334E68" stroke-width="7" />
+                <path d="M0 64 L600 44" stroke="#243B53" stroke-width="5" />
+                <rect x="255" y="64" width="84" height="38" rx="4" fill="#0B2545" stroke="#FF6A14" stroke-width="2" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-10 h-10 rounded-full bg-eng-orange text-white flex items-center justify-center shadow-lg mb-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-3.5 py-1.5 rounded-lg bg-eng-navy/95 border border-white/15 text-xs sm:text-sm font-semibold text-white">
+                  ООО «СТРОИМ24 Гомель» · ул. 5-я Техническая, 1А/1
+                </div>
+                <div class="mt-1 text-[11px] text-slate-400">При запуске подключим интерактивную карту Яндекс</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридические реквизиты и ссылки по Закону РБ № 99-З -->
+      <div class="pt-7 space-y-4 text-xs text-slate-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-slate-200 font-semibold">Реквизиты организации:</div>
+            <div>ООО «СТРОИМ24 Гомель», Директор: Лапшин Евгений Николаевич, УНП 491390721</div>
+            <div>Адрес: Республика Беларусь, [почтовый индекс уточняется], г. Гомель, ул. 5-я Техническая, д. 1А/1</div>
+            <div>Счёт BY55 ALFA 3012 2F96 4400 1027 0000 (BYN) в ЗАО «Альфа-Банк», БИК ALFABY2X</div>
+            <div>Приём звонков: ежедневно 08:00–21:00; [режим работы офиса уточняется]</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-white transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-white transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-white transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Информация на сайте (включая ориентировочные расценки на работы и перечень материалов) носит справочный характер и не является публичной офертой в соответствии со статьёй 407 Гражданского кодекса Республики Беларусь. Окончательная стоимость, сроки и комплектация фиксируются в договоре после замера.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНАЯ СТЕКЛЯННАЯ ПАНЕЛЬ (< 768px, ВЫШЕ ДЕМО-ПЛАШКИ, СКРЫТА ПРИ COOKIE-БАННЕРЕ) ==================== -->
+  <nav id="mobileStickyDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-12 z-40 cobalt-glass border border-white/15 rounded-2xl shadow-2xl p-1.5">
+    <div class="grid grid-cols-3 gap-1.5">
+      <a data-contact="primaryPhone" href="tel:+375293632830" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-white/10 active:bg-white/20 text-white text-xs font-semibold transition">
+        <svg class="w-4 h-4 shrink-0 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+        <span>Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375293632830" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-white/10 active:bg-white/20 text-white text-xs font-semibold transition">
+        <svg class="w-4 h-4 shrink-0 text-sky-300" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+        <span>Viber</span>
+      </a>
+      <a href="#estimate" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-eng-orange active:bg-eng-orangeHover text-white text-xs font-display font-semibold shadow-sm transition">
+        <span>Замер</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==================== COOKIE-БАННЕР (РАВНОЗНАЧНЫЕ КНОПКИ ПО РЕКОМЕНДАЦИЯМ НЦЗПД) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-10 sm:bottom-9 z-50 px-3 sm:px-6 pb-2">
+    <div class="max-w-4xl mx-auto bg-eng-navy/95 backdrop-blur-md border border-sky-400/25 text-slate-200 rounded-xl p-3.5 sm:p-4 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="text-xs leading-relaxed">
+        Мы используем cookie для корректной работы сайта и сохранения настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-white underline hover:text-eng-orangeBright">Политику и настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-3.5 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold transition sm:whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-3.5 py-2 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white text-xs font-semibold transition sm:whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ДЕМО-ПЛАШКА В САМОМ НИЗУ ЭКРАНА ==================== -->
+  <div class="fixed inset-x-0 bottom-0 z-40 bg-eng-navyDeep/95 backdrop-blur-md border-t border-white/10 text-slate-300 text-center py-1.5 px-3 text-[11px] leading-tight">
+    Демо-концепт ООО «СТРОИМ24 Гомель» · После согласования добавим ваши реальные фото и прайс.
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-eng-navyDeep/92 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-eng-navy rounded-xl overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-eng-navyDeep/85 text-white hover:bg-eng-orange flex items-center justify-center transition">✕</button>
+      <button type="button" id="lightboxPrev" aria-label="Предыдущее фото" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-eng-navyDeep/80 text-white hover:bg-eng-cobalt flex items-center justify-center transition">‹</button>
+      <button type="button" id="lightboxNext" aria-label="Следующее фото" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-eng-navyDeep/80 text-white hover:bg-eng-cobalt flex items-center justify-center transition">›</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[74vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-slate-200 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Успешная отправка заявки -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-eng-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white rounded-xl p-6 sm:p-7 shadow-2xl border border-eng-border" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-eng-paper hover:bg-slate-200 text-eng-navy flex items-center justify-center transition">✕</button>
+      <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3.5">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-extrabold text-xl sm:text-2xl text-eng-navy">Заявка принята</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-eng-muted leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-lg bg-eng-paper border border-eng-border text-xs text-eng-navy font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-5 w-full py-3 rounded-lg bg-eng-navy hover:bg-eng-cobalt text-white font-semibold text-sm transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-eng-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-eng-border">
+        <h3 class="font-display font-bold text-lg text-eng-navy">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-eng-paper hover:bg-slate-200 text-eng-navy flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-eng-ink space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения.</strong> Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператор ПД: ООО «СТРОИМ24 Гомель» (УНП 491390721, г. Гомель, ул. 5-я Техническая, д. 1А/1, директор Лапшин Евгений Николаевич).</p>
+        <p><strong>2. Цели и перечень данных.</strong> Оператор обрабатывает имя, телефон, выбранное направление и стадию задачи, локацию объекта, предпочтительный способ связи и комментарий исключительно для обработки обращения, расчёта предварительной сметы и организации выезда специалиста на замер.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут находиться в иностранных государствах без надлежащего уровня защиты прав субъектов ПД. Риски включают различия в правовом регулировании защиты ПД, возможное отсутствие независимого надзорного органа и ограниченный контроль со стороны уполномоченных органов РБ. Передача осуществляется только при наличии вашего отдельного согласия.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем требуют цели обработки, либо до отзыва согласия.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З).</strong> Вы вправе в любой момент отозвать согласие, получать информацию об обработке ПД, требовать изменения, прекращения обработки и удаления ПД, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-3.5 border-t border-eng-border bg-eng-paper text-right">
+        <button type="button" data-close-modal class="px-5 py-2 rounded-lg bg-eng-navy text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-eng-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-eng-border">
+        <h3 class="font-display font-bold text-lg text-eng-navy">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-eng-paper hover:bg-slate-200 text-eng-navy flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-eng-ink space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме заявки на сайте ООО «СТРОИМ24 Гомель» и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие оператору — ООО «СТРОИМ24 Гомель» (УНП 491390721, г. Гомель, ул. 5-я Техническая, д. 1А/1) — на обработку моих персональных данных: имени, телефона, выбранного направления и стадии работ, локации объекта, способа связи и комментария.</p>
+        <p><strong>Цель обработки:</strong> обратная связь по запросу, подготовка предварительной сметы и согласование бесплатного выезда на замер или доставки стройматериалов.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я проинформирован(а) и согласен(на) с тем, что заявка может передаваться с использованием Google Apps Script (Google LLC) и Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов ПД. Мне разъяснены риски отсутствия специального законодательства о защите ПД и независимого надзорного органа в иностранной юрисдикции.</p>
+        <p><strong>Срок и права (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Мне разъяснены права на отзыв согласия, получение информации, изменение и удаление ПД, а также право обращения в НЦЗПД. Отозвать согласие можно по контактам, указанным в подвале сайта.</p>
+      </div>
+      <div class="px-6 py-3.5 border-t border-eng-border bg-eng-paper text-right">
+        <button type="button" data-close-modal class="px-5 py-2 rounded-lg bg-eng-navy text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Настройки cookie -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-eng-navyDeep/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-eng-border">
+        <h3 class="font-display font-bold text-lg text-eng-navy">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-eng-paper hover:bg-slate-200 text-eng-navy flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-eng-ink space-y-3.5 leading-relaxed">
+        <div class="p-3 rounded-lg bg-eng-paper border border-eng-border flex items-center justify-between gap-2">
+          <span class="font-semibold text-eng-navy">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded bg-white border border-eng-border text-xs font-semibold text-eng-navy">Не выбран</span>
+        </div>
+        <p><strong>Технические (обязательные) cookie и localStorage:</strong> сохраняют ваш выбор настроек cookie и обеспечивают корректную работу интерфейса. Персональные данные третьим лицам не передаются.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> используются при подключении веб-аналитики (например, Яндекс.Метрики) строго после вашего согласия. Вы можете изменить выбор в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-eng-border bg-eng-paper flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-eng-navy text-sm font-semibold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 rounded-lg bg-eng-orange hover:bg-eng-orangeHover text-white text-sm font-semibold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЧИСТЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Привязка контактов из SITE_CONFIG (без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+
+      const phoneBindings = [
+        ['primaryPhone', SITE_CONFIG.primaryTelHref, SITE_CONFIG.primaryPhone],
+        ['mtsPhone', SITE_CONFIG.mtsTelHref, SITE_CONFIG.mtsPhone],
+        ['secondaryPhone', SITE_CONFIG.secondaryTelHref, SITE_CONFIG.secondaryPhone]
+      ];
+      phoneBindings.forEach(([key, href, label]) => {
+        document.querySelectorAll(`[data-contact="${key}"]`).forEach((el) => {
+          el.setAttribute('href', href);
+          el.removeAttribute('target');
+        });
+        document.querySelectorAll(`[data-contact-text="${key}"]`).forEach((el) => {
+          el.textContent = label;
+        });
+      });
+
+      // 2. Живой статус по времени Беларуси (Europe/Minsk, ежедневно 08:00–21:00)
+      function getMinskHour() {
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            hour: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+          const hourPart = parts.find((p) => p.type === 'hour');
+          if (hourPart) return parseInt(hourPart.value, 10) % 24;
+        } catch (_) {}
+        const nowUtc = new Date();
+        return (nowUtc.getUTCHours() + 3) % 24;
+      }
+
+      function updateLiveStatus() {
+        const hour = getMinskHour();
+        const isOpen = hour >= SITE_CONFIG.workHours.start && hour < SITE_CONFIG.workHours.end;
+        document.querySelectorAll('[data-live-status]').forEach((wrap) => {
+          const dot = wrap.querySelector('[data-status-dot]');
+          const txt = wrap.querySelector('[data-status-text]');
+          if (dot) {
+            dot.classList.remove('bg-emerald-400', 'bg-emerald-500', 'bg-amber-400', 'bg-amber-500');
+            dot.classList.add(isOpen ? 'bg-emerald-400' : 'bg-amber-400');
+          }
+          if (txt) {
+            txt.textContent = isOpen ? 'Открыто сейчас' : 'Ответим с 8:00';
+          }
+        });
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const burgerIconOpen = document.getElementById('burgerIconOpen');
+      const burgerIconClose = document.getElementById('burgerIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        burgerIconOpen.classList.toggle('hidden', open);
+        burgerIconClose.classList.toggle('hidden', !open);
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+      document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Реальный справочник расценок (строго по данным stroim24.by/tseny.html)
+      const PRICE_CATALOG = {
+        roofing: {
+          serviceLabel: 'Кровельные работы',
+          items: [
+            { name: 'Кровля из металлочерепицы под ключ', price: 'от 30', unit: 'м²' },
+            { name: 'Кровля из профнастила / шифера / ондулина под ключ', price: 'от 30', unit: 'м²' },
+            { name: 'Мягкая (гибкая) кровля под ключ', price: 'от 38', unit: 'м²' },
+            { name: 'Монтаж вальмовой / мансардной кровли под ключ', price: 'от 40', unit: 'м²' },
+            { name: 'Установка стропильной системы', price: 'от 15', unit: 'м²' },
+            { name: 'Замена шифера (без обрешётки)', price: 'от 18', unit: 'м²' },
+            { name: 'Утепление кровли', price: 'от 25', unit: 'м²' },
+            { name: 'Подшивка ветрениц, коробов и монтаж водостоков', price: 'от 13', unit: 'м.п.' },
+            { name: 'Навес к дому / для авто из поликарбоната с материалами', price: 'от 200', unit: 'м²' }
+          ]
+        },
+        siding: {
+          serviceLabel: 'Монтаж сайдинга и фасады',
+          items: [
+            { name: 'Монтаж сайдинга (без обрешётки)', price: 'от 10', unit: 'м²' },
+            { name: 'Монтаж винилового сайдинга / под кирпич (с обрешёткой)', price: 'от 14', unit: 'м²' },
+            { name: 'Обшивка сайдингом с утеплением', price: 'от 17', unit: 'м²' },
+            { name: 'Обшивка фронтона сайдингом', price: 'от 20', unit: 'м²' },
+            { name: 'Монтаж металлического сайдинга / вентфасада', price: 'от 25', unit: 'м²' },
+            { name: 'Утепление фасада', price: 'от 10', unit: 'м²' },
+            { name: 'Декоративная штукатурка фасада', price: 'от 15', unit: 'м²' },
+            { name: 'Отделка цоколя дома', price: 'от 20', unit: 'м.п.' }
+          ]
+        },
+        fences: {
+          serviceLabel: 'Установка заборов и ворот',
+          items: [
+            { name: 'Установка забора из сетки-рабицы (работа)', price: 'от 11', unit: 'м.п.' },
+            { name: 'Установка забора из металлопрофиля (работа)', price: 'от 14', unit: 'м.п.' },
+            { name: 'Установка забора из евроштакетника (работа)', price: 'от 18', unit: 'м.п.' },
+            { name: 'Забор из профнастила / евроштакетника под ключ', price: 'от 80', unit: 'м.п.' },
+            { name: 'Заливка фундамента под забор', price: 'от 60', unit: 'м.п.' },
+            { name: 'Установка распашных ворот (работа / с материалами)', price: 'от 320 / 900', unit: 'шт.' },
+            { name: 'Установка калитки из профнастила (работа / с материалами)', price: 'от 140 / 450', unit: 'шт.' },
+            { name: 'Откатные ворота (работа / с материалами)', price: 'от 900 / 2300', unit: 'шт.' }
+          ]
+        },
+        construction: {
+          serviceLabel: 'Строительные работы и ремонт',
+          items: [
+            { name: 'Кладка кирпича', price: 'от 50', unit: 'м²' },
+            { name: 'Кладка блоков ПГС', price: 'от 70', unit: 'м²' },
+            { name: 'Заливка армопояса', price: 'от 55', unit: 'м.п.' },
+            { name: 'Заливка фундамента', price: 'от 110', unit: 'м.п.' },
+            { name: 'Заливка бетонного пола / стяжки', price: 'от 230 м³ / 30 м²', unit: 'ед.' },
+            { name: 'Строительство домов под ключ', price: 'от 200', unit: 'м²' }
+          ]
+        },
+        frame: {
+          serviceLabel: 'Каркасное строительство',
+          items: [
+            { name: 'Каркасное строительство домов под ключ', price: 'от 200', unit: 'м²' },
+            { name: 'Деревянные террасы, веранды и беседки к дому', price: 'по замеру', unit: 'объект' },
+            { name: 'Строительство деревянной пристройки к дому', price: 'по замеру', unit: 'объект' },
+            { name: 'Деревянные сараи, хозблоки и бытовки', price: 'по замеру', unit: 'объект' }
+          ]
+        },
+        interior: {
+          serviceLabel: 'Строительные работы и ремонт',
+          items: [
+            { name: 'Выравнивание стен', price: 'от 10', unit: 'м²' },
+            { name: 'Обшивка стен панелями МДФ, ПВХ, OSB', price: 'от 15', unit: 'м²' },
+            { name: 'Обшивка стен вагонкой или гипсокартоном', price: 'от 20', unit: 'м²' },
+            { name: 'Отделка и обшивка балкона / лоджии под ключ', price: 'по замеру', unit: 'объект' },
+            { name: 'Капитальный ремонт квартир, санузлов, бань и саун', price: 'по замеру', unit: 'объект' },
+            { name: 'Изготовление доборных изделий из листового металла / окна ПВХ', price: 'по расчёту', unit: 'заказ' }
+          ]
+        }
+      };
+
+      const selectedWorks = new Set();
+      const priceRowsContainer = document.getElementById('priceRowsContainer');
+      const priceTabs = document.querySelectorAll('[data-price-tab]');
+      const selectedWorksCounter = document.getElementById('selectedWorksCounter');
+      const selectedWorksCountNum = document.getElementById('selectedWorksCountNum');
+      const leadComment = document.getElementById('leadComment');
+      const leadService = document.getElementById('leadService');
+      const leadStage = document.getElementById('leadStage');
+      const selectionSummaryText = document.getElementById('selectionSummaryText');
+      let currentPriceCategory = 'roofing';
+
+      // 5. Лёгкий 2-кликовый мини-интерактив перед формой
+      const dirButtons = document.querySelectorAll('[data-pick-dir]');
+      const stageButtons = document.querySelectorAll('[data-pick-stage]');
+
+      function syncSelectionSummary() {
+        if (!selectionSummaryText || !leadService || !leadStage) return;
+        selectionSummaryText.textContent = `${leadService.value} · ${leadStage.value}`;
+      }
+
+      function selectDirection(value) {
+        if (!leadService) return;
+        leadService.value = value;
+        dirButtons.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-dir') === value;
+          btn.classList.toggle('border-eng-cobalt', active);
+          btn.classList.toggle('bg-eng-steelSoft', active);
+          btn.classList.toggle('text-eng-navy', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('border-eng-border', !active);
+          btn.classList.toggle('bg-eng-paper', !active);
+          btn.classList.toggle('text-eng-ink', !active);
+          btn.classList.toggle('font-medium', !active);
+        });
+        syncSelectionSummary();
+      }
+
+      function selectStage(value) {
+        if (!leadStage) return;
+        leadStage.value = value;
+        stageButtons.forEach((btn) => {
+          const active = btn.getAttribute('data-pick-stage') === value;
+          btn.classList.toggle('border-eng-orange', active);
+          btn.classList.toggle('bg-orange-50', active);
+          btn.classList.toggle('text-eng-orangeHover', active);
+          btn.classList.toggle('font-semibold', active);
+          btn.classList.toggle('border-eng-border', !active);
+          btn.classList.toggle('bg-eng-paper', !active);
+          btn.classList.toggle('text-eng-ink', !active);
+          btn.classList.toggle('font-medium', !active);
+        });
+        syncSelectionSummary();
+      }
+
+      dirButtons.forEach((btn) => {
+        btn.addEventListener('click', () => selectDirection(btn.getAttribute('data-pick-dir')));
+      });
+      stageButtons.forEach((btn) => {
+        btn.addEventListener('click', () => selectStage(btn.getAttribute('data-pick-stage')));
+      });
+
+      document.querySelectorAll('[data-quick-materials]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectDirection('Стройматериалы с доставкой');
+          selectStage('Нужны стройматериалы с доставкой');
+          const sec = document.getElementById('estimate');
+          if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function syncSelectedWorksUI() {
+        const count = selectedWorks.size;
+        if (count > 0) {
+          selectedWorksCounter.classList.remove('hidden');
+          selectedWorksCounter.classList.add('inline-flex');
+          selectedWorksCountNum.textContent = String(count);
+        } else {
+          selectedWorksCounter.classList.add('hidden');
+          selectedWorksCounter.classList.remove('inline-flex');
+        }
+      }
+
+      function renderPriceTable(categoryKey) {
+        currentPriceCategory = categoryKey;
+        const cat = PRICE_CATALOG[categoryKey];
+        if (!cat || !priceRowsContainer) return;
+
+        priceTabs.forEach((btn) => {
+          const active = btn.getAttribute('data-price-tab') === categoryKey;
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          btn.classList.toggle('bg-eng-navy', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('bg-eng-paper', !active);
+          btn.classList.toggle('border', !active);
+          btn.classList.toggle('border-eng-border', !active);
+          btn.classList.toggle('text-eng-navy', !active);
+        });
+
+        priceRowsContainer.innerHTML = '';
+        cat.items.forEach((item) => {
+          const itemKey = `${item.name} (${item.price} BYN / ${item.unit})`;
+          const isAdded = selectedWorks.has(itemKey);
+
+          const row = document.createElement('div');
+          row.className = 'grid grid-cols-1 sm:grid-cols-12 gap-1.5 sm:gap-4 px-4 sm:px-6 py-3.5 items-center hover:bg-eng-paper/60 transition';
+
+          const colName = document.createElement('div');
+          colName.className = 'sm:col-span-6 text-sm font-medium text-eng-ink';
+          colName.textContent = item.name;
+
+          const colPrice = document.createElement('div');
+          colPrice.className = 'sm:col-span-2 sm:text-right font-mono font-semibold text-sm text-eng-navy';
+          colPrice.textContent = item.price;
+
+          const colUnit = document.createElement('div');
+          colUnit.className = 'sm:col-span-1 sm:text-center text-xs text-eng-muted';
+          colUnit.textContent = item.unit;
+
+          const colAction = document.createElement('div');
+          colAction.className = 'sm:col-span-3 sm:text-right pt-1 sm:pt-0';
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = isAdded
+            ? 'px-3 py-1.5 rounded-md text-xs font-semibold bg-emerald-50 border border-emerald-300 text-emerald-800 transition'
+            : 'px-3 py-1.5 rounded-md text-xs font-semibold bg-eng-steelSoft hover:bg-eng-cobalt text-eng-cobalt hover:text-white transition';
+          btn.textContent = isAdded ? '✓ В смете' : '+ В смету';
+
+          btn.addEventListener('click', () => {
+            if (selectedWorks.has(itemKey)) {
+              selectedWorks.delete(itemKey);
+            } else {
+              selectedWorks.add(itemKey);
+              selectDirection(cat.serviceLabel);
+            }
+            if (leadComment) {
+              const listText = Array.from(selectedWorks).join('; ');
+              leadComment.value = listText ? `Интересуют позиции: ${listText}` : '';
+            }
+            syncSelectedWorksUI();
+            renderPriceTable(currentPriceCategory);
+          });
+
+          colAction.appendChild(btn);
+          row.append(colName, colPrice, colUnit, colAction);
+          priceRowsContainer.appendChild(row);
+        });
+      }
+
+      priceTabs.forEach((btn) => {
+        btn.addEventListener('click', () => renderPriceTable(btn.getAttribute('data-price-tab')));
+      });
+
+      document.querySelectorAll('[data-jump-price]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const catKey = btn.getAttribute('data-jump-price');
+          renderPriceTable(catKey);
+          if (PRICE_CATALOG[catKey]) {
+            selectDirection(PRICE_CATALOG[catKey].serviceLabel);
+          }
+          const pricesSec = document.getElementById('prices');
+          if (pricesSec) pricesSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      renderPriceTable('roofing');
+
+      // 6. Галерея и лайтбокс
+      const galleryFilters = document.querySelectorAll('[data-gallery-filter]');
+      const galleryItems = Array.from(document.querySelectorAll('[data-gallery-item]'));
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      let visibleGalleryItems = galleryItems.slice();
+      let currentLightboxIndex = 0;
+
+      galleryFilters.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const cat = btn.getAttribute('data-gallery-filter');
+          galleryFilters.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('bg-eng-navy', active);
+            b.classList.toggle('text-white', active);
+            b.classList.toggle('bg-white', !active);
+            b.classList.toggle('border', !active);
+            b.classList.toggle('border-eng-border', !active);
+            b.classList.toggle('text-eng-navy', !active);
+          });
+          visibleGalleryItems = [];
+          galleryItems.forEach((item) => {
+            const show = cat === 'all' || item.getAttribute('data-category') === cat;
+            item.classList.toggle('hidden', !show);
+            if (show) visibleGalleryItems.push(item);
+          });
+        });
+      });
+
+      function showLightboxAt(index) {
+        if (!visibleGalleryItems.length) return;
+        currentLightboxIndex = (index + visibleGalleryItems.length) % visibleGalleryItems.length;
+        const el = visibleGalleryItems[currentLightboxIndex];
+        lightboxImg.src = el.getAttribute('data-lightbox-src');
+        lightboxImg.alt = el.getAttribute('data-lightbox-caption') || 'Фото объекта';
+        lightboxCaption.textContent = el.getAttribute('data-lightbox-caption') || '';
+      }
+
+      galleryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const idx = visibleGalleryItems.indexOf(item);
+          showLightboxAt(idx >= 0 ? idx : 0);
+          openModal(lightboxModal);
+        });
+      });
+      document.getElementById('lightboxPrev').addEventListener('click', () => showLightboxAt(currentLightboxIndex - 1));
+      document.getElementById('lightboxNext').addEventListener('click', () => showLightboxAt(currentLightboxIndex + 1));
+
+      // 7. Модальные окна
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllModals();
+          setMobileMenu(false);
+        } else if (!lightboxModal.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') showLightboxAt(currentLightboxIndex - 1);
+          if (e.key === 'ArrowRight') showLightboxAt(currentLightboxIndex + 1);
+        }
+      });
+
+      // 8. Cookie-баннер и разведение с мобильным стеклянным доком
+      const COOKIE_KEY = 'stroim24_gomel_cookie_choice_v2';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 9. Отправка и валидация формы (Google Apps Script / Telegram + демо-режим)
+      const estimateForm = document.getElementById('estimateForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      estimateForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+        if (nameVal.length < 2) {
+          errName.textContent = 'Укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+        if (hasError) return;
+
+        const payload = {
+          source: 'ООО «СТРОИМ24 Гомель» (stroim24.by)',
+          service: leadService.value,
+          stage: leadStage.value,
+          location: document.getElementById('leadLocation').value,
+          contactMethod: (estimateForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Звонок',
+          comment: leadComment.value.trim() || 'Без комментария',
+          name: nameVal,
+          phone: phoneVal,
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем заявку...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error('Ошибка сервера');
+
+            modalSuccessDesc.textContent = 'Спасибо! Заявка отправлена. Прораб свяжется с вами в рабочее время (08:00–21:00).';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения Telegram-бота заявки с сайта будут мгновенно приходить вам в мессенджер в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Направление: ${payload.service}\n` +
+              `Стадия: ${payload.stage}\n` +
+              `Объект: ${payload.location}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone} (${payload.contactMethod})\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          estimateForm.reset();
+          selectedWorks.clear();
+          syncSelectedWorksUI();
+          renderPriceTable(currentPriceCategory);
+          selectDirection('Кровельные работы');
+          selectStage('Нужен бесплатный выезд прораба на замер');
+          openModal(modalSuccess);
+        } catch (err) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Позвоните нам напрямую или напишите в Viber / Telegram.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку на расчёт сметы';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

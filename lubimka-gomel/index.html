@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Груминг-салон «Любимка» — профессиональный груминг собак и кошек в Гомеле</title>
+  <meta name="description" content="Груминг-салон «Любимка» в центре Гомеля (ул. Гагарина, 38а, пом. 2): бережная стрижка собак и кошек, экспресс-линька, мытьё премиальной косметикой, лапакюр и курсы груминга. Ежедневно 10:00–20:00." />
+  <meta name="theme-color" content="#231F36" />
+
+  <!-- Фирменный SVG-фавикон (вместо стандартного шаблона masterbootstrap) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23231F36'/%3E%3Ccircle cx='20' cy='25' r='5' fill='%23FF7D3D'/%3E%3Ccircle cx='32' cy='18.5' r='5.5' fill='%23FF7D3D'/%3E%3Ccircle cx='44' cy='25' r='5' fill='%23FF7D3D'/%3E%3Cpath d='M32 30c-8.5 0-14 6.5-14 12.2 0 4.2 3.3 6.8 7.6 6.8 2.7 0 4.7-1.1 6.4-1.1s3.7 1.1 6.4 1.1c4.3 0 7.6-2.6 7.6-6.8C46 36.5 40.5 30 32 30z' fill='%23FF7D3D'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Nunito (дружелюбная основа), Playfair Display (благородный курсивный акцент) & Inter (UI и прайс) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Nunito', 'system-ui', 'sans-serif'],
+            editorial: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          colors: {
+            espresso: {
+              950: '#191628',
+              900: '#231F36',
+              800: '#302B48',
+              700: '#463F66',
+              100: '#F1ECF6',
+            },
+            cream: {
+              50: '#FBF8F5',
+              100: '#F5EFE9',
+              200: '#EAE0D6',
+            },
+            coral: {
+              400: '#FF945E',
+              500: '#FF7D3D',
+              600: '#E8682A',
+              50: '#FFF4ED',
+            },
+          },
+          boxShadow: {
+            soft: '0 20px 50px -20px rgba(35, 31, 54, 0.14)',
+            card: '0 10px 30px -14px rgba(35, 31, 54, 0.09)',
+            coral: '0 14px 32px -10px rgba(255, 125, 61, 0.42)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #FBF8F5;
+      color: #231F36;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Nunito', system-ui, sans-serif;
+    }
+    .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Мягкая бесшовная маска фото на десктопе (без резкого вертикального шва слева) */
+    @media (min-width: 768px) {
+      .hero-photo-mask {
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 10%, rgba(0, 0, 0, 0.7) 32%, #000 50%, #000 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, transparent 10%, rgba(0, 0, 0, 0.7) 32%, #000 50%, #000 100%);
+      }
+    }
+    /* Тёплая кинематографичная виньетка для полноэкранного портретного Hero */
+    .hero-scrim-desktop {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(35, 31, 54, 0.96) 0%,
+          rgba(35, 31, 54, 0.90) 32%,
+          rgba(35, 31, 54, 0.64) 48%,
+          rgba(35, 31, 54, 0.18) 66%,
+          rgba(35, 31, 54, 0.08) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(35, 31, 54, 0.50) 0%,
+          rgba(35, 31, 54, 0.04) 24%,
+          rgba(35, 31, 54, 0.04) 76%,
+          rgba(35, 31, 54, 0.82) 100%
+        );
+    }
+    .hero-scrim-mobile {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(35, 31, 54, 0.62) 0%,
+          rgba(35, 31, 54, 0.28) 20%,
+          rgba(35, 31, 54, 0.72) 40%,
+          rgba(35, 31, 54, 0.94) 64%,
+          rgba(35, 31, 54, 0.99) 100%
+        );
+    }
+    .hero-warm-glow {
+      background: radial-gradient(circle at 18% 58%, rgba(255, 125, 61, 0.16), transparent 52%);
+    }
+  </style>
+</head>
+<body class="bg-cream-50 text-espresso-900 antialiased selection:bg-coral-500 selection:text-white">
+
+  <!-- ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте сюда URL веб-приложения Google Apps Script для мгновенной доставки заявок в Telegram.
+      // Если оставить пустым "", форма работает в безопасном демо-режиме с предпросмотром сообщения.
+      googleScriptUrl: '',
+      viberPhone: '+375445561110',
+      telegramUsername: 'lubimka_gomel_demo', // Замените на реальный username Telegram салона при запуске
+      displayPhone: '+375 (44) 556-11-10',
+      telHref: 'tel:+375445561110',
+      coursesPhone: '+375 (29) 140-88-55',
+      coursesTelHref: 'tel:+375291408855',
+      instagramUrl: 'https://www.instagram.com/lubimkagomel/',
+      bookingWidgetUrl: 'https://app.bim.pet/933/f/1342',
+      schedule: { openHour: 10, closeHour: 20, timezone: 'Europe/Minsk' }
+    };
+  </script>
+
+  <!-- ПОЛУПРОЗРАЧНАЯ ОДНОСТРОЧНАЯ ШАПКА (ТЁМНО-СЛИВОВОЕ СТЕКЛО) -->
+  <header id="siteHeader" class="fixed top-0 inset-x-0 z-40 bg-espresso-900/75 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px] gap-3">
+        <!-- Логотип -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+          <span class="w-9 h-9 rounded-xl bg-coral-500/15 border border-coral-500/40 flex items-center justify-center text-coral-400 group-hover:bg-coral-500 group-hover:text-white transition">
+            <svg class="w-5 h-5" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+              <circle cx="19" cy="24" r="5.5" />
+              <circle cx="32" cy="17.5" r="6" />
+              <circle cx="45" cy="24" r="5.5" />
+              <path d="M32 29.5c-9.2 0-15 6.8-15 13.1 0 4.6 3.7 7.4 8.3 7.4 2.9 0 4.9-1.2 6.7-1.2s3.8 1.2 6.7 1.2c4.6 0 8.3-2.8 8.3-7.4 0-6.3-5.8-13.1-15-13.1z" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display font-black text-[19px] tracking-tight text-white">Любимка</span>
+            <span class="text-[10.5px] font-medium text-white/60 mt-0.5 tracking-wide">зоосалон · Гомель</span>
+          </span>
+        </a>
+
+        <!-- Десктоп-навигация (строго 5 коротких пунктов в 1 строку) -->
+        <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-[13.5px] font-semibold text-white/80 whitespace-nowrap">
+          <a href="#services" class="hover:text-coral-400 transition whitespace-nowrap">Услуги</a>
+          <a href="#pricing" class="hover:text-coral-400 transition whitespace-nowrap">Прайс</a>
+          <a href="#courses" class="hover:text-coral-400 transition whitespace-nowrap">Курсы</a>
+          <a href="#gallery" class="hover:text-coral-400 transition whitespace-nowrap">Портфолио</a>
+          <a href="#contacts" class="hover:text-coral-400 transition whitespace-nowrap">Контакты</a>
+        </nav>
+
+        <!-- Правая группа: живой статус + телефон + деликатная иконка Viber + кнопка записи -->
+        <div class="flex items-center gap-2.5 xl:gap-3 shrink-0 whitespace-nowrap">
+          <!-- Живой статус работы по времени Минска -->
+          <div id="liveStatusBadge" class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.07] border border-white/15 text-[11.5px] font-medium text-white/90 whitespace-nowrap" title="Ежедневно 10:00–20:00 по времени Беларуси">
+            <span id="liveStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span id="liveStatusText" class="whitespace-nowrap">Открыто сейчас</span>
+          </div>
+
+          <!-- Неразрывный телефон -->
+          <a data-contact="phone" data-contact-text="phone" href="tel:+375445561110" class="hidden md:inline-flex items-center font-display font-extrabold text-[14px] xl:text-[15px] text-white hover:text-coral-400 transition whitespace-nowrap tabular-nums">
+            +375 (44) 556-11-10
+          </a>
+
+          <!-- Деликатная монохромная иконка Viber в тон палитры (без фиолетовой пилюли) -->
+          <a data-contact="viber" href="viber://chat?number=%2B375445561110" aria-label="Написать в Viber" title="Написать в Viber" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/[0.08] hover:bg-coral-500/20 border border-white/15 hover:border-coral-400/50 text-white/85 hover:text-white transition shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+            </svg>
+          </a>
+
+          <!-- Тёплая коралловая кнопка Записаться -->
+          <a href="#booking-form" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-coral-500 hover:bg-coral-600 text-white text-[13px] font-bold shadow-coral transition whitespace-nowrap">
+            Записаться
+          </a>
+
+          <!-- Мобильный статус-индикатор и звонок -->
+          <a data-contact="phone" href="tel:+375445561110" aria-label="Позвонить в салон" class="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-full bg-coral-500 text-white shadow-coral shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </a>
+
+          <!-- Кнопка мобильного меню -->
+          <button type="button" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-white/[0.07] text-white hover:bg-white/15 transition shrink-0">
+            <svg id="mobileMenuIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="mobileMenuIconClose" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Выпадающее мобильное меню -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-5 pt-3 border-t border-white/10">
+        <div class="mb-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.08] text-xs font-medium text-white/90">
+          <span id="mobileLiveStatusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span id="mobileLiveStatusText">Открыто сейчас · ежедневно 10:00–20:00</span>
+        </div>
+        <nav class="flex flex-col gap-1 text-sm font-semibold text-white/90">
+          <a href="#services" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/10">Услуги салона</a>
+          <a href="#pricing" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/10">Прайс по породам</a>
+          <a href="#courses" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/10">Курсы груминга</a>
+          <a href="#gallery" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/10">Портфолио</a>
+          <a href="#contacts" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/10">Контакты и адрес</a>
+        </nav>
+        <div class="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2.5">
+          <a data-contact="phone" href="tel:+375445561110" class="flex items-center justify-between px-4 py-3 rounded-xl bg-white/10 text-white font-bold text-sm">
+            <span data-contact-text="phone">+375 (44) 556-11-10</span>
+            <span class="text-xs font-medium text-white/65">10:00–20:00</span>
+          </a>
+          <a href="#booking-form" class="mobile-nav-link text-center px-4 py-3 rounded-xl bg-coral-500 text-white font-bold text-sm">
+            Записаться на груминг
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ПОЛНОЭКРАННЫЙ ТЁПЛЫЙ ПОРТРЕТНЫЙ HERO (ПРОКАЧАННАЯ ЭСТЕТИКА ОРИГИНАЛЬНОГО LUBIMKA.BY) -->
+    <section class="relative min-h-[88vh] lg:min-h-[92vh] flex items-end lg:items-center bg-espresso-900 text-white overflow-hidden pt-20 pb-24 sm:pt-24 sm:pb-24 lg:pt-24 lg:pb-28">
+      <!-- Студийное портретное фото питомца в процессе груминга (бесшовно смещено в правую половину кадра на десктопе) -->
+      <div class="hero-photo-mask absolute inset-0 md:left-[18%] lg:left-[22%] overflow-hidden pointer-events-none select-none">
+        <img
+          src="https://images.pexels.com/photos/6816870/pexels-photo-6816870.jpeg?auto=compress&cs=tinysrgb&w=1800"
+          alt="Бережная стрижка йоркширского терьера ножницами в груминг-салоне"
+          class="w-full h-full object-cover object-[56%_22%] sm:object-[54%_24%] lg:object-[50%_26%] scale-[1.02] brightness-[0.95] contrast-[1.05] saturate-[1.06]"
+        />
+      </div>
+
+      <!-- Глубокий сливово-эспрессо градиент слева (десктоп) и мягкая виньетка (мобилка) -->
+      <div class="hidden md:block absolute inset-0 hero-scrim-desktop pointer-events-none"></div>
+      <div class="md:hidden absolute inset-0 hero-scrim-mobile pointer-events-none"></div>
+      <div class="absolute inset-0 hero-warm-glow pointer-events-none"></div>
+
+      <!-- Деликатная подпись демо-фото в правом верхнем углу под шапкой -->
+      <span class="hidden sm:inline-flex items-center gap-1.5 absolute right-6 top-[88px] z-20 px-3 py-1 rounded-full bg-espresso-900/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white/75">
+        Демо-фото · при запуске заменим на ваши работы
+      </span>
+
+      <!-- Контент первого экрана (левая редакционная колонка) -->
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-44 md:pt-0">
+        <div class="max-w-[580px]">
+          <!-- Локация и режим работы -->
+          <div class="inline-flex items-center gap-2 text-xs sm:text-[13px] font-medium text-white/80 tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-coral-500 shrink-0"></span>
+            <span>Центр Гомеля · ул. Гагарина, 38а, пом. 2 · Пн–Вс 10:00–20:00</span>
+          </div>
+
+          <!-- Благородная душевная типографика: Playfair Display курсив + Nunito -->
+          <h1 class="mt-3.5 tracking-tight">
+            <span class="block font-editorial italic font-semibold text-coral-400 text-[32px] sm:text-[46px] lg:text-[52px] leading-[1.04]">
+              Профессиональный
+            </span>
+            <span class="block font-display font-black text-white text-[31px] sm:text-[46px] lg:text-[54px] leading-[1.06] mt-0.5">
+              груминг собак и кошек в Гомеле
+            </span>
+          </h1>
+
+          <p class="mt-4 text-[14.5px] sm:text-[16.5px] text-white/85 leading-relaxed max-w-[510px]">
+            Не работаем на поток — спокойный уход премиальной косметикой, видеонаблюдение в зале и уютная зона ожидания с чаем и кофе, пока ваш любимец становится ещё красивее.
+          </p>
+
+          <!-- 2 чёткие кнопки действий -->
+          <div class="mt-7 flex flex-col sm:flex-row sm:items-center gap-3">
+            <a href="#booking-form" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-coral-500 hover:bg-coral-600 text-white font-display font-extrabold text-[15px] shadow-coral transition">
+              Записаться онлайн 24/7
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.10] hover:bg-white/[0.18] backdrop-blur-md border border-white/25 text-white font-display font-bold text-[15px] transition">
+              Прайс по породам
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <!-- Деликатная нижняя плашка фактов (без навязчивых белых карточек) -->
+          <div class="mt-7 pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+            <div>
+              <div class="font-display font-extrabold text-sm text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-coral-400"></span>
+                Без работы на поток
+              </div>
+              <p class="mt-1 text-xs text-white/65 leading-snug">Уделяем хвостику столько времени, сколько нужно</p>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-coral-400"></span>
+                Видеонаблюдение
+              </div>
+              <p class="mt-1 text-xs text-white/65 leading-snug">Спокойный уход, премиум-косметика и мастера-призёры</p>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-sm text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-coral-400"></span>
+                Онлайн-запись 24/7
+              </div>
+              <p class="mt-1 text-xs text-white/65 leading-snug">Удобный календарь, заявка на сайте или чат в Viber</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- УСЛУГИ САЛОНА -->
+    <section id="services" class="py-16 sm:py-24 bg-cream-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+              <span class="w-6 h-[1.5px] bg-coral-500"></span>
+              Услуги зоосалона
+            </span>
+            <h2 class="mt-3 font-display font-black text-3xl sm:text-4xl text-espresso-900 leading-tight">
+              Бережный уход для собак и кошек <span class="font-editorial italic font-semibold text-coral-600">любых пород</span>
+            </h2>
+            <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+              Подбираем профессиональную гипоаллергенную косметику и формат процедур под тип шерсти, возраст и характер питомца.
+            </p>
+          </div>
+          <a href="#pricing" class="inline-flex items-center gap-2 text-sm font-bold text-espresso-900 hover:text-coral-600 border-b border-espresso-900/25 hover:border-coral-500 pb-1 transition shrink-0 self-start md:self-auto">
+            Открыть прайс по 20+ породам →
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Услуга 1 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.pexels.com/photos/6816860/pexels-photo-6816860.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Стрижка йоркширского терьера ножницами" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">от 60 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Стрижка собак и кошек</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Модельные, гигиенические стрижки и стрижка наголо для йорков, шпицев, пуделей, мальтипу, ши-тцу, бишонов, средних и крупных собак. Включает мытьё, сушку и аккуратную обработку лап и мордочки.
+              </p>
+              <button type="button" data-select-service="Стрижка собаки или кошки (комплекс)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записаться на стрижку →
+              </button>
+            </div>
+          </article>
+
+          <!-- Услуга 2 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1727510190155-51abda425a82?auto=format&fit=crop&w=900&q=80" alt="Экспресс-линька и вычёсывание подшёрстка" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">от 75 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Экспресс-линька</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Деликатное удаление отмершего подшёрстка, глубокая очистка кожи, питательная маска, выдув компрессором и финишное вычёсывание. Заметно меньше шерсти дома — идеально для корги, биглей, крупных собак и кошек.
+              </p>
+              <button type="button" data-select-service="Экспресс-линька" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записаться на линьку →
+              </button>
+            </div>
+          </article>
+
+          <!-- Услуга 3 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.pexels.com/photos/6131165/pexels-photo-6131165.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Мытьё йоркширского терьера в салоне" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">Гигиена / СПА</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Мытьё и СПА-уход</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Профессиональное купание гипоаллергенными шампунями и кондиционерами ведущих марок, бережная сушка и укладка. Убираем запах, смягчаем шерсть и облегчаем домашнее расчёсывание.
+              </p>
+              <button type="button" data-select-service="Мытьё и СПА-уход" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записаться на купание →
+              </button>
+            </div>
+          </article>
+
+          <!-- Услуга 4 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.pexels.com/photos/6816852/pexels-photo-6816852.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Аккуратный лапакюр и подстригание когтей" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">10–20 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Лапакюр (стрижка когтей)</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Аккуратное и безопасное подстригание когтей за 10–15 минут без риска задеть сосуд, осмотр и уход за подушечками лап. Можно прийти отдельно или совместить со стрижкой.
+              </p>
+              <button type="button" data-select-service="Лапакюр (обрезание когтей)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записаться на лапакюр →
+              </button>
+            </div>
+          </article>
+
+          <!-- Услуга 5 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=900&q=80" alt="Щенок с чистыми ухоженными ушками" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">Гигиена ушей</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Чистка ушей</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Осмотр ушной раковины и деликатное очищение мягкими гипоаллергенными средствами. Профилактика зуда и воспалений — спокойно, даже если дома питомец не любит чистить ушки.
+              </p>
+              <button type="button" data-select-service="Чистка ушей" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записаться на чистку ушей →
+              </button>
+            </div>
+          </article>
+
+          <!-- Услуга 6 -->
+          <article class="group bg-white border border-cream-200 rounded-[26px] overflow-hidden flex flex-col hover:border-coral-400/60 hover:shadow-soft transition duration-300">
+            <div class="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+              <img src="https://images.pexels.com/photos/6816855/pexels-photo-6816855.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Бережное вычёсывание пушистой кошки" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+              <span class="absolute bottom-3 right-3 px-3.5 py-1 rounded-full bg-white/95 text-espresso-900 font-display font-extrabold text-xs shadow-sm">от 50 BYN</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-display font-extrabold text-xl text-espresso-900">Уход за кошками</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">
+                Вычёсывание без мытья, аккуратная стрижка или полная экспресс-линька для котиков любого веса (до 6 кг, от 6 кг, от 12 кг). Для спокойствия котика вы можете остаться рядом во время процедуры.
+              </p>
+              <button type="button" data-select-service="Уход за кошкой (вычёсывание / стрижка / линька)" class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-coral-600 hover:text-espresso-900 transition self-start">
+                Записать котика →
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ИНТЕРАКТИВНЫЙ ПРАЙС-ЛИСТ ПО ПОРОДАМ (РЕАЛЬНЫЕ ЦЕНЫ LUBIMKA.BY) -->
+    <section id="pricing" class="py-16 sm:py-24 bg-white border-y border-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+              <span class="w-6 h-[1.5px] bg-coral-500"></span>
+              Прозрачный прайс в BYN
+            </span>
+            <h2 class="mt-3 font-display font-black text-3xl sm:text-4xl text-espresso-900 leading-tight">
+              Цены по породам <span class="font-editorial italic font-semibold text-coral-600">за пару секунд</span>
+            </h2>
+            <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+              Переключите вкладку или начните вводить название породы — сразу увидите стоимость и время процедуры. Нажмите «Записать», чтобы подставить породу в заявку.
+            </p>
+          </div>
+
+          <!-- Поиск по породе -->
+          <div class="w-full lg:w-[340px]">
+            <label for="breedSearch" class="sr-only">Поиск по породе</label>
+            <div class="relative">
+              <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+              <input
+                type="search"
+                id="breedSearch"
+                placeholder="Найти породу: йорк, шпиц, корги, кот..."
+                class="w-full pl-11 pr-4 py-3.5 rounded-full bg-cream-50 border border-cream-200 text-sm text-espresso-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладки категорий прайса -->
+        <div class="mt-8 flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-2" role="tablist" aria-label="Категории прайс-листа">
+          <button type="button" role="tab" aria-selected="true" data-price-tab="small" class="price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-espresso-900 text-white shadow-sm">
+            Собаки мелких пород
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="medium" class="price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-cream-50 text-espresso-900 border border-cream-200 hover:border-coral-500">
+            Средние и крупные
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="cats" class="price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-cream-50 text-espresso-900 border border-cream-200 hover:border-coral-500">
+            Кошки
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-price-tab="extra" class="price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-cream-50 text-espresso-900 border border-cream-200 hover:border-coral-500">
+            Лапакюр и доп. услуги
+          </button>
+        </div>
+
+        <!-- Индикатор поиска -->
+        <div id="searchStatus" class="hidden mt-4 text-xs font-semibold text-coral-600"></div>
+
+        <!-- Сетка карточек прайса -->
+        <div id="priceGrid" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <!-- Пустой результат поиска -->
+        <div id="priceEmpty" class="hidden mt-6 p-8 rounded-[26px] bg-cream-50 border border-dashed border-cream-200 text-center">
+          <div class="font-display font-extrabold text-lg text-espresso-900">Не нашли свою породу в списке?</div>
+          <p class="mt-1.5 text-sm text-slate-600 max-w-lg mx-auto">Мы работаем с собаками и кошками всех пород — напишите нам в Viber или оставьте заявку, и администратор сразу подскажет точную стоимость.</p>
+          <a href="#booking-form" class="mt-4 inline-flex items-center justify-center px-6 py-3 rounded-full bg-coral-500 hover:bg-coral-600 text-white text-sm font-bold transition">Уточнить цену для своей породы</a>
+        </div>
+
+        <!-- Реальные правила салона (с lubimka.by) -->
+        <div class="mt-10 p-6 sm:p-7 rounded-[26px] bg-cream-50 border border-cream-200">
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div class="w-10 h-10 rounded-2xl bg-coral-50 border border-coral-500/20 text-coral-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
+              <div class="font-display font-extrabold text-base text-espresso-900">Правила комфортной работы салона</div>
+              <p>• <strong>С собаками мастера работают без присутствия хозяина</strong> — так питомец быстрее расслабляется, не отвлекается и спокойнее переносит стрижку (исключение: коты и животные с особенностями здоровья, для которых можно остаться рядом).</p>
+              <p>• При наличии сильных колтунов, сбитого подшёрстка, запущенного состояния шерсти или агрессии возможна доплата <strong>10–50%</strong> (для кошек — 10–50 BYN за вычёсывание колтунов). Мастер вправе отказать в услуге при угрозе безопасности.</p>
+              <p class="text-[11px] text-slate-400 pt-1">Цены приведены справочно по актуальному прайсу салона и не являются публичной офертой (ст. 407 ГК РБ). Точная стоимость подтверждается после осмотра шерсти питомца.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О САЛОНЕ «ЛЮБИМКА» (ТЁМНО-СЛИВОВЫЙ БЛОК С ТЁПЛЫМИ АКЦЕНТАМИ) -->
+    <section id="about" class="py-16 sm:py-24 bg-espresso-900 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,125,61,0.16),transparent_48%),radial-gradient(circle_at_bottom_left,rgba(147,120,219,0.16),transparent_46%)] pointer-events-none"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-5">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-400">
+              <span class="w-6 h-[1.5px] bg-coral-400"></span>
+              Атмосфера салона
+            </span>
+            <h2 class="mt-3 font-display font-black text-3xl sm:text-4xl leading-tight">
+              Спокойствие питомца и <span class="font-editorial italic font-semibold text-coral-400">уверенность</span> хозяина
+            </h2>
+            <p class="mt-4 text-sm sm:text-base text-white/75 leading-relaxed">
+              Зоосалон «Любимка» находится в центре Гомеля. Мы сознательно не работаем «на поток»: каждому хвостику выделяем достаточно времени, чтобы процедура прошла мягко и без суеты. Пока мастер работает, вы можете отдохнуть в зоне ожидания за чашкой чая или кофе.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#booking-form" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-coral-500 hover:bg-coral-600 text-white font-display font-bold text-sm shadow-coral transition">
+                Записаться на визит
+              </a>
+              <a data-contact="instagram" href="https://www.instagram.com/lubimkagomel/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white font-display font-bold text-sm transition">
+                Instagram @lubimkagomel
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-6 rounded-[24px] bg-white/[0.05] border border-white/10 backdrop-blur-sm">
+              <div class="font-editorial italic text-2xl font-semibold text-coral-400">01</div>
+              <h3 class="mt-3 font-display font-extrabold text-lg text-white">Мастера — призёры конкурсов</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                Опытные грумеры, которые постоянно повышают квалификацию, знают анатомию пород и находят мягкий подход даже к робким хвостикам.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-[24px] bg-white/[0.05] border border-white/10 backdrop-blur-sm">
+              <div class="font-editorial italic text-2xl font-semibold text-coral-400">02</div>
+              <h3 class="mt-3 font-display font-extrabold text-lg text-white">Премиальная косметика</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                Используем проверенные профессиональные шампуни, маски и кондиционеры по типу шерсти — безопасные для чувствительной кожи.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-[24px] bg-white/[0.05] border border-white/10 backdrop-blur-sm">
+              <div class="font-editorial italic text-2xl font-semibold text-coral-400">03</div>
+              <h3 class="mt-3 font-display font-extrabold text-lg text-white">Зона ожидания и камеры</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                В салоне ведётся видеонаблюдение для полной прозрачности работы, оборудована уютная зона ожидания с чаем и кофе и работает онлайн-запись 24/7.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-[24px] bg-white/[0.05] border border-white/10 backdrop-blur-sm">
+              <div class="font-editorial italic text-2xl font-semibold text-coral-400">04</div>
+              <h3 class="mt-3 font-display font-extrabold text-lg text-white">Центр Гомеля · без выходных</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                ул. Гагарина, 38а, пом. 2 — удобно добраться из любого района города. Принимаем ежедневно с 10:00 до 20:00.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- КУРСЫ ГРУМИНГА (ЦЕНТР ОБРАЗОВАНИЯ ГРУМЕРОВ НА БАЗЕ «ЛЮБИМКИ») -->
+    <section id="courses" class="py-16 sm:py-24 bg-cream-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[30px] bg-white border border-cream-200 shadow-soft overflow-hidden">
+          <div class="grid lg:grid-cols-12">
+            <div class="lg:col-span-7 p-7 sm:p-10 lg:p-12">
+              <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+                <span class="w-6 h-[1.5px] bg-coral-500"></span>
+                Центр образования грумеров
+              </span>
+              <h2 class="mt-3 font-display font-black text-2xl sm:text-4xl text-espresso-900 leading-tight">
+                Курсы груминга с нуля или <span class="font-editorial italic font-semibold text-coral-600">повышение до 3 разряда</span>
+              </h2>
+              <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+                Практическое обучение на базе действующего салона «Любимка»: мини-группы, живые модели, все профессиональные инструменты и косметика предоставляются на время учёбы.
+              </p>
+
+              <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm">
+                <div class="p-4 rounded-2xl bg-cream-50 border border-cream-200">
+                  <div class="font-display font-extrabold text-espresso-900">Удобные форматы</div>
+                  <p class="mt-1 text-xs sm:text-sm text-slate-600"><strong>10 дней, 15 дней, 1 месяц</strong> (3 разряд) или интенсив «1 день = 1 порода»</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-cream-50 border border-cream-200">
+                  <div class="font-display font-extrabold text-espresso-900">Документ и поддержка</div>
+                  <p class="mt-1 text-xs sm:text-sm text-slate-600"><strong>Сертификат гос. образца</strong>, методическое пособие и закрытый Telegram-чат</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 bg-espresso-900 text-white p-7 sm:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+              <div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-coral-500/20 blur-3xl pointer-events-none"></div>
+              <div class="relative">
+                <div class="font-display font-extrabold text-xl">Набор и программа обучения</div>
+                <p class="mt-2.5 text-sm text-white/75 leading-relaxed">
+                  Уточните ближайшие даты старта, программу и стоимость курсов напрямую у менеджера обучения:
+                </p>
+              </div>
+              <div class="relative mt-7 space-y-3">
+                <a data-contact="coursesPhone" href="tel:+375291408855" class="flex items-center justify-between px-5 py-3.5 rounded-2xl bg-white text-espresso-900 font-display font-extrabold text-base hover:bg-coral-50 transition">
+                  <span data-contact-text="coursesPhone" class="tabular-nums">+375 (29) 140-88-55</span>
+                  <span class="text-xs font-sans font-bold text-coral-600">Позвонить</span>
+                </a>
+                <button type="button" data-select-service="Консультация по курсам груминга" class="w-full py-3.5 px-5 rounded-2xl bg-coral-500 hover:bg-coral-600 text-white font-display font-bold text-sm shadow-coral transition">
+                  Запросить программу курса на сайте
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОРТФОЛИО РАБОТ С ЛАЙТБОКСОМ -->
+    <section id="gallery" class="py-16 sm:py-24 bg-white border-t border-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+              <span class="w-6 h-[1.5px] bg-coral-500"></span>
+              Портфолио работ
+            </span>
+            <h2 class="mt-3 font-display font-black text-3xl sm:text-4xl text-espresso-900">
+              Наши хвостатые <span class="font-editorial italic font-semibold text-coral-600">гости</span>
+            </h2>
+            <p class="mt-2 text-sm text-slate-500">Демо-фото для примера оформления галереи. При запуске добавим ваши реальные работы «до / после» из Instagram.</p>
+          </div>
+          <a data-contact="instagram" href="https://www.instagram.com/lubimkagomel/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream-50 hover:bg-cream-100 border border-cream-200 text-espresso-900 text-sm font-bold transition shrink-0 self-start md:self-auto">
+            Реальные работы в @lubimkagomel →
+          </a>
+        </div>
+
+        <div class="mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <button type="button" data-lightbox-src="https://images.pexels.com/photos/6816866/pexels-photo-6816866.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Йоркширский терьер: бережная модельная стрижка ножницами (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.pexels.com/photos/6816866/pexels-photo-6816866.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Стрижка йоркширского терьера" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Мелкие породы: аккуратная форма мордочки и ушек (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=800&q=80" alt="Ухоженная собака мелкой породы" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Пушистые породы: экспресс-линька и воздушный объём шерсти (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=800&q=80" alt="Белый пушистый самоед после ухода" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Крупные породы: бережное купание и СПА-уход (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80" alt="Купание золотистого ретривера" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Сияющая чистая шерсть после комплекса ухода (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=800&q=80" alt="Рыжая собака с ухоженной шерстью" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.pexels.com/photos/6816850/pexels-photo-6816850.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Финишное расчёсывание и укладка йорка (демо-фото)" class="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-100 text-left focus:outline-none focus:ring-2 focus:ring-coral-500">
+            <img src="https://images.pexels.com/photos/6816850/pexels-photo-6816850.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Расчёсывание йоркширского терьера" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-espresso-900/70 backdrop-blur-sm text-[10.5px] font-medium text-white/90">Демо-фото</span>
+            <span class="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/25 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition px-4 py-2 rounded-full bg-white text-espresso-900 text-xs font-bold shadow">Открыть фото</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОТЗЫВЫ КЛИЕНТОВ (ЧЕСТНЫЕ ДЕМО-СЛОТЫ БЕЗ ВЫДУМАННЫХ ОЦЕНОК) -->
+    <section id="reviews" class="py-14 sm:py-20 bg-cream-50 border-t border-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+              <span class="w-6 h-[1.5px] bg-coral-500"></span>
+              Отзывы владельцев
+            </span>
+            <h2 class="mt-3 font-display font-black text-2xl sm:text-4xl text-espresso-900">Впечатления клиентов из Гомеля</h2>
+          </div>
+          <a href="https://yandex.by/maps/?text=Гомель%20улица%20Гагарина%2038А%20Любимка" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-cream-100 border border-cream-200 text-sm font-bold text-espresso-900 transition shrink-0 self-start md:self-auto">
+            <svg class="w-4 h-4 text-coral-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Открыть карточку на Яндекс Картах
+          </a>
+        </div>
+
+        <div class="mt-8 bg-white border border-dashed border-cream-200 rounded-[26px] p-6 sm:p-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-coral-50 border border-coral-500/20 text-espresso-900 text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-coral-500 shrink-0"></span>
+            Демо-слоты: при запуске подключим ваши реальные отзывы с Яндекс Карт и Instagram @lubimkagomel
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="p-5 rounded-2xl bg-cream-50 border border-cream-200">
+              <div class="font-display font-extrabold text-sm text-espresso-900">Отзыв владельца (демо-слот)</div>
+              <div class="text-xs text-slate-400 mt-0.5">Порода питомца · Комплексный уход</div>
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                Место под реальный отзыв клиента из Гомеля о бережной стрижке или первом визите щенка в зоосалон «Любимка».
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-cream-50 border border-cream-200">
+              <div class="font-display font-extrabold text-sm text-espresso-900">Отзыв владельца (демо-слот)</div>
+              <div class="text-xs text-slate-400 mt-0.5">Яндекс Карты / Instagram</div>
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                Сюда добавим подтверждённые отзывы с Яндекс Карт или живые скриншоты благодарностей из переписок в Viber.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-cream-50 border border-cream-200">
+              <div class="font-display font-extrabold text-sm text-espresso-900">Отзыв выпускника курсов (демо-слот)</div>
+              <div class="text-xs text-slate-400 mt-0.5">Центр образования грумеров</div>
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                Отдельная карточка для впечатлений учеников ваших курсов груминга — повышает доверие перед новым набором.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЫСТРЫЙ ПОДБОР ЗА 2 КЛИКА + ФОРМА ЗАПИСИ -->
+    <section id="booking-form" class="py-16 sm:py-24 bg-white border-t border-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <!-- Левая колонка: Контакты и онлайн-календарь 24/7 -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-coral-600">
+                <span class="w-6 h-[1.5px] bg-coral-500"></span>
+                Запись в салон
+              </span>
+              <h2 class="mt-3 font-display font-black text-3xl sm:text-4xl text-espresso-900 leading-tight">
+                Запишите хвостика <span class="font-editorial italic font-semibold text-coral-600">в 2 клика</span>
+              </h2>
+              <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                Выберите питомца и процедуру — данные сразу подставятся в форму. Администратор подтвердит удобное время и ответит на все вопросы.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-[26px] bg-cream-50 border border-cream-200 space-y-4">
+              <div class="font-display font-extrabold text-base text-espresso-900">Или выберите мгновенный способ связи</div>
+              <a data-contact="bookingWidget" href="https://app.bim.pet/933/f/1342" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-espresso-900 hover:bg-espresso-800 text-white text-sm font-bold transition">
+                <svg class="w-4 h-4 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Онлайн-календарь записи 24/7 →
+              </a>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <a data-contact="viber" href="viber://chat?number=%2B375445561110" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white hover:bg-coral-50 border border-cream-200 hover:border-coral-400 text-espresso-900 text-sm font-bold transition">
+                  <svg class="w-4 h-4 text-[#7360F2] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+                  Написать в Viber
+                </a>
+                <a data-contact="telegram" href="https://t.me/lubimka_gomel_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white hover:bg-coral-50 border border-cream-200 hover:border-coral-400 text-espresso-900 text-sm font-bold transition">
+                  <svg class="w-4 h-4 text-[#229ED9] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                  Telegram
+                </a>
+              </div>
+              <div class="pt-3 border-t border-cream-200 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+                <span>Телефон салона:</span>
+                <a data-contact="phone" data-contact-text="phone" href="tel:+375445561110" class="font-display font-extrabold text-base text-espresso-900 hover:text-coral-600 transition tabular-nums">+375 (44) 556-11-10</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Лёгкий мини-интерактив за 2 клика + Форма записи -->
+          <div class="lg:col-span-7 space-y-5">
+            <!-- Мини-интерактив за 2 клика (без формул расчёта цен) -->
+            <div class="p-5 sm:p-6 rounded-[26px] bg-cream-50 border border-cream-200 space-y-5">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider text-coral-600">Шаг 1 · Выберите питомца</div>
+                <div id="quickPetGroup" class="mt-2.5 flex flex-wrap gap-2">
+                  <button type="button" data-quick-pet="Собака мелкой породы" class="quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-espresso-900 text-white border-espresso-900">
+                    Собака мелкой породы
+                  </button>
+                  <button type="button" data-quick-pet="Средняя / крупная собака" class="quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Средняя / крупная собака
+                  </button>
+                  <button type="button" data-quick-pet="Кошка" class="quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Кошка
+                  </button>
+                  <button type="button" data-quick-pet="Курсы груминга" class="quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Курсы груминга
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider text-coral-600">Шаг 2 · Что нужно сделать?</div>
+                <div id="quickCareGroup" class="mt-2.5 flex flex-wrap gap-2">
+                  <button type="button" data-quick-care="Комплексный груминг" data-map-service="Стрижка собаки или кошки (комплекс)" class="quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-coral-500 text-white border-coral-500">
+                    Комплексный груминг
+                  </button>
+                  <button type="button" data-quick-care="Гигиена / лапакюр" data-map-service="Гигиенический уход" class="quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Гигиена / лапакюр
+                  </button>
+                  <button type="button" data-quick-care="Экспресс-линька" data-map-service="Экспресс-линька" class="quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Экспресс-линька
+                  </button>
+                  <button type="button" data-quick-care="Тримминг / консультация" data-map-service="Нужна консультация грумера" class="quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500">
+                    Тримминг / консультация
+                  </button>
+                </div>
+              </div>
+
+              <div id="quickSummary" class="flex items-center gap-2 text-xs font-semibold text-espresso-900 bg-white px-4 py-2.5 rounded-2xl border border-cream-200">
+                <span class="w-2 h-2 rounded-full bg-coral-500 shrink-0"></span>
+                <span>Подобрано для заявки: <strong id="quickSummaryText">Собака мелкой породы — Комплексный груминг</strong></span>
+              </div>
+            </div>
+
+            <!-- Форма записи -->
+            <form id="leadForm" novalidate class="bg-white border border-cream-200 rounded-[26px] p-6 sm:p-8 shadow-soft space-y-5">
+              <!-- Honeypot от спам-ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Оставьте поле пустым</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-sm font-bold text-espresso-900 mb-1.5">Ваше имя *</label>
+                  <input type="text" id="leadName" name="name" required placeholder="Например, Анастасия" class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition" />
+                  <p id="errName" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-sm font-bold text-espresso-900 mb-1.5">Телефон *</label>
+                  <input type="tel" id="leadPhone" name="phone" required placeholder="+375 (44) 123-45-67" class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition" />
+                  <p id="errPhone" class="hidden mt-1 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadBreed" class="block text-sm font-bold text-espresso-900 mb-1.5">Порода / питомец</label>
+                  <input type="text" id="leadBreed" name="breed" value="Собака мелкой породы" placeholder="Например: Йорк 3 кг / Кот мейн-кун" class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition" />
+                </div>
+
+                <div>
+                  <label for="leadService" class="block text-sm font-bold text-espresso-900 mb-1.5">Интересующая услуга *</label>
+                  <select id="leadService" name="service" required class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition">
+                    <option value="Стрижка собаки или кошки (комплекс)">Стрижка собаки или кошки (комплекс)</option>
+                    <option value="Гигиенический уход">Гигиенический уход / лапакюр</option>
+                    <option value="Экспресс-линька">Экспресс-линька</option>
+                    <option value="Мытьё и СПА-уход">Мытьё и СПА-уход</option>
+                    <option value="Лапакюр (обрезание когтей)">Лапакюр (обрезание когтей)</option>
+                    <option value="Чистка ушей">Чистка ушей</option>
+                    <option value="Уход за кошкой (вычёсывание / стрижка / линька)">Уход за кошкой (вычёсывание / стрижка / линька)</option>
+                    <option value="Консультация по курсам груминга">Консультация по курсам груминга</option>
+                    <option value="Нужна консультация грумера">Тримминг / консультация грумера</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadDate" class="block text-sm font-bold text-espresso-900 mb-1.5">Желаемая дата визита</label>
+                  <input type="date" id="leadDate" name="date" class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition" />
+                </div>
+
+                <div>
+                  <span class="block text-sm font-bold text-espresso-900 mb-1.5">Удобный способ связи</span>
+                  <div class="grid grid-cols-3 gap-2">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Viber" checked class="peer sr-only" />
+                      <span class="block text-center py-3 px-2 rounded-2xl border border-cream-200 bg-cream-50 text-xs font-bold text-espresso-900 peer-checked:border-espresso-900 peer-checked:bg-espresso-900 peer-checked:text-white transition">Viber</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Звонок" class="peer sr-only" />
+                      <span class="block text-center py-3 px-2 rounded-2xl border border-cream-200 bg-cream-50 text-xs font-bold text-espresso-900 peer-checked:border-coral-500 peer-checked:bg-coral-500 peer-checked:text-white transition">Звонок</span>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="contactMethod" value="Telegram" class="peer sr-only" />
+                      <span class="block text-center py-3 px-2 rounded-2xl border border-cream-200 bg-cream-50 text-xs font-bold text-espresso-900 peer-checked:border-espresso-900 peer-checked:bg-espresso-900 peer-checked:text-white transition">Telegram</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-sm font-bold text-espresso-900 mb-1.5">Пожелания или особенности питомца</label>
+                <textarea id="leadComment" name="comment" rows="3" placeholder="Например: щенок 6 месяцев, первая стрижка / есть небольшие колтуны за ушками / удобнее в субботу утром" class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-200 text-espresso-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-coral-500/40 focus:border-coral-500 focus:bg-white transition"></textarea>
+              </div>
+
+              <!-- Незаполненный обязательный чекбокс согласия по Закону РБ № 99-З (БЕЗ checked) -->
+              <div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="leadConsent" name="consent" required class="mt-1 w-4 h-4 rounded border-slate-400 text-coral-500 focus:ring-coral-500 shrink-0" />
+                  <span class="text-xs text-slate-600 leading-relaxed">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-espresso-900 underline hover:text-coral-600 font-semibold">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-espresso-900 underline hover:text-coral-600 font-semibold">Политикой обработки персональных данных</button> (Закон РБ № 99-З). *
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1 text-xs text-red-600"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3.5 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-700"></p>
+
+              <button type="submit" id="leadSubmitBtn" class="w-full py-4 px-6 rounded-full bg-coral-500 hover:bg-coral-600 text-white font-display font-extrabold text-base shadow-coral transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Отправить заявку на запись
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ПОДВАЛ (КОНТАКТЫ И РЕАЛЬНЫЕ ЮРИДИЧЕСКИЕ РЕКВИЗИТЫ РБ) -->
+  <footer id="contacts" class="bg-espresso-950 text-white/75 pt-14 pb-32 md:pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <!-- Левая колонка: Контакты -->
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <div class="font-display font-black text-2xl text-white">Груминг-салон «Любимка»</div>
+            <p class="mt-1.5 text-sm text-white/60">
+              Стрижка собак и кошек, экспресс-линька, мытьё, лапакюр, чистка ушей и курсы груминга в центре Гомеля.
+            </p>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-white/50 w-24 shrink-0">Адрес:</span>
+              <span class="text-white font-medium">г. Гомель, ул. Гагарина, д. 38а, пом. 2</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-white/50 w-24 shrink-0">Запись:</span>
+              <a data-contact="phone" data-contact-text="phone" href="tel:+375445561110" class="text-white font-bold hover:text-coral-400 transition tabular-nums">+375 (44) 556-11-10</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-white/50 w-24 shrink-0">Курсы:</span>
+              <a data-contact="coursesPhone" data-contact-text="coursesPhone" href="tel:+375291408855" class="text-white font-semibold hover:text-coral-400 transition tabular-nums">+375 (29) 140-88-55</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-white/50 w-24 shrink-0">График:</span>
+              <span class="text-white">Ежедневно (Пн–Вс): 10:00–20:00</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 pt-1">
+            <a data-contact="viber" href="viber://chat?number=%2B375445561110" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-coral-500 text-white text-xs font-bold transition">Viber</a>
+            <a data-contact="telegram" href="https://t.me/lubimka_gomel_demo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-coral-500 text-white text-xs font-bold transition">Telegram</a>
+            <a data-contact="instagram" href="https://www.instagram.com/lubimkagomel/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-coral-500 text-white text-xs font-bold transition">Instagram @lubimkagomel</a>
+          </div>
+        </div>
+
+        <!-- Правая колонка: Карта проезда -->
+        <div class="lg:col-span-7">
+          <div class="bg-espresso-900 border border-white/10 rounded-[26px] p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <div class="font-display font-extrabold text-base text-white">Как нас найти в Гомеле</div>
+                <div class="text-xs text-white/60">ул. Гагарина, д. 38а, пом. 2 (центр города)</div>
+              </div>
+              <a href="https://yandex.by/maps/?rtext=~52.421966,31.002374&rtt=auto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-coral-500 hover:bg-coral-600 text-white text-xs font-bold transition">
+                Маршрут в Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="relative rounded-2xl overflow-hidden bg-espresso-950 border border-white/10 h-52 flex items-center justify-center">
+              <svg class="w-full h-full opacity-25" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 140 L600 120" stroke="#F5EFE9" stroke-width="12" />
+                <path d="M210 0 L250 220" stroke="#C7B9D9" stroke-width="9" />
+                <path d="M430 0 L395 220" stroke="#9F8EC2" stroke-width="7" />
+                <path d="M0 55 L600 45" stroke="#7A68A0" stroke-width="5" />
+                <rect x="275" y="74" width="68" height="36" rx="10" fill="#231F36" stroke="#FF7D3D" stroke-width="2.5" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                <div class="w-12 h-12 rounded-full bg-coral-500 text-white flex items-center justify-center shadow-coral mb-2">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="px-4 py-1.5 rounded-full bg-espresso-900/95 border border-white/15 text-xs sm:text-sm font-bold text-white">
+                  Зоосалон «Любимка» · ул. Гагарина, 38а, пом. 2
+                </div>
+                <div class="mt-1.5 text-[11px] text-white/60">При запуске подключим интерактивную карту Яндекс с ориентирами входа</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Юридический блок и реальные реквизиты ООО «Любимка» -->
+      <div class="pt-8 space-y-5 text-xs text-white/55">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <div class="text-white/90 font-bold">Реквизиты организации:</div>
+            <div>ООО «Любимка», УНП 491384207 (свидетельство о гос. регистрации от 24.10.2023 г., выдано Гомельским горисполкомом)</div>
+            <div>Юридический адрес: Республика Беларусь, Гомельская обл., г. Гомель, ул. Гагарина, д. 38а, пом. 2</div>
+            <div>Режим работы: Пн–Вс с 10:00 до 20:00</div>
+          </div>
+
+          <div class="flex flex-wrap md:justify-end items-start gap-x-5 gap-y-2">
+            <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-white transition text-left">Политика обработки ПД</button>
+            <button type="button" data-open-modal="modalConsent" class="underline hover:text-white transition text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modalCookie" class="underline hover:text-white transition text-left">Политика и настройки cookie</button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-white/45 leading-relaxed">
+          Информация, размещённая на сайте, носит справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Итоговая стоимость услуг зависит от породы, размера и состояния шерсти питомца.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- МОБИЛЬНАЯ APP-LIKE СТЕКЛЯННАЯ ПАНЕЛЬ (< 768px, скрыта пока открыт cookie-баннер, выше демо-плашки) -->
+  <nav id="mobileStickyDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-[52px] z-40">
+    <div class="mx-auto max-w-md bg-espresso-900/95 backdrop-blur-xl border border-white/15 rounded-2xl p-1.5 shadow-2xl grid grid-cols-3 gap-1.5">
+      <a data-contact="phone" href="tel:+375445561110" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-white/90 hover:bg-white/10 text-xs font-bold transition whitespace-nowrap">
+        <svg class="w-4 h-4 text-coral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        Позвонить
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375445561110" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl text-white/90 hover:bg-white/10 text-xs font-bold transition whitespace-nowrap">
+        <svg class="w-4 h-4 text-coral-400 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+        </svg>
+        Viber
+      </a>
+      <a href="#booking-form" class="flex items-center justify-center py-2.5 px-2 rounded-xl bg-coral-500 hover:bg-coral-600 text-white text-xs font-extrabold shadow-coral transition whitespace-nowrap">
+        Записаться
+      </a>
+    </div>
+  </nav>
+
+  <!-- ДЕЛИКАТНАЯ ДЕСКТОП-КНОПКА VIBER (скрыта, пока открыт cookie-баннер) -->
+  <div id="floatingMessenger" class="hidden fixed right-5 bottom-14 z-40">
+    <a data-contact="viber" href="viber://chat?number=%2B375445561110" aria-label="Написать в Viber" title="Написать в Viber" class="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-full bg-espresso-900/90 hover:bg-coral-500 backdrop-blur-md border border-white/15 text-white text-xs font-bold shadow-xl transition">
+      <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+      Чат в Viber
+    </a>
+  </div>
+
+  <!-- COOKIE-БАННЕР (по рекомендациям НЦЗПД РБ: две равнозначные кнопки) -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-[48px] sm:bottom-[36px] z-50 px-3 sm:px-6 pb-2">
+    <div class="max-w-4xl mx-auto bg-espresso-900/95 backdrop-blur-xl border border-white/15 text-white/85 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="text-xs sm:text-sm leading-relaxed">
+        ООО «Любимка» использует файлы cookie для корректной работы сайта и сохранения ваших настроек. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-white underline hover:text-coral-400">Политику и настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2.5 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-4 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-bold transition whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-5 py-2.5 rounded-full bg-coral-500 hover:bg-coral-600 text-white text-xs sm:text-sm font-bold transition whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЕЛИКАТНАЯ ДЕМО-ПЛАШКА В САМОМ НИЗУ ЭКРАНА -->
+  <div class="fixed inset-x-0 bottom-0 z-40 bg-espresso-950/95 backdrop-blur-md border-t border-white/10 text-white/80 text-center py-1.5 px-3 text-[10.5px] sm:text-[11px] leading-snug">
+    Демо-концепт сайта для «Любимки» · добавим ваши реальные фото и подключим заявки в Telegram
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс для портфолио -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-espresso-900 rounded-3xl overflow-hidden border border-white/15 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-espresso-900/80 text-white hover:bg-coral-500 flex items-center justify-center transition">✕</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="p-4 text-xs sm:text-sm text-white/80 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Заявка отправлена -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-espresso-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-cream-50 hover:bg-cream-100 text-espresso-900 flex items-center justify-center transition">✕</button>
+      <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="font-display font-black text-2xl text-espresso-900">Заявка принята!</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-slate-600 leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 rounded-2xl bg-cream-50 border border-cream-200 text-xs text-espresso-900 space-y-1 font-mono whitespace-pre-wrap"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3.5 rounded-full bg-espresso-900 hover:bg-coral-500 text-white font-bold text-sm transition">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-espresso-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-cream-200">
+        <h3 class="font-display font-extrabold text-lg text-espresso-900">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-cream-50 hover:bg-cream-100 text-espresso-900 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p><strong>1. Общие положения и Оператор.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает <strong>ООО «Любимка»</strong> (УНП 491384207, свидетельство о гос. регистрации от 24.10.2023 г., Республика Беларусь, Гомельская обл., г. Гомель, ул. Гагарина, д. 38а, пом. 2).</p>
+        <p><strong>2. Цели и перечень обрабатываемых данных.</strong> Оператор обрабатывает имя, номер телефона, сведения о породе/весе питомца, выбранную услугу, желаемую дату, способ связи и комментарий исключительно для обратной связи, уточнения стоимости и записи на услуги груминга или обучение.</p>
+        <p><strong>3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативного получения заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых могут располагаться в иностранных государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. В связи с этим существуют риски отсутствия специального законодательства о защите ПД, ограниченного надзора и доступа третьих лиц по законодательству таких государств. Передача осуществляется только на основании отдельного согласия субъекта.</p>
+        <p><strong>4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта персональных данных (ст. 10–15 Закона № 99-З).</strong> Вы вправе в любое время без объяснения причин отозвать согласие; получать информацию об обработке ваших ПД; требовать внесения изменений в неполные или неточные данные; требовать прекращения обработки и (или) удаления ПД; обжаловать действия (бездействие) Оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-cream-200 bg-cream-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-full bg-espresso-900 text-white text-sm font-bold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-espresso-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-cream-200">
+        <h3 class="font-display font-extrabold text-lg text-espresso-900">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-cream-50 hover:bg-cream-100 text-espresso-900 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+        <p>Проставляя отметку в форме записи на сайте груминг-салона «Любимка» и нажимая кнопку отправки, я свободно, однозначно и информированно даю согласие <strong>ООО «Любимка»</strong> (УНП 491384207, г. Гомель, ул. Гагарина, д. 38а, пом. 2) на обработку моих персональных данных: имени, номера телефона, сведений о питомце, выбранной услуге, дате визита, способе связи и комментарии.</p>
+        <p><strong>Цель обработки:</strong> рассмотрение заявки, расчёт ориентировочной стоимости груминга / курсов и обратная связь для согласования времени визита.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что доставка заявки может осуществляться через Google Apps Script (Google LLC) и Telegram (Telegram Messenger Inc.), серверы которых находятся в том числе в государствах, где не обеспечивается надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены риски такой передачи (различия в законодательстве о защите ПД, возможное отсутствие независимого надзорного органа и ограниченные механизмы защиты прав в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и права (ст. 10–15 Закона РБ № 99-З):</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) со своими правами на отзыв согласия, получение информации об обработке, изменение и удаление данных, а также право обжалования в НЦЗПД. Отозвать согласие можно, обратившись по адресу или телефону Оператора, указанным в подвале сайта.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-cream-200 bg-cream-50 text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-full bg-espresso-900 text-white text-sm font-bold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie (только ООО «Любимка»!) -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-espresso-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-cream-200">
+        <h3 class="font-display font-extrabold text-lg text-espresso-900">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 rounded-full bg-cream-50 hover:bg-cream-100 text-espresso-900 flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-700 space-y-4 leading-relaxed">
+        <div class="p-3.5 rounded-2xl bg-cream-50 border border-cream-200 flex items-center justify-between gap-2">
+          <span class="font-bold text-espresso-900">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 rounded-full bg-white border border-cream-200 text-xs font-bold text-espresso-900">Не выбран</span>
+        </div>
+        <p><strong>Оператор сайта:</strong> ООО «Любимка» (УНП 491384207, г. Гомель, ул. Гагарина, д. 38а, пом. 2).</p>
+        <p><strong>Технические (необходимые) cookie и локальное хранилище:</strong> обеспечивают корректную работу интерфейса сайта и сохранение вашего выбора настроек cookie. Не передают персональные данные третьим лицам.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> могут использоваться только с вашего согласия после подключения веб-аналитики для улучшения работы сайта. Вы можете в любой момент принять их или отклонить.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-cream-200 bg-cream-50 flex flex-col sm:flex-row justify-end gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 rounded-full bg-cream-200 hover:bg-espresso-900/15 text-espresso-900 text-sm font-bold transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-5 py-2.5 rounded-full bg-coral-500 hover:bg-coral-600 text-white text-sm font-bold transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЕДИНЫЙ ЧИСТЫЙ БЛОК JAVASCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Привязка контактов из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const encodedViberPhone = encodeURIComponent(SITE_CONFIG.viberPhone);
+      const viberHref = `viber://chat?number=${encodedViberPhone}`;
+      const telegramHref = `https://t.me/${SITE_CONFIG.telegramUsername}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="telegram"]').forEach((el) => {
+        el.setAttribute('href', telegramHref);
+      });
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+      document.querySelectorAll('[data-contact="coursesPhone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.coursesTelHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="coursesPhone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.coursesPhone;
+      });
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+      document.querySelectorAll('[data-contact="bookingWidget"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.bookingWidgetUrl);
+      });
+
+      // 2. Живой статус работы салона по времени Беларуси (Europe/Minsk, ежедневно 10:00–20:00)
+      const liveDot = document.getElementById('liveStatusDot');
+      const liveText = document.getElementById('liveStatusText');
+      const mobDot = document.getElementById('mobileLiveStatusDot');
+      const mobText = document.getElementById('mobileLiveStatusText');
+
+      function updateLiveStatus() {
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: SITE_CONFIG.schedule.timezone,
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+          const hour = parseInt((parts.find((p) => p.type === 'hour') || {}).value || '12', 10);
+          const isOpen = hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour;
+
+          if (liveDot && liveText) {
+            liveDot.className = isOpen
+              ? 'w-2 h-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.85)]'
+              : 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+            liveText.textContent = isOpen ? 'Открыто сейчас' : 'Ответим с 10:00';
+          }
+          if (mobDot && mobText) {
+            mobDot.className = isOpen
+              ? 'w-2 h-2 rounded-full bg-emerald-400 shrink-0'
+              : 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+            mobText.textContent = isOpen
+              ? 'Открыто сейчас · ежедневно 10:00–20:00'
+              : 'Сейчас закрыто · ответим с 10:00';
+          }
+        } catch (_) {}
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // Усиление фона шапки при прокрутке
+      const siteHeader = document.getElementById('siteHeader');
+      function handleHeaderScroll() {
+        if (!siteHeader) return;
+        const scrolled = window.scrollY > 36;
+        siteHeader.classList.toggle('bg-espresso-900/95', scrolled);
+        siteHeader.classList.toggle('shadow-lg', scrolled);
+        siteHeader.classList.toggle('bg-espresso-900/75', !scrolled);
+      }
+      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      handleHeaderScroll();
+
+      // 3. Адаптивное мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const iconOpen = document.getElementById('mobileMenuIconOpen');
+      const iconClose = document.getElementById('mobileMenuIconClose');
+
+      function setMobileMenu(open) {
+        mobileMenu.classList.toggle('hidden', !open);
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          setMobileMenu(!isOpen);
+        });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Реальный прайс-лист с lubimka.by по категориям (20+ пород в BYN)
+      const PRICE_DATA = [
+        // Мелкие породы собак
+        {
+          category: 'small',
+          breed: 'Йоркширский терьер',
+          keywords: 'йорк йоркширский терьер',
+          duration: '1,5–2 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно (2 ч)', price: '75–80 BYN' },
+            { label: 'Гигиена (1,5 ч)', price: '65–70 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Шпиц',
+          keywords: 'шпиц померанский малый',
+          duration: '1,5–3 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс (2,5–3 ч)', price: 'от 80 BYN' },
+            { label: 'Гигиена (1,5–2 ч)', price: 'от 70 BYN' }
+          ],
+          note: 'Для шпицев от 6 кг: +10–40 BYN'
+        },
+        {
+          category: 'small',
+          breed: 'Болонка, Бивер-йорк, Китайская хохлатая',
+          keywords: 'болонка мальтезе бивер йорк китайская хохлатая кхс',
+          duration: '2,5 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно', price: '80–85 BYN' },
+            { label: 'Гигиена', price: '70–75 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Ши-тцу',
+          keywords: 'ши-тцу шитцу ши тцу',
+          duration: '2–3 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно (3 ч)', price: '85–95 BYN' },
+            { label: 'Гигиена (2 ч)', price: '75–85 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Бишон фризе',
+          keywords: 'бишон фризе',
+          duration: '2–3,5 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно (3–3,5 ч)', price: '105 BYN' },
+            { label: 'Наголо (2 ч)', price: '90 BYN' },
+            { label: 'Гигиена', price: '90 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Пудель / Мальтипу Той',
+          keywords: 'пудель мальтипу той мини до 28 см',
+          duration: '2–3 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно (3 ч)', price: '85–95 BYN' },
+            { label: 'Наголо (2 ч) / Гигиена', price: '70–80 BYN' }
+          ],
+          note: 'Рост до 28 см в холке'
+        },
+        {
+          category: 'small',
+          breed: 'Пудель / Мальтипу Карлик',
+          keywords: 'пудель мальтипу карлик карликовый 28-35',
+          duration: '2–3 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно (3 ч)', price: '95–105 BYN' },
+            { label: 'Наголо (2 ч) / Гигиена', price: '80–90 BYN' }
+          ],
+          note: 'Рост 28–35 см в холке'
+        },
+        {
+          category: 'small',
+          breed: 'Папильон',
+          keywords: 'папильон папийон',
+          duration: '2 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс', price: '80–90 BYN' },
+            { label: 'Гигиена', price: '70–80 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Чихуахуа',
+          keywords: 'чихуахуа чих чихуа',
+          duration: '1–2 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс (длинношёрстные)', price: '75 BYN' },
+            { label: 'Гигиена / Наголо (дл/ш)', price: '65 BYN' },
+            { label: 'Наголо (короткошёрстные)', price: '60 BYN' }
+          ]
+        },
+        {
+          category: 'small',
+          breed: 'Джек-рассел-терьер',
+          keywords: 'джек рассел терьер',
+          duration: '1,5 часа',
+          service: 'Экспресс-линька',
+          items: [
+            { label: 'Комплекс ухода', price: '75 BYN' }
+          ]
+        },
+
+        // Средние и крупные собаки
+        {
+          category: 'medium',
+          breed: 'Пудель / Мальтипу Средний, Малый',
+          keywords: 'пудель мальтипу средний малый 35-45',
+          duration: '3–3,5 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс модельно', price: '105–115 BYN' },
+            { label: 'Наголо / Гигиена', price: '90–100 BYN' }
+          ],
+          note: 'Рост 35–45 см в холке'
+        },
+        {
+          category: 'medium',
+          breed: 'Корги',
+          keywords: 'корги вельш пемброк кардиган',
+          duration: '2 часа',
+          service: 'Экспресс-линька',
+          items: [
+            { label: 'Комплекс (по размеру)', price: '80–90 BYN' }
+          ]
+        },
+        {
+          category: 'medium',
+          breed: 'Бигль',
+          keywords: 'бигль',
+          duration: '2 часа',
+          service: 'Экспресс-линька',
+          items: [
+            { label: 'Комплекс (по размеру)', price: '85–95 BYN' }
+          ]
+        },
+        {
+          category: 'medium',
+          breed: 'Французский бульдог',
+          keywords: 'французский бульдог',
+          duration: '2 часа',
+          service: 'Мытьё и СПА-уход',
+          items: [
+            { label: 'Комплекс ухода', price: '90 BYN' }
+          ]
+        },
+        {
+          category: 'medium',
+          breed: 'Кинг-чарльз-спаниель',
+          keywords: 'кинг чарльз спаниель кавалер',
+          duration: '2 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Комплекс стандарт', price: '90 BYN' },
+            { label: 'Крупный питомец', price: 'от 100 BYN' }
+          ]
+        },
+        {
+          category: 'medium',
+          breed: 'Спаниель',
+          keywords: 'спаниель кокер',
+          duration: '2 часа',
+          service: 'Стрижка собаки или кошки (комплекс)',
+          items: [
+            { label: 'Стрижка наголо', price: '90 BYN' }
+          ],
+          note: 'Комплекс «по породе» для спаниелей не выполняем'
+        },
+        {
+          category: 'medium',
+          breed: 'Крупные породы собак',
+          keywords: 'крупные собаки хаски овчарка самоед лабрадор голден ретривер',
+          duration: 'от 2 часов',
+          service: 'Экспресс-линька',
+          items: [
+            { label: 'Комплекс ухода (зависит от породы)', price: '120–170 BYN' }
+          ]
+        },
+
+        // Кошки
+        {
+          category: 'cats',
+          breed: 'Кошки: Вычёсывание без мытья',
+          keywords: 'коты кошки вычесывание без мытья кот кошка',
+          duration: 'до 1 часа',
+          service: 'Уход за кошкой (вычёсывание / стрижка / линька)',
+          items: [
+            { label: 'До 6 кг (с хозяином / без)', price: '50 / 60 BYN' },
+            { label: 'От 6 кг (с хозяином / без)', price: '55 / 65 BYN' }
+          ],
+          note: 'При наличии колтунов +10 BYN к тарифу'
+        },
+        {
+          category: 'cats',
+          breed: 'Кошки: Стрижка',
+          keywords: 'коты кошки стрижка кот кошка мейн-кун британец',
+          duration: '1–1,5 часа',
+          service: 'Уход за кошкой (вычёсывание / стрижка / линька)',
+          items: [
+            { label: 'До 6 кг (с хозяином / без)', price: '65 / 80 BYN' },
+            { label: 'От 6 кг (с хозяином / без)', price: '75 / 90 BYN' },
+            { label: 'От 12 кг', price: '85 BYN' },
+            { label: 'Мытьё после стрижки', price: '+20 BYN' }
+          ],
+          note: 'Удаление колтунов: +10–50 BYN'
+        },
+        {
+          category: 'cats',
+          breed: 'Кошки: Экспресс-линька',
+          keywords: 'коты кошки экспресс линька вычес мытье кот кошка',
+          duration: '1,5–2 часа',
+          service: 'Уход за кошкой (вычёсывание / стрижка / линька)',
+          items: [
+            { label: 'До 6 кг (с хозяином / без)', price: '85 / 100 BYN' },
+            { label: 'От 6 кг (с хозяином / без)', price: '95 / 110 BYN' },
+            { label: 'От 12 кг (с хозяином / без)', price: '105 / 120 BYN' }
+          ],
+          note: 'Удаление колтунов и сбитого подшёрстка: +10–50 BYN'
+        },
+
+        // Доп. процедуры и Лапакюр
+        {
+          category: 'extra',
+          breed: 'Лапакюр (обрезание когтей)',
+          keywords: 'лапакюр когти обрезание стрижка когтей лапы',
+          duration: '10–15 минут',
+          service: 'Лапакюр (обрезание когтей)',
+          items: [
+            { label: 'Коты и кошки', price: '10 BYN' },
+            { label: 'Мелкие породы собак', price: '15 BYN' },
+            { label: 'Средние и крупные собаки', price: '20 BYN' }
+          ]
+        },
+        {
+          category: 'extra',
+          breed: 'Чистка ушей',
+          keywords: 'чистка ушей уши гигиена',
+          duration: '5–10 минут',
+          service: 'Чистка ушей',
+          items: [
+            { label: 'В комплексе или отдельно', price: 'Уточнить' }
+          ],
+          note: 'Осмотр и бережное очищение гипоаллергенными средствами'
+        },
+        {
+          category: 'extra',
+          breed: 'Мытьё и сушка / СПА-уход',
+          keywords: 'мытье купание сушка спа косметика',
+          duration: 'от 40 минут',
+          service: 'Мытьё и СПА-уход',
+          items: [
+            { label: 'Мытьё кота после стрижки', price: '20 BYN' },
+            { label: 'Купание по породе и весу', price: 'По запросу' }
+          ],
+          note: 'Подбираем шампунь и кондиционер под тип шерсти'
+        }
+      ];
+
+      let activeTab = 'small';
+      const priceGrid = document.getElementById('priceGrid');
+      const priceEmpty = document.getElementById('priceEmpty');
+      const breedSearch = document.getElementById('breedSearch');
+      const searchStatus = document.getElementById('searchStatus');
+      const tabButtons = document.querySelectorAll('.price-tab');
+      const leadService = document.getElementById('leadService');
+      const leadBreed = document.getElementById('leadBreed');
+      const bookingSection = document.getElementById('booking-form');
+
+      function scrollToFormAndFill(serviceVal, breedVal) {
+        if (leadService && serviceVal) {
+          const exists = Array.from(leadService.options).some((opt) => opt.value === serviceVal);
+          if (exists) leadService.value = serviceVal;
+        }
+        if (leadBreed && breedVal) {
+          leadBreed.value = breedVal;
+        }
+        if (bookingSection) {
+          bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      function renderPriceCards() {
+        const query = (breedSearch.value || '').trim().toLowerCase();
+        let filtered;
+        if (query.length > 0) {
+          filtered = PRICE_DATA.filter((item) =>
+            item.breed.toLowerCase().includes(query) ||
+            item.keywords.toLowerCase().includes(query) ||
+            item.items.some((r) => r.label.toLowerCase().includes(query))
+          );
+          searchStatus.textContent = `Результаты поиска «${breedSearch.value.trim()}» по всем категориям: найдено ${filtered.length}`;
+          searchStatus.classList.remove('hidden');
+        } else {
+          filtered = PRICE_DATA.filter((item) => item.category === activeTab);
+          searchStatus.classList.add('hidden');
+        }
+
+        priceGrid.innerHTML = '';
+
+        if (filtered.length === 0) {
+          priceEmpty.classList.remove('hidden');
+          return;
+        }
+        priceEmpty.classList.add('hidden');
+
+        filtered.forEach((item) => {
+          const card = document.createElement('div');
+          card.className = 'bg-cream-50/75 border border-cream-200 rounded-[24px] p-5 sm:p-6 flex flex-col justify-between hover:border-coral-400/70 hover:bg-white hover:shadow-card transition';
+
+          const rowsHtml = item.items.map((row) => `
+            <div class="flex items-baseline justify-between gap-3 py-2 border-b border-cream-200/80 last:border-b-0 text-sm">
+              <span class="text-slate-600">${row.label}</span>
+              <span class="font-display font-extrabold text-espresso-900 whitespace-nowrap tabular-nums">${row.price}</span>
+            </div>
+          `).join('');
+
+          const noteHtml = item.note
+            ? `<p class="mt-3 text-xs text-slate-500 bg-white rounded-xl px-3 py-2 border border-cream-200">${item.note}</p>`
+            : '';
+
+          card.innerHTML = `
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-display font-black text-lg text-espresso-900 leading-snug">${item.breed}</h3>
+                <span class="shrink-0 px-2.5 py-1 rounded-full bg-coral-50 text-coral-600 text-[11px] font-bold whitespace-nowrap">${item.duration}</span>
+              </div>
+              <div class="mt-4">${rowsHtml}</div>
+              ${noteHtml}
+            </div>
+            <button type="button" class="price-book-btn mt-5 w-full py-3 px-4 rounded-full bg-white hover:bg-coral-500 border border-cream-200 hover:border-coral-500 text-espresso-900 hover:text-white font-bold text-sm transition">
+              Записать на процедуру
+            </button>
+          `;
+
+          card.querySelector('.price-book-btn').addEventListener('click', () => {
+            scrollToFormAndFill(item.service, item.breed);
+          });
+
+          priceGrid.appendChild(card);
+        });
+      }
+
+      tabButtons.forEach((tabBtn) => {
+        tabBtn.addEventListener('click', () => {
+          activeTab = tabBtn.getAttribute('data-price-tab');
+          breedSearch.value = '';
+          tabButtons.forEach((b) => {
+            const isSelected = b === tabBtn;
+            b.setAttribute('aria-selected', String(isSelected));
+            b.className = isSelected
+              ? 'price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-espresso-900 text-white shadow-sm'
+              : 'price-tab shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition bg-cream-50 text-espresso-900 border border-cream-200 hover:border-coral-500';
+          });
+          renderPriceCards();
+        });
+      });
+
+      breedSearch.addEventListener('input', renderPriceCards);
+      renderPriceCards();
+
+      // Кнопки выбора услуги из карточек услуг и курсов
+      document.querySelectorAll('[data-select-service]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          scrollToFormAndFill(btn.getAttribute('data-select-service'), '');
+        });
+      });
+
+      // 5. Лёгкий мини-интерактив за 2 клика перед формой (автоподстановка в заявку)
+      let selectedQuickPet = 'Собака мелкой породы';
+      let selectedQuickCare = 'Комплексный груминг';
+      let selectedMappedService = 'Стрижка собаки или кошки (комплекс)';
+
+      const quickPetBtns = document.querySelectorAll('.quick-pet-btn');
+      const quickCareBtns = document.querySelectorAll('.quick-care-btn');
+      const quickSummaryText = document.getElementById('quickSummaryText');
+
+      function applyQuickSelection() {
+        if (quickSummaryText) {
+          quickSummaryText.textContent = `${selectedQuickPet} — ${selectedQuickCare}`;
+        }
+        if (leadBreed) {
+          leadBreed.value = selectedQuickPet;
+        }
+        if (leadService) {
+          let targetService = selectedMappedService;
+          if (selectedQuickPet === 'Курсы груминга') {
+            targetService = 'Консультация по курсам груминга';
+          } else if (selectedQuickPet === 'Кошка' && selectedQuickCare !== 'Гигиена / лапакюр') {
+            targetService = 'Уход за кошкой (вычёсывание / стрижка / линька)';
+          }
+          const exists = Array.from(leadService.options).some((opt) => opt.value === targetService);
+          if (exists) leadService.value = targetService;
+        }
+      }
+
+      quickPetBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedQuickPet = btn.getAttribute('data-quick-pet');
+          quickPetBtns.forEach((b) => {
+            const active = b === btn;
+            b.className = active
+              ? 'quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-espresso-900 text-white border-espresso-900'
+              : 'quick-pet-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500';
+          });
+          applyQuickSelection();
+        });
+      });
+
+      quickCareBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedQuickCare = btn.getAttribute('data-quick-care');
+          selectedMappedService = btn.getAttribute('data-map-service');
+          quickCareBtns.forEach((b) => {
+            const active = b === btn;
+            b.className = active
+              ? 'quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-coral-500 text-white border-coral-500'
+              : 'quick-care-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition bg-white text-espresso-900 border-cream-200 hover:border-coral-500';
+          });
+          applyQuickSelection();
+        });
+      });
+
+      // 6. Минимальная дата визита = сегодня
+      const dateInput = document.getElementById('leadDate');
+      if (dateInput) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // 7. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Фото работы салона «Любимка»';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 8. Cookie-баннер и автоматическое скрытие мобильной Sticky-панели / плавающей кнопки пока баннер открыт
+      const COOKIE_KEY = 'lubimka_gomel_cookie_choice';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const floatingMessenger = document.getElementById('floatingMessenger');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all' || choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          floatingMessenger.classList.remove('hidden');
+          if (mobileStickyDock) mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = choice === 'all'
+            ? 'Приняты все cookie'
+            : 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          floatingMessenger.classList.add('hidden');
+          if (mobileStickyDock) mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 9. Валидация и отправка формы записи
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const breedVal = document.getElementById('leadBreed').value.trim();
+        const serviceVal = document.getElementById('leadService').value;
+        const dateVal = document.getElementById('leadDate').value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Viber';
+        const commentVal = document.getElementById('leadComment').value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (минимум 2 символа).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона (от 9 до 15 цифр).';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'Груминг-салон «Любимка» (Гомель)',
+          name: nameVal,
+          phone: phoneVal,
+          breed: breedVal || 'Не указана',
+          service: serviceVal,
+          date: dateVal || 'Не указана',
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!response.ok) {
+              throw new Error('Ошибка отправки заявки');
+            }
+            modalSuccessDesc.textContent = 'Спасибо! Администратор салона «Любимка» получил заявку и скоро свяжется с вами для подтверждения времени.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения вашего Telegram-бота заявка будет мгновенно приходить администратору в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Порода / питомец: ${payload.breed}\n` +
+              `Услуга: ${payload.service}\n` +
+              `Желаемая дата: ${payload.date}\n` +
+              `Способ связи: ${payload.contactMethod}\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          applyQuickSelection();
+          openModal(modalSuccess);
+        } catch (err) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните нам напрямую или напишите в Viber.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку на запись';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

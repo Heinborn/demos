@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Cleaning «Элит Гродно» — Профессиональный клининг для дома и бизнеса 24/7</title>
+  <meta name="description" content="Профессиональная уборка квартир, домов, офисов и помещений после ремонта в Гродно и Гродненской области 24/7. Генеральная уборка от 4,5 BYN/м², мойка окон, химчистка мебели, работа по договору с юрлицами." />
+
+  <!-- Google Fonts: Unbounded (Nordic Architectural Display) & Golos Text (Clean Cyrillic Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Golos Text', 'system-ui', 'sans-serif'],
+            display: ['Unbounded', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            air: '#F7FAF8',
+            mint: '#E6F2EC',
+            mintBorder: '#D4E4DA',
+            emeraldBrand: '#235C42',
+            emeraldHover: '#1A4732',
+            emeraldLight: '#2F7857',
+            forestInk: '#13221B',
+            forestMuted: '#475D53',
+            forestSubtle: '#687E73',
+          },
+          boxShadow: {
+            bento: '0 10px 30px -14px rgba(19, 34, 27, 0.08)',
+            bentoHover: '0 20px 44px -18px rgba(35, 92, 66, 0.16)',
+            dock: '0 12px 34px -8px rgba(19, 34, 27, 0.24)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+      background-color: #F7FAF8;
+      color: #13221B;
+    }
+    body {
+      font-family: 'Golos Text', system-ui, sans-serif;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Unbounded', system-ui, sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    .sunlit-canvas {
+      background-image:
+        radial-gradient(ellipse 65% 45% at 12% 0%, rgba(230, 242, 236, 0.95), transparent 62%),
+        radial-gradient(ellipse 50% 40% at 92% 6%, rgba(35, 92, 66, 0.06), transparent 55%);
+    }
+    .bento-card {
+      background-color: #FFFFFF;
+      border: 1px solid #D8E7DF;
+      transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    }
+    .bento-card:hover {
+      border-color: #B4D2C2;
+      box-shadow: 0 20px 44px -18px rgba(35, 92, 66, 0.14);
+    }
+    .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 220ms ease;
+    }
+    .faq-item[data-open="true"] .faq-content {
+      grid-template-rows: 1fr;
+    }
+    .faq-inner {
+      overflow: hidden;
+    }
+    .faq-item[data-open="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-air text-forestInk antialiased selection:bg-emeraldBrand selection:text-white pb-24 md:pb-10">
+
+  <!-- ==================== ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      // Вставьте URL веб-приложения Google Apps Script для отправки заявок в Telegram.
+      // Если оставить пустым "", форма работает в безопасном демонстрационном режиме.
+      googleScriptUrl: '',
+      companyName: 'Elite Cleaning · ООО «Элит Гродно»',
+      shortBrand: 'Elite Cleaning',
+      unp: '591048537',
+      regCert: 'Свидетельство о госрегистрации выдано Гродненским горисполкомом № 0231072',
+      city: 'Гродно и Гродненская область',
+      address: 'г. Гродно, ул. Дзержинского, 32, офис 8',
+      // Основной телефон (Яндекс Карты и договор-оферта)
+      displayPhone: '+375 (29) 869-99-98',
+      telHref: 'tel:+375298699998',
+      // Второй номер компании (сайт и Viber)
+      secondaryDisplayPhone: '+375 (29) 580-33-91',
+      secondaryTelHref: 'tel:+375295803391',
+      viberHref: 'viber://chat?number=%2B375295803391',
+      telegramUrl: 'https://t.me/NatalliaStogova',
+      // Исправлен код страны с ошибочного +373 на корректный белорусский +375
+      whatsappUrl: 'https://wa.me/375295803391',
+      instagramUrl: 'https://www.instagram.com/elite_cleaning_grodno/',
+      email: 'contact@elitgrodno.by',
+      yandexMapsUrl: 'https://yandex.by/maps/org/elit_grodno/49669196784/',
+      schedule: {
+        is247: true,
+        timezone: 'Europe/Minsk',
+        dayStart: 8,
+        dayEnd: 22
+      }
+    };
+  </script>
+
+  <!-- ==================== 1-СТРОЧНАЯ АРХИТЕКТУРНАЯ ШАПКА ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-mintBorder/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-3">
+      <!-- Логотип -->
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 group whitespace-nowrap">
+        <span class="w-9 h-9 rounded-xl bg-emeraldBrand text-white flex items-center justify-center shrink-0 group-hover:bg-emeraldHover transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+            <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" />
+          </svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-display text-[13px] sm:text-[14px] font-semibold tracking-tight text-forestInk">Elite Cleaning</span>
+          <span class="text-[11px] text-forestSubtle font-medium mt-0.5">Элит Гродно · 24/7</span>
+        </span>
+      </a>
+
+      <!-- Навигация (строго в 1 строку на десктопе) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-forestMuted">
+        <a href="#services" class="whitespace-nowrap hover:text-emeraldBrand transition">Услуги</a>
+        <a href="#picker" class="whitespace-nowrap hover:text-emeraldBrand transition">Подбор уборки</a>
+        <a href="#process" class="whitespace-nowrap hover:text-emeraldBrand transition">Как работаем</a>
+        <a href="#faq" class="whitespace-nowrap hover:text-emeraldBrand transition">Вопросы</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-emeraldBrand transition">Контакты</a>
+      </nav>
+
+      <!-- Правая часть: Живой статус (Europe/Minsk) + Телефон + CTA -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Живой статус по времени Беларуси -->
+        <div id="liveStatusPill" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-mint text-emeraldBrand text-[12px] font-semibold whitespace-nowrap">
+          <span class="relative flex h-2 w-2 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emeraldBrand"></span>
+          </span>
+          <span id="liveStatusText" class="tabular-nums">Открыто 24/7</span>
+        </div>
+
+        <!-- Компактный статус на мобилке -->
+        <span id="mobileLiveStatus" class="inline-flex md:hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint text-emeraldBrand text-[11px] font-semibold whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+          <span>24/7</span>
+        </span>
+
+        <!-- Номер телефона (без переноса!) -->
+        <a
+          data-contact="primaryPhone"
+          href="tel:+375298699998"
+          class="hidden lg:inline-flex items-center gap-1.5 text-[14px] font-semibold text-forestInk hover:text-emeraldBrand transition whitespace-nowrap tabular-nums"
+        >
+          <svg class="w-4 h-4 text-emeraldBrand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <span>+375 (29) 869-99-98</span>
+        </a>
+
+        <!-- Кнопка расчёта -->
+        <a
+          href="#picker"
+          class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[13px] font-semibold transition whitespace-nowrap"
+        >
+          Рассчитать
+        </a>
+
+        <!-- Кнопка меню на мобильных -->
+        <button
+          type="button"
+          id="mobileMenuBtn"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          class="xl:hidden w-9 h-9 rounded-xl border border-mintBorder bg-air text-forestInk flex items-center justify-center hover:border-emeraldBrand transition"
+        >
+          <svg id="burgerIcon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Мобильное выпадающее меню -->
+    <div id="mobileMenuDrawer" class="hidden xl:hidden border-t border-mintBorder bg-white px-4 py-4 space-y-3 shadow-bento">
+      <div class="grid grid-cols-2 gap-2 text-sm font-medium text-forestInk">
+        <a href="#services" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Услуги</a>
+        <a href="#picker" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Подбор за 2 клика</a>
+        <a href="#process" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Как работаем</a>
+        <a href="#faq" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Частые вопросы</a>
+        <a href="#gallery" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Примеры чистоты</a>
+        <a href="#contacts" class="mobile-nav-link px-3 py-2 rounded-xl bg-air hover:bg-mint transition">Контакты</a>
+      </div>
+      <div class="pt-2 border-t border-mintBorder flex flex-col gap-2">
+        <a data-contact="primaryPhone" href="tel:+375298699998" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-mint text-emeraldBrand font-semibold text-sm tabular-nums">
+          <span>+375 (29) 869-99-98</span>
+          <span class="text-xs font-medium">Позвонить</span>
+        </a>
+        <a data-contact="secondaryPhone" href="tel:+375295803391" class="flex items-center justify-between px-3.5 py-2 rounded-xl bg-air text-forestInk font-medium text-sm tabular-nums">
+          <span>+375 (29) 580-33-91</span>
+          <span class="text-xs text-forestSubtle">Доп. / Viber</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="sunlit-canvas">
+
+    <!-- ==================== NORDIC BENTO-GRID HERO ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-10 sm:pt-7 sm:pb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
+
+        <!-- ГЛАВНАЯ ТИПОГРАФИЧЕСКАЯ ПЛИТКА BENTO (СЛЕВА) -->
+        <div class="lg:col-span-7 bg-white border border-mintBorder rounded-[26px] p-5 sm:p-7 lg:p-8 shadow-bento flex flex-col justify-between gap-5">
+          <div>
+            <!-- Верхняя строка: локация + реальный рейтинг Яндекс Карт -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-medium text-forestMuted">
+                <svg class="w-4 h-4 text-emeraldBrand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Гродно и Гродненская область</span>
+              </span>
+              <a
+                href="https://yandex.by/maps/org/elit_grodno/49669196784/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-air border border-mintBorder text-[12px] font-semibold text-forestInk hover:border-emeraldBrand transition whitespace-nowrap"
+              >
+                <span class="text-amber-500 leading-none">★</span>
+                <span class="tabular-nums">4.9</span>
+                <span class="text-forestSubtle font-normal">· 17 отзывов на Яндекс Картах</span>
+              </a>
+            </div>
+
+            <!-- Заголовок H1 (Unbounded) -->
+            <h1 class="font-display text-[24px] sm:text-[32px] lg:text-[36px] font-semibold leading-[1.15] tracking-[-0.025em] text-forestInk">
+              Уборка для дома<br class="hidden sm:inline" />
+              и бизнеса <span class="text-emeraldBrand">24/7</span>
+            </h1>
+
+            <p class="mt-3 text-[14px] sm:text-[15px] text-forestMuted leading-relaxed max-w-xl">
+              Профессиональный клининг квартир, коттеджей, офисов и помещений после ремонта. Приезжаем со своей техникой и безопасными средствами — оплачиваете после проверки результата.
+            </p>
+          </div>
+
+          <!-- ВСТРОЕННЫЙ ПЕРЕКЛЮЧАТЕЛЬ «ДЛЯ ДОМА / ДЛЯ БИЗНЕСА» ПРЯМО НА ПЕРВОМ ЭКРАНЕ -->
+          <div class="bg-air border border-mintBorder/90 rounded-2xl p-3.5 sm:p-4">
+            <div class="grid grid-cols-2 gap-1.5 p-1 bg-white rounded-xl border border-mintBorder/70" role="tablist" aria-label="Направление уборки">
+              <button
+                type="button"
+                id="heroTabHome"
+                role="tab"
+                aria-selected="true"
+                data-hero-segment="home"
+                class="hero-segment-btn py-2 px-3 rounded-lg text-[13px] font-semibold transition bg-emeraldBrand text-white shadow-sm"
+              >
+                Для дома
+              </button>
+              <button
+                type="button"
+                id="heroTabBiz"
+                role="tab"
+                aria-selected="false"
+                data-hero-segment="business"
+                class="hero-segment-btn py-2 px-3 rounded-lg text-[13px] font-semibold transition text-forestMuted hover:text-forestInk"
+              >
+                Для бизнеса
+              </button>
+            </div>
+
+            <!-- Контент: Для дома -->
+            <div id="heroPanelHome" class="mt-3.5 space-y-3">
+              <div class="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px]">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-mint text-emeraldBrand font-semibold whitespace-nowrap">
+                  Генеральная — от 4,5 BYN/м²
+                </span>
+                <span class="px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-forestMuted">После ремонта</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-forestMuted">Окна и химчистка</span>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-2.5">
+                <a
+                  href="#picker"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[14px] font-semibold transition"
+                >
+                  <span>Подобрать уборку за 2 клика</span>
+                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  data-jump-segment="home"
+                  class="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-white hover:bg-mint/70 border border-mintBorder text-forestInk text-[13px] font-semibold transition whitespace-nowrap"
+                >
+                  Услуги физлицам
+                </button>
+              </div>
+            </div>
+
+            <!-- Контент: Для бизнеса -->
+            <div id="heroPanelBiz" class="hidden mt-3.5 space-y-3">
+              <div class="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px]">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-mint text-emeraldBrand font-semibold">
+                  Договор и безналичный расчёт
+                </span>
+                <span class="px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-forestMuted">Ночные смены 24/7</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-forestMuted">Офисы, витрины, потолки</span>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-2.5">
+                <button
+                  type="button"
+                  data-prefill-service="Ежедневная и комплексная уборка офиса (юрлица)"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[14px] font-semibold transition"
+                >
+                  <span>Запросить расчёт для бизнеса</span>
+                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  data-jump-segment="business"
+                  class="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-white hover:bg-mint/70 border border-mintBorder text-forestInk text-[13px] font-semibold transition whitespace-nowrap"
+                >
+                  Услуги юрлицам
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Нижняя строка доверия внутри карточки -->
+          <div class="pt-3 border-t border-mintBorder/80 grid grid-cols-3 gap-2 text-[11px] sm:text-[12px] text-forestMuted">
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-md bg-mint text-emeraldBrand flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" /></svg>
+              </span>
+              <span class="leading-tight">Страховка имущества</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-md bg-mint text-emeraldBrand flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" /></svg>
+              </span>
+              <span class="leading-tight">Оплата по факту</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-md bg-mint text-emeraldBrand flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" /></svg>
+              </span>
+              <span class="leading-tight">Проверка персонала</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ПРАВАЯ АРХИТЕКТУРНАЯ ФОТО-МОЗАИКА BENTO -->
+        <div class="lg:col-span-5 grid grid-cols-12 gap-4">
+          <!-- Главная широкая солнечная фотография -->
+          <figure class="col-span-12 relative rounded-[26px] overflow-hidden border border-mintBorder shadow-bento h-[220px] sm:h-[260px] lg:h-[310px] group">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+              alt="Светлая чистая гостиная с панорамными окнами после клининга"
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-forestInk/50 via-transparent to-transparent"></div>
+            <figcaption class="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[12px] font-semibold text-forestInk shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emeraldBrand"></span>
+                Светлая чистота без разводов и пыли
+              </span>
+            </figcaption>
+          </figure>
+
+          <!-- Нижняя левая фото-плитка -->
+          <figure class="col-span-7 relative rounded-[24px] overflow-hidden border border-mintBorder shadow-bento h-[170px] sm:h-[205px] group">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+              alt="Чистая солнечная комната и вымытые окна"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-forestInk/45 via-transparent to-transparent"></div>
+            <figcaption class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md text-[11px] font-semibold text-forestInk">
+              Окна, кухни, мебель
+            </figcaption>
+          </figure>
+
+          <!-- Нижняя правая изумрудная акцентная плитка 24/7 -->
+          <div class="col-span-5 rounded-[24px] bg-emeraldBrand text-white p-4 sm:p-5 flex flex-col justify-between h-[170px] sm:h-[205px] shadow-bento">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-[22px] sm:text-[26px] font-semibold leading-none tracking-tight">24/7</span>
+              <span class="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+              </span>
+            </div>
+            <div>
+              <p class="text-[12px] sm:text-[13px] text-white/90 leading-snug">
+                Работаем днём и в ночные смены — удобно для офисов и срочных выездов
+              </p>
+              <a href="#booking" class="mt-2.5 inline-flex items-center gap-1 text-[12px] font-semibold text-mint hover:text-white transition">
+                <span>Оставить заявку</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== КАТАЛОГ УСЛУГ: ДЛЯ ДОМА / ДЛЯ БИЗНЕСА ==================== -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
+        <div>
+          <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+            Направления работы
+          </span>
+          <h2 class="font-display text-[22px] sm:text-[30px] font-semibold leading-tight text-forestInk">
+            Услуги для дома и бизнеса
+          </h2>
+          <p class="mt-2 text-[14px] sm:text-[15px] text-forestMuted max-w-2xl">
+            Полный спектр клининговых работ в Гродно и Гродненской области. Выберите нужный формат — менеджер уточнит детали и назовёт точную стоимость.
+          </p>
+        </div>
+
+        <!-- Сегментные вкладки каталога -->
+        <div class="inline-grid grid-cols-2 p-1.5 rounded-2xl bg-white border border-mintBorder shadow-bento shrink-0 self-start md:self-auto" role="tablist" aria-label="Категории услуг">
+          <button
+            type="button"
+            id="catTabHome"
+            role="tab"
+            aria-selected="true"
+            data-cat-segment="home"
+            class="cat-segment-btn px-4 sm:px-5 py-2.5 rounded-xl text-[13px] font-semibold transition bg-emeraldBrand text-white whitespace-nowrap"
+          >
+            Физическим лицам
+          </button>
+          <button
+            type="button"
+            id="catTabBiz"
+            role="tab"
+            aria-selected="false"
+            data-cat-segment="business"
+            class="cat-segment-btn px-4 sm:px-5 py-2.5 rounded-xl text-[13px] font-semibold transition text-forestMuted hover:text-forestInk whitespace-nowrap"
+          >
+            Юридическим лицам
+          </button>
+        </div>
+      </div>
+
+      <!-- ПАНЕЛЬ 1: ДЛЯ ФИЗИЧЕСКИХ ЛИЦ (реальные услуги с elitgrodno.by/fiz/) -->
+      <div id="catPanelHome" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Карточка 1: Выделенная (реальная цена от 4,5 BYN/м² с их сайта!) -->
+        <article class="sm:col-span-2 rounded-3xl bg-emeraldBrand text-white p-6 flex flex-col justify-between gap-5 shadow-bento">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-full bg-white/15 text-[12px] font-semibold">Флагманская услуга</span>
+              <span class="px-3 py-1 rounded-full bg-white text-emeraldBrand text-[13px] font-bold tabular-nums">от 4,5 BYN / м²</span>
+            </div>
+            <h3 class="font-display text-[18px] sm:text-[20px] font-semibold leading-snug">
+              Генеральная уборка квартиры или дома «Всё включено»
+            </h3>
+            <p class="mt-2.5 text-[14px] text-white/85 leading-relaxed">
+              Глубокая комплексная уборка всех комнат, поверхностей, мебели, плинтусов, светильников, кухни и санузла профессиональными средствами.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/15">
+            <span class="text-[12px] text-white/80">Точная сумма — по площади и состоянию</span>
+            <button
+              type="button"
+              data-prefill-service="Генеральная уборка квартиры/дома «Всё включено»"
+              class="px-4 py-2.5 rounded-xl bg-white hover:bg-mint text-emeraldBrand text-[13px] font-semibold transition"
+            >
+              Рассчитать уборку
+            </button>
+          </div>
+        </article>
+
+        <!-- Карточка 2 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Уборка после ремонта и строительства
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Убираем строительную пыль, следы штукатурки, клея и краски со всех поверхностей до идеального состояния.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Уборка после ремонта/строительства" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <!-- Карточка 3 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l1.8 4.8L19 9.5l-5.2 1.7L12 16l-1.8-4.8L5 9.5l5.2-1.7L12 3z" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Поддерживающая уборка
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Регулярное поддержание свежести и порядка в квартире или доме. Возможен официальный договор по удобному графику.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Поддерживающая уборка" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <!-- Карточка 4 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 10h18M9 4v16" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Генеральная уборка кухни и санузла
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Удаление стойкого жира, известкового налёта, дезинфекция сантехники, плитки, фасадов и бытовой техники.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Генеральная уборка кухни и/или санузла" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <!-- Карточка 5 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M12 3v18M3 12h18" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Мойка окон, балконов и витрин
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Бережная очистка стёкол без разводов, мытьё рам, подоконников, отливов и остекления лоджий.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Мойка окон и витрин" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <!-- Карточка 6 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 11V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v4" /><path d="M2 11h20v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z" /><path d="M6 19v2M18 19v2" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Химчистка мебели, ковров и автосалонов
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Глубокая экстракторная чистка диванов, кресел, матрасов, ковровых покрытий и салонов автомобилей.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Химчистка мягкой мебели, ковров или автосалона" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <!-- Карточка 7 -->
+        <article class="bento-card rounded-3xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <span class="w-10 h-10 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            </span>
+            <h3 class="font-display text-[15px] font-semibold leading-snug text-forestInk">
+              Предпродажная, участок и спецуборка
+            </h3>
+            <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+              Уборка перед заселением/выселением, покос травы, демонтаж ветхих строений и вывоз мусора, удаление плесени, уборка после пожара и затопления.
+            </p>
+          </div>
+          <button type="button" data-prefill-service="Предпродажная / специальные виды уборки" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+            <span>Запросить расчёт</span><span aria-hidden="true">→</span>
+          </button>
+        </article>
+      </div>
+
+      <!-- ПАНЕЛЬ 2: ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ (реальные услуги с elitgrodno.by/ur/) -->
+      <div id="catPanelBiz" class="hidden space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <span class="text-[12px] font-semibold text-emeraldBrand bg-mint px-2.5 py-1 rounded-lg">По договору</span>
+              <h3 class="mt-3 font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Ежедневная и комплексная уборка офисов
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Регулярное обслуживание бизнес-центров, офисов, кабинетов и торговых залов по согласованному графику, включая утренние и ночные смены.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Ежедневная/комплексная уборка офиса (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <span class="text-[12px] font-semibold text-emeraldBrand bg-mint px-2.5 py-1 rounded-lg">Стройобъекты</span>
+              <h3 class="mt-3 font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Уборка после ремонта и строительных работ
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Оперативная подготовка коммерческих площадей, салонов, магазинов и производственных помещений к сдаче и открытию.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Уборка коммерческого объекта после ремонта (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <span class="text-[12px] font-semibold text-emeraldBrand bg-mint px-2.5 py-1 rounded-lg">Любая сложность</span>
+              <h3 class="mt-3 font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Генеральная уборка помещений
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Глубокая сезонная или разовая очистка любых коммерческих объектов с применением профессиональной техники и химии.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Генеральная уборка коммерческого помещения (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Мойка окон и витрин
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Кристально чистые фасадные витрины, офисные стеклянные перегородки и входные группы без разводов.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Мойка окон и витрин (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Химчистка мебели и ковровых покрытий
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Восстановление свежести офисных кресел, диванов в зонах ожидания и ковролина в переговорных и коридорах.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Химчистка офисной мебели и ковров (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article class="bento-card rounded-3xl p-6 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="font-display text-[16px] font-semibold leading-snug text-forestInk">
+                Мойка подвесных потолков
+              </h3>
+              <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+                Деликатная профессиональная очистка подвесных и реечных потолков, вентиляционных решёток и светильников.
+              </p>
+            </div>
+            <button type="button" data-prefill-service="Мойка подвесных потолков (юрлица)" class="self-start text-[13px] font-semibold text-emeraldBrand hover:text-emeraldHover inline-flex items-center gap-1">
+              <span>Запросить КП</span><span aria-hidden="true">→</span>
+            </button>
+          </article>
+        </div>
+
+        <!-- Плашка условий B2B -->
+        <div class="rounded-3xl bg-emeraldBrand text-white p-5 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <p class="font-display text-[15px] sm:text-[17px] font-semibold">
+              Удобные условия для организаций и предприятий Гродно
+            </p>
+            <p class="text-[13px] sm:text-[14px] text-white/85">
+              Заключаем типовой договор, работаем по безналичному расчёту, выполняем часть работ в ночное время, чтобы не мешать сотрудникам и гостям. Нам доверяют компании региона (в т.ч. филиалы Белгосстраха и «Кронон»).
+            </p>
+          </div>
+          <button
+            type="button"
+            data-prefill-service="Консультация по договору для юридического лица"
+            class="px-5 py-3 rounded-xl bg-white hover:bg-mint text-emeraldBrand text-[13px] font-semibold transition shrink-0 whitespace-nowrap"
+          >
+            Обсудить договор
+          </button>
+        </div>
+      </div>
+
+      <!-- Честное примечание по расчёту цены -->
+      <div class="mt-5 px-4 py-3 rounded-2xl bg-white border border-mintBorder/80 text-[13px] text-forestMuted flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <span>
+          <strong class="text-forestInk">Как формируется стоимость:</strong> зависит от площади помещения, вида уборки, степени загрязнения и индивидуальных пожеланий.
+        </span>
+        <a href="#picker" class="text-emeraldBrand font-semibold hover:underline whitespace-nowrap">Подобрать вариант →</a>
+      </div>
+    </section>
+
+    <!-- ==================== 2-КЛИКОВЫЙ МИНИ-ИНТЕРАКТИВ (БЕЗ КАЛЬКУЛЯТОРА ЦЕН) ==================== -->
+    <section id="picker" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <div class="rounded-[28px] bg-white border border-mintBorder shadow-bento p-5 sm:p-8 lg:p-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-7">
+          <div>
+            <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+              Быстрый подбор за 2 клика
+            </span>
+            <h2 class="font-display text-[20px] sm:text-[26px] font-semibold text-forestInk leading-tight">
+              Подскажите задачу — подставим всё в заявку
+            </h2>
+          </div>
+          <p class="text-[13px] sm:text-[14px] text-forestMuted max-w-md">
+            Без сложных анкет: выберите тип объекта и удобный формат, а менеджер перезвонит и озвучит ориентир по стоимости.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <!-- Шаг 1 -->
+          <div class="lg:col-span-7 space-y-3">
+            <p class="text-[13px] font-semibold text-forestInk flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-emeraldBrand text-white text-[12px] font-bold flex items-center justify-center">1</span>
+              <span>Что нужно убрать?</span>
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="pickerStep1">
+              <button type="button" data-pick-object="Квартира" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-emeraldBrand bg-mint text-emeraldBrand">
+                Квартира
+              </button>
+              <button type="button" data-pick-object="Частный дом / коттедж" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Частный дом
+              </button>
+              <button type="button" data-pick-object="Офис или бизнес" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Офис / бизнес
+              </button>
+              <button type="button" data-pick-object="После ремонта" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                После ремонта
+              </button>
+              <button type="button" data-pick-object="Мойка окон / витрин" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Мойка окон
+              </button>
+              <button type="button" data-pick-object="Химчистка мебели / ковров" class="pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Химчистка
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div class="lg:col-span-5 space-y-3">
+            <p class="text-[13px] font-semibold text-forestInk flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-emeraldBrand text-white text-[12px] font-bold flex items-center justify-center">2</span>
+              <span>Когда удобно?</span>
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5" id="pickerStep2">
+              <button type="button" data-pick-timing="Сегодня / срочный выезд" class="pick-time-btn px-4 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Сегодня / срочно
+              </button>
+              <button type="button" data-pick-timing="На этой неделе" class="pick-time-btn px-4 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-emeraldBrand bg-mint text-emeraldBrand">
+                На этой неделе
+              </button>
+              <button type="button" data-pick-timing="Регулярный график (по договору)" class="pick-time-btn px-4 py-3 rounded-2xl border text-left text-[13px] font-semibold transition border-mintBorder bg-air text-forestInk hover:border-emeraldBrand">
+                Регулярный график
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Итоговая панель передачи в заявку -->
+        <div class="mt-6 pt-5 border-t border-mintBorder flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-xl bg-mint text-emeraldBrand flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+            </span>
+            <div>
+              <p class="text-[11px] uppercase tracking-wider font-semibold text-forestSubtle">Ваш выбор</p>
+              <p id="pickerSummary" class="text-[14px] sm:text-[15px] font-semibold text-forestInk">Квартира · На этой неделе</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="pickerApplyBtn"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[14px] font-semibold transition whitespace-nowrap"
+          >
+            <span>Подставить в заявку</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ГАЛЕРЕЯ С ЛАЙТБОКСОМ ==================== -->
+    <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-7">
+        <div>
+          <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+            Стандарт чистоты
+          </span>
+          <h2 class="font-display text-[22px] sm:text-[28px] font-semibold text-forestInk leading-tight">
+            Как выглядят пространства после клининга
+          </h2>
+        </div>
+        <p class="text-[12px] text-forestSubtle max-w-xs sm:text-right">
+          Иллюстративные фото для прототипа — при запуске разместим ваши реальные снимки «до / после» из портфолио.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
+        <button type="button" data-gallery-idx="0" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85" alt="Генеральная уборка квартиры и панорамных окон" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Генеральная уборка квартир и домов</span>
+        </button>
+
+        <button type="button" data-gallery-idx="1" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=85" alt="Генеральная уборка кухни и столешниц" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Генеральная уборка кухни</span>
+        </button>
+
+        <button type="button" data-gallery-idx="2" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85" alt="Очистка и дезинфекция санузла и стеклянной душевой" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Чистота санузлов и душевых</span>
+        </button>
+
+        <button type="button" data-gallery-idx="3" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt="Комплексная уборка офисов и стеклянных перегородок" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Клининг офисов и коммерческих помещений</span>
+        </button>
+
+        <button type="button" data-gallery-idx="4" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85" alt="Глубокая химчистка мягкой мебели" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Химчистка диванов, кресел и ковров</span>
+        </button>
+
+        <button type="button" data-gallery-idx="5" class="gallery-trigger group relative rounded-3xl overflow-hidden border border-mintBorder aspect-[4/3] text-left focus:outline-none focus:ring-2 focus:ring-emeraldBrand">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="Мойка окон и уборка после ремонта" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-forestInk/65 via-transparent to-transparent"></div>
+          <span class="absolute bottom-3.5 left-4 right-4 text-white text-[13px] font-semibold">Мойка окон и уборка после ремонта</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== ЭТАПЫ РАБОТЫ И ГАРАНТИИ ==================== -->
+    <section id="process" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div class="mb-8">
+        <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+          Прозрачный процесс
+        </span>
+        <h2 class="font-display text-[22px] sm:text-[28px] font-semibold text-forestInk">
+          Как мы работаем
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bento-card rounded-3xl p-6">
+          <span class="font-display text-[22px] font-semibold text-emeraldBrand/40">01</span>
+          <h3 class="mt-3 font-display text-[15px] font-semibold text-forestInk">Заявка</h3>
+          <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+            Оставляете заявку на сайте, звоните или пишете в Viber / Telegram в любое время суток.
+          </p>
+        </div>
+        <div class="bento-card rounded-3xl p-6">
+          <span class="font-display text-[22px] font-semibold text-emeraldBrand/40">02</span>
+          <h3 class="mt-3 font-display text-[15px] font-semibold text-forestInk">Расчёт</h3>
+          <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+            Менеджер связывается с вами, уточняет площадь и задачи и называет понятную стоимость.
+          </p>
+        </div>
+        <div class="bento-card rounded-3xl p-6">
+          <span class="font-display text-[22px] font-semibold text-emeraldBrand/40">03</span>
+          <h3 class="mt-3 font-display text-[15px] font-semibold text-forestInk">Уборка 24/7</h3>
+          <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+            В удобное для вас время (включая ночные часы для бизнеса) приезжает бригада со всем инвентарём.
+          </p>
+        </div>
+        <div class="bento-card rounded-3xl p-6">
+          <span class="font-display text-[22px] font-semibold text-emeraldBrand/40">04</span>
+          <h3 class="mt-3 font-display text-[15px] font-semibold text-forestInk">Оплата</h3>
+          <p class="mt-2 text-[13px] text-forestMuted leading-relaxed">
+            Проверяете качество работы — и только после этого оплачиваете наличными или по безналу.
+          </p>
+        </div>
+      </div>
+
+      <!-- Три гарантийные плитки (факты с их сайта и договора-оферты) -->
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-3xl bg-mint/70 border border-mintBorder p-5 flex items-start gap-3.5">
+          <span class="w-10 h-10 rounded-xl bg-white text-emeraldBrand flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-[14px] font-semibold text-forestInk">Страхование и гарантия</h3>
+            <p class="mt-1 text-[13px] text-forestMuted leading-relaxed">
+              Несём ответственность за сохранность имущества. Претензии принимаем в течение 3 дней, недочёты устраняем за 48 часов.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-mint/70 border border-mintBorder p-5 flex items-start gap-3.5">
+          <span class="w-10 h-10 rounded-xl bg-white text-emeraldBrand flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-[14px] font-semibold text-forestInk">Проверенный штат</h3>
+            <p class="mt-1 text-[13px] text-forestMuted leading-relaxed">
+              Сотрудники проходят проверку службой безопасности, обучение и работают на постоянной основе.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-mint/70 border border-mintBorder p-5 flex items-start gap-3.5">
+          <span class="w-10 h-10 rounded-xl bg-white text-emeraldBrand flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M8 13h8M8 17h5" /></svg>
+          </span>
+          <div>
+            <h3 class="font-display text-[14px] font-semibold text-forestInk">Опыт с крупными клиентами</h3>
+            <p class="mt-1 text-[13px] text-forestMuted leading-relaxed">
+              Благодарственные письма от корпоративных партнёров в Гродно (включая филиалы Белгосстраха и «Кронон»).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ОТЗЫВЫ (ЧЕСТНЫЙ БЛОК БЕЗ ВЫДУМОК) ==================== -->
+    <section id="reviews" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div class="rounded-[28px] bg-white border border-mintBorder shadow-bento p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-mintBorder">
+          <div>
+            <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+              Репутация в Гродно
+            </span>
+            <h2 class="font-display text-[20px] sm:text-[26px] font-semibold text-forestInk">
+              Отзывы клиентов и благодарственные письма
+            </h2>
+          </div>
+          <a
+            href="https://yandex.by/maps/org/elit_grodno/49669196784/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-air border border-mintBorder hover:border-emeraldBrand transition self-start md:self-auto"
+          >
+            <span class="font-display text-[22px] font-bold text-forestInk tabular-nums flex items-center gap-1">
+              <span class="text-amber-500">★</span> 4.9
+            </span>
+            <span class="text-[12px] leading-tight text-forestMuted">
+              <strong class="block text-forestInk">Яндекс Карты</strong>
+              17 реальных оценок →
+            </span>
+          </a>
+        </div>
+
+        <!-- Честные демо-заглушки (не выдумываем фейковые цитаты!) -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-dashed border-mintBorder bg-air/70 p-5 flex flex-col justify-between gap-3">
+            <span class="inline-flex self-start px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-[11px] font-semibold text-forestSubtle">
+              Слот под реальный отзыв #1
+            </span>
+            <p class="text-[13px] text-forestMuted leading-relaxed">
+              При переносе сайта на ваш домен подключим живой виджет отзывов с Яндекс Карт и перенесём проверенные отклики частных клиентов из вашего Instagram и Viber.
+            </p>
+            <span class="text-[12px] font-medium text-emeraldBrand">Без выдуманных текстов</span>
+          </div>
+
+          <div class="rounded-2xl border border-dashed border-mintBorder bg-air/70 p-5 flex flex-col justify-between gap-3">
+            <span class="inline-flex self-start px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-[11px] font-semibold text-forestSubtle">
+              Слот под благодарственное письмо
+            </span>
+            <p class="text-[13px] text-forestMuted leading-relaxed">
+              Аккуратно оформим сканы реальных благодарственных писем от корпоративных партнёров («Кронон», филиал Белгосстраха по Гродненской области и др.) с увеличением по клику.
+            </p>
+            <span class="text-[12px] font-medium text-emeraldBrand">Доверие для B2B-клиентов</span>
+          </div>
+
+          <div class="rounded-2xl border border-dashed border-mintBorder bg-air/70 p-5 flex flex-col justify-between gap-3">
+            <span class="inline-flex self-start px-2.5 py-1 rounded-lg bg-white border border-mintBorder text-[11px] font-semibold text-forestSubtle">
+              Слот под кейс «До / После»
+            </span>
+            <p class="text-[13px] text-forestMuted leading-relaxed">
+              Загрузим ваши лучшие реальные фото выполненных уборок и химчистки мебели, чтобы клиенты с телефона сразу видели результат работы команды.
+            </p>
+            <span class="text-[12px] font-medium text-emeraldBrand">Реальные работы Elite Cleaning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧАСТЫЕ ВОПРОСЫ (РЕАЛЬНЫЕ FAQ С САЙТА) ==================== -->
+    <section id="faq" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-4">
+          <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+            Ответы на вопросы
+          </span>
+          <h2 class="font-display text-[22px] sm:text-[26px] font-semibold text-forestInk leading-tight">
+            Часто задаваемые вопросы
+          </h2>
+          <p class="mt-3 text-[14px] text-forestMuted leading-relaxed">
+            Собрали главные детали по расчёту стоимости, договорам и гарантиям. Остались вопросы — напишите нам в Viber или оставьте номер.
+          </p>
+          <a href="#booking" class="mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mint text-emeraldBrand text-[13px] font-semibold hover:bg-emeraldBrand hover:text-white transition">
+            <span>Задать свой вопрос</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="lg:col-span-8 space-y-3" id="faqList">
+          <div class="faq-item bento-card rounded-2xl" data-open="true">
+            <button type="button" class="faq-trigger w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
+              <span class="font-semibold text-[14px] sm:text-[15px] text-forestInk">От чего зависят расценки на уборку?</span>
+              <svg class="faq-chevron w-5 h-5 text-emeraldBrand shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-5 pb-4 text-[13px] sm:text-[14px] text-forestMuted leading-relaxed">
+                Стоимость зависит от площади помещения, выбранного вида уборки, степени загрязнения и ваших индивидуальных пожеланий. Например, генеральная уборка «Всё включено» для квартир и домов начинается от 4,5 BYN за 1 м², а точную сумму менеджер рассчитывает перед выездом.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item bento-card rounded-2xl" data-open="false">
+            <button type="button" class="faq-trigger w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
+              <span class="font-semibold text-[14px] sm:text-[15px] text-forestInk">Можно ли заключить договор на регулярную уборку?</span>
+              <svg class="faq-chevron w-5 h-5 text-emeraldBrand shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-5 pb-4 text-[13px] sm:text-[14px] text-forestMuted leading-relaxed">
+                Да, заключаем официальный договор на регулярную поддерживающую уборку как для физических, так и для юридических лиц. Для офисов и коммерческих помещений доступна работа по безналичному расчёту и в ночные смены.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item bento-card rounded-2xl" data-open="false">
+            <button type="button" class="faq-trigger w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
+              <span class="font-semibold text-[14px] sm:text-[15px] text-forestInk">Что не входит в стандартную уборку жилых помещений?</span>
+              <svg class="faq-chevron w-5 h-5 text-emeraldBrand shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-5 pb-4 text-[13px] sm:text-[14px] text-forestMuted leading-relaxed">
+                В рамках стандартной уборки квартир и домов специалисты не передвигают тяжёлую мебель, не поднимают тяжёлые вещи и не моют потолки. При этом для юридических лиц доступна отдельная услуга — мойка подвесных потолков.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item bento-card rounded-2xl" data-open="false">
+            <button type="button" class="faq-trigger w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
+              <span class="font-semibold text-[14px] sm:text-[15px] text-forestInk">Кто несёт ответственность, если что-то случайно повредят?</span>
+              <svg class="faq-chevron w-5 h-5 text-emeraldBrand shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-5 pb-4 text-[13px] sm:text-[14px] text-forestMuted leading-relaxed">
+                В компании работают опытные специалисты, но для вашего спокойствия мы обеспечиваем страхование ответственности и гарантируем возмещение ущерба, возникшего по вине сотрудника. Претензии по качеству принимаются в течение 3 дней, недочёты устраняются в течение 48 часов.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item bento-card rounded-2xl" data-open="false">
+            <button type="button" class="faq-trigger w-full px-5 py-4 flex items-center justify-between gap-4 text-left">
+              <span class="font-semibold text-[14px] sm:text-[15px] text-forestInk">Как обеспечивается безопасность вещей при уборке?</span>
+              <svg class="faq-chevron w-5 h-5 text-emeraldBrand shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-5 pb-4 text-[13px] sm:text-[14px] text-forestMuted leading-relaxed">
+                Перед трудоустройством все сотрудники проходят проверку службой безопасности, работают официально и дорожат репутацией компании.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЗАЯВКА И КОНТАКТЫ ==================== -->
+    <section id="booking" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+
+        <!-- ФОРМА ЗАЯВКИ (СЛЕВА) -->
+        <div class="lg:col-span-7 bg-white border border-mintBorder rounded-[28px] p-6 sm:p-8 shadow-bento">
+          <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-emeraldBrand mb-2">
+            Бесплатный расчёт
+          </span>
+          <h2 class="font-display text-[20px] sm:text-[26px] font-semibold text-forestInk leading-tight">
+            Заказать расчёт уборки
+          </h2>
+          <p class="mt-2 text-[14px] text-forestMuted">
+            Оставьте контакты — менеджер перезвонит или напишет в мессенджер, уточнит площадь и сориентирует по стоимости.
+          </p>
+
+          <form id="leadForm" class="mt-6 space-y-4" novalidate>
+            <!-- Honeypot от спам-ботов -->
+            <div class="hidden" aria-hidden="true">
+              <label for="websiteHp">Не заполняйте это поле</label>
+              <input type="text" id="websiteHp" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="leadName" class="block text-[13px] font-semibold text-forestInk mb-1.5">Ваше имя</label>
+                <input
+                  type="text"
+                  id="leadName"
+                  name="name"
+                  required
+                  placeholder="Например, Елена"
+                  class="w-full px-4 py-3 rounded-xl bg-air border border-mintBorder text-[14px] text-forestInk placeholder:text-forestSubtle/70 focus:outline-none focus:border-emeraldBrand focus:bg-white transition"
+                />
+              </div>
+              <div>
+                <label for="leadPhone" class="block text-[13px] font-semibold text-forestInk mb-1.5">Телефон</label>
+                <input
+                  type="tel"
+                  id="leadPhone"
+                  name="phone"
+                  required
+                  placeholder="+375 (29) ___-__-__"
+                  class="w-full px-4 py-3 rounded-xl bg-air border border-mintBorder text-[14px] text-forestInk placeholder:text-forestSubtle/70 focus:outline-none focus:border-emeraldBrand focus:bg-white transition tabular-nums"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="leadService" class="block text-[13px] font-semibold text-forestInk mb-1.5">Тип объекта / услуги</label>
+                <input
+                  type="text"
+                  id="leadService"
+                  name="service"
+                  placeholder="Квартира, офис, после ремонта..."
+                  class="w-full px-4 py-3 rounded-xl bg-air border border-mintBorder text-[14px] text-forestInk placeholder:text-forestSubtle/70 focus:outline-none focus:border-emeraldBrand focus:bg-white transition"
+                />
+              </div>
+              <div>
+                <label for="leadTiming" class="block text-[13px] font-semibold text-forestInk mb-1.5">Желаемые сроки</label>
+                <input
+                  type="text"
+                  id="leadTiming"
+                  name="timing"
+                  placeholder="На этой неделе / регулярно"
+                  class="w-full px-4 py-3 rounded-xl bg-air border border-mintBorder text-[14px] text-forestInk placeholder:text-forestSubtle/70 focus:outline-none focus:border-emeraldBrand focus:bg-white transition"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="leadComment" class="block text-[13px] font-semibold text-forestInk mb-1.5">Площадь или комментарий <span class="font-normal text-forestSubtle">(необязательно)</span></label>
+              <textarea
+                id="leadComment"
+                name="comment"
+                rows="2"
+                placeholder="Например: 2-комнатная квартира ~55 м², нужна генеральная уборка и мойка 3 окон"
+                class="w-full px-4 py-3 rounded-xl bg-air border border-mintBorder text-[14px] text-forestInk placeholder:text-forestSubtle/70 focus:outline-none focus:border-emeraldBrand focus:bg-white transition resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Обязательный незаполненный чекбокс по Закону РБ № 99-З -->
+            <div class="pt-1">
+              <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  id="leadConsent"
+                  name="consent"
+                  required
+                  class="mt-1 w-4 h-4 rounded border-mintBorder text-emeraldBrand focus:ring-emeraldBrand shrink-0 accent-[#235C42]"
+                />
+                <span class="text-[12px] text-forestMuted leading-relaxed">
+                  Я ознакомлен(а) с
+                  <button type="button" data-open-modal="modalPrivacy" class="text-emeraldBrand underline hover:text-emeraldHover">Политикой обработки ПД</button>
+                  и даю
+                  <button type="button" data-open-modal="modalConsent" class="text-emeraldBrand underline hover:text-emeraldHover">согласие на обработку и трансграничную передачу персональных данных</button>
+                  (Закон РБ № 99-З).
+                </span>
+              </label>
+            </div>
+
+            <!-- Сообщение об ошибке / успехе -->
+            <div id="formFeedback" class="hidden rounded-xl px-4 py-3 text-[13px] font-medium" role="status" aria-live="polite"></div>
+
+            <button
+              type="submit"
+              id="leadSubmitBtn"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[14px] font-semibold transition"
+            >
+              <span>Отправить заявку на расчёт</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- КОНТАКТЫ (СПРАВА) -->
+        <div id="contacts" class="lg:col-span-5 rounded-[28px] bg-forestInk text-white p-6 sm:p-8 shadow-bento flex flex-col justify-between gap-6">
+          <div>
+            <span class="inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-mint/80 mb-2">
+              Контакты · 24/7
+            </span>
+            <h2 class="font-display text-[20px] sm:text-[24px] font-semibold leading-tight">
+              Свяжитесь удобным способом
+            </h2>
+            <p class="mt-2 text-[13px] sm:text-[14px] text-white/75">
+              Выезжаем по всему Гродно и Гродненской области. Принимаем обращения круглосуточно.
+            </p>
+
+            <div class="mt-6 space-y-4">
+              <!-- Телефоны -->
+              <div class="rounded-2xl bg-white/10 border border-white/15 p-4 space-y-2">
+                <p class="text-[11px] uppercase tracking-wider text-white/60 font-semibold">Телефоны</p>
+                <a data-contact="primaryPhone" href="tel:+375298699998" class="block font-display text-[17px] sm:text-[18px] font-semibold text-white hover:text-mint transition tabular-nums whitespace-nowrap">
+                  +375 (29) 869-99-98
+                </a>
+                <a data-contact="secondaryPhone" href="tel:+375295803391" class="block text-[14px] text-white/85 hover:text-mint transition tabular-nums whitespace-nowrap">
+                  +375 (29) 580-33-91 <span class="text-white/50 text-[12px]">(Viber / WhatsApp)</span>
+                </a>
+              </div>
+
+              <!-- Адрес и почта -->
+              <div class="rounded-2xl bg-white/10 border border-white/15 p-4 space-y-2.5 text-[13px]">
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-white/60 font-semibold mb-0.5">Офис</p>
+                  <p class="text-white/95">г. Гродно, ул. Дзержинского, 32, офис 8</p>
+                </div>
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-white/60 font-semibold mb-0.5">Электронная почта</p>
+                  <a data-contact="email" href="mailto:contact@elitgrodno.by" class="text-mint hover:underline">
+                    contact@elitgrodno.by
+                  </a>
+                </div>
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-white/60 font-semibold mb-0.5">Режим работы</p>
+                  <p class="text-white/95">Круглосуточно, 24/7 (без выходных)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Мессенджеры и соцсети (единый сдержанный стиль, без target="_blank" на viber://) -->
+          <div>
+            <p class="text-[11px] uppercase tracking-wider text-white/60 font-semibold mb-2.5">Мессенджеры и соцсети</p>
+            <div class="grid grid-cols-2 gap-2.5">
+              <a
+                data-contact="viber"
+                href="viber://chat?number=%2B375295803391"
+                class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-emeraldBrand border border-white/15 text-[13px] font-semibold transition"
+              >
+                <span>Viber</span>
+              </a>
+              <a
+                data-contact="telegram"
+                href="https://t.me/NatalliaStogova"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-emeraldBrand border border-white/15 text-[13px] font-semibold transition"
+              >
+                <span>Telegram</span>
+              </a>
+              <a
+                data-contact="whatsapp"
+                href="https://wa.me/375295803391"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-emeraldBrand border border-white/15 text-[13px] font-semibold transition"
+              >
+                <span>WhatsApp</span>
+              </a>
+              <a
+                data-contact="instagram"
+                href="https://www.instagram.com/elite_cleaning_grodno/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-emeraldBrand border border-white/15 text-[13px] font-semibold transition"
+              >
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== ПОДВАЛ И КОМПЛАЕНС РБ ==================== -->
+  <footer class="bg-white border-t border-mintBorder text-forestMuted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
+        <div class="space-y-1.5 text-[12px] leading-relaxed">
+          <p class="font-display text-[13px] font-semibold text-forestInk">
+            Elite Cleaning · ООО «Элит Гродно»
+          </p>
+          <p>
+            УНП 591048537 · Свидетельство о госрегистрации выдано Гродненским горисполкомом № 0231072
+          </p>
+          <p>
+            Юридический адрес: г. Гродно, ул. Дзержинского, 32, офис 8 · Режим работы: 24/7
+          </p>
+          <p class="text-[11px] text-forestSubtle">
+            [Реквизиты и режим работы сверены по открытому договору-оферте и уточняются перед переносом на домен клиента]
+          </p>
+        </div>
+
+        <div class="flex flex-wrap md:justify-end gap-x-5 gap-y-2 text-[12px] font-medium">
+          <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-emeraldBrand transition text-left">
+            Политика обработки ПД
+          </button>
+          <button type="button" data-open-modal="modalConsent" class="underline hover:text-emeraldBrand transition text-left">
+            Согласие на обработку и трансграничную передачу ПД
+          </button>
+          <button type="button" data-open-modal="modalCookie" class="underline hover:text-emeraldBrand transition text-left">
+            Настройки cookie
+          </button>
+        </div>
+      </div>
+
+      <p class="pt-4 border-t border-mintBorder/70 text-[11px] text-forestSubtle leading-relaxed">
+        Информация, размещённая на сайте, носит справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Боевая версия сайта размещается на хостинге на территории Республики Беларусь в соответствии с Указом Президента РБ № 60.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== ДЕМО-ПЛАШКА В САМОМ НИЗУ ==================== -->
+  <div class="fixed inset-x-0 bottom-0 z-30 h-[28px] bg-forestInk text-white/85 text-[10px] sm:text-[11px] px-3 flex items-center justify-center text-center whitespace-nowrap overflow-hidden">
+    <span>Прототип сайта для «Элит Гродно» · Концепт</span>
+  </div>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Автоматически скрывается, пока открыт cookie-баннер; не перекрывает нижнюю демо-плашку -->
+  <div id="mobileStickyDock" class="hidden md:hidden fixed inset-x-3 bottom-[36px] z-40">
+    <div class="bg-white/95 backdrop-blur-xl border border-mintBorder rounded-2xl p-1.5 shadow-dock grid grid-cols-3 gap-1.5">
+      <a
+        data-contact="primaryPhone"
+        href="tel:+375298699998"
+        class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-air text-forestInk text-[12px] font-semibold active:scale-95 transition"
+      >
+        <svg class="w-4 h-4 text-emeraldBrand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+        <span>Позвонить</span>
+      </a>
+      <a
+        data-contact="viber"
+        href="viber://chat?number=%2B375295803391"
+        class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-mint text-emeraldBrand text-[12px] font-semibold active:scale-95 transition"
+      >
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+        <span>Viber</span>
+      </a>
+      <a
+        href="#booking"
+        class="flex items-center justify-center gap-1 py-2.5 rounded-xl bg-emeraldBrand text-white text-[12px] font-semibold active:scale-95 transition"
+      >
+        <span>Заказать</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР НЦЗПД РБ (КОМПАКТНЫЙ, БЕЗ ПЕРЕЗАГРУЗКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-0 bottom-[34px] z-50 px-3 sm:px-6">
+    <div class="max-w-5xl mx-auto bg-forestInk/95 backdrop-blur-md border border-white/15 text-white/90 rounded-2xl px-3.5 py-2.5 sm:px-5 sm:py-3 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
+      <div class="text-[11px] sm:text-[12px] leading-snug">
+        Мы используем cookie для корректной работы сайта. Вы можете принять все файлы, отклонить необязательные или открыть
+        <button type="button" data-open-modal="modalCookie" class="text-mint underline hover:text-white">настройки</button>.
+      </div>
+      <!-- Две равнозначные по размеру и контрасту кнопки (рекомендации НЦЗПД РБ) -->
+      <div class="grid grid-cols-2 items-stretch sm:flex sm:items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="cookieRejectBtn"
+          class="flex items-center justify-center px-3 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-[11px] sm:text-[12px] font-semibold leading-tight text-center transition"
+        >
+          Отклонить необязательные
+        </button>
+        <button
+          type="button"
+          id="cookieAcceptBtn"
+          class="flex items-center justify-center px-3 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldLight border border-emeraldBrand text-white text-[11px] sm:text-[12px] font-semibold leading-tight text-center transition"
+        >
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛКА 1: ПОЛИТИКА ОБРАБОТКИ ПД (ЗАКОН № 99-З) ==================== -->
+  <div id="modalPrivacy" class="modal-backdrop hidden fixed inset-0 z-[60] bg-forestInk/60 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modalPrivacyTitle">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-mintBorder shadow-2xl">
+      <div class="px-6 py-4 border-b border-mintBorder flex items-center justify-between gap-4">
+        <h3 id="modalPrivacyTitle" class="font-display text-[16px] font-semibold text-forestInk">
+          Политика обработки персональных данных
+        </h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-xl bg-air hover:bg-mint text-forestInk flex items-center justify-center transition" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-3 text-[13px] text-forestMuted leading-relaxed">
+        <p><strong class="text-forestInk">1. Оператор:</strong> ООО «Элит Гродно» (УНП 591048537, г. Гродно, ул. Дзержинского, 32, офис 8, e-mail: contact@elitgrodno.by) осуществляет обработку персональных данных в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+        <p><strong class="text-forestInk">2. Цели и состав данных:</strong> обработка обращений и заявок на расчёт стоимости клининговых услуг, обратная связь с клиентом и заключение договоров. Обрабатываемые данные: имя, контактный номер телефона, сведения об объекте уборки и комментарии, добровольно указанные в форме.</p>
+        <p><strong class="text-forestInk">3. Сроки обработки:</strong> персональные данные хранятся не дольше, чем этого требуют цели обработки (как правило, до 1 года с момента обращения либо в течение срока действия договора и установленных законодательством сроков хранения документов), либо до момента отзыва согласия субъектом.</p>
+        <p><strong class="text-forestInk">4. Ваши права (ст. 10–15 Закона № 99-З):</strong></p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>в любое время без объяснения причин отозвать согласие на обработку ПД (ст. 10);</li>
+          <li>получать информацию об обработке своих персональных данных (ст. 11);</li>
+          <li>требовать внесения изменений в неполные, устаревшие или неточные данные (ст. 11);</li>
+          <li>получать информацию о предоставлении ПД третьим лицам один раз в календарный год бесплатно (ст. 12);</li>
+          <li>требовать бесплатного прекращения обработки и удаления ПД при отсутствии оснований для обработки (ст. 13);</li>
+          <li>обжаловать действия (бездействие) оператора в Национальный центр защиты персональных данных Республики Беларусь (ст. 15).</li>
+        </ul>
+        <p><strong class="text-forestInk">5. Порядок реализации прав:</strong> направьте письменное заявление по адресу г. Гродно, ул. Дзержинского, 32, офис 8 или в электронной форме на contact@elitgrodno.by. Оператор рассматривает обращение в течение 15 календарных дней.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛКА 2: СОГЛАСИЕ И ТРАНСГРАНИЧНАЯ ПЕРЕДАЧА (СТ. 9 ЗАКОНА № 99-З) ==================== -->
+  <div id="modalConsent" class="modal-backdrop hidden fixed inset-0 z-[60] bg-forestInk/60 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modalConsentTitle">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-mintBorder shadow-2xl">
+      <div class="px-6 py-4 border-b border-mintBorder flex items-center justify-between gap-4">
+        <h3 id="modalConsentTitle" class="font-display text-[16px] font-semibold text-forestInk">
+          Согласие на обработку и трансграничную передачу ПД
+        </h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-xl bg-air hover:bg-mint text-forestInk flex items-center justify-center transition" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-3 text-[13px] text-forestMuted leading-relaxed">
+        <p>Проставляя отметку в чекбоксе под формой заявки, я свободно, однозначно и информированно даю согласие <strong class="text-forestInk">ООО «Элит Гродно»</strong> (УНП 591048537, г. Гродно, ул. Дзержинского, 32, офис 8) на сбор, систематизацию, хранение, использование и удаление моих персональных данных (имя, телефон, комментарий к заявке) в целях обработки обращения и расчёта стоимости клининговых услуг.</p>
+        <p><strong class="text-forestInk">Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> для оперативного уведомления менеджера о новой заявке данные формы могут передаваться через облачную инфраструктуру Google (Google Apps Script) и мессенджер Telegram, серверы которых могут находиться на территории иностранных государств, в том числе государств, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных (например, США и иные юрисдикции).</p>
+        <p><strong class="text-forestInk">Возможные риски:</strong> в таких государствах может отсутствовать специальное законодательство о защите персональных данных или уполномоченный надзорный орган, что может ограничивать способы защиты прав субъекта и допускать доступ к данным со стороны органов власти соответствующих государств.</p>
+        <p>Согласие действует в течение 1 года с даты отправки заявки либо до момента его отзыва. Вы можете отказаться от передачи данных через форму и связаться с компанией напрямую по телефону <strong class="text-forestInk">+375 (29) 869-99-98</strong>. Права субъекта (ст. 10–15 Закона № 99-З) и порядок отзыва согласия подробно изложены в Политике обработки ПД.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛКА 3: НАСТРОЙКИ COOKIE (НЦЗПД РБ) ==================== -->
+  <div id="modalCookie" class="modal-backdrop hidden fixed inset-0 z-[60] bg-forestInk/60 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modalCookieTitle">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] flex flex-col overflow-hidden border border-mintBorder shadow-2xl">
+      <div class="px-6 py-4 border-b border-mintBorder flex items-center justify-between gap-4">
+        <h3 id="modalCookieTitle" class="font-display text-[16px] font-semibold text-forestInk">
+          Настройки файлов cookie
+        </h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-xl bg-air hover:bg-mint text-forestInk flex items-center justify-center transition" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4 text-[13px] text-forestMuted">
+        <p class="leading-relaxed">
+          Вы сами управляете использованием необязательных cookie. Отклонение необязательных файлов не ограничивает работу сайта и не вызывает его перезагрузку.
+        </p>
+
+        <div class="p-3.5 rounded-2xl bg-air border border-mintBorder flex items-center justify-between gap-3">
+          <div>
+            <p class="font-semibold text-forestInk">Технические (обязательные)</p>
+            <p class="text-[12px] text-forestSubtle">Сохраняют ваш выбор по cookie и корректную работу интерфейса.</p>
+          </div>
+          <span class="text-[11px] font-semibold text-emeraldBrand bg-mint px-2.5 py-1 rounded-lg shrink-0">Всегда вкл.</span>
+        </div>
+
+        <label class="p-3.5 rounded-2xl bg-white border border-mintBorder flex items-center justify-between gap-3 cursor-pointer">
+          <div>
+            <p class="font-semibold text-forestInk">Аналитические cookie</p>
+            <p class="text-[12px] text-forestSubtle">Обезличенная статистика посещаемости для улучшения сайта.</p>
+          </div>
+          <input type="checkbox" id="cookieAnalyticsToggle" class="w-5 h-5 accent-[#235C42] shrink-0" />
+        </label>
+
+        <label class="p-3.5 rounded-2xl bg-white border border-mintBorder flex items-center justify-between gap-3 cursor-pointer">
+          <div>
+            <p class="font-semibold text-forestInk">Маркетинговые cookie</p>
+            <p class="text-[12px] text-forestSubtle">Оценка эффективности рекламных источников (по умолчанию выключены).</p>
+          </div>
+          <input type="checkbox" id="cookieMarketingToggle" class="w-5 h-5 accent-[#235C42] shrink-0" />
+        </label>
+
+        <div class="grid grid-cols-2 gap-2.5 pt-2">
+          <button type="button" id="cookieModalRejectBtn" class="py-2.5 px-3 rounded-xl bg-air hover:bg-mint border border-mintBorder text-forestInk text-[12px] font-semibold transition">
+            Отклонить необязательные
+          </button>
+          <button type="button" id="cookieModalSaveBtn" class="py-2.5 px-3 rounded-xl bg-emeraldBrand hover:bg-emeraldHover text-white text-[12px] font-semibold transition">
+            Сохранить выбор
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЛАЙТБОКС ГАЛЕРЕИ ==================== -->
+  <div id="modalLightbox" class="modal-backdrop hidden fixed inset-0 z-[70] bg-forestInk/90 backdrop-blur-md p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+    <button type="button" data-close-modal class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition" aria-label="Закрыть просмотр">✕</button>
+    <button type="button" id="lightboxPrev" class="absolute left-3 sm:left-6 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition" aria-label="Предыдущее фото">←</button>
+    <figure class="max-w-4xl w-full flex flex-col items-center gap-3">
+      <img id="lightboxImg" src="" alt="" class="max-h-[78vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl" />
+      <figcaption id="lightboxCaption" class="text-[13px] text-white/90 text-center font-medium"></figcaption>
+    </figure>
+    <button type="button" id="lightboxNext" class="absolute right-3 sm:right-6 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition" aria-label="Следующее фото">→</button>
+  </div>
+
+  <!-- ==================== СКРИПТЫ ИНТЕРАКТИВА И КОМПЛАЕНСА ==================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Синхронизация контактов из SITE_CONFIG
+      function hydrateContacts() {
+        document.querySelectorAll('[data-contact="primaryPhone"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.telHref);
+        });
+        document.querySelectorAll('[data-contact="secondaryPhone"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.secondaryTelHref);
+        });
+        document.querySelectorAll('[data-contact="viber"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.viberHref);
+        });
+        document.querySelectorAll('[data-contact="telegram"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.telegramUrl);
+        });
+        document.querySelectorAll('[data-contact="whatsapp"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.whatsappUrl);
+        });
+        document.querySelectorAll('[data-contact="instagram"]').forEach(function (el) {
+          el.setAttribute('href', SITE_CONFIG.instagramUrl);
+        });
+        document.querySelectorAll('[data-contact="email"]').forEach(function (el) {
+          el.setAttribute('href', 'mailto:' + SITE_CONFIG.email);
+        });
+      }
+
+      // 2. Живой статус работы в шапке по времени Беларуси (Europe/Minsk)
+      function updateLiveStatus() {
+        var statusEl = document.getElementById('liveStatusText');
+        var pillEl = document.getElementById('liveStatusPill');
+        if (!statusEl) return;
+        try {
+          var now = new Date();
+          var formatter = new Intl.DateTimeFormat('ru-RU', {
+            timeZone: SITE_CONFIG.schedule.timezone,
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+          var timeStr = formatter.format(now);
+          var hour = parseInt(timeStr.split(':')[0], 10);
+          var isNight = hour < SITE_CONFIG.schedule.dayStart || hour >= SITE_CONFIG.schedule.dayEnd;
+          if (SITE_CONFIG.schedule.is247) {
+            statusEl.textContent = isNight ? 'Открыто 24/7 · ночь' : 'Открыто 24/7';
+            if (pillEl) {
+              pillEl.setAttribute('title', 'Время в Гродно (Минск): ' + timeStr + ' — принимаем заявки круглосуточно');
+            }
+          }
+        } catch (err) {
+          statusEl.textContent = 'Открыто 24/7';
+        }
+      }
+
+      // 3. Мобильное меню
+      var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      var mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+      if (mobileMenuBtn && mobileMenuDrawer) {
+        mobileMenuBtn.addEventListener('click', function () {
+          var isHidden = mobileMenuDrawer.classList.toggle('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+        mobileMenuDrawer.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mobileMenuDrawer.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 4. Синхронное переключение «Для дома / Для бизнеса» в Hero и в каталоге услуг
+      function setHeroSegment(segment) {
+        var homeBtn = document.getElementById('heroTabHome');
+        var bizBtn = document.getElementById('heroTabBiz');
+        var homePanel = document.getElementById('heroPanelHome');
+        var bizPanel = document.getElementById('heroPanelBiz');
+        var isHome = segment === 'home';
+
+        if (homeBtn && bizBtn && homePanel && bizPanel) {
+          homeBtn.setAttribute('aria-selected', String(isHome));
+          bizBtn.setAttribute('aria-selected', String(!isHome));
+          homeBtn.className = 'hero-segment-btn py-2 px-3 rounded-lg text-[13px] font-semibold transition ' +
+            (isHome ? 'bg-emeraldBrand text-white shadow-sm' : 'text-forestMuted hover:text-forestInk');
+          bizBtn.className = 'hero-segment-btn py-2 px-3 rounded-lg text-[13px] font-semibold transition ' +
+            (!isHome ? 'bg-emeraldBrand text-white shadow-sm' : 'text-forestMuted hover:text-forestInk');
+          homePanel.classList.toggle('hidden', !isHome);
+          bizPanel.classList.toggle('hidden', isHome);
+        }
+      }
+
+      function setCatalogSegment(segment) {
+        var homeBtn = document.getElementById('catTabHome');
+        var bizBtn = document.getElementById('catTabBiz');
+        var homePanel = document.getElementById('catPanelHome');
+        var bizPanel = document.getElementById('catPanelBiz');
+        var isHome = segment === 'home';
+
+        if (homeBtn && bizBtn && homePanel && bizPanel) {
+          homeBtn.setAttribute('aria-selected', String(isHome));
+          bizBtn.setAttribute('aria-selected', String(!isHome));
+          homeBtn.className = 'cat-segment-btn px-4 sm:px-5 py-2.5 rounded-xl text-[13px] font-semibold transition whitespace-nowrap ' +
+            (isHome ? 'bg-emeraldBrand text-white' : 'text-forestMuted hover:text-forestInk');
+          bizBtn.className = 'cat-segment-btn px-4 sm:px-5 py-2.5 rounded-xl text-[13px] font-semibold transition whitespace-nowrap ' +
+            (!isHome ? 'bg-emeraldBrand text-white' : 'text-forestMuted hover:text-forestInk');
+          homePanel.classList.toggle('hidden', !isHome);
+          bizPanel.classList.toggle('hidden', isHome);
+        }
+      }
+
+      document.querySelectorAll('[data-hero-segment]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var seg = btn.getAttribute('data-hero-segment');
+          setHeroSegment(seg);
+          setCatalogSegment(seg);
+        });
+      });
+
+      document.querySelectorAll('[data-cat-segment]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var seg = btn.getAttribute('data-cat-segment');
+          setCatalogSegment(seg);
+          setHeroSegment(seg);
+        });
+      });
+
+      document.querySelectorAll('[data-jump-segment]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var seg = btn.getAttribute('data-jump-segment');
+          setCatalogSegment(seg);
+          var target = document.getElementById('services');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // 5. Подстановка услуги из карточек в форму заявки
+      function prefillBooking(serviceText, timingText) {
+        var serviceInput = document.getElementById('leadService');
+        var timingInput = document.getElementById('leadTiming');
+        var bookingSection = document.getElementById('booking');
+        if (serviceInput && serviceText) {
+          serviceInput.value = serviceText;
+          serviceInput.classList.add('ring-2', 'ring-emeraldBrand');
+          setTimeout(function () {
+            serviceInput.classList.remove('ring-2', 'ring-emeraldBrand');
+          }, 1400);
+        }
+        if (timingInput && timingText) {
+          timingInput.value = timingText;
+        }
+        if (bookingSection) {
+          bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      document.querySelectorAll('[data-prefill-service]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          prefillBooking(btn.getAttribute('data-prefill-service'), '');
+        });
+      });
+
+      // 6. 2-кликовый мини-интерактив подбора уборки (без калькулятора цен)
+      var selectedObject = 'Квартира';
+      var selectedTiming = 'На этой неделе';
+      var pickerSummary = document.getElementById('pickerSummary');
+
+      function updatePickerSummary() {
+        if (pickerSummary) {
+          pickerSummary.textContent = selectedObject + ' · ' + selectedTiming;
+        }
+      }
+
+      document.querySelectorAll('.pick-obj-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          selectedObject = btn.getAttribute('data-pick-object') || 'Квартира';
+          document.querySelectorAll('.pick-obj-btn').forEach(function (item) {
+            var active = item === btn;
+            item.className = 'pick-obj-btn px-3.5 py-3 rounded-2xl border text-left text-[13px] font-semibold transition ' +
+              (active ? 'border-emeraldBrand bg-mint text-emeraldBrand' : 'border-mintBorder bg-air text-forestInk hover:border-emeraldBrand');
+          });
+          updatePickerSummary();
+        });
+      });
+
+      document.querySelectorAll('.pick-time-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          selectedTiming = btn.getAttribute('data-pick-timing') || 'На этой неделе';
+          document.querySelectorAll('.pick-time-btn').forEach(function (item) {
+            var active = item === btn;
+            item.className = 'pick-time-btn px-4 py-3 rounded-2xl border text-left text-[13px] font-semibold transition ' +
+              (active ? 'border-emeraldBrand bg-mint text-emeraldBrand' : 'border-mintBorder bg-air text-forestInk hover:border-emeraldBrand');
+          });
+          updatePickerSummary();
+        });
+      });
+
+      var pickerApplyBtn = document.getElementById('pickerApplyBtn');
+      if (pickerApplyBtn) {
+        pickerApplyBtn.addEventListener('click', function () {
+          prefillBooking(selectedObject, selectedTiming);
+        });
+      }
+
+      // 7. FAQ Аккордеон
+      document.querySelectorAll('.faq-trigger').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          if (!item) return;
+          var wasOpen = item.getAttribute('data-open') === 'true';
+          document.querySelectorAll('.faq-item').forEach(function (other) {
+            other.setAttribute('data-open', 'false');
+          });
+          item.setAttribute('data-open', wasOpen ? 'false' : 'true');
+        });
+      });
+
+      // 8. Галерея и Лайтбокс
+      var galleryItems = [
+        { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85', caption: 'Генеральная уборка квартир и панорамных окон' },
+        { src: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=85', caption: 'Генеральная уборка кухни и рабочих поверхностей' },
+        { src: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85', caption: 'Очистка и дезинфекция санузлов и душевых' },
+        { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85', caption: 'Комплексный клининг офисов и коммерческих помещений' },
+        { src: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85', caption: 'Глубокая химчистка мягкой мебели и ковров' },
+        { src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85', caption: 'Мойка окон и уборка помещений после ремонта' }
+      ];
+      var currentGalleryIdx = 0;
+
+      function renderLightbox(idx) {
+        currentGalleryIdx = (idx + galleryItems.length) % galleryItems.length;
+        var img = document.getElementById('lightboxImg');
+        var cap = document.getElementById('lightboxCaption');
+        if (img) {
+          img.src = galleryItems[currentGalleryIdx].src;
+          img.alt = galleryItems[currentGalleryIdx].caption;
+        }
+        if (cap) {
+          cap.textContent = galleryItems[currentGalleryIdx].caption;
+        }
+      }
+
+      document.querySelectorAll('.gallery-trigger').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var idx = parseInt(btn.getAttribute('data-gallery-idx') || '0', 10);
+          renderLightbox(idx);
+          openModal('modalLightbox');
+        });
+      });
+
+      var prevBtn = document.getElementById('lightboxPrev');
+      var nextBtn = document.getElementById('lightboxNext');
+      if (prevBtn) prevBtn.addEventListener('click', function () { renderLightbox(currentGalleryIdx - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { renderLightbox(currentGalleryIdx + 1); });
+
+      // 9. Управление модалками
+      function openModal(id) {
+        var modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('.modal-backdrop').forEach(function (m) {
+          m.classList.add('hidden');
+        });
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openModal(btn.getAttribute('data-open-modal'));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('.modal-backdrop').forEach(function (backdrop) {
+        backdrop.addEventListener('click', function (e) {
+          if (e.target === backdrop) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAllModals();
+        var lb = document.getElementById('modalLightbox');
+        if (lb && !lb.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') renderLightbox(currentGalleryIdx - 1);
+          if (e.key === 'ArrowRight') renderLightbox(currentGalleryIdx + 1);
+        }
+      });
+
+      // 10. Cookie-баннер (НЦЗПД РБ) + управление мобильным Sticky Dock
+      // ГАРАНТИРОВАННО работает без перезагрузки страницы при отказе!
+      var COOKIE_KEY = 'elit_grodno_cookie_prefs_v1';
+      var cookieBanner = document.getElementById('cookieBanner');
+      var mobileDock = document.getElementById('mobileStickyDock');
+      var analyticsToggle = document.getElementById('cookieAnalyticsToggle');
+      var marketingToggle = document.getElementById('cookieMarketingToggle');
+
+      function showMobileDock() {
+        if (mobileDock) mobileDock.classList.remove('hidden');
+      }
+
+      function hideMobileDock() {
+        if (mobileDock) mobileDock.classList.add('hidden');
+      }
+
+      function saveCookieChoice(prefs) {
+        try {
+          localStorage.setItem(COOKIE_KEY, JSON.stringify({
+            necessary: true,
+            analytics: Boolean(prefs.analytics),
+            marketing: Boolean(prefs.marketing),
+            savedAt: new Date().toISOString()
+          }));
+        } catch (err) {
+          // Фолбэк для приватного режима без localStorage
+        }
+        if (cookieBanner) cookieBanner.classList.add('hidden');
+        closeAllModals();
+        showMobileDock();
+      }
+
+      function initCookies() {
+        var saved = null;
+        try {
+          var raw = localStorage.getItem(COOKIE_KEY);
+          if (raw) saved = JSON.parse(raw);
+        } catch (err) {
+          saved = null;
+        }
+        if (saved) {
+          if (analyticsToggle) analyticsToggle.checked = Boolean(saved.analytics);
+          if (marketingToggle) marketingToggle.checked = Boolean(saved.marketing);
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+          showMobileDock();
+        } else {
+          if (cookieBanner) cookieBanner.classList.remove('hidden');
+          hideMobileDock();
+        }
+      }
+
+      var rejectBtn = document.getElementById('cookieRejectBtn');
+      var acceptBtn = document.getElementById('cookieAcceptBtn');
+      var modalRejectBtn = document.getElementById('cookieModalRejectBtn');
+      var modalSaveBtn = document.getElementById('cookieModalSaveBtn');
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener('click', function () {
+          if (analyticsToggle) analyticsToggle.checked = false;
+          if (marketingToggle) marketingToggle.checked = false;
+          saveCookieChoice({ analytics: false, marketing: false });
+        });
+      }
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          if (analyticsToggle) analyticsToggle.checked = true;
+          if (marketingToggle) marketingToggle.checked = true;
+          saveCookieChoice({ analytics: true, marketing: true });
+        });
+      }
+      if (modalRejectBtn) {
+        modalRejectBtn.addEventListener('click', function () {
+          if (analyticsToggle) analyticsToggle.checked = false;
+          if (marketingToggle) marketingToggle.checked = false;
+          saveCookieChoice({ analytics: false, marketing: false });
+        });
+      }
+      if (modalSaveBtn) {
+        modalSaveBtn.addEventListener('click', function () {
+          saveCookieChoice({
+            analytics: analyticsToggle ? analyticsToggle.checked : false,
+            marketing: marketingToggle ? marketingToggle.checked : false
+          });
+        });
+      }
+
+      // 11. Форма заявки (Telegram через Google Apps Script + honeypot + демо-режим)
+      var leadForm = document.getElementById('leadForm');
+      var formFeedback = document.getElementById('formFeedback');
+      var submitBtn = document.getElementById('leadSubmitBtn');
+
+      function showFormFeedback(type, message) {
+        if (!formFeedback) return;
+        formFeedback.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border', 'border-red-200', 'bg-mint', 'text-emeraldBrand', 'border-mintBorder');
+        if (type === 'error') {
+          formFeedback.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+        } else {
+          formFeedback.classList.add('bg-mint', 'text-emeraldBrand', 'border', 'border-mintBorder');
+        }
+        formFeedback.textContent = message;
+      }
+
+      if (leadForm) {
+        leadForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var hp = document.getElementById('websiteHp');
+          if (hp && hp.value.trim() !== '') {
+            return;
+          }
+
+          var name = (document.getElementById('leadName') || {}).value || '';
+          var phone = (document.getElementById('leadPhone') || {}).value || '';
+          var service = (document.getElementById('leadService') || {}).value || '';
+          var timing = (document.getElementById('leadTiming') || {}).value || '';
+          var comment = (document.getElementById('leadComment') || {}).value || '';
+          var consent = document.getElementById('leadConsent');
+
+          if (name.trim().length < 2) {
+            showFormFeedback('error', 'Пожалуйста, укажите ваше имя.');
+            return;
+          }
+          if (phone.replace(/\D/g, '').length < 7) {
+            showFormFeedback('error', 'Пожалуйста, введите корректный номер телефона.');
+            return;
+          }
+          if (!consent || !consent.checked) {
+            showFormFeedback('error', 'Подтвердите согласие на обработку персональных данных (Закон РБ № 99-З).');
+            return;
+          }
+
+          var payload = {
+            company: SITE_CONFIG.companyName,
+            name: name.trim(),
+            phone: phone.trim(),
+            service: service.trim() || 'Не указано',
+            timing: timing.trim() || 'Не указано',
+            comment: comment.trim(),
+            createdAt: new Date().toISOString()
+          };
+
+          if (!SITE_CONFIG.googleScriptUrl) {
+            showFormFeedback('success', 'Демо-режим: заявка успешно сформирована! После подключения вашего Telegram-бота заявки будут приходить вам мгновенно.');
+            leadForm.reset();
+            return;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправляем...';
+          }
+
+          fetch(SITE_CONFIG.googleScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+            .then(function () {
+              showFormFeedback('success', 'Спасибо! Заявка отправлена — менеджер свяжется с вами в ближайшее время.');
+              leadForm.reset();
+            })
+            .catch(function () {
+              showFormFeedback('error', 'Не удалось отправить форму. Пожалуйста, позвоните по номеру ' + SITE_CONFIG.displayPhone + '.');
+            })
+            .finally(function () {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку на расчёт';
+              }
+            });
+        });
+      }
+
+      // Инициализация
+      hydrateContacts();
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+      initCookies();
+    })();
+  </script>
+</body>
+</html>

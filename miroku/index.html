@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA-салон «Мироку» — Гомель | СПА-программы, фито-парная, массаж и сертификаты</title>
+  <meta name="description" content="SPA-салон «Мироку» в центре Гомеля (ул. Советская, 42). С 2008 года: комплексные СПА-программы, романтическое СПА для двоих, фито-парная «Кедровая бочка», массаж, косметология и подарочные сертификаты.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            silk: '#F5EFE6',
+            alabaster: '#EFE7DA',
+            cream: '#FAF7F2',
+            sumi: '#1C1917',
+            espresso: '#3A312A',
+            stonewarm: '#6E6258',
+            gold: '#B48B57',
+            goldlight: '#D6B98C',
+            golddeep: '#8F6A3B'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Raleway"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --silk: #F5EFE6;
+      --alabaster: #EFE7DA;
+      --sumi: #1C1917;
+      --espresso: #3A312A;
+      --gold: #B48B57;
+      --gold-light: #D6B98C;
+    }
+
+    html, body {
+      overflow-x: clip;
+    }
+
+    body {
+      background-color: var(--silk);
+      color: var(--espresso);
+      font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Subtle silk grain texture for editorial depth */
+    .silk-grain {
+      background-image: radial-gradient(rgba(180, 139, 87, 0.06) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+
+    /* Header scroll states */
+    #site-header {
+      transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, color 0.35s ease;
+    }
+    #site-header.header-scrolled {
+      background-color: rgba(28, 25, 23, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(214, 185, 140, 0.18);
+    }
+
+    /* Hairline gold dividers */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(180, 139, 87, 0.55) 50%, transparent 100%);
+    }
+
+    /* Editorial tab transition */
+    .spa-tab-btn {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .spa-tab-btn::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1.5px;
+      background-color: var(--gold);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .spa-tab-btn.is-active {
+      color: var(--sumi);
+    }
+    .spa-tab-btn.is-active::after {
+      transform: scaleX(1);
+    }
+
+    /* Picker choice styling */
+    .picker-choice {
+      transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .picker-choice.is-selected {
+      background-color: var(--sumi);
+      border-color: var(--sumi);
+      color: var(--silk);
+    }
+    .picker-choice.is-selected .picker-sub {
+      color: var(--gold-light);
+    }
+
+    /* Gentle scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Certificate decorative filigree */
+    .cert-frame {
+      background:
+        radial-gradient(circle at 12% 16%, rgba(180, 139, 87, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 88% 84%, rgba(180, 139, 87, 0.18) 0%, transparent 48%),
+        linear-gradient(135deg, #FAF6EE 0%, #EFE5D5 100%);
+    }
+
+    /* Mobile glass sticky dock */
+    .mobile-dock {
+      background: rgba(28, 25, 23, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(214, 185, 140, 0.28);
+      box-shadow: 0 14px 40px rgba(28, 25, 23, 0.38);
+    }
+
+    /* Custom subtle scrollbar for tabs on mobile */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-silk text-espresso selection:bg-gold/25 selection:text-sumi">
+
+  <!-- Единая конфигурация сайта -->
+  <script>
+    const SITE_CONFIG = {
+      brand: 'Мироку',
+      legalName: 'Частное унитарное предприятие по оказанию услуг «Мироку»',
+      unp: '490691436',
+      registry: 'Реестр бытовых услуг РБ № 11373 от 21.05.2015 г.',
+      foundedYear: 2008,
+      city: 'Гомель',
+      address: 'г. Гомель, ул. Советская, д. 42 (цокольный этаж)',
+      legalAddress: '246017, г. Гомель, пр-т Победы, д. 2а, пом. б/н',
+      phonePrimary: '+375 (44) 79-79-000',
+      phonePrimaryHref: 'tel:+375447979000',
+      phoneViberDisplay: '+375 (29) 131-33-90',
+      phoneViberHref: 'tel:+375291313390',
+      viberUrl: 'viber://chat?number=%2B375291313390',
+      whatsappUrl: 'https://wa.me/375447979000',
+      phoneMts: '+375 (29) 535-33-90',
+      phoneMtsHref: 'tel:+375295353390',
+      phoneCity: '+375 (232) 22-22-33',
+      phoneCityHref: 'tel:+375232222233',
+      email: 'mirokugomel@yandex.ru',
+      instagramUrl: 'https://www.instagram.com/miroku.gomel/',
+      vkUrl: 'https://vk.com/mirokugomel',
+      yandexMapsUrl: 'https://yandex.by/maps/org/miroku/1046342471/',
+      eripCode: '12038-1-1',
+      schedule: {
+        timezone: 'Europe/Minsk',
+        openHour: 10,
+        closeHour: 22,
+        label: 'Ежедневно 10:00–22:00'
+      },
+      // После запуска сюда вставляется URL веб-приложения Google Apps Script для уведомлений в Telegram
+      formAction: '',
+      demoMode: true
+    };
+  </script>
+
+  <!-- HEADER: Строго 1 строка, античное золото и слоновая кость, БЕЗ кричащих пилюль -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-40 border-b border-goldlight/15 bg-sumi/35 backdrop-blur-md text-silk">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-[74px] flex items-center justify-between gap-4">
+
+      <!-- Бренд + Живой статус по времени Беларуси -->
+      <div class="flex items-center gap-4 min-w-0 shrink-0">
+        <a href="#top" class="flex items-center gap-3 group whitespace-nowrap">
+          <!-- Минималистичный солярный символ в духе оригинального логотипа Мироку -->
+          <svg class="w-7 h-7 text-goldlight shrink-0 transition-transform duration-700 group-hover:rotate-45" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7"/>
+            <circle cx="18" cy="18" r="6.2" stroke="currentColor" stroke-width="1"/>
+            <path d="M18 3.5V8.5M18 27.5V32.5M3.5 18H8.5M27.5 18H32.5M7.8 7.8L11.3 11.3M24.7 24.7L28.2 28.2M28.2 7.8L24.7 11.3M11.3 24.7L7.8 28.2" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-opacity="0.85"/>
+          </svg>
+          <span class="flex flex-col leading-none">
+            <span class="font-serif text-[20px] sm:text-[22px] tracking-[0.14em] text-silk font-normal uppercase">Мироку</span>
+            <span class="text-[9px] tracking-[0.28em] uppercase text-goldlight/80 mt-0.5">SPA · Гомель</span>
+          </span>
+        </a>
+
+        <!-- Живой статус (Europe/Minsk) -->
+        <div id="live-status" class="hidden xl:inline-flex items-center gap-2 pl-4 border-l border-goldlight/25 text-[11px] tracking-[0.06em] text-silk/85 whitespace-nowrap">
+          <span id="live-status-dot" class="w-1.5 h-1.5 rounded-full bg-goldlight shrink-0"></span>
+          <span id="live-status-text">Открыто до 22:00</span>
+        </div>
+      </div>
+
+      <!-- Навигация (строго 1 строка, whitespace-nowrap) -->
+      <nav class="hidden lg:flex items-center gap-7 text-[12px] tracking-[0.14em] uppercase text-silk/80" aria-label="Основная навигация">
+        <a href="#rituals" class="whitespace-nowrap hover:text-goldlight transition-colors">Программы</a>
+        <a href="#picker" class="whitespace-nowrap hover:text-goldlight transition-colors">Подбор</a>
+        <a href="#certificates" class="whitespace-nowrap hover:text-goldlight transition-colors">Сертификаты</a>
+        <a href="#atmosphere" class="whitespace-nowrap hover:text-goldlight transition-colors">О салоне</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-goldlight transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Правый блок: телефон + тонкие монохромные иконки в палитре золота + кнопка записи -->
+      <div class="flex items-center gap-4 shrink-0">
+        <a href="tel:+375447979000" class="hidden sm:inline-block whitespace-nowrap text-[13px] tracking-[0.06em] text-silk/95 hover:text-goldlight transition-colors font-medium">
+          +375 (44) 79-79-000
+        </a>
+
+        <!-- Монохромные hairline-иконки Viber и Instagram в тоне античного золота -->
+        <div class="hidden md:flex items-center gap-2.5 pl-3 border-l border-goldlight/20">
+          <a href="viber://chat?number=%2B375291313390" title="Написать в Viber" aria-label="Viber" class="w-8 h-8 rounded-full border border-goldlight/35 flex items-center justify-center text-goldlight hover:bg-goldlight hover:text-sumi transition-colors">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path d="M14.05 2a9 9 0 0 1 8 7.94"/>
+              <path d="M14.05 6A5 5 0 0 1 18 10"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/miroku.gomel/" target="_blank" rel="noopener noreferrer" title="Instagram @miroku.gomel" aria-label="Instagram" class="w-8 h-8 rounded-full border border-goldlight/35 flex items-center justify-center text-goldlight hover:bg-goldlight hover:text-sumi transition-colors">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+
+        <a href="#booking" class="hidden sm:inline-flex items-center whitespace-nowrap px-4 py-2 border border-goldlight/60 text-[11px] tracking-[0.18em] uppercase text-silk hover:bg-goldlight hover:text-sumi transition-colors">
+          Записаться
+        </a>
+
+        <!-- Мобильный бургер -->
+        <button id="mobile-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-silk border border-goldlight/35">
+          <span class="w-5 h-px bg-silk transition-transform"></span>
+          <span class="w-5 h-px bg-goldlight transition-opacity"></span>
+          <span class="w-5 h-px bg-silk transition-transform"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Выдвижное мобильное меню -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-sumi/96 backdrop-blur-xl border-t border-goldlight/15 px-6 py-7 space-y-5">
+      <div id="live-status-mobile" class="inline-flex items-center gap-2 text-[12px] tracking-[0.06em] text-goldlight">
+        <span class="w-1.5 h-1.5 rounded-full bg-goldlight"></span>
+        <span id="live-status-mobile-text">Открыто до 22:00 · Ежедневно</span>
+      </div>
+      <div class="flex flex-col space-y-4 font-serif text-xl text-silk">
+        <a href="#rituals" class="mobile-nav-link hover:text-goldlight">Программы и прайс</a>
+        <a href="#picker" class="mobile-nav-link hover:text-goldlight">Подобрать ритуал</a>
+        <a href="#certificates" class="mobile-nav-link hover:text-goldlight">Подарочные сертификаты</a>
+        <a href="#atmosphere" class="mobile-nav-link hover:text-goldlight">О салоне</a>
+        <a href="#contacts" class="mobile-nav-link hover:text-goldlight">Контакты и карта</a>
+      </div>
+      <div class="pt-4 border-t border-goldlight/20 flex flex-col gap-2 text-sm text-silk/80">
+        <a href="tel:+375447979000" class="text-goldlight font-medium">+375 (44) 79-79-000</a>
+        <a href="tel:+375291313390">+375 (29) 131-33-90 (Viber)</a>
+        <span class="text-xs text-silk/55">г. Гомель, ул. Советская, д. 42 · 10:00–22:00</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO: Полноэкранный кинематографичный Zen Editorial (БЕЗ 2-колоночного шаблона, пилюль и 3 карточек-цифр) -->
+    <section class="relative min-h-[100svh] flex flex-col justify-between overflow-hidden bg-sumi text-silk">
+      <!-- Атмосферное фото ароматерапии и тёплого масла -->
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1920&q=85"
+          alt="Ритуал с эфирными маслами при тёплом свете в SPA-салоне Мироку"
+          class="w-full h-full object-cover object-center scale-[1.02]"
+        >
+        <!-- Глубокая многослойная вуаль espresso-gold для идеальной читаемости и спокойной глубины -->
+        <div class="absolute inset-0 bg-gradient-to-b from-sumi/75 via-sumi/48 to-sumi/88"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-sumi/70 via-sumi/30 to-sumi/55"></div>
+      </div>
+
+      <!-- Отступ под фиксированную шапку -->
+      <div class="h-[84px] shrink-0"></div>
+
+      <!-- Центральная редакционная композиция с максимумом воздуха -->
+      <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 py-8 sm:py-16 text-center">
+        <!-- Тонкая строчка-наследие без рамки-пилюли -->
+        <p class="flex items-center justify-center gap-2.5 sm:gap-4 text-[9.5px] sm:text-[11px] tracking-[0.20em] sm:tracking-[0.30em] uppercase text-goldlight/90 mb-5 sm:mb-9">
+          <span class="w-4 sm:w-10 h-px bg-goldlight/55 shrink-0"></span>
+          <span>Мир Wellness и SPA · Гомель</span>
+          <span class="w-4 sm:w-10 h-px bg-goldlight/55 shrink-0"></span>
+        </p>
+
+        <h1 class="font-serif font-normal text-[35px] sm:text-[56px] lg:text-[68px] leading-[1.09] tracking-[-0.01em] text-silk">
+          Тишина, тепло свечей
+          <span class="block italic text-goldlight font-normal mt-1.5">и время для себя</span>
+        </h1>
+
+        <p class="mt-5 sm:mt-8 max-w-xl mx-auto text-[13.5px] sm:text-[16px] leading-[1.75] sm:leading-[1.8] font-light text-silk/85">
+          С 2008 года создаём в центре Гомеля место, где звучит спокойная музыка, раскрываются ароматы эфирных масел и алтайской кедровой бочки — и можно просто замедлиться с чашкой горячего фиточая.
+        </p>
+
+        <!-- Одна утончённая кнопка + деликатная ссылка на сертификаты -->
+        <div class="mt-7 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+          <a href="#picker" class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gold text-sumi text-[11px] sm:text-[12px] tracking-[0.20em] uppercase font-semibold hover:bg-goldlight transition-colors duration-300 w-full sm:w-auto">
+            <span>Подобрать программу</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <a href="#certificates" class="inline-flex items-center gap-2 text-[11.5px] sm:text-[12px] tracking-[0.18em] uppercase text-silk/90 hover:text-goldlight pb-1 border-b border-goldlight/45 hover:border-goldlight transition-colors">
+            <span>Подарочные сертификаты</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Тихая редакционная строка в нижней части первого экрана (слева, чтобы никогда не пересекаться с cookie-баннером справа) -->
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 pb-36 sm:pb-8 pt-5 border-t border-goldlight/15 flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2 text-[10.5px] sm:text-[11px] tracking-[0.12em] uppercase text-silk/75">
+        <span>ул. Советская, д. 42</span>
+        <span class="text-goldlight/45">·</span>
+        <span>10:00 – 22:00 ежедневно</span>
+        <span class="hidden sm:inline text-goldlight/45">·</span>
+        <a href="https://yandex.by/maps/org/miroku/1046342471/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-goldlight/95 hover:text-goldlight transition-colors">
+          <span>★ 5.0 на Яндекс Картах</span>
+          <span class="text-silk/60 normal-case tracking-normal">(127 отзывов)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ЭПИГРАФ-ФИЛОСОФИЯ: сохраняем авторский девиз оригинала -->
+    <section class="py-16 sm:py-20 px-5 sm:px-8 border-b border-gold/20 bg-cream silk-grain">
+      <div class="max-w-4xl mx-auto text-center reveal">
+        <p class="text-[11px] tracking-[0.26em] uppercase text-golddeep mb-5">Философия салона</p>
+        <p class="font-serif text-[24px] sm:text-[32px] leading-[1.4] text-sumi font-normal">
+          «Сохраним здоровье, продлим молодость, подчеркнём красоту»
+        </p>
+        <div class="gold-rule max-w-[160px] mx-auto my-7"></div>
+        <p class="text-[14px] sm:text-[15px] leading-[1.85] text-stonewarm max-w-2xl mx-auto">
+          В «Мироку» не спешат: каждый визит — это приватное время в СПА-зоне с кедровой бочкой, тёплые руки мастеров, тишина в комнате отдыха и индивидуальное внимание к вашему самочувствию.
+        </p>
+      </div>
+    </section>
+
+    <!-- МИНИ-ИНТЕРАКТИВ ЗА 2 КАСАНИЯ (Signature Feature #3 — без калькуляторов и формул) -->
+    <section id="picker" class="py-18 sm:py-24 px-5 sm:px-8 bg-alabaster border-b border-gold/20">
+      <div class="max-w-5xl mx-auto reveal">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <p class="text-[11px] tracking-[0.24em] uppercase text-golddeep mb-3">Быстрый подбор за 2 касания</p>
+            <h2 class="font-serif text-[30px] sm:text-[40px] leading-[1.15] text-sumi font-normal">
+              Какой отдых вам <span class="italic text-golddeep">сейчас ближе?</span>
+            </h2>
+          </div>
+          <p class="text-sm text-stonewarm max-w-sm">
+            Выберите направление и удобное время — параметры сразу подставятся в форму записи, и администратор предложит свободные окна.
+          </p>
+        </div>
+
+        <div class="bg-cream border border-gold/25 p-6 sm:p-10 space-y-8">
+          <!-- Шаг 1 -->
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-serif italic text-lg text-golddeep">01</span>
+              <span class="text-[11px] tracking-[0.2em] uppercase text-sumi font-medium">Что вас интересует</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" role="radiogroup" aria-label="Выбор направления">
+              <button type="button" data-pick-service="СПА-программа отдыха" class="picker-choice is-selected text-left px-5 py-4 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[17px] leading-snug">СПА-программа</span>
+                <span class="picker-sub block text-[11px] tracking-[0.06em] text-stonewarm mt-1">Релакс, детокс, Luxury SPA</span>
+              </button>
+              <button type="button" data-pick-service="СПА для двоих" class="picker-choice text-left px-5 py-4 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[17px] leading-snug">СПА для двоих</span>
+                <span class="picker-sub block text-[11px] tracking-[0.06em] text-stonewarm mt-1">Парная, массаж и чаепитие</span>
+              </button>
+              <button type="button" data-pick-service="Массаж или Кедровая бочка" class="picker-choice text-left px-5 py-4 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[17px] leading-snug">Массаж / Бочка</span>
+                <span class="picker-sub block text-[11px] tracking-[0.06em] text-stonewarm mt-1">Арома-массаж и фито-парная</span>
+              </button>
+              <button type="button" data-pick-service="Подарочный сертификат" class="picker-choice text-left px-5 py-4 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[17px] leading-snug">Сертификат</span>
+                <span class="picker-sub block text-[11px] tracking-[0.06em] text-stonewarm mt-1">Бумажный или электронный</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-serif italic text-lg text-golddeep">02</span>
+              <span class="text-[11px] tracking-[0.2em] uppercase text-sumi font-medium">Удобное время визита или доставки</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Выбор времени">
+              <button type="button" data-pick-time="Утро (10:00–13:00)" class="picker-choice text-left px-5 py-3.5 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[16px]">Утро</span>
+                <span class="picker-sub block text-[11px] text-stonewarm mt-0.5">10:00 – 13:00</span>
+              </button>
+              <button type="button" data-pick-time="День (13:00–17:00)" class="picker-choice is-selected text-left px-5 py-3.5 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[16px]">День</span>
+                <span class="picker-sub block text-[11px] text-stonewarm mt-0.5">13:00 – 17:00</span>
+              </button>
+              <button type="button" data-pick-time="Вечер (17:00–22:00)" class="picker-choice text-left px-5 py-3.5 border border-gold/30 bg-silk/60 hover:border-gold">
+                <span class="block font-serif text-[16px]">Вечер</span>
+                <span class="picker-sub block text-[11px] text-stonewarm mt-0.5">17:00 – 22:00</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Итог выбора + переход к записи -->
+          <div class="pt-6 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div class="space-y-1">
+              <p class="text-[11px] tracking-[0.18em] uppercase text-golddeep">Ваш выбор</p>
+              <p id="picker-summary" class="font-serif text-[19px] text-sumi">СПА-программа отдыха · День (13:00–17:00)</p>
+              <p id="picker-hint" class="text-xs text-stonewarm">Подсказка: по будням с 10:00 до 16:00 действует акция «Привлекательные часы» — скидка 20% на кедровую бочку и массаж после неё по карте клуба «Мой Мироку».</p>
+            </div>
+            <button id="picker-apply-btn" type="button" class="shrink-0 inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-sumi text-silk text-[11px] tracking-[0.20em] uppercase font-medium hover:bg-espresso transition-colors">
+              <span>Перейти к записи</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- КАТАЛОГ УСЛУГ И РЕАЛЬНЫЙ ПРЕЙСКУРАНТ (Табовое меню SPA-отеля) -->
+    <section id="rituals" class="py-20 sm:py-28 px-5 sm:px-8 bg-silk">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 reveal">
+          <div>
+            <p class="text-[11px] tracking-[0.26em] uppercase text-golddeep mb-3">СПА-меню «Мироку»</p>
+            <h2 class="font-serif text-[32px] sm:text-[46px] leading-[1.12] text-sumi font-normal">
+              Программы отдыха <span class="italic text-golddeep">и ритуалы</span>
+            </h2>
+          </div>
+          <p class="text-sm leading-relaxed text-stonewarm max-w-md">
+            Все процедуры можно пройти по одной или собрать в персональную программу — под ваши ощущения, темп и бюджет.
+          </p>
+        </div>
+
+        <!-- Вкладки меню (тонкая эстетика, горизонтальный скролл на мобильном) -->
+        <div class="border-b border-gold/25 mb-12 overflow-x-auto no-scrollbar">
+          <div class="flex items-center gap-7 sm:gap-10 min-w-max pb-px" role="tablist" aria-label="Разделы услуг">
+            <button type="button" role="tab" aria-selected="true" data-tab="spa" class="spa-tab-btn is-active pb-4 text-[12px] tracking-[0.18em] uppercase text-stonewarm hover:text-sumi font-medium whitespace-nowrap">
+              СПА-программы
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab="couples" class="spa-tab-btn pb-4 text-[12px] tracking-[0.18em] uppercase text-stonewarm hover:text-sumi font-medium whitespace-nowrap">
+              Для двоих
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab="barrel" class="spa-tab-btn pb-4 text-[12px] tracking-[0.18em] uppercase text-stonewarm hover:text-sumi font-medium whitespace-nowrap">
+              Кедровая бочка
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab="massage" class="spa-tab-btn pb-4 text-[12px] tracking-[0.18em] uppercase text-stonewarm hover:text-sumi font-medium whitespace-nowrap">
+              Массаж и уход
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-tab="beauty" class="spa-tab-btn pb-4 text-[12px] tracking-[0.18em] uppercase text-stonewarm hover:text-sumi font-medium whitespace-nowrap">
+              Косметология и эстетика
+            </button>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ 1: СПА-ПРОГРАММЫ -->
+        <div id="tab-spa" class="spa-tab-panel grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden border border-gold/25 bg-alabaster group cursor-zoom-in" data-lightbox-src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Комплексные СПА-программы отдыха в SPA-салоне «Мироку»">
+              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=85" alt="Тёплые камни и СПА-программа релаксации" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="mt-5 p-6 bg-cream border border-gold/20">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep mb-2">8 направлений на выбор</p>
+              <p class="text-sm leading-relaxed text-stonewarm">
+                Релаксация · Детоксикация · Стройность · Эстетика · Мужской СПА · СПА для молодой мамы · СПА для влюблённых · Мини-отпуск «Перезагрузка».
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-gold/20 border-t border-b border-gold/20">
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Лёгкость духа»</h3>
+                  <span class="text-xs text-stonewarm">70 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">Сеанс «Всё включено» в фито-парной «Кедровая бочка», мягкое расслабление и отдых с травяным чаем.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">65 BYN</span>
+                <button type="button" data-book-item="СПА-программа «Лёгкость духа» (70 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Нега»</h3>
+                  <span class="text-xs text-stonewarm">80 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">Распаривание в фито-парной «Кедровая бочка» с алтайским сбором, релакс-массаж и тихое чаепитие.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">75 BYN</span>
+                <button type="button" data-book-item="СПА-программа «Нега» (80 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Антистресс»</h3>
+                  <span class="text-xs text-stonewarm">120 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">Два часа спокойствия для снятия накопленной усталости: фито-парная, восстанавливающий уход и арома-отдых.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">80 BYN</span>
+                <button type="button" data-book-item="СПА-программа «Антистресс» (120 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3 flex-wrap">
+                  <h3 class="font-serif text-[21px] text-sumi">«Невесомость»</h3>
+                  <span class="text-[10px] tracking-[0.16em] uppercase text-golddeep">Luxury SPA</span>
+                  <span class="text-xs text-stonewarm">180 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">Соляное скрабирование тела, кедровая бочка «Всё включено», арома-массаж тела 60 мин, массаж лица по крему, травяной чай.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">180 BYN</span>
+                <button type="button" data-book-item="Luxury SPA «Невесомость» (180 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3 flex-wrap">
+                  <h3 class="font-serif text-[21px] text-sumi">«Путь к себе»</h3>
+                  <span class="text-[10px] tracking-[0.16em] uppercase text-golddeep">Luxury SPA</span>
+                  <span class="text-xs text-stonewarm">260 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">VIP-сеанс кедровой бочки, массаж ног 30 мин, арома-массаж тела 60 мин, косметический массаж лица по крему и чаепитие.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">220 BYN</span>
+                <button type="button" data-book-item="Luxury SPA «Путь к себе» (260 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3 flex-wrap">
+                  <h3 class="font-serif text-[21px] text-sumi">«Шоколадный Релакс»</h3>
+                  <span class="text-[10px] tracking-[0.16em] uppercase text-golddeep">Хит отдыха</span>
+                  <span class="text-xs text-stonewarm">200 мин</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5 leading-relaxed">VIP-кедровая бочка, шоколадно-соляное скрабирование, обёртывание с какао «Амазония», арома-массаж тела и массаж лица.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">240 BYN</span>
+                <button type="button" data-book-item="СПА-программа «Шоколадный Релакс» (200 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ 2: ДЛЯ ДВОИХ -->
+        <div id="tab-couples" class="spa-tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden border border-gold/25 bg-alabaster group cursor-zoom-in" data-lightbox-src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Романтические СПА-программы для двоих в отдельном кабинете">
+              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1000&q=85" alt="Парный арома-массаж тёплым маслом" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="mt-5 p-6 bg-cream border border-gold/20">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep mb-2">Уединённый формат</p>
+              <p class="text-sm leading-relaxed text-stonewarm">
+                В салоне оборудован отдельный массажный кабинет для двух гостей и приватная комната отдыха с приглушённым светом и фруктовым чаем.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-gold/20 border-t border-b border-gold/20">
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Чистые чувства»</h3>
+                  <span class="text-xs text-stonewarm">80 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Сеанс «Всё включено» в фито-парной «Кедровая бочка» с двумя заходами и чаепитие с фруктовым чаем.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">80 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Чистые чувства» (80 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Нега для двоих»</h3>
+                  <span class="text-xs text-stonewarm">80 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Кедровая бочка «Всё включено», отдых с чаем и арома-массаж тела 30 минут для неё и для него.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">150 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Нега для двоих» (80 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Продолжение истории»</h3>
+                  <span class="text-xs text-stonewarm">120 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Кедровая бочка (2 захода), чаепитие; для неё — косметический массаж лица по маслу, для него — арома-массаж тела 30 мин.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">160 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Продолжение истории» (120 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Романтика»</h3>
+                  <span class="text-xs text-stonewarm">110 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Фито-парная «Кедровая бочка», отдых с фруктовым чаем и полноценный арома-массаж тела по 60 минут для каждого.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">200 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Романтика» (110 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Гармония чувств»</h3>
+                  <span class="text-xs text-stonewarm">120 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Кедровая бочка, чаепитие; для неё — массаж лица + массаж тела 30 мин; для него — арома-массаж тела 60 мин.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">215 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Гармония чувств» (120 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div class="max-w-lg">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-[21px] text-sumi">«Трогательная история»</h3>
+                  <span class="text-xs text-stonewarm">140 мин · для двоих</span>
+                </div>
+                <p class="text-sm text-stonewarm mt-1.5">Расширенное романтическое СПА: VIP-сеанс кедровой бочки с двумя заходами, чаепитие и глубокий арома-массаж.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">250 BYN</span>
+                <button type="button" data-book-item="СПА для двоих «Трогательная история» (140 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ 3: КЕДРОВАЯ БОЧКА -->
+        <div id="tab-barrel" class="spa-tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden border border-gold/25 bg-alabaster group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/39237331/pexels-photo-39237331.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Натуральное дерево и травяной пар — фито-парная «Кедровая бочка»">
+              <img src="https://images.pexels.com/photos/39237331/pexels-photo-39237331.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Тёплая деревянная отделка парной" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="mt-5 p-6 bg-cream border border-gold/20 space-y-2">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep">Алтайский травяной сбор</p>
+              <p class="text-sm leading-relaxed text-stonewarm">
+                Голова остаётся снаружи и не перегревается — пар мягко прогревает тело, снимает усталость, готовит мышцы к массажу и дарит бархатистость коже.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-gold/20 border-t border-b border-gold/20">
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Сеанс «Стандарт»</h3>
+                <p class="text-sm text-stonewarm mt-1">С одним заходом в парную — 30 BYN · С двумя заходами — 35 BYN</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">30–35 BYN</span>
+                <button type="button" data-book-item="Фито-парная «Кедровая бочка» — Стандарт" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Сеанс «Всё включено»</h3>
+                <p class="text-sm text-stonewarm mt-1">С одним заходом — 35 BYN · С двумя заходами — 40 BYN</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">35–40 BYN</span>
+                <button type="button" data-book-item="Фито-парная «Кедровая бочка» — Всё включено" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Сеанс «VIP»</h3>
+                <p class="text-sm text-stonewarm mt-1">С одним заходом — 40 BYN · С двумя заходами — 45 BYN</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">40–45 BYN</span>
+                <button type="button" data-book-item="Фито-парная «Кедровая бочка» — VIP" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <div class="py-6">
+              <div class="p-5 bg-alabaster border-l-2 border-gold">
+                <p class="text-[11px] tracking-[0.18em] uppercase text-golddeep font-semibold">Постоянная акция «Привлекательные часы»</p>
+                <p class="text-sm text-espresso mt-1.5 leading-relaxed">
+                  По будням с 10:00 до 16:00 держателям клубной карты «Мой Мироку» — <strong>скидка 20%</strong> на фито-парную «Кедровая бочка» и <strong>20%</strong> на любой массаж лица или тела после неё.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ 4: МАССАЖ И УХОД ЗА ТЕЛОМ -->
+        <div id="tab-massage" class="spa-tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden border border-gold/25 bg-alabaster group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Косметический и арома-массаж тела в спокойной атмосфере">
+              <img src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Спокойный расслабляющий массаж спины" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="mt-5 p-6 bg-cream border border-gold/20">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep mb-2">Абонементы на 5 и 10 сеансов</p>
+              <p class="text-sm leading-relaxed text-stonewarm">
+                На курсовой массаж действуют абонементы со скидкой 10% (на 5 сеансов) и 15% (на 10 сеансов).
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-gold/20 border-t border-b border-gold/20">
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Арома-массаж тела</h3>
+                <p class="text-sm text-stonewarm mt-1">Косметический массаж с ароматическим воздействием: 20 мин — 30 BYN · 30 мин — 40 BYN · 45 мин — 55 BYN · 60 мин — 65 BYN · 90 мин — 95 BYN</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">от 30 BYN</span>
+                <button type="button" data-book-item="Арома-массаж тела" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Эстетический (моделирующий) массаж тела</h3>
+                <p class="text-sm text-stonewarm mt-1">Для поддержания тонуса и улучшения эстетического вида кожи: 30 мин — 50 BYN · 45 мин — 70 BYN · 60 мин — 85 BYN</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">от 50 BYN</span>
+                <button type="button" data-book-item="Эстетический массаж тела" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Скрабирование и обёртывания тела</h3>
+                <p class="text-sm text-stonewarm mt-1">Соляное, кремовое и шоколадно-соляное скрабирование; водорослевые и шоколадные обёртывания с какао «Амазония».</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[17px] italic text-golddeep whitespace-nowrap">подбор ухода</span>
+                <button type="button" data-book-item="СПА-уход за телом (скрабирование / обёртывание)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Уточнить</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ 5: КОСМЕТОЛОГИЯ И ЭСТЕТИКА -->
+        <div id="tab-beauty" class="spa-tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden border border-gold/25 bg-alabaster group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/6663571/pexels-photo-6663571.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Деликатная косметология и скульптурный массаж лица">
+              <img src="https://images.pexels.com/photos/6663571/pexels-photo-6663571.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Деликатный косметический массаж лица" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="mt-5 p-6 bg-cream border border-gold/20">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep mb-2">Профессиональные линии</p>
+              <p class="text-sm leading-relaxed text-stonewarm">
+                Два отдельных косметологических кабинета, уходы на израильской косметике Christina (включая «Bio Phyto»), кабинет маникюра, педикюра и Brow-сервиса.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-gold/20 border-t border-b border-gold/20">
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Классический массаж лица и зоны декольте</h3>
+                <p class="text-sm text-stonewarm mt-1">40 минут (демакияж, тонизация, массаж по маслу 40 BYN / по крему 45 BYN, крем-финиш).</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">40–45 BYN</span>
+                <button type="button" data-book-item="Классический массаж лица и декольте (40 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Скульптурный массаж лица и декольте</h3>
+                <p class="text-sm text-stonewarm mt-1">60 минут по крему (глубокая проработка тонуса и овала лица; доступны абонементы на 5 и 10 сеансов).</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">65 BYN</span>
+                <button type="button" data-book-item="Скульптурный массаж лица и декольте (60 мин)" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Чистки и уходы за лицом (Christina)</h3>
+                <p class="text-sm text-stonewarm mt-1">Деликатные уходы, включая программу «Bio Phyto» для чувствительной кожи с признаками купероза.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[17px] italic text-golddeep whitespace-nowrap">по типу кожи</span>
+                <button type="button" data-book-item="Консультация и уход у косметолога" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Записаться</button>
+              </div>
+            </article>
+
+            <article class="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[21px] text-sumi">Ногтевой сервис и Brow-сервис</h3>
+                <p class="text-sm text-stonewarm mt-1">Маникюр от 25 BYN (с гель-лаком — 50 BYN), мужской маникюр — 30 BYN; моделирование и окрашивание бровей — от 20 BYN.</p>
+              </div>
+              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1 shrink-0">
+                <span class="font-serif text-[22px] text-sumi whitespace-nowrap">от 20 BYN</span>
+                <button type="button" data-book-item="Ногтевой сервис / Brow-сервис" class="text-[11px] tracking-[0.16em] uppercase text-golddeep hover:text-sumi border-b border-gold/40">Выбрать</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p class="mt-8 text-xs text-stonewarm/85">
+          Выписка из прейскуранта салона от 20.02.2026. Информация носит ознакомительный характер и не является публичной офертой (ст. 407 ГК РБ). Точный состав и стоимость программы уточняйте при записи у администратора.
+        </p>
+      </div>
+    </section>
+
+    <!-- ПОДАРОЧНЫЕ СЕРТИФИКАТЫ: Люксовый тёмный разворот Sumi Ink & Brushed Gold -->
+    <section id="certificates" class="py-22 sm:py-28 px-5 sm:px-8 bg-sumi text-silk relative overflow-hidden">
+      <!-- Ненавязчивое тёплое золотое свечение на фоне -->
+      <div class="pointer-events-none absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-gold/10 blur-3xl"></div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+        <!-- Левая колонка: тактильный макет сертификата -->
+        <div class="lg:col-span-5 reveal">
+          <div class="cert-frame p-7 sm:p-9 text-sumi border border-goldlight/60 shadow-2xl relative">
+            <div class="border border-gold/45 p-6 sm:p-8 flex flex-col justify-between min-h-[290px]">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-[9px] tracking-[0.30em] uppercase text-golddeep">Подарочный сертификат</p>
+                  <p class="font-serif text-[28px] tracking-[0.12em] uppercase text-sumi mt-1">Мироку</p>
+                </div>
+                <svg class="w-9 h-9 text-gold shrink-0" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="0.9"/>
+                  <circle cx="18" cy="18" r="6" stroke="currentColor" stroke-width="1"/>
+                  <path d="M18 4V9M18 27V32M4 18H9M27 18H32M8 8L11.5 11.5M24.5 24.5L28 28M28 8L24.5 11.5M11.5 24.5L8 28" stroke="currentColor" stroke-width="0.9"/>
+                </svg>
+              </div>
+
+              <div class="my-6">
+                <p class="font-serif italic text-[20px] sm:text-[22px] text-espresso leading-snug">
+                  Подарите тишину, тепло и несколько часов абсолютной заботы
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-gold/35 flex items-center justify-between text-[10px] tracking-[0.16em] uppercase text-stonewarm">
+                <span>Действует 6 месяцев</span>
+                <span>Гомель · Советская, 42</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Правая колонка: условия, форматы, доставка и рассрочка -->
+        <div class="lg:col-span-7 reveal">
+          <p class="text-[11px] tracking-[0.26em] uppercase text-goldlight mb-4">Идеальный подарок</p>
+          <h2 class="font-serif text-[32px] sm:text-[44px] leading-[1.14] text-silk font-normal">
+            Подарочные сертификаты <span class="italic text-goldlight">с доставкой за 20–40 минут</span>
+          </h2>
+          <p class="mt-5 text-[15px] leading-[1.8] text-silk/78 max-w-2xl">
+            Вы можете подарить конкретную СПА-программу или номинал на любую сумму — в фирменном конверте с открыткой или в электронном виде. Работаем также с корпоративными заявками по безналичному расчёту.
+          </p>
+
+          <!-- Быстрый выбор получателя сертификата -->
+          <div class="mt-7 flex flex-wrap gap-2.5">
+            <button type="button" data-book-item="Подарочный сертификат — Для женщины" class="px-4 py-2 border border-goldlight/35 text-[11px] tracking-[0.15em] uppercase text-silk/90 hover:border-goldlight hover:text-goldlight transition-colors">Для женщины</button>
+            <button type="button" data-book-item="Подарочный сертификат — Для мужчины" class="px-4 py-2 border border-goldlight/35 text-[11px] tracking-[0.15em] uppercase text-silk/90 hover:border-goldlight hover:text-goldlight transition-colors">Для мужчины</button>
+            <button type="button" data-book-item="Подарочный сертификат — Для двоих" class="px-4 py-2 border border-goldlight/35 text-[11px] tracking-[0.15em] uppercase text-silk/90 hover:border-goldlight hover:text-goldlight transition-colors">Для двоих</button>
+            <button type="button" data-book-item="Подарочный сертификат — Luxury SPA-день" class="px-4 py-2 border border-goldlight/35 text-[11px] tracking-[0.15em] uppercase text-silk/90 hover:border-goldlight hover:text-goldlight transition-colors">Luxury SPA</button>
+            <button type="button" data-book-item="Номинальный / Электронный сертификат" class="px-4 py-2 border border-goldlight/35 text-[11px] tracking-[0.15em] uppercase text-silk/90 hover:border-goldlight hover:text-goldlight transition-colors">На сумму / Электронный</button>
+          </div>
+
+          <!-- 4 факта в тонкой сетке -->
+          <div class="mt-9 pt-8 border-t border-goldlight/20 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+            <div>
+              <p class="font-serif text-[18px] text-goldlight">Действует 6 месяцев</p>
+              <p class="text-silk/70 mt-1 leading-relaxed">Получатель сам выбирает удобный день и время визита.</p>
+            </div>
+            <div>
+              <p class="font-serif text-[18px] text-goldlight">Экспресс-доставка по Гомелю</p>
+              <p class="text-silk/70 mt-1 leading-relaxed">Ежедневно за 20–40 мин (бесплатно при заказе от 300 BYN); по РБ — Белпочтой.</p>
+            </div>
+            <div>
+              <p class="font-serif text-[18px] text-goldlight">Онлайн-оплата ЕРИП / E-POS</p>
+              <p class="text-silk/70 mt-1 leading-relaxed">Оформляем дистанционно — удобно, даже если вы в другом городе.</p>
+            </div>
+            <div>
+              <p class="font-serif text-[18px] text-goldlight">Рассрочка 0% в кассе салона</p>
+              <p class="text-silk/70 mt-1 leading-relaxed">Халва и Магнит (2 мес.), Карта покупок и КартаFUN (3 мес.), Черепаха (8 мес.).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О САЛОНЕ, АТМОСФЕРА И ГАЛЕРЕЯ С ЛАЙТБОКСОМ -->
+    <section id="atmosphere" class="py-20 sm:py-28 px-5 sm:px-8 bg-cream border-b border-gold/20">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5 reveal">
+            <p class="text-[11px] tracking-[0.26em] uppercase text-golddeep mb-3">О салоне «Мироку»</p>
+            <h2 class="font-serif text-[32px] sm:text-[42px] leading-[1.15] text-sumi font-normal">
+              Место, куда хочется <span class="italic text-golddeep">возвращаться</span>
+            </h2>
+            <p class="mt-6 text-[15px] leading-[1.85] text-stonewarm">
+              Салон открыл двери 14 марта 2008 года из простой мечты — создать в Гомеле пространство, где можно попариться в кедровой парной с травами, расслабиться на массаже, а затем просто посидеть при свечах с чашкой горячего чая и помолчать.
+            </p>
+            <p class="mt-4 text-[15px] leading-[1.85] text-stonewarm">
+              Сегодня в распоряжении гостей — уютная СПА-зона с кедровой бочкой, гидро-аэромассажной ванной и комнатой отдыха, массажный кабинет для двоих, два косметологических кабинета, а также студия маникюра и Brow-сервиса.
+            </p>
+
+            <!-- Клуб постоянных клиентов (реальный факт с miroku.by) -->
+            <div class="mt-8 p-6 bg-silk border border-gold/25">
+              <p class="text-[11px] tracking-[0.20em] uppercase text-golddeep mb-2">Клуб «Мой Мироку»</p>
+              <p class="text-sm leading-relaxed text-espresso">
+                Накопительная клубная карта постоянного гостя: <strong>5% бонусами</strong> на услуги салона, доступ к акции «Привлекательные часы» (−20% по будням до 16:00) и <strong>25% бонусом</strong> в месяц дня рождения.
+              </p>
+            </div>
+          </div>
+
+          <!-- Редакционная мозаика фотографий (клик открывает лайтбокс) -->
+          <div class="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-5 reveal">
+            <figure class="overflow-hidden border border-gold/20 group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/6663467/pexels-photo-6663467.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Спокойная атмосфера отдыха и натуральный текстиль">
+              <img src="https://images.pexels.com/photos/6663467/pexels-photo-6663467.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Уютная атмосфера отдыха в халате" loading="lazy" class="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105">
+            </figure>
+            <div class="space-y-4 sm:space-y-5">
+              <figure class="overflow-hidden border border-gold/20 group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Натуральные масла, травяные сборы и скрабы">
+                <img src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ароматические масла, лаванда и соляной скраб" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+              </figure>
+              <figure class="overflow-hidden border border-gold/20 group cursor-zoom-in" data-lightbox-src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1400" data-lightbox-caption="Мягкий свет, тишина и заботливое прикосновение">
+                <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Расслабление при мягком свете свечи" loading="lazy" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Честный блок репутации без выдуманных отзывов -->
+        <div class="mt-16 pt-12 border-t border-gold/20 flex flex-col md:flex-row md:items-center justify-between gap-6 reveal">
+          <div>
+            <p class="text-[11px] tracking-[0.24em] uppercase text-golddeep mb-2">Доверие гостей</p>
+            <div class="flex items-baseline gap-4 flex-wrap">
+              <span class="font-serif text-[34px] sm:text-[40px] text-sumi leading-none">5.0</span>
+              <span class="text-gold text-lg tracking-widest" aria-label="Рейтинг 5 из 5">★★★★★</span>
+              <span class="text-sm text-stonewarm">на Яндекс Картах · 127 отзывов и 333 оценки</span>
+            </div>
+            <p class="text-xs text-stonewarm/80 mt-2">
+              В боевую версию сайта по вашему желанию добавим живой виджет отзывов и реальные фотографии интерьеров салона.
+            </p>
+          </div>
+          <a href="https://yandex.by/maps/org/miroku/1046342471/" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-3 px-6 py-3 border border-espresso/30 text-[11px] tracking-[0.18em] uppercase text-sumi hover:bg-sumi hover:text-silk transition-colors">
+            <span>Читать отзывы на Яндекс Картах</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАПИСЬ И КОНТАКТЫ -->
+    <section id="booking" class="py-20 sm:py-28 px-5 sm:px-8 bg-silk">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+        <!-- Форма онлайн-записи с полным комплаенсом Закона № 99-З -->
+        <div class="lg:col-span-6 bg-cream border border-gold/25 p-7 sm:p-10 reveal">
+          <p class="text-[11px] tracking-[0.24em] uppercase text-golddeep mb-3">Онлайн-запись и сертификаты</p>
+          <h2 class="font-serif text-[30px] sm:text-[36px] leading-[1.18] text-sumi font-normal">
+            Оставьте заявку — <span class="italic text-golddeep">подберём удобное окно</span>
+          </h2>
+          <p class="text-sm text-stonewarm mt-3 leading-relaxed">
+            Администратор свяжется с вами в рабочее время (10:00–22:00), ответит на вопросы по составу программ или оформит подарочный сертификат.
+          </p>
+
+          <form id="booking-form" class="mt-8 space-y-5" novalidate>
+            <!-- Honeypot от спам-ботов -->
+            <div class="hidden" aria-hidden="true">
+              <label for="hp_website">Website</label>
+              <input id="hp_website" name="_hp_website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div>
+              <label for="guest-name" class="block text-[11px] tracking-[0.16em] uppercase text-stonewarm mb-2">Ваше имя *</label>
+              <input id="guest-name" name="name" type="text" required placeholder="Например, Елена" class="w-full px-4 py-3 bg-silk/65 border border-gold/30 text-sumi placeholder:text-stonewarm/50 focus:outline-none focus:border-sumi transition-colors">
+            </div>
+
+            <div>
+              <label for="guest-phone" class="block text-[11px] tracking-[0.16em] uppercase text-stonewarm mb-2">Телефон или Viber *</label>
+              <input id="guest-phone" name="phone" type="tel" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 bg-silk/65 border border-gold/30 text-sumi placeholder:text-stonewarm/50 focus:outline-none focus:border-sumi transition-colors">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="guest-service" class="block text-[11px] tracking-[0.16em] uppercase text-stonewarm mb-2">Интересует</label>
+                <input id="guest-service" name="service" type="text" value="СПА-программа отдыха" class="w-full px-4 py-3 bg-silk/65 border border-gold/30 text-sumi focus:outline-none focus:border-sumi transition-colors">
+              </div>
+              <div>
+                <label for="guest-time" class="block text-[11px] tracking-[0.16em] uppercase text-stonewarm mb-2">Удобное время</label>
+                <select id="guest-time" name="time" class="w-full px-4 py-3 bg-silk/65 border border-gold/30 text-sumi focus:outline-none focus:border-sumi transition-colors">
+                  <option value="Утро (10:00–13:00)">Утро (10:00–13:00)</option>
+                  <option value="День (13:00–17:00)" selected>День (13:00–17:00)</option>
+                  <option value="Вечер (17:00–22:00)">Вечер (17:00–22:00)</option>
+                  <option value="Посоветуйте ближайшее окно">Ближайшее окно</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="guest-comment" class="block text-[11px] tracking-[0.16em] uppercase text-stonewarm mb-2">Пожелания (необязательно)</label>
+              <textarea id="guest-comment" name="comment" rows="2" placeholder="Например: на двоих в субботу, либо нужен электронный сертификат" class="w-full px-4 py-3 bg-silk/65 border border-gold/30 text-sumi placeholder:text-stonewarm/50 focus:outline-none focus:border-sumi transition-colors resize-none"></textarea>
+            </div>
+
+            <!-- Обязательный НЕЗАПОЛНЕННЫЙ чекбокс по Закону РБ № 99-З -->
+            <div class="pt-1">
+              <label class="flex items-start gap-3 cursor-pointer text-xs leading-relaxed text-stonewarm">
+                <input id="consent-checkbox" name="consent" type="checkbox" required class="mt-0.5 w-4 h-4 accent-sumi border-gold/50 shrink-0">
+                <span>
+                  Я ознакомлен(а) с
+                  <button type="button" data-open-modal="modal-privacy" class="underline decoration-gold text-sumi hover:text-golddeep">Политикой обработки персональных данных</button>
+                  и даю
+                  <button type="button" data-open-modal="modal-consent" class="underline decoration-gold text-sumi hover:text-golddeep">согласие на обработку и трансграничную передачу ПД</button>
+                  (Закон РБ № 99-З) для связи по моей заявке.
+                </span>
+              </label>
+            </div>
+
+            <div id="form-feedback" class="hidden p-4 text-sm border" role="status" aria-live="polite"></div>
+
+            <button type="submit" id="form-submit-btn" class="w-full py-4 bg-sumi text-silk text-[12px] tracking-[0.20em] uppercase font-medium hover:bg-espresso transition-colors">
+              Отправить заявку
+            </button>
+          </form>
+        </div>
+
+        <!-- Контакты и карта -->
+        <div id="contacts" class="lg:col-span-6 space-y-8 reveal">
+          <div>
+            <p class="text-[11px] tracking-[0.24em] uppercase text-golddeep mb-3">Как нас найти</p>
+            <h2 class="font-serif text-[30px] sm:text-[36px] leading-[1.18] text-sumi font-normal">
+              Гомель, <span class="italic text-golddeep">ул. Советская, д. 42</span>
+            </h2>
+            <p class="text-sm text-stonewarm mt-2">Цокольный этаж · Центр города · Ежедневно с 10:00 до 22:00 без выходных и перерыва</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6 border-t border-b border-gold/25">
+            <div class="space-y-2">
+              <p class="text-[10px] tracking-[0.22em] uppercase text-golddeep">Телефоны администратора</p>
+              <div class="flex flex-col space-y-1.5 text-[15px] text-sumi">
+                <a href="tel:+375447979000" class="hover:text-golddeep transition-colors font-medium">+375 (44) 79-79-000 <span class="text-xs text-stonewarm font-normal">(A1)</span></a>
+                <a href="tel:+375291313390" class="hover:text-golddeep transition-colors">+375 (29) 131-33-90 <span class="text-xs text-stonewarm">(Viber)</span></a>
+                <a href="tel:+375295353390" class="hover:text-golddeep transition-colors">+375 (29) 535-33-90 <span class="text-xs text-stonewarm">(МТС)</span></a>
+                <a href="tel:+375232222233" class="hover:text-golddeep transition-colors">+375 (232) 22-22-33 <span class="text-xs text-stonewarm">(городской)</span></a>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <p class="text-[10px] tracking-[0.22em] uppercase text-golddeep">Мессенджеры и соцсети</p>
+              <div class="flex flex-col space-y-2.5 text-sm">
+                <a href="viber://chat?number=%2B375291313390" class="inline-flex items-center gap-2.5 text-sumi hover:text-golddeep transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                  <span>Написать в Viber</span>
+                </a>
+                <a href="https://wa.me/375447979000" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 text-sumi hover:text-golddeep transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                  <span>Написать в WhatsApp</span>
+                </a>
+                <a href="https://www.instagram.com/miroku.gomel/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 text-sumi hover:text-golddeep transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                  <span>Instagram · @miroku.gomel</span>
+                </a>
+                <a href="mailto:mirokugomel@yandex.ru" class="inline-flex items-center gap-2.5 text-stonewarm hover:text-sumi transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold/50"></span>
+                  <span>mirokugomel@yandex.ru</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Карта Яндекс -->
+          <div class="border border-gold/25 bg-alabaster overflow-hidden">
+            <iframe
+              title="SPA-салон Мироку на карте Гомеля"
+              src="https://yandex.by/map-widget/v1/?ll=31.010200%2C52.434200&z=16&pt=31.010200%2C52.434200%2Cpm2orgm"
+              width="100%"
+              height="290"
+              frameborder="0"
+              loading="lazy"
+              class="block w-full grayscale-[22%] contrast-[96%]"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: Реальные реквизиты ЧУП «Мироку», комплаенс РБ и аккуратная пометка демо-концепта -->
+  <footer class="bg-sumi text-silk/70 border-t border-goldlight/15 pt-14 pb-28 sm:pb-16 px-5 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-goldlight/15">
+        <div class="md:col-span-5 space-y-3">
+          <p class="font-serif text-2xl tracking-[0.14em] uppercase text-silk">Мироку</p>
+          <p class="text-xs leading-relaxed text-silk/65">
+            Частное унитарное предприятие по оказанию услуг «Мироку» · УНП 490691436<br>
+            Юр. адрес: 246017, г. Гомель, пр-т Победы, д. 2а, пом. б/н<br>
+            Зарегистрировано решением Гомельского райисполкома № 281/1 от 10.03.2008 г.<br>
+            Реестр бытовых услуг Республики Беларусь № 11373 от 21.05.2015 г.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2 text-xs leading-relaxed">
+          <p class="text-[10px] tracking-[0.22em] uppercase text-goldlight mb-2">Правовая информация</p>
+          <div class="flex flex-col items-start gap-1.5">
+            <button type="button" data-open-modal="modal-privacy" class="hover:text-goldlight transition-colors text-left">Политика обработки персональных данных (Закон № 99-З)</button>
+            <button type="button" data-open-modal="modal-consent" class="hover:text-goldlight transition-colors text-left">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="modal-cookies" class="hover:text-goldlight transition-colors text-left">Настройки файлов cookie</button>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-2 text-xs leading-relaxed">
+          <p class="text-[10px] tracking-[0.22em] uppercase text-goldlight mb-2">О прототипе</p>
+          <p class="text-silk/60">
+            Демонстрационный прототип для SPA-салона «Мироку». Перед публикацией переносится на белорусский хостинг владельца (Указ № 60) с актуальными фото и реквизитами ([ФИО / ИП / ООО], [УНП], [Режим работы]).
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-silk/50">
+        <p>© 2008–2026 SPA-салон «Мироку». Информация на сайте не является публичной офертой (ст. 407 ГК РБ).</p>
+        <p class="text-goldlight/70 tracking-[0.10em] uppercase">Демо-концепт · Гомель</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SIGNATURE FEATURE #1: Мобильная «стеклянная» нижняя панель (автоматически скрыта пока открыт cookie-баннер) -->
+  <nav id="mobile-sticky-dock" aria-label="Быстрые действия" class="hidden md:hidden fixed bottom-4 inset-x-4 z-40 mobile-dock rounded-full px-2 py-2 grid grid-cols-3 gap-1 text-silk">
+    <a href="tel:+375447979000" class="flex items-center justify-center gap-1.5 py-2.5 rounded-full text-[11px] tracking-[0.10em] uppercase hover:bg-gold/15 transition-colors">
+      <svg class="w-3.5 h-3.5 text-goldlight shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Позвонить</span>
+    </a>
+    <a href="viber://chat?number=%2B375291313390" class="flex items-center justify-center gap-1.5 py-2.5 rounded-full text-[11px] tracking-[0.10em] uppercase border-x border-goldlight/15 hover:bg-gold/15 transition-colors">
+      <svg class="w-3.5 h-3.5 text-goldlight shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span>Viber</span>
+    </a>
+    <a href="#booking" class="flex items-center justify-center py-2.5 rounded-full bg-gold text-sumi font-semibold text-[11px] tracking-[0.12em] uppercase">
+      Записаться
+    </a>
+  </nav>
+
+  <!-- КОМПАКТНЫЙ COOKIE-БАННЕР ПО РЕКОМЕНДАЦИЯМ НЦЗПД (две равнозначные кнопки + Настроить) -->
+  <aside id="cookie-banner" role="region" aria-label="Уведомление о файлах cookie" class="fixed bottom-3 inset-x-3 sm:bottom-5 sm:inset-x-auto sm:right-5 sm:max-w-[500px] z-50 bg-sumi/95 backdrop-blur-xl border border-goldlight/30 text-silk px-4 py-3 sm:px-5 sm:py-3.5 shadow-2xl">
+    <div class="flex flex-col gap-2.5">
+      <p class="text-[11px] sm:text-xs leading-snug text-silk/82">
+        Мы используем файлы cookie для работы сайта и удобства записи.
+        <button type="button" data-open-modal="modal-cookies" class="underline decoration-goldlight/70 text-goldlight hover:text-silk ml-1">Настроить</button>
+      </p>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="cookie-accept-all" type="button" class="py-2 px-2 bg-gold text-sumi border border-gold text-[10px] sm:text-[10.5px] tracking-[0.08em] uppercase font-semibold leading-tight hover:bg-goldlight transition-colors">
+          Принять все
+        </button>
+        <button id="cookie-reject-optional" type="button" class="py-2 px-2 bg-transparent text-silk border border-goldlight/60 text-[10px] sm:text-[10.5px] tracking-[0.08em] uppercase font-semibold leading-tight hover:bg-goldlight/15 transition-colors">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ЛАЙТБОКС ДЛЯ ФОТОГРАФИЙ -->
+  <div id="lightbox" class="hidden fixed inset-0 z-[70] bg-sumi/92 backdrop-blur-md flex items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+    <button id="lightbox-close" type="button" aria-label="Закрыть просмотр" class="absolute top-5 right-5 w-11 h-11 border border-goldlight/40 text-silk hover:bg-goldlight hover:text-sumi flex items-center justify-center text-xl transition-colors">×</button>
+    <div class="max-w-4xl w-full flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="" class="max-h-[78vh] w-auto max-w-full object-contain border border-goldlight/25">
+      <p id="lightbox-caption" class="mt-4 text-xs sm:text-sm text-goldlight/90 text-center tracking-wide"></p>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА 1: Политика обработки персональных данных (Закон РБ № 99-З) -->
+  <div id="modal-privacy" class="legal-modal hidden fixed inset-0 z-[60] bg-sumi/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title">
+    <div class="bg-cream text-espresso max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-gold/35 p-6 sm:p-8 space-y-4">
+      <div class="flex items-start justify-between gap-4 border-b border-gold/25 pb-4">
+        <h3 id="modal-privacy-title" class="font-serif text-2xl text-sumi">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal class="w-9 h-9 border border-gold/35 text-sumi hover:bg-sumi hover:text-silk flex items-center justify-center shrink-0">×</button>
+      </div>
+      <div class="text-xs sm:text-sm leading-relaxed space-y-3 text-stonewarm">
+        <p><strong class="text-sumi">1. Оператор:</strong> Частное унитарное предприятие по оказанию услуг «Мироку» (УНП 490691436, юр. адрес: 246017, г. Гомель, пр-т Победы, д. 2а, пом. б/н; место оказания услуг: г. Гомель, ул. Советская, д. 42; e-mail: mirokugomel@yandex.ru).</p>
+        <p><strong class="text-sumi">2. Правовые основания:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных». Обработка осуществляется строго на основании свободного, однозначного и информированного согласия субъекта персональных данных.</p>
+        <p><strong class="text-sumi">3. Перечень данных и цели:</strong> Имя, номер телефона и текст обращения обрабатываются исключительно для обратной связи, подбора СПА-программ, предварительной записи и оформления подарочных сертификатов. Данные не передаются третьим лицам для рассылки рекламы.</p>
+        <p><strong class="text-sumi">4. Срок хранения:</strong> До достижения цели обработки либо до отзыва согласия субъектом персональных данных, но не более 1 года с даты обращения.</p>
+        <p><strong class="text-sumi">5. Права субъекта (ст. 10–15 Закона № 99-З):</strong> Вы вправе в любой момент отозвать согласие (ст. 10), запросить информацию об обработке (ст. 11), потребовать внесения изменений (ст. 11), прекращения обработки и удаления данных (ст. 13), а также обжаловать действия оператора в НЦЗПД (ст. 15) путём обращения на e-mail mirokugomel@yandex.ru или письменно по адресу оператора.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА 2: Согласие на обработку и трансграничную передачу ПД (ст. 9 Закона РБ № 99-З) -->
+  <div id="modal-consent" class="legal-modal hidden fixed inset-0 z-[60] bg-sumi/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-consent-title">
+    <div class="bg-cream text-espresso max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-gold/35 p-6 sm:p-8 space-y-4">
+      <div class="flex items-start justify-between gap-4 border-b border-gold/25 pb-4">
+        <h3 id="modal-consent-title" class="font-serif text-2xl text-sumi">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal class="w-9 h-9 border border-gold/35 text-sumi hover:bg-sumi hover:text-silk flex items-center justify-center shrink-0">×</button>
+      </div>
+      <div class="text-xs sm:text-sm leading-relaxed space-y-3 text-stonewarm">
+        <p>Отмечая чекбокс в форме записи и нажимая кнопку «Отправить заявку», я свободно и однозначно даю согласие ЧУП по оказанию услуг «Мироку» (УНП 490691436) на сбор, систематизацию, хранение, использование и удаление указанных мной персональных данных (имя, телефон, выбранная услуга, комментарий) в целях записи и консультации.</p>
+        <p><strong class="text-sumi">Уведомление о трансграничной передаче (ст. 9 Закона № 99-З):</strong> Для оперативного уведомления администратора о вашей заявке данные могут передаваться с использованием сервисов <strong>Google Apps Script (Google LLC)</strong> и мессенджера <strong>Telegram (Telegram Messenger Inc.)</strong>, серверы которых могут располагаться в иностранных государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных в понимании законодательства Республики Беларусь.</p>
+        <p><strong class="text-sumi">Риски и альтернатива:</strong> Существует риск отсутствия в указанных юрисдикциях специального законодательства о защите ПД либо уполномоченного органа. Вы вправе не давать согласие на трансграничную передачу и записаться напрямую по телефонам салона +375 (44) 79-79-000 или +375 (232) 22-22-33.</p>
+        <p><strong class="text-sumi">Права субъекта (ст. 10–15 Закона № 99-З):</strong> Согласие действует 1 год и может быть отозвано в любой момент направлением уведомления на mirokugomel@yandex.ru; вы имеете право на доступ, изменение, прекращение обработки, удаление данных и обращение в НЦЗПД.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА 3: Настройки файлов cookie -->
+  <div id="modal-cookies" class="legal-modal hidden fixed inset-0 z-[60] bg-sumi/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-cookies-title">
+    <div class="bg-cream text-espresso max-w-lg w-full border border-gold/35 p-6 sm:p-8 space-y-5">
+      <div class="flex items-start justify-between gap-4 border-b border-gold/25 pb-4">
+        <h3 id="modal-cookies-title" class="font-serif text-2xl text-sumi">Настройки файлов cookie</h3>
+        <button type="button" data-close-modal class="w-9 h-9 border border-gold/35 text-sumi hover:bg-sumi hover:text-silk flex items-center justify-center shrink-0">×</button>
+      </div>
+      <div class="space-y-4 text-sm">
+        <div class="flex items-start justify-between gap-4 pb-4 border-b border-gold/20">
+          <div>
+            <p class="font-medium text-sumi">Технические (обязательные)</p>
+            <p class="text-xs text-stonewarm mt-1">Обеспечивают работу сайта и сохранение вашего выбора настроек cookie.</p>
+          </div>
+          <span class="text-[11px] uppercase tracking-wider text-golddeep shrink-0">Всегда вкл.</span>
+        </div>
+        <label class="flex items-start justify-between gap-4 cursor-pointer">
+          <div>
+            <p class="font-medium text-sumi">Функциональные и аналитические</p>
+            <p class="text-xs text-stonewarm mt-1">Помогают улучшать удобство меню, карт и навигации на сайте.</p>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" class="mt-1 w-4 h-4 accent-sumi shrink-0">
+        </label>
+      </div>
+      <div class="pt-2 grid grid-cols-2 gap-3">
+        <button id="cookie-save-prefs" type="button" class="py-2.5 bg-sumi text-silk text-[11px] tracking-[0.14em] uppercase font-medium hover:bg-espresso transition-colors">Сохранить выбор</button>
+        <button id="cookie-modal-accept" type="button" class="py-2.5 border border-sumi text-sumi text-[11px] tracking-[0.14em] uppercase font-medium hover:bg-sumi hover:text-silk transition-colors">Принять все</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- СКРИПТЫ: Живой статус (Europe/Minsk), подбор за 2 клика, табы, лайтбокс, форма, cookie & sticky dock -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Шапка при прокрутке
+      const header = document.getElementById('site-header');
+      function updateHeader() {
+        if (!header) return;
+        if (window.scrollY > 36) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      }
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      // 2. Мобильное меню
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function () {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden');
+          menuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 3. Живой статус работы по времени Беларуси (Europe/Minsk: 10:00–22:00 ежедневно)
+      function updateLiveStatus() {
+        const dot = document.getElementById('live-status-dot');
+        const text = document.getElementById('live-status-text');
+        const mobText = document.getElementById('live-status-mobile-text');
+        try {
+          const fmt = new Intl.DateTimeFormat('ru-RU', {
+            timeZone: SITE_CONFIG.schedule.timezone,
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          });
+          const parts = fmt.formatToParts(new Date());
+          const hour = parseInt((parts.find(function (p) { return p.type === 'hour'; }) || { value: '12' }).value, 10);
+          const isOpen = hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour;
+          if (isOpen) {
+            if (dot) dot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0';
+            if (text) text.textContent = 'Открыто до 22:00';
+            if (mobText) mobText.textContent = 'Открыто сейчас · до 22:00 (Минск)';
+          } else {
+            if (dot) dot.className = 'w-1.5 h-1.5 rounded-full bg-goldlight shrink-0';
+            if (text) text.textContent = 'Ответим с 10:00';
+            if (mobText) mobText.textContent = 'Сейчас закрыто · Ответим с 10:00';
+          }
+        } catch (err) {
+          if (text) text.textContent = SITE_CONFIG.schedule.label;
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 4. Табы меню СПА-услуг
+      const tabBtns = document.querySelectorAll('.spa-tab-btn');
+      const tabPanels = document.querySelectorAll('.spa-tab-panel');
+      tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const target = btn.getAttribute('data-tab');
+          tabBtns.forEach(function (b) {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          tabPanels.forEach(function (panel) {
+            panel.classList.toggle('hidden', panel.id !== 'tab-' + target);
+          });
+        });
+      });
+
+      // 5. Мини-интерактив за 2 касания -> автоподстановка в форму
+      let pickedService = 'СПА-программа отдыха';
+      let pickedTime = 'День (13:00–17:00)';
+      const summaryEl = document.getElementById('picker-summary');
+      const hintEl = document.getElementById('picker-hint');
+      const serviceInput = document.getElementById('guest-service');
+      const timeSelect = document.getElementById('guest-time');
+
+      function renderPickerSummary() {
+        if (summaryEl) {
+          summaryEl.textContent = pickedService + ' · ' + pickedTime;
+        }
+        if (hintEl) {
+          if (pickedService === 'Подарочный сертификат') {
+            hintEl.textContent = 'Сертификат действует 6 месяцев. Возможна доставка по Гомелю за 20–40 минут или мгновенный электронный вариант.';
+          } else if (pickedTime.indexOf('Утро') === 0 || pickedTime.indexOf('День') === 0) {
+            hintEl.textContent = 'Подсказка: по будням с 10:00 до 16:00 действует акция «Привлекательные часы» — скидка 20% на кедровую бочку и массаж после неё по карте клуба «Мой Мироку».';
+          } else {
+            hintEl.textContent = 'Вечерние часы особенно популярны для парных программ — советуем бронировать за 1–2 дня.';
+          }
+        }
+      }
+
+      document.querySelectorAll('[data-pick-service]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('[data-pick-service]').forEach(function (b) { b.classList.remove('is-selected'); });
+          btn.classList.add('is-selected');
+          pickedService = btn.getAttribute('data-pick-service') || pickedService;
+          renderPickerSummary();
+        });
+      });
+
+      document.querySelectorAll('[data-pick-time]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('[data-pick-time]').forEach(function (b) { b.classList.remove('is-selected'); });
+          btn.classList.add('is-selected');
+          pickedTime = btn.getAttribute('data-pick-time') || pickedTime;
+          renderPickerSummary();
+        });
+      });
+
+      function prefillBooking(serviceLabel, timeLabel) {
+        if (serviceInput && serviceLabel) serviceInput.value = serviceLabel;
+        if (timeSelect && timeLabel) {
+          Array.from(timeSelect.options).forEach(function (opt) {
+            if (opt.value === timeLabel) timeSelect.value = timeLabel;
+          });
+        }
+        const bookingSection = document.getElementById('booking');
+        if (bookingSection) {
+          bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      const pickerApplyBtn = document.getElementById('picker-apply-btn');
+      if (pickerApplyBtn) {
+        pickerApplyBtn.addEventListener('click', function () {
+          prefillBooking(pickedService, pickedTime);
+        });
+      }
+
+      document.querySelectorAll('[data-book-item]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          prefillBooking(btn.getAttribute('data-book-item'), null);
+        });
+      });
+
+      // 6. Cookie-баннер (НЦЗПД) и синхронизация с мобильной нижней панелью
+      const COOKIE_KEY = 'miroku_cookie_consent_v1';
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-sticky-dock');
+      const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+      function applyCookieState(saved) {
+        if (saved) {
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+          if (mobileDock) mobileDock.classList.remove('hidden');
+        } else {
+          if (cookieBanner) cookieBanner.classList.remove('hidden');
+          if (mobileDock) mobileDock.classList.add('hidden');
+        }
+      }
+
+      function saveCookieConsent(analyticsAllowed) {
+        try {
+          localStorage.setItem(COOKIE_KEY, JSON.stringify({
+            necessary: true,
+            analytics: Boolean(analyticsAllowed),
+            ts: Date.now()
+          }));
+        } catch (e) {}
+        applyCookieState(true);
+      }
+
+      let initialConsent = null;
+      try {
+        initialConsent = localStorage.getItem(COOKIE_KEY);
+      } catch (e) {}
+      applyCookieState(Boolean(initialConsent));
+
+      const acceptAllBtn = document.getElementById('cookie-accept-all');
+      const rejectOptBtn = document.getElementById('cookie-reject-optional');
+      const savePrefsBtn = document.getElementById('cookie-save-prefs');
+      const modalAcceptBtn = document.getElementById('cookie-modal-accept');
+
+      if (acceptAllBtn) acceptAllBtn.addEventListener('click', function () { saveCookieConsent(true); });
+      if (rejectOptBtn) rejectOptBtn.addEventListener('click', function () { saveCookieConsent(false); });
+      if (savePrefsBtn) {
+        savePrefsBtn.addEventListener('click', function () {
+          saveCookieConsent(analyticsToggle ? analyticsToggle.checked : false);
+          closeAllModals();
+        });
+      }
+      if (modalAcceptBtn) {
+        modalAcceptBtn.addEventListener('click', function () {
+          if (analyticsToggle) analyticsToggle.checked = true;
+          saveCookieConsent(true);
+          closeAllModals();
+        });
+      }
+
+      // 7. Юридические модалки
+      function closeAllModals() {
+        document.querySelectorAll('.legal-modal').forEach(function (m) { m.classList.add('hidden'); });
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('[data-open-modal]').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          const modal = document.getElementById(trigger.getAttribute('data-open-modal'));
+          if (modal) {
+            closeAllModals();
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('.legal-modal').forEach(function (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      // 8. Лайтбокс для фотографий
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add('hidden');
+        if (lightboxImg) lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-lightbox-src]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (!lightbox || !lightboxImg) return;
+          lightboxImg.src = el.getAttribute('data-lightbox-src') || '';
+          lightboxImg.alt = el.getAttribute('data-lightbox-caption') || '';
+          if (lightboxCaption) lightboxCaption.textContent = el.getAttribute('data-lightbox-caption') || '';
+          lightbox.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeAllModals();
+        }
+      });
+
+      // 9. Форма записи (Google Apps Script -> Telegram + honeypot + честный демо-режим)
+      const form = document.getElementById('booking-form');
+      const feedback = document.getElementById('form-feedback');
+      const submitBtn = document.getElementById('form-submit-btn');
+
+      function showFeedback(message, isError) {
+        if (!feedback) return;
+        feedback.textContent = message;
+        feedback.className = isError
+          ? 'p-4 text-sm border border-red-800/30 bg-red-50 text-red-900'
+          : 'p-4 text-sm border border-gold/50 bg-alabaster text-sumi';
+      }
+
+      if (form) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          const hp = document.getElementById('hp_website');
+          if (hp && hp.value.trim() !== '') return;
+
+          const name = (document.getElementById('guest-name').value || '').trim();
+          const phone = (document.getElementById('guest-phone').value || '').trim();
+          const service = (document.getElementById('guest-service').value || '').trim();
+          const time = (document.getElementById('guest-time').value || '').trim();
+          const comment = (document.getElementById('guest-comment').value || '').trim();
+          const consent = document.getElementById('consent-checkbox').checked;
+
+          if (!name || !phone) {
+            showFeedback('Пожалуйста, укажите ваше имя и номер телефона для связи.', true);
+            return;
+          }
+          if (!consent) {
+            showFeedback('Для отправки заявки необходимо отметить согласие на обработку персональных данных (Закон № 99-З).', true);
+            return;
+          }
+
+          if (SITE_CONFIG.demoMode || !SITE_CONFIG.formAction) {
+            showFeedback('Демо-режим: заявка от «' + name + '» (' + service + ', ' + time + ') сформирована. После запуска сайта заявки будут мгновенно приходить администратору в Telegram.', false);
+            form.reset();
+            return;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка…';
+          }
+          try {
+            await fetch(SITE_CONFIG.formAction, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                brand: SITE_CONFIG.brand,
+                name: name,
+                phone: phone,
+                service: service,
+                time: time,
+                comment: comment,
+                ts: new Date().toISOString()
+              })
+            });
+            showFeedback('Благодарим, ' + name + '! Заявка принята — администратор «Мироку» свяжется с вами в ближайшее время.', false);
+            form.reset();
+          } catch (err) {
+            showFeedback('Не удалось отправить заявку. Пожалуйста, позвоните администратору: ' + SITE_CONFIG.phonePrimary, true);
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Отправить заявку';
+            }
+          }
+        });
+      }
+
+      // 10. Плавное проявление секций
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>

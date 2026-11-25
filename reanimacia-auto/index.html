@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Реанимация авто — Автоэлектрика, диагностика, ЭБУ и СТО в Гродно</title>
+  <meta name="description" content="СТО «Реанимация авто» в Гродно (ул. Лидская, 15В). Автоэлектрика, компьютерная диагностика, мотор-тестер Autoscope 4, программирование и адаптация ЭБУ, замена ГРМ, ремонт ДВС и подвески для авто с 2000 года." />
+  <meta name="theme-color" content="#0B0E14" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Tektur:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0B0E14',
+            panel: '#131822',
+            panelHi: '#1A2232',
+            amberLab: '#F59E0B',
+            amberHover: '#D97706',
+            crimsonLab: '#EF4444',
+            silverMain: '#E2E8F0',
+            silverMuted: '#94A3B8',
+          },
+          fontFamily: {
+            display: ['Chakra Petch', 'Tektur', 'sans-serif'],
+            sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #0B0E14;
+      color: #E2E8F0;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+    .telemetry-grid {
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .chamfer-btn {
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    }
+    .hud-frame {
+      position: relative;
+    }
+    .hud-frame::before,
+    .hud-frame::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+    }
+    .hud-frame::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid #F59E0B;
+      border-left: 2px solid #F59E0B;
+    }
+    .hud-frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid #EF4444;
+      border-right: 2px solid #EF4444;
+    }
+    @keyframes ecgTrace {
+      0% { stroke-dashoffset: 320; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .ecg-path {
+      stroke-dasharray: 320;
+      animation: ecgTrace 3.8s linear infinite;
+    }
+    @keyframes pulseLed {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    .led-pulse {
+      animation: pulseLed 2s ease-in-out infinite;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .dock-hidden {
+      transform: translateY(120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-amberLab/30 selection:text-amber-100">
+
+  <script>
+    window.SITE_CONFIG = {
+      brandName: 'Реанимация авто',
+      legalName: 'ИП Кулаковский Евгений Николаевич',
+      unp: '591221953',
+      city: 'Гродно',
+      address: 'г. Гродно, ул. Лидская, 15В',
+      phonePrimary: '+375 (29) 251-53-85',
+      phonePrimaryRaw: '+375292515385',
+      phoneSecondary: '+375 (29) 789-56-26',
+      phoneSecondaryRaw: '+375297895626',
+      viberUrl: 'viber://chat?number=%2B375292515385',
+      telegramUrl: 'https://t.me/reanimacia_auto',
+      instagramUrl: 'https://www.instagram.com/reanimacia_auto/',
+      yandexMapsUrl: 'https://yandex.by/maps/org/reanimatsiya_avto/237074164343/',
+      gasWebhookUrl: '', // При запуске вставляется URL Google Apps Script для отправки заявок в Telegram
+      timezone: 'Europe/Minsk',
+      // Пн–Пт 09:00–18:00; Сб 09:00–15:00 по записи; Вс — выходной
+      schedule: {
+        weekdayOpen: 9,
+        weekdayClose: 18,
+        satOpen: 9,
+        satClose: 15
+      }
+    };
+  </script>
+
+  <!-- Demo Disclaimer Bar -->
+  <div id="demo-bar" class="bg-[#07090E] border-b border-slate-800/90 text-[11px] font-mono text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3">
+      <span class="truncate">
+        <span class="text-amberLab font-semibold">ДЕМО-ПРОТОТИП</span>
+        <span class="text-slate-300"> для СТО «Реанимация авто» · Гродно</span>
+      </span>
+      <span class="hidden md:inline text-slate-500 whitespace-nowrap">
+        Фото демонстрационные · на запуске добавим реальные фото ваших постов
+      </span>
+    </div>
+  </div>
+
+  <!-- Sticky Single-Row Header -->
+  <header class="sticky top-0 z-40 bg-obsidian/92 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <!-- Brand Logo (Honoring original yellow-red Check Engine + Lightning symbol) -->
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 group whitespace-nowrap">
+        <span class="w-10 h-9 rounded bg-panel border border-amberLab/40 flex items-center justify-center shrink-0 group-hover:border-amberLab transition-colors">
+          <svg width="28" height="22" viewBox="0 0 36 26" fill="none" aria-hidden="true">
+            <path d="M9 5H21M15 5V8M5 10H8L10 8H22L25 11H29V9H32V20H29V18H25L22 21H11L8 18H5V10Z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M18.5 9.5L14.5 15H18L16.2 19.5L21 13.8H17.5L18.5 9.5Z" fill="#EF4444"/>
+          </svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-display font-bold text-[15px] sm:text-base tracking-wide text-slate-50 uppercase">Реанимация авто</span>
+          <span class="font-mono text-[10px] tracking-wider text-slate-400 uppercase mt-0.5">Гродно · Лидская 15В</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation (strictly 1 line, whitespace-nowrap) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-5 text-[13px] font-medium text-slate-300">
+        <a href="#quick-select" class="whitespace-nowrap hover:text-amberLab transition-colors">Подбор</a>
+        <a href="#services" class="whitespace-nowrap hover:text-amberLab transition-colors">Услуги</a>
+        <a href="#symptoms" class="whitespace-nowrap hover:text-amberLab transition-colors">Симптомы</a>
+        <a href="#warranty" class="whitespace-nowrap hover:text-amberLab transition-colors">Гарантия</a>
+        <a href="#reviews" class="whitespace-nowrap hover:text-amberLab transition-colors">Отзывы</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-amberLab transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right Controls: Live Status + Phone + CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <!-- Live Belarus Time Status -->
+        <div id="live-status" class="hidden md:inline-flex items-center gap-2 px-2.5 py-1 rounded bg-panel border border-slate-700/80 font-mono text-[11px] text-slate-200 whitespace-nowrap">
+          <span id="live-status-dot" class="w-2 h-2 rounded-full bg-amberLab led-pulse shrink-0"></span>
+          <span id="live-status-text">Пн–Пт 09:00–18:00</span>
+        </div>
+
+        <a href="tel:+375292515385" class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[13px] font-medium text-slate-100 hover:text-amberLab transition-colors whitespace-nowrap">
+          <svg class="w-3.5 h-3.5 text-amberLab shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+375 (29) 251-53-85</span>
+        </a>
+
+        <a href="#booking" class="hidden sm:inline-flex items-center justify-center px-4 py-2 bg-amberLab hover:bg-amberHover text-obsidian font-display font-bold text-xs tracking-wider uppercase chamfer-btn transition-colors whitespace-nowrap">
+          Записаться
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded bg-panel border border-slate-700/80 text-slate-200 hover:border-amberLab/60 transition-colors">
+          <svg id="burger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-panel border-b border-slate-800 px-4 py-4 space-y-3">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-800/90">
+        <div class="inline-flex items-center gap-2 font-mono text-xs text-slate-200">
+          <span id="live-status-dot-mob" class="w-2 h-2 rounded-full bg-amberLab led-pulse"></span>
+          <span id="live-status-text-mob">Пн–Пт 09:00–18:00</span>
+        </div>
+        <span class="font-mono text-[11px] text-slate-400">Лидская 15В</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-sm font-medium">
+        <a href="#quick-select" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Подбор за 2 клика</a>
+        <a href="#services" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Все услуги</a>
+        <a href="#symptoms" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Симптомы</a>
+        <a href="#warranty" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Гарантия</a>
+        <a href="#reviews" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Отзывы (4.4)</a>
+        <a href="#contacts" class="mobile-nav-link px-3 py-2 rounded bg-obsidian/70 border border-slate-800 text-slate-200">Контакты</a>
+      </div>
+      <div class="pt-1 flex flex-col gap-2">
+        <a href="tel:+375292515385" class="flex items-center justify-between px-3.5 py-2.5 rounded bg-obsidian border border-amberLab/40 font-mono text-sm text-amberLab">
+          <span>+375 (29) 251-53-85</span>
+          <span class="text-[11px] text-slate-400">Основной / Viber</span>
+        </a>
+        <a href="tel:+375297895626" class="flex items-center justify-between px-3.5 py-2 rounded bg-obsidian border border-slate-800 font-mono text-sm text-slate-200">
+          <span>+375 (29) 789-56-26</span>
+          <span class="text-[11px] text-slate-400">Дополнительный</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: Dark ECU Telemetry Diagnostic Workbench -->
+  <section id="top" class="relative telemetry-grid border-b border-slate-800/80 overflow-hidden">
+    <!-- Subtle ambient instrument glow -->
+    <div class="pointer-events-none absolute -top-24 left-1/4 w-[520px] h-[360px] rounded-full bg-amberLab/[0.06] blur-[110px]"></div>
+    <div class="pointer-events-none absolute bottom-0 right-0 w-[440px] h-[320px] rounded-full bg-crimsonLab/[0.05] blur-[110px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 lg:pt-12 lg:pb-16 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-8 items-stretch">
+
+        <!-- Left Telemetry Column -->
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <!-- Mono Telemetry Tagline -->
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-5 font-mono text-[11px] tracking-wider uppercase text-slate-400">
+              <span class="inline-flex items-center gap-1.5 text-amberLab">
+                <span class="w-1.5 h-1.5 rounded-full bg-crimsonLab led-pulse"></span>
+                OBD-II / CAN-BUS / AUTOSCOPE 4
+              </span>
+              <span class="text-slate-600">//</span>
+              <span>Гродно, ул. Лидская, 15В</span>
+              <span class="text-slate-600 hidden sm:inline">//</span>
+              <span class="hidden sm:inline text-slate-300">Авто с 2000 года</span>
+            </div>
+
+            <!-- Engineered H1 -->
+            <h1 class="font-display font-bold text-[34px] sm:text-5xl lg:text-[54px] leading-[1.06] tracking-tight text-slate-50 uppercase">
+              Автоэлектрика,<br />
+              <span class="text-amberLab">ЭБУ и СТО</span> в Гродно
+            </h1>
+
+            <p class="mt-4 sm:mt-5 text-[15px] sm:text-base lg:text-[17px] leading-relaxed text-slate-300 max-w-2xl">
+              Компьютерная и осциллографическая диагностика с дальнейшим ремонтом. Программирование, кодирование и привязка блоков управления, ремонт проводки, плановое ТО, замена ГРМ, ремонт ДВС и подвески.
+            </p>
+
+            <!-- Action Row -->
+            <div class="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a href="#booking" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-amberLab hover:bg-amberHover text-obsidian font-display font-bold text-sm tracking-wider uppercase chamfer-btn transition-colors">
+                <span>Записаться на диагностику</span>
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#quick-select" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-panel hover:bg-panelHi border border-slate-700 hover:border-amberLab/60 text-slate-100 font-medium text-sm rounded-sm transition-colors">
+                <svg class="w-4 h-4 text-amberLab shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="15" r="3"/></svg>
+                <span>Выбрать проблему за 2 клика</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Verified Facts Telemetry Strip -->
+          <div class="mt-8 grid grid-cols-3 gap-2.5 sm:gap-3 pt-6 border-t border-slate-800/90">
+            <div class="bg-panel/80 border border-slate-800 rounded-sm p-3 sm:p-3.5">
+              <div class="font-display font-bold text-xl sm:text-2xl text-slate-50 leading-none uppercase">12+ лет</div>
+              <div class="mt-1.5 font-mono text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wide">опыта мастеров</div>
+            </div>
+            <a href="https://yandex.by/maps/org/reanimatsiya_avto/237074164343/" target="_blank" rel="noopener noreferrer" class="bg-panel/80 border border-slate-800 hover:border-amberLab/50 rounded-sm p-3 sm:p-3.5 transition-colors group">
+              <div class="font-display font-bold text-xl sm:text-2xl text-amberLab leading-none flex items-center gap-1">
+                <span>4.4</span>
+                <span class="text-sm text-amberLab">★</span>
+              </div>
+              <div class="mt-1.5 font-mono text-[10px] sm:text-[11px] text-slate-400 group-hover:text-slate-300 uppercase tracking-wide">97 отзывов · Яндекс</div>
+            </a>
+            <a href="#warranty" class="bg-panel/80 border border-slate-800 hover:border-amberLab/50 rounded-sm p-3 sm:p-3.5 transition-colors">
+              <div class="font-display font-bold text-xl sm:text-2xl text-slate-50 leading-none uppercase">до 6 мес</div>
+              <div class="mt-1.5 font-mono text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wide">гарантия по акту</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Structured OBD / ECU Diagnostic Matrix Panel -->
+        <div class="lg:col-span-5">
+          <div class="hud-frame h-full bg-panel border border-slate-800 rounded-sm overflow-hidden flex flex-col">
+            <!-- Panel Instrument Topbar -->
+            <div class="px-4 py-2.5 bg-[#0E131C] border-b border-slate-800 flex items-center justify-between font-mono text-[11px]">
+              <span class="flex items-center gap-2 text-slate-200">
+                <span class="w-2 h-2 rounded-full bg-crimsonLab led-pulse"></span>
+                <span>ECU-LAB // МАТРИЦА ПОСТОВ</span>
+              </span>
+              <span class="text-amberLab">ЕВРОПА · АЗИЯ · США</span>
+            </div>
+
+            <!-- Atmospheric ECU Visual with Animated Diagnostic Pulse Overlay -->
+            <div class="relative h-40 sm:h-44 overflow-hidden bg-obsidian border-b border-slate-800">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
+                alt="Электронный блок управления и микроэлектроника автомобиля"
+                class="w-full h-full object-cover object-center opacity-75"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-obsidian/45 to-obsidian/30"></div>
+              <!-- Oscilloscope ECG Pulse Overlay -->
+              <svg class="absolute inset-x-0 bottom-2 w-full h-12 opacity-95 pointer-events-none" viewBox="0 0 400 50" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 30 L70 30 L85 30 L96 14 L106 42 L118 8 L130 35 L142 30 L215 30 L230 30 L240 16 L250 40 L262 10 L274 34 L286 30 L400 30" fill="none" stroke="#F59E0B" stroke-opacity="0.32" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="ecg-path" d="M0 30 L70 30 L85 30 L96 14 L106 42 L118 8 L130 35 L142 30 L215 30 L230 30 L240 16 L250 40 L262 10 L274 34 L286 30 L400 30" fill="none" stroke="#F59E0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="absolute top-3 left-3.5 px-2 py-0.5 rounded-sm bg-obsidian/85 border border-amberLab/40 font-mono text-[10px] text-amberLab uppercase tracking-wider">
+                Autoscope 4 · Осциллограф
+              </div>
+              <div class="absolute top-3 right-3.5 px-2 py-0.5 rounded-sm bg-obsidian/85 border border-crimsonLab/40 font-mono text-[10px] text-red-400 uppercase tracking-wider">
+                DTC SCAN
+              </div>
+            </div>
+
+            <!-- 2x2 Diagnostic Matrix Tiles -->
+            <div class="p-3.5 grid grid-cols-2 gap-2.5 flex-1">
+              <button type="button" data-jump-tab="diag" class="matrix-tile text-left p-3 rounded-sm bg-obsidian/80 hover:bg-panelHi border border-slate-800 hover:border-amberLab/60 transition-all group flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-amberLab">01 // DIAG</span>
+                  <span class="text-slate-500 group-hover:text-amberLab text-xs transition-colors">→</span>
+                </div>
+                <div class="mt-2">
+                  <div class="font-display font-semibold text-sm text-slate-100 uppercase">Диагностика</div>
+                  <p class="mt-1 text-[11px] leading-snug text-slate-400">Компьютерная, Autoscope 4, ДВС, наддув, EVAP</p>
+                </div>
+              </button>
+
+              <button type="button" data-jump-tab="ecu" class="matrix-tile text-left p-3 rounded-sm bg-obsidian/80 hover:bg-panelHi border border-slate-800 hover:border-amberLab/60 transition-all group flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-amberLab">02 // ECU</span>
+                  <span class="text-slate-500 group-hover:text-amberLab text-xs transition-colors">→</span>
+                </div>
+                <div class="mt-2">
+                  <div class="font-display font-semibold text-sm text-slate-100 uppercase">Автоэлектроника</div>
+                  <p class="mt-1 text-[11px] leading-snug text-slate-400">Прошивка ЭБУ, ключи, TPMS, адаптация, чип</p>
+                </div>
+              </button>
+
+              <button type="button" data-jump-tab="elec" class="matrix-tile text-left p-3 rounded-sm bg-obsidian/80 hover:bg-panelHi border border-slate-800 hover:border-amberLab/60 transition-all group flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-amberLab">03 // 12V</span>
+                  <span class="text-slate-500 group-hover:text-amberLab text-xs transition-colors">→</span>
+                </div>
+                <div class="mt-2">
+                  <div class="font-display font-semibold text-sm text-slate-100 uppercase">Автоэлектрика</div>
+                  <p class="mt-1 text-[11px] leading-snug text-slate-400">Проводка, утечка АКБ, стартеры, генераторы</p>
+                </div>
+              </button>
+
+              <button type="button" data-jump-tab="to" class="matrix-tile text-left p-3 rounded-sm bg-obsidian/80 hover:bg-panelHi border border-slate-800 hover:border-amberLab/60 transition-all group flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-amberLab">04 // MECH</span>
+                  <span class="text-slate-500 group-hover:text-amberLab text-xs transition-colors">→</span>
+                </div>
+                <div class="mt-2">
+                  <div class="font-display font-semibold text-sm text-slate-100 uppercase">ТО и ремонт</div>
+                  <p class="mt-1 text-[11px] leading-snug text-slate-400">ГРМ, сцепление, ДВС, подвеска, тормоза</p>
+                </div>
+              </button>
+            </div>
+
+            <!-- Panel Footer Telemetry -->
+            <div class="px-4 py-2.5 bg-[#0E131C] border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
+              <span>Пн–Пт 09:00–18:00 · Сб по записи</span>
+              <a href="tel:+375297895626" class="text-slate-300 hover:text-amberLab transition-colors whitespace-nowrap">+375 (29) 789-56-26</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE FEATURE #3: 2-Click Interactive Request Selector (NO Price Calculator!) -->
+  <section id="quick-select" class="py-12 sm:py-16 border-b border-slate-800/80 bg-[#0D1119]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7">
+        <div>
+          <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Быстрый подбор за 2 клика</div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-50 uppercase">Что случилось с автомобилем?</h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-md">
+          Отметьте направление и удобное время — данные сразу подставятся в заявку, чтобы мастер перезвонил уже по делу.
+        </p>
+      </div>
+
+      <div class="bg-panel border border-slate-800 rounded-sm p-5 sm:p-6 space-y-6">
+        <!-- Step 1 -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-sm bg-amberLab/15 border border-amberLab/50 font-mono text-xs text-amberLab flex items-center justify-center font-semibold">1</span>
+            <span class="font-display font-semibold text-sm sm:text-base uppercase tracking-wide text-slate-100">Выберите задачу или симптом</span>
+          </div>
+          <div id="step1-group" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <button type="button" data-issue="Горит Check / ошибка ЭБУ (компьютерная диагностика)" class="step1-btn text-left p-3.5 rounded-sm bg-obsidian border border-amberLab text-slate-100 transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-mono text-[10px] uppercase text-crimsonLab">CHECK ENGINE</span>
+                <span class="step1-dot w-2.5 h-2.5 rounded-full bg-amberLab"></span>
+              </div>
+              <div class="font-semibold text-sm text-slate-50">Горит Check / ошибка ЭБУ</div>
+              <div class="text-xs text-slate-400 mt-1">Сканирование, Autoscope 4, поиск причины</div>
+            </button>
+
+            <button type="button" data-issue="Проблема с автоэлектрикой (проводка, АКБ, стартер/генератор)" class="step1-btn text-left p-3.5 rounded-sm bg-obsidian border border-slate-800 hover:border-slate-600 text-slate-300 transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-mono text-[10px] uppercase text-slate-400">12V / ПРОВОДКА</span>
+                <span class="step1-dot w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+              </div>
+              <div class="font-semibold text-sm text-slate-100">Проблема с электрикой</div>
+              <div class="text-xs text-slate-400 mt-1">Утечка тока, стартер, генератор, электрооборудование</div>
+            </button>
+
+            <button type="button" data-issue="Программирование / адаптация ЭБУ, автоключи или TPMS" class="step1-btn text-left p-3.5 rounded-sm bg-obsidian border border-slate-800 hover:border-slate-600 text-slate-300 transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-mono text-[10px] uppercase text-slate-400">ECU / КЛЮЧИ</span>
+                <span class="step1-dot w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+              </div>
+              <div class="font-semibold text-sm text-slate-100">Программирование / адаптация</div>
+              <div class="text-xs text-slate-400 mt-1">Привязка ЭБУ, ключи, TPMS, чип-тюнинг, GM</div>
+            </button>
+
+            <button type="button" data-issue="Плановое ТО, замена ГРМ или ремонт подвески / ДВС" class="step1-btn text-left p-3.5 rounded-sm bg-obsidian border border-slate-800 hover:border-slate-600 text-slate-300 transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-mono text-[10px] uppercase text-slate-400">ТО / СЛЕСАРНЫЙ ПОСТ</span>
+                <span class="step1-dot w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+              </div>
+              <div class="font-semibold text-sm text-slate-100">Плановое ТО / подвеска</div>
+              <div class="text-xs text-slate-400 mt-1">ГРМ, масло и фильтры, сцепление, тормоза, ДВС</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="pt-4 border-t border-slate-800/90 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-sm bg-amberLab/15 border border-amberLab/50 font-mono text-xs text-amberLab flex items-center justify-center font-semibold">2</span>
+              <span class="font-display font-semibold text-sm sm:text-base uppercase tracking-wide text-slate-100">Когда удобно заехать?</span>
+            </div>
+            <div id="step2-group" class="flex flex-wrap gap-2">
+              <button type="button" data-time="Как можно скорее (ближайшее окно)" class="step2-btn px-3.5 py-2 rounded-sm bg-amberLab/15 border border-amberLab text-amber-200 font-mono text-xs transition-all">
+                Как можно скорее
+              </button>
+              <button type="button" data-time="В будний день (Пн–Пт, 09:00–18:00)" class="step2-btn px-3.5 py-2 rounded-sm bg-obsidian border border-slate-700 hover:border-slate-500 text-slate-300 font-mono text-xs transition-all">
+                Будний день (Пн–Пт)
+              </button>
+              <button type="button" data-time="В субботу по предварительной записи" class="step2-btn px-3.5 py-2 rounded-sm bg-obsidian border border-slate-700 hover:border-slate-500 text-slate-300 font-mono text-xs transition-all">
+                В субботу (по записи)
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:shrink-0">
+            <div class="text-xs text-slate-400 lg:text-right max-w-xs">
+              <span class="block font-mono text-[10px] uppercase text-slate-500">Выбрано для заявки:</span>
+              <span id="quick-summary" class="text-slate-200 font-medium">Горит Check / ошибка ЭБУ · Как можно скорее</span>
+            </div>
+            <button id="apply-quick-btn" type="button" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-amberLab hover:bg-amberHover text-obsidian font-display font-bold text-xs sm:text-sm tracking-wider uppercase chamfer-btn transition-colors whitespace-nowrap">
+              <span>Перенести в заявку</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL SERVICES (5 Real Categories from reanimacia-auto.by, ZERO fake prices) -->
+  <section id="services" class="py-14 sm:py-20 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Полный перечень работ</div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-50 uppercase">Услуги СТО «Реанимация авто»</h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-lg">
+          Работаем с легковыми автомобилями с 2000 года выпуска (Европа, Азия, Америка). Сначала точно находим причину — затем согласовываем объём и стоимость работ.
+        </p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div role="tablist" aria-label="Разделы услуг" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 mb-7 border-b border-slate-800">
+        <button type="button" role="tab" data-tab="diag" aria-selected="true" class="service-tab whitespace-nowrap px-4 py-2.5 rounded-t-sm font-display font-semibold text-sm uppercase tracking-wide border-b-2 border-amberLab text-amberLab bg-panel transition-colors">
+          Диагностика <span class="font-mono text-[11px] opacity-75 ml-1">11</span>
+        </button>
+        <button type="button" role="tab" data-tab="ecu" aria-selected="false" class="service-tab whitespace-nowrap px-4 py-2.5 rounded-t-sm font-display font-semibold text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+          Автоэлектроника <span class="font-mono text-[11px] opacity-75 ml-1">8</span>
+        </button>
+        <button type="button" role="tab" data-tab="elec" aria-selected="false" class="service-tab whitespace-nowrap px-4 py-2.5 rounded-t-sm font-display font-semibold text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+          Автоэлектрика <span class="font-mono text-[11px] opacity-75 ml-1">4</span>
+        </button>
+        <button type="button" role="tab" data-tab="to" aria-selected="false" class="service-tab whitespace-nowrap px-4 py-2.5 rounded-t-sm font-display font-semibold text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+          Т.О. <span class="font-mono text-[11px] opacity-75 ml-1">4</span>
+        </button>
+        <button type="button" role="tab" data-tab="repair" aria-selected="false" class="service-tab whitespace-nowrap px-4 py-2.5 rounded-t-sm font-display font-semibold text-sm uppercase tracking-wide border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+          Ремонт <span class="font-mono text-[11px] opacity-75 ml-1">8</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Services Grid -->
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+      <!-- Honest Pricing Disclaimer (no invented prices!) -->
+      <div class="mt-7 p-4 sm:p-5 rounded-sm bg-panel/70 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 w-8 h-8 rounded-sm bg-amberLab/10 border border-amberLab/30 text-amberLab font-mono text-xs flex items-center justify-center shrink-0">BYN</span>
+          <div>
+            <div class="text-sm font-semibold text-slate-100">Стоимость рассчитывается индивидуально под ваш автомобиль</div>
+            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
+              Точная цена зависит от марки, года выпуска и объёма диагностики — называем её до начала работ. При запуске сайта по вашему желанию добавим ориентиры цен на популярные услуги.
+            </p>
+          </div>
+        </div>
+        <a href="#booking" class="inline-flex items-center justify-center px-4 py-2.5 rounded-sm bg-obsidian hover:bg-panelHi border border-amberLab/50 text-amberLab font-mono text-xs uppercase tracking-wider whitespace-nowrap transition-colors">
+          Уточнить стоимость →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMON SYMPTOMS (Directly adapted from original "Частые проблемы") -->
+  <section id="symptoms" class="py-14 sm:py-20 border-b border-slate-800/80 bg-[#0D1119] telemetry-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mb-8">
+        <div class="font-mono text-xs text-crimsonLab uppercase tracking-widest mb-1.5">// Частые обращения</div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-50 uppercase">Когда стоит заехать на диагностику</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-panel border border-slate-800 hover:border-crimsonLab/50 rounded-sm p-5 flex flex-col justify-between transition-colors">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded-sm bg-crimsonLab/15 text-red-400 border border-crimsonLab/30">CHECK ENGINE</span>
+              <svg class="w-5 h-5 text-amberLab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg text-slate-50">Горит ошибка на приборной панели</h3>
+            <p class="mt-2 text-sm text-slate-400 leading-relaxed">
+              Не просто сбрасываем код, а проверяем датчики, проводку и блоки — чтобы найти первопричину, а не менять детали наугад.
+            </p>
+          </div>
+          <button type="button" data-prefill="Горит индикатор ошибки на приборной панели" class="prefill-btn mt-5 text-left font-mono text-xs text-amberLab hover:text-amber-300 uppercase tracking-wider">
+            Узнать у специалиста →
+          </button>
+        </div>
+
+        <div class="bg-panel border border-slate-800 hover:border-amberLab/50 rounded-sm p-5 flex flex-col justify-between transition-colors">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded-sm bg-amberLab/15 text-amberLab border border-amberLab/30">RPM // ДВС</span>
+              <svg class="w-5 h-5 text-amberLab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg text-slate-50">Проблемы с работой двигателя</h3>
+            <p class="mt-2 text-sm text-slate-400 leading-relaxed">
+              Трудный запуск, троит мотор, плавают обороты, пропала тяга или авто глохнет — проверяем топливную, зажигание и мотор-тестером Autoscope 4.
+            </p>
+          </div>
+          <button type="button" data-prefill="Проблемы с работой двигателя (запуск, обороты, тяга)" class="prefill-btn mt-5 text-left font-mono text-xs text-amberLab hover:text-amber-300 uppercase tracking-wider">
+            Узнать у специалиста →
+          </button>
+        </div>
+
+        <div class="bg-panel border border-slate-800 hover:border-amberLab/50 rounded-sm p-5 flex flex-col justify-between transition-colors">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded-sm bg-amberLab/15 text-amberLab border border-amberLab/30">EXH // НАДДУВ</span>
+              <svg class="w-5 h-5 text-amberLab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 15h10a4 4 0 1 0-4-4M3 19h14a3 3 0 1 1-3 3M3 11h6a3 3 0 1 0-3-3"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg text-slate-50">Дым из выхлопной трубы</h3>
+            <p class="mt-2 text-sm text-slate-400 leading-relaxed">
+              Проверяем турбокомпрессор, систему наддува, рециркуляцию выхлопных газов (EGR), сажевый фильтр (DPF) и топливную аппаратуру.
+            </p>
+          </div>
+          <button type="button" data-prefill="Дым из выхлопной трубы / проблемы с наддувом или EGR" class="prefill-btn mt-5 text-left font-mono text-xs text-amberLab hover:text-amber-300 uppercase tracking-wider">
+            Узнать у специалиста →
+          </button>
+        </div>
+
+        <div class="bg-panel border border-slate-800 hover:border-amberLab/50 rounded-sm p-5 flex flex-col justify-between transition-colors">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded-sm bg-amberLab/15 text-amberLab border border-amberLab/30">FUEL // 12V</span>
+              <svg class="w-5 h-5 text-amberLab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg text-slate-50">Расход топлива или разряд АКБ</h3>
+            <p class="mt-2 text-sm text-slate-400 leading-relaxed">
+              Ищем скрытые утечки тока по блокам комфорта и аудио, проверяем кислородные датчики, ДМРВ, EVAP и генератор.
+            </p>
+          </div>
+          <button type="button" data-prefill="Увеличенный расход топлива или разряд аккумулятора" class="prefill-btn mt-5 text-left font-mono text-xs text-amberLab hover:text-amber-300 uppercase tracking-wider">
+            Узнать у специалиста →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & REAL OFFICIAL WARRANTY TERMS -->
+  <section id="warranty" class="py-14 sm:py-20 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left: Philosophy + Workshop Visual -->
+        <div class="lg:col-span-6 space-y-5">
+          <div>
+            <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Подход и оборудование</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-50 uppercase">Работаем на результат, без лишних замен</h2>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            СТО «Реанимация авто» в Гродно более 12 лет специализируется на сложных задачах по автоэлектрике, электронным блокам управления и комплексному ремонту автомобилей. Для программирования ЭБУ и глубокой диагностики используем профессиональное оборудование и лицензионное ПО, включая осциллограф <strong class="text-slate-100">Autoscope 4</strong>.
+          </p>
+
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Мы принципиально придерживаемся поэтапного подхода: если на приборной панели «гирлянда» ошибок, сначала находим и устраняем корневую неисправность, а не предлагаем менять исправные узлы по списку.
+          </p>
+
+          <figure class="rounded-sm overflow-hidden border border-slate-800 bg-panel">
+            <img
+              src="https://images.unsplash.com/photo-1658244535411-92c887137240?auto=format&fit=crop&w=1400&q=85"
+              alt="Автомобиль в диагностическом боксе автосервиса"
+              class="w-full h-56 sm:h-64 object-cover"
+              loading="lazy"
+            />
+            <figcaption class="px-4 py-2.5 bg-[#0E131C] border-t border-slate-800 flex items-center justify-between font-mono text-[11px] text-slate-400">
+              <span>Демонстрационное фото бокса</span>
+              <span class="text-amberLab/90">На запуске — фото с Лидской 15В</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Right: Official Warranty Matrix (Exact real numbers from reanimacia-auto.by) -->
+        <div class="lg:col-span-6 bg-panel border border-slate-800 rounded-sm p-5 sm:p-7 hud-frame">
+          <div class="flex items-center justify-between gap-2 mb-5">
+            <div>
+              <div class="font-mono text-[11px] text-amberLab uppercase tracking-widest">// По акту выполненных работ</div>
+              <h3 class="font-display font-bold text-2xl text-slate-50 uppercase mt-1">Гарантийные обязательства</h3>
+            </div>
+            <span class="hidden sm:inline-flex px-2.5 py-1 rounded-sm bg-obsidian border border-slate-700 font-mono text-[11px] text-slate-300">ИП · УНП 591221953</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-4 rounded-sm bg-obsidian border border-slate-800 flex items-start gap-4">
+              <div class="shrink-0 w-24 sm:w-28 text-center py-2 px-2 rounded-sm bg-amberLab/10 border border-amberLab/30">
+                <div class="font-display font-bold text-lg text-amberLab leading-tight">30 дней</div>
+                <div class="font-mono text-[10px] text-slate-300 mt-0.5">или 2 000 км</div>
+              </div>
+              <div class="text-sm text-slate-300 leading-snug">
+                <div class="font-semibold text-slate-100">ТО, регулировки и автоэлектрика</div>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Техническое обслуживание, регулировочные работы и ремонт электрооборудования автомобиля.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-sm bg-obsidian border border-slate-800 flex items-start gap-4">
+              <div class="shrink-0 w-24 sm:w-28 text-center py-2 px-2 rounded-sm bg-amberLab/10 border border-amberLab/30">
+                <div class="font-display font-bold text-lg text-amberLab leading-tight">3 мес.</div>
+                <div class="font-mono text-[10px] text-slate-300 mt-0.5">или 7 000 км</div>
+              </div>
+              <div class="text-sm text-slate-300 leading-snug">
+                <div class="font-semibold text-slate-100">Трансмиссия, подвеска, тормоза и системы</div>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Ремонт МКПП, сцепления, систем смазки и охлаждения, подвески, рулевого управления, тормозной и топливной систем.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-sm bg-obsidian border border-slate-800 flex items-start gap-4">
+              <div class="shrink-0 w-24 sm:w-28 text-center py-2 px-2 rounded-sm bg-amberLab/10 border border-amberLab/30">
+                <div class="font-display font-bold text-lg text-amberLab leading-tight">6 мес.</div>
+                <div class="font-mono text-[10px] text-slate-300 mt-0.5">или 15 000 км</div>
+              </div>
+              <div class="text-sm text-slate-300 leading-snug">
+                <div class="font-semibold text-slate-100">Ремонт двигателя (ДВС)</div>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Гарантия на выполненный ремонт двигателя со дня приёмки автомобиля заказчиком (по событию, наступившему ранее).</p>
+              </div>
+            </div>
+          </div>
+
+          <details class="mt-5 group bg-obsidian/70 border border-slate-800 rounded-sm">
+            <summary class="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-amberLab transition-colors">
+              <span>Подробные условия предоставления гарантии</span>
+              <span class="group-open:rotate-180 transition-transform text-amberLab">▾</span>
+            </summary>
+            <div class="px-4 pb-4 pt-1 text-xs text-slate-400 space-y-2 leading-relaxed border-t border-slate-800/80">
+              <p>Гарантия действует при наличии акта выполненных работ (гарантийного талона) и соблюдении рекомендаций по замене дефектных деталей.</p>
+              <p>Гарантия не распространяется при утере акта, механическом повреждении в результате ДТП/неправильной эксплуатации, вмешательстве третьих лиц, ремонте узла без предъявления автомобиля на СТО, а также при установке б/у деталей или отказе от замены рекомендованных запчастей.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY WITH LIGHTBOX -->
+  <section id="gallery" class="py-14 sm:py-20 border-b border-slate-800/80 bg-[#0D1119]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Фотогалерея направлений</div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-50 uppercase">Диагностика и ремонт в деталях</h2>
+        </div>
+        <span class="font-mono text-[11px] px-3 py-1.5 rounded-sm bg-panel border border-slate-800 text-slate-400 self-start sm:self-auto">
+          Демо-подборка · при запуске заменим на фото вашего СТО
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <button type="button" data-lightbox-idx="0" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85" alt="Программирование и ремонт ЭБУ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Программирование и ремонт ЭБУ</span>
+            <span class="font-mono text-[10px] text-amberLab">ECU</span>
+          </div>
+        </button>
+
+        <button type="button" data-lightbox-idx="1" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1200&q=85" alt="Подкапотная диагностика и автоэлектрика" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Подкапотная диагностика и электрика</span>
+            <span class="font-mono text-[10px] text-amberLab">OBD</span>
+          </div>
+        </button>
+
+        <button type="button" data-lightbox-idx="2" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85" alt="Замена ремней ГРМ и узлов двигателя" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Замена ГРМ и ремонт ДВС</span>
+            <span class="font-mono text-[10px] text-amberLab">ДВС</span>
+          </div>
+        </button>
+
+        <button type="button" data-lightbox-idx="3" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1769178938570-7d8442f88538?auto=format&fit=crop&w=1200&q=85" alt="Русификация приборных панелей и электроника салона" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Кодирование, ключи и панели GM</span>
+            <span class="font-mono text-[10px] text-amberLab">CAN</span>
+          </div>
+        </button>
+
+        <button type="button" data-lightbox-idx="4" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=85" alt="Плановое техническое обслуживание и замена масла" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Плановое ТО и замена жидкостей</span>
+            <span class="font-mono text-[10px] text-amberLab">Т.О.</span>
+          </div>
+        </button>
+
+        <button type="button" data-lightbox-idx="5" class="gallery-item group relative rounded-sm overflow-hidden border border-slate-800 hover:border-amberLab/60 bg-panel text-left transition-all">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=85" alt="Профессиональный инструмент и слесарный пост" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between gap-2">
+            <span class="text-sm font-medium text-slate-200">Слесарный и подвесочный пост</span>
+            <span class="font-mono text-[10px] text-amberLab">СТО</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS (Authentic reviews already published on reanimacia-auto.by + real Yandex Maps link) -->
+  <section id="reviews" class="py-14 sm:py-20 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Отзывы клиентов</div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-50 uppercase">Что говорят автовладельцы Гродно</h2>
+        </div>
+        <a href="https://yandex.by/maps/org/reanimatsiya_avto/237074164343/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-4 py-2.5 rounded-sm bg-panel border border-slate-700 hover:border-amberLab transition-colors self-start md:self-auto">
+          <span class="font-display font-bold text-xl text-amberLab">4.4 ★</span>
+          <span class="text-xs text-slate-300 leading-tight">
+            <span class="block font-semibold text-slate-100">97 отзывов · 186 оценок</span>
+            <span class="text-slate-400">Смотреть все на Яндекс Картах ↗</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <article class="bg-panel border border-slate-800 rounded-sm p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-amberLab uppercase">Opel Astra</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded-sm bg-obsidian border border-slate-800 text-slate-400">Отзыв с Firmi.by</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              «Обратился в сервис с гирляндой ошибок: массовый расход воздуха, клапан EGR и кислородный датчик. Ребята порекомендовали действовать постепенно, начиная с самой критичной проблемы — кислородного датчика. В итоге причиной всех неисправностей оказался именно он. Заменили — машина поехала как новая, оставшиеся две ошибки не проявляются!»
+            </p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-800/90 flex items-center justify-between text-xs">
+            <span class="font-semibold text-slate-100">Максим Севостьянчик</span>
+            <span class="text-slate-500 font-mono">С сайта СТО</span>
+          </div>
+        </article>
+
+        <article class="bg-panel border border-slate-800 rounded-sm p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-amberLab uppercase">Audi A8 D3 3.0D</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded-sm bg-obsidian border border-slate-800 text-slate-400">Отзыв с Avservice.by</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              «Обслуживаю здесь авто с 2012 года: дважды меняли ГРМ, делали ремонт пневмоподвески, электрооборудования, чип-тюнинг. Пригнал с разрядом АКБ за ночь — причину нашли в софте ЭБУ аудио, всё перепрошили и утечка пропала. Всегда делают качественно и с гарантией.»
+            </p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-800/90 flex items-center justify-between text-xs">
+            <span class="font-semibold text-slate-100">Никита</span>
+            <span class="text-slate-500 font-mono">С сайта СТО</span>
+          </div>
+        </article>
+
+        <article class="bg-panel border border-slate-800 rounded-sm p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-amberLab uppercase">FIAT Punto</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded-sm bg-obsidian border border-slate-800 text-slate-400">Отзыв с AutoGrodno</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              «Обратился впервые — установка дистанционного управления. Заранее согласовал с Евгением время на 10:00, мастер Юрий принял машину и по моей просьбе отдал уже до обеда. Через пару часов позвонили забирать. Всё грамотно, культурно и профессионально. Цена абсолютно адекватная.»
+            </p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-800/90 flex items-center justify-between text-xs">
+            <span class="font-semibold text-slate-100">Влад</span>
+            <span class="text-slate-500 font-mono">С сайта СТО</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM + CONTACTS & MAP -->
+  <section id="booking" class="py-14 sm:py-20 bg-[#0D1119] telemetry-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left: Telegram/GAS Booking Form with Full Law № 99-З Compliance -->
+        <div class="lg:col-span-6 bg-panel border border-slate-800 rounded-sm p-5 sm:p-7 hud-frame">
+          <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Запись и консультация</div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-50 uppercase">Записаться на диагностику</h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Оставьте контакты и коротко опишите проблему — мастер перезвонит, подскажет ориентир и согласует время заезда.
+          </p>
+
+          <form id="lead-form" class="mt-6 space-y-4" novalidate>
+            <!-- Honeypot field against spam bots -->
+            <div class="hidden" aria-hidden="true">
+              <label for="company_hp">Не заполнять</label>
+              <input type="text" id="company_hp" name="company_hp" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="f-name" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-1.5">Ваше имя *</label>
+                <input id="f-name" name="name" type="text" required placeholder="Например, Александр" class="w-full px-3.5 py-2.5 rounded-sm bg-obsidian border border-slate-700 focus:border-amberLab focus:outline-none text-sm text-slate-100 placeholder:text-slate-500" />
+              </div>
+              <div>
+                <label for="f-phone" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-1.5">Телефон *</label>
+                <input id="f-phone" name="phone" type="tel" required placeholder="+375 (29) 000-00-00" class="w-full px-3.5 py-2.5 rounded-sm bg-obsidian border border-slate-700 focus:border-amberLab focus:outline-none font-mono text-sm text-slate-100 placeholder:text-slate-500" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="f-car" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-1.5">Марка, модель и год (с 2000 г.)</label>
+                <input id="f-car" name="car" type="text" placeholder="VW Passat B7 2012, 2.0 TDI" class="w-full px-3.5 py-2.5 rounded-sm bg-obsidian border border-slate-700 focus:border-amberLab focus:outline-none text-sm text-slate-100 placeholder:text-slate-500" />
+              </div>
+              <div>
+                <label for="f-time" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-1.5">Удобное время</label>
+                <input id="f-time" name="preferred_time" type="text" placeholder="Пн–Пт 09:00–18:00 или Сб по записи" class="w-full px-3.5 py-2.5 rounded-sm bg-obsidian border border-slate-700 focus:border-amberLab focus:outline-none text-sm text-slate-100 placeholder:text-slate-500" />
+              </div>
+            </div>
+
+            <div>
+              <label for="f-issue" class="block font-mono text-[11px] uppercase tracking-wider text-slate-400 mb-1.5">Услуга или описание проблемы</label>
+              <textarea id="f-issue" name="issue" rows="3" placeholder="Например: горит Check Engine, троит на холодную, нужна компьютерная диагностика или прошивка ЭБУ..." class="w-full px-3.5 py-2.5 rounded-sm bg-obsidian border border-slate-700 focus:border-amberLab focus:outline-none text-sm text-slate-100 placeholder:text-slate-500 resize-y"></textarea>
+            </div>
+
+            <!-- Law № 99-З Mandatory Unchecked Consent Checkbox -->
+            <label class="flex items-start gap-3 p-3 rounded-sm bg-obsidian/80 border border-slate-800 cursor-pointer">
+              <input id="f-consent" name="consent" type="checkbox" required class="mt-0.5 w-4 h-4 accent-amber-500 rounded-sm shrink-0" />
+              <span class="text-xs text-slate-400 leading-relaxed">
+                Я ознакомлен(а) с
+                <button type="button" data-open-modal="modal-privacy" class="text-amberLab underline hover:text-amber-300">Политикой обработки персональных данных</button>
+                и даю
+                <button type="button" data-open-modal="modal-consent" class="text-amberLab underline hover:text-amber-300">согласие на обработку и трансграничную передачу ПД</button>
+                в соответствии с Законом РБ от 07.05.2021 № 99-З. *
+              </span>
+            </label>
+
+            <div id="form-feedback" class="hidden p-3.5 rounded-sm text-xs sm:text-sm leading-relaxed"></div>
+
+            <button id="submit-btn" type="submit" class="w-full py-3.5 px-6 bg-amberLab hover:bg-amberHover text-obsidian font-display font-bold text-sm tracking-wider uppercase chamfer-btn transition-colors">
+              Отправить заявку мастеру
+            </button>
+
+            <div class="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+              <span>Или напишите напрямую в мессенджер:</span>
+              <div class="flex items-center gap-2">
+                <a href="viber://chat?number=%2B375292515385" class="px-3 py-1.5 rounded-sm bg-obsidian border border-slate-700 hover:border-amberLab/60 text-slate-200 font-mono text-xs transition-colors">
+                  Viber
+                </a>
+                <a href="https://t.me/reanimacia_auto" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-sm bg-obsidian border border-slate-700 hover:border-amberLab/60 text-slate-200 font-mono text-xs transition-colors">
+                  Telegram
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Contacts + Embedded Map -->
+        <div id="contacts" class="lg:col-span-6 space-y-5">
+          <div class="bg-panel border border-slate-800 rounded-sm p-5 sm:p-6">
+            <div class="font-mono text-xs text-amberLab uppercase tracking-widest mb-1.5">// Контакты и заезд</div>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-50 uppercase">Как нас найти в Гродно</h2>
+
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3.5 rounded-sm bg-obsidian border border-slate-800">
+                <div class="font-mono text-[10px] uppercase text-slate-500">Телефоны приёмки</div>
+                <a href="tel:+375292515385" class="block mt-1.5 font-mono text-base font-semibold text-amberLab hover:text-amber-300 transition-colors whitespace-nowrap">+375 (29) 251-53-85</a>
+                <a href="tel:+375297895626" class="block mt-1 font-mono text-sm text-slate-200 hover:text-amberLab transition-colors whitespace-nowrap">+375 (29) 789-56-26</a>
+              </div>
+
+              <div class="p-3.5 rounded-sm bg-obsidian border border-slate-800">
+                <div class="font-mono text-[10px] uppercase text-slate-500">График работы</div>
+                <div class="mt-1.5 space-y-0.5 text-sm text-slate-200">
+                  <div><span class="font-mono text-slate-400">Пн–Пт:</span> 09:00 – 18:00</div>
+                  <div><span class="font-mono text-amberLab">Сб:</span> 09:00 – 15:00 (по записи)</div>
+                  <div><span class="font-mono text-crimsonLab">Вс:</span> выходной</div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-sm bg-obsidian border border-slate-800 sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div class="font-mono text-[10px] uppercase text-slate-500">Адрес автосервиса</div>
+                  <div class="mt-1 text-base font-semibold text-slate-100">г. Гродно, ул. Лидская, 15В</div>
+                  <div class="text-xs text-slate-400 mt-0.5">Принимаем автомобили с 2000 года выпуска</div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <a href="https://t.me/reanimacia_auto" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-sm bg-panel border border-slate-700 hover:border-amberLab/60 font-mono text-xs text-slate-200 transition-colors">Telegram</a>
+                  <a href="https://www.instagram.com/reanimacia_auto/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-sm bg-panel border border-slate-700 hover:border-amberLab/60 font-mono text-xs text-slate-200 transition-colors">Instagram</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yandex Maps Widget (Exact verified coords: 23.8552769, 53.6692176) -->
+          <div class="rounded-sm overflow-hidden border border-slate-800 bg-panel">
+            <iframe
+              title="СТО Реанимация авто на карте Гродно, ул. Лидская 15В"
+              src="https://yandex.by/map-widget/v1/?ll=23.855277%2C53.669218&z=16&pt=23.855277%2C53.669218%2Cpm2rdm"
+              width="100%"
+              height="270"
+              loading="lazy"
+              class="block w-full border-0 grayscale-[20%] contrast-[1.05]"
+            ></iframe>
+            <div class="px-4 py-2.5 bg-[#0E131C] border-t border-slate-800 flex items-center justify-between font-mono text-[11px] text-slate-400">
+              <span>53.669218, 23.855277</span>
+              <a href="https://yandex.by/maps/org/reanimatsiya_avto/237074164343/" target="_blank" rel="noopener noreferrer" class="text-amberLab hover:underline">Открыть маршрут в Яндекс Картах ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (Law № 99-З, Civil Code Art. 407, Decree № 60) -->
+  <footer class="bg-[#07090E] border-t border-slate-800/90 pt-10 pb-24 md:pb-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="space-y-2 max-w-md">
+          <div class="font-display font-bold text-base text-slate-100 uppercase tracking-wide">СТО «Реанимация авто»</div>
+          <p class="leading-relaxed text-slate-400">
+            ИП Кулаковский Евгений Николаевич · УНП: 591221953<br />
+            Адрес СТО: г. Гродно, ул. Лидская, 15В<br />
+            Регистрационные реквизиты и e-mail: [Уточняются при запуске сайта]
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[11px]">
+          <button type="button" data-open-modal="modal-privacy" class="text-slate-300 hover:text-amberLab underline underline-offset-4 transition-colors">Политика обработки ПД</button>
+          <button type="button" data-open-modal="modal-consent" class="text-slate-300 hover:text-amberLab underline underline-offset-4 transition-colors">Согласие на ПД (№ 99-З)</button>
+          <button type="button" data-open-modal="modal-cookies" class="text-slate-300 hover:text-amberLab underline underline-offset-4 transition-colors">Настройки cookie</button>
+        </div>
+      </div>
+
+      <div class="pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] text-slate-500">
+        <p>Информация на сайте носит справочный характер и не является публичной офертой (ст. 407 Гражданского кодекса Республики Беларусь).</p>
+        <p class="whitespace-nowrap">Размещение боевого сайта: хостинг РБ (Указ № 60)</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SIGNATURE FEATURE #1: Mobile App-Like Glass Sticky Dock (Auto-hidden while Cookie Banner is open!) -->
+  <nav id="mobile-dock" aria-label="Быстрая связь" class="md:hidden fixed bottom-3 inset-x-3 z-40 transition-all duration-300 dock-hidden">
+    <div class="bg-[#111622]/90 backdrop-blur-xl border border-slate-700/90 rounded-md shadow-2xl shadow-black/70 p-1.5 grid grid-cols-3 gap-1.5">
+      <a href="tel:+375292515385" class="flex items-center justify-center gap-1.5 py-2.5 rounded-sm bg-obsidian/90 text-slate-100 font-medium text-xs active:scale-95 transition-transform">
+        <svg class="w-3.5 h-3.5 text-amberLab shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375292515385" class="flex items-center justify-center gap-1.5 py-2.5 rounded-sm bg-obsidian/90 text-slate-100 font-medium text-xs active:scale-95 transition-transform">
+        <svg class="w-3.5 h-3.5 text-amberLab shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="flex items-center justify-center gap-1 py-2.5 rounded-sm bg-amberLab text-obsidian font-display font-bold text-xs uppercase tracking-wider active:scale-95 transition-transform">
+        <span>Записаться</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- NCPD COOKIE BANNER (Two Equally Prominent Buttons, hides mobile dock while open!) -->
+  <div id="cookie-banner" role="dialog" aria-label="Уведомление о файлах cookie" class="fixed bottom-3 inset-x-3 sm:inset-x-auto sm:right-5 sm:left-5 lg:left-auto lg:max-w-3xl z-50 bg-[#101520]/96 backdrop-blur-md border border-slate-700 rounded-sm shadow-2xl shadow-black/80 p-3.5 sm:px-5 sm:py-3.5">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <p class="text-[12px] leading-snug text-slate-300">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все, отклонить необязательные или
+        <button type="button" data-open-modal="modal-cookies" class="text-amberLab underline hover:text-amber-300">настроить</button>.
+      </p>
+      <div class="grid grid-cols-2 sm:flex items-stretch sm:items-center gap-2 shrink-0">
+        <button id="cookie-accept-all" type="button" class="px-2.5 sm:px-3.5 py-2 rounded-sm bg-slate-100 hover:bg-white text-obsidian font-semibold text-[11px] sm:text-xs leading-tight flex items-center justify-center text-center sm:whitespace-nowrap transition-colors">
+          Принять все
+        </button>
+        <button id="cookie-reject-opt" type="button" class="px-2 sm:px-3.5 py-2 rounded-sm bg-slate-800 hover:bg-slate-700 border border-slate-500 text-slate-100 font-semibold text-[11px] sm:text-xs leading-tight flex items-center justify-center text-center sm:whitespace-nowrap transition-colors">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/92 backdrop-blur-sm flex items-center justify-center p-4">
+    <button id="lb-close" type="button" aria-label="Закрыть" class="absolute top-4 right-4 w-10 h-10 rounded-sm bg-panel border border-slate-700 text-slate-200 hover:border-amberLab flex items-center justify-center text-xl">×</button>
+    <button id="lb-prev" type="button" aria-label="Предыдущее фото" class="absolute left-3 sm:left-6 w-10 h-10 rounded-sm bg-panel/90 border border-slate-700 text-slate-200 hover:border-amberLab flex items-center justify-center">‹</button>
+    <figure class="max-w-4xl w-full text-center">
+      <img id="lb-img" src="" alt="" class="max-h-[78vh] mx-auto rounded-sm border border-slate-800 object-contain" />
+      <figcaption id="lb-caption" class="mt-3 font-mono text-xs sm:text-sm text-slate-300"></figcaption>
+    </figure>
+    <button id="lb-next" type="button" aria-label="Следующее фото" class="absolute right-3 sm:right-6 w-10 h-10 rounded-sm bg-panel/90 border border-slate-700 text-slate-200 hover:border-amberLab flex items-center justify-center">›</button>
+  </div>
+
+  <!-- MODAL 1: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modal-privacy" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-panel border border-slate-700 rounded-sm max-w-2xl w-full max-h-[85vh] flex flex-col">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slate-50 uppercase">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-sm bg-obsidian border border-slate-700 text-slate-300 hover:text-amberLab">×</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
+        <p><strong>1. Оператор персональных данных:</strong> ИП Кулаковский Евгений Николаевич, УНП 591221953, г. Гродно, ул. Лидская, 15В (СТО «Реанимация авто»).</p>
+        <p><strong>2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных». Обработка осуществляется на основании свободного, однозначного и информированного согласия субъекта ПД.</p>
+        <p><strong>3. Состав и цели обработки:</strong> имя, контактный номер телефона, сведения об автомобиле и описании неисправности обрабатываются исключительно для обратной связи, консультации и записи на диагностику/ремонт автомобиля.</p>
+        <p><strong>4. Сроки хранения и меры защиты:</strong> данные хранятся не дольше, чем этого требуют цели обработки (либо до отзыва согласия), и не передаются третьим лицам в рекламных целях.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> вы вправе в любое время без объяснения причин отозвать согласие, получить информацию о своих данных, потребовать их изменения, прекращения обработки или удаления, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-5 py-3 border-t border-slate-800 flex justify-end">
+        <button type="button" data-close-modal class="px-4 py-2 rounded-sm bg-amberLab text-obsidian font-display font-bold text-xs uppercase">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Согласие на обработку и трансграничную передачу ПД (ст. 9, 10–15 Закона № 99-З) -->
+  <div id="modal-consent" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-panel border border-slate-700 rounded-sm max-w-2xl w-full max-h-[85vh] flex flex-col">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slate-50 uppercase">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-sm bg-obsidian border border-slate-700 text-slate-300 hover:text-amberLab">×</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
+        <p>Проставляя отметку в форме обратной связи и нажимая кнопку отправки, я даю согласие ИП Кулаковскому Евгению Николаевичу (УНП 591221953, г. Гродно, ул. Лидская, 15В) на обработку указанных мной персональных данных (имя, телефон, данные автомобиля и текст обращения) с целью обратной связи и записи на СТО.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> для оперативной доставки заявки мастеру могут использоваться технические сервисы Google (Google Apps Script) и мессенджер Telegram, серверы которых расположены за пределами Республики Беларусь, в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов ПД. Возможные риски связаны с применением законодательства иных юрисдикций к хранению и доступу к данным на серверах указанных платформ.</p>
+        <p>Вы вправе не отправлять форму на сайте и связаться с СТО напрямую по телефонам <strong>+375 (29) 251-53-85</strong> или <strong>+375 (29) 789-56-26</strong>.</p>
+        <p><strong>Ваши права (ст. 10–15 Закона № 99-З):</strong> отзыв согласия, доступ к данным, внесение изменений, прекращение обработки и удаление данных, а также право на обжалование в НЦЗПД. Срок действия согласия — до достижения цели обработки или отзыва.</p>
+      </div>
+      <div class="px-5 py-3 border-t border-slate-800 flex justify-end">
+        <button type="button" data-close-modal class="px-4 py-2 rounded-sm bg-amberLab text-obsidian font-display font-bold text-xs uppercase">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Настройки Cookie (Рекомендации НЦЗПД) -->
+  <div id="modal-cookies" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-panel border border-slate-700 rounded-sm max-w-lg w-full">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slate-50 uppercase">Настройки файлов cookie</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-sm bg-obsidian border border-slate-700 text-slate-300 hover:text-amberLab">×</button>
+      </div>
+      <div class="p-5 space-y-4 text-xs sm:text-sm text-slate-300">
+        <div class="p-3.5 rounded-sm bg-obsidian border border-slate-800 flex items-start justify-between gap-3">
+          <div>
+            <div class="font-semibold text-slate-100">Технические (обязательные)</div>
+            <p class="text-xs text-slate-400 mt-1">Обеспечивают работу сайта и сохранение вашего выбора по cookie.</p>
+          </div>
+          <span class="font-mono text-[11px] text-amberLab whitespace-nowrap">Всегда вкл.</span>
+        </div>
+        <label class="p-3.5 rounded-sm bg-obsidian border border-slate-800 flex items-start justify-between gap-3 cursor-pointer">
+          <div>
+            <div class="font-semibold text-slate-100">Аналитические cookie</div>
+            <p class="text-xs text-slate-400 mt-1">Помогают понимать, какие разделы услуг востребованы. Отключены по умолчанию.</p>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" class="mt-1 w-4 h-4 accent-amber-500 shrink-0" />
+        </label>
+      </div>
+      <div class="px-5 py-3.5 border-t border-slate-800 flex items-center justify-end gap-2">
+        <button id="cookie-save-prefs" type="button" class="px-4 py-2 rounded-sm bg-amberLab hover:bg-amberHover text-obsidian font-display font-bold text-xs uppercase">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const cfg = window.SITE_CONFIG;
+
+      // 1. Live Belarus Status (Europe/Minsk)
+      function updateLiveStatus() {
+        try {
+          const now = new Date();
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: cfg.timezone,
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).formatToParts(now);
+
+          const map = {};
+          parts.forEach((p) => { map[p.type] = p.value; });
+          const day = map.weekday; // Mon..Sun
+          const hour = parseInt(map.hour, 10);
+          const min = parseInt(map.minute, 10);
+          const hm = hour + min / 60;
+
+          let isOpen = false;
+          let label = 'Ответим с 09:00';
+          let dotClass = 'bg-amberLab';
+
+          if (['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].includes(day)) {
+            if (hm >= cfg.schedule.weekdayOpen && hm < cfg.schedule.weekdayClose) {
+              isOpen = true;
+              label = 'Открыто сейчас · до 18:00';
+              dotClass = 'bg-emerald-400';
+            } else if (hm < cfg.schedule.weekdayOpen) {
+              label = 'Ответим сегодня с 09:00';
+            } else if (day === 'Fri') {
+              label = 'Сб по записи · Пн с 09:00';
+            } else {
+              label = 'Ответим завтра с 09:00';
+            }
+          } else if (day === 'Sat') {
+            if (hm >= cfg.schedule.satOpen && hm < cfg.schedule.satClose) {
+              isOpen = true;
+              label = 'Суббота · по записи до 15:00';
+              dotClass = 'bg-amberLab';
+            } else {
+              label = 'Ответим в Пн с 09:00';
+            }
+          } else {
+            label = 'Выходной · ответим в Пн с 09:00';
+          }
+
+          [
+            ['live-status-text', 'live-status-dot'],
+            ['live-status-text-mob', 'live-status-dot-mob']
+          ].forEach(([txtId, dotId]) => {
+            const txtEl = document.getElementById(txtId);
+            const dotEl = document.getElementById(dotId);
+            if (txtEl) txtEl.textContent = label;
+            if (dotEl) {
+              dotEl.className = `w-2 h-2 rounded-full ${dotClass} ${isOpen ? 'led-pulse' : ''} shrink-0`;
+            }
+          });
+        } catch (err) {
+          // Graceful fallback kept from HTML
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 2. Mobile Menu Toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden', isOpen);
+          menuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 3. Complete Real Services Data (100% verified from reanimacia-auto.by, zero invented prices)
+      const SERVICES = {
+        diag: [
+          { code: 'DIAG-01', title: 'Компьютерная диагностика (Европа, Азия, Америка)', desc: 'Глубокое чтение и расшифровка параметров электронных систем с выходом на реальную причину неисправности.' },
+          { code: 'DIAG-02', title: 'Диагностика мотор-тестером Autoscope 4', desc: 'Осциллографическая проверка фаз ГРМ, датчиков, компрессии, катушек и сигналов без лишней разборки.' },
+          { code: 'DIAG-03', title: 'Диагностика и ремонт системы зажигания', desc: 'Проверка катушек, свечей, модулей, цепей управления и устранение пропусков воспламенения.' },
+          { code: 'DIAG-04', title: 'Топливные дизельные системы (CDI, HDI, DCI, CDTI, CRDI)', desc: 'Диагностика и ремонт систем Common Rail, давления в рампе, регуляторов и форсунок.' },
+          { code: 'DIAG-05', title: 'Топливные бензиновые системы (MPI, GDI, FSI)', desc: 'Проверка подачи топлива, ТНВД, форсунок, коррекций смеси и датчиков кислорода.' },
+          { code: 'DIAG-06', title: 'Турбокомпрессор и система наддува', desc: 'Поиск негерметичностей, проверка геометрии, актуаторов и клапанов управления наддувом.' },
+          { code: 'DIAG-07', title: 'Система охлаждения и отопления двигателя', desc: 'Поиск перегревов, утечек, проверка термостатов, вентиляторов и контура отопителя салона.' },
+          { code: 'DIAG-08', title: 'Диагностика ЦПГ двигателя', desc: 'Оценка состояния цилиндро-поршневой группы, компрессии и механического здоровья мотора.' },
+          { code: 'DIAG-09', title: 'Диагностика системы смазки', desc: 'Проверка давления масла, датчиков, контура смазки и устранение причин падения давления.' },
+          { code: 'DIAG-10', title: 'Система улавливания паров топлива EVAP', desc: 'Проверка герметичности, клапанов продувки адсорбера и устранение ошибок EVAP.' },
+          { code: 'DIAG-11', title: 'Система картерных газов и EGR', desc: 'Диагностика и ремонт вентиляции картерных газов и системы рециркуляции выхлопных газов.' }
+        ],
+        ecu: [
+          { code: 'ECU-01', title: 'Программирование электронных блоков управления (ЭБУ)', desc: 'Прошивка, обновление ПО и восстановление корректной работы электронных блоков автомобиля.' },
+          { code: 'ECU-02', title: 'Прописка (привязка) и синхронизация ЭБУ авто', desc: 'Привязка контрактных и новых блоков управления, синхронизация с иммобилайзером.' },
+          { code: 'ECU-03', title: 'Кодирование блоков и опций', desc: 'Конфигурация и настройка электронных модулей под комплектацию вашего автомобиля.' },
+          { code: 'ECU-04', title: 'Адаптация, прописка и регенерация', desc: 'Сервисная адаптация узлов после замены, прописка компонентов и принудительная регенерация.' },
+          { code: 'ECU-05', title: 'Изготовление, клонирование и ремонт автоключей', desc: 'Восстановление, программирование и привязка автомобильных ключей и чипов.' },
+          { code: 'ECU-06', title: 'Привязка датчиков давления шин (TPMS)', desc: 'Диагностика, прописка и адаптация датчиков TPMS для автомобилей всех марок.' },
+          { code: 'ECU-07', title: 'Русификация приборных панелей GM', desc: 'Перевод меню и показателей приборных панелей автомобилей концерна General Motors.' },
+          { code: 'ECU-08', title: 'Чип-тюнинг и программная настройка', desc: 'Калибровка прошивок, программное решение задач по экологии (DPF, EGR, катализаторы).' }
+        ],
+        elec: [
+          { code: '12V-01', title: 'Ремонт электрооборудования автомобилей', desc: 'Поиск обрывов, коротких замыканий, скрытых утечек тока АКБ и восстановление жгутов проводки.' },
+          { code: '12V-02', title: 'Установка дополнительного оборудования', desc: 'Аккуратное подключение дистанционного управления, парктроников, камер и доп. электрики.' },
+          { code: '12V-03', title: 'Ремонт стартера', desc: 'Диагностика цепи запуска, снятие, ремонт и проверка стартера на автомобиле.' },
+          { code: '12V-04', title: 'Ремонт генератора', desc: 'Проверка зарядки, реле-регулятора, диодного моста и восстановление стабильного напряжения.' }
+        ],
+        to: [
+          { code: 'TO-01', title: 'Замена ремня / цепи ГРМ и навесного оборудования', desc: 'Точное выставление фаз с профильным инструментом, замена роликов, помпы и приводных ремней.' },
+          { code: 'TO-02', title: 'Замена сцепления, маховика и МКПП', desc: 'Замена комплекта сцепления, двухмассового маховика, выжимного подшипника и обслуживание МКПП.' },
+          { code: 'TO-03', title: 'Замена технических жидкостей и деталей ДВС', desc: 'Регламентная замена моторного масла, антифриза, тормозной жидкости и расходников.' },
+          { code: 'TO-04', title: 'Замена фильтров всех видов', desc: 'Замена масляного, воздушного, топливного и салонного фильтров при плановом ТО.' }
+        ],
+        repair: [
+          { code: 'REP-01', title: 'Ремонт двигателя и всех составляющих', desc: 'Текущий и сложный ремонт ДВС с официальной гарантией 6 месяцев или 15 000 км.' },
+          { code: 'REP-02', title: 'Ремонт подвески всех видов', desc: 'Замена рычагов, сайлентблоков, амортизаторов, шаровых опор, ступичных подшипников.' },
+          { code: 'REP-03', title: 'Ремонт тормозных систем всех видов', desc: 'Замена дисков, колодок, суппортов, магистралей и обслуживание стояночного тормоза.' },
+          { code: 'REP-04', title: 'Ремонт систем смазки и охлаждения', desc: 'Устранение течей, замена радиаторов, патрубков, насосов и теплообменников.' },
+          { code: 'REP-05', title: 'Ремонт дизельных систем CDI, HDI, DCI, CDTI, CRDI', desc: 'Восстановление работоспособности узлов дизельной топливной аппаратуры.' },
+          { code: 'REP-06', title: 'Ремонт бензиновых систем MPI, GDI, FSI', desc: 'Устранение неисправностей впрыска и питания современных бензиновых двигателей.' },
+          { code: 'REP-07', title: 'Ремонт турбокомпрессора и системы наддува', desc: 'Восстановление герметичности впуска, узлов наддува и управления турбиной.' },
+          { code: 'REP-08', title: 'Ремонт системы паров топлива EVAP', desc: 'Замена клапанов, восстановление магистралей и устранение ошибок топливного бака.' }
+        ]
+      };
+
+      const servicesGrid = document.getElementById('services-grid');
+      const serviceTabs = document.querySelectorAll('.service-tab');
+
+      function renderServices(tabKey) {
+        const list = SERVICES[tabKey] || SERVICES.diag;
+        servicesGrid.innerHTML = list.map((item) => `
+          <article class="bg-panel border border-slate-800 hover:border-amberLab/50 rounded-sm p-5 flex flex-col justify-between transition-colors group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="font-mono text-[10px] tracking-wider text-amberLab/90 px-2 py-0.5 rounded-sm bg-obsidian border border-slate-800">${item.code}</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amberLab transition-colors"></span>
+              </div>
+              <h3 class="font-display font-semibold text-[16px] leading-snug text-slate-50">${item.title}</h3>
+              <p class="mt-2 text-xs sm:text-[13px] leading-relaxed text-slate-400">${item.desc}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="font-mono text-[11px] text-slate-500">Цена по диагностике</span>
+              <button type="button" data-prefill="${item.title.replace(/"/g, '&quot;')}" class="prefill-btn font-mono text-xs text-amberLab hover:text-amber-300 transition-colors">
+                Записаться →
+              </button>
+            </div>
+          </article>
+        `).join('');
+        bindPrefillButtons();
+      }
+
+      function activateTab(tabKey) {
+        serviceTabs.forEach((btn) => {
+          const active = btn.dataset.tab === tabKey;
+          btn.setAttribute('aria-selected', String(active));
+          btn.classList.toggle('border-amberLab', active);
+          btn.classList.toggle('text-amberLab', active);
+          btn.classList.toggle('bg-panel', active);
+          btn.classList.toggle('border-transparent', !active);
+          btn.classList.toggle('text-slate-400', !active);
+        });
+        renderServices(tabKey);
+      }
+
+      serviceTabs.forEach((btn) => {
+        btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+      });
+
+      document.querySelectorAll('.matrix-tile').forEach((tile) => {
+        tile.addEventListener('click', () => {
+          activateTab(tile.dataset.jumpTab);
+          const el = document.getElementById('services');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function bindPrefillButtons() {
+        document.querySelectorAll('.prefill-btn').forEach((btn) => {
+          btn.onclick = () => {
+            const issueInput = document.getElementById('f-issue');
+            if (issueInput) issueInput.value = btn.dataset.prefill || '';
+            const bookingEl = document.getElementById('booking');
+            if (bookingEl) bookingEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+              const phoneInput = document.getElementById('f-phone');
+              if (phoneInput) phoneInput.focus();
+            }, 450);
+          };
+        });
+      }
+
+      activateTab('diag');
+
+      // 4. 2-Click Interactive Request Selector
+      let selectedIssue = 'Горит Check / ошибка ЭБУ (компьютерная диагностика)';
+      let selectedTime = 'Как можно скорее (ближайшее окно)';
+      const summaryEl = document.getElementById('quick-summary');
+
+      function updateQuickSummary() {
+        const shortIssue = selectedIssue.split('(')[0].trim();
+        const shortTime = selectedTime.split('(')[0].trim();
+        if (summaryEl) summaryEl.textContent = `${shortIssue} · ${shortTime}`;
+      }
+
+      document.querySelectorAll('.step1-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedIssue = btn.dataset.issue;
+          document.querySelectorAll('.step1-btn').forEach((b) => {
+            const isSel = b === btn;
+            b.classList.toggle('border-amberLab', isSel);
+            b.classList.toggle('border-slate-800', !isSel);
+            const dot = b.querySelector('.step1-dot');
+            if (dot) {
+              dot.classList.toggle('bg-amberLab', isSel);
+              dot.classList.toggle('bg-slate-700', !isSel);
+            }
+          });
+          updateQuickSummary();
+        });
+      });
+
+      document.querySelectorAll('.step2-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedTime = btn.dataset.time;
+          document.querySelectorAll('.step2-btn').forEach((b) => {
+            const isSel = b === btn;
+            b.classList.toggle('bg-amberLab/15', isSel);
+            b.classList.toggle('border-amberLab', isSel);
+            b.classList.toggle('text-amber-200', isSel);
+            b.classList.toggle('bg-obsidian', !isSel);
+            b.classList.toggle('border-slate-700', !isSel);
+            b.classList.toggle('text-slate-300', !isSel);
+          });
+          updateQuickSummary();
+        });
+      });
+
+      const applyQuickBtn = document.getElementById('apply-quick-btn');
+      if (applyQuickBtn) {
+        applyQuickBtn.addEventListener('click', () => {
+          const issueInput = document.getElementById('f-issue');
+          const timeInput = document.getElementById('f-time');
+          if (issueInput) issueInput.value = selectedIssue;
+          if (timeInput) timeInput.value = selectedTime;
+          const bookingEl = document.getElementById('booking');
+          if (bookingEl) bookingEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => {
+            const nameInput = document.getElementById('f-name');
+            if (nameInput) nameInput.focus();
+          }, 450);
+        });
+      }
+
+      // 5. Lightbox Gallery
+      const GALLERY_ITEMS = [
+        { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85', caption: 'Программирование, кодирование и ремонт ЭБУ (демо-фото)' },
+        { src: 'https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1400&q=85', caption: 'Компьютерная и подкапотная диагностика (демо-фото)' },
+        { src: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=85', caption: 'Замена ремней/цепей ГРМ и ремонт ДВС (демо-фото)' },
+        { src: 'https://images.unsplash.com/photo-1769178938570-7d8442f88538?auto=format&fit=crop&w=1400&q=85', caption: 'Привязка ключей, TPMS и русификация панелей GM (демо-фото)' },
+        { src: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1400&q=85', caption: 'Плановое ТО и замена технических жидкостей (демо-фото)' },
+        { src: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1400&q=85', caption: 'Слесарный пост и ремонт подвески (демо-фото)' }
+      ];
+      let lbIndex = 0;
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbCap = document.getElementById('lb-caption');
+
+      function showLightbox(idx) {
+        lbIndex = (idx + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+        lbImg.src = GALLERY_ITEMS[lbIndex].src;
+        lbImg.alt = GALLERY_ITEMS[lbIndex].caption;
+        lbCap.textContent = GALLERY_ITEMS[lbIndex].caption;
+        lb.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        lb.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('.gallery-item').forEach((item) => {
+        item.addEventListener('click', () => showLightbox(Number(item.dataset.lightboxIdx)));
+      });
+      document.getElementById('lb-close').addEventListener('click', closeLightbox);
+      document.getElementById('lb-prev').addEventListener('click', () => showLightbox(lbIndex - 1));
+      document.getElementById('lb-next').addEventListener('click', () => showLightbox(lbIndex + 1));
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+      // 6. Legal Modals & Cookie Banner (Synced with Mobile Sticky Dock!)
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-dock');
+      const COOKIE_KEY = 'reanimacia_cookie_prefs_v1';
+
+      function syncCookieAndDock() {
+        const saved = localStorage.getItem(COOKIE_KEY);
+        if (saved) {
+          cookieBanner.classList.add('hidden');
+          mobileDock.classList.remove('dock-hidden');
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileDock.classList.add('dock-hidden');
+        }
+      }
+
+      function saveCookieChoice(analyticsAllowed) {
+        localStorage.setItem(COOKIE_KEY, JSON.stringify({
+          essential: true,
+          analytics: Boolean(analyticsAllowed),
+          ts: Date.now()
+        }));
+        syncCookieAndDock();
+      }
+
+      document.getElementById('cookie-accept-all').addEventListener('click', () => saveCookieChoice(true));
+      document.getElementById('cookie-reject-opt').addEventListener('click', () => saveCookieChoice(false));
+      document.getElementById('cookie-save-prefs').addEventListener('click', () => {
+        const toggle = document.getElementById('cookie-analytics-toggle');
+        saveCookieChoice(toggle ? toggle.checked : false);
+        closeAllModals();
+      });
+
+      function openModal(id) {
+        const m = document.getElementById(id);
+        if (m) {
+          m.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      function closeAllModals() {
+        document.querySelectorAll('.legal-modal').forEach((m) => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.dataset.openModal));
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('.legal-modal').forEach((m) => {
+        m.addEventListener('click', (e) => { if (e.target === m) closeAllModals(); });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeAllModals();
+        } else if (!lb.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') showLightbox(lbIndex - 1);
+          if (e.key === 'ArrowRight') showLightbox(lbIndex + 1);
+        }
+      });
+
+      syncCookieAndDock();
+
+      // 7. Booking Form (GAS Telegram Webhook + Honeypot + Demo Mode)
+      const leadForm = document.getElementById('lead-form');
+      const feedback = document.getElementById('form-feedback');
+      const submitBtn = document.getElementById('submit-btn');
+
+      function showFeedback(type, text) {
+        feedback.classList.remove('hidden', 'bg-emerald-950/80', 'border-emerald-500/40', 'text-emerald-200', 'bg-red-950/80', 'border-crimsonLab/40', 'text-red-200', 'border');
+        feedback.classList.add('border');
+        if (type === 'ok') {
+          feedback.classList.add('bg-emerald-950/80', 'border-emerald-500/40', 'text-emerald-200');
+        } else {
+          feedback.classList.add('bg-red-950/80', 'border-crimsonLab/40', 'text-red-200');
+        }
+        feedback.textContent = text;
+      }
+
+      if (leadForm) {
+        leadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const hp = document.getElementById('company_hp');
+          if (hp && hp.value.trim() !== '') return;
+
+          const name = document.getElementById('f-name').value.trim();
+          const phone = document.getElementById('f-phone').value.trim();
+          const car = document.getElementById('f-car').value.trim();
+          const prefTime = document.getElementById('f-time').value.trim();
+          const issue = document.getElementById('f-issue').value.trim();
+          const consent = document.getElementById('f-consent').checked;
+
+          if (!name || phone.replace(/\D/g, '').length < 9) {
+            showFeedback('err', 'Пожалуйста, укажите имя и корректный номер телефона для связи.');
+            return;
+          }
+          if (!consent) {
+            showFeedback('err', 'Для отправки формы необходимо подтвердить согласие на обработку персональных данных (Закон РБ № 99-З).');
+            return;
+          }
+
+          const payload = {
+            source: cfg.brandName,
+            name,
+            phone,
+            car: car || 'Не указано',
+            preferred_time: prefTime || 'Не указано',
+            issue: issue || 'Консультация / запись на диагностику',
+            created_at: new Date().toISOString()
+          };
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Отправка...';
+
+          try {
+            if (!cfg.gasWebhookUrl) {
+              await new Promise((r) => setTimeout(r, 450));
+              showFeedback('ok', 'Демо-режим: заявка сформирована корректно! На боевом сайте она мгновенно прилетит в ваш Telegram или Viber. Для реальной записи звоните +375 (29) 251-53-85.');
+              leadForm.reset();
+            } else {
+              await fetch(cfg.gasWebhookUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              showFeedback('ok', 'Заявка отправлена! Мастер СТО «Реанимация авто» свяжется с вами в ближайшее рабочее время.');
+              leadForm.reset();
+            }
+          } catch (err) {
+            showFeedback('err', 'Не удалось отправить форму. Позвоните нам напрямую: +375 (29) 251-53-85.');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Отправить заявку мастеру';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

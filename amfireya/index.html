@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Амфирея — Центр косметологии в Гродно | Лазерная, инъекционная и аппаратная медицина</title>
+  <meta name="description" content="Медицинский центр косметологии «Амфирея» в центре Гродно (ул. Большая Троицкая, 44). Более 15 лет опыта: инъекционные методики, лазерные технологии Alma Lasers и Venus, лечение MYA, RF-омоложение и фотолечение." />
+
+  <!-- Google Fonts: Lora (редакционная клиническая антиква) + Inter (швейцарский гротеск) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            porcelain: '#FAF9F7',
+            limestone: '#EFECE6',
+            limestoneSoft: '#F5F3EE',
+            eucalyptus: '#3B5B4F',
+            eucalyptusDark: '#2C463C',
+            eucalyptusTint: '#EAF0ED',
+            bronze: '#9E825E',
+            bronzeDark: '#826949',
+            ink: '#1E2421',
+            inkSoft: '#49544F',
+            stone: '#6F7A74',
+            hairline: '#DEDBD2'
+          },
+          fontFamily: {
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+          },
+          boxShadow: {
+            clinical: '0 18px 48px -28px rgba(30, 36, 33, 0.16)',
+            dock: '0 -10px 32px -12px rgba(30, 36, 33, 0.18)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF9F7;
+      color: #1E2421;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Активная вкладка клинического справочника процедур */
+    .dir-tab[data-active="true"] {
+      color: #1E2421;
+      border-color: #3B5B4F;
+      background-color: #FAF9F7;
+    }
+    .dir-tab[data-active="false"] {
+      color: #6F7A74;
+      border-color: transparent;
+    }
+    .dir-tab[data-active="false"]:hover {
+      color: #1E2421;
+      border-color: #DEDBD2;
+    }
+
+    /* Активная кнопка выбора в 2-кликовом подборе */
+    .pick-btn[data-selected="true"] {
+      background-color: #3B5B4F;
+      border-color: #3B5B4F;
+      color: #FAF9F7;
+    }
+    .pick-btn[data-selected="false"] {
+      background-color: #FAF9F7;
+      border-color: #DEDBD2;
+      color: #1E2421;
+    }
+    .pick-btn[data-selected="false"]:hover {
+      border-color: #9E825E;
+      background-color: #F5F3EE;
+    }
+  </style>
+</head>
+<body class="bg-porcelain text-ink selection:bg-eucalyptus/15 selection:text-ink">
+
+  <!-- ==================== ЕДИНАЯ КОНФИГУРАЦИЯ САЙТА ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Амфирея',
+      legalName: 'ООО «Амфирея»',
+      city: 'Гродно',
+      address: 'г. Гродно, ул. Большая Троицкая, 44, пом. 3',
+      displayPhone: '+375 (33) 606-21-11',
+      telHref: 'tel:+375336062111',
+      viberPhone: '+375336062111',
+      cityPhone1Display: '+375 (152) 62-27-27',
+      cityPhone1Href: 'tel:+375152622727',
+      cityPhone2Display: '+375 (152) 62-36-89',
+      cityPhone2Href: 'tel:+375152623689',
+      email: 'Amfireya.2009@yandex.by',
+      yandexMapsUrl: 'https://yandex.by/maps/org/amfireya/74675526797/',
+      // Реальный график работы ООО «Амфирея» (Europe/Minsk)
+      schedule: {
+        timezone: 'Europe/Minsk',
+        weekdayStart: 9,
+        weekdayEnd: 20,
+        saturdayStart: 9,
+        saturdayEnd: 14
+      },
+      // URL веб-приложения Google Apps Script для доставки заявок в Telegram (пусто = демо-режим)
+      googleScriptUrl: ''
+    };
+  </script>
+
+  <!-- ==================== ШАПКА (СТРОГО В 1 СТРОКУ, ШВЕЙЦАРСКАЯ ГИГИЕНА) ==================== -->
+  <header class="sticky top-0 z-40 bg-porcelain/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-[60px] lg:h-[72px] flex items-center justify-between gap-2 sm:gap-3">
+      <!-- Логотип -->
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group min-w-0">
+        <span class="w-7 h-7 sm:w-8 sm:h-8 border border-eucalyptus/40 bg-limestoneSoft flex items-center justify-center font-serif text-[15px] sm:text-[17px] font-medium text-eucalyptus group-hover:bg-eucalyptus group-hover:text-porcelain transition shrink-0">
+          А
+        </span>
+        <span class="leading-none">
+          <span class="block font-serif text-[15px] sm:text-[17px] lg:text-[18px] tracking-[0.1em] sm:tracking-[0.12em] uppercase text-ink whitespace-nowrap">Амфирея</span>
+          <span class="block text-[8px] sm:text-[9.5px] tracking-[0.1em] sm:tracking-[0.16em] uppercase text-stone mt-0.5 whitespace-nowrap">Центр косметологии · Гродно</span>
+        </span>
+      </a>
+
+      <!-- Навигация (строго в 1 строку) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-7 text-[12px] font-medium uppercase tracking-[0.12em] text-inkSoft">
+        <a href="#procedures" class="whitespace-nowrap hover:text-eucalyptus transition">Направления</a>
+        <a href="#prices" class="whitespace-nowrap hover:text-eucalyptus transition">Прейскурант</a>
+        <a href="#about" class="whitespace-nowrap hover:text-eucalyptus transition">О центре</a>
+        <a href="#certificates" class="whitespace-nowrap hover:text-eucalyptus transition">Сертификаты</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-eucalyptus transition">Контакты</a>
+      </nav>
+
+      <!-- Правая группа: живой статус, телефон 1 строкой, монохромная иконка Viber, запись -->
+      <div class="hidden lg:flex items-center gap-4 shrink-0">
+        <div
+          data-live-status
+          class="flex items-center gap-2 px-2.5 py-1 border border-hairline bg-limestoneSoft/80 text-[11px] font-medium text-inkSoft whitespace-nowrap"
+        >
+          <span data-status-dot class="w-1.5 h-1.5 rounded-full bg-eucalyptus shrink-0"></span>
+          <span data-status-text class="whitespace-nowrap">Открыто сейчас</span>
+        </div>
+
+        <a
+          data-contact="phone"
+          href="tel:+375336062111"
+          class="text-[13px] font-medium text-ink hover:text-eucalyptus tracking-tight tabular-nums whitespace-nowrap transition"
+        >
+          <span data-contact-text="phone">+375 (33) 606-21-11</span>
+        </a>
+
+        <!-- Монохромная тонкая иконка Viber в палитре клиники (без ярких пилюль) -->
+        <a
+          data-contact="viber"
+          href="viber://chat?number=%2B375336062111"
+          aria-label="Написать в Viber"
+          title="Написать в Viber"
+          class="w-8 h-8 border border-hairline bg-porcelain hover:border-eucalyptus hover:text-eucalyptus text-inkSoft flex items-center justify-center transition shrink-0"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+          </svg>
+        </a>
+
+        <a
+          href="#booking"
+          class="px-4 py-2 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11px] font-medium uppercase tracking-[0.14em] whitespace-nowrap transition shrink-0"
+        >
+          Записаться
+        </a>
+      </div>
+
+      <!-- Мобильная правая часть -->
+      <div class="flex lg:hidden items-center gap-2 shrink-0">
+        <div
+          data-live-status
+          class="flex items-center gap-1.5 px-2 py-1 border border-hairline bg-limestoneSoft text-[10.5px] font-medium text-inkSoft whitespace-nowrap"
+        >
+          <span data-status-dot class="w-1.5 h-1.5 rounded-full bg-eucalyptus shrink-0"></span>
+          <span data-status-short class="whitespace-nowrap">Открыто</span>
+        </div>
+
+        <button
+          type="button"
+          id="mobileMenuBtn"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          aria-label="Открыть меню"
+          class="w-9 h-9 border border-hairline bg-porcelain flex items-center justify-center text-ink"
+        >
+          <svg id="menuIconOpen" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 7.5h16.5M3.75 12h16.5M3.75 16.5h16.5" />
+          </svg>
+          <svg id="menuIconClose" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное меню -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-hairline bg-porcelain px-5 py-5 space-y-4">
+      <div class="grid grid-cols-2 gap-2.5 text-[12px] font-medium uppercase tracking-[0.1em] text-ink">
+        <a href="#procedures" class="mobile-nav-link py-2 border-b border-hairline/70">Направления</a>
+        <a href="#prices" class="mobile-nav-link py-2 border-b border-hairline/70">Прейскурант</a>
+        <a href="#about" class="mobile-nav-link py-2 border-b border-hairline/70">О центре</a>
+        <a href="#certificates" class="mobile-nav-link py-2 border-b border-hairline/70">Сертификаты</a>
+        <a href="#booking" class="mobile-nav-link py-2 border-b border-hairline/70">Онлайн-запись</a>
+        <a href="#contacts" class="mobile-nav-link py-2 border-b border-hairline/70">Контакты</a>
+      </div>
+      <div class="pt-1 flex flex-wrap items-center justify-between gap-2 text-[13px]">
+        <a data-contact="phone" href="tel:+375336062111" class="font-medium text-ink tabular-nums">+375 (33) 606-21-11</a>
+        <a data-contact="city1" href="tel:+375152622727" class="text-inkSoft tabular-nums">+375 (152) 62-27-27</a>
+      </div>
+      <p class="text-[11.5px] text-stone">г. Гродно, ул. Большая Троицкая, 44, пом. 3 · Пн–Пт 9:00–20:00, Сб 9:00–14:00</p>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== SWISS ASYMMETRIC CLINICAL EDITORIAL HERO ==================== -->
+    <section class="bg-porcelain border-b border-hairline">
+      <!-- Верхняя архитектурная строка координат -->
+      <div class="border-b border-hairline/80 bg-limestoneSoft/45">
+        <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-3 text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.11em] sm:tracking-[0.16em] text-stone">
+          <span class="whitespace-nowrap">Косметология · с 2009 года</span>
+          <span class="hidden md:inline text-inkSoft whitespace-nowrap">г. Гродно · ул. Большая Троицкая, 44, пом. 3</span>
+          <a href="https://yandex.by/maps/org/amfireya/74675526797/" target="_blank" rel="noopener noreferrer" class="text-inkSoft hover:text-eucalyptus transition tabular-nums whitespace-nowrap">
+            ★ 4.8 Яндекс · 81 оценка
+          </a>
+        </div>
+      </div>
+
+      <!-- Асимметричная редакционная композиция: воздух и типографика слева, строгий вертикальный портрет справа -->
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-5 pb-8 sm:pt-7 lg:pt-8 lg:pb-9">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-start">
+          <!-- Левая колонка: швейцарский воздух, клиническая ясность, спокойная антиква -->
+          <div class="lg:col-span-7 lg:pt-2 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2.5 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.18em] text-bronze font-medium">
+                <span class="w-6 h-px bg-bronze shrink-0"></span>
+                <span>Клинический подход к естественной красоте</span>
+              </div>
+
+              <h1 class="mt-3 sm:mt-4 font-serif text-[27px] sm:text-[42px] lg:text-[48px] leading-[1.12] tracking-[-0.015em] text-ink font-normal">
+                Эстетическая и лазерная косметология <span class="italic text-eucalyptus">в центре Гродно</span>
+              </h1>
+
+              <p class="mt-3 sm:mt-4 max-w-xl text-[13.5px] sm:text-[15.5px] leading-[1.6] sm:leading-[1.68] text-inkSoft font-light">
+                Более 15 лет помогаем бережно сохранить то, что подарила природа. Приём ведут врачи-специалисты — работаем на сертифицированных системах Alma Lasers, Venus и MYA по индивидуальному плану.
+              </p>
+
+              <!-- Спокойная швейцарская пара действий -->
+              <div class="mt-4 sm:mt-6 grid grid-cols-2 sm:flex sm:items-center gap-2.5 sm:gap-3.5">
+                <a
+                  href="#booking"
+                  class="px-3.5 sm:px-7 py-3 sm:py-3.5 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11px] sm:text-[12px] font-medium uppercase tracking-[0.1em] sm:tracking-[0.15em] text-center whitespace-nowrap transition"
+                >
+                  Записаться
+                </a>
+                <a
+                  href="#procedures"
+                  class="px-3.5 sm:px-7 py-3 sm:py-3.5 border border-ink/25 hover:border-eucalyptus hover:text-eucalyptus text-ink text-[11px] sm:text-[12px] font-medium uppercase tracking-[0.1em] sm:tracking-[0.15em] text-center whitespace-nowrap transition"
+                >
+                  Все направления
+                </a>
+              </div>
+            </div>
+
+            <!-- Чистая фактологическая линейка доверия (без надуманных цифр) -->
+            <div class="hidden sm:grid mt-7 lg:mt-8 pt-5 border-t border-hairline grid-cols-3 gap-5">
+              <div>
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-bronze font-medium">Врачебный приём</div>
+                <div class="mt-1 text-[13px] text-ink leading-snug">Специалисты первой категории и к.м.н.</div>
+              </div>
+              <div class="border-l border-hairline pl-5">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-bronze font-medium">Оборудование</div>
+                <div class="mt-1 text-[13px] text-ink leading-snug">Alma Lasers, Venus Velocity, Venus Viva, MYA</div>
+              </div>
+              <div class="border-l border-hairline pl-5">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-bronze font-medium">График работы</div>
+                <div class="mt-1 text-[13px] text-ink leading-snug tabular-nums">Пн–Пт 9:00–20:00<br />Сб 9:00–14:00 · Вс вых.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: строгий высокий архитектурный портрет в тонкой фарфоровой раме -->
+          <div class="lg:col-span-5">
+            <div class="border border-hairline bg-limestoneSoft p-2 sm:p-2.5 shadow-clinical">
+              <button
+                type="button"
+                data-lightbox-src="https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                data-lightbox-caption="Аппаратная и эстетическая косметология в медицинском центре «Амфирея» (иллюстративное фото)"
+                class="block w-full overflow-hidden aspect-[16/10] sm:aspect-[4/3.6] lg:aspect-[4/4.05] bg-limestone cursor-zoom-in group"
+              >
+                <img
+                  src="https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Клиническая аппаратная косметология лица в светлом кабинете"
+                  class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition duration-700"
+                />
+              </button>
+              <div class="pt-2 px-1 flex items-center justify-between gap-2 text-[10.5px] sm:text-[11px] text-stone">
+                <span class="truncate">Индивидуальная диагностика и план ухода</span>
+                <span class="uppercase tracking-[0.12em] text-eucalyptus whitespace-nowrap shrink-0">ООО «Амфирея»</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Горизонтальная индексная полоса направлений (заменяет наехавший мобильный список ссылок старого сайта) -->
+        <div class="mt-6 lg:mt-7 border-t border-b border-hairline bg-limestoneSoft/50">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-hairline">
+            <button
+              type="button"
+              data-jump-dir="injections"
+              class="p-3.5 text-left hover:bg-porcelain transition group"
+            >
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-bronze">
+                <span>01</span>
+                <span class="text-eucalyptus opacity-60 group-hover:opacity-100 transition">→</span>
+              </div>
+              <div class="mt-1 font-serif text-[14.5px] text-ink">Инъекционные методики</div>
+              <div class="mt-0.5 text-[11px] text-stone">Биоревитализация, мезо, губы</div>
+            </button>
+
+            <button
+              type="button"
+              data-jump-dir="laser"
+              class="p-3.5 text-left hover:bg-porcelain transition group"
+            >
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-bronze">
+                <span>02</span>
+                <span class="text-eucalyptus opacity-60 group-hover:opacity-100 transition">→</span>
+              </div>
+              <div class="mt-1 font-serif text-[14.5px] text-ink">Лазерные технологии</div>
+              <div class="mt-0.5 text-[11px] text-stone">Эпиляция, сосуды, акне, тон</div>
+            </button>
+
+            <button
+              type="button"
+              data-jump-dir="mya"
+              class="p-3.5 text-left hover:bg-porcelain transition group"
+            >
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-bronze">
+                <span>03</span>
+                <span class="text-eucalyptus opacity-60 group-hover:opacity-100 transition">→</span>
+              </div>
+              <div class="mt-1 font-serif text-[14.5px] text-ink">Лечение MYA</div>
+              <div class="mt-0.5 text-[11px] text-stone">LED, кавитация, электропорация</div>
+            </button>
+
+            <button
+              type="button"
+              data-jump-dir="rfphoto"
+              class="p-3.5 text-left hover:bg-porcelain transition group"
+            >
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-bronze">
+                <span>04</span>
+                <span class="text-eucalyptus opacity-60 group-hover:opacity-100 transition">→</span>
+              </div>
+              <div class="mt-1 font-serif text-[14.5px] text-ink">RF и Фотолечение</div>
+              <div class="mt-0.5 text-[11px] text-stone">Venus Viva, фотоомоложение</div>
+            </button>
+
+            <button
+              type="button"
+              data-jump-dir="therapy"
+              class="col-span-2 sm:col-span-1 p-3.5 text-left hover:bg-porcelain transition group"
+            >
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.15em] text-bronze">
+                <span>05</span>
+                <span class="text-eucalyptus opacity-60 group-hover:opacity-100 transition">→</span>
+              </div>
+              <div class="mt-1 font-serif text-[14.5px] text-ink">УЗ, Озон и LPG</div>
+              <div class="mt-0.5 text-[11px] text-stone">Пилинги, фонофорез, озонотерапия</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КЛИНИЧЕСКИЙ СПРАВОЧНИК НАПРАВЛЕНИЙ И ПРАЙС-ОРИЕНТИРЫ ==================== -->
+    <section id="procedures" class="py-14 sm:py-20 bg-limestone/55 border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          <div class="lg:col-span-7">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-bronze font-medium">Направления и процедуры</p>
+            <h2 class="mt-2 font-serif text-[28px] sm:text-[38px] leading-[1.15] text-ink font-normal">
+              Клинический справочник процедур центра
+            </h2>
+          </div>
+          <div class="lg:col-span-5 lg:text-right">
+            <p class="text-[14px] leading-relaxed text-inkSoft">
+              Все реальные направления «Амфиреи» разложены по пяти понятным разделам — без накладывающихся ссылок и пустых колонок.
+            </p>
+          </div>
+        </div>
+
+        <!-- Горизонтальные табы справочника -->
+        <div id="prices" class="mt-8 border-b border-hairline flex items-center gap-1 overflow-x-auto no-scrollbar">
+          <button type="button" data-dir-tab="injections" data-active="true" class="dir-tab px-4 sm:px-5 py-3.5 border-b-2 text-[12px] font-medium uppercase tracking-[0.12em] whitespace-nowrap transition">
+            01 · Инъекционные методики
+          </button>
+          <button type="button" data-dir-tab="laser" data-active="false" class="dir-tab px-4 sm:px-5 py-3.5 border-b-2 text-[12px] font-medium uppercase tracking-[0.12em] whitespace-nowrap transition">
+            02 · Лазерные технологии
+          </button>
+          <button type="button" data-dir-tab="mya" data-active="false" class="dir-tab px-4 sm:px-5 py-3.5 border-b-2 text-[12px] font-medium uppercase tracking-[0.12em] whitespace-nowrap transition">
+            03 · Лечение MYA
+          </button>
+          <button type="button" data-dir-tab="rfphoto" data-active="false" class="dir-tab px-4 sm:px-5 py-3.5 border-b-2 text-[12px] font-medium uppercase tracking-[0.12em] whitespace-nowrap transition">
+            04 · RF и Фотолечение
+          </button>
+          <button type="button" data-dir-tab="therapy" data-active="false" class="dir-tab px-4 sm:px-5 py-3.5 border-b-2 text-[12px] font-medium uppercase tracking-[0.12em] whitespace-nowrap transition">
+            05 · УЗ-терапия, Озон и LPG
+          </button>
+        </div>
+
+        <!-- Контент вкладок -->
+        <div class="mt-6 bg-porcelain border border-hairline">
+
+          <!-- Панель 1: Инъекционные методики -->
+          <div id="dirPanel-injections" class="dir-panel grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-hairline bg-limestoneSoft/60 p-6 flex flex-col justify-between">
+              <div>
+                <button
+                  type="button"
+                  data-lightbox-src="https://images.pexels.com/photos/7581575/pexels-photo-7581575.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                  data-lightbox-caption="Инъекционная косметология, плазмолифтинг и консультации врачей-специалистов"
+                  class="block w-full aspect-[4/3] overflow-hidden border border-hairline bg-limestone cursor-zoom-in group"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/7581575/pexels-photo-7581575.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Врач-косметолог во время приёма и инъекционной процедуры"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </button>
+                <div class="mt-5 text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Направление 01</div>
+                <h3 class="mt-1.5 font-serif text-[23px] leading-snug text-ink">Инъекционные методики и врачебные консультации</h3>
+                <p class="mt-2.5 text-[13.5px] leading-relaxed text-inkSoft">
+                  Бережная коррекция возрастных изменений, восстановление увлажнённости кожи и естественного контура лица под наблюдением врача-косметолога.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-hairline text-[12px] text-stone">
+                Включает приём врачей 1-й категории и к.м.н., химические пилинги Dermaceutic и плазмолифтинг.
+              </div>
+            </div>
+
+            <div class="lg:col-span-8 divide-y divide-hairline">
+              <div class="px-5 sm:px-7 py-3.5 bg-limestoneSoft/40 flex items-center justify-between text-[10.5px] uppercase tracking-[0.15em] text-stone">
+                <span>Процедура</span>
+                <span>Ориентир по прейскуранту*</span>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Консультация врача-специалиста</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Первичный приём врача 1-й квалификационной категории (24.05 BYN) или кандидата медицинских наук (39.65 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">24.05 – 39.65 BYN</span>
+                  <button type="button" data-quick-select="Консультация врача-косметолога" data-quick-note="Первичная консультация врача-специалиста" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Биоревитализация и мезотерапия</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Глубокое увлажнение, питание дермы и повышение тонуса кожи (1 анатомическая область, без стоимости препарата).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 128.25 BYN</span>
+                  <button type="button" data-quick-select="Инъекционная косметология" data-quick-note="Биоревитализация / мезотерапия" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Увеличение губ и контурная коррекция</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Деликатное моделирование формы губ (от 140.40 BYN), коррекция носогубных складок, области глаз, лба и шеи (без препарата).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 140.40 BYN</span>
+                  <button type="button" data-quick-select="Инъекционная косметология" data-quick-note="Увеличение губ / контурная коррекция" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Устранение мимических морщин и лечение гипергидроза</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Коррекция области лба, межбровья и периорбитальной зоны (111.15 BYN), локального гипергидроза подмышек, кистей и стоп (без препарата).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 111.15 BYN</span>
+                  <button type="button" data-quick-select="Инъекционная косметология" data-quick-note="Устранение морщин / коррекция гипергидроза" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Плазмолифтинг (аутостимуляция регенерации)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Введение собственной тромбоцитарной аутоплазмы для запуска естественного обновления кожи (1 анатомическая область).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 132.60 BYN</span>
+                  <button type="button" data-quick-select="Инъекционная косметология" data-quick-note="Плазмолифтинг" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Медицинские химические пилинги Dermaceutic</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Поверхностный Milk Peel (93.95 BYN), срединный Cosmo Peel 15% (98.30 BYN), осветляющий Mela Peel (152.80 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">93.95 – 152.80 BYN</span>
+                  <button type="button" data-quick-select="Инъекционная косметология" data-quick-note="Химический пилинг Dermaceutic" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 2: Лазерные технологии -->
+          <div id="dirPanel-laser" class="dir-panel hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-hairline bg-limestoneSoft/60 p-6 flex flex-col justify-between">
+              <div>
+                <button
+                  type="button"
+                  data-lightbox-src="https://images.pexels.com/photos/5069508/pexels-photo-5069508.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                  data-lightbox-caption="Диодная лазерная эпиляция Venus Velocity и лазерная дерматология Alma Lasers"
+                  class="block w-full aspect-[4/3] overflow-hidden border border-hairline bg-limestone cursor-zoom-in group"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/5069508/pexels-photo-5069508.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Проведение лазерной процедуры специалистом клиники"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </button>
+                <div class="mt-5 text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Направление 02</div>
+                <h3 class="mt-1.5 font-serif text-[23px] leading-snug text-ink">Лазерные технологии Alma Lasers и Venus Velocity</h3>
+                <p class="mt-2.5 text-[13.5px] leading-relaxed text-inkSoft">
+                  Прицельная работа с сосудистыми сетками, акне, пигментацией, рубцами, татуировками и комфортная лазерная эпиляция с индивидуальными настройками.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-hairline text-[12px] text-stone">
+                Также применяется целевой УФ-модуль системы Alma Lasers для дерматологических показаний.
+              </div>
+            </div>
+
+            <div class="lg:col-span-8 divide-y divide-hairline">
+              <div class="px-5 sm:px-7 py-3.5 bg-limestoneSoft/40 flex items-center justify-between text-[10.5px] uppercase tracking-[0.15em] text-stone">
+                <span>Процедура</span>
+                <span>Ориентир по прейскуранту*</span>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Лазерная эпиляция на аппарате Venus Velocity</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Верхняя губа (17.50), подмышки (29.50), бикини глубокое (62.85), голени (85.80), ноги полностью (150.85 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 15.00 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Лазерная эпиляция Venus Velocity" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Лечение сосудистых поражений и купероза</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Крылья носа или подбородок (39.10), щёки (79.35), комплекс на всё лицо при куперозе и угревой сыпи (173.00 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 39.10 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Лечение сосудистых поражений / купероза" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Лечение акне, постакне и мелазмы</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Зональная лазерная обработка (лоб, щёки, область глаз — 112.85 BYN), комплекс на всё лицо (247.50 BYN), рубцы и кератомы.</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 112.85 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Лазерное лечение акне / постакне" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Ремоделирование кожи, улучшение тона и текстуры</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Неабляционное лазерное омоложение без длительной реабилитации: отдельные зоны лица (от 113.00), шея/декольте (от 158.65), лицо полностью (283.65 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 113.00 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Лазерное ремоделирование и омоложение кожи" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Устранение пигментации</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Коррекция поверхностной пигментации в зоне лба или щёк (79.35 BYN), кистей рук, декольте или всего лица (158.65 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 79.35 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Устранение пигментации лазером" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Лазерное удаление татуировок</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Поэтапное осветление пигмента: до 5 см² (11.73 BYN за сеанс) либо свыше 5 см² (2.99 BYN за 1 см²).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 11.73 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Удаление татуировок лазером" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 3: Лечение MYA -->
+          <div id="dirPanel-mya" class="dir-panel hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-hairline bg-limestoneSoft/60 p-6 flex flex-col justify-between">
+              <div>
+                <button
+                  type="button"
+                  data-lightbox-src="https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                  data-lightbox-caption="Аппаратное лечение MYA: электропорация, инфракрасная LED-терапия и ультразвук"
+                  class="block w-full aspect-[4/3] overflow-hidden border border-hairline bg-limestone cursor-zoom-in group"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Бережная аппаратная процедура ухода за кожей лица"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </button>
+                <div class="mt-5 text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Направление 03</div>
+                <h3 class="mt-1.5 font-serif text-[23px] leading-snug text-ink">Аппаратный комплекс MYA</h3>
+                <p class="mt-2.5 text-[13.5px] leading-relaxed text-inkSoft">
+                  Неинвазивные физиотерапевтические и эстетические программы для повышения тонуса мышц, микроциркуляции и безыгольного насыщения кожи активами.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-hairline text-[12px] text-stone">
+                Подходит тем, кто предпочитает мягкие неинвазивные методики без проколов и реабилитации.
+              </div>
+            </div>
+
+            <div class="lg:col-span-8 divide-y divide-hairline">
+              <div class="px-5 sm:px-7 py-3.5 bg-limestoneSoft/40 flex items-center justify-between text-[10.5px] uppercase tracking-[0.15em] text-stone">
+                <span>Процедура MYA</span>
+                <span>Ориентир по прейскуранту*</span>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Электропорация (безыгольная мезотерапия)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Безболезненное введение активных сывороток: IOSON-DMAE Gel (47.65 BYN), «Мезококтейль» Hyal Metrix (78.20 BYN) или базовый сеанс (44.80 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">44.80 – 78.20 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Электропорация (безыгольная мезотерапия)" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Электромиостимуляция лица и тела</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Укрепление мышечного каркаса и лимфодренаж: лицо (45.30 BYN), тело в сочетании с ультразвуковой терапией (60.35 – 74.20 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">45.30 – 74.20 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Электромиостимуляция лица / тела" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Инфракрасная терапия (LED)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Мягкое светотепловое воздействие для стимуляции регенерации, улучшения кровотока и снятия воспалительных реакций.</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">18.70 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Инфракрасная терапия (LED)" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Ультразвуковая кавитация</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Аппаратная коррекция контуров тела и локальных жировых отложений в сочетании с лимфодренажными протоколами MYA.</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">по зонам</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Ультразвуковая кавитация (MYA)" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 4: Радиоволновые технологии и Фотолечение -->
+          <div id="dirPanel-rfphoto" class="dir-panel hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-hairline bg-limestoneSoft/60 p-6 flex flex-col justify-between">
+              <div>
+                <button
+                  type="button"
+                  data-lightbox-src="https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                  data-lightbox-caption="Нанофракционное RF-омоложение Venus Viva и программы фотолечения"
+                  class="block w-full aspect-[4/3] overflow-hidden border border-hairline bg-limestone cursor-zoom-in group"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Подготовка кожи к аппаратному лифтингу и фотоомоложению"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </button>
+                <div class="mt-5 text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Направление 04</div>
+                <h3 class="mt-1.5 font-serif text-[23px] leading-snug text-ink">Радиоволновые технологии и фотолечение</h3>
+                <p class="mt-2.5 text-[13.5px] leading-relaxed text-inkSoft">
+                  Стимуляция собственного коллагена с помощью нанофракционного RF Venus Viva, магнитно-радиоволнового лифтинга и импульсного света.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-hairline text-[12px] text-stone">
+                Параметры импульса настраиваются врачом строго под фототип и чувствительность кожи.
+              </div>
+            </div>
+
+            <div class="lg:col-span-8 divide-y divide-hairline">
+              <div class="px-5 sm:px-7 py-3.5 bg-limestoneSoft/40 flex items-center justify-between text-[10.5px] uppercase tracking-[0.15em] text-stone">
+                <span>Процедура</span>
+                <span>Ориентир по прейскуранту*</span>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Нанофракционное RF-омоложение (Venus Viva)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Обновление текстуры, сужение пор и сглаживание рубцов: 1 импульс до 100 — 2.25 BYN, от 100 импульсов — 1.70 BYN (+ индивидуальная насадка).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 1.70 BYN / имп.</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Нанофракционное RF-омоложение Venus Viva" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Магнитно-радиоволновой лифтинг</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Область глаз (49.25), подбородок (99.85), шея или декольте (101.65), лицо полностью (146.50 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">49.25 – 146.50 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Магнитно-радиоволновой лифтинг" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Фотоомоложение и фотодеструкция пигмента</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Выравнивание тона и возвращение плотности кожи: отдельные зоны (от 29.65 BYN), кисти (44.10), шея/декольте (71.95), лицо полностью (156.55 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 29.65 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Фотоомоложение / фотодеструкция пигмента" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Фотолечение акне, розацеа и фотокоагуляция</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Комплексная световая терапия воспалительных элементов, покраснений и сосудистых проявлений.</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">122.99 BYN</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Фотолечение акне / розацеа" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Фотоэпиляция (поимпульсно)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Индивидуальный расчёт по количеству вспышек в зависимости от выбранной зоны лица или тела.</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 0.70 BYN / имп.</span>
+                  <button type="button" data-quick-select="Лазерные технологии" data-quick-note="Фотоэпиляция" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Панель 5: Ультразвуковая терапия, Озонотерапия и Эндермотерапия -->
+          <div id="dirPanel-therapy" class="dir-panel hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-hairline bg-limestoneSoft/60 p-6 flex flex-col justify-between">
+              <div>
+                <button
+                  type="button"
+                  data-lightbox-src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                  data-lightbox-caption="Ультразвуковой уход, озонотерапия и эндермотерапия LPG для здорового тонуса кожи"
+                  class="block w-full aspect-[4/3] overflow-hidden border border-hairline bg-limestone cursor-zoom-in group"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Чистая ухоженная кожа в мягком дневном свете"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </button>
+                <div class="mt-5 text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Направление 05</div>
+                <h3 class="mt-1.5 font-serif text-[23px] leading-snug text-ink">Ультразвуковая терапия, озонотерапия и LPG</h3>
+                <p class="mt-2.5 text-[13.5px] leading-relaxed text-inkSoft">
+                  Бережное очищение и оздоровление кожи, кислородная поддержка тканей и аппаратный эндермологический массаж лица и тела.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-hairline text-[12px] text-stone">
+                Ультразвуковой пилинг, ультрафонофорез, ионофорез, озонотерапия и эндермотерапия (LPG).
+              </div>
+            </div>
+
+            <div class="lg:col-span-8 divide-y divide-hairline">
+              <div class="px-5 sm:px-7 py-3.5 bg-limestoneSoft/40 flex items-center justify-between text-[10.5px] uppercase tracking-[0.15em] text-stone">
+                <span>Процедура</span>
+                <span>Ориентир по прейскуранту*</span>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Ультразвуковой пилинг с озонированным раствором</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Деликатное очищение пор без травматизации: лицо (42.45 BYN), спина (52.55 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">42.45 – 52.55 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Ультразвуковой пилинг лица / спины" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Ультрафонофорез и ионофорез</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Аппаратная доставка лечебных и увлажняющих составов в глубокие слои кожи (без стоимости препарата).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 34.90 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Ультрафонофорез / ионофорез" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Озонотерапия (косметология и оздоровление)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Лицо (44.50), шея или декольте (28.45), волосистая часть головы при алопеции (25.20), малая аутогемотерапия (21.15 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">от 18.95 BYN</span>
+                  <button type="button" data-quick-select="Консультация врача-косметолога" data-quick-note="Озонотерапия" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+
+              <div class="px-5 sm:px-7 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-limestoneSoft/45 transition">
+                <div class="max-w-xl">
+                  <div class="font-serif text-[17px] text-ink">Эндермотерапия (LPG-массаж)</div>
+                  <p class="mt-0.5 text-[13px] text-stone">Аппаратный вакуумно-роликовый массаж для дренажа и упругости: лицо (17.35 BYN), тело (74.95 BYN).</p>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-5 shrink-0">
+                  <span class="text-[14.5px] font-medium text-ink tabular-nums whitespace-nowrap">17.35 / 74.95 BYN</span>
+                  <button type="button" data-quick-select="Аппаратный уход MYA" data-quick-note="Эндермотерапия (LPG-массаж)" class="text-[11px] font-medium uppercase tracking-[0.13em] text-eucalyptus hover:text-eucalyptusDark whitespace-nowrap">Запись →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Честная медицинская сноска по ценам -->
+        <p class="mt-4 text-[12px] leading-relaxed text-stone">
+          * Приведены ориентиры из открытого прейскуранта на сайте amfireya.by (для части инъекционных манипуляций стоимость указана без учёта препарата). Точная стоимость и план процедур определяются врачом на консультации; при запуске сайта прайс обновляется по актуальному документу клиники. Информация не является публичной офертой (ст. 407 ГК РБ).
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== ФИЛОСОФИЯ ЦЕНТРА («С ЗАБОТОЙ О ВАС») И ГАЛЕРЕЯ ==================== -->
+    <section id="about" class="py-14 sm:py-20 bg-porcelain border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-bronze font-medium">О медицинском центре</p>
+            <h2 class="mt-2 font-serif text-[28px] sm:text-[36px] leading-[1.16] text-ink font-normal">
+              Сохранить и приумножить то, что <span class="italic text-eucalyptus">подарила природа</span>
+            </h2>
+            <p class="mt-4 text-[14.5px] leading-[1.7] text-inkSoft">
+              «Амфирея» работает в историческом центре Гродно с 2009 года. Мы не гонимся за шаблонными изменениями внешности — наша задача заключается в бережной активизации собственных ресурсов кожи и безопасной врачебной косметологии.
+            </p>
+
+            <!-- Честная отметка Яндекс Карт без выдуманных отзывов -->
+            <div class="mt-7 p-5 border border-hairline bg-limestoneSoft/65">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <div class="text-[10.5px] uppercase tracking-[0.15em] text-bronze font-medium">Независимые отзывы</div>
+                  <div class="mt-1 font-serif text-[22px] text-ink tabular-nums">★ 4.8 <span class="text-[13px] font-sans text-stone font-normal">· 81 оценка и 22 отзыва</span></div>
+                </div>
+                <a
+                  href="https://yandex.by/maps/org/amfireya/74675526797/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-3.5 py-2 border border-hairline bg-porcelain hover:border-eucalyptus text-[11px] font-medium uppercase tracking-[0.12em] text-ink hover:text-eucalyptus whitespace-nowrap transition"
+                >
+                  Яндекс Карты →
+                </a>
+              </div>
+              <p class="mt-2.5 text-[12px] text-stone leading-relaxed">
+                Живые отзывы пациентов и фотографии врачебного кабинета добавляются в этот раздел при запуске боевой версии сайта.
+              </p>
+            </div>
+          </div>
+
+          <!-- 6 реальных принципов с сайта amfireya.by в швейцарской сетке -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 border-t border-l border-hairline">
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">01</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Опыт работы более 15 лет</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Медицинский центр ООО «Амфирея» принимает пациентов в Гродно с марта 2009 года.</p>
+            </div>
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">02</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Высокая подготовка врачей</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Консультации и процедуры ведут врачи первой квалификационной категории и кандидаты медицинских наук.</p>
+            </div>
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">03</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Современное оборудование</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Оригинальные медицинские платформы Alma Lasers, Venus Velocity, Venus Viva и аппаратный комплекс MYA.</p>
+            </div>
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">04</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Эффективные мировые методики</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Проверенные протоколы эстетической дерматологии, инъекционного и лазерного восстановления кожи.</p>
+            </div>
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">05</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Дерматологическая косметика</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Применяем натуральные и профессиональные сертифицированные составы (включая пилинги Dermaceutic).</p>
+            </div>
+            <div class="p-6 border-r border-b border-hairline bg-porcelain">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-bronze">06</div>
+              <h3 class="mt-2 font-serif text-[18px] text-ink">Забота о каждом пациенте</h3>
+              <p class="mt-1.5 text-[13.5px] leading-relaxed text-inkSoft">Деликатная диагностика без навязанных процедур — вы заранее знаете этапы, ощущения и рекомендации по уходу.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ПОДАРОЧНЫЕ СЕРТИФИКАТЫ (РЕАЛЬНАЯ УСЛУГА AMFIREYA.BY) ==================== -->
+    <section id="certificates" class="py-14 sm:py-18 bg-eucalyptus text-porcelain border-b border-eucalyptusDark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-7">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-porcelain/70 font-medium">Подарочные сертификаты «Амфирея»</p>
+            <h2 class="mt-2.5 font-serif text-[28px] sm:text-[36px] leading-[1.18] font-normal">
+              Подарите тепло и заботу о здоровье <span class="italic text-porcelain/85">вашим близким</span>
+            </h2>
+            <p class="mt-4 text-[14.5px] leading-[1.7] text-porcelain/80 max-w-2xl font-light">
+              Если непросто угадать с подарком для близкого человека или коллеги, подарочный сертификат центра «Амфирея» позволит получателю самостоятельно выбрать подходящую процедуру или консультацию врача-косметолога в удобное время.
+            </p>
+            <div class="mt-7 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                data-quick-select="Подарочный сертификат"
+                data-quick-note="Хочу оформить подарочный сертификат центра «Амфирея»"
+                class="px-7 py-3.5 bg-porcelain hover:bg-limestone text-ink text-[12px] font-medium uppercase tracking-[0.14em] transition"
+              >
+                Оформить сертификат
+              </button>
+              <span class="text-[12.5px] text-porcelain/75">Доступен в центре на ул. Большая Троицкая, 44</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="border border-porcelain/25 bg-porcelain/[0.06] p-6 sm:p-8">
+              <div class="flex items-center justify-between text-[10.5px] uppercase tracking-[0.18em] text-porcelain/70">
+                <span>Подарочный сертификат</span>
+                <span>Гродно</span>
+              </div>
+              <div class="mt-6 font-serif text-[26px] tracking-[0.06em] uppercase text-porcelain">Амфирея</div>
+              <div class="mt-1 text-[12px] text-porcelain/70">Медицинский центр красоты и здоровья</div>
+              <div class="mt-8 pt-4 border-t border-porcelain/20 flex items-center justify-between text-[11.5px] text-porcelain/75">
+                <span>На любую процедуру или номинал</span>
+                <span class="tabular-nums">+375 (33) 606-21-11</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2-КЛИКОВЫЙ МИНИ-ИНТЕРАКТИВ + ФОРМА ЗАПИСИ (99-З) ==================== -->
+    <section id="booking" class="py-14 sm:py-20 bg-limestone/45 border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+          <!-- Левая колонка: лёгкий 2-кликовый подбор направления и времени (без калькулятора!) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.18em] text-bronze font-medium">Быстрая запись за 2 клика</p>
+              <h2 class="mt-2 font-serif text-[28px] sm:text-[34px] leading-[1.16] text-ink font-normal">
+                Подберите направление и удобное время визита
+              </h2>
+              <p class="mt-3 text-[14px] leading-relaxed text-inkSoft">
+                Отметьте два пункта ниже — выбор сразу подставится в форму справа. Администратор перезвонит или напишет в Viber и подтвердит свободное окно.
+              </p>
+            </div>
+
+            <!-- Шаг 1 -->
+            <div class="bg-porcelain border border-hairline p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-bronze font-medium">Шаг 1 · Интересующее направление</div>
+              <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button type="button" class="pick-btn step1-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step1="Консультация врача-косметолога" data-selected="true">
+                  Консультация врача
+                </button>
+                <button type="button" class="pick-btn step1-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step1="Инъекционная косметология" data-selected="false">
+                  Инъекционные методики
+                </button>
+                <button type="button" class="pick-btn step1-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step1="Лазерные технологии" data-selected="false">
+                  Лазерные технологии
+                </button>
+                <button type="button" class="pick-btn step1-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step1="Аппаратный уход MYA" data-selected="false">
+                  Аппаратный уход MYA
+                </button>
+              </div>
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="bg-porcelain border border-hairline p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-bronze font-medium">Шаг 2 · Удобное время приёма</div>
+              <div class="mt-3 grid grid-cols-2 gap-2">
+                <button type="button" class="pick-btn step2-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step2="Утро (9:00–12:00)" data-selected="false">
+                  Утро (9:00–12:00)
+                </button>
+                <button type="button" class="pick-btn step2-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step2="День (12:00–17:00)" data-selected="true">
+                  День (12:00–17:00)
+                </button>
+                <button type="button" class="pick-btn step2-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step2="Вечер (17:00–20:00)" data-selected="false">
+                  Вечер (17:00–20:00)
+                </button>
+                <button type="button" class="pick-btn step2-btn px-3.5 py-2.5 border text-left text-[12.5px] font-medium transition" data-step2="Суббота (9:00–14:00)" data-selected="false">
+                  Суббота (9:00–14:00)
+                </button>
+              </div>
+            </div>
+
+            <!-- Итог выбора -->
+            <div class="px-5 py-4 border-l-2 border-eucalyptus bg-eucalyptusTint/60 text-[13px] text-ink">
+              <span class="text-stone">Ваш выбор: </span>
+              <span id="pickSummaryText" class="font-medium text-ink">Консультация врача-косметолога · День (12:00–17:00)</span>
+            </div>
+          </div>
+
+          <!-- Правая колонка: форма заявки с полным комплаенсом РБ (Закон № 99-З) -->
+          <div class="lg:col-span-7 bg-porcelain border border-hairline p-6 sm:p-8 shadow-clinical">
+            <div class="flex items-start justify-between gap-4 pb-5 border-b border-hairline">
+              <div>
+                <h3 class="font-serif text-[24px] text-ink font-normal">Заявка на запись в «Амфирею»</h3>
+                <p class="mt-1 text-[13px] text-stone">Отвечаем в рабочие часы по телефону или в Viber — без лишних звонков.</p>
+              </div>
+              <span class="hidden sm:inline-block px-2.5 py-1 border border-hairline bg-limestoneSoft text-[10.5px] uppercase tracking-[0.14em] text-eucalyptus whitespace-nowrap">
+                По записи
+              </span>
+            </div>
+
+            <form id="leadForm" novalidate class="mt-6 space-y-4">
+              <!-- Honeypot от спам-ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website_hp">Не заполняйте это поле</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadName" class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Ваше имя *</label>
+                  <input
+                    type="text"
+                    id="leadName"
+                    name="name"
+                    required
+                    placeholder="Например, Елена"
+                    class="w-full px-3.5 py-2.5 bg-porcelain border border-hairline focus:border-eucalyptus focus:outline-none text-[14px] text-ink"
+                  />
+                  <p id="errName" class="hidden mt-1 text-[12px] text-red-700"></p>
+                </div>
+
+                <div>
+                  <label for="leadPhone" class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Телефон (МТС / A1 / life) *</label>
+                  <input
+                    type="tel"
+                    id="leadPhone"
+                    name="phone"
+                    required
+                    placeholder="+375 (33) 000-00-00"
+                    class="w-full px-3.5 py-2.5 bg-porcelain border border-hairline focus:border-eucalyptus focus:outline-none text-[14px] text-ink tabular-nums"
+                  />
+                  <p id="errPhone" class="hidden mt-1 text-[12px] text-red-700"></p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="leadService" class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Направление</label>
+                  <select
+                    id="leadService"
+                    name="service"
+                    class="w-full px-3.5 py-2.5 bg-porcelain border border-hairline focus:border-eucalyptus focus:outline-none text-[14px] text-ink"
+                  >
+                    <option value="Консультация врача-косметолога">Консультация врача-косметолога</option>
+                    <option value="Инъекционная косметология">Инъекционная косметология</option>
+                    <option value="Лазерные технологии">Лазерные технологии</option>
+                    <option value="Аппаратный уход MYA">Аппаратный уход MYA</option>
+                    <option value="Подарочный сертификат">Подарочный сертификат</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="leadTimeSlot" class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Удобное время</label>
+                  <select
+                    id="leadTimeSlot"
+                    name="timeSlot"
+                    class="w-full px-3.5 py-2.5 bg-porcelain border border-hairline focus:border-eucalyptus focus:outline-none text-[14px] text-ink"
+                  >
+                    <option value="Утро (9:00–12:00)">Утро (9:00–12:00)</option>
+                    <option value="День (12:00–17:00)" selected>День (12:00–17:00)</option>
+                    <option value="Вечер (17:00–20:00)">Вечер (17:00–20:00)</option>
+                    <option value="Суббота (9:00–14:00)">Суббота (9:00–14:00)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <span class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Предпочтительный способ связи</span>
+                <div class="flex flex-wrap gap-5 text-[13.5px] text-ink">
+                  <label class="inline-flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Viber" checked class="accent-eucalyptus" />
+                    <span>Написать в Viber</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="contactMethod" value="Телефонный звонок" class="accent-eucalyptus" />
+                    <span>Позвонить по телефону</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="leadComment" class="block text-[11.5px] uppercase tracking-[0.12em] text-inkSoft mb-1.5">Комментарий или желаемая процедура (необязательно)</label>
+                <textarea
+                  id="leadComment"
+                  name="comment"
+                  rows="2"
+                  placeholder="Например, удобный день недели или конкретная процедура"
+                  class="w-full px-3.5 py-2.5 bg-porcelain border border-hairline focus:border-eucalyptus focus:outline-none text-[14px] text-ink resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Обязательный незаполненный чекбокс по Закону РБ № 99-З (строго БЕЗ checked!) -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer text-[12px] leading-relaxed text-inkSoft">
+                  <input
+                    type="checkbox"
+                    id="leadConsent"
+                    name="consent"
+                    required
+                    class="mt-1 w-4 h-4 shrink-0 accent-eucalyptus"
+                  />
+                  <span>
+                    Я даю согласие на обработку моих персональных данных и их трансграничную передачу в соответствии с
+                    <button type="button" data-open-modal="modalPrivacy" class="underline underline-offset-2 text-eucalyptus hover:text-eucalyptusDark">Политикой обработки ПД</button>
+                    и
+                    <button type="button" data-open-modal="modalConsent" class="underline underline-offset-2 text-eucalyptus hover:text-eucalyptusDark">текстом Согласия (Закон РБ № 99-З)</button>.
+                  </span>
+                </label>
+                <p id="errConsent" class="hidden mt-1.5 text-[12px] text-red-700"></p>
+              </div>
+
+              <p id="formGeneralError" class="hidden p-3 bg-red-50 border border-red-200 text-[12.5px] text-red-800"></p>
+
+              <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <button
+                  type="submit"
+                  id="leadSubmitBtn"
+                  class="px-8 py-3.5 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[12px] font-medium uppercase tracking-[0.15em] transition cursor-pointer"
+                >
+                  Отправить заявку
+                </button>
+                <p class="text-[11.5px] text-stone">
+                  Или позвоните напрямую: <a data-contact="phone" href="tel:+375336062111" class="text-ink underline underline-offset-2 tabular-nums whitespace-nowrap">+375 (33) 606-21-11</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КОНТАКТЫ И КАРТА ПРОЕЗДА (ГРОДНО) ==================== -->
+    <section id="contacts" class="py-14 sm:py-20 bg-porcelain">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.18em] text-bronze font-medium">Контакты в Гродно</p>
+              <h2 class="mt-2 font-serif text-[28px] sm:text-[34px] leading-[1.16] text-ink font-normal">
+                Как нас найти и связаться
+              </h2>
+            </div>
+
+            <div class="divide-y divide-hairline border-t border-b border-hairline text-[14px]">
+              <div class="py-4">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-stone">Адрес медицинского центра</div>
+                <div class="mt-1 font-medium text-ink">г. Гродно, ул. Большая Троицкая, 44, пом. 3</div>
+                <p class="mt-0.5 text-[12.5px] text-stone">Исторический центр города, удобный подъезд</p>
+              </div>
+
+              <div class="py-4">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-stone">Телефоны регистратуры</div>
+                <div class="mt-1.5 space-y-1 tabular-nums">
+                  <div>
+                    <a data-contact="phone" href="tel:+375336062111" class="text-[16px] font-medium text-ink hover:text-eucalyptus transition">+375 (33) 606-21-11</a>
+                    <span class="ml-2 text-[12px] text-stone">МТС · Viber</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-inkSoft">
+                    <a data-contact="city1" href="tel:+375152622727" class="hover:text-eucalyptus transition">+375 (152) 62-27-27</a>
+                    <a data-contact="city2" href="tel:+375152623689" class="hover:text-eucalyptus transition">+375 (152) 62-36-89</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-4">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-stone">Время работы</div>
+                <div class="mt-1 text-ink tabular-nums">Понедельник – Пятница: 09:00 – 20:00</div>
+                <div class="text-ink tabular-nums">Суббота: 09:00 – 14:00 · Воскресенье: выходной</div>
+              </div>
+
+              <div class="py-4">
+                <div class="text-[10.5px] uppercase tracking-[0.15em] text-stone">Электронная почта</div>
+                <a href="mailto:Amfireya.2009@yandex.by" class="mt-1 inline-block text-ink hover:text-eucalyptus underline underline-offset-4 transition">
+                  Amfireya.2009@yandex.by
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <a
+                data-contact="viber"
+                href="viber://chat?number=%2B375336062111"
+                class="px-5 py-3 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11.5px] font-medium uppercase tracking-[0.14em] transition"
+              >
+                Написать в Viber
+              </a>
+              <a
+                href="https://yandex.by/maps/org/amfireya/74675526797/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-5 py-3 border border-hairline hover:border-eucalyptus text-ink hover:text-eucalyptus text-[11.5px] font-medium uppercase tracking-[0.14em] transition"
+              >
+                Маршрут на Яндекс Картах
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 border border-hairline bg-limestoneSoft min-h-[340px] flex flex-col">
+            <iframe
+              title="Расположение медицинского центра Амфирея в Гродно"
+              src="https://yandex.by/map-widget/v1/?ll=23.828634%2C53.681532&mode=search&oid=74675526797&ol=biz&z=16"
+              loading="lazy"
+              class="w-full flex-1 min-h-[340px] border-0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ПОДВАЛ И ЮРИДИЧЕСКИЕ РЕКВИЗИТЫ (КОМПЛАЕНС РБ) ==================== -->
+  <footer class="bg-ink text-porcelain/75 pt-12 pb-28 lg:pb-12 border-t border-porcelain/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-porcelain/10">
+        <div class="md:col-span-5">
+          <div class="font-serif text-[20px] tracking-[0.12em] uppercase text-porcelain">Амфирея</div>
+          <p class="mt-2 text-[13px] leading-relaxed text-porcelain/65 max-w-sm">
+            Медицинский центр косметологии в Гродно с 2009 года. Инъекционная, лазерная и аппаратная косметология под контролем врачей.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 text-[12.5px] space-y-1.5 text-porcelain/75">
+          <div class="text-[10.5px] uppercase tracking-[0.16em] text-bronze font-medium mb-2">Реквизиты организации</div>
+          <p>ООО «Амфирея»</p>
+          <p>УНП: [УНП] · Лицензия МЗ РБ: [№ и дата лицензии]</p>
+          <p>Адрес: г. Гродно, ул. Большая Троицкая, 44, пом. 3</p>
+          <p>Режим работы: Пн–Пт 9:00–20:00, Сб 9:00–14:00, Вс — вых.</p>
+        </div>
+
+        <div class="md:col-span-3 text-[12.5px] flex flex-col items-start space-y-2">
+          <div class="text-[10.5px] uppercase tracking-[0.16em] text-bronze font-medium mb-1">Документы и cookie</div>
+          <button type="button" data-open-modal="modalPrivacy" class="text-left hover:text-porcelain underline underline-offset-4 transition">
+            Политика обработки ПД (99-З)
+          </button>
+          <button type="button" data-open-modal="modalConsent" class="text-left hover:text-porcelain underline underline-offset-4 transition">
+            Согласие на передачу ПД
+          </button>
+          <button type="button" data-open-modal="modalCookie" class="text-left hover:text-porcelain underline underline-offset-4 transition">
+            Настройки файлов cookie
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11.5px] text-porcelain/55">
+        <p>© 2009–2026 ООО «Амфирея». Информация на сайте не является публичной офертой (ст. 407 ГК РБ). Имеются противопоказания, необходима консультация врача.</p>
+        <p class="px-3 py-1 border border-porcelain/15 bg-porcelain/[0.04] text-porcelain/75 shrink-0">
+          Демо-прототип обновлённого сайта · иллюстративные фото заменяются при запуске
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНАЯ «СТЕКЛЯННАЯ» НИЖНЯЯ ПАНЕЛЬ (APP-LIKE STICKY DOCK) ==================== -->
+  <!-- Скрыта, пока открыт cookie-баннер; появляется сразу после выбора cookie -->
+  <div id="mobileStickyDock" class="hidden lg:hidden fixed bottom-3 left-3 right-3 z-40">
+    <div class="bg-porcelain/95 backdrop-blur-xl border border-hairline shadow-dock p-1.5 grid grid-cols-3 gap-1.5">
+      <a
+        data-contact="phone"
+        href="tel:+375336062111"
+        class="py-2.5 flex flex-col items-center justify-center gap-0.5 text-ink hover:bg-limestoneSoft transition"
+      >
+        <svg class="w-4 h-4 text-eucalyptus" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+        </svg>
+        <span class="text-[11px] font-medium tracking-wide">Позвонить</span>
+      </a>
+
+      <a
+        data-contact="viber"
+        href="viber://chat?number=%2B375336062111"
+        class="py-2.5 flex flex-col items-center justify-center gap-0.5 text-ink hover:bg-limestoneSoft transition border-x border-hairline"
+      >
+        <svg class="w-4 h-4 text-eucalyptus" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+        </svg>
+        <span class="text-[11px] font-medium tracking-wide">Viber</span>
+      </a>
+
+      <a
+        href="#booking"
+        class="py-2.5 flex flex-col items-center justify-center gap-0.5 bg-eucalyptus text-porcelain hover:bg-eucalyptusDark transition"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+        <span class="text-[11px] font-medium tracking-wide">Записаться</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== КОМПАКТНЫЙ COOKIE-БАННЕР (НЦЗПД РБ: ДВЕ РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="fixed bottom-0 left-0 right-0 z-50 bg-ink/95 backdrop-blur-md text-porcelain border-t border-porcelain/15 shadow-dock px-4 py-3 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-6">
+      <p class="text-[11.5px] sm:text-[12px] leading-snug text-porcelain/85">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все файлы cookie или отклонить необязательные.
+        <button type="button" data-open-modal="modalCookie" class="underline underline-offset-2 text-bronze hover:text-porcelain ml-1 whitespace-nowrap">Настроить</button>
+      </p>
+      <div class="grid grid-cols-2 gap-2 lg:flex lg:items-center shrink-0">
+        <button
+          type="button"
+          id="cookieRejectBtn"
+          class="px-3 sm:px-4 py-2 lg:py-1.5 border border-porcelain/35 bg-porcelain/10 hover:bg-porcelain/20 text-porcelain text-[10.5px] sm:text-[11px] leading-tight font-medium uppercase tracking-[0.07em] transition text-center lg:whitespace-nowrap"
+        >Отклонить необязательные</button>
+        <button
+          type="button"
+          id="cookieAcceptBtn"
+          class="px-3 sm:px-4 py-2 lg:py-1.5 border border-eucalyptus bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[10.5px] sm:text-[11px] leading-tight font-medium uppercase tracking-[0.07em] transition text-center lg:whitespace-nowrap"
+        >Принять все</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА ==================== -->
+
+  <!-- Лайтбокс -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-ink/88 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-porcelain p-2.5 border border-hairline shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть фото" class="absolute top-4 right-4 z-10 w-9 h-9 bg-ink/80 hover:bg-eucalyptus text-porcelain flex items-center justify-center transition">✕</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-limestoneSoft" />
+      <p id="lightboxCaption" class="px-2 pt-3 pb-1 text-[13px] text-inkSoft"></p>
+    </div>
+  </div>
+
+  <!-- Модальное окно успешной отправки заявки -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-porcelain border border-hairline shadow-2xl p-6 sm:p-7" data-modal-content>
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-[11px] uppercase tracking-[0.16em] text-bronze font-medium">Заявка принята</p>
+          <h3 class="mt-1 font-serif text-[24px] text-ink font-normal">Спасибо за обращение!</h3>
+        </div>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-hairline text-inkSoft hover:text-ink flex items-center justify-center">✕</button>
+      </div>
+      <p id="modalSuccessDesc" class="mt-3 text-[13.5px] leading-relaxed text-inkSoft"></p>
+      <pre id="modalSuccessPreview" class="hidden mt-4 p-4 bg-limestoneSoft border border-hairline text-[12px] leading-relaxed text-ink whitespace-pre-wrap font-sans"></pre>
+      <div class="mt-6 text-right">
+        <button type="button" data-close-modal class="px-6 py-2.5 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11.5px] font-medium uppercase tracking-[0.14em] transition">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-porcelain border border-hairline shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hairline bg-limestoneSoft">
+        <h3 class="font-serif text-[19px] text-ink">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-hairline bg-porcelain text-inkSoft hover:text-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-[12.5px] sm:text-[13.5px] text-inkSoft space-y-3 leading-relaxed">
+        <p><strong>1. Оператор:</strong> ООО «Амфирея», УНП [УНП], медицинский центр косметологии «Амфирея», адрес: г. Гродно, ул. Большая Троицкая, 44, пом. 3. Контактный телефон: +375 (33) 606-21-11, e-mail: Amfireya.2009@yandex.by.</p>
+        <p><strong>2. Правовые основания:</strong> обработка персональных данных осуществляется в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» на основании свободного, однозначного и информированного согласия субъекта ПД.</p>
+        <p><strong>3. Состав данных и цели обработки:</strong> имя, номер телефона, выбранное направление, удобное время приёма, предпочтительный способ связи и комментарий обрабатываются исключительно для обратной связи, записи на консультацию или процедуры центра и оформления подарочных сертификатов.</p>
+        <p><strong>4. Сроки хранения и безопасность:</strong> персональные данные хранятся не дольше, чем этого требуют цели обработки, и удаляются по достижении целей либо при отзыве согласия. Боевая версия сайта размещается на сервере в Республике Беларусь в соответствии с Указом Президента РБ № 60.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона РБ № 99-З):</strong> вы вправе в любое время без объяснения причин отозвать согласие, запросить информацию об обработке ПД, потребовать изменения, прекращения обработки или удаления данных, а также обжаловать действия оператора в Национальный центр защиты персональных данных (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hairline bg-limestoneSoft text-right">
+        <button type="button" data-close-modal class="px-5 py-2 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11.5px] font-medium uppercase tracking-[0.14em] transition">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД (ст. 9 Закона № 99-З) -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-porcelain border border-hairline shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hairline bg-limestoneSoft">
+        <h3 class="font-serif text-[19px] text-ink">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-hairline bg-porcelain text-inkSoft hover:text-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-[12.5px] sm:text-[13.5px] text-inkSoft space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме записи на сайте медицинского центра «Амфирея» и нажимая кнопку «Отправить заявку», я свободно, однозначно и информированно даю согласие оператору (ООО «Амфирея», УНП [УНП], г. Гродно, ул. Большая Троицкая, 44, пом. 3) на обработку моих персональных данных: имени, телефона, выбранного направления, удобного времени визита, способа связи и комментария.</p>
+        <p><strong>Цель обработки:</strong> запись на консультацию врача и косметологические процедуры, обратная связь и оформление подарочных сертификатов.</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> я проинформирован(а) и согласен(на) с тем, что доставка уведомлений о заявке может осуществляться с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, серверы которых расположены в том числе на территории иностранных государств, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены связанные с этим риски (различия правового регулирования и ограниченные механизмы правовой защиты в иностранной юрисдикции).</p>
+        <p><strong>Срок действия и права субъекта (ст. 10–15 Закона РБ № 99-З):</strong> согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами на отзыв согласия, получение сведений, изменение, прекращение обработки и удаление ПД, а также на обращение в НЦЗПД. Отозвать согласие можно по телефону +375 (33) 606-21-11, по адресу Amfireya.2009@yandex.by либо письменно по адресу центра.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hairline bg-limestoneSoft text-right">
+        <button type="button" data-close-modal class="px-5 py-2 bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11.5px] font-medium uppercase tracking-[0.14em] transition">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie (НЦЗПД) -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-porcelain border border-hairline shadow-2xl flex flex-col overflow-hidden" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-hairline bg-limestoneSoft">
+        <h3 class="font-serif text-[19px] text-ink">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-hairline bg-porcelain text-inkSoft hover:text-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-[12.5px] sm:text-[13.5px] text-inkSoft space-y-4 leading-relaxed">
+        <div class="p-3.5 bg-limestoneSoft border border-hairline flex items-center justify-between gap-2">
+          <span class="font-medium text-ink">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 bg-porcelain border border-hairline text-[12px] font-medium text-ink">Не выбран</span>
+        </div>
+        <p><strong>Технические (необходимые) cookie:</strong> запоминают ваш выбор настроек cookie и обеспечивают стабильную работу интерфейса сайта. Они не используются для рекламного отслеживания.</p>
+        <p><strong>Необязательные (аналитические) cookie:</strong> применяются только с вашего согласия для анализа удобства разделов сайта. В соответствии с рекомендациями НЦЗПД вы можете принять их или отклонить в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-hairline bg-limestoneSoft grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 border border-ink/30 bg-porcelain hover:bg-limestone text-ink text-[11.5px] font-medium uppercase tracking-[0.1em] transition">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 border border-eucalyptus bg-eucalyptus hover:bg-eucalyptusDark text-porcelain text-[11.5px] font-medium uppercase tracking-[0.1em] transition">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЧИСТЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Контакты из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="phone"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.telHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact-text="phone"]').forEach((el) => {
+        el.textContent = SITE_CONFIG.displayPhone;
+      });
+      document.querySelectorAll('[data-contact="city1"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.cityPhone1Href);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="city2"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.cityPhone2Href);
+        el.removeAttribute('target');
+      });
+
+      // 2. Живой статус в шапке по времени Беларуси (Europe/Minsk) с учётом реального графика Пн–Пт 9–20, Сб 9–14, Вс вых
+      function updateMinskLiveStatus() {
+        let hour = 12;
+        let weekday = 'Mon';
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: SITE_CONFIG.schedule.timezone,
+            weekday: 'short',
+            hour: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+          const hPart = parts.find((p) => p.type === 'hour');
+          const dPart = parts.find((p) => p.type === 'weekday');
+          if (hPart) hour = parseInt(hPart.value, 10) % 24;
+          if (dPart) weekday = dPart.value;
+        } catch (_) {
+          hour = new Date().getHours();
+        }
+
+        const isSun = weekday === 'Sun';
+        const isSat = weekday === 'Sat';
+        const isOpen = isSat
+          ? (hour >= SITE_CONFIG.schedule.saturdayStart && hour < SITE_CONFIG.schedule.saturdayEnd)
+          : (!isSun && hour >= SITE_CONFIG.schedule.weekdayStart && hour < SITE_CONFIG.schedule.weekdayEnd);
+
+        let fullLabel = 'Открыто сейчас';
+        let shortLabel = 'Открыто';
+        if (!isOpen) {
+          if (isSun || (isSat && hour >= SITE_CONFIG.schedule.saturdayEnd)) {
+            fullLabel = 'Ответим в Пн с 09:00';
+            shortLabel = 'Пн с 09:00';
+          } else {
+            fullLabel = 'Ответим с 09:00';
+            shortLabel = 'С 09:00';
+          }
+        }
+
+        document.querySelectorAll('[data-live-status]').forEach((badge) => {
+          const dot = badge.querySelector('[data-status-dot]');
+          const fullText = badge.querySelector('[data-status-text]');
+          const shortText = badge.querySelector('[data-status-short]');
+          if (dot) {
+            dot.classList.toggle('bg-eucalyptus', isOpen);
+            dot.classList.toggle('bg-bronze', !isOpen);
+          }
+          if (fullText) fullText.textContent = fullLabel;
+          if (shortText) shortText.textContent = shortLabel;
+        });
+      }
+      updateMinskLiveStatus();
+      setInterval(updateMinskLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        menuIconOpen.classList.toggle('hidden', open);
+        menuIconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Клинический справочник процедур (вкладки и переходы из полосы Hero)
+      function activateDirTab(tabName) {
+        document.querySelectorAll('.dir-tab').forEach((btn) => {
+          const active = btn.getAttribute('data-dir-tab') === tabName;
+          btn.setAttribute('data-active', String(active));
+        });
+        document.querySelectorAll('.dir-panel').forEach((panel) => {
+          panel.classList.add('hidden');
+        });
+        const targetPanel = document.getElementById(`dirPanel-${tabName}`);
+        if (targetPanel) targetPanel.classList.remove('hidden');
+      }
+
+      document.querySelectorAll('.dir-tab').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activateDirTab(btn.getAttribute('data-dir-tab'));
+        });
+      });
+
+      document.querySelectorAll('[data-jump-dir]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const tab = btn.getAttribute('data-jump-dir');
+          if (tab) activateDirTab(tab);
+          const section = document.getElementById('procedures');
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // 5. Лёгкий 2-кликовый подбор направления и времени (без калькулятора цен)
+      const pickState = {
+        service: 'Консультация врача-косметолога',
+        timeSlot: 'День (12:00–17:00)'
+      };
+      const step1Buttons = document.querySelectorAll('.step1-btn');
+      const step2Buttons = document.querySelectorAll('.step2-btn');
+      const pickSummaryText = document.getElementById('pickSummaryText');
+      const leadService = document.getElementById('leadService');
+      const leadTimeSlot = document.getElementById('leadTimeSlot');
+      const leadComment = document.getElementById('leadComment');
+      let userEditedComment = false;
+
+      if (leadComment) {
+        leadComment.addEventListener('input', () => {
+          userEditedComment = leadComment.value.trim().length > 0;
+        });
+      }
+
+      function syncTwoClickPicker(updateSelects) {
+        step1Buttons.forEach((btn) => {
+          const active = btn.getAttribute('data-step1') === pickState.service;
+          btn.setAttribute('data-selected', String(active));
+        });
+        step2Buttons.forEach((btn) => {
+          const active = btn.getAttribute('data-step2') === pickState.timeSlot;
+          btn.setAttribute('data-selected', String(active));
+        });
+        if (pickSummaryText) {
+          pickSummaryText.textContent = `${pickState.service} · ${pickState.timeSlot}`;
+        }
+        if (updateSelects) {
+          if (leadService) leadService.value = pickState.service;
+          if (leadTimeSlot) leadTimeSlot.value = pickState.timeSlot;
+        }
+        if (leadComment && !userEditedComment) {
+          leadComment.placeholder = `Выбрано: ${pickState.service}, ${pickState.timeSlot}. При желании уточните процедуру.`;
+        }
+      }
+
+      step1Buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          pickState.service = btn.getAttribute('data-step1');
+          syncTwoClickPicker(true);
+        });
+      });
+
+      step2Buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          pickState.timeSlot = btn.getAttribute('data-step2');
+          syncTwoClickPicker(true);
+        });
+      });
+
+      if (leadService) {
+        leadService.addEventListener('change', () => {
+          pickState.service = leadService.value;
+          syncTwoClickPicker(false);
+        });
+      }
+      if (leadTimeSlot) {
+        leadTimeSlot.addEventListener('change', () => {
+          pickState.timeSlot = leadTimeSlot.value;
+          syncTwoClickPicker(false);
+        });
+      }
+
+      document.querySelectorAll('[data-quick-select]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const svc = btn.getAttribute('data-quick-select');
+          const note = btn.getAttribute('data-quick-note');
+          if (svc) {
+            pickState.service = svc;
+            syncTwoClickPicker(true);
+          }
+          if (note && leadComment) {
+            leadComment.value = note;
+            userEditedComment = true;
+          }
+          const target = document.getElementById('booking');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      syncTwoClickPicker(true);
+
+      // 6. Модальные окна и лайтбокс
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.classList.remove('modal-open');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openModal(document.getElementById(trigger.getAttribute('data-open-modal')));
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.getAttribute('data-lightbox-src');
+          lightboxImg.alt = item.getAttribute('data-lightbox-caption') || 'Центр косметологии Амфирея';
+          lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+          openModal(lightboxModal);
+        });
+      });
+
+      // 7. Cookie-баннер (НЦЗПД) и авто-скрытие мобильной нижней панели пока баннер открыт
+      const COOKIE_KEY = 'amfireya_cookie_choice_v1';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI(choice) {
+        if (choice === 'all') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Приняты все cookie';
+        } else if (choice === 'essential') {
+          cookieBanner.classList.add('hidden');
+          mobileStickyDock.classList.remove('hidden');
+          cookieStatusLabel.textContent = 'Только необходимые (необязательные отклонены)';
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileStickyDock.classList.add('hidden');
+          cookieStatusLabel.textContent = 'Не выбран';
+        }
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI(choice);
+      }
+
+      let savedCookieChoice = null;
+      try {
+        savedCookieChoice = localStorage.getItem(COOKIE_KEY);
+      } catch (_) {}
+      updateCookieUI(savedCookieChoice);
+
+      document.getElementById('cookieAcceptBtn').addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn').addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn').addEventListener('click', () => {
+        saveCookieChoice('all');
+        closeAllModals();
+      });
+      document.getElementById('modalCookieRejectBtn').addEventListener('click', () => {
+        saveCookieChoice('essential');
+        closeAllModals();
+      });
+
+      // 8. Валидация и отправка формы записи (Google Apps Script Telegram / демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const errName = document.getElementById('errName');
+      const errPhone = document.getElementById('errPhone');
+      const errConsent = document.getElementById('errConsent');
+      const formGeneralError = document.getElementById('formGeneralError');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+      const modalSuccess = document.getElementById('modalSuccess');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      function clearErrors() {
+        [errName, errPhone, errConsent, formGeneralError].forEach((el) => {
+          el.textContent = '';
+          el.classList.add('hidden');
+        });
+      }
+
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        if (document.getElementById('website_hp').value.trim() !== '') {
+          return;
+        }
+
+        const nameVal = document.getElementById('leadName').value.trim();
+        const phoneVal = document.getElementById('leadPhone').value.trim();
+        const serviceVal = leadService.value;
+        const timeSlotVal = leadTimeSlot.value;
+        const contactMethodVal = (leadForm.querySelector('input[name="contactMethod"]:checked') || {}).value || 'Viber';
+        const commentVal = leadComment.value.trim();
+        const consentChecked = document.getElementById('leadConsent').checked;
+
+        let hasError = false;
+
+        if (nameVal.length < 2) {
+          errName.textContent = 'Пожалуйста, укажите ваше имя (от 2 символов).';
+          errName.classList.remove('hidden');
+          hasError = true;
+        }
+
+        const digitsOnly = phoneVal.replace(/\D/g, '');
+        if (digitsOnly.length < 9 || digitsOnly.length > 15) {
+          errPhone.textContent = 'Введите корректный номер телефона с кодом оператора.';
+          errPhone.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (!consentChecked) {
+          errConsent.textContent = 'Необходимо подтвердить согласие на обработку персональных данных.';
+          errConsent.classList.remove('hidden');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const payload = {
+          source: 'Центр косметологии «Амфирея» (Гродно)',
+          name: nameVal,
+          phone: phoneVal,
+          service: serviceVal,
+          timeSlot: timeSlotVal,
+          contactMethod: contactMethodVal,
+          comment: commentVal || 'Без комментария',
+          createdAt: new Date().toLocaleString('ru-BY')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем...';
+
+        try {
+          if (SITE_CONFIG.googleScriptUrl && SITE_CONFIG.googleScriptUrl.trim() !== '') {
+            const response = await fetch(SITE_CONFIG.googleScriptUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error('Ошибка сервера');
+
+            modalSuccessDesc.textContent = 'Спасибо! Мы получили заявку и свяжемся с вами в рабочие часы центра для подтверждения времени приёма.';
+            modalSuccessPreview.classList.add('hidden');
+          } else {
+            modalSuccessDesc.textContent = 'Демо-режим: после подключения Telegram-бота заявки с сайта будут поступать администратору в таком виде:';
+            modalSuccessPreview.textContent =
+              `Новая заявка — ${payload.source}\n` +
+              `Имя: ${payload.name}\n` +
+              `Телефон: ${payload.phone}\n` +
+              `Направление: ${payload.service}\n` +
+              `Удобное время: ${payload.timeSlot}\n` +
+              `Связь: ${payload.contactMethod}\n` +
+              `Комментарий: ${payload.comment}`;
+            modalSuccessPreview.classList.remove('hidden');
+          }
+
+          leadForm.reset();
+          userEditedComment = false;
+          syncTwoClickPicker(true);
+          openModal(modalSuccess);
+        } catch (_) {
+          formGeneralError.textContent = 'Не удалось отправить заявку. Позвоните по номеру +375 (33) 606-21-11 или напишите в Viber.';
+          formGeneralError.classList.remove('hidden');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

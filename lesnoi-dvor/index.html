@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Усадьба «Лесной Двор» — Свадьбы, банкеты и загородный отдых под Могилёвом</title>
+  <meta name="description" content="Загородная усадьба «Лесной Двор» в 3 км от Могилёва: выездная роспись у белой ротонды, трёхкупольный свадебный шатёр до 120 гостей, банкетный и каминный залы, 4 срубовых коттеджа и VIP-дом, русская баня на дровах и джакузи." />
+
+  <!-- Fonts: Oranienbaum (stately editorial serif) + Rubik (clean geometric sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#F8F5EE',
+            parchment: '#EFEAE0',
+            pine: {
+              DEFAULT: '#14291E',
+              soft: '#1E3B2B',
+              muted: '#4B5D53',
+            },
+            champagne: {
+              DEFAULT: '#B89356',
+              dark: '#9B7840',
+              pale: '#F3EBDC',
+            }
+          },
+          fontFamily: {
+            serif: ['Oranienbaum', 'Georgia', 'serif'],
+            sans: ['Rubik', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F8F5EE;
+      color: #14291E;
+      font-family: 'Rubik', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-editorial {
+      font-family: 'Oranienbaum', Georgia, serif;
+      letter-spacing: 0.01em;
+    }
+    .hairline-card {
+      border: 1px solid rgba(20, 41, 30, 0.11);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .hairline-card:hover {
+      border-color: rgba(184, 147, 86, 0.55);
+      box-shadow: 0 18px 40px -22px rgba(20, 41, 30, 0.22);
+    }
+    .img-zoom {
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .group:hover .img-zoom {
+      transform: scale(1.035);
+    }
+    .choice-btn[aria-pressed="true"] {
+      background-color: #14291E;
+      color: #F8F5EE;
+      border-color: #14291E;
+    }
+    .choice-btn[aria-pressed="true"] .choice-sub {
+      color: rgba(248, 245, 238, 0.72);
+    }
+    .tab-btn[aria-selected="true"] {
+      background-color: #14291E;
+      color: #F8F5EE;
+      border-color: #14291E;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #EFEAE0; }
+    ::-webkit-scrollbar-thumb { background: #B89356; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-ivory text-pine selection:bg-champagne/25 selection:text-pine">
+
+  <!-- =========================================================
+       ЕДИНАЯ КОНФИГУРАЦИЯ ПРОЕКТА (SITE_CONFIG)
+       ========================================================= -->
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Усадьба «Лесной Двор»',
+      shortName: 'Лесной Двор',
+      city: 'Могилёвская обл., 3 км от Могилёва',
+      address: 'Могилёвская обл., Могилёвский р-н, Пашковский с/с (3 км от Могилёва в направлении Шклова)',
+      coordinates: '53.984568, 30.313601',
+      phoneDisplay: '+375 (29) 242-54-25',
+      phoneHref: 'tel:+375292425425',
+      viberHref: 'viber://chat?number=%2B375292425425',
+      whatsappHref: 'https://wa.me/375292425425',
+      instagramHref: 'https://www.instagram.com/usadbalesnoidvor/',
+      vkHref: 'https://vk.com/lesnoidvorby',
+      yandexMapsHref: 'https://yandex.by/maps/org/usadba_lesnoy_dvor/1188269223/',
+      workingHours: { openHour: 9, closeHour: 21, label: '09:00–21:00' },
+      // Вставьте URL веб-приложения Google Apps Script для боевой отправки заявок в Telegram
+      gasWebAppUrl: '',
+      demoMode: true
+    };
+  </script>
+
+  <!-- Деликатная верхняя полоса концепта (не перекрывает мобильный док) -->
+  <div class="bg-pine text-ivory/90 text-[11px] sm:text-xs py-1.5 px-4 border-b border-champagne/25">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      <span class="truncate">Концепт обновлённого сайта · Усадьба «Лесной Двор»</span>
+      <span class="hidden sm:inline whitespace-nowrap text-champagne">Демонстрационный прототип</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ШАПКА (СТРОГО 1 СТРОКА, МОНОХРОМНЫЕ ИКОНКИ, ЖИВОЙ СТАТУС)
+       ========================================================= -->
+  <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-pine/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[72px] flex items-center justify-between gap-4">
+
+      <!-- Бренд -->
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 group" aria-label="Усадьба Лесной Двор — на главную">
+        <span class="w-9 h-9 rounded-full border border-champagne/60 bg-white flex items-center justify-center text-pine group-hover:border-pine transition-colors">
+          <!-- Минималистичная веточка/силуэт хвойной ели в палитре бренда -->
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3L7.5 10h2.4L6.2 16h3.2L5.5 20.5h13L14.6 16h3.2L14.1 10h2.4L12 3z" />
+            <path d="M12 20.5V22.5" stroke="#B89356" stroke-width="1.6" />
+          </svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-editorial text-xl sm:text-[22px] tracking-[0.04em] text-pine whitespace-nowrap">ЛЕСНОЙ ДВОР</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-pine-muted whitespace-nowrap mt-0.5">Усадьба · Могилёв</span>
+        </span>
+      </a>
+
+      <!-- Навигация (строго 1 строка) -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-7 text-[13px] font-normal text-pine/90" aria-label="Основная навигация">
+        <a href="#spaces" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Площадки</a>
+        <a href="#weddings" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Свадьбы</a>
+        <a href="#planner" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Подбор формата</a>
+        <a href="#gallery" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Галерея</a>
+        <a href="#reviews" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Отзывы</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-champagne-dark transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Правый блок: живой статус, телефон 1 строкой, сдержанные монохромные иконки -->
+      <div class="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+        <!-- Живой статус по времени Беларуси (Europe/Minsk) -->
+        <div id="live-status-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-pine/20 text-[11px] font-medium text-pine whitespace-nowrap">
+          <span id="live-status-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          <span id="live-status-text">На связи</span>
+        </div>
+
+        <!-- Телефон: всегда 1 строка -->
+        <a href="tel:+375292425425" class="hidden md:inline-block text-[13px] xl:text-sm font-medium text-pine hover:text-champagne-dark transition-colors whitespace-nowrap">
+          +375 (29) 242-54-25
+        </a>
+
+        <!-- Монохромные hairline-иконки Viber и Instagram в цветах бренда -->
+        <div class="hidden sm:flex items-center gap-1.5">
+          <a href="viber://chat?number=%2B375292425425" aria-label="Написать в Viber" title="Viber" class="w-8 h-8 rounded-full border border-pine/20 bg-white/90 flex items-center justify-center text-pine hover:border-champagne hover:text-champagne-dark transition-colors">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              <path d="M9.5 9.5c.3 1.7 1.8 3.2 3.5 3.5l1.1-.8c.3-.2.7-.2 1 0l1.1.8"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/usadbalesnoidvor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram усадьбы" title="Instagram" class="w-8 h-8 rounded-full border border-pine/20 bg-white/90 flex items-center justify-center text-pine hover:border-champagne hover:text-champagne-dark transition-colors">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Мобильный статус + кнопка меню -->
+        <div class="flex sm:hidden items-center gap-2">
+          <span id="live-status-mobile" class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-white border border-pine/20 text-[11px] font-medium text-pine whitespace-nowrap">
+            <span id="live-status-dot-m" class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            <span id="live-status-text-m">На связи</span>
+          </span>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="lg:hidden w-9 h-9 rounded-full border border-pine/20 bg-white flex items-center justify-center text-pine" aria-label="Открыть меню" aria-expanded="false">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное меню -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-t border-pine/10 px-4 py-4">
+      <div class="flex flex-col gap-3 text-sm text-pine">
+        <a href="#spaces" class="mobile-nav-link py-1.5 border-b border-pine/10">Площадки усадьбы</a>
+        <a href="#weddings" class="mobile-nav-link py-1.5 border-b border-pine/10">Свадьбы под ключ</a>
+        <a href="#planner" class="mobile-nav-link py-1.5 border-b border-pine/10">Подобрать формат события</a>
+        <a href="#gallery" class="mobile-nav-link py-1.5 border-b border-pine/10">Фотогалерея</a>
+        <a href="#reviews" class="mobile-nav-link py-1.5 border-b border-pine/10">Отзывы гостей</a>
+        <a href="#contacts" class="mobile-nav-link py-1.5">Контакты и проезд</a>
+        <div class="pt-2 flex items-center justify-between gap-2 text-xs text-pine-muted">
+          <a href="tel:+375292425425" class="font-medium text-pine whitespace-nowrap">+375 (29) 242-54-25</a>
+          <a href="https://www.instagram.com/usadbalesnoidvor/" target="_blank" rel="noopener noreferrer" class="underline decoration-champagne underline-offset-4">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =========================================================
+         HERO: BRIGHT EDITORIAL ESTATE SHOWCASE
+         (Светлый журнальный макет + панорамный кадр усадьбы + лента фактов)
+         ========================================================= -->
+    <section class="pt-5 sm:pt-7 lg:pt-7 pb-10 sm:pb-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Редакционная верхняя строка: слева монументальный H1, справа вводная и CTA -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-end pb-5 lg:pb-6">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-2.5 mb-2">
+              <span class="h-px w-7 bg-champagne"></span>
+              <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-pine-muted font-medium">Загородная усадьба · 3 км от Могилёва</span>
+            </div>
+            <h1 class="font-editorial text-[32px] sm:text-5xl lg:text-[52px] leading-[1.05] text-pine">
+              Свадьбы, банкеты и отдых в окружении хвойного леса
+            </h1>
+          </div>
+
+          <div class="lg:col-span-5 lg:pl-7 lg:border-l lg:border-pine/20 flex flex-col justify-end gap-3.5">
+            <p class="text-[13.5px] sm:text-[14.5px] leading-relaxed text-pine-muted">
+              Белая ротонда для выездной росписи, трёхкупольный шатёр над прудом до 120 гостей, светлый банкетный и каминный залы, 4 срубовых дома с VIP-коттеджем и баня на дровах.
+            </p>
+            <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3">
+              <a href="#planner" class="inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 sm:py-3 bg-pine text-ivory text-[12.5px] sm:text-sm font-medium tracking-wide rounded-sm hover:bg-pine-soft transition-colors whitespace-nowrap">
+                <span>Уточнить дату</span>
+                <svg class="w-3.5 h-3.5 text-champagne shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+              <a href="#spaces" class="inline-flex items-center justify-center px-3.5 sm:px-5 py-2.5 sm:py-3 border border-pine/25 bg-white/80 text-pine text-[12.5px] sm:text-sm font-normal rounded-sm hover:border-champagne hover:bg-white transition-colors whitespace-nowrap">
+                Площадки усадьбы
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Широкий архитектурный панорамный кадр реальной усадьбы -->
+        <div class="relative overflow-hidden bg-parchment border border-pine/20">
+          <div class="aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[380px] w-full overflow-hidden">
+            <img
+              src="https://lesnoidvor.by/wp-content/uploads/2023/02/70C669A1-77B6-4D1B-9F50-C9A96E40958F.jpeg"
+              alt="Выездная роспись у белой ротонды и главный дом Усадьбы Лесной Двор под Могилёвом"
+              class="w-full h-full object-cover object-[center_46%]"
+              fetchpriority="high"
+            />
+          </div>
+          <!-- Деликатная редакционная подпись в углу кадра -->
+          <div class="hidden sm:flex items-center gap-2.5 absolute bottom-3.5 left-3.5 bg-ivory/95 backdrop-blur-sm border border-pine/20 px-3.5 py-2 text-xs text-pine shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-champagne"></span>
+            <span>Белая ротонда и центральная лужайка усадьбы</span>
+          </div>
+          <a href="#gallery" class="hidden sm:inline-flex items-center gap-2 absolute bottom-3.5 right-3.5 bg-pine/95 backdrop-blur-sm text-ivory px-3.5 py-2 text-xs tracking-wide hover:bg-pine transition-colors shadow-sm">
+            <span>Открыть фотогалерею</span>
+            <span class="text-champagne">→</span>
+          </a>
+        </div>
+
+        <!-- Строгий 4-колоночный реестр главных преимуществ усадьбы прямо под панорамой -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 border-x border-b border-pine/20 bg-white divide-y sm:divide-y-0 divide-x divide-pine/10">
+          <div class="p-3.5 sm:p-4 lg:p-5">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-champagne-dark font-medium mb-1">Церемония</div>
+            <div class="font-editorial text-lg sm:text-xl text-pine leading-snug">Выездная роспись</div>
+            <p class="text-xs text-pine-muted mt-1 leading-relaxed">Белая ротонда на зелёном газоне и резервная зона под куполом</p>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-champagne-dark font-medium mb-1">Масштаб</div>
+            <div class="font-editorial text-lg sm:text-xl text-pine leading-snug">Шатёр до 120 гостей</div>
+            <p class="text-xs text-pine-muted mt-1 leading-relaxed">Трёхкупольный, с панорамой на пруд, обогревом и лаунж-зоной</p>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5 border-t lg:border-t-0 border-pine/10">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-champagne-dark font-medium mb-1">Размещение и отдых</div>
+            <div class="font-editorial text-lg sm:text-xl text-pine leading-snug">Залы, дома и баня</div>
+            <p class="text-xs text-pine-muted mt-1 leading-relaxed">2 зала, 4 сруба + VIP-дом, баня на дровах с джакузи и беседки</p>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5 border-t lg:border-t-0 border-pine/10">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-champagne-dark font-medium mb-1">Расположение</div>
+            <div class="font-editorial text-lg sm:text-xl text-pine leading-snug">3 км от Могилёва</div>
+            <p class="text-xs text-pine-muted mt-1 leading-relaxed">Шкловское направление · ★ 4.9 на Яндекс Картах (131 отзыв)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 2: ПЛОЩАДКИ И ПРОСТРАНСТВА УСАДЬБЫ (С ФИЛЬТРОМ)
+         ========================================================= -->
+    <section id="spaces" class="py-12 sm:py-16 lg:py-20 border-t border-pine/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Заголовок секции + табы фильтрации -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-3 mb-2.5">
+              <span class="h-px w-8 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-pine-muted font-medium">Территория и инфраструктура</span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl lg:text-[44px] leading-tight text-pine">
+              Площадки для торжеств и уединённого отдыха
+            </h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Фильтр площадок">
+            <button type="button" class="tab-btn px-4 py-2 text-xs sm:text-[13px] border border-pine/20 bg-white text-pine rounded-sm transition-colors whitespace-nowrap" role="tab" aria-selected="true" data-filter="all">
+              Все пространства (6)
+            </button>
+            <button type="button" class="tab-btn px-4 py-2 text-xs sm:text-[13px] border border-pine/20 bg-white text-pine rounded-sm transition-colors whitespace-nowrap" role="tab" aria-selected="false" data-filter="events">
+              Свадьбы и банкеты
+            </button>
+            <button type="button" class="tab-btn px-4 py-2 text-xs sm:text-[13px] border border-pine/20 bg-white text-pine rounded-sm transition-colors whitespace-nowrap" role="tab" aria-selected="false" data-filter="stay">
+              Дома, баня и беседки
+            </button>
+          </div>
+        </div>
+
+        <!-- Сетка пространств -->
+        <div id="spaces-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- 1. Трёхкупольный свадебный шатёр -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="events">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2022/12/f01b069c77e2f7196867ecd9d288039c-1024x683.jpg"
+                alt="Трёхкупольный свадебный шатёр Усадьбы Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/f01b069c77e2f7196867ecd9d288039c-1024x683.jpg"
+                data-caption="Трёхкупольный свадебный шатёр до 120 гостей с раздвижным остеклением"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">До 120 гостей</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Центр усадьбы · Весна — Осень</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Трёхкупольный свадебный шатёр</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Панорамное раздвижное остекление, подиум для стола молодожёнов, большой экран и третий купол с кожаными диванами для фуршета. Вход украшен прозрачным полом над прудом с золотыми рыбками.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Газовые обогреватели для прохлады и вентиляторы в жару</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Своя огороженная территория, газон и крытая галерея</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Свадьба и выездная роспись" data-guests="Более 60 гостей">
+                <span>Уточнить дату для шатра</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- 2. Выездная роспись -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="events">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1575050175143-1080x721.jpg"
+                alt="Выездная роспись у белой ротонды в Усадьбе Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1575050175143-1080x721.jpg"
+                data-caption="Выездная регистрация у классической белой ротонды среди елей"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">Белая ротонда</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Церемония на природе</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Выездная роспись</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Торжественный обмен кольцами в окружении хвойного леса и ухоженного зелёного газона вместо тесных стен ЗАГСа. Вы сами выбираете удобное время, сценарий и флористическое оформление.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Свободная рассадка для любого числа приглашённых</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>На случай дождя — перенос под третий купол шатра</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Свадьба и выездная роспись" data-guests="25–60 гостей">
+                <span>Запросить условия росписи</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- 3. Банкетный зал -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="events">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2023/02/52F69B43-C363-460F-989F-ECBF74D2C4AE.jpeg"
+                alt="Светлый банкетный зал Усадьбы Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/52F69B43-C363-460F-989F-ECBF74D2C4AE.jpeg"
+                data-caption="Светлый банкетный зал в стиле кантри с круглыми столами и фарфоровой сервировкой"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">Круглый год</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Свадьбы · Юбилеи · Деловые приёмы</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Светлый банкетный зал</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Просторный светлый зал в благородном стиле кантри с мебелью из натурального дерева, белым фарфором и панорамными окнами в сад. Идеален как для свадебных банкетов, так и для юбилеев.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Собственная русская и европейская кухня, фуршеты, торты</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Опытная команда поваров и деликатных официантов</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Юбилей или банкет" data-guests="25–60 гостей">
+                <span>Уточнить дату в зале</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- 4. Каминный зал с русской печью -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="events">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2023/02/2F202F81-799D-43EA-9814-4E4C888EFBD4.jpeg"
+                alt="Каминный зал с русской печью в Усадьбе Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/2F202F81-799D-43EA-9814-4E4C888EFBD4.jpeg"
+                data-caption="Каминный зал из натурального дерева с русской печью и проектором"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">Камерный формат</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Корпоративы · Дни рождения</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Зал с русской печью</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Тёплый деревянный каминный зал с настоящей русской печью и большим экраном с проектором. Уютная атмосфера для семейных застолий, вторых дней свадьбы и новогодних корпоративов.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Праздничное меню русской и европейской кухни</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Оборудован экраном и проектором для поздравлений</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Корпоратив" data-guests="До 25 гостей">
+                <span>Забронировать каминный зал</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- 5. Гостевые дома из сруба и Дом VIP -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="stay">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2023/06/IMG_9448.jpg"
+                alt="Гостевые дома из сруба в Усадьбе Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/06/IMG_9448.jpg"
+                data-caption="Коттедж из сруба с остеклённой верандой в Усадьбе Лесной Двор"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">4 дома + VIP</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Проживание на природе</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Гостевые дома и VIP-коттедж</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Четыре комфортабельных дома из натурального сруба и отдельный VIP-дом для молодожёнов. Кровати и мебель из дерева, большие окна с видом на лес, просторная душевая.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Удобно для ночёвки гостей после банкета или на выходные</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Подходит для семейного отдыха и деловых поездок</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Семейный отдых, дома и баня" data-guests="До 25 гостей">
+                <span>Уточнить наличие домов</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- 6. Русская баня на дровах, джакузи и беседки -->
+          <article class="space-card group bg-white hairline-card flex flex-col overflow-hidden" data-category="stay">
+            <div class="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2022/12/e11bad0ea1c7e802f94f6b44eccfa065-1000x665.jpg"
+                alt="Русская баня на дровах в Усадьбе Лесной Двор"
+                class="w-full h-full object-cover img-zoom cursor-pointer"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/e11bad0ea1c7e802f94f6b44eccfa065-1000x665.jpg"
+                data-caption="Русская баня на дровах с комнатой отдыха и большим джакузи"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-ivory/95 text-pine text-[11px] font-medium px-2.5 py-1 border border-pine/10">Баня · Джакузи · 3 беседки</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark mb-1.5">Релакс среди высоких елей</div>
+              <h3 class="font-editorial text-2xl text-pine mb-2.5">Русская баня и беседки</h3>
+              <p class="text-sm text-pine-muted leading-relaxed mb-4">
+                Добротная парилка на дровах, уютная комната отдыха, большая душевая и просторный джакузи. Рядом — три лесные беседки среди елей, мощёные дорожки, декоративный пруд и зона барбекю.
+              </p>
+              <ul class="text-xs text-pine/80 space-y-1.5 mb-5 border-t border-pine/10 pt-3.5">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Оздоровительный отдых в чистой хвойной зоне</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-champagne"></span>Беседки №1, №2 и №3 для отдыха с друзьями и детьми</li>
+              </ul>
+              <button type="button" class="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] font-medium text-pine hover:text-champagne-dark transition-colors self-start prefill-cta" data-format="Семейный отдых, дома и баня" data-guests="До 25 гостей">
+                <span>Забронировать баню или беседку</span>
+                <span class="text-champagne">→</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 3: ИЗУМРУДНЫЙ РЕДАКЦИОННЫЙ БЛОК «СВАДЬБА БЕЗ ПЕРЕЕЗДОВ»
+         ========================================================= -->
+    <section id="weddings" class="bg-pine text-ivory py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+          <!-- Левая редакционная колонка -->
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="h-px w-8 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-champagne font-medium">Искусство загородного торжества</span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl lg:text-[46px] leading-[1.08] text-ivory mb-5">
+              Весь свадебный день в одном имении — без спешки и пробок
+            </h2>
+            <p class="text-sm sm:text-[15px] text-ivory/75 leading-relaxed mb-8">
+              Всего в 3 км от Могилёва гости оказываются в тихой хвойной зоне с ухоженными газонами, фонтаном, белой ротондой и всеми площадками в нескольких шагах друг от друга.
+            </p>
+
+            <div class="space-y-5 border-t border-ivory/20 pt-6">
+              <div class="flex gap-4">
+                <span class="font-editorial text-2xl text-champagne leading-none shrink-0 w-7">01</span>
+                <div>
+                  <h3 class="font-editorial text-xl text-ivory mb-1">Единый сценарий с утра до утра</h3>
+                  <p class="text-xs sm:text-sm text-ivory/75 leading-relaxed">
+                    Сборы и фотосессия в VIP-доме и на зелёной лужайке, выездная регистрация у ротонды, фуршет у пруда, банкет в шатре или зале и комфортная ночёвка для гостей в срубовых коттеджах.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4 border-t border-ivory/10 pt-5">
+                <span class="font-editorial text-2xl text-champagne leading-none shrink-0 w-7">02</span>
+                <div>
+                  <h3 class="font-editorial text-xl text-ivory mb-1">Своя банкетная кухня и команда</h3>
+                  <p class="text-xs sm:text-sm text-ivory/75 leading-relaxed">
+                    Профессиональные повара готовят блюда русской и европейской кухни, фуршетные закуски и свадебные торты; праздник сопровождает опытная команда официантов.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4 border-t border-ivory/10 pt-5">
+                <span class="font-editorial text-2xl text-champagne leading-none shrink-0 w-7">03</span>
+                <div>
+                  <h3 class="font-editorial text-xl text-ivory mb-1">Спокойствие при любой погоде</h3>
+                  <p class="text-xs sm:text-sm text-ivory/75 leading-relaxed">
+                    Трёхкупольный шатёр оснащён раздвижным остеклением, газовыми обогревателями, вентиляторами, крытой прогулочной галереей и третьим куполом на случай дождя.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая визуальная пара реальных кадров -->
+          <div class="lg:col-span-6 space-y-4">
+            <div class="relative overflow-hidden border border-champagne/30">
+              <img
+                src="https://lesnoidvor.by/wp-content/uploads/2022/12/a6daeced28ccfc8831791f9bc6cf77ab-1024x683.jpg"
+                alt="Вечерняя подсветка белой ротонды и трёхкупольного шатра Усадьбы Лесной Двор"
+                class="w-full aspect-[16/10] object-cover cursor-pointer hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+                data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/a6daeced28ccfc8831791f9bc6cf77ab-1024x683.jpg"
+                data-caption="Вечернее освещение белой ротонды и трёхкупольного шатра"
+              />
+              <div class="absolute bottom-3 left-3 bg-pine/90 backdrop-blur-sm border border-champagne/30 px-3 py-1.5 text-[11px] text-ivory/90">
+                Вечерняя подсветка ротонды и шатра
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="relative overflow-hidden border border-ivory/20">
+                <img
+                  src="https://lesnoidvor.by/wp-content/uploads/2023/02/photo_2023-02-02-18.27.42.jpeg"
+                  alt="Вечерний вид на шатёр и пруд с подсветкой"
+                  class="w-full aspect-[4/3] object-cover cursor-pointer hover:scale-[1.03] transition-transform duration-700"
+                  loading="lazy"
+                  data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/photo_2023-02-02-18.27.42.jpeg"
+                  data-caption="Вечерняя подсветка пруда с золотыми рыбками и шатра"
+                />
+              </div>
+              <div class="relative overflow-hidden border border-ivory/20">
+                <img
+                  src="https://lesnoidvor.by/wp-content/uploads/2023/02/3DE06DAE-6E76-4023-96A2-A6E1C08CDC42.jpeg"
+                  alt="Главное здание банкетного зала Усадьбы Лесной Двор"
+                  class="w-full aspect-[4/3] object-cover cursor-pointer hover:scale-[1.03] transition-transform duration-700"
+                  loading="lazy"
+                  data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/3DE06DAE-6E76-4023-96A2-A6E1C08CDC42.jpeg"
+                  data-caption="Главный корпус усадьбы в окружении туй и хвойного леса"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 4: ЛЁГКИЙ 2-КЛИКОВЫЙ ПОДБОР ФОРМАТА (БЕЗ КАЛЬКУЛЯТОРА ЦЕН)
+         ========================================================= -->
+    <section id="planner" class="py-12 sm:py-16 lg:py-20 border-b border-pine/10 bg-parchment/60">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="bg-white border border-pine/20 p-6 sm:p-10 lg:p-12 shadow-[0_24px_60px_-34px_rgba(20,41,30,0.2)]">
+          <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <div class="inline-flex items-center gap-3 mb-2.5">
+              <span class="h-px w-6 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-dark font-medium">Быстрый подбор за 2 клика</span>
+              <span class="h-px w-6 bg-champagne"></span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl text-pine mb-2.5">
+              Какую площадку подготовить для вашего события?
+            </h2>
+            <p class="text-sm text-pine-muted">
+              Отметьте формат и примерное число гостей — мы подскажем подходящее пространство и подставим параметры в заявку для расчёта и проверки свободных дат.
+            </p>
+          </div>
+
+          <!-- Шаг 1 -->
+          <div class="mb-7">
+            <div class="text-xs uppercase tracking-[0.16em] text-pine-muted font-medium mb-3">
+              Шаг 1 · Формат события
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="planner-formats">
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="true" data-value="Свадьба и выездная роспись">
+                <div class="font-medium text-sm">Свадьба и роспись</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Ротонда, шатёр или зал</div>
+              </button>
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="false" data-value="Юбилей или банкет">
+                <div class="font-medium text-sm">Юбилей или банкет</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Праздничный ужин и кухня</div>
+              </button>
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="false" data-value="Корпоратив">
+                <div class="font-medium text-sm">Корпоратив</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Зал, проектор, фуршет</div>
+              </button>
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="false" data-value="Семейный отдых, дома и баня">
+                <div class="font-medium text-sm">Отдых, дома и баня</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Срубы, джакузи, беседки</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div class="mb-8">
+            <div class="text-xs uppercase tracking-[0.16em] text-pine-muted font-medium mb-3">
+              Шаг 2 · Ориентировочное число гостей
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="planner-guests">
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="false" data-value="До 25 гостей">
+                <div class="font-medium text-sm">До 25 гостей</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Камерный круг, домик, каминный зал</div>
+              </button>
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="true" data-value="25–60 гостей">
+                <div class="font-medium text-sm">25–60 гостей</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Банкетный зал или шатёр + ротонда</div>
+              </button>
+              <button type="button" class="choice-btn text-left p-4 border border-pine/20 bg-ivory/40 hover:border-champagne transition-colors rounded-sm" aria-pressed="false" data-value="Более 60 гостей">
+                <div class="font-medium text-sm">Более 60 гостей</div>
+                <div class="choice-sub text-xs text-pine-muted mt-1">Трёхкупольный шатёр до 120 персон</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Итоговая рекомендация + переход к заявке -->
+          <div class="bg-ivory border border-champagne/40 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.16em] text-champagne-dark font-medium mb-1">Рекомендация усадьбы</div>
+              <p id="planner-recommendation" class="text-sm sm:text-[15px] text-pine leading-relaxed">
+                Для свадьбы на 25–60 гостей отлично подойдут выездная роспись у белой ротонды, светлый банкетный зал или трёхкупольный шатёр, а также VIP-дом для молодожёнов.
+              </p>
+            </div>
+            <button type="button" id="planner-apply-btn" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-pine text-ivory text-sm font-medium rounded-sm hover:bg-pine-soft transition-colors whitespace-nowrap">
+              <span>Уточнить дату и условия</span>
+              <span class="text-champagne">→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 5: РЕДАКЦИОННАЯ ФОТОГАЛЕРЕЯ + ЛАЙТБОКС
+         ========================================================= -->
+    <section id="gallery" class="py-12 sm:py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-9">
+          <div>
+            <div class="flex items-center gap-3 mb-2.5">
+              <span class="h-px w-8 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-pine-muted font-medium">Живые кадры территории</span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl lg:text-[44px] leading-tight text-pine">
+              Атмосфера «Лесного Двора»
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-pine-muted">Нажмите на любое фото, чтобы рассмотреть детали в полном размере</p>
+        </div>
+
+        <!-- Сбалансированная 8-кадровая журнальная сетка -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <figure class="group relative overflow-hidden bg-parchment sm:col-span-2 aspect-[16/10] border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/photo_2023-02-02-18.33.50.jpeg" data-caption="Трёхкупольный шатёр над декоративным прудом с белой балюстрадой">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2023/02/photo_2023-02-02-18.33.50.jpeg" alt="Шатёр над прудом днём" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-4 text-xs text-ivory/95">
+              Трёхкупольный шатёр над прудом
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden bg-parchment aspect-[4/3] sm:aspect-auto border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1579245002805-1080x720.jpg" data-caption="Вечернее торжество, свечи и фейерверк у белой ротонды">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1579245002805-1080x720.jpg" alt="Вечерний праздник у белой ротонды" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-3.5 text-xs text-ivory/95">
+              Вечерний финал у ротонды
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden bg-parchment aspect-[4/3] sm:aspect-auto border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/06/IMG_9392.jpg" data-caption="Вход в срубовой гостевой дом среди берёз и туй">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2023/06/IMG_9392.jpg" alt="Срубовой гостевой дом среди зелени" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-3.5 text-xs text-ivory/95">
+              Гостевые коттеджи из сруба
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden bg-parchment aspect-[4/3] border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1579244220702-1080x720.jpg" data-caption="Уютный интерьер деревянного лаунжа усадьбы">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2022/12/usadbalesnoidvor-1579244220702-1080x720.jpg" alt="Интерьер деревянного лаунжа" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-3.5 text-xs text-ivory/95">
+              Деревянный лаунж и бар
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden bg-parchment aspect-[4/3] border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/52F69B43-C363-460F-989F-ECBF74D2C4AE.jpeg" data-caption="Сервировка светлого банкетного зала для свадебного ужина">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2023/02/52F69B43-C363-460F-989F-ECBF74D2C4AE.jpeg" alt="Сервировка банкетного зала" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-3.5 text-xs text-ivory/95">
+              Банкетный зал
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden bg-parchment sm:col-span-2 aspect-[16/10] sm:aspect-auto border border-pine/10 cursor-pointer" data-lightbox="https://lesnoidvor.by/wp-content/uploads/2023/02/3DE06DAE-6E76-4023-96A2-A6E1C08CDC42.jpeg" data-caption="Ухоженная территория и фасад банкетного корпуса Усадьбы Лесной Двор">
+            <img src="https://lesnoidvor.by/wp-content/uploads/2023/02/3DE06DAE-6E76-4023-96A2-A6E1C08CDC42.jpeg" alt="Фасад банкетного корпуса и туи" class="w-full h-full object-cover img-zoom" loading="lazy" />
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine/80 via-pine/25 to-transparent p-4 text-xs text-ivory/95">
+              Главный корпус и хвойный парк
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 6: РЕАЛЬНЫЕ ОТЗЫВЫ ГОСТЕЙ + РЕЙТИНГ ЯНДЕКС КАРТ
+         ========================================================= -->
+    <section id="reviews" class="py-12 sm:py-16 lg:py-20 border-t border-pine/10 bg-white/75">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <div class="flex items-center gap-3 mb-2.5">
+              <span class="h-px w-8 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-pine-muted font-medium">Впечатления пар и гостей</span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl lg:text-[44px] leading-tight text-pine">
+              Отзывы о «Лесном Дворе»
+            </h2>
+          </div>
+
+          <a href="https://yandex.by/maps/org/usadba_lesnoy_dvor/1188269223/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3.5 px-4 py-3 bg-ivory border border-pine/20 hover:border-champagne transition-colors self-start md:self-auto">
+            <span class="font-editorial text-3xl text-pine leading-none">4.9</span>
+            <span class="border-l border-pine/20 pl-3.5">
+              <span class="block text-xs font-medium text-pine">Яндекс Карты · 131 отзыв</span>
+              <span class="block text-[11px] text-pine-muted">На основе 437 оценок гостей →</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- 4 реальных отзыва с сайта lesnoidvor.by/otzyvy/ -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <blockquote class="bg-ivory/75 border border-pine/10 p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-champagne text-sm tracking-widest mb-3" aria-label="5 из 5">★★★★★</div>
+              <p class="text-sm text-pine/90 leading-relaxed mb-5">
+                «Отмечали свадьбу на выходных. Более живописного и удобного места для выездной регистрации сложно себе вообразить, территория восхитительная! Приятные в общении хозяева и превосходная кухня.»
+              </p>
+            </div>
+            <footer class="border-t border-pine/10 pt-3.5">
+              <div class="font-medium text-sm text-pine">Наталья и Владимир</div>
+              <div class="text-[11px] text-pine-muted mt-0.5">Свадьба и выездная регистрация</div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-ivory/75 border border-pine/10 p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-champagne text-sm tracking-widest mb-3" aria-label="5 из 5">★★★★★</div>
+              <p class="text-sm text-pine/90 leading-relaxed mb-5">
+                «Спасибо Вам огромное! Наша свадьба была незабываемой, место просто волшебное! Всё прошло на высшем уровне — благодарны всей команде усадьбы.»
+              </p>
+            </div>
+            <footer class="border-t border-pine/10 pt-3.5">
+              <div class="font-medium text-sm text-pine">Анна и Саша</div>
+              <div class="text-[11px] text-pine-muted mt-0.5">Свадебное торжество</div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-ivory/75 border border-pine/10 p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-champagne text-sm tracking-widest mb-3" aria-label="5 из 5">★★★★★</div>
+              <p class="text-sm text-pine/90 leading-relaxed mb-5">
+                «Во многом благодаря этому прекрасному месту ежегодная закрытая вечеринка удалась! Благодарим руководство за живописную природу, где сохранены традиции и обеспечен современный комфорт.»
+              </p>
+            </div>
+            <footer class="border-t border-pine/10 pt-3.5">
+              <div class="font-medium text-sm text-pine">«Невероятный Ферзь»</div>
+              <div class="text-[11px] text-pine-muted mt-0.5">Корпоративное мероприятие</div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-ivory/75 border border-pine/10 p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-champagne text-sm tracking-widest mb-3" aria-label="5 из 5">★★★★★</div>
+              <p class="text-sm text-pine/90 leading-relaxed mb-5">
+                «Снимал домик на выходные. Очень понравилось! Территория усадьбы большая, свежий воздух, есть где детям побегать и с мячом поиграть. Спасибо, будем обращаться ещё!»
+              </p>
+            </div>
+            <footer class="border-t border-pine/10 pt-3.5">
+              <div class="font-medium text-sm text-pine">Евгений</div>
+              <div class="text-[11px] text-pine-muted mt-0.5">Семейные выходные в коттедже</div>
+            </footer>
+          </blockquote>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         СЕКЦИЯ 7: ЗАЯВКА НА ДАТУ + КОНТАКТЫ И КАРТА ПРОЕЗДА
+         ========================================================= -->
+    <section id="contacts" class="py-12 sm:py-16 lg:py-20 border-t border-pine/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+
+          <!-- Левая часть: форма уточнения даты и стоимости -->
+          <div id="booking" class="lg:col-span-6 bg-white border border-pine/20 p-6 sm:p-8 lg:p-10">
+            <div class="flex items-center gap-3 mb-2.5">
+              <span class="h-px w-8 bg-champagne"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-dark font-medium">Запрос бронирования</span>
+            </div>
+            <h2 class="font-editorial text-3xl sm:text-4xl text-pine mb-2">
+              Уточнить свободную дату и условия
+            </h2>
+            <p class="text-sm text-pine-muted leading-relaxed mb-6">
+              Оставьте контакты — мы свяжемся с вами, подскажем свободные даты, покажем площадки и рассчитаем стоимость под формат вашего события.
+            </p>
+
+            <form id="booking-form" class="space-y-4" novalidate>
+              <!-- Honeypot против спам-ботов -->
+              <div class="hidden" aria-hidden="true">
+                <label for="hp-website">Не заполняйте это поле</label>
+                <input id="hp-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="lead-name" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Ваше имя *</label>
+                  <input id="lead-name" name="name" type="text" required placeholder="Например, Анастасия" class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine placeholder:text-pine-muted/60 focus:outline-none focus:border-champagne transition-colors" />
+                </div>
+                <div>
+                  <label for="lead-phone" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Телефон *</label>
+                  <input id="lead-phone" name="phone" type="tel" required placeholder="+375 (29) 000-00-00" class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine placeholder:text-pine-muted/60 focus:outline-none focus:border-champagne transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="lead-format" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Формат события</label>
+                  <select id="lead-format" name="format" class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine focus:outline-none focus:border-champagne transition-colors">
+                    <option value="Свадьба и выездная роспись">Свадьба и выездная роспись</option>
+                    <option value="Юбилей или банкет">Юбилей или банкет</option>
+                    <option value="Корпоратив">Корпоратив</option>
+                    <option value="Семейный отдых, дома и баня">Семейный отдых, дома и баня</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="lead-guests" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Число гостей</label>
+                  <select id="lead-guests" name="guests" class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine focus:outline-none focus:border-champagne transition-colors">
+                    <option value="До 25 гостей">До 25 гостей</option>
+                    <option value="25–60 гостей" selected>25–60 гостей</option>
+                    <option value="Более 60 гостей">Более 60 гостей (до 120)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="lead-date" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Желаемая дата или месяц (необязательно)</label>
+                <input id="lead-date" name="date" type="text" placeholder="Например, суббота в июле или 15 августа" class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine placeholder:text-pine-muted/60 focus:outline-none focus:border-champagne transition-colors" />
+              </div>
+
+              <div>
+                <label for="lead-comment" class="block text-xs uppercase tracking-[0.12em] text-pine-muted mb-1.5">Пожелания</label>
+                <textarea id="lead-comment" name="comment" rows="3" placeholder="Интересует выездная роспись, шатёр, проживание гостей или баня..." class="w-full px-3.5 py-2.5 bg-ivory/60 border border-pine/20 rounded-sm text-sm text-pine placeholder:text-pine-muted/60 focus:outline-none focus:border-champagne transition-colors"></textarea>
+              </div>
+
+              <!-- Обязательный незаполненный чекбокс по Закону РБ № 99-З -->
+              <div class="pt-1">
+                <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                  <input id="lead-consent" name="consent" type="checkbox" required class="mt-0.5 h-4 w-4 accent-[#14291E] rounded-sm border-pine/30 shrink-0" />
+                  <span class="text-xs text-pine-muted leading-relaxed">
+                    Я ознакомлен(а) с <button type="button" class="underline decoration-champagne underline-offset-2 text-pine hover:text-champagne-dark open-modal-btn" data-modal="modal-policy">Политикой обработки персональных данных</button> и даю <button type="button" class="underline decoration-champagne underline-offset-2 text-pine hover:text-champagne-dark open-modal-btn" data-modal="modal-consent">согласие на обработку и трансграничную передачу персональных данных</button> (Закон РБ № 99-З).
+                  </span>
+                </label>
+              </div>
+
+              <div id="form-error" class="hidden text-xs text-red-800 bg-red-50 border border-red-200 px-3.5 py-2.5 rounded-sm"></div>
+              <div id="form-success" class="hidden text-xs sm:text-sm text-pine bg-champagne-pale/70 border border-champagne px-4 py-3.5 rounded-sm leading-relaxed"></div>
+
+              <button type="submit" id="form-submit-btn" class="w-full py-3.5 px-6 bg-pine text-ivory text-sm font-medium tracking-wide rounded-sm hover:bg-pine-soft transition-colors">
+                Отправить запрос на дату
+              </button>
+
+              <p class="text-[11px] text-pine-muted/90 leading-relaxed">
+                Информация на сайте носит ознакомительный характер и не является публичной офертой (ст. 407 Гражданского кодекса Республики Беларусь).
+              </p>
+            </form>
+          </div>
+
+          <!-- Правая часть: контакты, мессенджеры, координаты и Яндекс Карта -->
+          <div class="lg:col-span-6 flex flex-col justify-between gap-6">
+            <div class="bg-white border border-pine/20 p-6 sm:p-8">
+              <div class="flex items-center gap-3 mb-2.5">
+                <span class="h-px w-8 bg-champagne"></span>
+                <span class="text-[11px] uppercase tracking-[0.2em] text-pine-muted font-medium">Прямая связь и адрес</span>
+              </div>
+              <h3 class="font-editorial text-3xl text-pine mb-5">Контакты усадьбы</h3>
+
+              <div class="space-y-4 text-sm">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3.5 border-b border-pine/10">
+                  <span class="text-xs uppercase tracking-[0.14em] text-pine-muted">Телефон (МТС)</span>
+                  <a href="tel:+375292425425" class="font-editorial text-2xl text-pine hover:text-champagne-dark transition-colors whitespace-nowrap">
+                    +375 (29) 242-54-25
+                  </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3.5 border-b border-pine/10">
+                  <span class="text-xs uppercase tracking-[0.14em] text-pine-muted shrink-0">Адрес</span>
+                  <span class="text-pine sm:text-right leading-relaxed">
+                    Могилёвская обл., Могилёвский р-н, Пашковский с/с<br />
+                    <span class="text-pine-muted text-xs">3 км от Могилёва в направлении Шклова</span>
+                  </span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-pine/10">
+                  <span class="text-xs uppercase tracking-[0.14em] text-pine-muted">Навигатор</span>
+                  <div class="flex items-center gap-2.5">
+                    <code class="text-xs bg-ivory border border-pine/20 px-2.5 py-1 text-pine">53.984568, 30.313601</code>
+                    <button type="button" id="copy-coords-btn" class="text-xs underline decoration-champagne underline-offset-4 text-pine hover:text-champagne-dark">
+                      Скопировать
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-pine/10">
+                  <span class="text-xs uppercase tracking-[0.14em] text-pine-muted">Режим связи</span>
+                  <span class="text-pine text-sm">Ежедневно 09:00–21:00 <span class="text-xs text-pine-muted">[уточняется]</span></span>
+                </div>
+              </div>
+
+              <!-- Удобные кнопки мессенджеров и соцсетей в благородной палитре -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5">
+                <a href="viber://chat?number=%2B375292425425" class="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-pine text-ivory text-xs font-medium rounded-sm hover:bg-pine-soft transition-colors whitespace-nowrap">
+                  Viber
+                </a>
+                <a href="https://wa.me/375292425425" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 px-3 border border-pine/20 bg-ivory/60 text-pine text-xs font-medium rounded-sm hover:border-champagne transition-colors whitespace-nowrap">
+                  WhatsApp
+                </a>
+                <a href="https://www.instagram.com/usadbalesnoidvor/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 px-3 border border-pine/20 bg-ivory/60 text-pine text-xs font-medium rounded-sm hover:border-champagne transition-colors whitespace-nowrap">
+                  Instagram
+                </a>
+                <a href="https://vk.com/lesnoidvorby" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 px-3 border border-pine/20 bg-ivory/60 text-pine text-xs font-medium rounded-sm hover:border-champagne transition-colors whitespace-nowrap">
+                  ВКонтакте
+                </a>
+              </div>
+            </div>
+
+            <!-- Карта проезда (Яндекс Карты) -->
+            <div class="bg-white border border-pine/20 overflow-hidden flex-1 min-h-[260px] flex flex-col">
+              <iframe
+                src="https://yandex.by/map-widget/v1/-/CCUjJTvaDA"
+                title="Усадьба Лесной Двор на Яндекс Картах"
+                class="w-full flex-1 min-h-[240px] border-0"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+              <div class="px-4 py-2.5 bg-ivory/70 border-t border-pine/10 flex items-center justify-between text-xs">
+                <span class="text-pine-muted">3 км от Могилёва · Шкловское шоссе</span>
+                <a href="https://yandex.by/maps/org/usadba_lesnoy_dvor/1188269223/" target="_blank" rel="noopener noreferrer" class="text-pine font-medium underline decoration-champagne underline-offset-4 hover:text-champagne-dark whitespace-nowrap">
+                  Построить маршрут →
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       ПОДВАЛ С ЮРИДИЧЕСКИМИ РЕКВИЗИТАМИ И КОМПЛАЕНСОМ РБ
+       ========================================================= -->
+  <footer class="bg-pine text-ivory/80 border-t border-champagne/25 pt-12 pb-28 md:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-ivory/20">
+
+        <div class="md:col-span-5">
+          <div class="font-editorial text-2xl tracking-[0.04em] text-ivory mb-2">УСАДЬБА «ЛЕСНОЙ ДВОР»</div>
+          <p class="text-xs sm:text-sm text-ivory/70 leading-relaxed max-w-md mb-4">
+            Загородная усадьба для свадеб, выездных регистраций, банкетов, корпоративов и семейного отдыха в 3 км от Могилёва.
+          </p>
+          <div class="text-xs text-ivory/60 space-y-1">
+            <div>[Наименование: ИП / ООО / КФХ] · УНП [УНП]</div>
+            <div>[Юридический адрес / место оказания услуг: Могилёвский р-н, Пашковский с/с]</div>
+            <div>Режим работы: [уточняется]</div>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 text-xs sm:text-sm space-y-2">
+          <div class="text-[11px] uppercase tracking-[0.18em] text-champagne mb-3">Разделы</div>
+          <div><a href="#spaces" class="hover:text-ivory transition-colors">Площадки усадьбы</a></div>
+          <div><a href="#weddings" class="hover:text-ivory transition-colors">Свадьбы и выездная роспись</a></div>
+          <div><a href="#planner" class="hover:text-ivory transition-colors">Подбор формата события</a></div>
+          <div><a href="#gallery" class="hover:text-ivory transition-colors">Фотогалерея</a></div>
+          <div><a href="#reviews" class="hover:text-ivory transition-colors">Отзывы гостей</a></div>
+        </div>
+
+        <div class="md:col-span-4 text-xs sm:text-sm space-y-2">
+          <div class="text-[11px] uppercase tracking-[0.18em] text-champagne mb-3">Правовая информация (РБ)</div>
+          <div>
+            <button type="button" class="text-left hover:text-ivory underline decoration-ivory/30 underline-offset-4 open-modal-btn" data-modal="modal-policy">
+              Политика обработки персональных данных (Закон № 99-З)
+            </button>
+          </div>
+          <div>
+            <button type="button" class="text-left hover:text-ivory underline decoration-ivory/30 underline-offset-4 open-modal-btn" data-modal="modal-consent">
+              Согласие на обработку и трансграничную передачу ПД
+            </button>
+          </div>
+          <div>
+            <button type="button" class="text-left hover:text-ivory underline decoration-ivory/30 underline-offset-4 open-modal-btn" data-modal="modal-cookies">
+              Настройки файлов cookie
+            </button>
+          </div>
+          <p class="text-[11px] text-ivory/60 pt-2 leading-relaxed">
+            Не является публичной офертой (ст. 407 ГК РБ). Размещение боевой версии предусмотрено на серверах в Республике Беларусь (Указ № 60).
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-ivory/60">
+        <span>© <span id="current-year"></span> Усадьба «Лесной Двор». Демонстрационный прототип.</span>
+        <a href="tel:+375292425425" class="text-ivory/90 hover:text-champagne transition-colors whitespace-nowrap">+375 (29) 242-54-25</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       ФИРМЕННАЯ МОБИЛЬНАЯ «СТЕКЛЯННАЯ» НИЖНЯЯ ПАНЕЛЬ (STICKY DOCK)
+       Автоматически скрыта, пока открыт cookie-баннер!
+       ========================================================= -->
+  <nav id="mobile-sticky-dock" class="hidden md:hidden fixed bottom-3 inset-x-3 z-40 bg-pine/95 backdrop-blur-md text-ivory border border-champagne/40 rounded-2xl shadow-[0_14px_34px_rgba(20,41,30,0.42)] px-2 py-2" aria-label="Быстрая связь">
+    <div class="grid grid-cols-3 gap-1.5 items-center text-center">
+      <a href="tel:+375292425425" class="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl hover:bg-white/10 transition-colors">
+        <svg class="w-4 h-4 text-champagne mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span class="text-[11px] font-medium leading-none">Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375292425425" class="flex flex-col items-center justify-center py-1.5 px-2 rounded-xl hover:bg-white/10 transition-colors">
+        <svg class="w-4 h-4 text-champagne mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span class="text-[11px] font-medium leading-none">Viber</span>
+      </a>
+      <a href="#booking" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-champagne text-pine font-medium shadow-sm">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span class="text-[11px] font-semibold leading-none whitespace-nowrap">Уточнить дату</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- =========================================================
+       COOKIE-БАННЕР ПО РЕКОМЕНДАЦИЯМ НЦЗПД РБ
+       Компактная нижняя полоса с двумя равнозначными кнопками; скрывает мобильный док
+       ========================================================= -->
+  <div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-pine/20 shadow-[0_-10px_30px_rgba(20,41,30,0.12)] px-4 sm:px-6 py-2.5 sm:py-3" role="dialog" aria-label="Уведомление об использовании файлов cookie">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-4">
+      <div class="text-[11px] sm:text-xs text-pine/90 leading-snug">
+        <strong class="text-pine font-medium">Cookie:</strong> технические — для работы сайта, аналитические — только с вашего согласия (НЦЗПД РБ).
+        <button type="button" class="underline decoration-champagne underline-offset-2 text-pine hover:text-champagne-dark ml-1 open-modal-btn" data-modal="modal-cookies">Настроить</button>
+      </div>
+      <div class="grid grid-cols-2 lg:flex items-center gap-2 shrink-0">
+        <button type="button" id="cookie-accept-all" class="py-2 px-3.5 bg-pine text-ivory text-[11px] sm:text-xs font-medium rounded-sm border border-pine hover:bg-pine-soft transition-colors text-center whitespace-nowrap">
+          Принять все
+        </button>
+        <button type="button" id="cookie-reject-optional" class="py-2 px-3.5 bg-pine text-ivory text-[11px] sm:text-xs font-medium rounded-sm border border-pine hover:bg-pine-soft transition-colors text-center whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ЛАЙТБОКС ДЛЯ ФОТОГАЛЕРЕИ
+       ========================================================= -->
+  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-pine/95 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+    <button type="button" id="lightbox-close" class="absolute top-4 right-4 w-10 h-10 rounded-full border border-ivory/25 text-ivory flex items-center justify-center hover:border-champagne hover:text-champagne transition-colors" aria-label="Закрыть">✕</button>
+    <button type="button" id="lightbox-prev" class="absolute left-3 sm:left-6 w-10 h-10 rounded-full border border-ivory/25 text-ivory flex items-center justify-center hover:border-champagne hover:text-champagne transition-colors" aria-label="Предыдущее фото">‹</button>
+    <div class="max-w-5xl w-full flex flex-col items-center">
+      <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" class="max-h-[78vh] max-w-full object-contain border border-ivory/20" />
+      <p id="lightbox-caption" class="text-xs sm:text-sm text-ivory/90 text-center mt-3.5 max-w-2xl"></p>
+    </div>
+    <button type="button" id="lightbox-next" class="absolute right-3 sm:right-6 w-10 h-10 rounded-full border border-ivory/25 text-ivory flex items-center justify-center hover:border-champagne hover:text-champagne transition-colors" aria-label="Следующее фото">›</button>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА 1: ПОЛИТИКА ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ (99-З)
+       ========================================================= -->
+  <div id="modal-policy" class="legal-modal hidden fixed inset-0 z-50 bg-pine/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="policy-title">
+    <div class="bg-ivory border border-pine/20 max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-pine/20 bg-white">
+        <h3 id="policy-title" class="font-editorial text-2xl text-pine">Политика обработки персональных данных</h3>
+        <button type="button" class="close-modal-btn w-8 h-8 rounded-full border border-pine/20 flex items-center justify-center text-pine hover:border-champagne" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-pine/90 leading-relaxed space-y-3.5">
+        <p><strong>1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и определяет порядок обработки персональных данных пользователей сайта Усадьбы «Лесной Двор» (оператор: [Наименование: ИП / ООО / КФХ], УНП [УНП], адрес: Могилёвский р-н, Пашковский с/с).</p>
+        <p><strong>2. Цели и состав обрабатываемых данных.</strong> Оператор обрабатывает имя, номер телефона и сведения о планируемом мероприятии (формат, ориентировочное число гостей, желаемая дата, комментарий) исключительно в целях обратной связи, проверки свободных дат и расчёта условий проведения мероприятия либо аренды.</p>
+        <p><strong>3. Правовые основания и сроки хранения.</strong> Обработка осуществляется на основании свободного, однозначного и информированного согласия субъекта персональных данных. Данные хранятся не дольше, чем этого требуют цели обработки, либо до момента отзыва согласия субъектом.</p>
+        <p><strong>4. Передача третьим лицам и трансграничная передача.</strong> Для оперативной доставки заявок могут использоваться сервисы Google (Google Apps Script) и мессенджер Telegram, серверы которых расположены за пределами Республики Беларусь, в государствах, где может не обеспечиваться надлежащий уровень защиты прав субъектов персональных данных (ст. 9 Закона № 99-З). Передача осуществляется только при наличии отдельного согласия субъекта.</p>
+        <p><strong>5. Права субъекта персональных данных (ст. 10–15 Закона № 99-З).</strong> Вы вправе в любое время отозвать согласие, получить информацию об обработке своих данных, потребовать внесения изменений, прекращения обработки или удаления данных, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь.</p>
+        <p><strong>6. Контакты оператора.</strong> Для реализации прав обращайтесь по телефону +375 (29) 242-54-25 или по юридическому адресу оператора [указывается при запуске].</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА 2: СОГЛАСИЕ НА ОБРАБОТКУ И ТРАНСГРАНИЧНУЮ ПЕРЕДАЧУ ПД
+       ========================================================= -->
+  <div id="modal-consent" class="legal-modal hidden fixed inset-0 z-50 bg-pine/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+    <div class="bg-ivory border border-pine/20 max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-pine/20 bg-white">
+        <h3 id="consent-title" class="font-editorial text-2xl text-pine">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" class="close-modal-btn w-8 h-8 rounded-full border border-pine/20 flex items-center justify-center text-pine hover:border-champagne" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-pine/90 leading-relaxed space-y-3.5">
+        <p>Отмечая чекбокс в форме заявки на сайте, я добровольно даю оператору [Наименование: ИП / ООО / КФХ, УНП] согласие на обработку моих персональных данных (имя, номер телефона, сведения о мероприятии) в соответствии с Законом Республики Беларусь № 99-З «О защите персональных данных».</p>
+        <p><strong>Уведомление о трансграничной передаче (ст. 9 Закона № 99-З):</strong> я проинформирован(а) о том, что для мгновенной обработки заявок данные могут передаваться через инфраструктуру Google (Google Apps Script) и мессенджер Telegram, расположенные на территории иностранных государств, в которых может отсутствовать надлежащий уровень защиты прав субъектов персональных данных, что сопряжено с возможными рисками доступа к данным в соответствии с законодательством таких государств. Я сознательно даю согласие на такую трансграничную передачу исключительно для получения обратной связи по моей заявке.</p>
+        <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> мне разъяснены права на отзыв данного согласия в любой момент, на получение информации о своих данных, их изменение, блокирование и удаление, а также право не предоставлять согласие (в этом случае вы всегда можете связаться с усадьбой напрямую по телефону +375 (29) 242-54-25).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА 3: НАСТРОЙКИ COOKIE (НЦЗПД РБ)
+       ========================================================= -->
+  <div id="modal-cookies" class="legal-modal hidden fixed inset-0 z-50 bg-pine/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cookies-title">
+    <div class="bg-ivory border border-pine/20 max-w-lg w-full shadow-2xl">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-pine/20 bg-white">
+        <h3 id="cookies-title" class="font-editorial text-2xl text-pine">Настройки файлов cookie</h3>
+        <button type="button" class="close-modal-btn w-8 h-8 rounded-full border border-pine/20 flex items-center justify-center text-pine hover:border-champagne" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-xs sm:text-sm text-pine/90">
+        <div class="flex items-start justify-between gap-4 pb-4 border-b border-pine/10">
+          <div>
+            <div class="font-medium text-pine">Технические (обязательные)</div>
+            <p class="text-xs text-pine-muted mt-1">Обеспечивают базовую работу интерфейса, сохранение вашего выбора cookie и защиту форм.</p>
+          </div>
+          <span class="text-[11px] uppercase tracking-wider text-champagne-dark font-medium whitespace-nowrap">Всегда вкл.</span>
+        </div>
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="font-medium text-pine">Аналитические cookie</div>
+            <p class="text-xs text-pine-muted mt-1">Помогают понимать, какие площадки и разделы наиболее интересны гостям. По умолчанию отключены.</p>
+          </div>
+          <label class="inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+            <input type="checkbox" id="cookie-analytics-toggle" class="h-4 w-4 accent-[#14291E]" />
+          </label>
+        </div>
+        <div class="grid grid-cols-2 gap-3 pt-3">
+          <button type="button" id="cookie-save-prefs" class="py-2.5 px-4 bg-pine text-ivory text-xs font-medium rounded-sm hover:bg-pine-soft transition-colors">
+            Сохранить выбор
+          </button>
+          <button type="button" id="cookie-modal-reject" class="py-2.5 px-4 border border-pine/25 bg-white text-pine text-xs font-medium rounded-sm hover:border-champagne transition-colors">
+            Только обязательные
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ОСНОВНОЙ СКРИПТ (ЖИВОЙ СТАТУС, ФИЛЬТР, 2-КЛИК ПОДБОР, ЛАЙТБОКС, ФОРМА, COOKIE)
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Текущий год в футере
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+      // 2. Живой статус работы по времени Беларуси (Europe/Minsk)
+      function updateMinskStatus() {
+        try {
+          const now = new Date();
+          const formatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+          const parts = formatter.formatToParts(now);
+          const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? 12);
+          const { openHour, closeHour } = SITE_CONFIG.workingHours;
+          const isOpen = hour >= openHour && hour < closeHour;
+
+          const textDesktop = isOpen
+            ? 'Открыто сейчас'
+            : `Ответим с ${String(openHour).padStart(2, '0')}:00`;
+          const textMobile = isOpen ? 'Открыто' : `С ${String(openHour).padStart(2, '0')}:00`;
+
+          const dotD = document.getElementById('live-status-dot');
+          const txtD = document.getElementById('live-status-text');
+          const dotM = document.getElementById('live-status-dot-m');
+          const txtM = document.getElementById('live-status-text-m');
+
+          [dotD, dotM].forEach((dot) => {
+            if (!dot) return;
+            dot.classList.remove('bg-emerald-600', 'bg-amber-500');
+            dot.classList.add(isOpen ? 'bg-emerald-600' : 'bg-amber-500');
+          });
+          if (txtD) txtD.textContent = textDesktop;
+          if (txtM) txtM.textContent = textMobile;
+        } catch (err) {
+          // Graceful fallback if Intl timeZone is unavailable
+        }
+      }
+      updateMinskStatus();
+      setInterval(updateMinskStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+          mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+          mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 4. Фильтр площадок
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const spaceCards = document.querySelectorAll('.space-card');
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          tabBtns.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+          spaceCards.forEach((card) => {
+            const cat = card.getAttribute('data-category');
+            const show = filter === 'all' || cat === filter;
+            card.classList.toggle('hidden', !show);
+          });
+        });
+      });
+
+      // 5. Лёгкий 2-кликовый подбор формата (без калькулятора цен)
+      let selectedFormat = 'Свадьба и выездная роспись';
+      let selectedGuests = '25–60 гостей';
+      const recEl = document.getElementById('planner-recommendation');
+
+      function updatePlannerSummary() {
+        if (!recEl) return;
+        let text = '';
+        if (selectedFormat === 'Свадьба и выездная роспись') {
+          if (selectedGuests === 'Более 60 гостей') {
+            text = 'Для масштабной свадьбы (более 60 гостей) идеально подойдут трёхкупольный свадебный шатёр до 120 персон над водоёмом, белая ротонда для росписи и отдельный VIP-дом для молодожёнов.';
+          } else if (selectedGuests === '25–60 гостей') {
+            text = 'Для свадьбы на 25–60 гостей отлично подойдут выездная роспись у белой ротонды, светлый банкетный зал или трёхкупольный шатёр, а также VIP-дом для молодожёнов.';
+          } else {
+            text = 'Для камерной свадьбы до 25 гостей рекомендуем выездную роспись у белой ротонды, светлый банкетный или каминный зал и проживание в срубовых домиках.';
+          }
+        } else if (selectedFormat === 'Юбилей или банкет') {
+          if (selectedGuests === 'Более 60 гостей') {
+            text = 'Для крупного юбилея или банкета подготовим трёхкупольный панорамный шатёр до 120 гостей с индивидуальным банкетным меню и обслуживанием официантами.';
+          } else if (selectedGuests === '25–60 гостей') {
+            text = 'Для банкета на 25–60 персон оптимален просторный светлый банкетный зал с блюдами русской и европейской кухни от поваров усадьбы.';
+          } else {
+            text = 'Для душевного юбилея до 25 человек подойдёт уютный каминный зал с русской печью или светлый банкетный зал с выходом в хвойный сад.';
+          }
+        } else if (selectedFormat === 'Корпоратив') {
+          if (selectedGuests === 'Более 60 гостей') {
+            text = 'Для большого корпоративного вечера предоставим трёхкупольный шатёр с большим экраном, лаунж-зоной на диванах, фуршетом и закрытой территорией.';
+          } else if (selectedGuests === '25–60 гостей') {
+            text = 'Для корпоратива на 25–60 сотрудников подойдёт светлый банкетный зал или шатёр с банкетным и фуршетным меню.';
+          } else {
+            text = 'Для команды до 25 человек рекомендуем каминный зал с русской печью и проектором — при желании можно дополнить вечер русской баней на дровах.';
+          }
+        } else {
+          text = 'Для семейного отдыха и перезагрузки подготовим срубовые коттеджи (дома №1–4 или VIP), русскую баню на дровах с большим джакузи и лесные беседки среди елей.';
+        }
+        recEl.textContent = text;
+      }
+
+      function bindChoiceGroup(containerId, onSelect) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const buttons = container.querySelectorAll('.choice-btn');
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+            onSelect(btn.getAttribute('data-value') || '');
+            updatePlannerSummary();
+          });
+        });
+      }
+
+      bindChoiceGroup('planner-formats', (val) => { selectedFormat = val; });
+      bindChoiceGroup('planner-guests', (val) => { selectedGuests = val; });
+
+      function applyToBookingForm(formatVal, guestsVal) {
+        const formatSelect = document.getElementById('lead-format');
+        const guestsSelect = document.getElementById('lead-guests');
+        if (formatSelect && formatVal) formatSelect.value = formatVal;
+        if (guestsSelect && guestsVal) guestsSelect.value = guestsVal;
+        const bookingEl = document.getElementById('booking');
+        if (bookingEl) {
+          bookingEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const nameInput = document.getElementById('lead-name');
+          setTimeout(() => { if (nameInput) nameInput.focus({ preventScroll: true }); }, 450);
+        }
+      }
+
+      const plannerApplyBtn = document.getElementById('planner-apply-btn');
+      if (plannerApplyBtn) {
+        plannerApplyBtn.addEventListener('click', () => applyToBookingForm(selectedFormat, selectedGuests));
+      }
+
+      document.querySelectorAll('.prefill-cta').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const fmt = btn.getAttribute('data-format');
+          const gst = btn.getAttribute('data-guests');
+          applyToBookingForm(fmt, gst);
+        });
+      });
+
+      // 6. Лайтбокс для фотографий
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCap = document.getElementById('lightbox-caption');
+      const lbTriggers = Array.from(document.querySelectorAll('[data-lightbox]'));
+      let lbIndex = 0;
+
+      function openLightbox(idx) {
+        if (!lightbox || !lbImg || !lbTriggers.length) return;
+        lbIndex = (idx + lbTriggers.length) % lbTriggers.length;
+        const item = lbTriggers[lbIndex];
+        lbImg.src = item.getAttribute('data-lightbox') || '';
+        lbImg.alt = item.getAttribute('data-caption') || 'Фото Усадьбы Лесной Двор';
+        if (lbCap) lbCap.textContent = item.getAttribute('data-caption') || '';
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      lbTriggers.forEach((el, idx) => {
+        el.addEventListener('click', () => openLightbox(idx));
+      });
+
+      const lbClose = document.getElementById('lightbox-close');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+      if (lbClose) lbClose.addEventListener('click', closeLightbox);
+      if (lbPrev) lbPrev.addEventListener('click', () => openLightbox(lbIndex - 1));
+      if (lbNext) lbNext.addEventListener('click', () => openLightbox(lbIndex + 1));
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      // 7. Юридические модалки и настройки cookie
+      function openModal(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeAllModals() {
+        document.querySelectorAll('.legal-modal').forEach((m) => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.open-modal-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-modal');
+          if (target) openModal(target);
+        });
+      });
+      document.querySelectorAll('.close-modal-btn').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('.legal-modal').forEach((m) => {
+        m.addEventListener('click', (e) => {
+          if (e.target === m) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeAllModals();
+        } else if (lightbox && !lightbox.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
+          if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
+        }
+      });
+
+      // 8. Cookie-баннер (НЦЗПД РБ) + авто-скрытие мобильного дока пока баннер открыт
+      const COOKIE_KEY = 'lesnoi_dvor_cookie_consent_v1';
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-sticky-dock');
+      const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+      function syncDockAndBanner(hasChoice) {
+        if (!cookieBanner || !mobileDock) return;
+        if (hasChoice) {
+          cookieBanner.classList.add('hidden');
+          mobileDock.classList.remove('hidden');
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileDock.classList.add('hidden');
+        }
+      }
+
+      function saveCookieChoice(analyticsAllowed) {
+        try {
+          localStorage.setItem(COOKIE_KEY, JSON.stringify({
+            necessary: true,
+            analytics: Boolean(analyticsAllowed),
+            timestamp: new Date().toISOString()
+          }));
+        } catch (err) {
+          // Ignore storage quota errors
+        }
+        if (analyticsToggle) analyticsToggle.checked = Boolean(analyticsAllowed);
+        syncDockAndBanner(true);
+        closeAllModals();
+      }
+
+      let storedCookie = null;
+      try {
+        storedCookie = localStorage.getItem(COOKIE_KEY);
+      } catch (err) {
+        storedCookie = null;
+      }
+      if (storedCookie) {
+        try {
+          const parsed = JSON.parse(storedCookie);
+          if (analyticsToggle) analyticsToggle.checked = Boolean(parsed.analytics);
+        } catch (err) {}
+        syncDockAndBanner(true);
+      } else {
+        syncDockAndBanner(false);
+      }
+
+      const btnAcceptAll = document.getElementById('cookie-accept-all');
+      const btnRejectOpt = document.getElementById('cookie-reject-optional');
+      const btnSavePrefs = document.getElementById('cookie-save-prefs');
+      const btnModalReject = document.getElementById('cookie-modal-reject');
+      if (btnAcceptAll) btnAcceptAll.addEventListener('click', () => saveCookieChoice(true));
+      if (btnRejectOpt) btnRejectOpt.addEventListener('click', () => saveCookieChoice(false));
+      if (btnSavePrefs) btnSavePrefs.addEventListener('click', () => saveCookieChoice(Boolean(analyticsToggle && analyticsToggle.checked)));
+      if (btnModalReject) btnModalReject.addEventListener('click', () => saveCookieChoice(false));
+
+      // 9. Копирование координат навигатора
+      const copyBtn = document.getElementById('copy-coords-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(SITE_CONFIG.coordinates).then(() => {
+              const prev = copyBtn.textContent;
+              copyBtn.textContent = 'Скопировано';
+              setTimeout(() => { copyBtn.textContent = prev; }, 2200);
+            }).catch(() => {});
+          }
+        });
+      }
+
+      // 10. Форма заявок (Google Apps Script → Telegram + honeypot + демо-режим)
+      const form = document.getElementById('booking-form');
+      const formErr = document.getElementById('form-error');
+      const formOk = document.getElementById('form-success');
+      const submitBtn = document.getElementById('form-submit-btn');
+
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (formErr) { formErr.classList.add('hidden'); formErr.textContent = ''; }
+          if (formOk) { formOk.classList.add('hidden'); formOk.textContent = ''; }
+
+          const fd = new FormData(form);
+          // Honeypot check
+          if ((fd.get('website') || '').toString().trim() !== '') return;
+
+          const name = (fd.get('name') || '').toString().trim();
+          const phone = (fd.get('phone') || '').toString().trim();
+          const format = (fd.get('format') || '').toString().trim();
+          const guests = (fd.get('guests') || '').toString().trim();
+          const desiredDate = (fd.get('date') || '').toString().trim();
+          const comment = (fd.get('comment') || '').toString().trim();
+          const consent = document.getElementById('lead-consent')?.checked;
+
+          if (!name || phone.replace(/\D/g, '').length < 9) {
+            if (formErr) {
+              formErr.textContent = 'Пожалуйста, укажите ваше имя и корректный номер телефона для обратной связи.';
+              formErr.classList.remove('hidden');
+            }
+            return;
+          }
+          if (!consent) {
+            if (formErr) {
+              formErr.textContent = 'Необходимо отметить согласие на обработку персональных данных (Закон РБ № 99-З).';
+              formErr.classList.remove('hidden');
+            }
+            return;
+          }
+
+          const payload = {
+            brand: SITE_CONFIG.brandName,
+            name,
+            phone,
+            format,
+            guests,
+            desiredDate,
+            comment,
+            submittedAt: new Date().toISOString()
+          };
+
+          if (SITE_CONFIG.demoMode || !SITE_CONFIG.gasWebAppUrl) {
+            if (formOk) {
+              formOk.innerHTML =
+                '<strong>Заявка сформирована (демо-режим).</strong><br>' +
+                `Имя: ${name} · Телефон: ${phone} · Формат: ${format} (${guests}).<br>` +
+                'В боевой версии заявка мгновенно поступает в Telegram владельцу. Сейчас вы можете связаться с усадьбой напрямую по телефону <a href="tel:+375292425425" class="underline font-medium">+375 (29) 242-54-25</a>.';
+              formOk.classList.remove('hidden');
+            }
+            form.reset();
+            return;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправляем заявку...';
+          }
+          try {
+            await fetch(SITE_CONFIG.gasWebAppUrl, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (formOk) {
+              formOk.textContent = 'Спасибо! Ваша заявка отправлена — мы свяжемся с вами в ближайшее время и уточним свободные даты.';
+              formOk.classList.remove('hidden');
+            }
+            form.reset();
+          } catch (err) {
+            if (formErr) {
+              formErr.textContent = 'Не удалось отправить заявку. Пожалуйста, позвоните нам по номеру +375 (29) 242-54-25.';
+              formErr.classList.remove('hidden');
+            }
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Отправить запрос на дату';
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

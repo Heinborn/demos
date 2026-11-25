@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Салон штор «Династия» в Бресте — Авторский пошив, 3D-эскиз, римские шторы и карнизы</title>
+  <meta name="description" content="Салон штор «Династия» в Бресте (ул. Гоголя, 92) с 2009 года. Собственный пошивочный цех, бесплатный выезд дизайнера с образцами тканей, 3D-эскиз, римские и рулонные шторы, плиссе, карнизы и монтаж под ключ." />
+
+  <!-- Google Fonts: Prata (luxury editorial serif) + Jost (architectural geometric sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            atelier: {
+              travertine: '#F6F1EA',
+              linen: '#FCF9F5',
+              sand: '#EDE5D9',
+              hairline: '#DDD3C6',
+              wine: '#5B1B24',
+              wineDeep: '#451219',
+              wineSoft: '#732631',
+              brass: '#B8935A',
+              brassLight: '#D6BC8E',
+              brassDark: '#8A6935',
+              ink: '#231C1A',
+              taupe: '#5E524D',
+              muted: '#877972'
+            }
+          },
+          fontFamily: {
+            serif: ['Prata', 'Georgia', 'serif'],
+            sans: ['Jost', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F6F1EA;
+      color: #231C1A;
+      font-family: 'Jost', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Тонкая текстура травертина */
+    .travertine-grain {
+      background-image: radial-gradient(rgba(35, 28, 26, 0.035) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Архитектурный тонкий скроллбар */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F6F1EA; }
+    ::-webkit-scrollbar-thumb { background: #CBBFA9; }
+    ::-webkit-scrollbar-thumb:hover { background: #5B1B24; }
+
+    /* Деликатные переходы карточек */
+    .atelier-img-zoom {
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .group:hover .atelier-img-zoom {
+      transform: scale(1.04);
+    }
+
+    /* Элегантная рамка двойной нити для акцентов */
+    .brass-double-frame {
+      box-shadow: inset 0 0 0 1px rgba(184, 147, 90, 0.35);
+    }
+
+    /* Плавное появление вкладок галереи */
+    @keyframes fadeUpSoft {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up-soft {
+      animation: fadeUpSoft 0.35s ease forwards;
+    }
+
+    /* Чекбокс Закона № 99-З */
+    .compliance-checkbox {
+      accent-color: #5B1B24;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-atelier-wine selection:text-atelier-linen">
+
+  <!-- ==================== ЕДИНЫЙ КОНФИГ ПРОЕКТА (SITE_CONFIG) ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Салон штор «Династия»',
+      city: 'Брест',
+      address: 'г. Брест, ул. Гоголя, 92, эт. 1',
+      foundedYear: 2009,
+      primaryPhone: '+375 (29) 222-57-91',
+      primaryTelHref: 'tel:+375292225791',
+      secondaryPhone: '+375 (33) 387-48-85',
+      secondaryTelHref: 'tel:+375333874885',
+      viberPhone: '+375292225791',
+      email: 'shtorybrest@mail.ru',
+      instagramHandle: '@shtorybrest.by',
+      instagramUrl: 'https://www.instagram.com/shtorybrest.by/',
+      yandexMapsUrl: 'https://yandex.by/maps/org/dinastiya/113298650929/',
+      // Реальный график с shtorybrest.by: Пн–Пт 10:00–19:00, Сб–Вс 10:00–18:00
+      schedule: {
+        weekday: { open: 10, close: 19 },
+        weekend: { open: 10, close: 18 }
+      },
+      // Google Apps Script для боевой отправки заявок в Telegram (в демке — честный демо-режим)
+      telegramScriptUrl: 'DEMO_MODE',
+      legalEntityPlaceholder: '[Наименование юрлица / ИП]',
+      unnPlaceholder: '[XXXXXXXXX]'
+    };
+  </script>
+
+  <!-- ==================== ШАПКА (СТРОГО 1 СТРОКА НА ДЕСКТОПЕ, МОНОХРОМНАЯ ЛАТУНЬ И БОРДО) ==================== -->
+  <header class="sticky top-0 z-40 bg-atelier-travertine/95 backdrop-blur-md border-b border-atelier-hairline">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-[72px] flex items-center justify-between gap-3">
+
+      <!-- Брендовый знак: современное прочтение фирменной рамки салона «Династия» -->
+      <a href="#top" class="flex items-center gap-3 shrink-0 whitespace-nowrap group" aria-label="Салон штор Династия — на главную">
+        <span class="relative w-9 h-9 border border-atelier-wine/75 flex flex-col items-center justify-center leading-none bg-atelier-linen group-hover:border-atelier-brass transition-colors">
+          <span class="font-serif text-[17px] text-atelier-wine">Д</span>
+          <span class="block w-4 h-[1px] bg-atelier-brass mt-[1px]"></span>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-[19px] sm:text-[21px] tracking-[0.06em] text-atelier-ink">ДИНАСТИЯ</span>
+          <span class="text-[9.5px] uppercase tracking-[0.22em] text-atelier-taupe mt-1">Салон штор · Брест</span>
+        </span>
+      </a>
+
+      <!-- Навигация (строго 1 строка, whitespace-nowrap) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-6 text-[12px] uppercase tracking-[0.14em] font-medium text-atelier-taupe">
+        <a href="#collections" class="whitespace-nowrap hover:text-atelier-wine transition-colors">Коллекции</a>
+        <a href="#fabrics" class="whitespace-nowrap hover:text-atelier-wine transition-colors">Ткани</a>
+        <a href="#portfolio" class="whitespace-nowrap hover:text-atelier-wine transition-colors">Работы</a>
+        <a href="#process" class="whitespace-nowrap hover:text-atelier-wine transition-colors">Этапы</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-atelier-wine transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Правая часть: Живой статус (Europe/Minsk) + Телефон + Монохромные иконки + CTA -->
+      <div class="flex items-center gap-2.5 lg:gap-4 shrink-0">
+        <!-- Живой статус по времени Беларуси -->
+        <div class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 border border-atelier-hairline bg-atelier-linen/90 text-[11px] font-medium text-atelier-taupe whitespace-nowrap" title="Режим работы салона в Бресте (время Europe/Minsk)">
+          <span data-live-dot class="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0"></span>
+          <span data-live-text>Открыто до 19:00</span>
+        </div>
+
+        <!-- Отформатированный телефон (+375) строго в 1 строку -->
+        <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375292225791" class="hidden sm:inline-block text-[13.5px] lg:text-[14px] font-medium tracking-[0.02em] text-atelier-ink hover:text-atelier-wine transition-colors whitespace-nowrap">
+          +375 (29) 222-57-91
+        </a>
+
+        <!-- Деликатные монохромные hairline-иконки (без кричащих пилюль!) -->
+        <div class="hidden lg:flex items-center gap-1.5">
+          <a data-contact="viber" href="viber://chat?number=%2B375292225791" aria-label="Написать в Viber" title="Viber" class="w-8 h-8 border border-atelier-hairline bg-atelier-linen text-atelier-wine hover:border-atelier-wine hover:bg-atelier-wine hover:text-atelier-linen flex items-center justify-center transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+            </svg>
+          </a>
+          <a data-contact="instagram" href="https://www.instagram.com/shtorybrest.by/" target="_blank" rel="noopener noreferrer" aria-label="Instagram салона Династия" title="Instagram @shtorybrest.by" class="w-8 h-8 border border-atelier-hairline bg-atelier-linen text-atelier-wine hover:border-atelier-wine hover:bg-atelier-wine hover:text-atelier-linen flex items-center justify-center transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Строгая архитектурная кнопка записи -->
+        <a href="#booking" class="hidden md:inline-flex items-center px-4 py-2 bg-atelier-wine hover:bg-atelier-wineDeep text-atelier-linen text-[11.5px] uppercase tracking-[0.14em] font-medium transition-colors whitespace-nowrap">
+          Выезд дизайнера
+        </a>
+
+        <!-- Мобильный статус + звонок + меню -->
+        <div class="flex xl:hidden items-center gap-2">
+          <a data-contact="phonePrimary" href="tel:+375292225791" aria-label="Позвонить в салон" class="sm:hidden w-9 h-9 border border-atelier-hairline bg-atelier-linen text-atelier-wine flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </a>
+          <button id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" class="w-9 h-9 border border-atelier-hairline bg-atelier-linen text-atelier-ink flex items-center justify-center hover:border-atelier-wine transition-colors">
+            <svg id="burgerIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="burgerIconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Выпадающее мобильное меню -->
+    <div id="mobileMenuPanel" class="hidden xl:hidden border-t border-atelier-hairline bg-atelier-linen px-4 py-5 space-y-4">
+      <div class="flex items-center justify-between text-xs text-atelier-taupe pb-3 border-b border-atelier-hairline">
+        <span class="inline-flex items-center gap-1.5 font-medium">
+          <span data-live-dot class="w-2 h-2 rounded-full bg-emerald-700"></span>
+          <span data-live-text>Открыто до 19:00</span>
+        </span>
+        <span>ул. Гоголя, 92 · Брест</span>
+      </div>
+      <nav class="grid grid-cols-2 gap-2.5 text-sm font-medium text-atelier-ink">
+        <a href="#selector" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Подбор за 2 шага</a>
+        <a href="#collections" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Коллекции</a>
+        <a href="#fabrics" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Ткани с фабрик</a>
+        <a href="#portfolio" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Наши работы</a>
+        <a href="#process" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Как работаем</a>
+        <a href="#contacts" class="mobile-nav-link py-2 px-3 bg-atelier-travertine border border-atelier-hairline">Контакты</a>
+      </nav>
+      <div class="pt-2 flex flex-col gap-2">
+        <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375292225791" class="text-center py-2.5 border border-atelier-hairline text-sm font-medium text-atelier-ink">
+          +375 (29) 222-57-91
+        </a>
+        <a href="#booking" class="mobile-nav-link text-center py-3 bg-atelier-wine text-atelier-linen text-xs uppercase tracking-[0.16em] font-medium">
+          Пригласить дизайнера с образцами
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ==================== HERO: ARCHITECTURAL LOOKBOOK BAND ==================== -->
+    <section class="travertine-grain pt-3 sm:pt-5 pb-10 sm:pb-14 border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Верхняя редакционная микро-строка (lookbook masthead) -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-atelier-taupe">
+          <div class="flex items-center gap-2.5">
+            <span class="w-5 h-[1px] bg-atelier-brass inline-block"></span>
+            <span>Брест · ул. Гоголя, 92 · С 2009 года</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-4">
+            <span>Собственный пошивочный цех</span>
+            <span class="text-atelier-brass">◆</span>
+            <span>Рассрочка 0% до 3 месяцев</span>
+          </div>
+        </div>
+
+        <!-- Единая архитектурная полоса лукбука: вертикальная бархатно-винная панель ателье + полноформатное фото -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[580px] border border-[#CFC3B3] bg-atelier-wine overflow-hidden">
+
+          <!-- Левая редакционная панель в благородном бордо (#5B1B24) с тонкими латунными линиями -->
+          <div class="lg:col-span-5 order-2 lg:order-1 relative p-5 sm:p-7 lg:p-9 xl:p-10 flex flex-col justify-between bg-atelier-wine text-atelier-linen">
+            <!-- Тонкая внутренняя латунная рамка-нить -->
+            <div class="pointer-events-none absolute inset-2.5 sm:inset-3 border border-atelier-brass/25"></div>
+
+            <div class="relative z-10">
+              <div class="flex items-center gap-2.5 text-[10px] sm:text-[10.5px] uppercase tracking-[0.22em] text-atelier-brassLight font-medium">
+                <span>Текстильное ателье · Брест</span>
+              </div>
+
+              <h1 class="mt-2.5 sm:mt-3 font-serif text-[27px] sm:text-[36px] lg:text-[40px] xl:text-[44px] leading-[1.12] tracking-[0.01em] text-atelier-linen">
+                Авторский пошив штор под ваш интерьер
+              </h1>
+
+              <div class="mt-3.5 sm:mt-4 w-14 h-[1px] bg-atelier-brass"></div>
+
+              <!-- 3 ключевых преимущества оригинала в благородной редакции -->
+              <ul class="mt-3.5 sm:mt-4 space-y-2.5 sm:space-y-3 text-[12.5px] sm:text-[13.5px] lg:text-[14px] leading-snug text-atelier-linen/90">
+                <li class="flex items-start gap-2.5 sm:gap-3">
+                  <span class="text-atelier-brassLight text-xs mt-0.5 shrink-0">01</span>
+                  <span><strong class="font-medium text-white">Собственный цех:</strong> ручная закладка складок — шторы держат геометрию без поправки после стирки.</span>
+                </li>
+                <li class="flex items-start gap-2.5 sm:gap-3">
+                  <span class="text-atelier-brassLight text-xs mt-0.5 shrink-0">02</span>
+                  <span><strong class="font-medium text-white">Бесплатный выезд дизайнера</strong> с каталогами тканей — подбор оттенков при вашем освещении.</span>
+                </li>
+                <li class="flex items-start gap-2.5 sm:gap-3">
+                  <span class="text-atelier-brassLight text-xs mt-0.5 shrink-0">03</span>
+                  <span><strong class="font-medium text-white">Эскиз и 3D-визуализация</strong> будущего оформления окна до начала раскроя.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Две утончённые кнопки без визуального шума -->
+            <div class="relative z-10 mt-4 sm:mt-6 pt-4 border-t border-atelier-brass/25 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+              <a href="#booking" class="inline-flex items-center justify-center px-5 py-3 bg-atelier-linen hover:bg-atelier-sand text-atelier-wine text-[11.5px] uppercase tracking-[0.14em] font-semibold transition-colors whitespace-nowrap">
+                Пригласить дизайнера
+              </a>
+              <a href="#selector" class="inline-flex items-center justify-center px-5 py-3 border border-atelier-brass/65 hover:bg-atelier-brass/15 text-atelier-linen text-[11.5px] uppercase tracking-[0.14em] font-medium transition-colors whitespace-nowrap">
+                Подобрать за 2 шага
+              </a>
+            </div>
+          </div>
+
+          <!-- Правая панорамная фотография интерьерного лукбука (на мобильном — сверху для мгновенного визуала!) -->
+          <div class="lg:col-span-7 order-1 lg:order-2 relative h-[195px] sm:h-[300px] lg:h-full bg-atelier-ink overflow-hidden group">
+            <img
+              src="https://images.unsplash.com/photo-1615875474908-f403116f5287?auto=format&fit=crop&w=1600&q=85"
+              alt="Светлый интерьер с высокими льняными портьерами в пол и естественным дневным светом"
+              class="w-full h-full object-cover object-center atelier-img-zoom"
+            />
+            <!-- Деликатный градиент снизу для читаемости подписи -->
+            <div class="absolute inset-0 bg-gradient-to-t from-atelier-ink/60 via-transparent to-transparent"></div>
+
+            <!-- Редакционная бирка лукбука внизу слева (никогда не перекрывается cookie-баннером справа!) -->
+            <div class="hidden sm:block absolute bottom-5 left-5 bg-atelier-ink/85 backdrop-blur-md border-l-2 border-atelier-brass px-4 py-3 text-atelier-linen max-w-xs">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-atelier-brassLight">Портьеры · Тюль · Римские · Карнизы</div>
+              <div class="mt-1 text-xs text-atelier-linen/95 leading-snug">
+                От замера и подбора фабричных тканей до монтажа карнизов и навески в Бресте
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Архитектурная 4-колоночная строка фактов прямо под лукбуком -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 bg-atelier-linen border-x border-b border-[#CFC3B3] divide-y sm:divide-y-0 divide-atelier-hairline lg:divide-x">
+          <div class="p-3.5 sm:p-4 lg:p-5">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-atelier-brassDark font-medium">Опыт с 2009 года</div>
+            <div class="mt-1 text-xs sm:text-[13px] text-atelier-ink leading-snug">Несколько поколений текстильных дизайнеров в Бресте</div>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5 border-l border-atelier-hairline lg:border-l-0">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-atelier-brassDark font-medium">Ткани с фабрик</div>
+            <div class="mt-1 text-xs sm:text-[13px] text-atelier-ink leading-snug">Лён, бархат, шенилл, канвас и тюль в наличии и под заказ</div>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-atelier-brassDark font-medium">Всё под ключ</div>
+            <div class="mt-1 text-xs sm:text-[13px] text-atelier-ink leading-snug">Замер, 3D-эскиз, пошив, установка карнизов, навеска и химчистка</div>
+          </div>
+          <div class="p-3.5 sm:p-4 lg:p-5 border-l border-atelier-hairline lg:border-l-0">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-atelier-brassDark font-medium">Рассрочка 0%</div>
+            <div class="mt-1 text-xs sm:text-[13px] text-atelier-ink leading-snug">Без процентов и переплат на срок до 3 месяцев</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МИНИ-ИНТЕРАКТИВ ЗА 2 КЛИКА (БЕЗ КАЛЬКУЛЯТОРА ЦЕН) ==================== -->
+    <section id="selector" class="py-14 sm:py-20 bg-atelier-linen border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">
+            <span class="w-5 h-[1px] bg-atelier-brass"></span>
+            <span>Подбор за 2 шага</span>
+          </div>
+          <h2 class="mt-2.5 font-serif text-[28px] sm:text-[36px] leading-[1.18] text-atelier-ink">
+            Подскажите задачу — дизайнер привезёт нужные каталоги тканей
+          </h2>
+          <p class="mt-2.5 text-sm sm:text-[15px] text-atelier-taupe leading-relaxed">
+            Выберите помещение и удобный формат встречи: мы сразу подготовим образцы по вашей задаче и передадим выбор в форму заявки.
+          </p>
+        </div>
+
+        <div class="mt-8 bg-atelier-travertine border border-atelier-hairline p-5 sm:p-8 lg:p-10">
+          <!-- Шаг 1 -->
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-xs uppercase tracking-[0.18em] text-atelier-wine font-semibold">Шаг 1 из 2 · Что оформляем?</span>
+              <span class="text-xs text-atelier-muted hidden sm:inline">Нажмите на подходящий вариант</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5" role="radiogroup" aria-label="Выбор типа оформления">
+              <button type="button" data-step1="Гостиная или спальня (портьеры, тюль, покрывала)" class="step1-btn text-left p-5 bg-atelier-linen border-2 border-atelier-wine transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-atelier-brassDark font-medium">01</span>
+                  <span class="step-indicator w-4 h-4 rounded-full border border-atelier-wine bg-atelier-wine flex items-center justify-center text-[10px] text-white">✓</span>
+                </div>
+                <div class="mt-3 font-serif text-[19px] text-atelier-ink leading-snug">Гостиная или спальня</div>
+                <p class="mt-1.5 text-xs text-atelier-taupe leading-relaxed">Портьеры с авторской складкой, воздушный тюль, покрывала и подушки</p>
+              </button>
+
+              <button type="button" data-step1="Кухня или детская (римские шторы, лён, тюль)" class="step1-btn text-left p-5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-brass transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-atelier-brassDark font-medium">02</span>
+                  <span class="step-indicator w-4 h-4 rounded-full border border-atelier-hairline flex items-center justify-center text-[10px] text-transparent">✓</span>
+                </div>
+                <div class="mt-3 font-serif text-[19px] text-atelier-ink leading-snug">Кухня или детская</div>
+                <p class="mt-1.5 text-xs text-atelier-taupe leading-relaxed">Римские шторы на проём или створку, структурный лён и практичный уход</p>
+              </button>
+
+              <button type="button" data-step1="Рулонные, плиссе «соты» и жалюзи" class="step1-btn text-left p-5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-brass transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-atelier-brassDark font-medium">03</span>
+                  <span class="step-indicator w-4 h-4 rounded-full border border-atelier-hairline flex items-center justify-center text-[10px] text-transparent">✓</span>
+                </div>
+                <div class="mt-3 font-serif text-[19px] text-atelier-ink leading-snug">Рулонные и плиссе</div>
+                <p class="mt-1.5 text-xs text-atelier-taupe leading-relaxed">Системы «День-Ночь», блэкаут плиссе на балкон, деревянные жалюзи 25 мм</p>
+              </button>
+
+              <button type="button" data-step1="Карнизы и текстиль под ключ (включая электрокарнизы)" class="step1-btn text-left p-5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-brass transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-atelier-brassDark font-medium">04</span>
+                  <span class="step-indicator w-4 h-4 rounded-full border border-atelier-hairline flex items-center justify-center text-[10px] text-transparent">✓</span>
+                </div>
+                <div class="mt-3 font-serif text-[19px] text-atelier-ink leading-snug">Карнизы и текстиль под ключ</div>
+                <p class="mt-1.5 text-xs text-atelier-taupe leading-relaxed">Потолочные, гибкие, металлические, электрокарнизы, монтаж и навеска</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div class="mt-7 pt-7 border-t border-atelier-hairline">
+            <div class="text-xs uppercase tracking-[0.18em] text-atelier-wine font-semibold mb-4">Шаг 2 из 2 · Удобный формат консультации</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" role="radiogroup" aria-label="Формат встречи">
+              <button type="button" data-step2="Бесплатный выезд дизайнера с образцами на объект" class="step2-btn text-left p-5 bg-atelier-linen border-2 border-atelier-wine transition-all flex items-start justify-between gap-4">
+                <div>
+                  <div class="font-serif text-[18px] text-atelier-ink">Бесплатный выезд дизайнера с образцами</div>
+                  <p class="mt-1 text-xs text-atelier-taupe">Приедем на объект в Бресте, снимем точные замеры, сделаем фото и подберём ткани к свету комнаты</p>
+                </div>
+                <span class="step2-indicator w-5 h-5 rounded-full border border-atelier-wine bg-atelier-wine flex items-center justify-center text-[11px] text-white shrink-0 mt-0.5">✓</span>
+              </button>
+
+              <button type="button" data-step2="Встреча с дизайнером в салоне на ул. Гоголя, 92" class="step2-btn text-left p-5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-brass transition-all flex items-start justify-between gap-4">
+                <div>
+                  <div class="font-serif text-[18px] text-atelier-ink">Встреча в салоне на ул. Гоголя, 92</div>
+                  <p class="mt-1 text-xs text-atelier-taupe">Спокойно посмотрите складские ткани и заказные каталоги в салоне — работаем ежедневно</p>
+                </div>
+                <span class="step2-indicator w-5 h-5 rounded-full border border-atelier-hairline flex items-center justify-center text-[11px] text-transparent shrink-0 mt-0.5">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Итоговая строка + перенос в форму -->
+          <div class="mt-7 pt-6 border-t border-atelier-hairline flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="text-sm text-atelier-ink">
+              <span class="text-xs uppercase tracking-[0.14em] text-atelier-muted block">Ваш выбор:</span>
+              <span id="selectorSummaryText" class="font-medium text-atelier-wine">Гостиная или спальня (портьеры, тюль, покрывала) · Бесплатный выезд дизайнера с образцами на объект</span>
+            </div>
+            <button type="button" id="applySelectionBtn" class="px-6 py-3.5 bg-atelier-wine hover:bg-atelier-wineDeep text-atelier-linen text-xs uppercase tracking-[0.15em] font-medium transition-colors whitespace-nowrap shrink-0">
+              Передать выбор дизайнеру →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== НАПРАВЛЕНИЯ САЛОНА (ЖУРНАЛЬНАЯ АСИММЕТРИЧНАЯ СЕТКА) ==================== -->
+    <section id="collections" class="py-16 sm:py-24 bg-atelier-travertine border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">
+              <span class="w-5 h-[1px] bg-atelier-brass"></span>
+              <span>Коллекции и услуги</span>
+            </div>
+            <h2 class="mt-2.5 font-serif text-[30px] sm:text-[40px] leading-[1.15] text-atelier-ink">
+              Комплексное текстильное оформление окон и комнат
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-atelier-taupe max-w-sm leading-relaxed">
+            Стоимость рассчитывается индивидуально после замера и выбора тканей — без скрытых доплат, с возможностью рассрочки 0% до 3 месяцев.
+          </p>
+        </div>
+
+        <!-- 4 крупных журнальных направления + 1 широкая сервисная полоса -->
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6">
+
+          <!-- 01: Портьеры и тюль (крупная) -->
+          <article class="md:col-span-7 bg-atelier-linen border border-atelier-hairline flex flex-col group overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden bg-atelier-sand">
+              <img
+                src="https://images.unsplash.com/photo-1616486701797-0f33f61038ec?auto=format&fit=crop&w=1200&q=85"
+                alt="Авторские портьеры и тюль для гостиной с идеальной вертикальной складкой"
+                class="w-full h-full object-cover atelier-img-zoom"
+                loading="lazy"
+              />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 bg-atelier-ink/80 text-atelier-brassLight text-[10.5px] uppercase tracking-[0.18em]">01 · Собственный цех</span>
+            </div>
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-[23px] sm:text-[26px] text-atelier-ink leading-snug">Авторские портьеры и тюль</h3>
+                <p class="mt-2.5 text-sm text-atelier-taupe leading-relaxed">
+                  Индивидуальный пошив для гостиных, спален, детских и сложных скошенных окон. Ручная закладка бантовых и тройных складок, оформление на люверсах, декоративная отделка сутажной лентой и подхватами — складки держат форму без поправки.
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-atelier-hairline flex items-center justify-between text-xs">
+                <span class="text-atelier-muted">3D-эскиз до раскроя</span>
+                <button type="button" data-quick-topic="Авторские портьеры и тюль под заказ" class="font-medium uppercase tracking-[0.14em] text-atelier-wine hover:text-atelier-brassDark transition-colors">
+                  Запросить подбор →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02: Спальни, затемнение и текстиль -->
+          <article class="md:col-span-5 bg-atelier-linen border border-atelier-hairline flex flex-col group overflow-hidden">
+            <div class="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden bg-atelier-sand">
+              <img
+                src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=85"
+                alt="Спальня с плотными портьерами затемнения и интерьерным текстилем"
+                class="w-full h-full object-cover atelier-img-zoom"
+                loading="lazy"
+              />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 bg-atelier-ink/80 text-atelier-brassLight text-[10.5px] uppercase tracking-[0.18em]">02 · Спальни и отели</span>
+            </div>
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-[23px] text-atelier-ink leading-snug">Плотные шторы, покрывала и подушки</h3>
+                <p class="mt-2.5 text-sm text-atelier-taupe leading-relaxed">
+                  Светонепроницаемые портьеры для спокойного сна в спальне и единый текстильный ансамбль: стёганые покрывала на синтепоне и подкладке, декоративные подушки и наволочки из тех же коллекций тканей.
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-atelier-hairline flex items-center justify-between text-xs">
+                <span class="text-atelier-muted">Затемнение от 80%</span>
+                <button type="button" data-quick-topic="Шторы и покрывало в спальню под заказ" class="font-medium uppercase tracking-[0.14em] text-atelier-wine hover:text-atelier-brassDark transition-colors">
+                  Запросить подбор →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03: Римские, рулонные, плиссе и жалюзи -->
+          <article class="md:col-span-6 bg-atelier-linen border border-atelier-hairline flex flex-col group overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden bg-atelier-sand">
+              <img
+                src="https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=1200&q=85"
+                alt="Солнцезащитные системы, римские шторы и жалюзи в светлой гостиной"
+                class="w-full h-full object-cover atelier-img-zoom"
+                loading="lazy"
+              />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 bg-atelier-ink/80 text-atelier-brassLight text-[10.5px] uppercase tracking-[0.18em]">03 · Солнцезащита</span>
+            </div>
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-[23px] text-atelier-ink leading-snug">Римские, рулонные шторы, плиссе и жалюзи</h3>
+                <p class="mt-2.5 text-sm text-atelier-taupe leading-relaxed">
+                  Римские шторы на створку окна и на проём (одинарные, двойные, с бахромой и дотачками), рулонные системы «День-Ночь», шторы плиссе «соты» блэкаут для балконов, а также деревянные (25 мм) и вертикальные жалюзи.
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-atelier-hairline flex items-center justify-between text-xs">
+                <span class="text-atelier-muted">Замер и монтаж под ключ</span>
+                <button type="button" data-quick-topic="Римские, рулонные шторы или плиссе" class="font-medium uppercase tracking-[0.14em] text-atelier-wine hover:text-atelier-brassDark transition-colors">
+                  Запросить подбор →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04: Карнизы, электрокарнизы и монтаж -->
+          <article class="md:col-span-6 bg-atelier-linen border border-atelier-hairline flex flex-col group overflow-hidden">
+            <div class="relative aspect-[16/10] overflow-hidden bg-atelier-sand">
+              <img
+                src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=85"
+                alt="Скрытые и декоративные карнизы с высокими портьерами в спальне"
+                class="w-full h-full object-cover atelier-img-zoom"
+                loading="lazy"
+              />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 bg-atelier-ink/80 text-atelier-brassLight text-[10.5px] uppercase tracking-[0.18em]">04 · Карнизы и монтаж</span>
+            </div>
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-[23px] text-atelier-ink leading-snug">Карнизы, электрокарнизы и навеска</h3>
+                <p class="mt-2.5 text-sm text-atelier-taupe leading-relaxed">
+                  Потолочные, алюминиевые профильные, металлические, гибкие карнизы для эркеров, карнизы «кафе» и моторизованные электрокарнизы. Выполняем доставку, профессиональный монтаж, отпаривание и навеску готовых штор.
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-atelier-hairline flex items-center justify-between text-xs">
+                <span class="text-atelier-muted">Монтаж любой сложности</span>
+                <button type="button" data-quick-topic="Подбор и монтаж карнизов / электрокарнизов" class="font-medium uppercase tracking-[0.14em] text-atelier-wine hover:text-atelier-brassDark transition-colors">
+                  Запросить подбор →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05: Деликатная сервисная полоса (Химчистка + Аксессуары) -->
+          <div class="md:col-span-12 bg-atelier-linen border border-atelier-hairline p-6 sm:p-7 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+              <span class="w-12 h-12 border border-atelier-brass/60 bg-atelier-travertine text-atelier-wine flex items-center justify-center shrink-0 font-serif text-lg">05</span>
+              <div>
+                <h3 class="font-serif text-[21px] text-atelier-ink">Аксессуары для штор и бережная химчистка текстиля</h3>
+                <p class="mt-1 text-sm text-atelier-taupe max-w-3xl">
+                  Подхваты, бахрома, тесьма, магниты и декоративная фурнитура в тон ткани, а также помощь с химчисткой и уходом за шторами после установки — чтобы изделия сохраняли первоначальный вид годами.
+                </p>
+              </div>
+            </div>
+            <a data-contact="phonePrimary" href="tel:+375292225791" class="inline-flex items-center justify-center px-5 py-3 border border-atelier-wine text-atelier-wine hover:bg-atelier-wine hover:text-atelier-linen text-xs uppercase tracking-[0.14em] font-medium transition-colors whitespace-nowrap shrink-0">
+              Уточнить по химчистке
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== БИБЛИОТЕКА ТКАНЕЙ (РЕАЛЬНЫЙ АССОРТИМЕНТ SHTORYBREST.BY/FABRICS) ==================== -->
+    <section id="fabrics" class="py-16 sm:py-24 bg-atelier-ink text-atelier-linen border-b border-atelier-brass/20">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-brassLight font-medium">
+              <span class="w-5 h-[1px] bg-atelier-brass"></span>
+              <span>Материалы напрямую с фабрик</span>
+            </div>
+            <h2 class="mt-2.5 font-serif text-[30px] sm:text-[40px] leading-[1.15] text-atelier-linen">
+              Складская палитра и заказные коллекции тканей
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-atelier-linen/70 max-w-md leading-relaxed">
+            Ключевые портьерные и тюлевые позиции в наличии на складе в Бресте — без долгого ожидания поставки. Для индивидуальных проектов открыта палеточная программа под заказ, включая негорючие ткани для общественных помещений.
+          </p>
+        </div>
+
+        <!-- 6 карточек реальных фактур с визуальными «образцами-свотчами» -->
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Структурный лён -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#DDD5C7] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#BFB39F] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#8B7D6B] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">Двустороннее полотно</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Структурный лён</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Классическое льняное плетение с деликатной белой нитью сохраняет глубину оттенка даже в комнатах с мягким светом. Не имеет явной изнанки, держит форму и устойчив к выгоранию — безупречен для римских штор.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Сложные природные оттенки
+            </div>
+          </div>
+
+          <!-- Портьерный канвас -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#7A6F67] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#5B1B24] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#3E4C46] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">&gt; 650 г/м · 300+ см</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Портьерный канвас</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Самая востребованная портьерная ткань со складской палитрой. Закрывает солнечный свет более чем на 80%, устойчива к затяжкам и катышкам, держит ровную складку на любой шторной ленте.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Большая гамма уже на складе
+            </div>
+          </div>
+
+          <!-- Плотный шенилл -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#8D7D71] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#5D4F47] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#3B3330] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">&gt; 1000 г/м · 280 см</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Плотный шенилл</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Сложное полотно из нитей предварительной окраски (до 3 оттенков в одной нити), благодаря чему ткань естественно подстраивается под интерьер. Подходит для светонепроницаемых портьер, покрывал и чехлов.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Максимальная плотность и акустика
+            </div>
+          </div>
+
+          <!-- Матовый нубук / замша -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#C8BFB3] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#928F8B] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#5A5958] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">Высокая износостойкость</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Матовый нубук и замша</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Пластичное матовое полотно, которое аккуратно собирается в мелкую структурную складку — находка для компактных комнат. В наличии более 5 оттенков серого, холодный беж и выразительные акценты.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Компактная структурная складка
+            </div>
+          </div>
+
+          <!-- Портьерный бархат -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#5B1B24] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#243B38] border border-white/25"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#7A5E42] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">Глубокая драпировка</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Портьерный бархат</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Бархатистая тактильная поверхность с мягкой игрой света в глубоких складках. Создаёт статусный, тёплый акцент в гостиной, спальне или классическом кабинете.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Премиальная фактура ворса
+            </div>
+          </div>
+
+          <!-- Тюлевые коллекции -->
+          <div class="p-6 bg-[#2C2421] border border-atelier-brass/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="w-5 h-5 rounded-full bg-[#FFFFFF] border border-white/40"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#F5F0E6] border border-white/30"></span>
+                  <span class="w-5 h-5 rounded-full bg-[#E6DFD3] border border-white/25"></span>
+                </div>
+                <span class="text-[10.5px] uppercase tracking-[0.16em] text-atelier-brassLight">Новые поступления</span>
+              </div>
+              <h3 class="mt-4 font-serif text-[22px] text-white">Тюль: Krep, Batist, Kare Sable</h3>
+              <p class="mt-2 text-xs sm:text-[13.5px] text-atelier-linen/75 leading-relaxed">
+                Коллекции фабричного тюля <em>Krep</em>, <em>Kare Sable</em>, <em>Effe</em>, <em>Batist 01/02</em> (белый и молочный) и <em>Neps</em>. Мягко рассеивают дневной свет и красиво ложатся на бантовую складку.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 text-[11px] uppercase tracking-[0.14em] text-atelier-brassLight/90">
+              Воздушность и чистый оттенок
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== РЕАЛЬНЫЕ РАБОТЫ САЛОНА «ДИНАСТИЯ» С ФИЛЬТРОМ И ЛАЙТБОКСОМ ==================== -->
+    <section id="portfolio" class="py-16 sm:py-24 bg-atelier-linen border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">
+              <span class="w-5 h-[1px] bg-atelier-brass"></span>
+              <span>Реальные проекты из Бреста</span>
+            </div>
+            <h2 class="mt-2.5 font-serif text-[30px] sm:text-[40px] leading-[1.15] text-atelier-ink">
+              Избранные работы салона «Династия»
+            </h2>
+          </div>
+
+          <!-- Фильтр категорий галереи -->
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Фильтр портфолио">
+            <button type="button" data-filter="all" class="portfolio-filter-btn px-4 py-2 text-xs uppercase tracking-[0.13em] font-medium border border-atelier-wine bg-atelier-wine text-atelier-linen transition-colors">
+              Все работы
+            </button>
+            <button type="button" data-filter="drapes" class="portfolio-filter-btn px-4 py-2 text-xs uppercase tracking-[0.13em] font-medium border border-atelier-hairline bg-atelier-travertine text-atelier-taupe hover:border-atelier-wine transition-colors">
+              Портьеры и спальни
+            </button>
+            <button type="button" data-filter="roman" class="portfolio-filter-btn px-4 py-2 text-xs uppercase tracking-[0.13em] font-medium border border-atelier-hairline bg-atelier-travertine text-atelier-taupe hover:border-atelier-wine transition-colors">
+              Римские и плиссе
+            </button>
+            <button type="button" data-filter="detail" class="portfolio-filter-btn px-4 py-2 text-xs uppercase tracking-[0.13em] font-medium border border-atelier-hairline bg-atelier-travertine text-atelier-taupe hover:border-atelier-wine transition-colors">
+              Детали пошива
+            </button>
+          </div>
+        </div>
+
+        <!-- Редакционная сетка реальных работ с shtorybrest.by -->
+        <div id="portfolioGrid" class="mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+
+          <button type="button" data-cat="drapes" data-lightbox-src="https://static.tildacdn.net/tild6435-3036-4965-a164-333330623461/photo_2024-06-26_20-.jpg" data-lightbox-caption="Гостиная с авторской закладкой складок на скрытом карнизе · Реальная работа салона «Династия»" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild6435-3036-4965-a164-333330623461/photo_2024-06-26_20-.jpg" alt="Портьеры и тюль в гостиной с ровной вертикальной складкой" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Портьеры и тюль</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Гостиная со скрытым карнизом</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="drapes" data-lightbox-src="https://static.tildacdn.net/tild3362-3564-4337-b338-323836303538/photo_2024-01-19_20-.jpg" data-lightbox-caption="Спальня под ключ: портьеры в пол, воздушный тюль и стёганое покрывало на синтепоне и подкладке · Салон «Династия»" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild3362-3564-4337-b338-323836303538/photo_2024-01-19_20-.jpg" alt="Спальня с портьерами и стёганым покрывалом на заказ" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Спальня под ключ</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Портьеры и стёганое покрывало</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="detail" data-lightbox-src="https://static.tildacdn.net/tild6536-6537-4938-b732-373034626231/32_1.jpg" data-lightbox-caption="Авторский пошив собственного цеха: ровная ручная складка и дизайнерский подхват с золотистым кантом" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild6536-6537-4938-b732-373034626231/32_1.jpg" alt="Крупный план ручной складки и дизайнерского подхвата с кантом" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Собственный цех</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Ручная складка и подхват с кантом</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="roman" data-lightbox-src="https://static.tildacdn.net/tild3239-3535-4166-a564-373331396332/3__2.jpg" data-lightbox-caption="Белая льняная римская штора с контрастной декоративной каймой по периметру · Пошив в салоне «Династия»" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild3239-3535-4166-a564-373331396332/3__2.jpg" alt="Белая льняная римская штора с контрастной декоративной каймой" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Римские шторы</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Льняная римская штора с каймой</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="drapes" data-lightbox-src="https://static.tildacdn.net/tild3665-6637-4835-a534-653932633663/photo_2024-01-13_14-.jpg" data-lightbox-caption="Текстильное оформление спальни: плотные портьеры в пол, покрывало и декоративные подушки" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild3665-6637-4835-a534-653932633663/photo_2024-01-13_14-.jpg" alt="Спальня с портьерами, покрывалом и подушками" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Интерьерный текстиль</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Ансамбль для спальни в тёплых тонах</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="roman" data-lightbox-src="https://static.tildacdn.net/tild3563-3136-4232-b433-313035303164/___.jpg" data-lightbox-caption="Лёгкие полупрозрачные римские шторы на створки окна и балконную дверь для кухни" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild3563-3136-4232-b433-313035303164/___.jpg" alt="Полупрозрачные римские шторы на створки окна и балконную дверь" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">На створки окна</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Римские шторы на балконную дверь</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="roman" data-lightbox-src="https://static.tildacdn.net/tild6438-3838-4035-b330-633361336535/___.jpg" data-lightbox-caption="Чёрные шторы плиссе из ткани «соты» блэкаут на панорамный балкон" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild6438-3838-4035-b330-633361336535/___.jpg" alt="Чёрные шторы плиссе соты блэкаут на панорамных окнах балкона" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Плиссе блэкаут</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Шторы плиссе «соты» на балкон</span>
+            </span>
+          </button>
+
+          <button type="button" data-cat="detail" data-lightbox-src="https://static.tildacdn.net/tild6533-6534-4233-a631-356662353030/22_7_1.jpg" data-lightbox-caption="Панорамное остекление с воздушным тюлем на бантовой складке · Салон «Династия»" class="portfolio-item group relative aspect-[4/5] bg-atelier-sand overflow-hidden text-left border border-atelier-hairline focus:outline-none focus:ring-2 focus:ring-atelier-wine">
+            <img src="https://static.tildacdn.net/tild6533-6534-4233-a631-356662353030/22_7_1.jpg" alt="Воздушный тюль на панорамных окнах" class="w-full h-full object-cover atelier-img-zoom" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-atelier-ink/80 via-atelier-ink/10 to-transparent"></span>
+            <span class="absolute inset-x-0 bottom-0 p-4 text-atelier-linen">
+              <span class="block text-[10px] uppercase tracking-[0.16em] text-atelier-brassLight">Панорамные окна</span>
+              <span class="mt-1 block font-serif text-[17px] leading-snug">Воздушный тюль на бантовой складке</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="mt-7 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-atelier-taupe">
+          <span>Нажмите на любую фотографию, чтобы рассмотреть детали пошива в полном размере.</span>
+          <a data-contact="instagram" href="https://www.instagram.com/shtorybrest.by/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-medium text-atelier-wine hover:text-atelier-brassDark transition-colors">
+            Ещё больше новинок и акций в Instagram @shtorybrest.by →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЭТАПЫ РАБОТЫ + СОТРУДНИЧЕСТВО ДЛЯ ДИЗАЙНЕРОВ И ОРГАНИЗАЦИЙ ==================== -->
+    <section id="process" class="py-16 sm:py-24 bg-atelier-travertine border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">
+            <span class="w-5 h-[1px] bg-atelier-brass"></span>
+            <span>Как мы работаем</span>
+          </div>
+          <h2 class="mt-2.5 font-serif text-[30px] sm:text-[40px] leading-[1.15] text-atelier-ink">
+            От первого замера до идеальной навески
+          </h2>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="pt-5 border-t-2 border-atelier-wine">
+            <div class="font-serif text-[32px] text-atelier-wine leading-none">01</div>
+            <h3 class="mt-3 font-serif text-[20px] text-atelier-ink">Выезд дизайнера</h3>
+            <p class="mt-2 text-sm text-atelier-taupe leading-relaxed">
+              Бесплатно приезжаем на объект с образцами тканей и карнизов. Делаем фотосъёмку, точные замеры и обсуждаем стиль комнаты.
+            </p>
+          </div>
+          <div class="pt-5 border-t border-atelier-brass">
+            <div class="font-serif text-[32px] text-atelier-brassDark leading-none">02</div>
+            <h3 class="mt-3 font-serif text-[20px] text-atelier-ink">Эскиз и 3D-визуализация</h3>
+            <p class="mt-2 text-sm text-atelier-taupe leading-relaxed">
+              Создаём эскиз и 3D-эскиз будущего окна, согласовываем ткани, фурнитуру и смету. При желании оформляем рассрочку 0% до 3 месяцев.
+            </p>
+          </div>
+          <div class="pt-5 border-t border-atelier-brass">
+            <div class="font-serif text-[32px] text-atelier-brassDark leading-none">03</div>
+            <h3 class="mt-3 font-serif text-[20px] text-atelier-ink">Пошив в своём цеху</h3>
+            <p class="mt-2 text-sm text-atelier-taupe leading-relaxed">
+              Отшиваем заказ в собственном пошивочном цеху с ручной закладкой складок и контролем каждого шва без посредников.
+            </p>
+          </div>
+          <div class="pt-5 border-t border-atelier-brass">
+            <div class="font-serif text-[32px] text-atelier-brassDark leading-none">04</div>
+            <h3 class="mt-3 font-serif text-[20px] text-atelier-ink">Монтаж и навеска</h3>
+            <p class="mt-2 text-sm text-atelier-taupe leading-relaxed">
+              Доставляем изделия, монтируем карнизы любой сложности, бережно отпариваем и развешиваем шторы до готового вида.
+            </p>
+          </div>
+        </div>
+
+        <!-- Редакционный бордовый блок: Дизайнерам интерьеров, архитекторам и организациям -->
+        <div class="mt-14 bg-atelier-wine text-atelier-linen p-7 sm:p-10 lg:p-12 brass-double-frame grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <div class="text-[11px] uppercase tracking-[0.2em] text-atelier-brassLight font-medium">
+              Партнёрам и корпоративным заказчикам
+            </div>
+            <h3 class="mt-2.5 font-serif text-[26px] sm:text-[32px] leading-[1.2] text-white">
+              Сотрудничество для дизайнеров интерьеров, архитекторов и организаций
+            </h3>
+            <p class="mt-3 text-sm text-atelier-linen/85 leading-relaxed max-w-2xl">
+              Работаем с частными объектами, кафе, кабинетами, актовыми залами и крупными предприятиями в Бресте, Брестской области и Минске. Предоставляем негорючие ткани, выдачу каталогов на объект, полное текстильное сопровождение и дизайнерские скидки.
+            </p>
+          </div>
+          <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-atelier-linen/90">
+            <div class="p-3.5 border border-atelier-brass/30 bg-atelier-wineDeep/60">Выдача актуальных каталогов штор и обивочных тканей</div>
+            <div class="p-3.5 border border-atelier-brass/30 bg-atelier-wineDeep/60">Бесплатный выезд дизайнера на объект с образцами</div>
+            <div class="p-3.5 border border-atelier-brass/30 bg-atelier-wineDeep/60">Полное текстильное сопровождение и монтаж карнизов</div>
+            <div class="p-3.5 border border-atelier-brass/30 bg-atelier-wineDeep/60">Индивидуальные условия и скидки для ваших клиентов</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЧЕСТНАЯ РЕПУТАЦИЯ НА ЯНДЕКС КАРТАХ (БЕЗ ВЫДУМАННЫХ ОТЗЫВОВ) ==================== -->
+    <section class="py-14 sm:py-18 bg-atelier-linen border-b border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 p-6 sm:p-8 bg-atelier-travertine border border-atelier-hairline flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">Независимые оценки</div>
+              <div class="mt-3 flex items-baseline gap-3">
+                <span class="font-serif text-[46px] leading-none text-atelier-ink">4.3</span>
+                <span class="text-atelier-brass text-lg tracking-widest" aria-label="Рейтинг 4.3 из 5">★★★★☆</span>
+              </div>
+              <p class="mt-2 text-sm text-atelier-taupe">
+                Реальная карточка салона штор «Династия» на Яндекс Картах: 22 оценки и 10 отзывов покупателей из Бреста.
+              </p>
+            </div>
+            <a data-contact="yandexMaps" href="https://yandex.by/maps/org/dinastiya/113298650929/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center justify-center px-5 py-3 border border-atelier-wine text-atelier-wine hover:bg-atelier-wine hover:text-atelier-linen text-xs uppercase tracking-[0.14em] font-medium transition-colors w-full sm:w-auto">
+              Читать отзывы на Яндекс Картах →
+            </a>
+          </div>
+
+          <div class="lg:col-span-7 p-6 sm:p-8 bg-atelier-linen border border-dashed border-atelier-brass/65 flex flex-col justify-center">
+            <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-brassDark font-medium">Место для избранных отзывов клиентов</div>
+            <h3 class="mt-2 font-serif text-[23px] sm:text-[26px] text-atelier-ink leading-snug">
+              Честные истории ваших заказчиков — без шаблонных текстов
+            </h3>
+            <p class="mt-2.5 text-sm text-atelier-taupe leading-relaxed">
+              В демонстрационном прототипе мы принципиально не придумываем вымышленные отзывы. При запуске боевого сайта разместим здесь выбранные вами реальные благодарности с Яндекс Карт, скриншоты переписок и фото готовых интерьеров из Instagram <span class="text-atelier-ink font-medium">@shtorybrest.by</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ФОРМА ЗАЯВКИ (99-З + GAS/DEMO) И КОНТАКТЫ САЛОНА ==================== -->
+    <section id="booking" class="py-16 sm:py-24 bg-atelier-travertine">
+      <div id="contacts" class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+          <!-- Левая колонка: контакты салона -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.2em] text-atelier-wine font-medium">
+                <span class="w-5 h-[1px] bg-atelier-brass"></span>
+                <span>Контакты в Бресте</span>
+              </div>
+              <h2 class="mt-2.5 font-serif text-[30px] sm:text-[38px] leading-[1.15] text-atelier-ink">
+                Пригласите дизайнера или загляните в салон
+              </h2>
+              <p class="mt-3 text-sm text-atelier-taupe leading-relaxed">
+                Работаем без выходных — поможем подобрать шторы, римские системы и карнизы к вашему интерьеру и сделаем 3D-эскиз.
+              </p>
+            </div>
+
+            <div class="bg-atelier-linen border border-atelier-hairline p-6 space-y-4 text-sm">
+              <div class="flex items-start justify-between gap-4 pb-3.5 border-b border-atelier-hairline">
+                <span class="text-xs uppercase tracking-[0.14em] text-atelier-muted shrink-0">Адрес</span>
+                <span class="text-right font-medium text-atelier-ink">г. Брест, ул. Гоголя, 92, эт. 1</span>
+              </div>
+              <div class="flex items-start justify-between gap-4 pb-3.5 border-b border-atelier-hairline">
+                <span class="text-xs uppercase tracking-[0.14em] text-atelier-muted shrink-0">Телефоны</span>
+                <div class="text-right flex flex-col gap-1">
+                  <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375292225791" class="font-medium text-atelier-ink hover:text-atelier-wine transition-colors whitespace-nowrap">+375 (29) 222-57-91</a>
+                  <span class="text-[11px] text-atelier-muted">Основной · консультации и выезд (МТС)</span>
+                  <a data-contact="phoneSecondary" data-contact-text="phoneSecondary" href="tel:+375333874885" class="mt-1 font-medium text-atelier-ink hover:text-atelier-wine transition-colors whitespace-nowrap">+375 (33) 387-48-85</a>
+                  <span class="text-[11px] text-atelier-muted">Доставка и монтаж карнизов (МТС)</span>
+                </div>
+              </div>
+              <div class="flex items-start justify-between gap-4 pb-3.5 border-b border-atelier-hairline">
+                <span class="text-xs uppercase tracking-[0.14em] text-atelier-muted shrink-0">Режим работы</span>
+                <div class="text-right text-atelier-ink">
+                  <div>Пн–Пт: 10:00–19:00</div>
+                  <div>Сб–Вс: 10:00–18:00</div>
+                </div>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <span class="text-xs uppercase tracking-[0.14em] text-atelier-muted shrink-0">E-mail</span>
+                <a data-contact="email" href="mailto:shtorybrest@mail.ru" class="font-medium text-atelier-ink hover:text-atelier-wine transition-colors">shtorybrest@mail.ru</a>
+              </div>
+            </div>
+
+            <!-- Мессенджеры и маршрут (в единой палитре без кричащих цветов) -->
+            <div class="flex flex-wrap gap-2.5">
+              <a data-contact="viber" href="viber://chat?number=%2B375292225791" class="inline-flex items-center gap-2 px-4 py-2.5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-wine text-atelier-ink hover:text-atelier-wine text-xs uppercase tracking-[0.13em] font-medium transition-colors">
+                Написать в Viber
+              </a>
+              <a data-contact="instagram" href="https://www.instagram.com/shtorybrest.by/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-wine text-atelier-ink hover:text-atelier-wine text-xs uppercase tracking-[0.13em] font-medium transition-colors">
+                Instagram @shtorybrest.by
+              </a>
+              <a data-contact="yandexMaps" href="https://yandex.by/maps/org/dinastiya/113298650929/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 bg-atelier-linen border border-atelier-hairline hover:border-atelier-wine text-atelier-ink hover:text-atelier-wine text-xs uppercase tracking-[0.13em] font-medium transition-colors">
+                Маршрут на карте →
+              </a>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма вызова дизайнера (Закон № 99-З + Honeypot + GAS Demo Mode) -->
+          <div class="lg:col-span-7 bg-atelier-linen border border-atelier-hairline p-6 sm:p-8 lg:p-10">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-5 border-b border-atelier-hairline">
+              <div>
+                <h3 class="font-serif text-[25px] sm:text-[28px] text-atelier-ink leading-tight">Заявка на выезд дизайнера</h3>
+                <p class="mt-1 text-xs sm:text-sm text-atelier-taupe">Перезвоним в рабочее время и согласуем удобный день встречи</p>
+              </div>
+              <span class="px-3 py-1 bg-atelier-travertine border border-atelier-brass/45 text-[11px] uppercase tracking-[0.14em] text-atelier-wine font-medium">
+                Бесплатно в Бресте
+              </span>
+            </div>
+
+            <form id="leadForm" class="mt-6 space-y-5" novalidate>
+              <!-- Антиспам Honeypot -->
+              <div class="hidden" aria-hidden="true">
+                <label for="company_website">Ваш сайт (не заполняйте)</label>
+                <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="clientName" class="block text-xs uppercase tracking-[0.14em] text-atelier-taupe font-medium mb-2">Ваше имя *</label>
+                  <input id="clientName" name="name" type="text" required placeholder="Например, Ольга" class="w-full px-4 py-3 bg-atelier-travertine/70 border border-atelier-hairline focus:border-atelier-wine focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors" />
+                </div>
+                <div>
+                  <label for="clientPhone" class="block text-xs uppercase tracking-[0.14em] text-atelier-taupe font-medium mb-2">Телефон или Viber *</label>
+                  <input id="clientPhone" name="phone" type="tel" required placeholder="+375 (29) 000-00-00" class="w-full px-4 py-3 bg-atelier-travertine/70 border border-atelier-hairline focus:border-atelier-wine focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="clientTask" class="block text-xs uppercase tracking-[0.14em] text-atelier-taupe font-medium mb-2">Что планируете оформить</label>
+                <textarea id="clientTask" name="comment" rows="3" placeholder="Например: гостиная и спальня, интересует бесплатный выезд дизайнера с образцами..." class="w-full px-4 py-3 bg-atelier-travertine/70 border border-atelier-hairline focus:border-atelier-wine focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors">Гостиная или спальня (портьеры, тюль, покрывала) · Бесплатный выезд дизайнера с образцами на объект</textarea>
+              </div>
+
+              <!-- ОБЯЗАТЕЛЬНЫЙ ЧЕКБОКС СОГЛАСИЯ ПО ЗАКОНУ РБ № 99-З (СТРОГО НЕ ОТМЕЧЕН ПО УМОЛЧАНИЮ!) -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer text-xs text-atelier-taupe leading-relaxed">
+                  <input id="pdConsent" name="pdConsent" type="checkbox" required class="compliance-checkbox mt-0.5 w-4 h-4 shrink-0 border-atelier-hairline cursor-pointer" />
+                  <span>
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-atelier-wine underline hover:text-atelier-brassDark">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-open-modal="modalPrivacy" class="text-atelier-wine underline hover:text-atelier-brassDark">Политикой обработки персональных данных</button> (Закон РБ № 99-З).
+                  </span>
+                </label>
+              </div>
+
+              <div id="formError" class="hidden p-3 bg-red-50 border border-red-200 text-xs text-red-900"></div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                <button id="submitBtn" type="submit" class="px-7 py-3.5 bg-atelier-wine hover:bg-atelier-wineDeep text-atelier-linen text-xs uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap">
+                  Отправить заявку
+                </button>
+                <span class="text-[11.5px] text-atelier-muted leading-snug">
+                  Или позвоните напрямую: <a data-contact="phonePrimary" data-contact-text="phonePrimary" href="tel:+375292225791" class="text-atelier-ink font-medium hover:text-atelier-wine whitespace-nowrap">+375 (29) 222-57-91</a>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== ПОДВАЛ (СТ. 407 ГК РБ + УКАЗ № 60 + ЗАГЛУШКИ РЕКВИЗИТОВ) ==================== -->
+  <footer class="bg-atelier-ink text-atelier-linen/80 pt-12 pb-28 md:pb-16 border-t border-atelier-brass/30">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pb-7 border-b border-white/10">
+        <div class="md:col-span-5 space-y-2">
+          <div class="font-serif text-xl tracking-[0.06em] text-white">САЛОН ШТОР «ДИНАСТИЯ»</div>
+          <p class="text-xs text-atelier-linen/65 leading-relaxed max-w-md">
+            Авторский пошив штор и тюля в собственном цеху, римские и рулонные шторы, плиссе, карнизы, монтаж и навеска в Бресте с 2009 года.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-1 text-xs text-atelier-linen/70">
+          <div class="text-atelier-brassLight uppercase tracking-[0.14em] text-[10.5px] mb-1.5">Реквизиты (заполняются при запуске)</div>
+          <div>[Наименование юрлица / ФИО ИП], УНП [XXXXXXXXX]</div>
+          <div>Адрес салона: г. Брест, ул. Гоголя, 92, эт. 1</div>
+          <div>Режим работы: Пн–Пт 10:00–19:00 · Сб–Вс 10:00–18:00</div>
+        </div>
+
+        <div class="md:col-span-3 flex flex-col items-start md:items-end gap-2 text-xs">
+          <button type="button" data-open-modal="modalPrivacy" class="underline hover:text-atelier-brassLight transition-colors text-left">Политика обработки ПД</button>
+          <button type="button" data-open-modal="modalConsent" class="underline hover:text-atelier-brassLight transition-colors text-left">Согласие на обработку ПД (99-З)</button>
+          <button type="button" data-open-modal="modalCookie" class="underline hover:text-atelier-brassLight transition-colors text-left">Политика и настройки cookie</button>
+        </div>
+      </div>
+
+      <p class="text-[11px] text-atelier-linen/50 leading-relaxed">
+        Информация, представленная на сайте, носит справочный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 407 Гражданского кодекса Республики Беларусь. Боевая версия сайта размещается на хостинге на территории Республики Беларусь в соответствии с Указом Президента Республики Беларусь от 01.02.2010 № 60.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНЫЙ APP-LIKE STICKY GLASS DOCK (< 768px) ==================== -->
+  <!-- Скрыт, пока открыт cookie-баннер; расположен чисто над нижней демо-строкой -->
+  <nav id="mobileStickyDock" aria-label="Быстрые действия" class="hidden md:hidden fixed inset-x-3 bottom-10 z-40">
+    <div class="bg-atelier-linen/95 backdrop-blur-xl border border-atelier-brass/50 p-1.5 shadow-2xl grid grid-cols-3 gap-1.5">
+      <a data-contact="phonePrimary" href="tel:+375292225791" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-2 bg-atelier-travertine border border-atelier-hairline text-atelier-ink text-xs font-medium active:scale-[0.98] transition">
+        <svg class="w-3.5 h-3.5 text-atelier-wine shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        <span>Позвонить</span>
+      </a>
+      <a data-contact="viber" href="viber://chat?number=%2B375292225791" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-2 bg-atelier-travertine border border-atelier-hairline text-atelier-ink text-xs font-medium active:scale-[0.98] transition">
+        <svg class="w-3.5 h-3.5 text-atelier-wine shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M11.4 0C5.5 0 .7 4.4.7 10c0 2.9 1.3 5.5 3.4 7.3V22l4.3-2.4c.9.2 1.9.4 3 .4 5.9 0 10.7-4.4 10.7-10S17.3 0 11.4 0zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.3-.4.1-1 .2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3z"/>
+        </svg>
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="inline-flex items-center justify-center py-2.5 px-2 bg-atelier-wine text-atelier-linen text-[11.5px] font-medium tracking-[0.04em] active:scale-[0.98] transition whitespace-nowrap">
+        Выезд дизайнера
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==================== COOKIE-БАННЕР ПО РЕКОМЕНДАЦИЯМ НЦЗПД РБ (2 РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed inset-x-3 md:left-auto md:right-5 bottom-9 z-50 md:max-w-[460px]">
+    <div class="bg-[#231C1A] border border-atelier-brass/55 text-atelier-linen px-3.5 py-3 sm:p-4 shadow-2xl space-y-2.5">
+      <div class="text-[11px] sm:text-xs leading-snug text-atelier-linen/95">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все cookie, отклонить необязательные или открыть <button type="button" data-open-modal="modalCookie" class="text-atelier-brassLight underline hover:text-white">Настроить</button>.
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" id="cookieRejectBtn" class="px-2.5 py-2 bg-white/15 hover:bg-white/25 border border-atelier-brass/50 text-white text-[11px] sm:text-[11.5px] font-medium transition-colors text-center">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-2.5 py-2 bg-atelier-wine hover:bg-atelier-wineSoft border border-atelier-brass/50 text-white text-[11px] sm:text-[11.5px] font-medium transition-colors text-center">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Деликатная нижняя демо-строка (не конфликтует с Sticky Dock и cookie-баннером) -->
+  <div class="fixed inset-x-0 bottom-0 z-40 bg-atelier-ink/95 border-t border-atelier-brass/25 text-atelier-linen/70 text-center py-1.5 px-3 text-[10.5px] leading-tight">
+    Демо-концепт обновления сайта для салона штор «Династия» (Брест) · Реквизиты и финальные фото подставляются при запуске
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА И ЛАЙТБОКС ==================== -->
+
+  <!-- Лайтбокс портфолио -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-atelier-ink/95 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-atelier-ink border border-atelier-brass/35 overflow-hidden shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-3 right-3 z-20 w-9 h-9 bg-atelier-ink/85 border border-atelier-brass/40 text-white hover:bg-atelier-wine flex items-center justify-center transition-colors">✕</button>
+      <button type="button" id="lightboxPrev" aria-label="Предыдущая работа" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-atelier-ink/80 border border-atelier-brass/40 text-white hover:bg-atelier-wine flex items-center justify-center transition-colors">‹</button>
+      <button type="button" id="lightboxNext" aria-label="Следующая работа" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-atelier-ink/80 border border-atelier-brass/40 text-white hover:bg-atelier-wine flex items-center justify-center transition-colors">›</button>
+      <img id="lightboxImg" src="" alt="" class="w-full max-h-[76vh] object-contain bg-black" />
+      <div id="lightboxCaption" class="px-5 py-3.5 text-xs sm:text-sm text-atelier-linen/85 text-center border-t border-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно успешной отправки / Демо-режим -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-atelier-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-atelier-linen border border-atelier-brass/50 p-6 sm:p-8 shadow-2xl" data-modal-content>
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute top-4 right-4 w-8 h-8 border border-atelier-hairline text-atelier-ink hover:border-atelier-wine flex items-center justify-center">✕</button>
+      <div class="w-10 h-10 bg-atelier-wine text-atelier-linen flex items-center justify-center mb-4 font-serif text-lg">✓</div>
+      <h3 class="font-serif text-[26px] text-atelier-ink">Заявка принята</h3>
+      <p id="modalSuccessDesc" class="mt-2 text-sm text-atelier-taupe leading-relaxed"></p>
+      <div id="modalSuccessPreview" class="hidden mt-4 p-4 bg-atelier-travertine border border-atelier-hairline text-xs text-atelier-ink whitespace-pre-wrap font-mono"></div>
+      <button type="button" data-close-modal class="mt-6 w-full py-3 bg-atelier-wine hover:bg-atelier-wineDeep text-atelier-linen text-xs uppercase tracking-[0.16em] font-medium transition-colors">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-atelier-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-atelier-linen border border-atelier-hairline flex flex-col overflow-hidden shadow-2xl" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-atelier-hairline bg-atelier-travertine">
+        <h3 class="font-serif text-[22px] text-atelier-ink">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-atelier-hairline bg-atelier-linen text-atelier-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-atelier-taupe space-y-3 leading-relaxed">
+        <p><strong class="text-atelier-ink">1. Общие положения.</strong> Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» и Указом Президента Республики Беларусь от 01.02.2010 № 60. Оператором персональных данных выступает салон штор «Династия» ([Наименование юрлица / ФИО ИП], УНП [XXXXXXXXX], г. Брест, ул. Гоголя, 92, эт. 1).</p>
+        <p><strong class="text-atelier-ink">2. Цели и состав обрабатываемых данных.</strong> Оператор обрабатывает имя, номер телефона, выбранное направление оформления окон и комментарий пользователя исключительно для обратной связи, консультации дизайнера и согласования выезда с образцами.</p>
+        <p><strong class="text-atelier-ink">3. Трансграничная передача данных (ст. 9 Закона № 99-З).</strong> Для оперативной доставки заявок с сайта могут использоваться сервисы Google (Google Apps Script / Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверная инфраструктура которых расположена в иностранных государствах, где может не обеспечиваться надлежащий уровень защиты прав субъектов персональных данных. С такой передачей связаны риски отсутствия специального законодательства о защите персональных данных, ограниченного контроля со стороны уполномоченных органов РБ и возможного доступа к данным по законодательству соответствующих государств. Передача осуществляется только при наличии вашего отдельного согласия.</p>
+        <p><strong class="text-atelier-ink">4. Сроки хранения.</strong> Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p><strong class="text-atelier-ink">5. Права субъекта персональных данных (ст. 10–15 Закона № 99-З).</strong> Вы вправе: в любое время без объяснения причин отозвать согласие; получать информацию об обработке ваших данных; требовать их изменения, прекращения обработки и (или) удаления; обжаловать действия (бездействие) оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-6 py-4 border-t border-atelier-hairline bg-atelier-travertine text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-atelier-wine text-atelier-linen text-xs uppercase tracking-[0.14em] font-medium">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-atelier-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[85vh] bg-atelier-linen border border-atelier-hairline flex flex-col overflow-hidden shadow-2xl" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-atelier-hairline bg-atelier-travertine">
+        <h3 class="font-serif text-[22px] text-atelier-ink">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-atelier-hairline bg-atelier-linen text-atelier-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-atelier-taupe space-y-3 leading-relaxed">
+        <p>Проставляя отметку (галочку) в форме заявки на сайте салона штор «Династия» и нажимая «Отправить заявку», я свободно, однозначно и информированно даю согласие оператору ([Наименование юрлица / ФИО ИП], УНП [XXXXXXXXX], г. Брест, ул. Гоголя, 92, эт. 1) на обработку моих персональных данных: имени, номера телефона, сведений о выбранном типе текстильного оформления, формате консультации и комментарии.</p>
+        <p><strong class="text-atelier-ink">Цель обработки:</strong> обратная связь, консультация по тканям, карнизам и 3D-эскизу, организация бесплатного выезда дизайнера с образцами.</p>
+        <p><strong class="text-atelier-ink">Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> Я уведомлён(а) и согласен(на) с тем, что доставка заявки с сайта может осуществляться с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, серверы которых находятся в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных. Мне разъяснены связанные с этим риски (различия законодательства, возможное отсутствие независимого надзорного органа и ограниченные механизмы защиты прав в иностранной юрисдикции).</p>
+        <p><strong class="text-atelier-ink">Срок действия и отзыв:</strong> Согласие действует до достижения цели обработки либо до его отзыва. Я ознакомлен(а) с правами субъекта персональных данных по статьям 10–15 Закона РБ № 99-З (отзыв согласия, получение информации, внесение изменений, прекращение обработки и удаление данных, обжалование в НЦЗПД). Отозвать согласие можно обращением на e-mail <span class="text-atelier-ink font-medium">shtorybrest@mail.ru</span> или по адресу салона в Бресте.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-atelier-hairline bg-atelier-travertine text-right">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-atelier-wine text-atelier-linen text-xs uppercase tracking-[0.14em] font-medium">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика и настройки cookie (НЦЗПД РБ) -->
+  <div id="modalCookie" data-modal class="hidden fixed inset-0 z-50 bg-atelier-ink/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-xl w-full max-h-[85vh] bg-atelier-linen border border-atelier-hairline flex flex-col overflow-hidden shadow-2xl" data-modal-content>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-atelier-hairline bg-atelier-travertine">
+        <h3 class="font-serif text-[22px] text-atelier-ink">Политика и настройки cookie</h3>
+        <button type="button" data-close-modal aria-label="Закрыть" class="w-8 h-8 border border-atelier-hairline bg-atelier-linen text-atelier-ink flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-atelier-taupe space-y-4 leading-relaxed">
+        <div class="p-3.5 bg-atelier-travertine border border-atelier-hairline flex items-center justify-between gap-2">
+          <span class="font-medium text-atelier-ink">Текущий выбор:</span>
+          <span id="cookieStatusLabel" class="px-2.5 py-1 bg-atelier-linen border border-atelier-hairline text-xs font-medium text-atelier-wine">Не выбран</span>
+        </div>
+        <p><strong class="text-atelier-ink">Технические (необходимые) cookie и localStorage:</strong> нужны для сохранения вашего решения по cookie и корректной работы интерфейса. Персональные данные третьим лицам не передаются.</p>
+        <p><strong class="text-atelier-ink">Необязательные (аналитические) cookie:</strong> применяются только при вашем согласии при подключении счётчиков статистики. Вы вправе изменить решение в любой момент.</p>
+      </div>
+      <div class="px-6 py-4 border-t border-atelier-hairline bg-atelier-travertine grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button type="button" id="modalCookieRejectBtn" class="px-4 py-2.5 bg-atelier-linen hover:bg-atelier-sand border border-atelier-wine text-atelier-wine text-xs uppercase tracking-[0.12em] font-medium transition-colors">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="px-4 py-2.5 bg-atelier-wine hover:bg-atelier-wineDeep border border-atelier-wine text-atelier-linen text-xs uppercase tracking-[0.12em] font-medium transition-colors">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ЕДИНЫЙ JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Синхронизация контактов из SITE_CONFIG (строго без target="_blank" на tel: и viber://)
+      const viberHref = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.viberPhone)}`;
+
+      document.querySelectorAll('[data-contact="viber"]').forEach((el) => {
+        el.setAttribute('href', viberHref);
+        el.removeAttribute('target');
+      });
+      document.querySelectorAll('[data-contact="instagram"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.instagramUrl);
+      });
+      document.querySelectorAll('[data-contact="yandexMaps"]').forEach((el) => {
+        el.setAttribute('href', SITE_CONFIG.yandexMapsUrl);
+      });
+      document.querySelectorAll('[data-contact="email"]').forEach((el) => {
+        el.setAttribute('href', `mailto:${SITE_CONFIG.email}`);
+        el.removeAttribute('target');
+      });
+
+      const phoneBindings = [
+        { attr: 'phonePrimary', href: SITE_CONFIG.primaryTelHref, text: SITE_CONFIG.primaryPhone },
+        { attr: 'phoneSecondary', href: SITE_CONFIG.secondaryTelHref, text: SITE_CONFIG.secondaryPhone }
+      ];
+      phoneBindings.forEach(({ attr, href, text }) => {
+        document.querySelectorAll(`[data-contact="${attr}"]`).forEach((el) => {
+          el.setAttribute('href', href);
+          el.removeAttribute('target');
+        });
+        document.querySelectorAll(`[data-contact-text="${attr}"]`).forEach((el) => {
+          el.textContent = text;
+        });
+      });
+
+      // 2. «Живой статус» в шапке по времени Беларуси (Europe/Minsk: Пн–Пт 10:00–19:00, Сб–Вс 10:00–18:00)
+      function updateLiveStatus() {
+        let minskHour = 13;
+        let isWeekend = false;
+        try {
+          const now = new Date();
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            weekday: 'short',
+            hour: '2-digit',
+            hour12: false
+          }).formatToParts(now);
+          const hourPart = parts.find((p) => p.type === 'hour');
+          const dayPart = parts.find((p) => p.type === 'weekday');
+          if (hourPart) minskHour = parseInt(hourPart.value, 10) % 24;
+          if (dayPart) isWeekend = dayPart.value === 'Sat' || dayPart.value === 'Sun';
+        } catch (_) {}
+
+        const hours = isWeekend ? SITE_CONFIG.schedule.weekend : SITE_CONFIG.schedule.weekday;
+        const isOpen = minskHour >= hours.open && minskHour < hours.close;
+
+        document.querySelectorAll('[data-live-dot]').forEach((dot) => {
+          dot.classList.toggle('bg-emerald-700', isOpen);
+          dot.classList.toggle('bg-atelier-brass', !isOpen);
+        });
+        document.querySelectorAll('[data-live-text]').forEach((label) => {
+          label.textContent = isOpen
+            ? `Открыто до ${hours.close}:00`
+            : `Ответим с ${hours.open}:00`;
+        });
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 3. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+      const burgerIconOpen = document.getElementById('burgerIconOpen');
+      const burgerIconClose = document.getElementById('burgerIconClose');
+
+      function setMobileMenu(open) {
+        if (!mobileMenuPanel || !mobileMenuBtn) return;
+        mobileMenuPanel.classList.toggle('hidden', !open);
+        burgerIconOpen.classList.toggle('hidden', open);
+        burgerIconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenuPanel.classList.contains('hidden'));
+        });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // 4. Лёгкий мини-интерактив за 2 клика (автоподстановка в форму)
+      let selectedStep1 = 'Гостиная или спальня (портьеры, тюль, покрывала)';
+      let selectedStep2 = 'Бесплатный выезд дизайнера с образцами на объект';
+      const summaryEl = document.getElementById('selectorSummaryText');
+      const clientTaskEl = document.getElementById('clientTask');
+
+      function syncSelectorOutput() {
+        const combined = `${selectedStep1} · ${selectedStep2}`;
+        if (summaryEl) summaryEl.textContent = combined;
+        if (clientTaskEl) clientTaskEl.value = combined;
+      }
+
+      document.querySelectorAll('.step1-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedStep1 = btn.getAttribute('data-step1') || selectedStep1;
+          document.querySelectorAll('.step1-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('border-2', active);
+            b.classList.toggle('border-atelier-wine', active);
+            b.classList.toggle('border', !active);
+            b.classList.toggle('border-atelier-hairline', !active);
+            const ind = b.querySelector('.step-indicator');
+            if (ind) {
+              ind.classList.toggle('bg-atelier-wine', active);
+              ind.classList.toggle('border-atelier-wine', active);
+              ind.classList.toggle('text-white', active);
+              ind.classList.toggle('border-atelier-hairline', !active);
+              ind.classList.toggle('text-transparent', !active);
+            }
+          });
+          syncSelectorOutput();
+        });
+      });
+
+      document.querySelectorAll('.step2-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedStep2 = btn.getAttribute('data-step2') || selectedStep2;
+          document.querySelectorAll('.step2-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('border-2', active);
+            b.classList.toggle('border-atelier-wine', active);
+            b.classList.toggle('border', !active);
+            b.classList.toggle('border-atelier-hairline', !active);
+            const ind = b.querySelector('.step2-indicator');
+            if (ind) {
+              ind.classList.toggle('bg-atelier-wine', active);
+              ind.classList.toggle('border-atelier-wine', active);
+              ind.classList.toggle('text-white', active);
+              ind.classList.toggle('border-atelier-hairline', !active);
+              ind.classList.toggle('text-transparent', !active);
+            }
+          });
+          syncSelectorOutput();
+        });
+      });
+
+      const applySelectionBtn = document.getElementById('applySelectionBtn');
+      if (applySelectionBtn) {
+        applySelectionBtn.addEventListener('click', () => {
+          syncSelectorOutput();
+          const bookingSection = document.getElementById('booking');
+          if (bookingSection) bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const nameInput = document.getElementById('clientName');
+          if (nameInput) setTimeout(() => nameInput.focus({ preventScroll: true }), 450);
+        });
+      }
+
+      // Быстрые кнопки из карточек коллекций
+      document.querySelectorAll('[data-quick-topic]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const topic = btn.getAttribute('data-quick-topic');
+          if (clientTaskEl && topic) {
+            clientTaskEl.value = `${topic} · ${selectedStep2}`;
+          }
+          const bookingSection = document.getElementById('booking');
+          if (bookingSection) bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // 5. Фильтрация реальных работ портфолио + Лайтбокс с переключением
+      const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+      let visiblePortfolioItems = [...portfolioItems];
+      let currentLightboxIdx = 0;
+
+      document.querySelectorAll('.portfolio-filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          document.querySelectorAll('.portfolio-filter-btn').forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('bg-atelier-wine', active);
+            b.classList.toggle('border-atelier-wine', active);
+            b.classList.toggle('text-atelier-linen', active);
+            b.classList.toggle('bg-atelier-travertine', !active);
+            b.classList.toggle('border-atelier-hairline', !active);
+            b.classList.toggle('text-atelier-taupe', !active);
+          });
+
+          visiblePortfolioItems = [];
+          portfolioItems.forEach((item) => {
+            const show = filter === 'all' || item.getAttribute('data-cat') === filter;
+            item.classList.toggle('hidden', !show);
+            if (show) {
+              item.classList.add('fade-up-soft');
+              visiblePortfolioItems.push(item);
+            }
+          });
+        });
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      function showLightboxAt(index) {
+        if (!visiblePortfolioItems.length) return;
+        currentLightboxIdx = (index + visiblePortfolioItems.length) % visiblePortfolioItems.length;
+        const item = visiblePortfolioItems[currentLightboxIdx];
+        lightboxImg.src = item.getAttribute('data-lightbox-src') || '';
+        lightboxImg.alt = item.querySelector('img')?.alt || '';
+        lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+        openModal('lightboxModal');
+      }
+
+      portfolioItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const idx = visiblePortfolioItems.indexOf(item);
+          showLightboxAt(idx >= 0 ? idx : 0);
+        });
+      });
+
+      const prevBtn = document.getElementById('lightboxPrev');
+      const nextBtn = document.getElementById('lightboxNext');
+      if (prevBtn) prevBtn.addEventListener('click', () => showLightboxAt(currentLightboxIdx - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => showLightboxAt(currentLightboxIdx + 1));
+
+      // 6. Единое управление модалками
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.getAttribute('data-open-modal')));
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+        if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') showLightboxAt(currentLightboxIdx - 1);
+          if (e.key === 'ArrowRight') showLightboxAt(currentLightboxIdx + 1);
+        }
+      });
+
+      // 7. Cookie-баннер (НЦЗПД РБ) + автоматическое скрытие мобильного Sticky Dock пока баннер открыт
+      const COOKIE_KEY = 'dinastiya_brest_cookie_choice';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI() {
+        let saved = null;
+        try {
+          saved = localStorage.getItem(COOKIE_KEY);
+        } catch (_) {}
+
+        if (cookieStatusLabel) {
+          cookieStatusLabel.textContent =
+            saved === 'all' ? 'Приняты все' :
+            saved === 'essential' ? 'Только необходимые' :
+            'Не выбран';
+        }
+
+        const bannerVisible = !saved;
+        if (cookieBanner) cookieBanner.classList.toggle('hidden', !bannerVisible);
+        if (mobileStickyDock) mobileStickyDock.classList.toggle('hidden', bannerVisible);
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI();
+        closeAllModals();
+      }
+
+      const cAcc = document.getElementById('cookieAcceptBtn');
+      const cRej = document.getElementById('cookieRejectBtn');
+      const mAcc = document.getElementById('modalCookieAcceptBtn');
+      const mRej = document.getElementById('modalCookieRejectBtn');
+
+      if (cAcc) cAcc.addEventListener('click', () => saveCookieChoice('all'));
+      if (cRej) cRej.addEventListener('click', () => saveCookieChoice('essential'));
+      if (mAcc) mAcc.addEventListener('click', () => saveCookieChoice('all'));
+      if (mRej) mRej.addEventListener('click', () => saveCookieChoice('essential'));
+
+      updateCookieUI();
+
+      // 8. Форма заявок (Google Apps Script → Telegram + Honeypot + честный Демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const formError = document.getElementById('formError');
+      const submitBtn = document.getElementById('submitBtn');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      if (leadForm) {
+        leadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (formError) {
+            formError.classList.add('hidden');
+            formError.textContent = '';
+          }
+
+          // Проверка honeypot
+          const hp = document.getElementById('company_website');
+          if (hp && hp.value.trim() !== '') return;
+
+          const name = (document.getElementById('clientName')?.value || '').trim();
+          const phone = (document.getElementById('clientPhone')?.value || '').trim();
+          const comment = (document.getElementById('clientTask')?.value || '').trim();
+          const consent = document.getElementById('pdConsent')?.checked;
+
+          if (!name || phone.length < 7) {
+            formError.textContent = 'Пожалуйста, укажите имя и корректный номер телефона для связи.';
+            formError.classList.remove('hidden');
+            return;
+          }
+          if (!consent) {
+            formError.textContent = 'Необходимо отметить согласие на обработку и трансграничную передачу персональных данных (Закон РБ № 99-З).';
+            formError.classList.remove('hidden');
+            return;
+          }
+
+          const payload = {
+            brand: SITE_CONFIG.brandName,
+            name,
+            phone,
+            comment,
+            timestamp: new Date().toISOString()
+          };
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправляем...';
+          }
+
+          try {
+            if (!SITE_CONFIG.telegramScriptUrl || SITE_CONFIG.telegramScriptUrl === 'DEMO_MODE') {
+              modalSuccessDesc.textContent = 'Это демонстрационный прототип сайта. При запуске боевой версии заявка мгновенно приходит вам в Telegram или на почту салона:';
+              modalSuccessPreview.textContent =
+                `Салон: ${payload.brand}\nИмя: ${payload.name}\nТелефон: ${payload.phone}\nЗапрос: ${payload.comment || 'Консультация дизайнера'}`;
+              modalSuccessPreview.classList.remove('hidden');
+              openModal('modalSuccess');
+              leadForm.reset();
+              syncSelectorOutput();
+            } else {
+              await fetch(SITE_CONFIG.telegramScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              modalSuccessDesc.textContent = 'Спасибо! Дизайнер салона штор «Династия» перезвонит вам в рабочее время и согласует удобный визит.';
+              modalSuccessPreview.classList.add('hidden');
+              openModal('modalSuccess');
+              leadForm.reset();
+              syncSelectorOutput();
+            }
+          } catch (_) {
+            formError.textContent = 'Не удалось отправить заявку автоматически. Пожалуйста, позвоните нам напрямую по телефону +375 (29) 222-57-91.';
+            formError.classList.remove('hidden');
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Отправить заявку';
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

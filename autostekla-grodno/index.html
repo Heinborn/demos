@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гродно Стеклосервис — Автостёкла в Гродно | Продажа, установка и ремонт</title>
+  <meta name="description" content="Продажа, установка, вклейка и ремонт автостёкол в Гродно на ул. Пучкова, 28 (ГАП 2). Легковые, грузовые авто и автобусы, работа в боксе и с выездом." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crystal: '#F8FAFC',
+            slateDeep: '#0F172A',
+            sapphire: '#1D6CE0',
+            sapphireDark: '#1557BD',
+            cyanOptic: '#0EA5E9'
+          },
+          fontFamily: {
+            display: ['"Exo 2"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Inter', sans-serif;
+    }
+    .optical-grid {
+      background-image:
+        linear-gradient(to right, rgba(29, 108, 224, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(29, 108, 224, 0.055) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .glass-dark {
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .service-card {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: #0EA5E9;
+      box-shadow: 0 14px 30px -12px rgba(29, 108, 224, 0.16);
+    }
+    .tab-btn.active {
+      background-color: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+    .selector-pill.active {
+      background-color: #1D6CE0;
+      color: #FFFFFF;
+      border-color: #1D6CE0;
+      box-shadow: 0 8px 18px -6px rgba(29, 108, 224, 0.45);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyanOptic/20 selection:text-slateDeep pb-24 md:pb-0">
+
+  <!-- Slim Top Demo Notice Bar (never overlaps header or mobile dock) -->
+  <div class="bg-slateDeep text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-cyanOptic shrink-0"></span>
+        <span>Визуальный концепт главной страницы для <strong class="text-white font-medium">Гродно Стеклосервис</strong> (autostekla1.by)</span>
+      </div>
+      <span class="text-slate-400 hidden sm:inline">WordPress 4.8 → Современный WordPress с переносом 13 страниц и Yoast SEO</span>
+    </div>
+  </div>
+
+  <!-- Sticky Single-Row Header -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2 sm:gap-2.5 min-w-0 group">
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slateDeep flex items-center justify-center text-cyanOptic border border-slate-700 group-hover:border-cyanOptic transition-colors shrink-0">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 16L7.5 6h9L20 16H4z"/>
+            <path d="M9 10l3-2m-2 5l4-2.5" stroke="#0EA5E9"/>
+          </svg>
+        </span>
+        <div class="leading-tight min-w-0">
+          <span class="block font-display font-bold text-xs sm:text-base tracking-wide text-slateDeep uppercase truncate">Гродно Стеклосервис</span>
+          <span class="block text-[10px] sm:text-[11px] text-slate-500 truncate">Автостёкла · ул. Пучкова, 28</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600 whitespace-nowrap">
+        <a href="#selector" class="hover:text-sapphire transition-colors">Подбор</a>
+        <a href="#services" class="hover:text-sapphire transition-colors">Услуги (12)</a>
+        <a href="#about" class="hover:text-sapphire transition-colors">О центре</a>
+        <a href="#contacts" class="hover:text-sapphire transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right Controls: Live Status + Phone + Minimal Icon + CTA -->
+      <div class="flex items-center gap-3 shrink-0 whitespace-nowrap">
+        <div id="live-status" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-700">
+          <span id="live-dot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span id="live-text">Открыто сейчас</span>
+        </div>
+
+        <a href="tel:+375295906283" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-slateDeep hover:text-sapphire transition-colors whitespace-nowrap">
+          <svg class="w-4 h-4 text-sapphire shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+375 (29) 590-62-83</span>
+        </a>
+
+        <a href="viber://chat?number=%2B375295906283" title="Написать в Viber" aria-label="Написать в Viber" class="hidden xl:inline-flex w-9 h-9 rounded-lg border border-slate-200 items-center justify-center text-slate-600 hover:border-sapphire hover:text-sapphire transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+
+        <a href="#booking" class="inline-flex items-center justify-center px-3.5 sm:px-4 py-2 rounded-lg bg-sapphire hover:bg-sapphireDark text-white text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap shadow-sm">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero: Crisp Optical Blueprint Stacked Architecture -->
+    <section class="relative optical-grid pt-6 sm:pt-9 pb-10 sm:pb-14 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Editorial Header Block -->
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-[11px] sm:text-xs font-medium text-slate-700 mb-4">
+            <span class="text-amber-500 font-semibold">★ 4.9</span>
+            <span class="text-slate-400">·</span>
+            <span>13 оценок на Яндекс Картах</span>
+            <span class="text-slate-300 hidden sm:inline">|</span>
+            <span class="text-sapphire font-semibold">г. Гродно, ул. Пучкова, 28 (ГАП 2)</span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-[26px] sm:text-5xl lg:text-[50px] leading-[1.12] tracking-tight text-slateDeep">
+            Продажа, установка и ремонт автостёкол в Гродно
+          </h1>
+
+          <p class="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Прямые поставки сертифицированных заводских стёкол — оригинал и проверенный аналог. Работаем в боксе на Пучкова, 28 и с выездом на стоянку к легковым, грузовым авто и автобусам.
+          </p>
+
+          <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="#selector" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-sapphire hover:bg-sapphireDark text-white font-semibold text-sm sm:text-base shadow-lg shadow-sapphire/25 transition-all">
+              <span>Подобрать стекло за 2 клика</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slateDeep border border-slate-300 font-semibold text-sm sm:text-base transition-colors">
+              <span>Все 12 направлений услуг</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Panoramic Optical Showcase Frame (High-Key Workshop) -->
+        <div class="mt-6 sm:mt-8 relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xl">
+          <div class="relative h-[200px] sm:h-[340px] lg:h-[370px] w-full">
+            <img
+              src="https://images.pexels.com/photos/33814734/pexels-photo-33814734.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Чистый бокс автосервиса для установки и замены автостёкол в Гродно"
+              class="w-full h-full object-cover object-center"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slateDeep/85 via-slateDeep/15 to-transparent"></div>
+
+            <!-- Optical Calibration Corner Reticle -->
+            <div class="hidden sm:flex absolute top-4 left-4 items-center gap-2 px-3 py-1.5 rounded-lg glass-dark text-white text-xs font-medium border border-white/15">
+              <span class="w-2 h-2 rounded-full bg-cyanOptic"></span>
+              <span>Оптический контроль вклейки и герметичности</span>
+            </div>
+
+            <!-- Desktop/Tablet Bottom Telemetry Bar -->
+            <div class="hidden sm:block absolute inset-x-0 bottom-0 p-4 sm:p-5">
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="glass-dark rounded-xl p-3 border border-white/15 text-white">
+                  <div class="text-[11px] uppercase tracking-wider text-cyanOptic font-semibold">Ассортимент</div>
+                  <div class="mt-0.5 text-sm font-display font-bold">Лобовые, боковые, задние</div>
+                </div>
+                <div class="glass-dark rounded-xl p-3 border border-white/15 text-white">
+                  <div class="text-[11px] uppercase tracking-wider text-cyanOptic font-semibold">Транспорт</div>
+                  <div class="mt-0.5 text-sm font-display font-bold">Легковые, грузовики, бусы</div>
+                </div>
+                <div class="glass-dark rounded-xl p-3 border border-white/15 text-white">
+                  <div class="text-[11px] uppercase tracking-wider text-cyanOptic font-semibold">Формат работы</div>
+                  <div class="mt-0.5 text-sm font-display font-bold">В боксе ГАП 2 и с выездом</div>
+                </div>
+                <div class="glass-dark rounded-xl p-3 border border-white/15 text-white">
+                  <div class="text-[11px] uppercase tracking-wider text-cyanOptic font-semibold">Надёжность</div>
+                  <div class="mt-0.5 text-sm font-display font-bold">Гарантия на стекло и монтаж</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Telemetry Strip (cleanly stacked below photo) -->
+          <div class="grid grid-cols-2 gap-2 p-3 bg-slateDeep text-white sm:hidden">
+            <div class="rounded-lg bg-slate-800/80 p-2.5 border border-white/10">
+              <div class="text-[10px] uppercase tracking-wider text-cyanOptic font-semibold">Ассортимент</div>
+              <div class="mt-0.5 text-xs font-display font-bold">Лобовые, боковые, задние</div>
+            </div>
+            <div class="rounded-lg bg-slate-800/80 p-2.5 border border-white/10">
+              <div class="text-[10px] uppercase tracking-wider text-cyanOptic font-semibold">Транспорт</div>
+              <div class="mt-0.5 text-xs font-display font-bold">Легковые и грузовые</div>
+            </div>
+            <div class="rounded-lg bg-slate-800/80 p-2.5 border border-white/10">
+              <div class="text-[10px] uppercase tracking-wider text-cyanOptic font-semibold">Формат</div>
+              <div class="mt-0.5 text-xs font-display font-bold">Бокс ГАП 2 и выезд</div>
+            </div>
+            <div class="rounded-lg bg-slate-800/80 p-2.5 border border-white/10">
+              <div class="text-[10px] uppercase tracking-wider text-cyanOptic font-semibold">Надёжность</div>
+              <div class="mt-0.5 text-xs font-display font-bold">Гарантия на монтаж</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Feature #3: 2-Click Interactive Selector -->
+    <section id="selector" class="py-12 sm:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-sapphire via-cyanOptic to-sapphire"></div>
+
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+            <div>
+              <span class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire mb-1.5">Быстрый запрос за 2 клика</span>
+              <h2 class="font-display font-bold text-2xl sm:text-3xl text-slateDeep">Подберём стекло и время установки</h2>
+            </div>
+            <p class="text-sm text-slate-500 max-w-sm">Выберите задачу и желаемый срок — параметры сразу подставятся в заявку ниже.</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Step 1 -->
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">1. Что нужно сделать?</div>
+              <div class="flex flex-col gap-2.5" id="step1-group">
+                <button type="button" data-service="Замена лобового стекла" class="selector-pill active text-left px-4 py-3 rounded-xl border border-slate-200 text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Замена лобового стекла</span>
+                  <span class="text-xs opacity-75">подбор + вклейка</span>
+                </button>
+                <button type="button" data-service="Ремонт скола / трещины" class="selector-pill text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-sapphire text-slateDeep text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Ремонт скола / трещины</span>
+                  <span class="text-xs opacity-75">полимерный состав</span>
+                </button>
+                <button type="button" data-service="Боковое / заднее стекло" class="selector-pill text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-sapphire text-slateDeep text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Боковое / заднее стекло</span>
+                  <span class="text-xs opacity-75">легковые и грузовые</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">2. Срочность и наличие</div>
+              <div class="flex flex-col gap-2.5" id="step2-group">
+                <button type="button" data-urgency="Сегодня" class="selector-pill active text-left px-4 py-3 rounded-xl border border-slate-200 text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Сегодня</span>
+                  <span class="text-xs opacity-75">срочный осмотр / запись</span>
+                </button>
+                <button type="button" data-urgency="Ближайшие 2–3 дня" class="selector-pill text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-sapphire text-slateDeep text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Ближайшие 2–3 дня</span>
+                  <span class="text-xs opacity-75">подбор удобного окна</span>
+                </button>
+                <button type="button" data-urgency="Уточнить наличие" class="selector-pill text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-sapphire text-slateDeep text-sm font-semibold transition-all flex items-center justify-between">
+                  <span>Уточнить наличие</span>
+                  <span class="text-xs opacity-75">оригинал или аналог</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="text-sm text-slate-700">
+              Выбрано: <strong id="selector-summary" class="text-slateDeep">Замена лобового стекла · Сегодня</strong>
+            </div>
+            <a href="#booking" id="selector-apply-btn" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slateDeep hover:bg-sapphire text-white text-sm font-semibold transition-colors whitespace-nowrap">
+              <span>Перейти к форме заявки</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 Real SEO Services Section (Tariff 2 WordPress Concept) -->
+    <section id="services" class="py-12 sm:py-16 bg-white border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+          <div>
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire mb-1.5">Полный каталог направлений</span>
+            <h2 class="font-display font-bold text-2xl sm:text-4xl text-slateDeep">12 профильных услуг центра</h2>
+            <p class="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl">
+              Все 12 действующих разделов сайта <span class="font-medium text-slateDeep">autostekla1.by</span> в удобной фильтрации. Нажмите на любую карточку, чтобы посмотреть детали и план переноса на современный WordPress.
+            </p>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="flex flex-wrap gap-2" id="service-tabs" role="tablist" aria-label="Фильтр услуг">
+            <button type="button" data-filter="all" class="tab-btn active px-3.5 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm font-semibold transition-colors">Все 12</button>
+            <button type="button" data-filter="glass" class="tab-btn px-3.5 py-2 rounded-lg border border-slate-200 text-slate-600 hover:border-slate-400 text-xs sm:text-sm font-semibold transition-colors">Автостёкла и ремонт</button>
+            <button type="button" data-filter="elements" class="tab-btn px-3.5 py-2 rounded-lg border border-slate-200 text-slate-600 hover:border-slate-400 text-xs sm:text-sm font-semibold transition-colors">Датчики, фары, декор</button>
+            <button type="button" data-filter="truck" class="tab-btn px-3.5 py-2 rounded-lg border border-slate-200 text-slate-600 hover:border-slate-400 text-xs sm:text-sm font-semibold transition-colors">Грузовые авто и запчасти</button>
+          </div>
+        </div>
+
+        <!-- Services Grid (rendered from JS array of 12 real services) -->
+        <div id="services-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- Editorial Visual Strip: About & Mobile Service -->
+    <section id="about" class="py-12 sm:py-16 optical-grid">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <!-- Left: Real facts & advantages -->
+          <div class="lg:col-span-5 space-y-5">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire">О центре Гродно Стеклосервис</span>
+            <h2 class="font-display font-bold text-2xl sm:text-4xl text-slateDeep leading-tight">
+              Сертифицированное стекло напрямую от производителей
+            </h2>
+            <p class="text-slate-600 leading-relaxed">
+              Мы продаём и устанавливаем оригинальные и неоригинальные лобовые, боковые и задние стёкла без лишних накруток, соблюдаем технологию вклейки и даём гарантию на выполненные работы.
+            </p>
+
+            <div class="space-y-3 pt-1">
+              <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-slate-200">
+                <span class="w-8 h-8 rounded-lg bg-sapphire/10 text-sapphire flex items-center justify-center shrink-0 font-display font-bold text-sm">01</span>
+                <div>
+                  <div class="font-semibold text-sm text-slateDeep">Ремонт сколов и трещин полимером</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Очищаем повреждение, снимаем напряжение стекла и заполняем оптически прозрачным составом.</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-slate-200">
+                <span class="w-8 h-8 rounded-lg bg-sapphire/10 text-sapphire flex items-center justify-center shrink-0 font-display font-bold text-sm">02</span>
+                <div>
+                  <div class="font-semibold text-sm text-slateDeep">Выезд на место стоянки авто</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Выезжаем к грузовым автомобилям, автобусам и спецтехнике по Гродно и области.</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 bg-white p-3.5 rounded-xl border border-slate-200">
+                <span class="w-8 h-8 rounded-lg bg-sapphire/10 text-sapphire flex items-center justify-center shrink-0 font-display font-bold text-sm">03</span>
+                <div>
+                  <div class="font-semibold text-sm text-slateDeep">Аккуратная работа со смежными узлами</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Переустановка датчиков дождя и света, зеркал заднего вида, растонировка и ремонт фар.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: 3-photo asymmetric editorial mosaic -->
+          <div class="lg:col-span-7 grid grid-cols-12 gap-4">
+            <div class="col-span-12 sm:col-span-7 rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm h-64 sm:h-80 relative">
+              <img
+                src="https://images.pexels.com/photos/8478242/pexels-photo-8478242.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Монтаж и герметизация зоны лобового стекла автомобиля"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute bottom-3 left-3 right-3 px-3 py-2 rounded-lg glass-dark text-white text-xs font-medium">
+                Точная вклейка с сохранением геометрии кузова
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-5 grid grid-rows-2 gap-4 h-64 sm:h-80">
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm relative">
+                <img
+                  src="https://images.unsplash.com/photo-1776963638296-0f11fbbd81a4?auto=format&fit=crop&w=1200&q=85"
+                  alt="Восстановление и вклейка стёкол автомобильных фар"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute bottom-2 left-2 right-2 px-2.5 py-1.5 rounded-md glass-dark text-white text-[11px] font-medium">
+                  Оптика и стёкла фар
+                </div>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm relative">
+                <img
+                  src="https://images.unsplash.com/photo-1591419478162-a4dd21b7ec0a?auto=format&fit=crop&w=1200&q=85"
+                  alt="Автостёкла для грузовых автомобилей и автобусов"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute bottom-2 left-2 right-2 px-2.5 py-1.5 rounded-md glass-dark text-white text-[11px] font-medium">
+                  Грузовые авто и автобусы
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts & Booking Split -->
+    <section id="contacts" class="py-12 sm:py-16 bg-white border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Left: GAP 2 Puchkova 28 Details -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire mb-1.5">Контакты и локация</span>
+              <h2 class="font-display font-bold text-2xl sm:text-3xl text-slateDeep">г. Гродно, ул. Пучкова, 28 (ГАП 2)</h2>
+              <p class="mt-2 text-sm text-slate-600">Работаем на месте в боксе и с выездом по согласованию.</p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-crystal p-5 sm:p-6 space-y-4">
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Телефоны</div>
+                <div class="mt-1.5 flex flex-col gap-1.5">
+                  <a href="tel:+375295906283" class="text-lg font-display font-bold text-slateDeep hover:text-sapphire transition-colors">+375 (29) 590-62-83</a>
+                  <a href="tel:+375296178226" class="text-lg font-display font-bold text-slateDeep hover:text-sapphire transition-colors">+375 (29) 617-82-26</a>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-200">
+                <div>
+                  <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">E-mail</div>
+                  <a href="mailto:5906283@mail.ru" class="mt-1 inline-block text-sm font-medium text-sapphire hover:underline">5906283@mail.ru</a>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Режим работы</div>
+                  <div class="mt-1 text-sm font-medium text-slateDeep">Пн–Пт 09:00–17:00</div>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                <div class="text-xs text-slate-600">
+                  <span class="font-semibold text-amber-500">★ 4.9</span> · 13 отзывов / оценок на Яндекс Картах
+                </div>
+                <a href="viber://chat?number=%2B375295906283" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-sapphire text-xs font-semibold text-slateDeep transition-colors">
+                  Написать в Viber
+                </a>
+              </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slateDeep text-white p-5 flex items-center justify-between gap-4">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-cyanOptic font-semibold">Выездная бригада</div>
+                <div class="mt-1 font-display font-bold text-base">Замена стёкол на грузовиках и автобусах по месту стоянки</div>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1771491237218-cbd4a707497e?auto=format&fit=crop&w=400&q=80"
+                alt="Уход за лобовым стеклом и салоном"
+                class="w-20 h-20 rounded-xl object-cover shrink-0 border border-white/15"
+              />
+            </div>
+          </div>
+
+          <!-- Right: Booking Form (Закон № 99-З + Honeypot + Demo Handler) -->
+          <div id="booking" class="lg:col-span-7">
+            <div class="rounded-2xl border border-slate-200 bg-crystal p-6 sm:p-8 shadow-sm">
+              <div class="mb-6">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire mb-1">Онлайн-заявка</span>
+                <h3 class="font-display font-bold text-2xl text-slateDeep">Уточнить наличие стекла или записаться</h3>
+                <p class="mt-1 text-sm text-slate-600">Оставьте телефон — перезвоним, уточним марку и год авто, наличие оригинала или аналога и согласуем время.</p>
+              </div>
+
+              <form id="booking-form" class="space-y-4" novalidate>
+                <!-- Honeypot anti-spam -->
+                <div class="hidden" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="client-name" class="block text-xs font-semibold text-slate-700 mb-1.5">Ваше имя <span class="text-rose-500">*</span></label>
+                    <input type="text" id="client-name" name="name" required placeholder="Например, Александр" class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-sapphire focus:ring-2 focus:ring-sapphire/20 outline-none text-sm" />
+                  </div>
+                  <div>
+                    <label for="client-phone" class="block text-xs font-semibold text-slate-700 mb-1.5">Телефон <span class="text-rose-500">*</span></label>
+                    <input type="tel" id="client-phone" name="phone" required placeholder="+375 (29) ___-__-__" class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-sapphire focus:ring-2 focus:ring-sapphire/20 outline-none text-sm" />
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="booking-service" class="block text-xs font-semibold text-slate-700 mb-1.5">Интересующая услуга</label>
+                    <input type="text" id="booking-service" name="service" value="Замена лобового стекла" class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-sapphire focus:ring-2 focus:ring-sapphire/20 outline-none text-sm" />
+                  </div>
+                  <div>
+                    <label for="booking-urgency" class="block text-xs font-semibold text-slate-700 mb-1.5">Срочность / формат</label>
+                    <input type="text" id="booking-urgency" name="urgency" value="Сегодня" class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-sapphire focus:ring-2 focus:ring-sapphire/20 outline-none text-sm" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="client-car" class="block text-xs font-semibold text-slate-700 mb-1.5">Марка, модель, год авто (или датчик дождя/подогрев)</label>
+                  <textarea id="client-car" name="comment" rows="2" placeholder="Например: VW Passat B7, 2013, с датчиком дождя" class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-sapphire focus:ring-2 focus:ring-sapphire/20 outline-none text-sm resize-none"></textarea>
+                </div>
+
+                <!-- Закон № 99-З Required Unchecked Consent -->
+                <div class="pt-1">
+                  <label class="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer">
+                    <input type="checkbox" id="pd-consent" required class="mt-0.5 w-4 h-4 rounded border-slate-300 text-sapphire focus:ring-sapphire shrink-0" />
+                    <span>
+                      Даю <button type="button" data-modal="modal-consent" class="text-sapphire underline hover:text-sapphireDark font-medium">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" data-modal="modal-privacy" class="text-sapphire underline hover:text-sapphireDark font-medium">Политикой обработки ПД</button> (Закон РБ № 99-З).
+                    </span>
+                  </label>
+                </div>
+
+                <div id="form-feedback" class="hidden rounded-xl p-3.5 text-sm"></div>
+
+                <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-sapphire hover:bg-sapphireDark text-white font-semibold text-sm sm:text-base shadow-lg shadow-sapphire/20 transition-all">
+                  Отправить заявку
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer with RB Legal & St. 407 GK RB -->
+  <footer class="bg-slateDeep text-slate-400 py-10 px-4 sm:px-6 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        <div>
+          <div class="font-display font-bold text-white text-base uppercase tracking-wide">Гродно Стеклосервис</div>
+          <div class="mt-1">г. Гродно, ул. Пучкова, 28 (ГАП 2) · [ООО / ИП] · УНП: [УНП] · Режим работы: Пн–Пт 09:00–17:00</div>
+        </div>
+        <div class="flex flex-wrap gap-4 text-slate-300">
+          <button type="button" data-modal="modal-privacy" class="hover:text-white underline">Политика обработки ПД</button>
+          <button type="button" data-modal="modal-consent" class="hover:text-white underline">Согласие на ПД</button>
+          <button type="button" data-modal="modal-cookies" class="hover:text-white underline">Настройки cookie</button>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] text-slate-500">
+        <p>
+          Информация на сайте носит справочный характер и не является публичной офертой (ст. 407 Гражданского кодекса Республики Беларусь). Точная стоимость стекла и работ согласовывается индивидуально после подбора по модели автомобиля.
+        </p>
+        <span class="shrink-0">© 2026 Гродно Стеклосервис</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App-like Sticky Mobile Dock (hidden whenever cookie banner is open) -->
+  <div id="mobile-dock" class="md:hidden fixed bottom-0 inset-x-0 z-40 px-3 pb-3 pt-1.5 transition-all duration-300 hidden">
+    <div class="glass-panel border border-slate-200 shadow-2xl rounded-2xl p-1.5 grid grid-cols-3 gap-1.5">
+      <a href="tel:+375295906283" class="flex flex-col items-center justify-center py-2 rounded-xl text-slateDeep hover:bg-slate-100 transition-colors">
+        <svg class="w-4 h-4 text-sapphire mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="text-[11px] font-semibold">Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375295906283" class="flex flex-col items-center justify-center py-2 rounded-xl text-slateDeep hover:bg-slate-100 transition-colors">
+        <svg class="w-4 h-4 text-cyanOptic mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span class="text-[11px] font-semibold">Viber</span>
+      </a>
+      <a href="#booking" class="flex flex-col items-center justify-center py-2 rounded-xl bg-sapphire text-white shadow-sm">
+        <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span class="text-[11px] font-semibold">Записаться</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- НЦЗПД Cookie Banner (two visually equal buttons + settings) -->
+  <div id="cookie-banner" class="fixed bottom-3 inset-x-3 md:left-auto md:right-5 md:max-w-lg z-50 bg-white border border-slate-300 shadow-2xl rounded-2xl p-4 hidden">
+    <div class="flex flex-col gap-3">
+      <div class="text-xs text-slate-600 leading-relaxed">
+        <strong class="text-slateDeep">Файлы cookie.</strong> Мы используем необходимые cookie для работы сайта, а аналитические — только с вашего согласия (НЦЗПД РБ).
+        <button type="button" data-modal="modal-cookies" class="text-sapphire underline font-medium ml-1">Настройки cookie</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" id="cookie-reject" class="px-2.5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slateDeep text-[11px] sm:text-xs font-semibold transition-colors text-center leading-tight">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookie-accept" class="px-2.5 py-2.5 rounded-xl border border-sapphire bg-sapphire hover:bg-sapphireDark text-white text-[11px] sm:text-xs font-semibold transition-colors text-center leading-tight">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Tariff 2 WordPress Service Concept Notice -->
+  <div id="modal-service" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDeep/65 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative">
+      <button type="button" class="modal-close absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500" aria-label="Закрыть">✕</button>
+      <span id="modal-service-num" class="inline-block text-xs font-bold uppercase tracking-widest text-sapphire mb-1">Раздел услуги</span>
+      <h3 id="modal-service-title" class="font-display font-bold text-xl sm:text-2xl text-slateDeep pr-8"></h3>
+      <p id="modal-service-desc" class="mt-3 text-sm text-slate-600 leading-relaxed"></p>
+
+      <div class="mt-4 p-4 rounded-xl bg-crystal border border-cyanOptic/40 text-xs sm:text-sm text-slate-700 leading-relaxed">
+        <strong class="text-slateDeep block mb-1">Честное уведомление о концепте (WordPress):</strong>
+        Это визуальный концепт главной страницы. В боевой версии перенесём все ваши 13 страниц услуг на современный WordPress с сохранением старых URL, позиций в поиске и настройкой Yoast SEO.
+      </div>
+
+      <div class="mt-5 flex flex-col sm:flex-row gap-2.5">
+        <button type="button" id="modal-service-book" class="flex-1 py-2.5 px-4 rounded-xl bg-sapphire hover:bg-sapphireDark text-white text-sm font-semibold transition-colors">
+          Записаться по этой услуге
+        </button>
+        <button type="button" class="modal-close py-2.5 px-4 rounded-xl border border-slate-300 text-slateDeep text-sm font-semibold hover:bg-slate-50 transition-colors">
+          Закрыть
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Политика обработки персональных данных (Закон № 99-З) -->
+  <div id="modal-privacy" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDeep/65 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-7 shadow-2xl border border-slate-200 relative text-sm text-slate-600 space-y-3">
+      <button type="button" class="modal-close absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500" aria-label="Закрыть">✕</button>
+      <h3 class="font-display font-bold text-xl text-slateDeep pr-8">Политика обработки персональных данных</h3>
+      <p><strong>Оператор:</strong> [ООО / ИП], УНП [УНП], адрес: г. Гродно, ул. Пучкова, 28 (ГАП 2), e-mail: 5906283@mail.ru.</p>
+      <p>Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+      <p><strong>Цели обработки:</strong> приём и обработка заявок на подбор, продажу, установку и ремонт автостёкол, обратная связь с клиентом, уточнение наличия и запись на сервис.</p>
+      <p><strong>Перечень обрабатываемых данных:</strong> имя, номер телефона, марка и модель автомобиля, текст комментария. Обработка осуществляется на основании согласия субъекта (ст. 5, ст. 9 Закона № 99-З) в течение 1 года или до отзыва согласия.</p>
+      <p><strong>Права субъекта персональных данных (ст. 10–15 Закона № 99-З):</strong> право на отзыв согласия, получение информации об обработке, требование изменения, прекращения обработки и удаления данных путём направления обращения на 5906283@mail.ru или по адресу оператора.</p>
+    </div>
+  </div>
+
+  <!-- Modal: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="modal-consent" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDeep/65 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-7 shadow-2xl border border-slate-200 relative text-sm text-slate-600 space-y-3">
+      <button type="button" class="modal-close absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500" aria-label="Закрыть">✕</button>
+      <h3 class="font-display font-bold text-xl text-slateDeep pr-8">Согласие на обработку и трансграничную передачу персональных данных</h3>
+      <p>Проставляя отметку в чекбоксе под формой заявки и нажимая кнопку «Отправить заявку», я свободно, однозначно и информированно даю согласие оператору [ООО / ИП] (УНП [УНП], г. Гродно, ул. Пучкова, 28) на обработку моих персональных данных (имя, телефон, данные об автомобиле) для связи и подбора автостекла.</p>
+      <p><strong>Трансграничная передача (ст. 9 Закона № 99-З):</strong> я уведомлён(а) и согласен(на) с тем, что для оперативного получения заявок мастером данные могут передаваться с использованием сервисов <strong>Telegram</strong> и <strong>Google (Google Apps Script)</strong>, серверы которых расположены за пределами Республики Беларусь, в том числе в государствах с возможным отсутствием надлежащего уровня защиты прав субъектов персональных данных.</p>
+      <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> я проинформирован(а) о праве в любой момент отозвать согласие, запросить информацию о своих данных, потребовать их изменения или удаления, направив письмо на 5906283@mail.ru.</p>
+    </div>
+  </div>
+
+  <!-- Modal: Настройки cookie (НЦЗПД) -->
+  <div id="modal-cookies" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slateDeep/65 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative text-sm text-slate-600 space-y-4">
+      <button type="button" class="modal-close absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-500" aria-label="Закрыть">✕</button>
+      <h3 class="font-display font-bold text-xl text-slateDeep">Настройки файлов cookie</h3>
+      <label class="flex items-start justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+        <div>
+          <div class="font-semibold text-slateDeep">Технические (обязательные)</div>
+          <div class="text-xs text-slate-500">Обеспечивают работу формы заявки и сохранение вашего выбора cookie.</div>
+        </div>
+        <input type="checkbox" checked disabled class="mt-1 w-4 h-4 accent-sapphire" />
+      </label>
+      <label class="flex items-start justify-between gap-3 p-3 rounded-xl bg-white border border-slate-200 cursor-pointer">
+        <div>
+          <div class="font-semibold text-slateDeep">Аналитические</div>
+          <div class="text-xs text-slate-500">Помогают оценивать посещаемость страниц услуг (Яндекс.Метрика и др.).</div>
+        </div>
+        <input type="checkbox" id="cookie-analytics-toggle" class="mt-1 w-4 h-4 accent-sapphire" />
+      </label>
+      <div class="grid grid-cols-2 gap-2.5 pt-2">
+        <button type="button" id="cookie-save-settings" class="py-2.5 px-4 rounded-xl border border-slate-300 text-slateDeep font-semibold hover:bg-slate-50">Сохранить выбор</button>
+        <button type="button" id="cookie-accept-modal" class="py-2.5 px-4 rounded-xl bg-sapphire text-white font-semibold hover:bg-sapphireDark">Принять все</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SITE_CONFIG = {
+      companyName: 'Гродно Стеклосервис',
+      domain: 'autostekla1.by',
+      city: 'г. Гродно',
+      address: 'г. Гродно, ул. Пучкова, 28 (ГАП 2)',
+      phones: ['+375 (29) 590-62-83', '+375 (29) 617-82-26'],
+      email: '5906283@mail.ru',
+      timezone: 'Europe/Minsk',
+      schedule: {
+        // Mon(1)..Fri(5) 09:00-17:00
+        openDays: [1, 2, 3, 4, 5],
+        openHour: 9,
+        closeHour: 17
+      },
+      // Leave empty in demo mode; in production set GAS WebApp URL
+      gasEndpoint: '',
+      demoMode: true
+    };
+
+    const SERVICES = [
+      {
+        num: '01',
+        cat: 'glass',
+        title: 'Продажа автостёкол',
+        desc: 'Прямые поставки от производителей с заводским сертификатом качества. Оригинальные и неоригинальные лобовые, боковые и задние стёкла в наличии и под заказ.',
+        url: '/продажа-автостекол/'
+      },
+      {
+        num: '02',
+        cat: 'glass',
+        title: 'Установка автостёкол',
+        desc: 'Профессиональная замена стёкол с восстановлением обзорности и герметичности кузова. Гарантия на продукцию и монтажные работы.',
+        url: '/установка-автостекол/'
+      },
+      {
+        num: '03',
+        cat: 'glass',
+        title: 'Вклейка автостёкол',
+        desc: 'Соблюдение заводской технологии вклейки: стекло является частью несущей конструкции и сохраняет исходную жёсткость и геометрию кузова.',
+        url: '/вклейка-автостекол/'
+      },
+      {
+        num: '04',
+        cat: 'glass',
+        title: 'Ремонт автостёкол',
+        desc: 'Устранение сколов и трещин любой сложности: очистка, снятие внутреннего напряжения и заполнение полимером с коэффициентом преломления стекла.',
+        url: '/ремонт-автостекол/'
+      },
+      {
+        num: '05',
+        cat: 'truck',
+        title: 'Автостёкла для грузовых авто',
+        desc: 'Продажа и ежедневная замена лобовых и других стёкол на грузовые автомобили и автобусы любых марок — в боксе и с выездом на стоянку.',
+        url: '/автостекла-для-грузовых-автомобилей/'
+      },
+      {
+        num: '06',
+        cat: 'elements',
+        title: 'Датчик дождя и света',
+        desc: 'Аккуратная замена, переустановка и проверка датчиков дождя и света на лобовом стекле.',
+        url: '/датчик-дождя-и-света/'
+      },
+      {
+        num: '07',
+        cat: 'elements',
+        title: 'Монтаж зеркал заднего вида',
+        desc: 'Профессиональная замена и надёжное крепление зеркал заднего вида в Гродно.',
+        url: '/монтаж-зеркал-заднего-вида/'
+      },
+      {
+        num: '08',
+        cat: 'elements',
+        title: 'Ремонт фар — вклейка стекла',
+        desc: 'Восстановление систем освещения автомобиля и герметичная вклейка стёкол фар.',
+        url: '/ремонт-фар-вклейка-стекла/'
+      },
+      {
+        num: '09',
+        cat: 'elements',
+        title: 'Растонировка стёкол автомобиля',
+        desc: 'Деликатное удаление тонировочной плёнки и остатков клея без повреждения стекла и дверной обшивки — от 15 минут.',
+        url: '/растонировка-стекол-автомобиля/'
+      },
+      {
+        num: '10',
+        cat: 'elements',
+        title: 'Клейка молдингов',
+        desc: 'Оклейка молдингов защитной плёнкой и антихром-покрытием любого оттенка с гарантией на выполненную работу.',
+        url: '/клейка-молдингов/'
+      },
+      {
+        num: '11',
+        cat: 'truck',
+        title: 'Кузовные работы для грузовых авто',
+        desc: 'Покраска грузовых автомобилей и микроавтобусов, восстановление геометрии кузова и сварочные работы.',
+        url: '/кузовные-работы-для-грузовых-авто/'
+      },
+      {
+        num: '12',
+        cat: 'truck',
+        title: 'Автозапчасти',
+        desc: 'Подбор и продажа автозапчастей от ведущих производителей Европы, Америки и Японии с гарантией.',
+        url: '/автозапчасти/'
+      }
+    ];
+
+    // 1. Live Europe/Minsk Status Indicator
+    function updateLiveStatus() {
+      const dot = document.getElementById('live-dot');
+      const text = document.getElementById('live-text');
+      if (!dot || !text) return;
+
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: SITE_CONFIG.timezone,
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).formatToParts(now);
+
+      const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+      const dayMap = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 };
+      const day = dayMap[map.weekday] || 1;
+      const hour = parseInt(map.hour, 10);
+
+      const isOpenDay = SITE_CONFIG.schedule.openDays.includes(day);
+      const isOpenHour = hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour;
+
+      if (isOpenDay && isOpenHour) {
+        dot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+        text.textContent = 'Открыто сейчас';
+      } else {
+        dot.className = 'w-2 h-2 rounded-full bg-amber-500';
+        text.textContent = 'Ответим с 09:00';
+      }
+    }
+    updateLiveStatus();
+    setInterval(updateLiveStatus, 60000);
+
+    // 2. Render & Filter 12 Service Cards
+    const gridEl = document.getElementById('services-grid');
+    let activeFilter = 'all';
+
+    function renderServices() {
+      const filtered = activeFilter === 'all' ? SERVICES : SERVICES.filter(s => s.cat === activeFilter);
+      gridEl.innerHTML = filtered.map(s => `
+        <article class="service-card rounded-2xl border border-slate-200 bg-crystal p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="font-display font-bold text-xs tracking-wider px-2.5 py-1 rounded-md bg-white border border-slate-200 text-sapphire">${s.num}</span>
+              <span class="text-[11px] font-medium text-slate-400 truncate max-w-[170px]">${s.url}</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-slateDeep">${s.title}</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">${s.desc}</p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+            <button type="button" data-service-open="${s.num}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-sapphire hover:text-sapphireDark transition-colors">
+              <span>Подробнее о направлении</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      gridEl.querySelectorAll('[data-service-open]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = SERVICES.find(x => x.num === btn.dataset.serviceOpen);
+          if (item) openServiceModal(item);
+        });
+      });
+    }
+    renderServices();
+
+    document.querySelectorAll('#service-tabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#service-tabs .tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.classList.add('text-slate-600');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('text-slate-600');
+        activeFilter = btn.dataset.filter;
+        renderServices();
+      });
+    });
+
+    // 3. 2-Click Interactive Selector -> Booking Form Sync
+    let selectedService = 'Замена лобового стекла';
+    let selectedUrgency = 'Сегодня';
+
+    function syncSelectorToForm() {
+      const sum = document.getElementById('selector-summary');
+      const fService = document.getElementById('booking-service');
+      const fUrgency = document.getElementById('booking-urgency');
+      if (sum) sum.textContent = `${selectedService} · ${selectedUrgency}`;
+      if (fService) fService.value = selectedService;
+      if (fUrgency) fUrgency.value = selectedUrgency;
+    }
+
+    document.querySelectorAll('#step1-group .selector-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#step1-group .selector-pill').forEach(b => {
+          b.classList.remove('active');
+          b.classList.add('bg-slate-50/70', 'text-slateDeep');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('bg-slate-50/70', 'text-slateDeep');
+        selectedService = btn.dataset.service;
+        syncSelectorToForm();
+      });
+    });
+
+    document.querySelectorAll('#step2-group .selector-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#step2-group .selector-pill').forEach(b => {
+          b.classList.remove('active');
+          b.classList.add('bg-slate-50/70', 'text-slateDeep');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('bg-slate-50/70', 'text-slateDeep');
+        selectedUrgency = btn.dataset.urgency;
+        syncSelectorToForm();
+      });
+    });
+
+    // 4. Modals Handling (including Tariff 2 WordPress Service Modal)
+    function showModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function hideAllModals() {
+      document.querySelectorAll('[id^="modal-"]').forEach(m => {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+      });
+    }
+
+    let modalCurrentServiceTitle = '';
+    function openServiceModal(item) {
+      modalCurrentServiceTitle = item.title;
+      document.getElementById('modal-service-num').textContent = `Услуга ${item.num} · ${item.url}`;
+      document.getElementById('modal-service-title').textContent = item.title;
+      document.getElementById('modal-service-desc').textContent = item.desc;
+      showModal('modal-service');
+    }
+
+    document.getElementById('modal-service-book').addEventListener('click', () => {
+      document.getElementById('booking-service').value = modalCurrentServiceTitle;
+      hideAllModals();
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+      trigger.addEventListener('click', () => showModal(trigger.dataset.modal));
+    });
+    document.querySelectorAll('.modal-close').forEach(btn => {
+      btn.addEventListener('click', hideAllModals);
+    });
+    document.querySelectorAll('[id^="modal-"]').forEach(m => {
+      m.addEventListener('click', e => {
+        if (e.target === m) hideAllModals();
+      });
+    });
+
+    // 5. Cookie Banner & Mobile Sticky Dock Coordination (НЦЗПД)
+    const COOKIE_KEY = 'autostekla1_cookie_consent_v1';
+    const cookieBanner = document.getElementById('cookie-banner');
+    const mobileDock = document.getElementById('mobile-dock');
+
+    function syncDockVisibility(bannerVisible) {
+      if (!mobileDock) return;
+      if (bannerVisible) {
+        mobileDock.classList.add('hidden');
+      } else {
+        mobileDock.classList.remove('hidden');
+      }
+    }
+
+    function initCookies() {
+      const saved = localStorage.getItem(COOKIE_KEY);
+      if (!saved) {
+        cookieBanner.classList.remove('hidden');
+        syncDockVisibility(true);
+      } else {
+        cookieBanner.classList.add('hidden');
+        syncDockVisibility(false);
+      }
+    }
+
+    function saveCookieChoice(analyticsAccepted) {
+      localStorage.setItem(COOKIE_KEY, JSON.stringify({
+        necessary: true,
+        analytics: Boolean(analyticsAccepted),
+        ts: new Date().toISOString()
+      }));
+      cookieBanner.classList.add('hidden');
+      syncDockVisibility(false);
+      hideAllModals();
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', () => saveCookieChoice(true));
+    document.getElementById('cookie-reject').addEventListener('click', () => saveCookieChoice(false));
+    document.getElementById('cookie-accept-modal').addEventListener('click', () => saveCookieChoice(true));
+    document.getElementById('cookie-save-settings').addEventListener('click', () => {
+      const toggle = document.getElementById('cookie-analytics-toggle');
+      saveCookieChoice(toggle ? toggle.checked : false);
+    });
+    initCookies();
+
+    // 6. Demo Booking Form with Honeypot & Закон № 99-З Validation
+    const form = document.getElementById('booking-form');
+    const feedback = document.getElementById('form-feedback');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      feedback.className = 'hidden rounded-xl p-3.5 text-sm';
+
+      // Honeypot check
+      if (document.getElementById('website').value.trim() !== '') {
+        return;
+      }
+
+      const name = document.getElementById('client-name').value.trim();
+      const phone = document.getElementById('client-phone').value.trim();
+      const service = document.getElementById('booking-service').value.trim();
+      const urgency = document.getElementById('booking-urgency').value.trim();
+      const comment = document.getElementById('client-car').value.trim();
+      const consent = document.getElementById('pd-consent').checked;
+
+      if (!name || phone.length < 7) {
+        feedback.textContent = 'Пожалуйста, укажите имя и корректный номер телефона для связи.';
+        feedback.className = 'rounded-xl p-3.5 text-sm bg-rose-50 text-rose-700 border border-rose-200';
+        return;
+      }
+      if (!consent) {
+        feedback.textContent = 'Необходимо отметить согласие на обработку персональных данных (Закон РБ № 99-З).';
+        feedback.className = 'rounded-xl p-3.5 text-sm bg-amber-50 text-amber-800 border border-amber-200';
+        return;
+      }
+
+      const payload = { company: SITE_CONFIG.companyName, name, phone, service, urgency, comment };
+
+      if (!SITE_CONFIG.demoMode && SITE_CONFIG.gasEndpoint) {
+        try {
+          await fetch(SITE_CONFIG.gasEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (_) {}
+      }
+
+      feedback.innerHTML = `<strong>Заявка сформирована (демо-режим).</strong><br>Услуга: ${service} (${urgency}). В боевой версии заявка мгновенно уйдёт вам в Telegram / Viber и на ${SITE_CONFIG.email}.`;
+      feedback.className = 'rounded-xl p-3.5 text-sm bg-emerald-50 text-emerald-800 border border-emerald-200';
+      form.reset();
+      syncSelectorToForm();
+    });
+  </script>
+</body>
+</html>

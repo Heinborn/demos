@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Салон штор на Советской, 3 — Пошив и дизайн штор в Гомеле | ИП Кукса И.М.</title>
+  <meta name="description" content="Салон премиум-штор в Гомеле с 1999 года. Около 3000 европейских и турецких тканей, 3D-визуализация в Procreate по фото комнаты, пошив от 3 дней, монтаж карнизов и автоматических систем." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FBF9F5',
+            sand: '#E6DDD0',
+            sandlight: '#F3EDE3',
+            tealbrand: '#0D6E78',
+            tealdark: '#09555D',
+            tealsoft: '#E7F1F2',
+            espresso: '#1B1F23',
+            mutedink: '#5A6065',
+          },
+          fontFamily: {
+            serif: ['Forum', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      background-color: #FBF9F5;
+      color: #1B1F23;
+      font-family: 'Manrope', system-ui, sans-serif;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+    .font-editorial {
+      font-family: 'Forum', Georgia, serif;
+      letter-spacing: -0.015em;
+    }
+    .editorial-rule {
+      border-color: #E6DDD0;
+    }
+    .lookbook-img {
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .lookbook-card:hover .lookbook-img {
+      transform: scale(1.035);
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-alabaster text-espresso antialiased selection:bg-tealbrand selection:text-white pb-20 md:pb-0">
+
+  <!-- Тонкая верхняя демо-лента (не перекрывается мобильной панелью) -->
+  <div class="bg-[#EFE8DC] border-b border-sand text-[11px] sm:text-xs text-espresso/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-wrap items-center justify-between gap-2">
+      <span class="font-medium">Концепт главной страницы для <strong class="font-semibold text-espresso">shtorivdom.by</strong> · г. Гомель, ул. Советская, 3</span>
+      <button type="button" onclick="openWpModal('Архитектура многостраничника')" class="text-tealbrand hover:text-tealdark underline underline-offset-2 font-medium whitespace-nowrap">
+        О переносе на WordPress →
+      </button>
+    </div>
+  </div>
+
+  <!-- Единая однострочная шапка (Header) -->
+  <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-sand">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Бренд -->
+      <a href="#top" class="flex flex-col min-w-0 shrink-0 group">
+        <span class="font-editorial text-xl sm:text-[28px] leading-none text-espresso group-hover:text-tealbrand transition-colors whitespace-nowrap">
+          Салон штор
+        </span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.18em] text-mutedink mt-1 whitespace-nowrap">
+          Советская, 3 · Гомель · с 1999
+        </span>
+      </a>
+
+      <!-- Навигация (строго в 1 строку) -->
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium text-espresso/85">
+        <a href="#collections" class="hover:text-tealbrand transition-colors whitespace-nowrap">Шторы</a>
+        <a href="#systems" class="hover:text-tealbrand transition-colors whitespace-nowrap">Карнизы и системы</a>
+        <a href="#fabrics" class="hover:text-tealbrand transition-colors whitespace-nowrap">Ткани и 3D</a>
+        <a href="#selector" class="hover:text-tealbrand transition-colors whitespace-nowrap">Подбор</a>
+        <a href="#reviews" class="hover:text-tealbrand transition-colors whitespace-nowrap">Отзывы</a>
+        <a href="#contacts" class="hover:text-tealbrand transition-colors whitespace-nowrap">Салон</a>
+      </nav>
+
+      <!-- Правая часть: Живой статус + Телефон + Аккуратная иконка + CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
+        <!-- Живой статус по Europe/Minsk -->
+        <div id="live-status-badge" class="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 border border-sand bg-sandlight/60 text-xs text-espresso whitespace-nowrap">
+          <span id="live-status-dot" class="w-2 h-2 rounded-full bg-tealbrand shrink-0"></span>
+          <span id="live-status-text">Открыто сейчас</span>
+        </div>
+
+        <!-- Основной телефон (никогда не переносится) -->
+        <a href="tel:+375291565141" class="hidden sm:inline-block text-sm font-semibold text-espresso hover:text-tealbrand transition-colors whitespace-nowrap">
+          +375 (29) 156-51-41
+        </a>
+
+        <!-- Монохромная иконка Instagram (без кричащих плашек) -->
+        <a href="https://www.instagram.com/irinaa_kuksa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram салона" class="hidden sm:inline-flex items-center justify-center w-9 h-9 border border-sand text-espresso/80 hover:text-tealbrand hover:border-tealbrand transition-colors shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+
+        <!-- Кнопка вызова дизайнера -->
+        <a href="#booking-form" class="inline-flex items-center justify-center px-3.5 sm:px-5 py-2 sm:py-2.5 bg-tealbrand hover:bg-tealdark text-white text-xs sm:text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap shrink-0">
+          <span class="sm:hidden">Запись</span>
+          <span class="hidden sm:inline">Вызвать на замер</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Асимметричный журнальный Hero (Editorial Lookbook, без типового SaaS-сплита) -->
+    <section class="border-b border-sand pt-5 sm:pt-8 pb-10 sm:pb-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Верхняя редакционная строка -->
+        <div class="flex flex-wrap items-center justify-between gap-2 sm:gap-3 pb-4 border-b border-sand text-[10px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.18em] text-mutedink">
+          <span>Текстильное ателье в центре Гомеля · С 1999 года</span>
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+            <span id="mobile-live-status" class="xl:hidden inline-flex items-center gap-1.5 text-espresso font-medium normal-case tracking-normal text-xs">
+              <span id="mobile-status-dot" class="w-2 h-2 rounded-full bg-tealbrand"></span>
+              <span id="mobile-status-text">Открыто сейчас</span>
+            </span>
+            <span class="text-espresso font-medium">★ 4.6 · 13 отзывов на Яндекс Картах</span>
+          </div>
+        </div>
+
+        <!-- Крупный журнальный заголовок во всю ширину -->
+        <div class="pt-5 sm:pt-7 pb-5 sm:pb-7">
+          <h1 class="font-editorial text-[36px] sm:text-5xl lg:text-[64px] leading-[1.04] text-espresso max-w-5xl">
+            Шторы и карнизы на заказ — <span class="text-tealbrand italic">в характере вашего интерьера</span>
+          </h1>
+        </div>
+
+        <!-- Журнальная асимметрия: слева редакторский блок и индекс, справа — интерьерное фото -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-10 items-start">
+          <div class="lg:col-span-4 min-w-0 flex flex-col justify-between space-y-5">
+            <p class="text-[14px] sm:text-[15px] leading-relaxed text-espresso/85">
+              Салон премиум-штор на Советской, 3 создаёт текстильные проекты «под ключ» более 25 лет. Подбираем фактуру под свет и мебель, рисуем 3D-визуализацию в Procreate по фото вашей комнаты, шьём от 3 дней и аккуратно монтируем карнизы.
+            </p>
+
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-2.5">
+              <a href="#booking-form" class="inline-flex items-center justify-center px-5 py-3 bg-tealbrand hover:bg-tealdark text-white text-sm font-medium tracking-wide transition-colors text-center">
+                Заказать выезд дизайнера с тканями
+              </a>
+              <a href="#selector" class="inline-flex items-center justify-center px-5 py-3 border border-espresso/25 hover:border-tealbrand hover:text-tealbrand text-sm font-medium text-espresso transition-colors text-center">
+                Подобрать решение за 2 клика ↓
+              </a>
+            </div>
+
+            <!-- Лаконичный редакционный индекс (реальные факты с сайта, без сломанных нулей) -->
+            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-sand">
+              <div>
+                <div class="font-editorial text-xl sm:text-3xl text-espresso">25+ лет</div>
+                <div class="text-[11px] sm:text-xs text-mutedink mt-1 leading-snug">Опыт салона с 1999 года</div>
+              </div>
+              <div>
+                <div class="font-editorial text-xl sm:text-3xl text-espresso">3 000+</div>
+                <div class="text-[11px] sm:text-xs text-mutedink mt-1 leading-snug">Европейских и турецких тканей</div>
+              </div>
+              <div>
+                <div class="font-editorial text-xl sm:text-3xl text-espresso">от 3 дней</div>
+                <div class="text-[11px] sm:text-xs text-mutedink mt-1 leading-snug">Пошив в мастерской</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8 min-w-0">
+            <figure class="p-2.5 sm:p-3.5 bg-sandlight border border-sand">
+              <div class="relative overflow-hidden aspect-[16/10] bg-sand">
+                <img
+                  src="https://images.unsplash.com/photo-1754613389131-ea9b5f234cda?auto=format&fit=crop&w=1400&q=85"
+                  alt="Портьеры из натурального льна в светлой гостиной — салон штор на Советской, 3 в Гомеле"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <figcaption class="pt-3 pb-1 px-1 flex flex-wrap items-center justify-between gap-2 text-xs text-mutedink">
+                <span>Итальянский текстиль со сроком службы от 10 лет · 3D-эскиз по фото комнаты</span>
+                <span class="text-tealbrand font-medium">Рассрочка 0% на 3 мес. без банка · Подушки в подарок</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Спецпредложение (честно, без выдуманных цен) -->
+    <section class="bg-sandlight/75 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-start sm:items-center gap-3">
+          <span class="px-2.5 py-1 bg-tealbrand text-white text-[11px] uppercase tracking-widest font-semibold shrink-0">Акция салона</span>
+          <p class="text-sm text-espresso">
+            Сезонные скидки <strong class="font-semibold">от 10 до 50%</strong> на ткани из коллекции «Классика» + декоративные подушки в подарок при заказе с сайта.
+          </p>
+        </div>
+        <a href="#booking-form" class="text-sm font-semibold text-tealbrand hover:text-tealdark whitespace-nowrap shrink-0">
+          Уточнить наличие тканей →
+        </a>
+      </div>
+    </section>
+
+    <!-- Staggered Lookbook: Шторы по помещениям (6 реальных категорий с shtorivdom.by) -->
+    <section id="collections" class="py-16 sm:py-24 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pb-10 border-b border-sand">
+          <div class="lg:col-span-7">
+            <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-2">Lookbook · 01</p>
+            <h2 class="font-editorial text-3xl sm:text-5xl text-espresso leading-tight">
+              Шторы для каждого пространства
+            </h2>
+          </div>
+          <div class="lg:col-span-5">
+            <p class="text-sm text-mutedink leading-relaxed">
+              Шьём комплекты под высоту потолка, планировку и стороны света. Выберите комнату, чтобы посмотреть раздел каталога или сразу пригласить дизайнера.
+            </p>
+          </div>
+        </div>
+
+        <!-- Асимметричная журнальная раскладка -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-12 pt-12">
+          <!-- 01 Гостиная (исправлена опечатка «Гостинная») -->
+          <article class="md:col-span-7 lookbook-card group">
+            <button type="button" onclick="openWpModal('Шторы для гостиной')" class="block w-full text-left">
+              <div class="overflow-hidden aspect-[16/10] bg-sand border border-sand">
+                <img
+                  src="https://images.unsplash.com/photo-1615471618985-97108e2ba478?auto=format&fit=crop&w=1200&q=80"
+                  alt="Шторы в гостиную — лёгкий тюль и портьеры до пола"
+                  class="w-full h-full object-cover lookbook-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="pt-4 flex items-start justify-between gap-4">
+                <div>
+                  <span class="text-[11px] uppercase tracking-[0.18em] text-mutedink">01 / Зал и гостиная</span>
+                  <h3 class="font-editorial text-2xl sm:text-3xl text-espresso mt-1 group-hover:text-tealbrand transition-colors">Гостиная</h3>
+                  <p class="text-sm text-mutedink mt-1.5 max-w-lg">Многослойные композиции, панорамные окна, потолочные ниши и визуальное вытягивание высоты комнаты.</p>
+                </div>
+                <span class="text-xs font-semibold text-tealbrand whitespace-nowrap pt-2">Подробнее →</span>
+              </div>
+            </button>
+          </article>
+
+          <!-- 02 Спальня -->
+          <article class="md:col-span-5 md:mt-12 lookbook-card group">
+            <button type="button" onclick="openWpModal('Шторы для спальни')" class="block w-full text-left">
+              <div class="overflow-hidden aspect-[4/3] bg-sand border border-sand">
+                <img
+                  src="https://images.unsplash.com/photo-1547166993-fc34f81b9aec?auto=format&fit=crop&w=1200&q=80"
+                  alt="Шторы в спальню — плотные портьеры и защита от утреннего солнца"
+                  class="w-full h-full object-cover lookbook-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="pt-4 flex items-start justify-between gap-4">
+                <div>
+                  <span class="text-[11px] uppercase tracking-[0.18em] text-mutedink">02 / Приватная зона</span>
+                  <h3 class="font-editorial text-2xl sm:text-3xl text-espresso mt-1 group-hover:text-tealbrand transition-colors">Спальня</h3>
+                  <p class="text-sm text-mutedink mt-1.5">Плотный блэкаут и димаут, мягкий бархат, шенилл и покрывала в единой палитре.</p>
+                </div>
+                <span class="text-xs font-semibold text-tealbrand whitespace-nowrap pt-2">Подробнее →</span>
+              </div>
+            </button>
+          </article>
+
+          <!-- 03 Детская -->
+          <article class="md:col-span-4 lookbook-card group">
+            <button type="button" onclick="openWpModal('Шторы для детской')" class="block w-full text-left">
+              <div class="overflow-hidden aspect-[4/3] bg-sand border border-sand">
+                <img
+                  src="https://images.unsplash.com/photo-1769107805446-a55542a7e75f?auto=format&fit=crop&w=1200&q=80"
+                  alt="Шторы в детскую комнату — спокойный дневной свет"
+                  class="w-full h-full object-cover lookbook-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="pt-4">
+                <span class="text-[11px] uppercase tracking-[0.18em] text-mutedink">03 / Комната ребёнка</span>
+                <div class="flex items-center justify-between gap-2 mt-1">
+                  <h3 class="font-editorial text-2xl text-espresso group-hover:text-tealbrand transition-colors">Детская</h3>
+                  <span class="text-xs font-semibold text-tealbrand">Подробнее →</span>
+                </div>
+                <p class="text-sm text-mutedink mt-1.5">Безопасный крепёж, гипоаллергенные ткани и надёжное затемнение на дневной сон.</p>
+              </div>
+            </button>
+          </article>
+
+          <!-- 04 Кухня -->
+          <article class="md:col-span-4 lookbook-card group">
+            <button type="button" onclick="openWpModal('Шторы для кухни')" class="block w-full text-left">
+              <div class="overflow-hidden aspect-[4/3] bg-sand border border-sand">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1668073437337-5734dc7ef812?auto=format&fit=crop&w=1200&q=80"
+                  alt="Лёгкие шторы на кухню и столовую зону"
+                  class="w-full h-full object-cover lookbook-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="pt-4">
+                <span class="text-[11px] uppercase tracking-[0.18em] text-mutedink">04 / Кухня и столовая</span>
+                <div class="flex items-center justify-between gap-2 mt-1">
+                  <h3 class="font-editorial text-2xl text-espresso group-hover:text-tealbrand transition-colors">Кухня</h3>
+                  <span class="text-xs font-semibold text-tealbrand">Подробнее →</span>
+                </div>
+                <p class="text-sm text-mutedink mt-1.5">Ткани с влагостойкой пропиткой, лаконичные римские модели и текстиль на обеденный стол.</p>
+              </div>
+            </button>
+          </article>
+
+          <!-- 05 & 06 HoReCa (Отели + Кафе и рестораны) -->
+          <article class="md:col-span-4 flex flex-col justify-between bg-sandlight border border-sand p-6 sm:p-7">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-tealbrand font-semibold">05–06 / HoReCa</span>
+              <h3 class="font-editorial text-2xl sm:text-3xl text-espresso mt-2">Для отелей, кафе и ресторанов</h3>
+              <p class="text-sm text-mutedink mt-3 leading-relaxed">
+                Коммерческий текстиль с повышенной износостойкостью: затемнение номеров, драпировка залов, скатерти и салфетки в фирменной гамме заведения.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-sand flex flex-wrap gap-3">
+              <button type="button" onclick="openWpModal('Для отелей')" class="px-4 py-2 border border-espresso/25 hover:border-tealbrand hover:text-tealbrand text-xs font-semibold transition-colors">
+                Для отелей →
+              </button>
+              <button type="button" onclick="openWpModal('Для кафе и ресторанов')" class="px-4 py-2 border border-espresso/25 hover:border-tealbrand hover:text-tealbrand text-xs font-semibold transition-colors">
+                Для кафе и ресторанов →
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Карнизы, солнцезащитные системы и автоматика (реальные 8+1 направлений) -->
+    <section id="systems" class="py-16 sm:py-24 bg-[#F4EFE6]/60 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-10 border-b border-sand">
+          <div class="lg:col-span-7">
+            <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-2">Инженерия окна · 02</p>
+            <h2 class="font-editorial text-3xl sm:text-5xl text-espresso leading-tight">
+              Карнизы, солнцезащита и умный дом
+            </h2>
+          </div>
+          <div class="lg:col-span-5">
+            <p class="text-sm text-mutedink leading-relaxed">
+              Берём на себя точную разметку и профессиональный монтаж, включая скрытые потолочные ниши и эркеры.
+            </p>
+          </div>
+        </div>
+
+        <!-- Сетка 8 реальных категорий с shtorivdom.by -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-sand border border-sand mt-10">
+          <button type="button" onclick="openWpModal('Римские шторы')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">01</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Римские шторы</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Лаконичные ровные складки для кухни, кабинета и эркеров.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Трубчатый карниз')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">02</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Трубчатые карнизы</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Декоративные наконечники, металл и дерево для классических интерьеров.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Профильный карниз')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">03</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Профильные карнизы</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Одно-, двух- и трёхрядные системы с лёгким бесшумным скольжением.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Деревянные жалюзи')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">04</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Деревянные жалюзи</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Натуральная фактура ламелей и точная регулировка света.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Рулонные шторы')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">05</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Рулонные шторы</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Компактная защита от солнца на створку окна или проём.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Шторы-плиссе')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">06</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Плиссе</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Идеальны для мансардных, арочных и нестандартных окон.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Панельные (японские) шторы')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">07</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Панельные шторы</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Японские раздвижные экраны для панорамного остекления и зонирования.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+
+          <button type="button" onclick="openWpModal('Аксессуары для штор')" class="bg-alabaster hover:bg-sandlight/80 p-6 text-left transition-colors group">
+            <span class="text-xs text-mutedink">08</span>
+            <h3 class="font-editorial text-2xl text-espresso mt-2 group-hover:text-tealbrand">Аксессуары и фурнитура</h3>
+            <p class="text-xs text-mutedink mt-2 leading-relaxed">Подхваты, кисти, басонные изделия, магниты и крючки.</p>
+            <span class="inline-block mt-4 text-xs font-semibold text-tealbrand">Раздел каталога →</span>
+          </button>
+        </div>
+
+        <!-- Выделенная полоса: Автоматические системы -->
+        <div class="mt-8 bg-espresso text-alabaster p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-8">
+            <span class="text-[11px] uppercase tracking-[0.2em] text-sand/80">Автоматические системы для штор</span>
+            <h3 class="font-editorial text-2xl sm:text-4xl text-white mt-2">Электрокарнизы с управлением по таймеру и с пульта</h3>
+            <p class="text-sm text-alabaster/75 mt-3 max-w-2xl leading-relaxed">
+              Шторы открываются утром и закрываются вечером без вашего участия. Подключаются к «Умному дому» и берегут ткань от вытягивания и износа.
+            </p>
+          </div>
+          <div class="lg:col-span-4 lg:text-right">
+            <a href="#booking-form" onclick="prefillSystem('Электрокарниз / автоматика')" class="inline-flex items-center justify-center px-6 py-3.5 bg-tealbrand hover:bg-tealdark text-white text-sm font-medium transition-colors">
+              Рассчитать под ваш проём
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ткани, антивандальный тюль и 3D-визуализация в Procreate -->
+    <section id="fabrics" class="py-16 sm:py-24 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="overflow-hidden aspect-[3/4] border border-sand bg-sandlight">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1701157946903-57c2821d71b7?auto=format&fit=crop&w=900&q=80"
+                alt="Европейские льняные и портьерные ткани"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-4 bg-sandlight border border-sand text-xs text-espresso/85 leading-relaxed">
+              <strong class="block font-semibold text-espresso mb-1">Итальянские коллекции</strong>
+              Сохраняют форму, геометрию и оттенок на солнце от 10 лет.
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="overflow-hidden aspect-[3/4] border border-sand bg-sandlight">
+              <img
+                src="https://images.unsplash.com/photo-1788795468728-f3171f1de48a?auto=format&fit=crop&w=900&q=80"
+                alt="Сочетание лёгкого тюля и плотного блэкаута"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-4 bg-tealsoft border border-tealbrand/20 text-xs text-espresso leading-relaxed">
+              <strong class="block font-semibold text-tealbrand mb-1">3D-эскиз в Procreate</strong>
+              Покажем будущие шторы прямо на фотографии вашей комнаты до начала пошива.
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+          <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold">Библиотека материалов · 03</p>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-espresso leading-tight">
+            Около 3 000 тканей из Европы и Турции
+          </h2>
+          <p class="text-sm sm:text-base text-mutedink leading-relaxed">
+            Не нужно гадать по маленькому лоскуту при искусственном свете магазина — дизайнер привозит каталоги прямо к вам домой, чтобы оценить оттенки при вашем реальном освещении.
+          </p>
+
+          <dl class="divide-y divide-sand border-y border-sand">
+            <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <dt class="font-semibold text-sm text-espresso">Блэкаут (Blackout) и димаут (Dimout)</dt>
+              <dd class="text-xs sm:text-sm text-mutedink sm:text-right">Полное или мягкое затемнение для солнечных окон</dd>
+            </div>
+            <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <dt class="font-semibold text-sm text-espresso">Антивандальный тюль</dt>
+              <dd class="text-xs sm:text-sm text-mutedink sm:text-right">Особое плетение, устойчивое к зацепкам от когтей питомцев</dd>
+            </div>
+            <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <dt class="font-semibold text-sm text-espresso">Габардин, бархат, велюр и лён</dt>
+              <dd class="text-xs sm:text-sm text-mutedink sm:text-right">На подкладке или с УФ-защитой от выгорания</dd>
+            </div>
+            <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <dt class="font-semibold text-sm text-espresso">Переделка и обновление</dt>
+              <dd class="text-xs sm:text-sm text-mutedink sm:text-right">Аккуратно адаптируем любимую ткань под новый карниз</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Лёгкий мини-интерактив за 2 клика (подпись автора №3) -->
+    <section id="selector" class="py-16 sm:py-24 bg-sandlight/60 border-b border-sand">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-2">Экспресс-подбор · 2 клика</p>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-espresso">Наметьте формат работы с дизайнером</h2>
+          <p class="text-sm text-mutedink mt-3">Выберите помещение и удобный вариант встречи — мы сразу перенесём это в форму записи.</p>
+        </div>
+
+        <div class="bg-alabaster border border-sand p-6 sm:p-10 space-y-8">
+          <!-- Шаг 1 -->
+          <div>
+            <div class="text-xs uppercase tracking-[0.16em] text-mutedink font-semibold mb-3">Шаг 1. Для какого помещения подбираем шторы?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="room-choices">
+              <button type="button" data-room="Гостиная" class="room-btn px-4 py-3.5 border border-tealbrand bg-tealsoft text-tealbrand text-sm font-semibold text-left transition-all">
+                Гостиная
+                <span class="block text-xs font-normal text-espresso/70 mt-0.5">Портьеры, тюль, панорамные окна</span>
+              </button>
+              <button type="button" data-room="Спальня / детская" class="room-btn px-4 py-3.5 border border-sand bg-alabaster hover:border-tealbrand/60 text-espresso text-sm font-semibold text-left transition-all">
+                Спальня / детская
+                <span class="block text-xs font-normal text-mutedink mt-0.5">Блэкаут, димаут, покрывала</span>
+              </button>
+              <button type="button" data-room="Кухня / вся квартира" class="room-btn px-4 py-3.5 border border-sand bg-alabaster hover:border-tealbrand/60 text-espresso text-sm font-semibold text-left transition-all">
+                Кухня / вся квартира
+                <span class="block text-xs font-normal text-mutedink mt-0.5">Римские шторы, комплекс «под ключ»</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div>
+            <div class="text-xs uppercase tracking-[0.16em] text-mutedink font-semibold mb-3">Шаг 2. Как вам удобнее познакомиться с тканями?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="format-choices">
+              <button type="button" data-format="Выезд дизайнера с образцами" class="format-btn px-4 py-3.5 border border-tealbrand bg-tealsoft text-tealbrand text-sm font-semibold text-left transition-all">
+                Выезд дизайнера с образцами
+                <span class="block text-xs font-normal text-espresso/70 mt-0.5">Привезём каталоги на объект и снимем точные замеры</span>
+              </button>
+              <button type="button" data-format="Встреча в салоне на Советской, 3" class="format-btn px-4 py-3.5 border border-sand bg-alabaster hover:border-tealbrand/60 text-espresso text-sm font-semibold text-left transition-all">
+                Встреча в салоне на Советской, 3
+                <span class="block text-xs font-normal text-mutedink mt-0.5">Живое знакомство с 3 000+ тканями и карнизами</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Итог и кнопка перехода к форме -->
+          <div class="pt-6 border-t border-sand flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="text-sm text-espresso">
+              <span class="text-mutedink">Ваш выбор:</span>
+              <strong id="selector-summary" class="font-semibold text-tealbrand ml-1">Гостиная · Выезд дизайнера с образцами</strong>
+              <p id="selector-note" class="text-xs text-mutedink mt-1">Подготовим подборку портьер и тюля, сделаем 3D-визуализацию в Procreate по фото окна.</p>
+            </div>
+            <button type="button" onclick="applySelectorToForm()" class="px-6 py-3.5 bg-tealbrand hover:bg-tealdark text-white text-sm font-medium whitespace-nowrap transition-colors shrink-0">
+              Перенести в заявку →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 основных этапа работы -->
+    <section class="py-16 sm:py-20 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+          <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-2">Полный цикл · 04</p>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-espresso">4 этапа от замера до навески</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="border-t-2 border-tealbrand pt-5">
+            <span class="font-editorial text-3xl text-tealbrand">01</span>
+            <h3 class="font-semibold text-base text-espresso mt-2">Выезд дизайнера</h3>
+            <p class="text-sm text-mutedink mt-2 leading-relaxed">Точные замеры проёмов, анализ освещения и подбор тканей прямо у вас дома.</p>
+          </div>
+          <div class="border-t border-sand pt-5">
+            <span class="font-editorial text-3xl text-mutedink">02</span>
+            <h3 class="font-semibold text-base text-espresso mt-2">3D-проект и согласование</h3>
+            <p class="text-sm text-mutedink mt-2 leading-relaxed">Визуализация в Procreate по фото комнаты, подбор модели, фурнитуры и карнизов.</p>
+          </div>
+          <div class="border-t border-sand pt-5">
+            <span class="font-editorial text-3xl text-mutedink">03</span>
+            <h3 class="font-semibold text-base text-espresso mt-2">Пошив от 3 дней</h3>
+            <p class="text-sm text-mutedink mt-2 leading-relaxed">Изготовление в собственной мастерской с контролем строчек на каждом этапе.</p>
+          </div>
+          <div class="border-t border-sand pt-5">
+            <span class="font-editorial text-3xl text-mutedink">04</span>
+            <h3 class="font-semibold text-base text-espresso mt-2">Монтаж и навеска</h3>
+            <p class="text-sm text-mutedink mt-2 leading-relaxed">Установка любых карнизов, отпаривание и идеальная драпировка готовых штор.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Реальные отзывы и FAQ -->
+    <section id="reviews" class="py-16 sm:py-24 border-b border-sand">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- Отзывы -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex flex-wrap items-end justify-between gap-4 pb-4 border-b border-sand">
+            <div>
+              <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-1">Репутация в Гомеле</p>
+              <h2 class="font-editorial text-3xl sm:text-4xl text-espresso">Отзывы клиентов салона</h2>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1.5 bg-sandlight border border-sand text-espresso">★ 4.6 · 13 отз. / 23 оц. на Яндексе</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <blockquote class="p-5 bg-sandlight/65 border border-sand flex flex-col justify-between">
+              <p class="text-sm text-espresso/85 leading-relaxed">
+                «Заглянули в салон, чтобы присмотреться — и задержались на 2 часа. Ольга и Наталья продумали всё до деталей: никакой навязчивости, только понимание с полуслова и точные решения по тканям и карнизам.»
+              </p>
+              <footer class="pt-4 mt-4 border-t border-sand text-xs text-mutedink font-medium">Елена · Гостиная и карнизы</footer>
+            </blockquote>
+
+            <blockquote class="p-5 bg-sandlight/65 border border-sand flex flex-col justify-between">
+              <p class="text-sm text-espresso/85 leading-relaxed">
+                «Подобрали цвет штор в зал и блэкауты в солнечную спальню. Через неделю шторы уже висели — быстро, аккуратно. Потом здесь же заказали ткань и пошив покрывала.»
+              </p>
+              <footer class="pt-4 mt-4 border-t border-sand text-xs text-mutedink font-medium">Алексей Мушкетов · Блэкаут и покрывало</footer>
+            </blockquote>
+
+            <blockquote class="p-5 bg-sandlight/65 border border-sand flex flex-col justify-between">
+              <p class="text-sm text-espresso/85 leading-relaxed">
+                «Более 12 лет назад заказывала здесь шторы на люверсах — ткань до сих пор не выгорела и осталась роскошной. Недавно мастера аккуратно переделали её на шторную ленту под новый интерьер.»
+              </p>
+              <footer class="pt-4 mt-4 border-t border-sand text-xs text-mutedink font-medium">Елена Кунцевич · Постоянный клиент 12+ лет</footer>
+            </blockquote>
+
+            <blockquote class="p-5 bg-sandlight/65 border border-sand flex flex-col justify-between">
+              <p class="text-sm text-espresso/85 leading-relaxed">
+                «Оформляли всю квартиру: потолочные карнизы в нишу, нежные шторы в кухню-гостиную, римскую штору на боковое окно и комплект текстиля на стол с пропиткой. Спасибо Ирине и всей команде!»
+              </p>
+              <footer class="pt-4 mt-4 border-t border-sand text-xs text-mutedink font-medium">Анна · Комплексный проект квартиры</footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- Частые вопросы -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="pb-4 border-b border-sand">
+            <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-1">Вопросы и ответы</p>
+            <h2 class="font-editorial text-3xl sm:text-4xl text-espresso">Частые вопросы</h2>
+          </div>
+
+          <div class="divide-y divide-sand border-b border-sand">
+            <details class="py-4 group" open>
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm text-espresso">
+                <span>Есть ли ткань, устойчивая к когтям домашних животных?</span>
+                <span class="text-tealbrand text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="text-sm text-mutedink mt-3 leading-relaxed">
+                Да, в салоне представлен антивандальный тюль со специальным плотным плетением, которое устойчиво к зацепкам и затяжкам.
+              </p>
+            </details>
+
+            <details class="py-4 group">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm text-espresso">
+                <span>Какие ткани полностью защищают от солнечного света?</span>
+                <span class="text-tealbrand text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="text-sm text-mutedink mt-3 leading-relaxed">
+                Материалы блэкаут (Blackout) и димаут (Dimout), а также плотный габардин, бархат, велюр и атлас с подкладкой или УФ-обработкой.
+              </p>
+            </details>
+
+            <details class="py-4 group">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm text-espresso">
+                <span>Как визуально поднять потолки с помощью штор?</span>
+                <span class="text-tealbrand text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="text-sm text-mutedink mt-3 leading-relaxed">
+                Устанавливаем потолочный карниз максимально высоко или в нишу, шьём шторы точно до пола, выбираем светлые оттенки и вертикальные складки.
+              </p>
+            </details>
+
+            <details class="py-4 group">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm text-espresso">
+                <span>Чьи ткани можно выбрать в вашем салоне?</span>
+                <span class="text-tealbrand text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="text-sm text-mutedink mt-3 leading-relaxed">
+                Коллекции ведущих европейских фабрик (включая Италию) и проверенных производителей Турции — всего около 3 000 наименований.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты салона на Советской, 3 и форма заявки -->
+    <section id="contacts" class="py-16 sm:py-24 bg-[#F4EFE6]/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <!-- Левая колонка: Шоурум на Советской, 3 -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-tealbrand font-semibold mb-2">Шоурум в центре Гомеля</p>
+            <h2 class="font-editorial text-3xl sm:text-5xl text-espresso">Ждём вас на Советской, 3</h2>
+            <p class="text-sm text-mutedink mt-3 leading-relaxed">
+              Приходите с планом комнаты или фотографиями интерьера — подберём ткани и сразу покажем, как они будут смотреться на вашем окне.
+            </p>
+          </div>
+
+          <div class="bg-alabaster border border-sand p-6 space-y-4">
+            <div>
+              <div class="text-xs uppercase tracking-wider text-mutedink">Адрес салона</div>
+              <div class="text-base font-semibold text-espresso mt-0.5">г. Гомель, ул. Советская, 3</div>
+              <a href="https://yandex.by/maps/?text=%D0%93%D0%BE%D0%BC%D0%B5%D0%BB%D1%8C%2C%20%D1%83%D0%BB.%20%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%2C%203" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-semibold text-tealbrand hover:text-tealdark mt-1">
+                Открыть маршрут на Яндекс Картах →
+              </a>
+            </div>
+
+            <div class="pt-3 border-t border-sand">
+              <div class="text-xs uppercase tracking-wider text-mutedink">Режим работы</div>
+              <div class="text-sm text-espresso mt-1">Пн–Пт: <strong>10:00 – 19:00</strong></div>
+              <div class="text-sm text-espresso">Сб: <strong>10:00 – 18:00</strong> · Вс: выходной</div>
+            </div>
+
+            <div class="pt-3 border-t border-sand">
+              <div class="text-xs uppercase tracking-wider text-mutedink">Телефоны</div>
+              <div class="flex flex-col gap-1.5 mt-1">
+                <a href="tel:+375291565141" class="text-base font-semibold text-espresso hover:text-tealbrand transition-colors">+375 (29) 156-51-41</a>
+                <a href="tel:+375296567966" class="text-base font-semibold text-espresso hover:text-tealbrand transition-colors">+375 (29) 656-79-66</a>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-sand flex flex-wrap gap-3">
+              <a href="viber://chat?number=%2B375291565141" class="inline-flex items-center gap-2 px-4 py-2 border border-sand hover:border-tealbrand text-xs font-semibold text-espresso hover:text-tealbrand transition-colors">
+                Написать в Viber
+              </a>
+              <a href="https://www.instagram.com/irinaa_kuksa/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 border border-sand hover:border-tealbrand text-xs font-semibold text-espresso hover:text-tealbrand transition-colors">
+                Instagram @irinaa_kuksa
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Правая колонка: Форма записи на замер / консультацию -->
+        <div id="booking-form" class="lg:col-span-7 bg-alabaster border border-sand p-6 sm:p-10">
+          <div class="mb-6">
+            <span class="text-xs uppercase tracking-[0.18em] text-tealbrand font-semibold">Запись к дизайнеру</span>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-espresso mt-1">Пригласить дизайнера или записаться в салон</h3>
+            <p class="text-xs sm:text-sm text-mutedink mt-2">Ответим в рабочее время и согласуем удобный день выезда с образцами или встречи на Советской, 3.</p>
+          </div>
+
+          <form id="lead-form" class="space-y-4" novalidate>
+            <!-- Honeypot от спама -->
+            <div class="hidden" aria-hidden="true">
+              <label for="website-trap">Ваш сайт</label>
+              <input type="text" id="website-trap" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="client-name" class="block text-xs font-semibold text-espresso mb-1.5">Ваше имя *</label>
+                <input type="text" id="client-name" name="name" required placeholder="Например, Анна" class="w-full px-4 py-3 bg-white border border-sand focus:border-tealbrand focus:outline-none text-sm text-espresso" />
+              </div>
+              <div>
+                <label for="client-phone" class="block text-xs font-semibold text-espresso mb-1.5">Телефон (Viber) *</label>
+                <input type="tel" id="client-phone" name="phone" required placeholder="+375 (29) ___-__-__" class="w-full px-4 py-3 bg-white border border-sand focus:border-tealbrand focus:outline-none text-sm text-espresso" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="client-room" class="block text-xs font-semibold text-espresso mb-1.5">Помещение или система</label>
+                <select id="client-room" name="room" class="w-full px-4 py-3 bg-white border border-sand focus:border-tealbrand focus:outline-none text-sm text-espresso">
+                  <option value="Гостиная">Гостиная</option>
+                  <option value="Спальня / детская">Спальня / детская</option>
+                  <option value="Кухня / вся квартира">Кухня / вся квартира</option>
+                  <option value="Электрокарниз / автоматика">Электрокарниз / автоматика</option>
+                  <option value="Римские шторы / жалюзи">Римские шторы / жалюзи</option>
+                  <option value="Отель / кафе / ресторан">Отель / кафе / ресторан</option>
+                </select>
+              </div>
+              <div>
+                <label for="client-format" class="block text-xs font-semibold text-espresso mb-1.5">Формат встречи</label>
+                <select id="client-format" name="format" class="w-full px-4 py-3 bg-white border border-sand focus:border-tealbrand focus:outline-none text-sm text-espresso">
+                  <option value="Выезд дизайнера с образцами">Выезд дизайнера с образцами</option>
+                  <option value="Встреча в салоне на Советской, 3">Встреча в салоне на Советской, 3</option>
+                  <option value="Онлайн-консультация по фото">Онлайн-консультация по фото</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="client-comment" class="block text-xs font-semibold text-espresso mb-1.5">Пожелания по тканям или окнам</label>
+              <textarea id="client-comment" name="comment" rows="3" placeholder="Например: нужен блэкаут в спальню и антивандальный тюль" class="w-full px-4 py-3 bg-white border border-sand focus:border-tealbrand focus:outline-none text-sm text-espresso"></textarea>
+            </div>
+
+            <!-- Обязательный неотмеченный чекбокс по Закону РБ № 99-З -->
+            <div class="pt-1">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="pd-consent" name="consent" required class="mt-1 w-4 h-4 accent-tealbrand shrink-0" />
+                <span class="text-xs text-mutedink leading-relaxed">
+                  Я ознакомлен(а) с <button type="button" onclick="openLegalModal('privacy')" class="text-tealbrand underline underline-offset-2 hover:text-tealdark">Политикой обработки персональных данных</button> и даю <button type="button" onclick="openLegalModal('consent')" class="text-tealbrand underline underline-offset-2 hover:text-tealdark">согласие на обработку и трансграничную передачу ПД</button> (ст. 9 Закона РБ № 99-З). *
+                </span>
+              </label>
+            </div>
+
+            <div id="form-feedback" class="hidden p-4 text-sm border"></div>
+
+            <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-tealbrand hover:bg-tealdark text-white text-sm font-semibold tracking-wide transition-colors">
+              Отправить заявку дизайнеру
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Футер с полным комплаенсом РБ -->
+  <footer class="bg-espresso text-alabaster/80 py-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-white/10">
+        <div class="md:col-span-5 space-y-2">
+          <div class="font-editorial text-2xl text-white">Салон штор на Советской, 3</div>
+          <p class="text-alabaster/70 leading-relaxed max-w-sm">
+            ИП Кукса Ирина Михайловна · УНП 490389439<br />
+            Республика Беларусь, г. Гомель, ул. Советская, 3<br />
+            Режим работы: Пн–Пт 10:00–19:00, Сб 10:00–18:00, Вс — выходной
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <div class="uppercase tracking-wider text-white/60 text-[11px]">Разделы будущего WordPress</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5">
+            <button type="button" onclick="openWpModal('Гостиная')" class="hover:text-white transition-colors">Гостиная</button>
+            <button type="button" onclick="openWpModal('Кухня')" class="hover:text-white transition-colors">Кухня</button>
+            <button type="button" onclick="openWpModal('Спальня')" class="hover:text-white transition-colors">Спальня</button>
+            <button type="button" onclick="openWpModal('Детская')" class="hover:text-white transition-colors">Детская</button>
+            <button type="button" onclick="openWpModal('Римские шторы')" class="hover:text-white transition-colors">Римские шторы</button>
+            <button type="button" onclick="openWpModal('Карнизы')" class="hover:text-white transition-colors">Карнизы</button>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <div class="uppercase tracking-wider text-white/60 text-[11px]">Документы и cookie</div>
+          <div class="flex flex-col items-start gap-1.5">
+            <button type="button" onclick="openLegalModal('privacy')" class="hover:text-white underline underline-offset-2">Политика обработки ПД</button>
+            <button type="button" onclick="openLegalModal('consent')" class="hover:text-white underline underline-offset-2">Согласие на передачу ПД</button>
+            <button type="button" onclick="openCookieSettings()" class="hover:text-white underline underline-offset-2">Настройки cookie</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[11px] text-alabaster/55">
+        <p class="max-w-3xl leading-relaxed">
+          Информация, размещённая на данном сайте, носит справочный и демонстрационный характер и ни при каких условиях не является публичной офертой в соответствии со ст. 407 Гражданского кодекса Республики Беларусь.
+        </p>
+        <p class="whitespace-nowrap">© Салон штор «Шторы в дом», Гомель</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Фирменная мобильная нижняя панель (App-like Sticky Dock) -->
+  <div id="mobile-sticky-dock" class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-alabaster/92 backdrop-blur-md border-t border-sand px-3 py-2 transition-transform duration-300">
+    <div class="grid grid-cols-3 gap-2">
+      <a href="tel:+375291565141" class="flex items-center justify-center gap-1.5 py-2.5 border border-sand bg-white text-espresso text-xs font-semibold">
+        <svg class="w-3.5 h-3.5 text-tealbrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Позвонить
+      </a>
+      <a href="viber://chat?number=%2B375291565141" class="flex items-center justify-center gap-1.5 py-2.5 border border-sand bg-white text-espresso text-xs font-semibold">
+        <svg class="w-3.5 h-3.5 text-tealbrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Viber
+      </a>
+      <a href="#booking-form" class="flex items-center justify-center py-2.5 bg-tealbrand text-white text-xs font-semibold">
+        Замер
+      </a>
+    </div>
+  </div>
+
+  <!-- Cookie-баннер НЦЗПД РБ (две визуально равнозначные кнопки, скрывает мобильный док) -->
+  <div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-50 bg-alabaster border-t-2 border-tealbrand shadow-2xl p-3.5 sm:p-5">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4">
+      <div class="text-xs sm:text-sm text-espresso/90 max-w-3xl leading-relaxed">
+        Мы используем технические файлы cookie (необходимы для работы сайта и формы) и аналитические cookie. Подробнее — в <button type="button" onclick="openCookieSettings()" class="text-tealbrand underline underline-offset-2 font-medium">настройках cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0">
+        <button type="button" onclick="setCookieChoice('essential')" class="px-4 sm:px-5 py-2 sm:py-2.5 border border-tealbrand bg-white hover:bg-sandlight text-tealbrand text-xs sm:text-sm font-semibold transition-colors">
+          Отклонить необязательные
+        </button>
+        <button type="button" onclick="setCookieChoice('all')" class="px-4 sm:px-5 py-2 sm:py-2.5 border border-tealbrand bg-tealbrand hover:bg-tealdark text-white text-xs sm:text-sm font-semibold transition-colors">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Честный демо-режим WordPress (Тариф 2) -->
+  <div id="wp-modal" class="hidden fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-alabaster border border-sand max-w-lg w-full p-6 sm:p-8 shadow-2xl space-y-4">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.18em] text-tealbrand font-semibold">Раздел: <span id="wp-modal-section">Каталог</span></span>
+          <h3 class="font-editorial text-2xl sm:text-3xl text-espresso mt-1">Концепт главной страницы</h3>
+        </div>
+        <button type="button" onclick="closeModal('wp-modal')" class="text-mutedink hover:text-espresso text-xl leading-none px-1">✕</button>
+      </div>
+      <p class="text-sm text-espresso/85 leading-relaxed">
+        Это визуальный концепт главной страницы. В боевой версии перенесём все ~15 разделов каталога штор и карнизов с MODX на современный WordPress с сохранением старых URL и настройкой Yoast SEO.
+      </p>
+      <div class="pt-3 flex flex-wrap gap-3">
+        <button type="button" onclick="bookFromWpModal()" class="px-5 py-2.5 bg-tealbrand hover:bg-tealdark text-white text-xs sm:text-sm font-semibold transition-colors">
+          Записаться по этому разделу
+        </button>
+        <button type="button" onclick="closeModal('wp-modal')" class="px-5 py-2.5 border border-sand hover:border-espresso text-xs sm:text-sm font-semibold text-espresso transition-colors">
+          Понятно, продолжить просмотр
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Правовые документы (Закон № 99-З) -->
+  <div id="legal-modal" class="hidden fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-alabaster border border-sand max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="p-5 sm:p-6 border-b border-sand flex items-center justify-between gap-4">
+        <h3 id="legal-modal-title" class="font-editorial text-2xl text-espresso">Политика обработки персональных данных</h3>
+        <button type="button" onclick="closeModal('legal-modal')" class="text-mutedink hover:text-espresso text-xl leading-none px-1">✕</button>
+      </div>
+      <div id="legal-modal-body" class="p-5 sm:p-6 overflow-y-auto text-xs sm:text-sm text-espresso/85 space-y-3 leading-relaxed"></div>
+      <div class="p-4 sm:p-5 border-t border-sand text-right">
+        <button type="button" onclick="closeModal('legal-modal')" class="px-5 py-2 bg-tealbrand text-white text-xs font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Настройки cookie -->
+  <div id="cookie-modal" class="hidden fixed inset-0 z-50 bg-espresso/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-alabaster border border-sand max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-editorial text-2xl text-espresso">Настройки cookie</h3>
+        <button type="button" onclick="closeModal('cookie-modal')" class="text-mutedink hover:text-espresso text-xl leading-none">✕</button>
+      </div>
+      <div class="space-y-3 text-xs sm:text-sm">
+        <label class="flex items-start justify-between gap-3 p-3 bg-sandlight/70 border border-sand">
+          <div>
+            <strong class="block text-espresso">Технические cookie</strong>
+            <span class="text-mutedink text-xs">Обеспечивают работу формы и сохранение вашего выбора (всегда активны).</span>
+          </div>
+          <input type="checkbox" checked disabled class="mt-1 accent-tealbrand" />
+        </label>
+        <label class="flex items-start justify-between gap-3 p-3 bg-white border border-sand cursor-pointer">
+          <div>
+            <strong class="block text-espresso">Аналитические cookie</strong>
+            <span class="text-mutedink text-xs">Помогают оценивать посещаемость разделов каталога.</span>
+          </div>
+          <input type="checkbox" id="cookie-analytics-toggle" class="mt-1 accent-tealbrand" />
+        </label>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" onclick="saveCookieSettings()" class="px-5 py-2.5 bg-tealbrand text-white text-xs font-semibold">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Салон штор «Шторы в дом»',
+      legalEntity: 'ИП Кукса Ирина Михайловна',
+      unp: '490389439',
+      city: 'г. Гомель',
+      address: 'ул. Советская, 3',
+      phones: ['+375 (29) 156-51-41', '+375 (29) 656-79-66'],
+      demoMode: true,
+      gasEndpoint: '', // В боевой версии — URL Google Apps Script / Telegram-бота
+      schedule: {
+        // 1=Mon..5=Fri: 10:00-19:00, 6=Sat: 10:00-18:00, 0=Sun: closed
+        1: [10, 19],
+        2: [10, 19],
+        3: [10, 19],
+        4: [10, 19],
+        5: [10, 19],
+        6: [10, 18],
+        0: null
+      }
+    };
+
+    // 1. Живой статус по времени Беларуси (Europe/Minsk)
+    function updateLiveStatus() {
+      try {
+        const now = new Date();
+        const parts = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/Minsk',
+          weekday: 'short',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        }).formatToParts(now);
+
+        const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+        const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        const day = dayMap[map.weekday] ?? now.getDay();
+        const hour = parseInt(map.hour, 10);
+        const minute = parseInt(map.minute, 10);
+        const currentMinutes = hour * 60 + minute;
+
+        const todayHours = SITE_CONFIG.schedule[day];
+        let isOpen = false;
+        let label = 'Ответим с 10:00';
+
+        if (todayHours) {
+          const [openH, closeH] = todayHours;
+          if (currentMinutes >= openH * 60 && currentMinutes < closeH * 60) {
+            isOpen = true;
+            label = `Открыто сейчас · до ${closeH}:00`;
+          } else if (currentMinutes < openH * 60) {
+            label = `Ответим с ${openH}:00`;
+          } else {
+            label = day === 6 ? 'Ответим в пн с 10:00' : 'Ответим завтра с 10:00';
+          }
+        } else {
+          label = 'Сегодня выходной · с пн 10:00';
+        }
+
+        const dotColor = isOpen ? 'bg-tealbrand' : 'bg-amber-600';
+        const d1 = document.getElementById('live-status-dot');
+        const t1 = document.getElementById('live-status-text');
+        const d2 = document.getElementById('mobile-status-dot');
+        const t2 = document.getElementById('mobile-status-text');
+
+        if (d1 && t1) {
+          d1.className = `w-2 h-2 rounded-full shrink-0 ${dotColor}`;
+          t1.textContent = label;
+        }
+        if (d2 && t2) {
+          d2.className = `w-2 h-2 rounded-full shrink-0 ${dotColor}`;
+          t2.textContent = label;
+        }
+      } catch (e) {}
+    }
+    updateLiveStatus();
+    setInterval(updateLiveStatus, 60000);
+
+    // 2. Мини-интерактив за 2 клика
+    let selectedRoom = 'Гостиная';
+    let selectedFormat = 'Выезд дизайнера с образцами';
+
+    const roomNotes = {
+      'Гостиная': 'Подготовим подборку портьер и тюля, сделаем 3D-визуализацию в Procreate по фото окна.',
+      'Спальня / детская': 'Привезём каталоги блэкаут и димаут, поможем подобрать спокойную фактуру и покрывало.',
+      'Кухня / вся квартира': 'Подберём практичные ткани с пропиткой, римские шторы и единый стиль для всех комнат.'
+    };
+
+    function updateSelectorUI() {
+      document.getElementById('selector-summary').textContent = `${selectedRoom} · ${selectedFormat}`;
+      document.getElementById('selector-note').textContent = roomNotes[selectedRoom] || '';
+
+      document.querySelectorAll('.room-btn').forEach(btn => {
+        const active = btn.dataset.room === selectedRoom;
+        btn.className = active
+          ? 'room-btn px-4 py-3.5 border border-tealbrand bg-tealsoft text-tealbrand text-sm font-semibold text-left transition-all'
+          : 'room-btn px-4 py-3.5 border border-sand bg-alabaster hover:border-tealbrand/60 text-espresso text-sm font-semibold text-left transition-all';
+      });
+
+      document.querySelectorAll('.format-btn').forEach(btn => {
+        const active = btn.dataset.format === selectedFormat;
+        btn.className = active
+          ? 'format-btn px-4 py-3.5 border border-tealbrand bg-tealsoft text-tealbrand text-sm font-semibold text-left transition-all'
+          : 'format-btn px-4 py-3.5 border border-sand bg-alabaster hover:border-tealbrand/60 text-espresso text-sm font-semibold text-left transition-all';
+      });
+    }
+
+    document.querySelectorAll('.room-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedRoom = btn.dataset.room;
+        updateSelectorUI();
+      });
+    });
+
+    document.querySelectorAll('.format-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedFormat = btn.dataset.format;
+        updateSelectorUI();
+      });
+    });
+
+    function applySelectorToForm() {
+      document.getElementById('client-room').value = selectedRoom;
+      document.getElementById('client-format').value = selectedFormat;
+      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function prefillSystem(val) {
+      const sel = document.getElementById('client-room');
+      if (sel) sel.value = val;
+    }
+
+    // 3. Модалка для многостраничника WordPress (Тариф 2)
+    let currentWpSection = '';
+    function openWpModal(sectionName) {
+      currentWpSection = sectionName;
+      document.getElementById('wp-modal-section').textContent = sectionName;
+      document.getElementById('wp-modal').classList.remove('hidden');
+    }
+    function bookFromWpModal() {
+      closeModal('wp-modal');
+      const comment = document.getElementById('client-comment');
+      if (comment && currentWpSection) {
+        comment.value = `Интересует раздел: ${currentWpSection}`;
+      }
+      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // 4. Правовые модалки (Закон РБ № 99-З)
+    function openLegalModal(type) {
+      const titleEl = document.getElementById('legal-modal-title');
+      const bodyEl = document.getElementById('legal-modal-body');
+
+      if (type === 'privacy') {
+        titleEl.textContent = 'Политика обработки персональных данных';
+        bodyEl.innerHTML = `
+          <p><strong>1. Оператор:</strong> ${SITE_CONFIG.legalEntity}, УНП ${SITE_CONFIG.unp}, адрес: ${SITE_CONFIG.city}, ${SITE_CONFIG.address}.</p>
+          <p><strong>2. Цели и перечень данных:</strong> имя, номер телефона, выбранное помещение и комментарий обрабатываются исключительно для обратной связи, расчёта и согласования выезда дизайнера или встречи в салоне.</p>
+          <p><strong>3. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных» (ст. 5, ст. 6, ст. 9).</p>
+          <p><strong>4. Сроки хранения и права субъекта:</strong> данные хранятся не дольше срока, необходимого для выполнения заявки. В соответствии со ст. 10–15 Закона № 99-З вы вправе в любой момент отозвать согласие, запросить информацию о своих данных, их изменение или удаление по телефонам ${SITE_CONFIG.phones.join(', ')}.</p>
+        `;
+      } else {
+        titleEl.textContent = 'Согласие на обработку и трансграничную передачу ПД';
+        bodyEl.innerHTML = `
+          <p>Настоящим я свободно, однозначно и информированно выражаю согласие ${SITE_CONFIG.legalEntity} (УНП ${SITE_CONFIG.unp}, ${SITE_CONFIG.city}, ${SITE_CONFIG.address}) на обработку указанных в заявке персональных данных (имя, телефон, пожелания по заказу) в соответствии со ст. 5 и ст. 9 Закона РБ № 99-З.</p>
+          <p><strong>Трансграничная передача:</strong> уведомлён(а), что для оперативной доставки заявки менеджеру данные могут передаваться с использованием серверов мессенджера Telegram и облачных сервисов Google (Google Apps Script), в том числе в государства, не обеспечивающие надлежащий уровень защиты прав субъектов ПД, с риском возможного доступа к передаваемой информации со стороны третьих лиц этих юрисдикций.</p>
+          <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> я ознакомлен(а) с правом отозвать настоящее согласие, требовать уточнения, блокирования или прекращения обработки данных, а также обжаловать действия оператора в НЦЗПД.</p>
+        `;
+      }
+      document.getElementById('legal-modal').classList.remove('hidden');
+    }
+
+    // 5. Cookie-баннер НЦЗПД и синхронизация с мобильной нижней панелью
+    const COOKIE_KEY = 'shtorivdom_cookie_choice_v1';
+    const cookieBanner = document.getElementById('cookie-banner');
+    const mobileDock = document.getElementById('mobile-sticky-dock');
+
+    function syncMobileDockVisibility() {
+      const isBannerOpen = !cookieBanner.classList.contains('hidden');
+      if (isBannerOpen) {
+        mobileDock.classList.add('translate-y-full', 'pointer-events-none');
+      } else {
+        mobileDock.classList.remove('translate-y-full', 'pointer-events-none');
+      }
+    }
+
+    function initCookieBanner() {
+      const saved = localStorage.getItem(COOKIE_KEY);
+      if (!saved) {
+        cookieBanner.classList.remove('hidden');
+      }
+      syncMobileDockVisibility();
+    }
+
+    function setCookieChoice(choice) {
+      localStorage.setItem(COOKIE_KEY, choice);
+      cookieBanner.classList.add('hidden');
+      syncMobileDockVisibility();
+    }
+
+    function openCookieSettings() {
+      const saved = localStorage.getItem(COOKIE_KEY);
+      document.getElementById('cookie-analytics-toggle').checked = saved === 'all';
+      document.getElementById('cookie-modal').classList.remove('hidden');
+    }
+
+    function saveCookieSettings() {
+      const analyticsOn = document.getElementById('cookie-analytics-toggle').checked;
+      setCookieChoice(analyticsOn ? 'all' : 'essential');
+      closeModal('cookie-modal');
+    }
+
+    initCookieBanner();
+
+    // 6. Демо-отправка формы с проверкой honeypot и обязательного чекбокса
+    document.getElementById('lead-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const honeypot = document.getElementById('website-trap').value.trim();
+      if (honeypot) return;
+
+      const name = document.getElementById('client-name').value.trim();
+      const phone = document.getElementById('client-phone').value.trim();
+      const room = document.getElementById('client-room').value;
+      const format = document.getElementById('client-format').value;
+      const consent = document.getElementById('pd-consent').checked;
+      const feedback = document.getElementById('form-feedback');
+
+      feedback.classList.remove('hidden', 'bg-red-50', 'border-red-300', 'text-red-800', 'bg-tealsoft', 'border-tealbrand', 'text-espresso');
+
+      if (!name || !phone) {
+        feedback.classList.add('bg-red-50', 'border-red-300', 'text-red-800');
+        feedback.textContent = 'Пожалуйста, укажите ваше имя и контактный телефон.';
+        return;
+      }
+
+      if (!consent) {
+        feedback.classList.add('bg-red-50', 'border-red-300', 'text-red-800');
+        feedback.textContent = 'Для отправки заявки необходимо отметить согласие на обработку персональных данных.';
+        return;
+      }
+
+      if (!SITE_CONFIG.demoMode && SITE_CONFIG.gasEndpoint) {
+        try {
+          await fetch(SITE_CONFIG.gasEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, room, format })
+          });
+        } catch (err) {}
+      }
+
+      feedback.classList.add('bg-tealsoft', 'border-tealbrand', 'text-espresso');
+      feedback.innerHTML = `<strong>Заявка сформирована (демо-режим):</strong> ${name}, ${phone} · ${room} (${format}). В рабочей версии сайта заявка мгновенно поступает в Telegram/Viber дизайнеру салона.`;
+      this.reset();
+    });
+  </script>
+</body>
+</html>

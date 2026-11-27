@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Агроусадьба «Мечта» — Дом, баня и купель у озера Молочное (аг. Поречье)</title>
+  <meta name="description" content="Агроусадьба «Мечта» в аг. Поречье, Гродненский район — 100 м от озера Молочное. Деревянный дом до 20 гостей, баня с камином, круглогодичная купель с джакузи, банкетный зал и беседки." />
+
+  <!-- Google Fonts: Nordic Editorial Pair -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&family=Tenor+Sans&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            spruce: {
+              DEFAULT: '#1C3128',
+              deep: '#13221C',
+              soft: '#274236',
+            },
+            moss: '#355346',
+            linen: {
+              DEFAULT: '#F5F1E8',
+              dark: '#EAE3D4',
+              light: '#FAF7F1',
+            },
+            cedar: {
+              DEFAULT: '#B5673B',
+              dark: '#96512B',
+              light: '#CC8054',
+            },
+            bark: '#2B2520',
+          },
+          fontFamily: {
+            display: ['"Tenor Sans"', 'Georgia', 'serif'],
+            sans: ['"Nunito Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+    body {
+      font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      background-color: #F5F1E8;
+      color: #1C3128;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Tenor Sans', Georgia, serif;
+      letter-spacing: -0.01em;
+    }
+    .hero-image-motion {
+      animation: slowZoom 26s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+    .tab-btn[aria-selected="true"] {
+      background-color: #1C3128;
+      color: #F5F1E8;
+      border-color: #1C3128;
+    }
+    .choice-pill[aria-pressed="true"] {
+      background-color: #B5673B;
+      color: #FAF7F1;
+      border-color: #B5673B;
+    }
+    .choice-pill-light[aria-pressed="true"] {
+      background-color: #1C3128;
+      color: #F5F1E8;
+      border-color: #1C3128;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #EAE3D4; }
+    ::-webkit-scrollbar-thumb { background: #355346; border-radius: 4px; }
+  </style>
+</head>
+<body class="antialiased selection:bg-cedar/25 selection:text-spruce-deep">
+
+  <!-- ==================== HEADER ==================== -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 bg-[#13221C]/90 backdrop-blur-md border-b border-linen/10 text-linen">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-16 lg:h-[74px] flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group whitespace-nowrap">
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-cedar/60 bg-spruce flex items-center justify-center text-cedar group-hover:bg-cedar group-hover:text-linen transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3L5 13h4l-3 6h12l-3-6h4L12 3z" />
+            <path d="M12 19v3" />
+          </svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display text-base sm:text-lg tracking-wide text-linen">Мечта</span>
+          <span class="block text-[10px] sm:text-[11px] uppercase tracking-[0.14em] text-linen/70">аг. Поречье</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation (strictly 1 row, whitespace-nowrap) -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-linen/85 whitespace-nowrap" aria-label="Основная навигация">
+        <a href="#about" class="hover:text-cedar-light transition-colors whitespace-nowrap">Усадьба</a>
+        <a href="#services" class="hover:text-cedar-light transition-colors whitespace-nowrap">Услуги и цены</a>
+        <a href="#gallery" class="hover:text-cedar-light transition-colors whitespace-nowrap">Фотогалерея</a>
+        <a href="#offers" class="hover:text-cedar-light transition-colors whitespace-nowrap">Акции</a>
+        <a href="#location" class="hover:text-cedar-light transition-colors whitespace-nowrap">Поречье</a>
+        <a href="#booking" class="hover:text-cedar-light transition-colors whitespace-nowrap">Бронирование</a>
+      </nav>
+
+      <!-- Right Controls (strictly 1 row, no wrapping phone) -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0 whitespace-nowrap">
+        <!-- Live Minsk Status Badge -->
+        <div id="live-status" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-linen/10 border border-linen/15 text-xs text-linen/90 whitespace-nowrap" title="Статус работы по времени Минска">
+          <span id="live-status-dot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span id="live-status-text">Открыто сейчас</span>
+        </div>
+
+        <!-- Subtle Monochrome Messenger Icons (no loud purple/blue pills) -->
+        <div class="hidden sm:flex items-center gap-1.5">
+          <a id="header-viber-link" href="viber://chat?number=%2B375297810009" aria-label="Написать в Viber" title="Viber" class="w-8 h-8 rounded-full border border-linen/20 flex items-center justify-center text-linen/80 hover:text-linen hover:border-cedar hover:bg-cedar/20 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </a>
+          <a id="header-tg-link" href="https://t.me/+375297810009" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram" class="w-8 h-8 rounded-full border border-linen/20 flex items-center justify-center text-linen/80 hover:text-linen hover:border-cedar hover:bg-cedar/20 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 2L11 13"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Phone (strictly whitespace-nowrap) -->
+        <a href="tel:+375297810009" class="text-xs sm:text-sm font-semibold text-linen hover:text-cedar-light transition-colors whitespace-nowrap px-1 sm:px-2 py-1">
+          +375 (29) 781-00-09
+        </a>
+
+        <!-- Desktop CTA -->
+        <a href="#booking" class="hidden xl:inline-flex items-center px-4 py-2 rounded-full bg-cedar hover:bg-cedar-dark text-linen-light text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap">
+          Забронировать
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg border border-linen/20 text-linen hover:bg-linen/10 transition-colors" aria-label="Открыть меню" aria-expanded="false">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-spruce-deep border-t border-linen/10 px-4 py-4 space-y-3 text-sm">
+      <div class="flex items-center justify-between text-xs text-linen/75 pb-2 border-b border-linen/10">
+        <span id="mobile-live-status" class="inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Открыто сейчас · 09:00–22:00</span>
+        </span>
+        <button type="button" data-wp-concept="Карта разделов сайта" class="text-cedar-light underline underline-offset-4">Концепт WordPress</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2.5 pt-1">
+        <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg bg-linen/5 hover:bg-linen/10">Усадьба</a>
+        <a href="#services" class="mobile-nav-link py-2 px-3 rounded-lg bg-linen/5 hover:bg-linen/10">Услуги и цены</a>
+        <a href="#gallery" class="mobile-nav-link py-2 px-3 rounded-lg bg-linen/5 hover:bg-linen/10">Фотогалерея</a>
+        <a href="#offers" class="mobile-nav-link py-2 px-3 rounded-lg bg-linen/5 hover:bg-linen/10">Акции</a>
+        <a href="#location" class="mobile-nav-link py-2 px-3 rounded-lg bg-linen/5 hover:bg-linen/10">Поречье</a>
+        <a href="#booking" class="mobile-nav-link py-2 px-3 rounded-lg bg-cedar text-linen-light font-semibold text-center">Забронировать</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== FULL-BLEED NORDIC HERO ==================== -->
+    <section class="relative min-h-[660px] lg:min-h-[820px] flex flex-col justify-end pt-24 pb-10 lg:pb-24 overflow-hidden bg-spruce-deep text-linen">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1800&q=85"
+          alt="Деревянная усадьба среди хвойного леса на берегу озера"
+          class="w-full h-full object-cover object-center hero-image-motion"
+        />
+        <!-- Deep Spruce Atmospheric Scrim -->
+        <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep via-spruce-deep/65 to-spruce-deep/35"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-spruce-deep/85 via-spruce-deep/35 to-transparent"></div>
+      </div>
+
+      <!-- Subtle Top-Right WordPress Concept Pill (desktop/tablet, never collides with bottom dock) -->
+      <div class="hidden sm:block absolute top-24 right-6 lg:right-10 z-20">
+        <button type="button" data-wp-concept="Главная страница (концепт)" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-spruce-deep/80 backdrop-blur-md border border-linen/20 text-xs text-linen/90 hover:border-cedar transition-colors">
+          <span class="w-1.5 h-1.5 rounded-full bg-cedar-light"></span>
+          <span>Концепт главной · перенесём на WordPress</span>
+        </button>
+      </div>
+
+      <!-- Hero Content Container -->
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-6 lg:space-y-8">
+        <!-- Bottom-Left Editorial Typography -->
+        <div class="max-w-3xl space-y-3.5 sm:space-y-4">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm">
+            <span class="inline-flex items-center gap-2 uppercase tracking-[0.16em] text-cedar-light font-semibold">
+              <span class="w-5 h-px bg-cedar-light"></span>
+              Гродненский р-н · аг. Поречье
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-linen/15 border border-linen/20 text-linen/95 text-xs">
+              <span class="text-amber-300">★ 5.0</span>
+              <span class="text-linen/80">· 42 отз. / 110+ оц. на Яндекс Картах</span>
+            </span>
+          </div>
+
+          <h1 class="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.08] text-linen">
+            Агроусадьба «Мечта» у&nbsp;берега озера Молочное
+          </h1>
+
+          <p class="text-sm sm:text-lg text-linen/85 max-w-2xl leading-relaxed font-light">
+            Современный деревянный дом до 20 гостей в 100 метрах от воды. Отдельная баня с камином, круглогодичная купель с джакузи, дубовый банкетный зал и тишина соснового леса.
+          </p>
+        </div>
+
+        <!-- Clean Horizontal Quick-Booking Bar (Interactive 2-Click Selector) -->
+        <div class="rounded-2xl bg-[#13221C]/90 backdrop-blur-md border border-linen/15 p-4 sm:p-5 shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+            <!-- Click 1: Format -->
+            <div class="lg:col-span-5 space-y-2">
+              <span class="block text-[11px] uppercase tracking-[0.15em] text-linen/65 font-semibold">1. Выберите формат отдыха</span>
+              <div class="flex flex-wrap gap-2" role="group" aria-label="Формат отдыха">
+                <button type="button" data-sync-format="Отдых в доме" aria-pressed="true" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Отдых в доме
+                </button>
+                <button type="button" data-sync-format="Баня и купель" aria-pressed="false" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Баня и купель
+                </button>
+                <button type="button" data-sync-format="Праздник / компания" aria-pressed="false" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Праздник / компания
+                </button>
+              </div>
+            </div>
+
+            <!-- Click 2: Period -->
+            <div class="lg:col-span-4 space-y-2">
+              <span class="block text-[11px] uppercase tracking-[0.15em] text-linen/65 font-semibold">2. Когда планируете?</span>
+              <div class="flex flex-wrap gap-2" role="group" aria-label="Когда планируете">
+                <button type="button" data-sync-period="Будни" aria-pressed="false" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Будни
+                </button>
+                <button type="button" data-sync-period="Выходные" aria-pressed="true" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Выходные
+                </button>
+                <button type="button" data-sync-period="Праздничные даты" aria-pressed="false" class="choice-pill px-3.5 py-2 rounded-lg border border-linen/20 text-xs sm:text-sm text-linen/90 hover:border-cedar-light transition-all">
+                  Праздники
+                </button>
+              </div>
+            </div>
+
+            <!-- Action -->
+            <div class="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-2">
+              <a href="#booking" id="hero-book-btn" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cedar hover:bg-cedar-dark text-linen-light text-sm font-semibold transition-colors shadow-lg">
+                <span>Уточнить даты</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT & FACILITIES ==================== -->
+    <section id="about" class="py-16 sm:py-24 bg-linen text-spruce">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end mb-12 sm:mb-16">
+          <div class="lg:col-span-7 space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-cedar font-semibold">Пространство усадьбы</p>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-[42px] leading-tight text-spruce-deep">
+              Деревянный дом, банный комплекс и две беседки среди сосен
+            </h2>
+          </div>
+          <div class="lg:col-span-5 space-y-3 text-bark/80 text-base leading-relaxed">
+            <p>
+              Усадьба работает круглый год в агрогородке Поречье. Коттедж можно снять целиком для компании от 10 взрослых или по отдельным номерам — к каждому номеру закреплена своя беседка с мангалом.
+            </p>
+            <button type="button" data-wp-concept="Страницы услуг усадьбы (/uslugi/)" class="inline-flex items-center gap-1.5 text-sm font-semibold text-cedar hover:text-cedar-dark underline underline-offset-4">
+              <span>Открыть детальные страницы всех 6 зон</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Architectural Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <!-- Card 1: House -->
+          <article class="group bg-linen-light rounded-2xl overflow-hidden border border-spruce/10 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1696860740777-94a408eeed46?auto=format&fit=crop&w=1000&q=80" alt="Деревянный гостевой дом усадьбы Мечта" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-spruce-deep/85 text-linen text-xs font-medium">До 20 гостей</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-display text-xl text-spruce-deep">Жилой дом из дерева</h3>
+                <p class="text-sm text-bark/80 leading-relaxed">
+                  5 комнат, 2 кухни, 2 санузла и просторная веранда с панорамным окном. В каждой комнате — спутниковое ТВ и Wi-Fi.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-spruce/10 flex items-center justify-between text-xs">
+                <span class="font-semibold text-spruce">от 50 BYN / чел.</span>
+                <button type="button" data-wp-concept="Раздел «Домик» (/uslugi/dom-dlya-otdyxa)" class="text-cedar font-semibold hover:underline">Подробнее →</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Banya -->
+          <article class="group bg-linen-light rounded-2xl overflow-hidden border border-spruce/10 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1786799901347-e45b3e2d64ea?auto=format&fit=crop&w=1000&q=80" alt="Отдельная русская баня с видом на лес" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-spruce-deep/85 text-linen text-xs font-medium">Русская баня / сауна</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-display text-xl text-spruce-deep">Баня и комната с камином</h3>
+                <p class="text-sm text-bark/80 leading-relaxed">
+                  Парилка на 6 человек, обливное ведро, душевая, уютная спальня и комната отдыха с камином на ночлег до 6 гостей.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-spruce/10 flex items-center justify-between text-xs">
+                <span class="font-semibold text-spruce">от 150 BYN / сеанс</span>
+                <button type="button" data-wp-concept="Раздел «Баня» (/uslugi/banya-russkaya)" class="text-cedar font-semibold hover:underline">Подробнее →</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Kupel -->
+          <article class="group bg-linen-light rounded-2xl overflow-hidden border border-spruce/10 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1772616748530-7cd73053f326?auto=format&fit=crop&w=1000&q=80" alt="Спа-зона и купель с подогревом" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-spruce-deep/85 text-linen text-xs font-medium">37–40 °C круглый год</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-display text-xl text-spruce-deep">Купель с аэромассажем</h3>
+                <p class="text-sm text-bark/80 leading-relaxed">
+                  На 6–8 человек под открытым небом: встроенная печь, джакузи, хромотерапия. Летом работает как прохладный бассейн.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-spruce/10 flex items-center justify-between text-xs">
+                <span class="font-semibold text-spruce">от 100 BYN / сеанс</span>
+                <button type="button" data-wp-concept="Раздел «Купель» (/uslugi/kupel-2)" class="text-cedar font-semibold hover:underline">Подробнее →</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Banquet & Gazebos -->
+          <article class="group bg-linen-light rounded-2xl overflow-hidden border border-spruce/10 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80" alt="Мангальная зона, беседки и банкетный зал" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-spruce-deep/85 text-linen text-xs font-medium">Банкет на 20 мест</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-display text-xl text-spruce-deep">Банкетный зал и беседки</h3>
+                <p class="text-sm text-bark/80 leading-relaxed">
+                  Дубовая мебель на 20 человек, посуда, кондиционер, экран с проектором, караоке. На улице — 2 беседки, мангалы, гамак и качели.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-spruce/10 flex items-center justify-between text-xs">
+                <span class="font-semibold text-spruce">от 10 BYN / чел.</span>
+                <button type="button" data-wp-concept="Разделы «Банкетный зал» и «Беседка»" class="text-cedar font-semibold hover:underline">Подробнее →</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ASYMMETRIC PHOTO MOSAIC GALLERY ==================== -->
+    <section id="gallery" class="py-16 sm:py-24 bg-spruce text-linen">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+          <div class="space-y-3 max-w-2xl">
+            <p class="text-xs uppercase tracking-[0.2em] text-cedar-light font-semibold">Атмосфера усадьбы</p>
+            <h2 class="font-display text-3xl sm:text-4xl text-linen">
+              Природа Поречья, дерево и живой огонь
+            </h2>
+          </div>
+          <button type="button" data-wp-concept="Полная фотогалерея (/fotogalereya)" class="self-start md:self-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-linen/25 hover:border-cedar-light text-sm text-linen transition-colors">
+            <span>Вся фотогалерея (WordPress)</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <!-- Asymmetric Mosaic Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <!-- Large Left Tile -->
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1696860740777-94a408eeed46?auto=format&fit=crop&w=1600&q=85" data-lightbox-caption="Основной гостевой дом с открытой террасой и обеденной зоной" class="md:col-span-7 relative group overflow-hidden rounded-2xl aspect-[16/10] md:aspect-auto md:h-[420px] text-left">
+            <img src="https://images.unsplash.com/photo-1696860740777-94a408eeed46?auto=format&fit=crop&w=1200&q=80" alt="Терраса и гостевой дом в окружении деревьев" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/85 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-5 right-5 flex items-end justify-between">
+              <div>
+                <span class="block text-xs uppercase tracking-widest text-cedar-light">Гостевой дом</span>
+                <span class="font-display text-lg text-linen">Панорамная веранда и 5 уютных комнат</span>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-linen/15 backdrop-blur-sm flex items-center justify-center text-linen text-xs">+</span>
+            </div>
+          </button>
+
+          <!-- Top Right Stack -->
+          <div class="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4">
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1786799901347-e45b3e2d64ea?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Парилка с окном на лес — формат русской бани или сауны" class="relative group overflow-hidden rounded-2xl h-[202px] text-left">
+              <img src="https://images.unsplash.com/photo-1786799901347-e45b3e2d64ea?auto=format&fit=crop&w=900&q=80" alt="Деревянная баня с окном на лес" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3.5 left-4 right-4">
+                <span class="block text-[11px] uppercase tracking-widest text-cedar-light">Баня на дровах</span>
+                <span class="font-display text-base text-linen">Парилка до 6 человек и обливное ведро</span>
+              </div>
+            </button>
+
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Уединённый деревянный коттедж среди высоких сосен" class="relative group overflow-hidden rounded-2xl h-[202px] text-left">
+              <img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=900&q=80" alt="Деревянный домик в хвойном лесу" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3.5 left-4 right-4">
+                <span class="block text-[11px] uppercase tracking-widest text-cedar-light">Территория</span>
+                <span class="font-display text-base text-linen">Тишина соснового массива и закрытые мангалы</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Bottom 3 Asymmetric Tiles -->
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Утреннее солнце на участке агроусадьбы" class="md:col-span-4 relative group overflow-hidden rounded-2xl h-[230px] text-left">
+            <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80" alt="Участок усадьбы на рассвете" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3.5 left-4 right-4">
+              <span class="font-display text-base text-linen">Аренда целиком или по номерам</span>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Прогулочная тропа к озеру Молочное через лесной массив" class="md:col-span-4 relative group overflow-hidden rounded-2xl h-[230px] text-left">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Солнечная лесная аллея к озеру" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3.5 left-4 right-4">
+              <span class="font-display text-base text-linen">100 м по аллее до озера Молочное</span>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Лесной воздух Поречья, грибные места и велопрогулки" class="md:col-span-4 relative group overflow-hidden rounded-2xl h-[230px] text-left">
+            <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=80" alt="Уютный сруб в сосновом бору" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3.5 left-4 right-4">
+              <span class="font-display text-base text-linen">Велосипеды, катамаран и рыбалка</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TABBED SERVICES & REAL PRICES (/ceny) ==================== -->
+    <section id="services" class="py-16 sm:py-24 bg-linen text-spruce">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div class="space-y-3 max-w-2xl">
+            <p class="text-xs uppercase tracking-[0.2em] text-cedar font-semibold">Прайс с официального сайта</p>
+            <h2 class="font-display text-3xl sm:text-4xl text-spruce-deep">
+              Прозрачная стоимость без скрытых доплат
+            </h2>
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Категории цен">
+            <button type="button" role="tab" aria-selected="true" data-price-tab="house" class="tab-btn px-4 py-2.5 rounded-full border border-spruce/20 text-sm font-medium transition-colors">
+              Проживание в доме
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-price-tab="spa" class="tab-btn px-4 py-2.5 rounded-full border border-spruce/20 text-sm font-medium transition-colors">
+              Баня и купель
+            </button>
+            <button type="button" role="tab" aria-selected="false" data-price-tab="extras" class="tab-btn px-4 py-2.5 rounded-full border border-spruce/20 text-sm font-medium transition-colors">
+              Банкет, беседки и прокат
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="bg-linen-light rounded-3xl border border-spruce/10 p-6 sm:p-8 lg:p-10 shadow-sm">
+          <!-- Panel 1: House -->
+          <div id="panel-house" class="price-panel space-y-6">
+            <div class="divide-y divide-spruce/10">
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Проживание в доме (взрослые)</h3>
+                  <p class="text-sm text-bark/75">Дом целиком для компаний от 10 взрослых или размещение по номерам (всего до 20 мест)</p>
+                </div>
+                <span class="font-display text-2xl text-cedar whitespace-nowrap">50 BYN / чел.</span>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Дети от 3 до 14 лет</h3>
+                  <p class="text-sm text-bark/75">Семейное размещение в комфортных комнатах со спутниковым ТВ и Wi-Fi</p>
+                </div>
+                <span class="font-display text-2xl text-cedar whitespace-nowrap">30 BYN / чел.</span>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Минимальная стоимость номера</h3>
+                  <p class="text-sm text-bark/75">За каждым номером закреплена отдельная беседка с мангалом</p>
+                </div>
+                <span class="font-display text-2xl text-spruce-deep whitespace-nowrap">180 BYN / сутки</span>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-linen border border-spruce/10 text-sm text-spruce flex flex-wrap items-center justify-between gap-3">
+              <span><strong>Бонус при проживании:</strong> беседка бесплатно, скидка 25% на баню и купель, банкетный зал бесплатно от 10 гостей.</span>
+              <a href="#booking" class="text-cedar font-semibold hover:underline whitespace-nowrap">Забронировать дом →</a>
+            </div>
+          </div>
+
+          <!-- Panel 2: Sauna & Kupel -->
+          <div id="panel-spa" class="price-panel hidden space-y-6">
+            <div class="divide-y divide-spruce/10">
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Баня — сеанс без ограничения по времени</h3>
+                  <p class="text-sm text-bark/75">Парилка до 6 человек, обливное ведро, комната отдыха с камином и ТВ</p>
+                </div>
+                <div class="text-left sm:text-right whitespace-nowrap">
+                  <span class="font-display text-2xl text-cedar block">200 BYN</span>
+                  <span class="text-xs text-moss font-semibold">при проживании — 150 BYN</span>
+                </div>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Баня на часы</h3>
+                  <p class="text-sm text-bark/75">Минимальный заказ — 2 часа</p>
+                </div>
+                <span class="font-display text-2xl text-cedar whitespace-nowrap">50 BYN / час</span>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Купель с аэромассажем и подсветкой</h3>
+                  <p class="text-sm text-bark/75">Горячая вода 37–40 °C на 6–8 человек (или холодная купель — 100 BYN)</p>
+                </div>
+                <div class="text-left sm:text-right whitespace-nowrap">
+                  <span class="font-display text-2xl text-cedar block">200 BYN / сеанс</span>
+                  <span class="text-xs text-moss font-semibold">при проживании — 150 BYN</span>
+                </div>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Комплекс: Баня + Купель</h3>
+                  <p class="text-sm text-bark/75">Полное парение и горячая купель под открытым небом без спешки</p>
+                </div>
+                <div class="text-left sm:text-right whitespace-nowrap">
+                  <span class="font-display text-2xl text-cedar block">400 BYN</span>
+                  <span class="text-xs text-moss font-semibold">при проживании — 300 BYN</span>
+                </div>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Веники для бани</h3>
+                  <p class="text-sm text-bark/75">Берёзовые / дубовые веники для парения</p>
+                </div>
+                <span class="font-display text-2xl text-spruce-deep whitespace-nowrap">10 BYN / шт.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Banquet, Gazebos & Rental -->
+          <div id="panel-extras" class="price-panel hidden space-y-6">
+            <div class="divide-y divide-spruce/10">
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Банкетный зал (до 20 человек)</h3>
+                  <p class="text-sm text-bark/75">Дубовая мебель, вся посуда, кондиционер, проектор, акустика, светомузыка и караоке</p>
+                </div>
+                <div class="text-left sm:text-right whitespace-nowrap">
+                  <span class="font-display text-2xl text-cedar block">100 BYN</span>
+                  <span class="text-xs text-moss font-semibold">от 10 проживающих — бесплатно</span>
+                </div>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Беседка с закрытым мангалом</h3>
+                  <p class="text-sm text-bark/75">Большой стол, лавки, навес от дождя, рядом качели и гамак</p>
+                </div>
+                <div class="text-left sm:text-right whitespace-nowrap">
+                  <span class="font-display text-2xl text-cedar block">10 BYN / чел.</span>
+                  <span class="text-xs text-moss font-semibold">при проживании — бесплатно</span>
+                </div>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Прокат велосипедов и катамаранов</h3>
+                  <p class="text-sm text-bark/75">Велосипеды (20 BYN / сутки) · Катамаран на озере Молочное (15 BYN / час)</p>
+                </div>
+                <span class="font-display text-2xl text-cedar whitespace-nowrap">15 – 20 BYN</span>
+              </div>
+              <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-display text-xl text-spruce-deep">Казан, садж, решётка-гриль, сковорода или кальян</h3>
+                  <p class="text-sm text-bark/75">Аренда за 1 предмет для приготовления блюд на углях или отдыха</p>
+                </div>
+                <span class="font-display text-2xl text-spruce-deep whitespace-nowrap">20 BYN</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-6 text-xs text-bark/65">
+            * Информация о стоимости носит справочный характер и не является публичной офертой (ст. 407 ГК РБ). Точный расчёт подтверждается при бронировании.
+          </p>
+        </div>
+
+        <!-- Real Special Offers (/akcii-i-skidki) -->
+        <div id="offers" class="mt-12 sm:mt-16">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-display text-2xl sm:text-3xl text-spruce-deep">Акции и предложения для двоих</h3>
+            <button type="button" data-wp-concept="Страница «Акции и скидки» (/akcii-i-skidki)" class="text-sm text-cedar font-semibold hover:underline hidden sm:inline">Все акции в WordPress →</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-5 rounded-2xl bg-spruce text-linen space-y-2">
+              <span class="text-xs uppercase tracking-widest text-cedar-light font-semibold">При проживании</span>
+              <p class="font-display text-xl">−25% на баню и купель</p>
+              <p class="text-xs text-linen/75 leading-relaxed">Сеанс бани или купели по 150 BYN вместо 200 BYN для гостей дома.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-linen-dark border border-spruce/10 text-spruce space-y-2">
+              <span class="text-xs uppercase tracking-widest text-cedar font-semibold">Для двоих + ночлег</span>
+              <p class="font-display text-xl">Баня или купель — 300 BYN</p>
+              <p class="text-xs text-bark/75 leading-relaxed">Безлимитный сеанс парения или купели и ночлег в уютной спальне в бане.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-linen-dark border border-spruce/10 text-spruce space-y-2">
+              <span class="text-xs uppercase tracking-widest text-cedar font-semibold">Романтический комбо</span>
+              <p class="font-display text-xl">Баня + купель + ночлег — 400 BYN</p>
+              <p class="text-xs text-bark/75 leading-relaxed">Полный комплекс для пары с камином, горячей купелью и ночёвкой.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-linen-dark border border-spruce/10 text-spruce space-y-2">
+              <span class="text-xs uppercase tracking-widest text-cedar font-semibold">Льгота</span>
+              <p class="font-display text-xl">Пенсионерам скидка 10%</p>
+              <p class="text-xs text-bark/75 leading-relaxed">Действует на отдых в тихом сосновом бору у озера Молочное.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LAKESIDE LOCATION (PORECHYE) ==================== -->
+    <section id="location" class="py-16 sm:py-24 bg-linen-dark text-spruce">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6">
+            <div class="space-y-3">
+              <p class="text-xs uppercase tracking-[0.2em] text-cedar font-semibold">Расположение</p>
+              <h2 class="font-display text-3xl sm:text-4xl text-spruce-deep">
+                аг. Поречье, ул. Озёрская, 16 — 100 м от озера Молочное
+              </h2>
+              <p class="text-bark/80 leading-relaxed">
+                Удобный доезд из Гродно как на автомобиле, так и поездом до железнодорожной станции Поречье. Прогулка по лесной аллее сразу выводит к пирсу озера Молочное — для рыбалки, купания и катания на катамаране.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div class="p-4 rounded-2xl bg-linen-light border border-spruce/10 space-y-1">
+                <span class="text-xs uppercase tracking-wider text-cedar font-semibold">Озеро и лес</span>
+                <p class="font-medium text-spruce-deep">Пирс, пляж, грибы и ягоды</p>
+                <p class="text-xs text-bark/70">100 метров пешком от калитки усадьбы</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-linen-light border border-spruce/10 space-y-1">
+                <span class="text-xs uppercase tracking-wider text-cedar font-semibold">Достопримечательности</span>
+                <p class="font-medium text-spruce-deep">Храмы и фестиваль Поречья</p>
+                <p class="text-xs text-bark/70">Костёл Пресвятой Девы Марии и Казанская церковь</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="https://yandex.by/maps/?text=агрогородок+Поречье+ул+Озерская+16+Гродненский+район" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-spruce hover:bg-spruce-deep text-linen text-sm font-semibold transition-colors">
+                <span>Маршрут в Яндекс Картах</span>
+              </a>
+              <button type="button" id="copy-address-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-spruce/25 hover:border-spruce text-spruce text-sm font-medium transition-colors">
+                <span>Скопировать адрес</span>
+              </button>
+              <span id="copy-address-feedback" class="text-xs font-semibold text-moss hidden">Адрес скопирован!</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="relative rounded-3xl overflow-hidden border border-spruce/15 shadow-lg bg-spruce-deep">
+              <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=1200&q=80" alt="Усадьба среди хвойного леса на закате" class="w-full h-[360px] sm:h-[420px] object-cover opacity-90" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-spruce-deep/90 via-spruce-deep/20 to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 p-5 rounded-2xl bg-spruce-deep/85 backdrop-blur-md border border-linen/15 text-linen flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <span class="block text-xs uppercase tracking-widest text-cedar-light">Навигатор</span>
+                  <span class="font-display text-lg">Гродненская обл., аг. Поречье, ул. Озёрская, 16</span>
+                </div>
+                <a href="tel:+375297810009" class="shrink-0 px-4 py-2.5 rounded-xl bg-cedar hover:bg-cedar-dark text-linen-light text-xs font-semibold uppercase tracking-wider text-center whitespace-nowrap">
+                  Уточнить проезд
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOOKING & INTERACTIVE SELECTOR ==================== -->
+    <section id="booking" class="py-16 sm:py-24 bg-spruce-deep text-linen">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <!-- Left: Synced 2-Click Summary & Direct Contacts -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="space-y-3">
+              <p class="text-xs uppercase tracking-[0.2em] text-cedar-light font-semibold">Заявка на бронирование</p>
+              <h2 class="font-display text-3xl sm:text-4xl text-linen">
+                Узнайте свободные даты за 1 минуту
+              </h2>
+              <p class="text-linen/75 text-sm sm:text-base leading-relaxed">
+                Оставьте контакты или напишите в мессенджер — подтвердим наличие мест, подскажем по размещению компании или уединённому отдыху для двоих.
+              </p>
+            </div>
+
+            <!-- Interactive Selection Summary -->
+            <div class="p-5 rounded-2xl bg-spruce border border-linen/15 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-widest text-cedar-light font-semibold">Ваш подбор</span>
+                <button type="button" data-wp-concept="Интерактивный календарь занятости (/bronirovanie)" class="text-xs text-linen/75 hover:text-linen underline underline-offset-4">Календарь дат (WP)</button>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between gap-3 py-1.5 border-b border-linen/10">
+                  <span class="text-linen/65">Формат:</span>
+                  <span id="summary-format" class="font-semibold text-linen">Отдых в доме</span>
+                </div>
+                <div class="flex justify-between gap-3 py-1.5 border-b border-linen/10">
+                  <span class="text-linen/65">Даты:</span>
+                  <span id="summary-period" class="font-semibold text-linen">Выходные</span>
+                </div>
+              </div>
+              <p id="summary-hint" class="text-xs text-linen/75 leading-relaxed">
+                Совет: при проживании в доме беседка с мангалом бесплатна, а на баню и купель действует скидка 25%.
+              </p>
+            </div>
+
+            <!-- Direct Channels -->
+            <div class="p-5 rounded-2xl bg-linen/5 border border-linen/10 space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs uppercase tracking-widest text-linen/60">Прямая связь (09:00–22:00)</span>
+                <a href="tel:+375297810009" class="text-base font-bold text-linen hover:text-cedar-light whitespace-nowrap">+375 (29) 781-00-09</a>
+              </div>
+              <div class="grid grid-cols-2 gap-2.5 pt-1">
+                <a href="viber://chat?number=%2B375297810009" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-linen/10 hover:bg-linen/15 text-xs font-semibold text-linen transition-colors">
+                  <span>Viber</span>
+                </a>
+                <a href="https://t.me/+375297810009" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-linen/10 hover:bg-linen/15 text-xs font-semibold text-linen transition-colors">
+                  <span>Telegram</span>
+                </a>
+              </div>
+              <p class="text-xs text-linen/60 pt-1">E-mail: agrousadba-mechta@yandex.ru</p>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="lg:col-span-7 bg-linen text-spruce rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl">
+            <form id="booking-form" class="space-y-5" novalidate>
+              <!-- Honeypot field -->
+              <div class="hidden" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- 2-click pills inside form too (synced) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-bark/70 font-semibold mb-2">Формат отдыха</label>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button type="button" data-sync-format="Отдых в доме" aria-pressed="true" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Отдых в доме</button>
+                    <button type="button" data-sync-format="Баня и купель" aria-pressed="false" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Баня и купель</button>
+                    <button type="button" data-sync-format="Праздник / компания" aria-pressed="false" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Праздник</button>
+                  </div>
+                  <input type="hidden" id="booking-format" name="format" value="Отдых в доме" />
+                </div>
+
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-bark/70 font-semibold mb-2">Когда планируете?</label>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button type="button" data-sync-period="Будни" aria-pressed="false" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Будни</button>
+                    <button type="button" data-sync-period="Выходные" aria-pressed="true" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Выходные</button>
+                    <button type="button" data-sync-period="Праздничные даты" aria-pressed="false" class="choice-pill-light px-3 py-1.5 rounded-lg border border-spruce/20 text-xs font-medium transition-colors">Праздники</button>
+                  </div>
+                  <input type="hidden" id="booking-period" name="period" value="Выходные" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="guest-name" class="block text-xs font-semibold uppercase tracking-wider text-bark/75 mb-1.5">Ваше имя *</label>
+                  <input id="guest-name" name="name" type="text" required placeholder="Например, Александр" class="w-full px-4 py-3 rounded-xl bg-linen-light border border-spruce/20 text-spruce placeholder:text-bark/40 focus:outline-none focus:border-cedar" />
+                </div>
+                <div>
+                  <label for="guest-phone" class="block text-xs font-semibold uppercase tracking-wider text-bark/75 mb-1.5">Телефон / Viber *</label>
+                  <input id="guest-phone" name="phone" type="tel" required placeholder="+375 (29) ___-__-__" class="w-full px-4 py-3 rounded-xl bg-linen-light border border-spruce/20 text-spruce placeholder:text-bark/40 focus:outline-none focus:border-cedar" />
+                </div>
+              </div>
+
+              <div>
+                <label for="guest-note" class="block text-xs font-semibold uppercase tracking-wider text-bark/75 mb-1.5">Даты, количество гостей и пожелания</label>
+                <textarea id="guest-note" name="note" rows="3" placeholder="Например: 12–13 июня, 8 взрослых и 2 ребёнка, интересует дом и вечерняя баня с купелью" class="w-full px-4 py-3 rounded-xl bg-linen-light border border-spruce/20 text-spruce placeholder:text-bark/40 focus:outline-none focus:border-cedar"></textarea>
+              </div>
+
+              <!-- Law No. 99-Z Unchecked Required Consent Checkbox -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer text-xs text-bark/80 leading-relaxed">
+                  <input id="pd-consent" name="consent" type="checkbox" required class="mt-0.5 w-4 h-4 rounded border-spruce/30 text-cedar focus:ring-cedar shrink-0" />
+                  <span>
+                    Я даю <button type="button" data-open-modal="consent-modal" class="text-cedar font-semibold underline underline-offset-2 hover:text-cedar-dark">согласие на обработку и трансграничную передачу персональных данных</button> в соответствии с Законом РБ № 99-З и ознакомлен(а) с <button type="button" data-open-modal="privacy-modal" class="text-cedar font-semibold underline underline-offset-2 hover:text-cedar-dark">Политикой обработки ПД</button>.
+                  </span>
+                </label>
+              </div>
+
+              <div id="form-feedback" class="hidden p-4 rounded-xl text-sm"></div>
+
+              <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-cedar hover:bg-cedar-dark text-linen-light font-semibold text-sm uppercase tracking-wider transition-colors shadow-lg">
+                Отправить запрос на бронь
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-spruce-deep border-t border-linen/10 text-linen/80 pt-12 pb-28 md:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-4 space-y-3">
+          <span class="font-display text-2xl text-linen block">Агроусадьба «Мечта»</span>
+          <p class="text-xs text-linen/65 leading-relaxed">
+            Гродненская обл., Гродненский р-н, аг. Поречье, ул. Озёрская, 16.<br />
+            [Субъект агроэкотуризма / ФИО] · УНП: [уточняется при запуске]<br />
+            Режим работы: 09:00–22:00 ежедневно (по предварительной записи).
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2 text-xs">
+          <span class="block uppercase tracking-widest text-cedar-light font-semibold mb-2">Разделы WordPress-версии</span>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" data-wp-concept="Домик у озера (/uslugi/dom-dlya-otdyxa)" class="text-left hover:text-linen">Домик у озера</button>
+            <button type="button" data-wp-concept="Баня и камин (/uslugi/banya-russkaya)" class="text-left hover:text-linen">Баня и камин</button>
+            <button type="button" data-wp-concept="Купель джакузи (/uslugi/kupel-2)" class="text-left hover:text-linen">Купель джакузи</button>
+            <button type="button" data-wp-concept="Банкетный зал (/uslugi/banketnyj-zal-2)" class="text-left hover:text-linen">Банкетный зал</button>
+            <button type="button" data-wp-concept="Фотогалерея (/fotogalereya)" class="text-left hover:text-linen">Фотогалерея</button>
+            <button type="button" data-wp-concept="Календарь дат (/bronirovanie)" class="text-left hover:text-linen">Календарь дат</button>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 space-y-2 text-xs">
+          <span class="block uppercase tracking-widest text-cedar-light font-semibold mb-2">Правовая информация (РБ)</span>
+          <div class="flex flex-col items-start gap-1.5">
+            <button type="button" data-open-modal="privacy-modal" class="hover:text-linen underline underline-offset-2">Политика обработки персональных данных (99-З)</button>
+            <button type="button" data-open-modal="consent-modal" class="hover:text-linen underline underline-offset-2">Согласие на обработку и трансграничную передачу ПД</button>
+            <button type="button" data-open-modal="cookie-modal" class="hover:text-linen underline underline-offset-2">Настройки cookie (НЦЗПД)</button>
+          </div>
+          <p class="text-[11px] text-linen/50 pt-2">
+            Материалы сайта не являются публичной офертой (ст. 407 ГК РБ).
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-linen/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-linen/55">
+        <span>© 2026 Агроусадьба «Мечта» · аг. Поречье</span>
+        <span>Визуальный концепт главной страницы · Будущая основа для WordPress + Yoast SEO</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== STICKY MOBILE DOCK (md:hidden) ==================== -->
+  <div id="mobile-dock" class="md:hidden fixed bottom-3 inset-x-3 z-40 transition-all duration-300">
+    <div class="rounded-2xl bg-[#13221C]/95 backdrop-blur-lg border border-linen/20 shadow-2xl p-1.5 grid grid-cols-3 gap-1.5 text-xs font-semibold">
+      <a href="tel:+375297810009" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-linen/10 text-linen active:scale-95 transition">
+        <svg class="w-4 h-4 text-cedar-light shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375297810009" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-linen/10 text-linen active:scale-95 transition">
+        <svg class="w-4 h-4 text-cedar-light shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl bg-cedar text-linen-light active:scale-95 transition">
+        <span>Забронировать</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE BANNER (НЦЗПД, Equal Buttons) ==================== -->
+  <div id="cookie-banner" class="hidden fixed bottom-2 inset-x-2 sm:bottom-4 sm:left-auto sm:right-4 sm:max-w-xl z-50">
+    <div class="rounded-2xl bg-[#13221C]/95 backdrop-blur-lg border border-linen/20 text-linen p-4 shadow-2xl space-y-3">
+      <div class="space-y-1 text-xs text-linen/85">
+        <p class="font-semibold text-linen text-sm">Использование файлов cookie</p>
+        <p class="leading-relaxed">
+          Мы используем технические cookie для работы сайта и аналитические cookie в соответствии с рекомендациями НЦЗПД РБ.
+          <button type="button" data-open-modal="cookie-modal" class="text-cedar-light underline underline-offset-2 ml-1">Настройки cookie</button>
+        </p>
+      </div>
+      <!-- Two Visually Equal Buttons -->
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" id="cookie-accept-all" class="px-3 py-2.5 rounded-xl bg-linen text-spruce-deep hover:bg-linen-dark font-semibold text-[11px] sm:text-xs leading-tight transition-colors text-center">
+          Принять все
+        </button>
+        <button type="button" id="cookie-reject-opt" class="px-3 py-2.5 rounded-xl bg-linen text-spruce-deep hover:bg-linen-dark font-semibold text-[11px] sm:text-xs leading-tight transition-colors text-center">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+  <!-- 1. Tariff 2 WordPress Honest Concept Modal -->
+  <div id="wp-concept-modal" class="hidden fixed inset-0 z-50 bg-spruce-deep/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="wp-modal-title">
+    <div class="bg-linen text-spruce rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-spruce/15 space-y-4">
+      <div class="flex items-start justify-between gap-4">
+        <span class="px-3 py-1 rounded-full bg-cedar/15 text-cedar text-xs font-semibold uppercase tracking-wider" id="wp-section-tag">Раздел сайта</span>
+        <button type="button" data-close-modal class="p-1.5 rounded-lg hover:bg-spruce/10 text-spruce" aria-label="Закрыть">✕</button>
+      </div>
+      <h3 id="wp-modal-title" class="font-display text-2xl text-spruce-deep">Визуальный концепт главной страницы</h3>
+      <p class="text-sm text-bark/85 leading-relaxed">
+        Это визуальный концепт главной страницы. В боевой версии перенесём всё на полноценный WordPress с сохранением всех ваших разделов (Услуги, Фотогалерея, Цены, Акции), старых URL и настройкой Yoast SEO.
+      </p>
+      <div class="pt-2 flex flex-wrap gap-3">
+        <a href="#booking" data-close-modal class="px-5 py-2.5 rounded-xl bg-cedar hover:bg-cedar-dark text-linen-light text-sm font-semibold transition-colors">Перейти к бронированию</a>
+        <button type="button" data-close-modal class="px-5 py-2.5 rounded-xl border border-spruce/20 hover:bg-spruce/5 text-spruce text-sm font-medium transition-colors">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Privacy Policy Modal (Закон № 99-З) -->
+  <div id="privacy-modal" class="hidden fixed inset-0 z-50 bg-spruce-deep/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <div class="bg-linen text-spruce rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-spruce/15 space-y-4 text-sm leading-relaxed">
+      <div class="flex items-start justify-between gap-4 sticky top-0 bg-linen pb-3 border-b border-spruce/10">
+        <h3 id="privacy-title" class="font-display text-2xl text-spruce-deep">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal class="p-1.5 rounded-lg hover:bg-spruce/10 text-spruce" aria-label="Закрыть">✕</button>
+      </div>
+      <p>Настоящая Политика разработана в соответствии с Законом Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+      <p><strong>1. Оператор:</strong> [Субъект агроэкотуризма / ФИО], УНП [уточняется при запуске], адрес: Гродненская обл., Гродненский р-н, аг. Поречье, ул. Озёрская, 16, тел.: +375 (29) 781-00-09, e-mail: agrousadba-mechta@yandex.ru.</p>
+      <p><strong>2. Цели и перечень ПД:</strong> обработка заявок на бронирование отдыха (имя, контактный телефон/мессенджер, желаемые даты и формат отдыха).</p>
+      <p><strong>3. Правовые основания и срок хранения:</strong> согласие субъекта ПД (ст. 5, 6 Закона № 99-З). Срок хранения — до достижения целей обработки или до отзыва согласия, но не более 3 лет.</p>
+      <p><strong>4. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> право на отзыв согласия, получение информации об обработке, изменение или удаление ПД, а также обжалование действий оператора в НЦЗПД.</p>
+    </div>
+  </div>
+
+  <!-- 3. Consent Modal (Ст. 9 + Трансграничная передача Telegram/Google) -->
+  <div id="consent-modal" class="hidden fixed inset-0 z-50 bg-spruce-deep/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+    <div class="bg-linen text-spruce rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-spruce/15 space-y-4 text-sm leading-relaxed">
+      <div class="flex items-start justify-between gap-4 sticky top-0 bg-linen pb-3 border-b border-spruce/10">
+        <h3 id="consent-title" class="font-display text-2xl text-spruce-deep">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal class="p-1.5 rounded-lg hover:bg-spruce/10 text-spruce" aria-label="Закрыть">✕</button>
+      </div>
+      <p>Заполняя форму на сайте и проставляя отметку в чекбоксе, я выражаю свободное, однозначное и информированное согласие на обработку моих персональных данных (имя, телефон, комментарий к бронированию) оператору [Субъект агроэкотуризма / ФИО].</p>
+      <p><strong>Трансграничная передача (ст. 9 Закона № 99-З):</strong> я уведомлён(а) и согласен(на), что для оперативного уведомления администратора о заявке данные могут передаваться с использованием сервисов Google (Google Apps Script) и мессенджера Telegram (включая серверы за пределами Республики Беларусь, в государствах, где может не обеспечиваться надлежащий уровень защиты прав субъектов ПД).</p>
+      <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> согласие действует до момента достижения целей бронирования либо до его отзыва путём направления обращения на agrousadba-mechta@yandex.ru или по телефону +375 (29) 781-00-09.</p>
+    </div>
+  </div>
+
+  <!-- 4. Cookie Settings Modal -->
+  <div id="cookie-modal" class="hidden fixed inset-0 z-50 bg-spruce-deep/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cookie-title">
+    <div class="bg-linen text-spruce rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-spruce/15 space-y-5 text-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 id="cookie-title" class="font-display text-2xl text-spruce-deep">Настройки файлов cookie</h3>
+        <button type="button" data-close-modal class="p-1.5 rounded-lg hover:bg-spruce/10 text-spruce" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4 p-3.5 rounded-xl bg-linen-light border border-spruce/10">
+          <div>
+            <span class="font-semibold block">Технические (обязательные)</span>
+            <span class="text-xs text-bark/70">Обеспечивают работу форм и сохранение выбора настроек</span>
+          </div>
+          <input type="checkbox" checked disabled class="w-4 h-4 accent-spruce" />
+        </label>
+        <label class="flex items-center justify-between gap-4 p-3.5 rounded-xl bg-linen-light border border-spruce/10 cursor-pointer">
+          <div>
+            <span class="font-semibold block">Аналитические</span>
+            <span class="text-xs text-bark/70">Помогают оценивать посещаемость страниц в боевой версии</span>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" class="w-4 h-4 accent-cedar" />
+        </label>
+      </div>
+      <div class="flex gap-3">
+        <button type="button" id="save-cookie-settings" class="flex-1 py-2.5 px-4 rounded-xl bg-spruce text-linen font-semibold text-sm hover:bg-spruce-deep transition-colors">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Lightbox Modal -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-spruce-deep/92 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="max-w-4xl w-full space-y-3">
+      <div class="flex justify-end">
+        <button type="button" data-close-modal class="px-3 py-1.5 rounded-full bg-linen/15 text-linen hover:bg-linen/25 text-sm">Закрыть ✕</button>
+      </div>
+      <img id="lightbox-img" src="" alt="" class="w-full max-h-[78vh] object-contain rounded-2xl shadow-2xl" />
+      <p id="lightbox-caption" class="text-center text-sm text-linen/85"></p>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Агроусадьба «Мечта»',
+      phoneDisplay: '+375 (29) 781-00-09',
+      phoneClean: '+375297810009',
+      email: 'agrousadba-mechta@yandex.ru',
+      schedule: { openHour: 9, closeHour: 22 },
+      gasEndpoint: '', // Указывается после запуска на боевом домене
+      demoMode: true,
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Live Status Indicator (Europe/Minsk)
+      function updateMinskStatus() {
+        try {
+          const now = new Date();
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Minsk',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+          }).formatToParts(now);
+          const hour = Number(parts.find(p => p.type === 'hour')?.value || 12);
+          const isOpen = hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour;
+
+          const dot = document.getElementById('live-status-dot');
+          const text = document.getElementById('live-status-text');
+          const mobileStatus = document.getElementById('mobile-live-status');
+
+          if (dot && text) {
+            if (isOpen) {
+              dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+              text.textContent = 'Открыто сейчас';
+            } else {
+              dot.className = 'w-2 h-2 rounded-full bg-amber-400';
+              text.textContent = 'Ответим с 09:00';
+            }
+          }
+          if (mobileStatus) {
+            mobileStatus.innerHTML = isOpen
+              ? '<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>Открыто сейчас · 09:00–22:00</span>'
+              : '<span class="w-2 h-2 rounded-full bg-amber-400"></span><span>Ответим с 09:00 · 09:00–22:00</span>';
+          }
+        } catch (_) {}
+      }
+      updateMinskStatus();
+      setInterval(updateMinskStatus, 60000);
+
+      // 2. Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+        mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 3. Synchronized 2-Click Interactive Selector (Hero <-> Form)
+      const state = { format: 'Отдых в доме', period: 'Выходные' };
+      const hints = {
+        'Отдых в доме': 'Совет: при проживании в доме беседка с мангалом бесплатна, а на баню и купель действует скидка 25%.',
+        'Баня и купель': 'Для пары можно выбрать пакет с ночлегом в бане (300 BYN за баню/купель или 400 BYN за комплекс).',
+        'Праздник / компания': 'Дубовый банкетный зал на 20 человек (проектор, караоке) — 100 BYN или бесплатно при проживании от 10 гостей.',
+      };
+
+      function syncSelectorUI() {
+        document.querySelectorAll('[data-sync-format]').forEach(btn => {
+          btn.setAttribute('aria-pressed', String(btn.dataset.syncFormat === state.format));
+        });
+        document.querySelectorAll('[data-sync-period]').forEach(btn => {
+          btn.setAttribute('aria-pressed', String(btn.dataset.syncPeriod === state.period));
+        });
+        const fInput = document.getElementById('booking-format');
+        const pInput = document.getElementById('booking-period');
+        const fSum = document.getElementById('summary-format');
+        const pSum = document.getElementById('summary-period');
+        const hSum = document.getElementById('summary-hint');
+
+        if (fInput) fInput.value = state.format;
+        if (pInput) pInput.value = state.period;
+        if (fSum) fSum.textContent = state.format;
+        if (pSum) pSum.textContent = state.period;
+        if (hSum) hSum.textContent = hints[state.format] || '';
+      }
+
+      document.querySelectorAll('[data-sync-format]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.format = btn.dataset.syncFormat;
+          syncSelectorUI();
+        });
+      });
+      document.querySelectorAll('[data-sync-period]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.period = btn.dataset.syncPeriod;
+          syncSelectorUI();
+        });
+      });
+      syncSelectorUI();
+
+      // 4. Price Tabs
+      document.querySelectorAll('[data-price-tab]').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.priceTab;
+          document.querySelectorAll('[data-price-tab]').forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+          document.querySelectorAll('.price-panel').forEach(p => p.classList.add('hidden'));
+          const panel = document.getElementById(`panel-${target}`);
+          if (panel) panel.classList.remove('hidden');
+        });
+      });
+
+      // 5. Copy Address
+      const copyBtn = document.getElementById('copy-address-btn');
+      const copyFeedback = document.getElementById('copy-address-feedback');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText('Гродненская обл., Гродненский р-н, аг. Поречье, ул. Озёрская, 16');
+            if (copyFeedback) {
+              copyFeedback.classList.remove('hidden');
+              setTimeout(() => copyFeedback.classList.add('hidden'), 2500);
+            }
+          } catch (_) {}
+        });
+      }
+
+      // 6. Modals & WordPress Honest Concept Handler
+      function openModal(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('hidden');
+      }
+      function closeAllModals() {
+        document.querySelectorAll('[role="dialog"]').forEach(m => m.classList.add('hidden'));
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach(btn => {
+        btn.addEventListener('click', () => openModal(btn.dataset.openModal));
+      });
+      document.querySelectorAll('[data-wp-concept]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tag = document.getElementById('wp-section-tag');
+          if (tag) tag.textContent = btn.dataset.wpConcept || 'Раздел сайта';
+          openModal('wp-concept-modal');
+        });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('[role="dialog"]').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      // Lightbox
+      document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const img = document.getElementById('lightbox-img');
+          const cap = document.getElementById('lightbox-caption');
+          if (img) img.src = btn.dataset.lightboxSrc;
+          if (cap) cap.textContent = btn.dataset.lightboxCaption || '';
+          openModal('lightbox-modal');
+        });
+      });
+
+      // 7. Cookie Banner (НЦЗПД + Hide Sticky Mobile Dock while open)
+      const COOKIE_KEY = 'mechta_cookie_consent_v1';
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-dock');
+
+      function setDockHidden(hidden) {
+        if (!mobileDock) return;
+        if (hidden) {
+          mobileDock.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        } else {
+          mobileDock.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }
+      }
+
+      function initCookies() {
+        let saved = null;
+        try { saved = localStorage.getItem(COOKIE_KEY); } catch (_) {}
+        if (!saved && cookieBanner) {
+          cookieBanner.classList.remove('hidden');
+          setDockHidden(true);
+        } else {
+          setDockHidden(false);
+        }
+      }
+
+      function saveCookieChoice(analyticsAccepted) {
+        try {
+          localStorage.setItem(COOKIE_KEY, JSON.stringify({ necessary: true, analytics: analyticsAccepted, ts: Date.now() }));
+        } catch (_) {}
+        if (cookieBanner) cookieBanner.classList.add('hidden');
+        setDockHidden(false);
+        closeAllModals();
+      }
+
+      document.getElementById('cookie-accept-all')?.addEventListener('click', () => saveCookieChoice(true));
+      document.getElementById('cookie-reject-opt')?.addEventListener('click', () => saveCookieChoice(false));
+      document.getElementById('save-cookie-settings')?.addEventListener('click', () => {
+        const analytics = Boolean(document.getElementById('cookie-analytics-toggle')?.checked);
+        saveCookieChoice(analytics);
+      });
+      initCookies();
+
+      // 8. Booking Form Submission (Demo mode + Honeypot + 99-Z validation)
+      const form = document.getElementById('booking-form');
+      const feedback = document.getElementById('form-feedback');
+
+      if (form && feedback) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const honeypot = form.querySelector('#website')?.value.trim();
+          if (honeypot) return;
+
+          const name = form.querySelector('#guest-name')?.value.trim();
+          const phone = form.querySelector('#guest-phone')?.value.trim();
+          const consent = form.querySelector('#pd-consent')?.checked;
+
+          if (!name || !phone) {
+            feedback.className = 'p-4 rounded-xl text-sm bg-cedar/15 text-cedar-dark border border-cedar/30';
+            feedback.textContent = 'Пожалуйста, укажите имя и номер телефона для связи.';
+            feedback.classList.remove('hidden');
+            return;
+          }
+          if (!consent) {
+            feedback.className = 'p-4 rounded-xl text-sm bg-cedar/15 text-cedar-dark border border-cedar/30';
+            feedback.textContent = 'Необходимо подтвердить согласие на обработку персональных данных (Закон № 99-З).';
+            feedback.classList.remove('hidden');
+            return;
+          }
+
+          const payload = {
+            name,
+            phone,
+            format: state.format,
+            period: state.period,
+            note: form.querySelector('#guest-note')?.value.trim() || '',
+          };
+
+          if (SITE_CONFIG.demoMode || !SITE_CONFIG.gasEndpoint) {
+            feedback.className = 'p-4 rounded-xl text-sm bg-moss/15 text-spruce-deep border border-moss/30';
+            feedback.innerHTML = `<strong>Демо-режим:</strong> заявка сформирована (${payload.format}, ${payload.period}). В боевой версии на вашем домене сообщение сразу уйдёт в Telegram администратора.`;
+            feedback.classList.remove('hidden');
+            form.reset();
+            syncSelectorUI();
+            return;
+          }
+
+          try {
+            await fetch(SITE_CONFIG.gasEndpoint, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            feedback.className = 'p-4 rounded-xl text-sm bg-moss/15 text-spruce-deep border border-moss/30';
+            feedback.textContent = 'Заявка отправлена! Мы перезвоним вам в ближайшее время.';
+            feedback.classList.remove('hidden');
+            form.reset();
+            syncSelectorUI();
+          } catch (_) {
+            feedback.className = 'p-4 rounded-xl text-sm bg-cedar/15 text-cedar-dark border border-cedar/30';
+            feedback.textContent = 'Не удалось отправить форму. Пожалуйста, позвоните нам по номеру +375 (29) 781-00-09.';
+            feedback.classList.remove('hidden');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

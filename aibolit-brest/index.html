@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ветклиника «Айболит» — ветеринарная помощь в центре Бреста</title>
+  <meta name="description" content="Ветеринарная клиника «Айболит» в центре Бреста (ул. 17 Сентября, 32, двор ЦУМа). 23 года работы: лечение кошек, собак, грызунов и экзотов, собственная лаборатория, ветаптека, гостиница для котов, вызов врача на дом." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF9F6',
+            cream: '#F2EFE9',
+            cobalt: '#1662A6',
+            cobaltDark: '#104C82',
+            sage: '#E8F3EE',
+            sageDark: '#236B53',
+            slateDeep: '#142230',
+            slateMuted: '#4E6073',
+            hairline: '#E2DDD5'
+          },
+          fontFamily: {
+            display: ['Onest', 'system-ui', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Onest', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    body {
+      background-color: #FAF9F6;
+      color: #142230;
+      font-family: 'Plus Jakarta Sans', 'Onest', system-ui, sans-serif;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Onest', system-ui, sans-serif;
+    }
+    .dock-hidden {
+      transform: translateY(120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body id="top" class="antialiased selection:bg-cobalt/15 selection:text-cobaltDark">
+
+  <script>
+    window.SITE_CONFIG = {
+      brandName: 'Ветклиника «Айболит»',
+      legalName: 'ООО «Айболит люкс»',
+      unp: '[УНП]',
+      city: 'Брест',
+      address: 'г. Брест, ул. 17 Сентября, 32 (двор ЦУМа)',
+      phoneMobile: '+375 (29) 754-82-78',
+      phoneMobileRaw: '+375297548278',
+      phoneCity: '+375 (162) 23-23-23',
+      phoneCityRaw: '+375162232323',
+      email: 'aibolit-brest@mail.ru',
+      viberUrl: 'viber://chat?number=%2B375297548278',
+      yandexUrl: 'https://yandex.by/maps/',
+      gasWebhookUrl: '', // На боевом сайте сюда вставляется URL Google Apps Script для отправки заявок в Telegram
+      timezone: 'Europe/Minsk',
+      // Ориентир режима работы (на старом сайте не указан — уточняется перед запуском)
+      scheduleText: '[Режим работы]',
+      scheduleFallbackLabel: 'Ежедневно 09:00–20:00 (ориентир)',
+      schedule: {
+        openHour: 9,
+        closeHour: 20
+      }
+    };
+  </script>
+
+  <!-- Demo Disclaimer Top Bar -->
+  <div class="bg-[#EFECE4] border-b border-hairline text-[11px] text-slateMuted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3">
+      <span class="truncate">
+        <span class="font-display font-semibold text-cobalt uppercase tracking-wide">Демо-прототип</span>
+        <span class="text-slateDeep"> · Ветклиника «Айболит», Брест</span>
+      </span>
+      <span class="hidden md:inline whitespace-nowrap text-slateMuted">
+        Фото демонстрационные · при запуске разместим реальные снимки клиники и врачей
+      </span>
+    </div>
+  </div>
+
+  <!-- Single-Row Clinical Header -->
+  <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+        <span class="w-10 h-10 rounded-xl bg-sage border border-sageDark/20 flex items-center justify-center shrink-0 group-hover:border-cobalt/40 transition-colors">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="9.5" y="3" width="5" height="18" rx="1.5" fill="#1662A6"/>
+            <rect x="3" y="9.5" width="18" height="5" rx="1.5" fill="#1662A6"/>
+            <circle cx="12" cy="12" r="2.1" fill="#E8F3EE"/>
+          </svg>
+        </span>
+        <span class="flex flex-col leading-tight">
+          <span class="font-display font-bold text-[16px] text-slateDeep tracking-tight whitespace-nowrap">Айболит</span>
+          <span class="text-[11px] text-slateMuted whitespace-nowrap">Ветклиника · Брест, центр</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation (Strictly 1 row) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-slateMuted">
+        <a href="#services" class="whitespace-nowrap hover:text-cobalt transition-colors">Услуги</a>
+        <a href="#exotics" class="whitespace-nowrap hover:text-cobalt transition-colors">Питомцы</a>
+        <a href="#quick-select" class="whitespace-nowrap hover:text-cobalt transition-colors">Запись в 2 клика</a>
+        <a href="#about" class="whitespace-nowrap hover:text-cobalt transition-colors">О клинике</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-cobalt transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right Controls: Live Status + Phone + Clean Viber Icon + CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <!-- Live Europe/Minsk Status -->
+        <div id="live-status" title="Ежедневно 09:00–20:00 (ориентир)" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sage border border-sageDark/15 text-[11px] font-medium text-sageDark whitespace-nowrap">
+          <span id="live-dot" class="w-2 h-2 rounded-full bg-sageDark animate-pulse"></span>
+          <span id="live-text">Открыто сейчас</span>
+        </div>
+
+        <!-- Primary Phone (NEVER wraps) -->
+        <a href="tel:+375297548278" class="hidden sm:inline-flex items-center gap-1.5 font-display font-semibold text-[14px] text-slateDeep hover:text-cobalt transition-colors whitespace-nowrap">
+          <svg class="w-4 h-4 text-cobalt shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span class="whitespace-nowrap">+375 (29) 754-82-78</span>
+        </a>
+
+        <!-- Clean Monochrome/Cobalt Viber Icon (NO loud purple pill) -->
+        <a href="viber://chat?number=%2B375297548278" aria-label="Написать в Viber" title="Написать в Viber" class="hidden sm:inline-flex w-9 h-9 rounded-lg border border-hairline bg-white text-cobalt hover:bg-sage hover:border-sageDark/30 items-center justify-center transition-colors shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+
+        <!-- Primary Header CTA -->
+        <a href="#booking" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-[13px] transition-colors whitespace-nowrap shrink-0">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: Asymmetric Full-Width Framed Clinical Banner + Quick-Appointment Strip -->
+    <section class="pt-4 pb-10 sm:pt-6 sm:pb-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="relative rounded-2xl overflow-hidden border border-hairline bg-slateDeep shadow-sm">
+          <!-- Full-width Clinical Image -->
+          <div class="relative min-h-[470px] sm:min-h-[530px] lg:min-h-[560px] flex flex-col justify-between">
+            <img
+              src="https://images.pexels.com/photos/6235114/pexels-photo-6235114.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Ветеринарный врач осматривает собаку на приёме в клинике"
+              class="absolute inset-0 w-full h-full object-cover object-center sm:object-[68%_center]"
+            />
+            <!-- Editorial Directional Scrim for High Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slateDeep/90 via-slateDeep/75 to-slateDeep/85 lg:bg-gradient-to-r lg:from-slateDeep/95 lg:via-slateDeep/75 lg:to-slateDeep/20"></div>
+
+            <!-- Main Editorial Copy (Left-anchored inside framed banner) -->
+            <div class="relative z-10 px-5 pt-7 pb-6 sm:px-10 sm:pt-12 lg:px-14 lg:pt-14 max-w-2xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage/95 text-sageDark text-[11px] sm:text-xs font-display font-semibold tracking-wide leading-snug mb-4 sm:mb-5 max-w-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-sageDark shrink-0"></span>
+                <span>23 года работы в центре Бреста · ул. 17 Сентября, 32</span>
+              </div>
+
+              <h1 class="font-display font-bold text-[26px] sm:text-4xl lg:text-[46px] leading-[1.15] tracking-tight text-white">
+                Ветеринарная клиника «Айболит» во дворе ЦУМа
+              </h1>
+
+              <p class="mt-4 text-[15px] sm:text-[17px] leading-relaxed text-slate-200 max-w-xl">
+                Помогаем кошкам, собакам, грызунам и экзотическим питомцам. Опытные врачи, собственная лаборатория, ветаптека на месте, гостиница для котов и выезд на дом по Бресту.
+              </p>
+
+              <div class="mt-6 flex flex-wrap items-center gap-3">
+                <a href="#quick-select" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-sm transition-colors">
+                  Подобрать приём за 2 клика
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/>
+                  </svg>
+                </a>
+                <a href="tel:+375297548278" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/25 text-white font-display font-medium text-sm transition-colors">
+                  Позвонить: +375 (29) 754-82-78
+                </a>
+              </div>
+            </div>
+
+            <!-- Bottom Quick-Appointment & Trust Bar anchored to Hero Frame -->
+            <div class="relative z-10 mx-4 mb-4 sm:mx-8 sm:mb-6 lg:mx-14 lg:mb-8 rounded-xl bg-ivory/95 backdrop-blur-md border border-white/60 px-4 py-3.5 sm:px-6 sm:py-4 shadow-lg">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-center">
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-lg bg-sage text-sageDark flex items-center justify-center font-display font-bold text-sm shrink-0">4.9</span>
+                  <div>
+                    <div class="font-display font-semibold text-xs sm:text-[13px] text-slateDeep">Яндекс Карты · ★ 4.9</div>
+                    <div class="text-[11px] text-slateMuted">93 отзыва и 232 оценки</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-lg bg-cobalt/10 text-cobalt flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6v4l3 7a4 4 0 0 1-3.7 5.5H9.7A4 4 0 0 1 6 14l3-7V3z"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="font-display font-semibold text-xs sm:text-[13px] text-slateDeep">Своя лаборатория</div>
+                    <div class="text-[11px] text-slateMuted">Анализы и ветаптека рядом</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-lg bg-cobalt/10 text-cobalt flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="font-display font-semibold text-xs sm:text-[13px] text-slateDeep">Выезд врача на дом</div>
+                    <div class="text-[11px] text-slateMuted">И гостиница для котов</div>
+                  </div>
+                </div>
+
+                <div class="flex sm:justify-end">
+                  <a href="#booking" class="w-full sm:w-auto text-center px-4 py-2.5 rounded-lg bg-slateDeep hover:bg-cobalt text-white font-display font-semibold text-xs transition-colors sm:whitespace-nowrap">
+                    Оставить заявку на приём
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: REAL VETERINARY SERVICES (Strictly from aibolit-lux.by, NO invented prices!) -->
+    <section id="services" class="py-12 sm:py-16 border-t border-hairline bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10">
+          <div class="max-w-2xl">
+            <span class="font-display font-semibold text-xs uppercase tracking-widest text-cobalt">Направления клиники</span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slateDeep tracking-tight">
+              Все виды ветеринарной помощи в одном месте
+            </h2>
+          </div>
+          <p class="text-sm text-slateMuted max-w-md">
+            Приём ведут опытные специалисты. Точную стоимость осмотра и процедур администратор подскажет по телефону или при подтверждении записи.
+          </p>
+        </div>
+
+        <!-- Editorial Grid with Real Photos & Clinical Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1: Терапия и вакцинация (with cat exam photo) -->
+          <article class="rounded-2xl border border-hairline bg-ivory overflow-hidden flex flex-col">
+            <div class="aspect-[16/10] overflow-hidden bg-cream">
+              <img
+                src="https://images.pexels.com/photos/39550277/pexels-photo-39550277/free-photo-of-veterinarian-examining-orange-cat-with-stethoscope.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Ветеринарный врач проводит осмотр рыжего кота фонендоскопом"
+                class="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="inline-block px-2.5 py-0.5 rounded-md bg-sage text-sageDark text-[11px] font-display font-semibold mb-3">Коты и собаки</div>
+                <h3 class="font-display font-bold text-xl text-slateDeep">Осмотр, терапия и вакцинация</h3>
+                <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+                  Первичный и повторный приём, постановка диагноза, подбор схемы лечения, плановая вакцинация животных и оформление паспортов.
+                </p>
+              </div>
+              <a href="#booking" data-prefill-reason="Вакцинация / анализы" class="mt-5 inline-flex items-center gap-1.5 text-sm font-display font-semibold text-cobalt hover:text-cobaltDark">
+                Записаться на приём <span>→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Хирургия и стерилизация (with dog exam photo) -->
+          <article class="rounded-2xl border border-hairline bg-ivory overflow-hidden flex flex-col">
+            <div class="aspect-[16/10] overflow-hidden bg-cream">
+              <img
+                src="https://images.pexels.com/photos/7468978/pexels-photo-7468978.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Ветеринар осматривает собаку в кабинете клиники"
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="inline-block px-2.5 py-0.5 rounded-md bg-cobalt/10 text-cobalt text-[11px] font-display font-semibold mb-3">Планово и бережно</div>
+                <h3 class="font-display font-bold text-xl text-slateDeep">Стерилизация и хирургия</h3>
+                <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+                  Стерилизация котов и собак, а также мелких животных (крыс). Предоперационный осмотр, рекомендации по уходу и восстановлению.
+                </p>
+              </div>
+              <a href="#booking" data-prefill-reason="Консультация по стерилизации / хирургии" class="mt-5 inline-flex items-center gap-1.5 text-sm font-display font-semibold text-cobalt hover:text-cobaltDark">
+                Уточнить подготовку <span>→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Собственная лаборатория (with microscope photo) -->
+          <article class="rounded-2xl border border-hairline bg-ivory overflow-hidden flex flex-col">
+            <div class="aspect-[16/10] overflow-hidden bg-cream">
+              <img
+                src="https://images.pexels.com/photos/9243751/pexels-photo-9243751.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Специалисты исследуют анализы под микроскопом в лаборатории"
+                class="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="inline-block px-2.5 py-0.5 rounded-md bg-sage text-sageDark text-[11px] font-display font-semibold mb-3">Без поездок по городу</div>
+                <h3 class="font-display font-bold text-xl text-slateDeep">Собственная лаборатория</h3>
+                <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+                  Оперативное исследование анализов на базе клиники — чтобы врач быстрее увидел полную картину и назначил точное лечение.
+                </p>
+              </div>
+              <a href="#booking" data-prefill-reason="Вакцинация / анализы" class="mt-5 inline-flex items-center gap-1.5 text-sm font-display font-semibold text-cobalt hover:text-cobaltDark">
+                Записаться на анализы <span>→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Secondary Clinical Capabilities Row -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-hairline bg-cream/60 p-6">
+            <div class="w-10 h-10 rounded-xl bg-white border border-hairline text-cobalt flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v8m14 0a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3m14 0H5m4-6h6m-3-3v6"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-slateDeep">Ветаптека при клинике</h3>
+            <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+              Назначенные врачом препараты, витамины и средства ухода можно приобрести сразу на месте — без поиска по разным точкам города.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-hairline bg-cream/60 p-6">
+            <div class="w-10 h-10 rounded-xl bg-white border border-hairline text-cobalt flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-slateDeep">Гостиница для котов</h3>
+            <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+              Спокойная передержка для кошек на время вашего отпуска или командировки под присмотром специалистов ветеринарной клиники.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-hairline bg-cream/60 p-6">
+            <div class="w-10 h-10 rounded-xl bg-white border border-hairline text-cobalt flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m-1 9h2a2 2 0 0 0 2-2v-3l-2.5-3H15v8zm-8 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-slateDeep">Вызов врача на дом</h3>
+            <p class="mt-2 text-sm text-slateMuted leading-relaxed">
+              Если питомца тяжело везти в клинику или требуется спокойный осмотр дома — согласуйте выезд ветеринарного врача по Бресту.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SPECIALIZED CARE FOR RODENTS, BIRDS & REPTILES (Authentic USP from old site) -->
+    <section id="exotics" class="py-12 sm:py-16 border-t border-hairline bg-ivory">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="rounded-2xl border border-hairline bg-white p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage text-sageDark font-display font-semibold text-xs">
+              Узкие специалисты в Бресте
+            </span>
+            <h2 class="mt-4 font-display font-bold text-2xl sm:text-3xl text-slateDeep tracking-tight">
+              Принимаем не только кошек и собак: ратолог, орнитолог и герпетолог
+            </h2>
+            <p class="mt-3 text-[15px] text-slateMuted leading-relaxed">
+              Для владельцев грызунов и экзотических животных важно попасть к профильному врачу, который понимает физиологию конкретного вида. В «Айболите» ведут приём:
+            </p>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              <div class="rounded-xl bg-ivory border border-hairline p-4">
+                <div class="font-display font-bold text-sm text-cobalt">Ратолог</div>
+                <p class="mt-1 text-xs text-slateMuted leading-relaxed">Приём шиншилл, декоративных кроликов, крыс и других грызунов.</p>
+              </div>
+              <div class="rounded-xl bg-ivory border border-hairline p-4">
+                <div class="font-display font-bold text-sm text-cobalt">Орнитолог</div>
+                <p class="mt-1 text-xs text-slateMuted leading-relaxed">Осмотр, диагностика и помощь декоративным и домашним птицам.</p>
+              </div>
+              <div class="rounded-xl bg-ivory border border-hairline p-4">
+                <div class="font-display font-bold text-sm text-cobalt">Герпетолог</div>
+                <p class="mt-1 text-xs text-slateMuted leading-relaxed">Консультации и лечение рептилий: змей, черепах и ящериц.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden border border-hairline aspect-[4/3] bg-cream">
+              <img
+                src="https://images.pexels.com/photos/32934904/pexels-photo-32934904/free-photo-of-flemish-giant-rabbit-relaxing-in-sunlight.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Декоративный вислоухий кролик"
+                class="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: 2-CLICK MINI-INTERACTIVE + BOOKING FORM (Law № 99-З Compliant) -->
+    <section id="quick-select" class="py-12 sm:py-16 border-t border-hairline bg-sage/45">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Left: 2-Click Interactive Selector -->
+          <div class="lg:col-span-6 rounded-2xl bg-white border border-hairline p-6 sm:p-8 shadow-sm">
+            <span class="font-display font-semibold text-xs uppercase tracking-widest text-cobalt">Запись за 2 клика</span>
+            <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-slateDeep tracking-tight">
+              Подскажите, кто пациент и что случилось
+            </h2>
+            <p class="mt-2 text-sm text-slateMuted">
+              Выберите два пункта — они сразу подставятся в заявку, чтобы администратор быстрее сориентировал вас по свободному времени.
+            </p>
+
+            <!-- Step 1 -->
+            <div class="mt-6">
+              <div class="text-xs font-display font-semibold uppercase tracking-wider text-slateMuted mb-2.5">1. Кто пациент?</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" role="group" aria-label="Выбор питомца">
+                <button type="button" data-pet="Кошка" class="pet-btn px-3.5 py-3 rounded-xl border border-cobalt bg-cobalt text-white font-display font-semibold text-sm text-left transition-all">
+                  Кошка
+                </button>
+                <button type="button" data-pet="Собака" class="pet-btn px-3.5 py-3 rounded-xl border border-hairline bg-ivory text-slateDeep hover:border-cobalt/50 font-display font-semibold text-sm text-left transition-all">
+                  Собака
+                </button>
+                <button type="button" data-pet="Грызун или экзот" class="pet-btn px-3.5 py-3 rounded-xl border border-hairline bg-ivory text-slateDeep hover:border-cobalt/50 font-display font-semibold text-sm text-left transition-all">
+                  Грызун или экзот
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mt-6">
+              <div class="text-xs font-display font-semibold uppercase tracking-wider text-slateMuted mb-2.5">2. Повод обращения</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" role="group" aria-label="Повод обращения">
+                <button type="button" data-reason="Первичный осмотр" class="reason-btn px-3.5 py-3 rounded-xl border border-cobalt bg-cobalt text-white font-display font-semibold text-sm text-left transition-all">
+                  Первичный осмотр
+                </button>
+                <button type="button" data-reason="Вакцинация / анализы" class="reason-btn px-3.5 py-3 rounded-xl border border-hairline bg-ivory text-slateDeep hover:border-cobalt/50 font-display font-semibold text-sm text-left transition-all">
+                  Вакцинация / анализы
+                </button>
+                <button type="button" data-reason="Срочный приём" class="reason-btn px-3.5 py-3 rounded-xl border border-hairline bg-ivory text-slateDeep hover:border-cobalt/50 font-display font-semibold text-sm text-left transition-all">
+                  Срочный приём
+                </button>
+              </div>
+            </div>
+
+            <!-- Selected Summary Card -->
+            <div class="mt-6 rounded-xl bg-sage border border-sageDark/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="text-[11px] uppercase tracking-wider font-display font-semibold text-sageDark">Ваш выбор передан в форму</div>
+                <div id="selection-summary" class="mt-0.5 font-display font-bold text-sm sm:text-base text-slateDeep">
+                  Кошка · Первичный осмотр
+                </div>
+              </div>
+              <a href="#f-name" class="inline-flex items-center justify-center px-3.5 py-2 rounded-lg bg-white border border-sageDark/25 text-sageDark font-display font-semibold text-xs hover:bg-sageDark hover:text-white transition-colors whitespace-nowrap">
+                Указать телефон →
+              </a>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-hairline text-xs text-slateMuted leading-relaxed">
+              Если ситуация экстренная, лучше сразу позвонить в регистратуру:
+              <a href="tel:+375297548278" class="font-semibold text-cobalt hover:underline whitespace-nowrap">+375 (29) 754-82-78</a>
+              или
+              <a href="tel:+375162232323" class="font-semibold text-cobalt hover:underline whitespace-nowrap">+375 (162) 23-23-23</a>.
+            </div>
+          </div>
+
+          <!-- Right: Booking Form (Law № 99-З + Honeypot + Demo Mode) -->
+          <div id="booking" class="lg:col-span-6 rounded-2xl bg-white border border-hairline p-6 sm:p-8 shadow-sm">
+            <h3 class="font-display font-bold text-xl sm:text-2xl text-slateDeep">Заявка на приём или консультацию</h3>
+            <p class="mt-1.5 text-sm text-slateMuted">
+              Администратор перезвонит, подскажет ориентир по стоимости и запишет на удобное время.
+            </p>
+
+            <form id="lead-form" class="mt-5 space-y-4" novalidate>
+              <!-- Honeypot Anti-Spam Field -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">Ваш сайт</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-name" class="block text-xs font-display font-semibold text-slateDeep mb-1.5">Ваше имя *</label>
+                  <input id="f-name" name="name" type="text" required placeholder="Например, Ольга" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-hairline focus:border-cobalt focus:outline-none text-sm text-slateDeep" />
+                </div>
+                <div>
+                  <label for="f-phone" class="block text-xs font-display font-semibold text-slateDeep mb-1.5">Телефон для связи *</label>
+                  <input id="f-phone" name="phone" type="tel" required placeholder="+375 (29) ___-__-__" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-hairline focus:border-cobalt focus:outline-none text-sm text-slateDeep" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-pet" class="block text-xs font-display font-semibold text-slateDeep mb-1.5">Питомец</label>
+                  <input id="f-pet" name="pet" type="text" value="Кошка" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-hairline focus:border-cobalt focus:outline-none text-sm text-slateDeep" />
+                </div>
+                <div>
+                  <label for="f-reason" class="block text-xs font-display font-semibold text-slateDeep mb-1.5">Повод обращения</label>
+                  <input id="f-reason" name="reason" type="text" value="Первичный осмотр" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-hairline focus:border-cobalt focus:outline-none text-sm text-slateDeep" />
+                </div>
+              </div>
+
+              <div>
+                <label for="f-note" class="block text-xs font-display font-semibold text-slateDeep mb-1.5">Комментарий или симптомы (по желанию)</label>
+                <textarea id="f-note" name="note" rows="2" placeholder="Возраст, порода или удобное время звонка" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-hairline focus:border-cobalt focus:outline-none text-sm text-slateDeep resize-none"></textarea>
+              </div>
+
+              <!-- Mandatory Unchecked Consent Checkbox (Law № 99-З) -->
+              <label class="flex items-start gap-2.5 cursor-pointer pt-1">
+                <input id="f-consent" type="checkbox" required class="mt-0.5 w-4 h-4 rounded accent-cobalt shrink-0" />
+                <span class="text-xs text-slateMuted leading-relaxed">
+                  Я даю
+                  <button type="button" data-open-modal="modal-consent" class="text-cobalt underline hover:text-cobaltDark">согласие на обработку и трансграничную передачу персональных данных</button>
+                  в соответствии с
+                  <button type="button" data-open-modal="modal-privacy" class="text-cobalt underline hover:text-cobaltDark">Политикой обработки ПД</button>
+                  (Закон РБ № 99-З). *
+                </span>
+              </label>
+
+              <div id="form-feedback" class="hidden rounded-xl p-3 text-xs leading-relaxed"></div>
+
+              <button id="submit-btn" type="submit" class="w-full py-3.5 px-5 rounded-xl bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-sm transition-colors">
+                Отправить заявку на приём
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: TRUST, 23 YEARS & LOCATION (Honest Yandex rating without fake testimonials) -->
+    <section id="about" class="py-12 sm:py-16 border-t border-hairline bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <!-- Left: 23 years + Yandex Rating Honest Block -->
+          <div class="lg:col-span-5 rounded-2xl border border-hairline bg-ivory p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span class="font-display font-semibold text-xs uppercase tracking-widest text-cobalt">Опыт и доверие</span>
+              <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-slateDeep">23 года работы клиники в Бресте</h2>
+              <p class="mt-3 text-sm text-slateMuted leading-relaxed">
+                Клиника «Айболит» принимает пациентов в самом центре города — во дворе ЦУМа. Удобно добраться как на личном транспорте, так и пешком из центральных кварталов.
+              </p>
+
+              <!-- Honest Verified Yandex Rating Card -->
+              <div class="mt-6 rounded-xl bg-white border border-hairline p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="text-xs font-display font-semibold text-slateMuted uppercase tracking-wide">Рейтинг на Яндекс Картах</div>
+                    <div class="mt-1 flex items-baseline gap-2">
+                      <span class="font-display font-bold text-3xl text-slateDeep">★ 4.9</span>
+                      <span class="text-xs text-slateMuted">93 отзыва · 232 оценки</span>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-sage text-sageDark font-display font-semibold text-xs">Проверено</span>
+                </div>
+                <p class="mt-3 pt-3 border-t border-hairline text-xs text-slateMuted leading-relaxed">
+                  При запуске боевой версии сайта сюда можно подключить реальный виджет Яндекс Карт и актуальные отзывы владельцев питомцев.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-hairline flex items-center justify-between text-xs text-slateMuted">
+              <span>ООО «Айболит люкс»</span>
+              <span>Брест · Центр</span>
+            </div>
+          </div>
+
+          <!-- Right: Contacts & Central Location Card -->
+          <div id="contacts" class="lg:col-span-7 rounded-2xl border border-hairline bg-ivory p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span class="font-display font-semibold text-xs uppercase tracking-widest text-cobalt">Контакты и адрес</span>
+              <h2 class="mt-2 font-display font-bold text-2xl sm:text-3xl text-slateDeep">Как нас найти и связаться</h2>
+
+              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="rounded-xl bg-white border border-hairline p-4">
+                  <div class="text-xs text-slateMuted">Адрес клиники</div>
+                  <div class="mt-1 font-display font-semibold text-[15px] text-slateDeep">г. Брест, ул. 17 Сентября, 32</div>
+                  <div class="mt-0.5 text-xs text-cobalt font-medium">Ориентир: двор ЦУМа</div>
+                </div>
+
+                <div class="rounded-xl bg-white border border-hairline p-4">
+                  <div class="text-xs text-slateMuted">Режим работы</div>
+                  <div class="mt-1 font-display font-semibold text-[15px] text-slateDeep">[Режим работы]</div>
+                  <div class="mt-0.5 text-xs text-slateMuted">Уточняется перед запуском сайта</div>
+                </div>
+
+                <div class="rounded-xl bg-white border border-hairline p-4">
+                  <div class="text-xs text-slateMuted">Мобильный и Viber</div>
+                  <a href="tel:+375297548278" class="mt-1 block font-display font-bold text-base text-slateDeep hover:text-cobalt whitespace-nowrap">+375 (29) 754-82-78</a>
+                  <a href="viber://chat?number=%2B375297548278" class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-cobalt hover:underline">Написать в Viber →</a>
+                </div>
+
+                <div class="rounded-xl bg-white border border-hairline p-4">
+                  <div class="text-xs text-slateMuted">Городской телефон и почта</div>
+                  <a href="tel:+375162232323" class="mt-1 block font-display font-bold text-base text-slateDeep hover:text-cobalt whitespace-nowrap">+375 (162) 23-23-23</a>
+                  <a href="mailto:aibolit-brest@mail.ru" class="mt-1 block text-xs text-slateMuted hover:text-cobalt">aibolit-brest@mail.ru</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architectural Orientation Bar -->
+            <div class="mt-6 rounded-xl bg-slateDeep text-white p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div class="font-display font-semibold text-sm">Центр Бреста · ул. 17 Сентября, 32 (двор ЦУМа)</div>
+                <div class="mt-1 text-xs text-slate-300">Ссылку на профиль клиники в Яндекс Картах и Instagram добавим при запуске.</div>
+              </div>
+              <a href="#booking" class="px-4 py-2.5 rounded-lg bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-xs whitespace-nowrap text-center transition-colors">
+                Записаться онлайн
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (RB Law № 99-З, Civil Code Art. 407, Decree № 60) -->
+  <footer class="bg-slateDeep text-slate-300 border-t border-slate-800 pb-24 md:pb-10 pt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        <div>
+          <div class="font-display font-bold text-white text-base">Ветклиника «Айболит»</div>
+          <div class="mt-1.5 text-xs text-slate-400 space-y-1">
+            <p>ООО «Айболит люкс» · УНП [УНП]</p>
+            <p>г. Брест, ул. 17 Сентября, 32 (двор ЦУМа) · Режим работы: [Режим работы]</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs">
+          <button type="button" data-open-modal="modal-privacy" class="text-slate-300 hover:text-white underline underline-offset-4 transition-colors">Политика обработки ПД</button>
+          <button type="button" data-open-modal="modal-consent" class="text-slate-300 hover:text-white underline underline-offset-4 transition-colors">Согласие на ПД (№ 99-З)</button>
+          <button type="button" data-open-modal="modal-cookies" class="text-slate-300 hover:text-white underline underline-offset-4 transition-colors">Настройки cookie</button>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] text-slate-400">
+        <p>Информация на сайте носит справочный характер и не является публичной офертой (ст. 407 Гражданского кодекса Республики Беларусь).</p>
+        <p class="sm:whitespace-nowrap">© ООО «Айболит люкс» · Брест</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SIGNATURE FEATURE #1: App-like Sticky Mobile Dock (hides while cookie banner is open) -->
+  <nav id="mobile-dock" aria-label="Быстрые действия" class="md:hidden fixed bottom-3 inset-x-3 z-40 rounded-2xl bg-ivory/95 backdrop-blur-md border border-hairline shadow-xl px-2.5 py-2 transition-all duration-300">
+    <div class="grid grid-cols-3 gap-2">
+      <a href="tel:+375297548278" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white border border-hairline text-slateDeep font-display font-semibold text-xs active:scale-95 transition-transform">
+        <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375297548278" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-sage border border-sageDark/20 text-sageDark font-display font-semibold text-xs active:scale-95 transition-transform">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="flex items-center justify-center py-2.5 rounded-xl bg-cobalt text-white font-display font-semibold text-xs active:scale-95 transition-transform">
+        <span>Записаться</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- NCPD COOKIE BANNER (Two Visually Equal Buttons, hides mobile dock while open) -->
+  <div id="cookie-banner" role="dialog" aria-label="Уведомление о файлах cookie" class="fixed bottom-3 inset-x-3 sm:inset-x-auto sm:right-5 sm:left-5 lg:left-auto lg:max-w-3xl z-50 bg-white border border-hairline rounded-2xl shadow-2xl p-4 sm:px-5 sm:py-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <p class="text-[12px] leading-snug text-slateMuted">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все, отклонить необязательные или
+        <button type="button" data-open-modal="modal-cookies" class="text-cobalt underline hover:text-cobaltDark">настроить</button>.
+      </p>
+      <div class="grid grid-cols-2 sm:flex items-stretch sm:items-center gap-2 shrink-0">
+        <button id="cookie-accept-all" type="button" class="px-2.5 sm:px-3.5 py-2 rounded-lg bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-[11px] sm:text-xs leading-tight flex items-center justify-center text-center sm:whitespace-nowrap transition-colors">
+          Принять все
+        </button>
+        <button id="cookie-reject-opt" type="button" class="px-2 sm:px-3.5 py-2 rounded-lg bg-ivory hover:bg-cream border border-slateDeep/25 text-slateDeep font-display font-semibold text-[11px] sm:text-xs leading-tight flex items-center justify-center text-center sm:whitespace-nowrap transition-colors">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modal-privacy" class="legal-modal hidden fixed inset-0 z-50 bg-slateDeep/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-hairline rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="px-5 py-4 border-b border-hairline flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slateDeep">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-lg bg-ivory border border-hairline text-slateMuted hover:text-slateDeep">×</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-xs sm:text-sm text-slateMuted space-y-3 leading-relaxed">
+        <p><strong class="text-slateDeep">1. Оператор персональных данных:</strong> ООО «Айболит люкс», УНП [УНП], г. Брест, ул. 17 Сентября, 32 (двор ЦУМа), ветеринарная клиника «Айболит».</p>
+        <p><strong class="text-slateDeep">2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных». Обработка осуществляется на основании свободного, однозначного и информированного согласия субъекта ПД.</p>
+        <p><strong class="text-slateDeep">3. Состав и цели обработки:</strong> имя, контактный номер телефона, сведения о питомце и поводе обращения обрабатываются исключительно для обратной связи, консультации и записи на приём в клинику.</p>
+        <p><strong class="text-slateDeep">4. Сроки хранения и меры защиты:</strong> данные хранятся не дольше, чем этого требуют цели обработки (либо до отзыва согласия), и не передаются третьим лицам в рекламных целях.</p>
+        <p><strong class="text-slateDeep">5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> вы вправе в любое время без объяснения причин отозвать согласие, получить информацию о своих данных, потребовать их изменения, прекращения обработки или удаления, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      </div>
+      <div class="px-5 py-3 border-t border-hairline flex justify-end">
+        <button type="button" data-close-modal class="px-4 py-2 rounded-lg bg-cobalt text-white font-display font-semibold text-xs">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Согласие на обработку и трансграничную передачу ПД (ст. 9, 10–15 Закона № 99-З) -->
+  <div id="modal-consent" class="legal-modal hidden fixed inset-0 z-50 bg-slateDeep/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-hairline rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="px-5 py-4 border-b border-hairline flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slateDeep">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-lg bg-ivory border border-hairline text-slateMuted hover:text-slateDeep">×</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-xs sm:text-sm text-slateMuted space-y-3 leading-relaxed">
+        <p>Проставляя отметку в форме обратной связи и нажимая кнопку отправки, я даю согласие <strong class="text-slateDeep">ООО «Айболит люкс»</strong> (УНП [УНП], г. Брест, ул. 17 Сентября, 32) на обработку указанных мной персональных данных (имя, телефон, данные о питомце и комментарий) с целью обратной связи и записи на приём в ветеринарную клинику.</p>
+        <p><strong class="text-slateDeep">Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> для оперативной доставки заявки администратору клиники могут использоваться технические сервисы Google (Google Apps Script) и мессенджер Telegram, серверы которых расположены за пределами Республики Беларусь, в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов ПД. Возможные риски связаны с применением законодательства иных юрисдикций к хранению и доступу к данным на серверах указанных платформ.</p>
+        <p>Вы вправе не отправлять форму на сайте и записаться напрямую по телефонам <strong class="text-slateDeep">+375 (29) 754-82-78</strong> или <strong class="text-slateDeep">+375 (162) 23-23-23</strong>.</p>
+        <p><strong class="text-slateDeep">Ваши права (ст. 10–15 Закона № 99-З):</strong> отзыв согласия, доступ к данным, внесение изменений, прекращение обработки и удаление данных, а также право на обжалование в НЦЗПД. Срок действия согласия — до достижения цели обработки или отзыва.</p>
+      </div>
+      <div class="px-5 py-3 border-t border-hairline flex justify-end">
+        <button type="button" data-close-modal class="px-4 py-2 rounded-lg bg-cobalt text-white font-display font-semibold text-xs">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Настройки Cookie (Рекомендации НЦЗПД) -->
+  <div id="modal-cookies" class="legal-modal hidden fixed inset-0 z-50 bg-slateDeep/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-hairline rounded-2xl max-w-lg w-full shadow-2xl">
+      <div class="px-5 py-4 border-b border-hairline flex items-center justify-between gap-3">
+        <h3 class="font-display font-bold text-lg text-slateDeep">Настройки файлов cookie</h3>
+        <button type="button" data-close-modal class="w-8 h-8 rounded-lg bg-ivory border border-hairline text-slateMuted hover:text-slateDeep">×</button>
+      </div>
+      <div class="p-5 space-y-4 text-xs sm:text-sm text-slateMuted">
+        <div class="p-3.5 rounded-xl bg-ivory border border-hairline flex items-start justify-between gap-3">
+          <div>
+            <div class="font-display font-semibold text-slateDeep">Технические (обязательные)</div>
+            <p class="text-xs text-slateMuted mt-1">Обеспечивают работу сайта и сохранение вашего выбора по cookie.</p>
+          </div>
+          <span class="font-display font-semibold text-[11px] text-sageDark whitespace-nowrap">Всегда вкл.</span>
+        </div>
+        <label class="p-3.5 rounded-xl bg-ivory border border-hairline flex items-start justify-between gap-3 cursor-pointer">
+          <div>
+            <div class="font-display font-semibold text-slateDeep">Аналитические cookie</div>
+            <p class="text-xs text-slateMuted mt-1">Помогают понимать, какие направления клиники наиболее востребованы. Отключены по умолчанию.</p>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" class="mt-1 w-4 h-4 accent-cobalt shrink-0" />
+        </label>
+      </div>
+      <div class="px-5 py-3.5 border-t border-hairline flex items-center justify-end gap-2">
+        <button id="cookie-save-prefs" type="button" class="px-4 py-2 rounded-lg bg-cobalt hover:bg-cobaltDark text-white font-display font-semibold text-xs">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const cfg = window.SITE_CONFIG;
+
+      // 1. Live Belarus Status (Europe/Minsk) — 09:00–20:00 default
+      function updateLiveStatus() {
+        const el = document.getElementById('live-status');
+        const dot = document.getElementById('live-dot');
+        const text = document.getElementById('live-text');
+        if (!el || !dot || !text) return;
+
+        try {
+          const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: cfg.timezone,
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).formatToParts(new Date());
+
+          const map = {};
+          parts.forEach((p) => { map[p.type] = p.value; });
+          const hour = parseInt(map.hour, 10);
+          const isOpen = hour >= cfg.schedule.openHour && hour < cfg.schedule.closeHour;
+
+          if (isOpen) {
+            el.classList.remove('bg-cream', 'text-slateMuted', 'border-hairline');
+            el.classList.add('bg-sage', 'text-sageDark', 'border-sageDark/15');
+            dot.className = 'w-2 h-2 rounded-full bg-sageDark animate-pulse';
+            text.textContent = 'Открыто сейчас';
+          } else {
+            el.classList.remove('bg-sage', 'text-sageDark', 'border-sageDark/15');
+            el.classList.add('bg-cream', 'text-slateMuted', 'border-hairline');
+            dot.className = 'w-2 h-2 rounded-full bg-amber-500';
+            text.textContent = 'Ответим с 09:00';
+          }
+        } catch (e) {
+          text.textContent = 'Открыто сейчас';
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 2. Two-Click Interactive Selector -> Pre-fills Booking Form
+      let selectedPet = 'Кошка';
+      let selectedReason = 'Первичный осмотр';
+
+      const petBtns = document.querySelectorAll('.pet-btn');
+      const reasonBtns = document.querySelectorAll('.reason-btn');
+      const summaryEl = document.getElementById('selection-summary');
+      const fPet = document.getElementById('f-pet');
+      const fReason = document.getElementById('f-reason');
+
+      function applyActiveStyle(buttons, attr, activeVal) {
+        buttons.forEach((btn) => {
+          const isActive = btn.dataset[attr] === activeVal;
+          if (isActive) {
+            btn.classList.remove('border-hairline', 'bg-ivory', 'text-slateDeep', 'hover:border-cobalt/50');
+            btn.classList.add('border-cobalt', 'bg-cobalt', 'text-white');
+          } else {
+            btn.classList.remove('border-cobalt', 'bg-cobalt', 'text-white');
+            btn.classList.add('border-hairline', 'bg-ivory', 'text-slateDeep', 'hover:border-cobalt/50');
+          }
+        });
+      }
+
+      function syncSelection() {
+        applyActiveStyle(petBtns, 'pet', selectedPet);
+        applyActiveStyle(reasonBtns, 'reason', selectedReason);
+        if (summaryEl) summaryEl.textContent = `${selectedPet} · ${selectedReason}`;
+        if (fPet) fPet.value = selectedPet;
+        if (fReason) fReason.value = selectedReason;
+      }
+
+      petBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedPet = btn.dataset.pet;
+          syncSelection();
+        });
+      });
+
+      reasonBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedReason = btn.dataset.reason;
+          syncSelection();
+        });
+      });
+
+      document.querySelectorAll('[data-prefill-reason]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const val = link.dataset.prefillReason;
+          if (fReason) fReason.value = val;
+        });
+      });
+
+      // 3. NCPD Cookie Banner & Mobile Dock Sync
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-dock');
+      const COOKIE_KEY = 'aibolit_brest_cookie_prefs_v1';
+
+      function syncCookieAndDock() {
+        const saved = localStorage.getItem(COOKIE_KEY);
+        if (saved) {
+          cookieBanner.classList.add('hidden');
+          mobileDock.classList.remove('dock-hidden');
+        } else {
+          cookieBanner.classList.remove('hidden');
+          mobileDock.classList.add('dock-hidden');
+        }
+      }
+
+      function saveCookieChoice(analyticsAllowed) {
+        localStorage.setItem(COOKIE_KEY, JSON.stringify({
+          essential: true,
+          analytics: Boolean(analyticsAllowed),
+          ts: Date.now()
+        }));
+        syncCookieAndDock();
+      }
+
+      document.getElementById('cookie-accept-all').addEventListener('click', () => saveCookieChoice(true));
+      document.getElementById('cookie-reject-opt').addEventListener('click', () => saveCookieChoice(false));
+      document.getElementById('cookie-save-prefs').addEventListener('click', () => {
+        const toggle = document.getElementById('cookie-analytics-toggle');
+        saveCookieChoice(toggle ? toggle.checked : false);
+        closeAllModals();
+      });
+
+      // 4. Legal Modals
+      function openModal(id) {
+        const m = document.getElementById(id);
+        if (m) {
+          m.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      function closeAllModals() {
+        document.querySelectorAll('.legal-modal').forEach((m) => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.dataset.openModal));
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('.legal-modal').forEach((m) => {
+        m.addEventListener('click', (e) => { if (e.target === m) closeAllModals(); });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+      });
+
+      syncCookieAndDock();
+
+      // 5. Booking Form (GAS Telegram Webhook + Honeypot + Demo Mode)
+      const leadForm = document.getElementById('lead-form');
+      const feedback = document.getElementById('form-feedback');
+      const submitBtn = document.getElementById('submit-btn');
+
+      function showFeedback(type, text) {
+        feedback.classList.remove('hidden', 'bg-sage', 'border-sageDark/30', 'text-sageDark', 'bg-red-50', 'border-red-300', 'text-red-800', 'border');
+        feedback.classList.add('border');
+        if (type === 'ok') {
+          feedback.classList.add('bg-sage', 'border-sageDark/30', 'text-sageDark');
+        } else {
+          feedback.classList.add('bg-red-50', 'border-red-300', 'text-red-800');
+        }
+        feedback.textContent = text;
+      }
+
+      if (leadForm) {
+        leadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const hp = document.getElementById('website');
+          if (hp && hp.value.trim() !== '') return;
+
+          const name = document.getElementById('f-name').value.trim();
+          const phone = document.getElementById('f-phone').value.trim();
+          const pet = document.getElementById('f-pet').value.trim();
+          const reason = document.getElementById('f-reason').value.trim();
+          const note = document.getElementById('f-note').value.trim();
+          const consent = document.getElementById('f-consent').checked;
+
+          if (!name || phone.replace(/\D/g, '').length < 9) {
+            showFeedback('err', 'Пожалуйста, укажите имя и корректный номер телефона для связи.');
+            return;
+          }
+          if (!consent) {
+            showFeedback('err', 'Для отправки заявки необходимо отметить согласие на обработку персональных данных (Закон РБ № 99-З).');
+            return;
+          }
+
+          const payload = {
+            source: cfg.brandName,
+            name,
+            phone,
+            pet: pet || 'Не указано',
+            reason: reason || 'Консультация / запись на приём',
+            note: note || '—',
+            created_at: new Date().toISOString()
+          };
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Отправка...';
+
+          try {
+            if (!cfg.gasWebhookUrl) {
+              await new Promise((r) => setTimeout(r, 400));
+              showFeedback('ok', 'Демо-режим: заявка сформирована! На боевом сайте она сразу уйдёт в Telegram/Viber администратора. Для реальной записи звоните +375 (29) 754-82-78.');
+              leadForm.reset();
+              syncSelection();
+            } else {
+              await fetch(cfg.gasWebhookUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              showFeedback('ok', 'Заявка отправлена! Администратор ветклиники «Айболит» свяжется с вами в ближайшее время.');
+              leadForm.reset();
+              syncSelection();
+            }
+          } catch (err) {
+            showFeedback('err', 'Не удалось отправить форму. Позвоните нам напрямую: +375 (29) 754-82-78.');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Отправить заявку на приём';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

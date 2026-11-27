@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>СТО «Автоконтинент» в Бресте — ремонт, автоэлектрика и эвакуатор</title>
+  <meta name="description" content="СТО «Автоконтинент» (г. Брест, ул. 2-я Белорусская, 24А): диагностика и ремонт подвески, развал-схождение, автоэлектрика, ремонт двигателя и КПП, эвакуатор. Гарантия на запчасти 2 года." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            asphalt: '#111315',
+            gunmetal: '#1A1D21',
+            carbon: '#0B0D0F',
+            hairline: '#272B30',
+            safety: '#F5B700',
+            safetyHover: '#FFD038',
+            steel: '#94A3B8',
+            offwhite: '#F1F5F9',
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body {
+      background-color: #111315;
+      color: #F1F5F9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    .tech-grid-bg {
+      background-image:
+        linear-gradient(to right, rgba(245, 183, 0, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 183, 0, 0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hazard-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        #F5B700,
+        #F5B700 8px,
+        #111315 8px,
+        #111315 16px
+      );
+    }
+    .selector-btn.active {
+      background-color: #F5B700;
+      color: #111315;
+      border-color: #F5B700;
+    }
+    .selector-btn.active .selector-sub {
+      color: #1A1D21;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    .live-dot {
+      animation: pulse-dot 2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-asphalt text-offwhite antialiased selection:bg-safety selection:text-asphalt pb-20 md:pb-0">
+
+  <script>
+    window.SITE_CONFIG = {
+      brandName: 'СТО «Автоконтинент»',
+      city: 'г. Брест',
+      address: 'г. Брест, ул. 2-я Белорусская, 24А (224025)',
+      phonePrimary: '+375 (29) 899-22-26',
+      phonePrimaryRaw: '+375298992226',
+      phoneSecondary: '+375 (29) 520-06-08',
+      phoneSecondaryRaw: '+375295200608',
+      phoneTow: '+375 (33) 397-77-76',
+      phoneTowRaw: '+375333977776',
+      viberUrl: 'viber://chat?number=+375298992226',
+      email: 'avtokontinent24@gmail.com',
+      instagramUrl: 'https://www.instagram.com/avtokontinent.sto/',
+      yandexMapsUrl: 'https://yandex.by/maps/?text=%D0%91%D1%80%D0%B5%D1%81%D1%82%2C+%D1%83%D0%BB.+2-%D1%8F+%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%2C+24%D0%90+%D0%90%D0%B2%D1%82%D0%BE%D0%BA%D0%BE%D0%BD%D1%82%D0%B8%D0%BD%D0%B5%D0%BD%D1%82',
+      gasEndpoint: '', // Указывается при запуске в бой (Google Apps Script -> Telegram)
+      demoMode: true,
+      schedule: {
+        timezone: 'Europe/Minsk',
+        workDays: [1, 2, 3, 4, 5], // Пн–Пт
+        openHour: 9,
+        openMinute: 0,
+        closeHour: 18,
+        closeMinute: 0
+      }
+    };
+  </script>
+
+  <!-- DEMO CONCEPT BAR -->
+  <div id="demo-bar" class="bg-carbon border-b border-hairline text-[11px] text-steel">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-1.5 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 bg-safety shrink-0"></span>
+        <span class="uppercase tracking-wider font-medium text-offwhite">Демо-концепт для СТО «Автоконтинент» (г. Брест)</span>
+      </div>
+      <div class="text-steel/80 hidden sm:block">
+        Данные, услуги и график взяты с avtokontinent.by · Без выдуманных цен и отзывов
+      </div>
+    </div>
+  </div>
+
+  <!-- SINGLE-ROW INDUSTRIAL HEADER -->
+  <header class="sticky top-0 z-40 bg-asphalt/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <!-- Brand + Live Status -->
+      <div class="flex items-center gap-3 min-w-0 shrink-0">
+        <a href="#top" class="flex items-center gap-2.5 group shrink-0">
+          <span class="w-9 h-9 bg-safety text-asphalt flex items-center justify-center font-display font-bold text-lg tracking-tight shrink-0">АК</span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display font-bold text-lg sm:text-xl tracking-wide uppercase text-offwhite whitespace-nowrap group-hover:text-safety transition-colors">Автоконтинент</span>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-steel whitespace-nowrap">СТО · Брест</span>
+          </span>
+        </a>
+
+        <!-- Live Europe/Minsk Status -->
+        <div id="live-status-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 border border-hairline bg-gunmetal text-[11px] font-medium text-offwhite whitespace-nowrap shrink-0">
+          <span id="live-status-dot" class="w-1.5 h-1.5 bg-emerald-400 live-dot shrink-0"></span>
+          <span id="live-status-text">Пн–Пт 09:00–18:00</span>
+        </div>
+      </div>
+
+      <!-- Navigation (Strictly 1 row on desktop) -->
+      <nav aria-label="Основная навигация" class="hidden xl:flex items-center gap-6 text-xs uppercase tracking-wider font-medium text-steel">
+        <a href="#services" class="whitespace-nowrap hover:text-safety transition-colors">Услуги</a>
+        <a href="#tow" class="whitespace-nowrap hover:text-safety transition-colors">Эвакуатор</a>
+        <a href="#warranty" class="whitespace-nowrap hover:text-safety transition-colors">Гарантия</a>
+        <a href="#selector" class="whitespace-nowrap hover:text-safety transition-colors">Подбор визита</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-safety transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right Actions (Never wraps!) -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Monochrome/Amber Viber Icon -->
+        <a href="viber://chat?number=+375298992226" aria-label="Написать в Viber" title="Написать в Viber" class="hidden md:inline-flex items-center justify-center w-9 h-9 border border-hairline bg-gunmetal text-offwhite hover:border-safety hover:text-safety transition-colors shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.4 1.5C6.1 1.5 2 5.2 2 10.1c0 2.7 1.3 5.1 3.4 6.7v3.7l3.4-1.9c.8.2 1.7.3 2.6.3 5.3 0 9.6-3.7 9.6-8.8 0-4.9-4.3-8.6-9.6-8.6zm4.7 12.1c-.2.6-1.2 1.1-1.7 1.2-.5.1-1 .2-3.2-.7-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/>
+          </svg>
+        </a>
+
+        <!-- Phone (strictly single-line) -->
+        <a href="tel:+375298992226" class="hidden sm:inline-flex items-center gap-2 px-3 h-9 border border-hairline bg-gunmetal hover:border-safety text-offwhite font-display text-sm tracking-wide whitespace-nowrap shrink-0 transition-colors">
+          <svg class="w-3.5 h-3.5 text-safety shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span class="whitespace-nowrap">+375 (29) 899-22-26</span>
+        </a>
+
+        <a href="#booking" class="inline-flex items-center justify-center px-3.5 sm:px-4 h-9 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-xs sm:text-sm uppercase tracking-wider whitespace-nowrap shrink-0 transition-colors">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- SECTION 1: FULL-BLEED DARK WORKSHOP PANORAMIC HERO -->
+    <section class="relative min-h-[78vh] lg:min-h-[82vh] lg:max-h-[860px] flex flex-col justify-between border-b border-hairline overflow-hidden">
+      <!-- Background Workshop Photo -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1600&q=85"
+          alt="Механик СТО Автоконтинент за обслуживанием двигателя автомобиля"
+          class="w-full h-full object-cover object-center opacity-55"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-asphalt via-asphalt/75 to-asphalt/50"></div>
+        <div class="absolute inset-0 tech-grid-bg"></div>
+      </div>
+
+      <!-- Top Technical Metadata Strip -->
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-8 flex flex-wrap items-center justify-between gap-3">
+        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 bg-carbon/90 border border-hairline text-xs uppercase tracking-widest text-offwhite">
+          <span class="w-2 h-2 bg-safety shrink-0"></span>
+          <span>БРЕСТ · УЛ. 2-Я БЕЛОРУССКАЯ, 24А</span>
+        </div>
+
+        <a href="https://yandex.by/maps/?text=%D0%91%D1%80%D0%B5%D1%81%D1%82%2C+%D1%83%D0%BB.+2-%D1%8F+%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%2C+24%D0%90+%D0%90%D0%B2%D1%82%D0%BE%D0%BA%D0%BE%D0%BD%D1%82%D0%B8%D0%BD%D0%B5%D0%BD%D1%82" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 bg-carbon/90 border border-hairline hover:border-safety text-xs text-offwhite transition-colors">
+          <span class="text-safety font-bold">★ 4.5</span>
+          <span class="text-steel">Яндекс Карты · 24 отз. / 74 оц.</span>
+        </a>
+      </div>
+
+      <!-- Bottom-Aligned Massive Industrial Headline + Urgent Tow/Booking Bar -->
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 pb-8 sm:pb-10 pt-16 sm:pt-24">
+        <div class="max-w-4xl mb-8 sm:mb-10">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="h-1 w-10 bg-safety inline-block"></span>
+            <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-safety font-semibold">Диагностика · Регулировка · Ремонт · Эвакуатор</span>
+          </div>
+          <h1 class="font-display font-bold uppercase text-[34px] sm:text-6xl lg:text-7xl tracking-tight leading-[0.98] text-offwhite">
+            СТО <span class="text-safety">АВТОКОНТИНЕНТ</span><br />
+            В БРЕСТЕ БЕЗ ЛИШНИХ СЛОВ
+          </h1>
+          <p class="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-steel max-w-2xl leading-relaxed">
+            Полный комплекс работ: от компьютерной диагностики и автоэлектрики до развал-схождения, ремонта подвески, двигателя и трансмиссии. Запчасти заказываем на месте с гарантией <strong class="text-offwhite font-semibold">2 года (до 20 000 км)</strong>.
+          </p>
+        </div>
+
+        <!-- Urgent Tow / Booking Bar -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 border border-hairline bg-gunmetal/95 backdrop-blur-md">
+          <!-- Urgent Tow Callout -->
+          <div class="lg:col-span-5 p-4 sm:p-5 border-b lg:border-b-0 lg:border-r border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-safety">
+                <span class="w-2 h-2 bg-safety shrink-0"></span>
+                <span>Срочный эвакуатор на СТО</span>
+              </div>
+              <p class="text-xs text-steel mt-1">ДТП или поломка в дороге? Доставим авто прямо в бокс.</p>
+            </div>
+            <a href="tel:+375333977776" class="inline-flex items-center justify-center px-3.5 py-2.5 border border-safety text-safety hover:bg-safety hover:text-asphalt font-display font-bold text-sm tracking-wide whitespace-nowrap transition-colors shrink-0">
+              +375 (33) 397-77-76
+            </a>
+          </div>
+
+          <!-- Workshop Reception Phones -->
+          <div class="lg:col-span-4 p-4 sm:p-5 border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-center">
+            <div class="text-[11px] uppercase tracking-wider text-steel">Мастер-приёмщик · Пн–Пт 09:00–18:00</div>
+            <div class="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-display text-base sm:text-lg text-offwhite">
+              <a href="tel:+375298992226" class="hover:text-safety whitespace-nowrap transition-colors">+375 (29) 899-22-26</a>
+              <a href="tel:+375295200608" class="hover:text-safety whitespace-nowrap transition-colors">+375 (29) 520-06-08</a>
+            </div>
+          </div>
+
+          <!-- 2-Click CTA -->
+          <div class="lg:col-span-3 p-4 sm:p-5 flex items-center">
+            <a href="#selector" class="w-full h-11 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-colors">
+              <span>Подобрать запись</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SHARP 90°-CORNER MODULAR SERVICE GRID -->
+    <section id="services" class="py-14 sm:py-20 border-b border-hairline tech-grid-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div>
+            <span class="text-xs uppercase tracking-[0.2em] text-safety font-semibold">Направления работы</span>
+            <h2 class="font-display font-bold uppercase text-3xl sm:text-5xl tracking-tight text-offwhite mt-1">
+              Технический модуль услуг
+            </h2>
+          </div>
+          <p class="text-sm text-steel max-w-md">
+            Смета, сроки и подбор запчастей согласуются с вами до начала ремонта. Работаем прозрачно — показываем неисправности прямо у автомобиля.
+          </p>
+        </div>
+
+        <!-- Modular Grid (Zero Border Radius, Hairline Borders) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-hairline bg-gunmetal">
+          <!-- Module 01 -->
+          <article class="border-r border-b border-hairline flex flex-col justify-between group hover:bg-[#202429] transition-colors">
+            <div>
+              <div class="relative h-44 overflow-hidden border-b border-hairline bg-carbon">
+                <img
+                  src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1000&q=80"
+                  alt="Ремонт подвески, ступиц и колёсного узла на СТО"
+                  class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3 left-3 px-2 py-0.5 bg-asphalt/90 border border-hairline font-display text-xs text-safety tracking-widest">01 / ХОДОВАЯ</span>
+              </div>
+              <div class="p-5 sm:p-6">
+                <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                  Подвеска и развал-схождение
+                </h3>
+                <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                  Дефектовка рулевых тяг и наконечников, амортизационных стоек, рычагов, сайлентблоков, втулок стабилизатора и ступичных подшипников. Точная регулировка развал-схождения.
+                </p>
+                <div class="mt-4 pt-3 border-t border-hairline/80 text-xs text-steel/90">
+                  Осмотр подвески в будни с 09:00 до 10:00 по живой очереди или по записи.
+                </div>
+              </div>
+            </div>
+            <div class="px-5 sm:px-6 pb-5">
+              <button type="button" data-quick-service="Ходовая / ТО / ремонт" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover inline-flex items-center gap-1.5">
+                <span>Записаться на проверку</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Module 02 -->
+          <article class="border-r border-b border-hairline flex flex-col justify-between group hover:bg-[#202429] transition-colors">
+            <div>
+              <div class="relative h-44 overflow-hidden border-b border-hairline bg-carbon">
+                <img
+                  src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1000&q=80"
+                  alt="Компьютерная диагностика электронных систем и автоэлектрика"
+                  class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3 left-3 px-2 py-0.5 bg-asphalt/90 border border-hairline font-display text-xs text-safety tracking-widest">02 / ЭЛЕКТРОНИКА</span>
+              </div>
+              <div class="p-5 sm:p-6">
+                <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                  Автоэлектрика и диагностика ЭБУ
+                </h3>
+                <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                  Считывание кодов неисправностей и параметров работы двигателя сканером, поиск причин Check Engine, сбоев инжектора, датчиков, проводки и топливной аппаратуры.
+                </p>
+                <div class="mt-4 pt-3 border-t border-hairline/80 text-xs text-steel/90">
+                  Устраняем перегорание предохранителей, сбои запуска и ошибки управления.
+                </div>
+              </div>
+            </div>
+            <div class="px-5 sm:px-6 pb-5">
+              <button type="button" data-quick-service="Диагностика / автоэлектрика" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover inline-flex items-center gap-1.5">
+                <span>Записаться на диагностику</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Module 03 -->
+          <article class="border-r border-b border-hairline flex flex-col justify-between group hover:bg-[#202429] transition-colors">
+            <div>
+              <div class="relative h-44 overflow-hidden border-b border-hairline bg-carbon">
+                <img
+                  src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=80"
+                  alt="Обслуживание двигателя и приводных узлов"
+                  class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3 left-3 px-2 py-0.5 bg-asphalt/90 border border-hairline font-display text-xs text-safety tracking-widest">03 / ДВС И КПП</span>
+              </div>
+              <div class="p-5 sm:p-6">
+                <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                  Двигатель, трансмиссия и ТО
+                </h3>
+                <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                  Регулярное техобслуживание, замена моторного масла и всех технических жидкостей, диагностика и ремонт двигателей, обслуживание и ремонт узлов трансмиссии.
+                </p>
+                <div class="mt-4 pt-3 border-t border-hairline/80 text-xs text-steel/90">
+                  Подбор фильтров, масел и ремкомплектов на месте без беготни по магазинам.
+                </div>
+              </div>
+            </div>
+            <div class="px-5 sm:px-6 pb-5">
+              <button type="button" data-quick-service="Ходовая / ТО / ремонт" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover inline-flex items-center gap-1.5">
+                <span>Записаться на ТО и ремонт</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Module 04 -->
+          <article class="border-r border-b border-hairline p-5 sm:p-6 flex flex-col justify-between hover:bg-[#202429] transition-colors">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="font-display text-xs text-safety tracking-widest">04 / БЕЗОПАСНОСТЬ И КЛИМАТ</span>
+                <span class="w-6 h-6 border border-hairline flex items-center justify-center text-steel text-xs">⚙</span>
+              </div>
+              <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                Тормозная система и кондиционеры
+              </h3>
+              <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                Контроль износа и замена тормозных дисков и колодок, обслуживание тормозных механизмов, заправка автокондиционеров и ремонт систем охлаждения двигателя.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-hairline/80">
+              <button type="button" data-quick-service="Ходовая / ТО / ремонт" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover inline-flex items-center gap-1.5">
+                <span>Записаться в бокс</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Module 05 -->
+          <article class="border-r border-b border-hairline p-5 sm:p-6 flex flex-col justify-between hover:bg-[#202429] transition-colors">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="font-display text-xs text-safety tracking-widest">05 / ВЫХЛОП И ЭКОЛОГИЯ</span>
+                <span class="w-6 h-6 border border-hairline flex items-center justify-center text-steel text-xs">▤</span>
+              </div>
+              <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                Обслуживание систем FAP / DPF
+              </h3>
+              <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                Решение проблем сажевых фильтров (DPF, FAP, SCR, CAT) при потере тяги и ошибках на приборной панели: программная перепрошивка ЭБУ и физические работы по выхлопной системе.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-hairline/80">
+              <button type="button" data-quick-service="Диагностика / автоэлектрика" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover inline-flex items-center gap-1.5">
+                <span>Консультация мастера</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Module 06 (TOW TRUCK ACCENTED) -->
+          <article id="tow" class="border-r border-b border-hairline bg-[#16191D] p-5 sm:p-6 flex flex-col justify-between relative">
+            <div class="absolute top-0 inset-x-0 h-1 hazard-stripe"></div>
+            <div>
+              <div class="flex items-center justify-between mb-3 pt-1">
+                <span class="font-display text-xs text-safety tracking-widest">06 / ЭВАКУАЦИЯ НА СТО</span>
+                <span class="px-2 py-0.5 bg-safety text-asphalt font-display font-bold text-[10px] uppercase">Срочный выезд</span>
+              </div>
+              <h3 class="font-display font-bold uppercase text-xl text-offwhite tracking-wide">
+                Эвакуатор при СТО «Автоконтинент»
+              </h3>
+              <p class="text-sm text-steel mt-2.5 leading-relaxed">
+                ДТП, заклинило узел, автомобиль не заводится или опасно ехать своим ходом? Оперативно заберём машину и доставим напрямую на нашу площадку.
+              </p>
+              <div class="mt-4 p-3 bg-asphalt border border-hairline">
+                <div class="text-[11px] uppercase tracking-wider text-steel">Прямой номер водителя эвакуатора:</div>
+                <a href="tel:+375333977776" class="font-display font-bold text-lg text-safety hover:text-safetyHover tracking-wide mt-0.5 inline-block">
+                  +375 (33) 397-77-76
+                </a>
+              </div>
+            </div>
+            <div class="mt-5">
+              <button type="button" data-quick-service="Нужен эвакуатор" class="text-xs uppercase tracking-wider font-bold text-offwhite hover:text-safety inline-flex items-center gap-1.5">
+                <span>Заказать эвакуатор через форму</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- 3-Step Workflow Strip -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 border border-hairline bg-carbon">
+          <div class="p-5 border-b md:border-b-0 md:border-r border-hairline">
+            <div class="font-display text-xs uppercase tracking-widest text-safety">Этап 01 · Приём авто</div>
+            <div class="font-display font-bold text-lg uppercase text-offwhite mt-1">Запись и первичная консультация</div>
+            <p class="text-xs sm:text-sm text-steel mt-1.5">Принимаем заявку по телефону, в Viber или через сайт, фиксируем симптомы и удобное время заезда.</p>
+          </div>
+          <div class="p-5 border-b md:border-b-0 md:border-r border-hairline">
+            <div class="font-display text-xs uppercase tracking-widest text-safety">Этап 02 · Согласование</div>
+            <div class="font-display font-bold text-lg uppercase text-offwhite mt-1">Дефектовка и смета до ремонта</div>
+            <p class="text-xs sm:text-sm text-steel mt-1.5">Проводим диагностику, при необходимости показываем узлы у подъёмника и заранее согласуем стоимость и сроки.</p>
+          </div>
+          <div class="p-5">
+            <div class="font-display text-xs uppercase tracking-widest text-safety">Этап 03 · Выдача</div>
+            <div class="font-display font-bold text-lg uppercase text-offwhite mt-1">Выполнение работ и гарантия</div>
+            <p class="text-xs sm:text-sm text-steel mt-1.5">После ремонта сообщаем о готовности в оговорённый срок и выдаём авто с гарантией на работы и запчасти.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: WARRANTY 2 YEARS & WORKSHOP VISUALS -->
+    <section id="warranty" class="py-14 sm:py-20 border-b border-hairline bg-gunmetal/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 border border-hairline bg-asphalt">
+          <!-- Left: Warranty & Parts Spec -->
+          <div class="lg:col-span-6 p-6 sm:p-10 border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-between">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-safety text-asphalt font-display font-bold text-xs uppercase tracking-widest">
+                Реальное обязательство СТО
+              </div>
+              <h2 class="font-display font-bold uppercase text-3xl sm:text-5xl tracking-tight text-offwhite mt-4 leading-none">
+                Гарантия на запчасти <span class="text-safety">2 года</span>
+              </h2>
+              <p class="text-sm sm:text-base text-steel mt-4 leading-relaxed">
+                Запчасти подбираем и заказываем прямо на СТО — используем проверенные и оригинальные комплектующие. Если в течение гарантийного срока (при пробеге до <strong class="text-offwhite">20 000 км</strong>) запчасть выходит из строя и попадает под гарантийные обязательства, заменяем её бесплатно.
+              </p>
+
+              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="p-4 border border-hairline bg-gunmetal">
+                  <div class="font-display font-bold text-2xl text-safety">2 ГОДА</div>
+                  <div class="text-xs text-steel mt-1">или до 20 000 км пробега на установленные запчасти</div>
+                </div>
+                <div class="p-4 border border-hairline bg-gunmetal">
+                  <div class="font-display font-bold text-2xl text-offwhite">ПОД КЛЮЧ</div>
+                  <div class="text-xs text-steel mt-1">подбор деталей на месте и честное согласование до старта</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-hairline flex flex-wrap items-center justify-between gap-3">
+              <span class="text-xs text-steel">Стоимость рассчитывается индивидуально после осмотра авто</span>
+              <a href="#booking" class="text-xs uppercase tracking-wider font-bold text-safety hover:text-safetyHover">Уточнить по своему авто →</a>
+            </div>
+          </div>
+
+          <!-- Right: Clickable Workshop Photo Grid (Lightbox) -->
+          <div class="lg:col-span-6 grid grid-cols-2 bg-carbon">
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Профессиональный инструмент и оснащение постов СТО" class="relative h-48 sm:h-64 border-r border-b border-hairline overflow-hidden group text-left">
+              <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="Профессиональный инструмент автосервиса" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-asphalt/90 border border-hairline text-[10px] uppercase tracking-wider text-offwhite">Оснащение бокса ↗</span>
+            </button>
+
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Регламентная замена масла и технических жидкостей" class="relative h-48 sm:h-64 border-b border-hairline overflow-hidden group text-left">
+              <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=900&q=80" alt="Замена масла и технических жидкостей" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-asphalt/90 border border-hairline text-[10px] uppercase tracking-wider text-offwhite">Замена жидкостей ↗</span>
+            </button>
+
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Диагностика и обслуживание подкапотных узлов" class="relative h-48 sm:h-64 border-r border-hairline overflow-hidden group text-left">
+              <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=900&q=80" alt="Механик проводит диагностику под капотом" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-asphalt/90 border border-hairline text-[10px] uppercase tracking-wider text-offwhite">Диагностика ДВС ↗</span>
+            </button>
+
+            <button type="button" data-lightbox-src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Обслуживание колёс, подвески и тормозных механизмов" class="relative h-48 sm:h-64 overflow-hidden group text-left">
+              <img src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=900&q=80" alt="Работа с ходовой частью и тормозной системой" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 bg-asphalt/90 border border-hairline text-[10px] uppercase tracking-wider text-offwhite">Подвеска и тормоза ↗</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 2-CLICK MINI-INTERACTIVE -->
+    <section id="selector" class="py-14 sm:py-20 border-b border-hairline tech-grid-bg">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="border border-hairline bg-gunmetal p-6 sm:p-10">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-hairline">
+            <div>
+              <span class="text-xs uppercase tracking-[0.2em] text-safety font-semibold">Подбор за 2 клика</span>
+              <h2 class="font-display font-bold uppercase text-2xl sm:text-4xl text-offwhite mt-1">
+                Быстрая подготовка заявки
+              </h2>
+            </div>
+            <span class="text-xs font-mono text-steel border border-hairline bg-asphalt px-3 py-1.5 self-start sm:self-auto">ШАГ 1 + ШАГ 2 → ФОРМА</span>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="mt-6">
+            <div class="text-xs uppercase tracking-wider font-semibold text-steel mb-3">1. Что случилось с автомобилем?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="step1-group">
+              <button type="button" data-step1="Диагностика / автоэлектрика" class="selector-btn active p-4 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base tracking-wide">Диагностика / автоэлектрика</div>
+                <div class="selector-sub text-xs text-steel mt-1">Check Engine, датчики, проводка, ЭБУ, DPF</div>
+              </button>
+              <button type="button" data-step1="Ходовая / ТО / ремонт" class="selector-btn p-4 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base tracking-wide">Ходовая / ТО / ремонт</div>
+                <div class="selector-sub text-xs text-steel mt-1">Подвеска, развал, тормоза, масло, ДВС/КПП</div>
+              </button>
+              <button type="button" data-step1="Нужен эвакуатор" class="selector-btn p-4 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base tracking-wide">Нужен эвакуатор</div>
+                <div class="selector-sub text-xs text-steel mt-1">Доставка с места поломки или ДТП на СТО</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="mt-6">
+            <div class="text-xs uppercase tracking-wider font-semibold text-steel mb-3">2. Когда удобно заехать или созвониться?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="step2-group">
+              <button type="button" data-step2="Сегодня" class="selector-btn active p-3.5 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base">Сегодня</div>
+                <div class="selector-sub text-xs text-steel mt-0.5">Если нужно срочно в рабочее время</div>
+              </button>
+              <button type="button" data-step2="Завтра" class="selector-btn p-3.5 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base">Завтра</div>
+                <div class="selector-sub text-xs text-steel mt-0.5">Плановый заезд в ближайший рабочий день</div>
+              </button>
+              <button type="button" data-step2="В будни" class="selector-btn p-3.5 border border-hairline bg-asphalt text-left transition-colors hover:border-safety">
+                <div class="font-display font-bold uppercase text-base">В будни</div>
+                <div class="selector-sub text-xs text-steel mt-0.5">Пн–Пт 09:00–18:00, подберём окно</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Result & Apply -->
+          <div class="mt-7 p-4 sm:p-5 bg-asphalt border border-hairline flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="text-[11px] uppercase tracking-wider text-steel">Выбрано для заявки:</div>
+              <div id="selector-summary" class="font-display font-bold text-lg text-safety uppercase tracking-wide mt-0.5">
+                Диагностика / автоэлектрика · Сегодня
+              </div>
+            </div>
+            <button id="apply-selection-btn" type="button" class="px-6 py-3.5 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-sm uppercase tracking-wider whitespace-nowrap transition-colors shrink-0">
+              Подставить в форму записи →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BOOKING FORM + SCHEDULE & MAP/CONTACTS -->
+    <section id="booking" class="py-14 sm:py-20 border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 border border-hairline bg-gunmetal">
+
+          <!-- Left: Booking Form (Law 99-З + Honeypot + Demo Mode) -->
+          <div class="lg:col-span-7 p-6 sm:p-10 border-b lg:border-b-0 lg:border-r border-hairline">
+            <span class="text-xs uppercase tracking-[0.2em] text-safety font-semibold">Обратная связь</span>
+            <h2 class="font-display font-bold uppercase text-3xl sm:text-4xl text-offwhite mt-1">
+              Запись на СТО или вызов эвакуатора
+            </h2>
+            <p class="text-sm text-steel mt-2">
+              Оставьте номер — мастер-приёмщик перезвонит в рабочее время, уточнит марку авто и согласует удобное окно заезда.
+            </p>
+
+            <form id="booking-form" class="mt-6 space-y-4" novalidate>
+              <!-- Honeypot field -->
+              <div class="hidden" aria-hidden="true">
+                <label for="hp-website">Ваш сайт</label>
+                <input id="hp-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-name" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Ваше имя</label>
+                  <input id="f-name" name="name" type="text" placeholder="Например, Александр" class="w-full h-11 px-3.5 bg-asphalt border border-hairline text-offwhite text-sm placeholder:text-steel/50 focus:outline-none focus:border-safety" />
+                </div>
+                <div>
+                  <label for="f-phone" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Телефон *</label>
+                  <input id="f-phone" name="phone" type="tel" required placeholder="+375 (__) ___-__-__" class="w-full h-11 px-3.5 bg-asphalt border border-hairline text-offwhite text-sm placeholder:text-steel/50 focus:outline-none focus:border-safety" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-service" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Направление</label>
+                  <select id="f-service" name="service" class="w-full h-11 px-3.5 bg-asphalt border border-hairline text-offwhite text-sm focus:outline-none focus:border-safety">
+                    <option value="Диагностика / автоэлектрика">Диагностика / автоэлектрика</option>
+                    <option value="Ходовая / ТО / ремонт">Ходовая / ТО / ремонт</option>
+                    <option value="Нужен эвакуатор">Нужен эвакуатор</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="f-when" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Когда удобно</label>
+                  <select id="f-when" name="when" class="w-full h-11 px-3.5 bg-asphalt border border-hairline text-offwhite text-sm focus:outline-none focus:border-safety">
+                    <option value="Сегодня">Сегодня</option>
+                    <option value="Завтра">Завтра</option>
+                    <option value="В будни">В будни (Пн–Пт 09:00–18:00)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="f-car" class="block text-xs uppercase tracking-wider text-steel mb-1.5">Автомобиль и краткое описание</label>
+                <textarea id="f-car" name="comment" rows="3" placeholder="Марка/модель, год и что беспокоит (стук в подвеске, ошибка Check Engine, нужно ТО...)" class="w-full p-3.5 bg-asphalt border border-hairline text-offwhite text-sm placeholder:text-steel/50 focus:outline-none focus:border-safety"></textarea>
+              </div>
+
+              <!-- Law № 99-З Mandatory Unchecked Consent Checkbox -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer text-xs text-steel leading-relaxed">
+                  <input id="f-consent" name="consent" type="checkbox" required class="mt-0.5 w-4 h-4 accent-[#F5B700] shrink-0" />
+                  <span>
+                    Я ознакомлен(а) с
+                    <button type="button" data-open-modal="modal-privacy" class="text-safety underline hover:text-safetyHover">Политикой обработки персональных данных</button>
+                    и даю
+                    <button type="button" data-open-modal="modal-consent" class="text-safety underline hover:text-safetyHover">согласие на обработку и трансграничную передачу ПД</button>
+                    в соответствии с Законом РБ от 07.05.2021 № 99-З. *
+                  </span>
+                </label>
+              </div>
+
+              <div id="form-feedback" class="hidden p-3.5 border text-sm"></div>
+
+              <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                <button type="submit" class="px-7 h-12 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-sm uppercase tracking-wider transition-colors">
+                  Отправить заявку
+                </button>
+                <span class="text-xs text-steel">Или позвоните напрямую: <a href="tel:+375298992226" class="text-offwhite hover:text-safety underline underline-offset-4">+375 (29) 899-22-26</a></span>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right: Contacts, Hours & Yandex Maps -->
+          <div id="contacts" class="lg:col-span-5 p-6 sm:p-10 bg-carbon flex flex-col justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-[0.2em] text-safety font-semibold">Локация и график</span>
+              <h3 class="font-display font-bold uppercase text-2xl sm:text-3xl text-offwhite mt-1">
+                г. Брест, ул. 2-я Белорусская, 24А
+              </h3>
+              <p class="text-xs text-steel mt-1">Индекс: 224025 · Заезд на территорию СТО</p>
+
+              <!-- Real Schedule Table -->
+              <div class="mt-6 border border-hairline bg-asphalt">
+                <div class="px-4 py-2.5 border-b border-hairline flex items-center justify-between text-xs">
+                  <span class="uppercase tracking-wider text-steel">Понедельник – Пятница</span>
+                  <span class="font-mono font-semibold text-offwhite">09:00 – 18:00</span>
+                </div>
+                <div class="px-4 py-2.5 border-b border-hairline flex items-center justify-between text-xs">
+                  <span class="uppercase tracking-wider text-steel">Суббота, Воскресенье</span>
+                  <span class="font-mono text-steel">Выходной</span>
+                </div>
+                <div class="px-4 py-2.5 flex items-center justify-between text-xs">
+                  <span class="uppercase tracking-wider text-steel">Осмотр подвески</span>
+                  <span class="font-mono text-safety">Будни 09:00–10:00 (очередь)</span>
+                </div>
+              </div>
+
+              <!-- All Real Phones & Channels -->
+              <div class="mt-6 space-y-3 text-sm">
+                <div class="flex items-center justify-between gap-2 border-b border-hairline pb-2.5">
+                  <span class="text-steel">СТО (МТС):</span>
+                  <a href="tel:+375298992226" class="font-display font-bold text-base text-offwhite hover:text-safety whitespace-nowrap">+375 (29) 899-22-26</a>
+                </div>
+                <div class="flex items-center justify-between gap-2 border-b border-hairline pb-2.5">
+                  <span class="text-steel">СТО (МТС доп.):</span>
+                  <a href="tel:+375295200608" class="font-display font-bold text-base text-offwhite hover:text-safety whitespace-nowrap">+375 (29) 520-06-08</a>
+                </div>
+                <div class="flex items-center justify-between gap-2 border-b border-hairline pb-2.5">
+                  <span class="text-steel">Водитель эвакуатора:</span>
+                  <a href="tel:+375333977776" class="font-display font-bold text-base text-safety hover:text-safetyHover whitespace-nowrap">+375 (33) 397-77-76</a>
+                </div>
+                <div class="flex items-center justify-between gap-2 border-b border-hairline pb-2.5">
+                  <span class="text-steel">Почта:</span>
+                  <a href="mailto:avtokontinent24@gmail.com" class="text-offwhite hover:text-safety">avtokontinent24@gmail.com</a>
+                </div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-steel">Мессенджеры и соцсети:</span>
+                  <div class="flex items-center gap-3">
+                    <a href="viber://chat?number=+375298992226" class="text-safety hover:underline">Viber</a>
+                    <span class="text-hairline">|</span>
+                    <a href="https://www.instagram.com/avtokontinent.sto/" target="_blank" rel="noopener noreferrer" class="text-offwhite hover:text-safety">Instagram</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Yandex Maps Rating & Route -->
+            <div class="mt-6 p-4 border border-hairline bg-asphalt">
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="text-xs uppercase tracking-wider text-steel">Яндекс Карты</div>
+                  <div class="text-sm font-semibold text-offwhite mt-0.5"><span class="text-safety">★ 4.5</span> · 24 отзыва / 74 оценки</div>
+                </div>
+                <a href="https://yandex.by/maps/?text=%D0%91%D1%80%D0%B5%D1%81%D1%82%2C+%D1%83%D0%BB.+2-%D1%8F+%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F%2C+24%D0%90+%D0%90%D0%B2%D1%82%D0%BE%D0%BA%D0%BE%D0%BD%D1%82%D0%B8%D0%BD%D0%B5%D0%BD%D1%82" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 border border-safety text-safety hover:bg-safety hover:text-asphalt font-display font-bold text-xs uppercase tracking-wider whitespace-nowrap transition-colors">
+                  Маршрут ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (Law № 99-З, Civil Code Art. 407, Decree № 60) -->
+  <footer class="bg-carbon py-10 text-xs text-steel">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-hairline">
+        <div>
+          <div class="font-display font-bold text-base uppercase tracking-wider text-offwhite">СТО «Автоконтинент»</div>
+          <div class="mt-1">г. Брест, ул. 2-я Белорусская, 24А · [ИП / ООО] · УНП [УНП] · Режим работы: Пн–Пт 09:00–18:00; Сб, Вс — выходной</div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <button type="button" data-open-modal="modal-privacy" class="text-offwhite hover:text-safety underline underline-offset-4">Политика обработки ПД</button>
+          <button type="button" data-open-modal="modal-consent" class="text-offwhite hover:text-safety underline underline-offset-4">Согласие на ПД (№ 99-З)</button>
+          <button type="button" data-open-modal="modal-cookies" class="text-offwhite hover:text-safety underline underline-offset-4">Настройки cookie</button>
+        </div>
+      </div>
+      <div class="pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-steel/80">
+        <p>Информация на сайте носит справочный характер и не является публичной офертой (ст. 407 Гражданского кодекса Республики Беларусь).</p>
+        <p>Боевая версия размещается на хостинге в РБ (Указ Президента РБ № 60).</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- APP-LIKE STICKY MOBILE DOCK (Auto-hides when cookie banner is open) -->
+  <div id="mobile-dock" class="md:hidden hidden fixed bottom-0 inset-x-0 z-40 bg-asphalt/95 backdrop-blur-md border-t border-hairline px-3 py-2">
+    <div class="grid grid-cols-3 gap-2">
+      <a href="tel:+375298992226" class="h-10 border border-hairline bg-gunmetal text-offwhite font-display font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5">
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=+375298992226" class="h-10 border border-hairline bg-gunmetal text-offwhite font-display font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5">
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="h-10 bg-safety text-asphalt font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center">
+        Записаться
+      </a>
+    </div>
+  </div>
+
+  <!-- NCZPD COOKIE BANNER (Equal Accept & Reject Buttons) -->
+  <div id="cookie-banner" role="dialog" aria-label="Уведомление о файлах cookie" class="fixed bottom-3 inset-x-3 sm:inset-x-auto sm:right-5 sm:left-5 lg:left-auto lg:max-w-3xl z-50 bg-[#0B0D0F] border border-hairline shadow-2xl shadow-black/90 p-4 sm:px-5 sm:py-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+      <p class="text-xs text-steel leading-relaxed">
+        Мы используем файлы cookie для корректной работы сайта. Вы можете принять все, отклонить необязательные или
+        <button type="button" data-open-modal="modal-cookies" class="text-safety underline hover:text-safetyHover">настроить параметры</button>.
+      </p>
+      <div class="grid grid-cols-2 sm:flex items-center gap-2 shrink-0">
+        <button id="cookie-accept-all" type="button" class="px-3.5 py-2.5 bg-offwhite hover:bg-white text-asphalt font-semibold text-xs leading-tight text-center transition-colors">
+          Принять все
+        </button>
+        <button id="cookie-reject-opt" type="button" class="px-3.5 py-2.5 bg-gunmetal hover:bg-[#252930] border border-steel/50 text-offwhite font-semibold text-xs leading-tight text-center transition-colors">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-carbon border border-hairline p-3 sm:p-4">
+      <button id="lightbox-close" type="button" aria-label="Закрыть фото" class="absolute top-3 right-3 w-9 h-9 bg-asphalt border border-hairline text-offwhite hover:text-safety text-lg flex items-center justify-center z-10">×</button>
+      <img id="lightbox-img" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black" />
+      <div id="lightbox-caption" class="pt-3 text-xs sm:text-sm text-steel"></div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modal-privacy" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full max-h-[85vh] overflow-y-auto bg-gunmetal border border-hairline p-6 sm:p-8 text-sm text-steel space-y-3">
+      <div class="flex items-center justify-between gap-3 pb-3 border-b border-hairline">
+        <h3 class="font-display font-bold text-xl uppercase text-offwhite">Политика обработки персональных данных</h3>
+        <button type="button" data-close-modal class="w-8 h-8 bg-asphalt border border-hairline text-offwhite hover:text-safety">×</button>
+      </div>
+      <p><strong class="text-offwhite">1. Оператор:</strong> СТО «Автоконтинент» ([ИП / ООО], УНП [УНП], г. Брест, ул. 2-я Белорусская, 24А, тел. +375 (29) 899-22-26, e-mail: avtokontinent24@gmail.com).</p>
+      <p><strong class="text-offwhite">2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных». Обработка ведётся на основании свободного, однозначного и информированного согласия субъекта ПД.</p>
+      <p><strong class="text-offwhite">3. Состав и цели данных:</strong> имя, номер телефона, сведения об автомобиле и выбранной услуге — исключительно для обратной связи, записи на СТО и согласования выезда эвакуатора.</p>
+      <p><strong class="text-offwhite">4. Срок хранения:</strong> до достижения цели обработки либо до отзыва согласия субъектом персональных данных.</p>
+      <p><strong class="text-offwhite">5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> вы вправе в любое время без объяснения причин отозвать согласие, запросить информацию о своих данных, потребовать их изменения, блокирования, прекращения обработки или удаления, а также обжаловать действия оператора в Национальный центр защиты персональных данных Республики Беларусь (НЦЗПД).</p>
+      <div class="pt-3">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-xs uppercase tracking-wider">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Согласие на обработку и трансграничную передачу ПД (ст. 9, 10–15 Закона № 99-З) -->
+  <div id="modal-consent" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full max-h-[85vh] overflow-y-auto bg-gunmetal border border-hairline p-6 sm:p-8 text-sm text-steel space-y-3">
+      <div class="flex items-center justify-between gap-3 pb-3 border-b border-hairline">
+        <h3 class="font-display font-bold text-xl uppercase text-offwhite">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" data-close-modal class="w-8 h-8 bg-asphalt border border-hairline text-offwhite hover:text-safety">×</button>
+      </div>
+      <p>Проставляя отметку в чекбоксе под формой записи, вы свободно, однозначно и информированно даёте согласие оператору (СТО «Автоконтинент», [ИП / ООО], УНП [УНП]) на обработку ваших персональных данных (имя, телефон, комментарий по автомобилю) для связи и записи на сервис.</p>
+      <p><strong class="text-offwhite">Уведомление о трансграничной передаче (ст. 9 Закона РБ № 99-З):</strong> для оперативной доставки заявки мастеру-приёмщику в боевой версии могут использоваться технические сервисы Google (Google Apps Script) и мессенджер Telegram, серверы которых расположены за пределами Республики Беларусь, в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов ПД. Риски связаны с применением законодательства иных юрисдикций к хранению данных на серверах указанных платформ.</p>
+      <p><strong class="text-offwhite">Ваши права (ст. 10–15 Закона № 99-З):</strong> отзыв согласия в любой момент, получение сведений, требование об изменении, прекращении обработки или удалении данных, а также обжалование в НЦЗПД. Срок действия согласия — до достижения цели обработки либо до отзыва.</p>
+      <div class="pt-3">
+        <button type="button" data-close-modal class="px-5 py-2.5 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-xs uppercase tracking-wider">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Настройки cookie (НЦЗПД) -->
+  <div id="modal-cookies" class="legal-modal hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="max-w-lg w-full bg-gunmetal border border-hairline p-6 text-sm text-steel space-y-4">
+      <div class="flex items-center justify-between gap-3 pb-3 border-b border-hairline">
+        <h3 class="font-display font-bold text-lg uppercase text-offwhite">Настройки файлов cookie</h3>
+        <button type="button" data-close-modal class="w-8 h-8 bg-asphalt border border-hairline text-offwhite hover:text-safety">×</button>
+      </div>
+      <div class="p-3.5 bg-asphalt border border-hairline">
+        <div class="font-semibold text-offwhite">Технические (обязательные)</div>
+        <p class="text-xs text-steel mt-1">Обеспечивают работу сайта и сохранение вашего выбора настроек cookie.</p>
+      </div>
+      <label class="flex items-start justify-between gap-3 p-3.5 bg-asphalt border border-hairline cursor-pointer">
+        <div>
+          <div class="font-semibold text-offwhite">Аналитические cookie</div>
+          <p class="text-xs text-steel mt-1">Помогают оценивать удобство разделов и скорость загрузки страниц.</p>
+        </div>
+        <input id="cookie-analytics-toggle" type="checkbox" class="mt-1 w-4 h-4 accent-[#F5B700] shrink-0" />
+      </label>
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button id="cookie-save-prefs" type="button" class="px-5 py-2.5 bg-safety hover:bg-safetyHover text-asphalt font-display font-bold text-xs uppercase tracking-wider">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const cfg = window.SITE_CONFIG;
+
+      // 1. Live Status in Header (Europe/Minsk, Пн–Пт 09:00–18:00; Сб, Вс — выходной)
+      function updateLiveStatus() {
+        const dotEl = document.getElementById('live-status-dot');
+        const textEl = document.getElementById('live-status-text');
+        if (!dotEl || !textEl) return;
+
+        try {
+          const now = new Date();
+          const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: cfg.schedule.timezone,
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+          const parts = fmt.formatToParts(now);
+          const getPart = (t) => (parts.find(p => p.type === t) || {}).value || '';
+          const weekdayMap = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 };
+          const day = weekdayMap[getPart('weekday')] || 1;
+          const hour = parseInt(getPart('hour'), 10);
+          const minute = parseInt(getPart('minute'), 10);
+          const currentMin = hour * 60 + minute;
+          const openMin = cfg.schedule.openHour * 60 + cfg.schedule.openMinute;
+          const closeMin = cfg.schedule.closeHour * 60 + cfg.schedule.closeMinute;
+
+          const isWorkDay = cfg.schedule.workDays.includes(day);
+          const isOpen = isWorkDay && currentMin >= openMin && currentMin < closeMin;
+
+          if (isOpen) {
+            dotEl.className = 'w-1.5 h-1.5 bg-emerald-400 live-dot shrink-0';
+            textEl.textContent = 'Открыто сейчас · до 18:00';
+          } else {
+            dotEl.className = 'w-1.5 h-1.5 bg-safety shrink-0';
+            if (day === 6 || day === 7 || (day === 5 && currentMin >= closeMin)) {
+              textEl.textContent = 'Выходной · Ответим в Пн с 09:00';
+            } else if (isWorkDay && currentMin < openMin) {
+              textEl.textContent = 'Ответим с 09:00';
+            } else {
+              textEl.textContent = 'Ответим завтра с 09:00';
+            }
+          }
+        } catch (e) {
+          textEl.textContent = 'Пн–Пт 09:00–18:00';
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 2. Two-Click Mini-Interactive Selector
+      let selectedService = 'Диагностика / автоэлектрика';
+      let selectedWhen = 'Сегодня';
+      const summaryEl = document.getElementById('selector-summary');
+
+      function updateSelectorSummary() {
+        if (summaryEl) {
+          summaryEl.textContent = selectedService + ' · ' + selectedWhen;
+        }
+      }
+
+      document.querySelectorAll('#step1-group .selector-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#step1-group .selector-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedService = btn.getAttribute('data-step1');
+          updateSelectorSummary();
+        });
+      });
+
+      document.querySelectorAll('#step2-group .selector-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#step2-group .selector-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedWhen = btn.getAttribute('data-step2');
+          updateSelectorSummary();
+        });
+      });
+
+      function applyToForm(serviceVal, whenVal) {
+        const sSelect = document.getElementById('f-service');
+        const wSelect = document.getElementById('f-when');
+        if (sSelect && serviceVal) sSelect.value = serviceVal;
+        if (wSelect && whenVal) wSelect.value = whenVal;
+        const bookingEl = document.getElementById('booking');
+        if (bookingEl) {
+          bookingEl.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => {
+            const phoneInput = document.getElementById('f-phone');
+            if (phoneInput) phoneInput.focus();
+          }, 450);
+        }
+      }
+
+      const applyBtn = document.getElementById('apply-selection-btn');
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => applyToForm(selectedService, selectedWhen));
+      }
+
+      document.querySelectorAll('[data-quick-service]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-quick-service');
+          selectedService = val;
+          document.querySelectorAll('#step1-group .selector-btn').forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-step1') === val);
+          });
+          updateSelectorSummary();
+          applyToForm(val, selectedWhen);
+        });
+      });
+
+      // 3. Booking Form (Honeypot + Law 99-З + Demo / GAS-Telegram)
+      const form = document.getElementById('booking-form');
+      const feedback = document.getElementById('form-feedback');
+
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const hp = document.getElementById('hp-website');
+          if (hp && hp.value.trim() !== '') return; // Bot trapped
+
+          const phone = document.getElementById('f-phone').value.trim();
+          const name = document.getElementById('f-name').value.trim();
+          const service = document.getElementById('f-service').value;
+          const when = document.getElementById('f-when').value;
+          const comment = document.getElementById('f-car').value.trim();
+          const consent = document.getElementById('f-consent').checked;
+
+          feedback.classList.remove('hidden', 'border-red-500/70', 'bg-red-950/40', 'text-red-200', 'border-safety', 'bg-asphalt', 'text-offwhite');
+
+          if (phone.length < 7) {
+            feedback.classList.add('border-red-500/70', 'bg-red-950/40', 'text-red-200');
+            feedback.textContent = 'Пожалуйста, укажите корректный номер телефона для связи.';
+            return;
+          }
+          if (!consent) {
+            feedback.classList.add('border-red-500/70', 'bg-red-950/40', 'text-red-200');
+            feedback.textContent = 'Необходимо отметить согласие на обработку персональных данных (Закон № 99-З).';
+            return;
+          }
+
+          if (cfg.demoMode || !cfg.gasEndpoint) {
+            feedback.classList.add('border-safety', 'bg-asphalt', 'text-offwhite');
+            feedback.innerHTML = '<strong class="text-safety">Демо-режим:</strong> заявка сформирована (' +
+              service + ' · ' + when + '). В боевой версии данные мгновенно отправляются мастеру-приёмщику в Telegram.';
+            form.reset();
+            return;
+          }
+
+          try {
+            await fetch(cfg.gasEndpoint, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, phone, service, when, comment })
+            });
+            feedback.classList.add('border-safety', 'bg-asphalt', 'text-offwhite');
+            feedback.textContent = 'Заявка отправлена! Мастер-приёмщик свяжется с вами в ближайшее рабочее время.';
+            form.reset();
+          } catch (err) {
+            feedback.classList.add('border-red-500/70', 'bg-red-950/40', 'text-red-200');
+            feedback.textContent = 'Не удалось отправить форму. Позвоните, пожалуйста, по номеру +375 (29) 899-22-26.';
+          }
+        });
+      }
+
+      // 4. Cookie Banner + Mobile Sticky Dock Coordination
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileDock = document.getElementById('mobile-dock');
+      const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+      function syncDockWithCookie() {
+        const consentSaved = localStorage.getItem('ak_cookie_choice');
+        if (consentSaved) {
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+          if (mobileDock) mobileDock.classList.remove('hidden');
+        } else {
+          if (cookieBanner) cookieBanner.classList.remove('hidden');
+          if (mobileDock) mobileDock.classList.add('hidden');
+        }
+      }
+      syncDockWithCookie();
+
+      function saveCookieChoice(analyticsEnabled) {
+        localStorage.setItem('ak_cookie_choice', JSON.stringify({
+          essential: true,
+          analytics: !!analyticsEnabled,
+          ts: Date.now()
+        }));
+        syncDockWithCookie();
+      }
+
+      document.getElementById('cookie-accept-all')?.addEventListener('click', () => saveCookieChoice(true));
+      document.getElementById('cookie-reject-opt')?.addEventListener('click', () => saveCookieChoice(false));
+      document.getElementById('cookie-save-prefs')?.addEventListener('click', () => {
+        saveCookieChoice(analyticsToggle ? analyticsToggle.checked : false);
+        document.getElementById('modal-cookies')?.classList.add('hidden');
+      });
+
+      // 5. Legal Modals
+      document.querySelectorAll('[data-open-modal]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-open-modal');
+          document.getElementById(id)?.classList.remove('hidden');
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.legal-modal')?.classList.add('hidden');
+        });
+      });
+
+      document.querySelectorAll('.legal-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.add('hidden');
+        });
+      });
+
+      // 6. Lightbox
+      const lbModal = document.getElementById('lightbox-modal');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCap = document.getElementById('lightbox-caption');
+
+      document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          lbImg.src = btn.getAttribute('data-lightbox-src');
+          lbImg.alt = btn.getAttribute('data-lightbox-caption') || '';
+          lbCap.textContent = btn.getAttribute('data-lightbox-caption') || '';
+          lbModal.classList.remove('hidden');
+        });
+      });
+
+      document.getElementById('lightbox-close')?.addEventListener('click', () => lbModal.classList.add('hidden'));
+      lbModal?.addEventListener('click', (e) => {
+        if (e.target === lbModal) lbModal.classList.add('hidden');
+      });
+    })();
+  </script>
+</body>
+</html>

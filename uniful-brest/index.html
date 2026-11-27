@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Юнифулсервис — профессиональный клининг, стирка ковров и химчистка в Бресте</title>
+  <meta name="description" content="ООО «ЮНИФУЛСЕРВИС» в Бресте: стирка ковров в цеху с вывозом и доставкой, химчистка мягкой мебели и авто, уборка квартир и офисов, реставрация полов. Работаем с 2013 года.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            snow: '#FFFFFF',
+            mist: '#F3F5F7',
+            hairline: '#E2E7EC',
+            charcoal: '#1E242B',
+            slate: '#596470',
+            sungold: '#E5A910',
+            sungoldHover: '#D1980A',
+          },
+          fontFamily: {
+            display: ['"Golos Text"', 'sans-serif'],
+            sans: ['"Manrope"', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      color: #1E242B;
+      background-color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Golos Text', sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .bento-img {
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .bento-card:hover .bento-img {
+      transform: scale(1.04);
+    }
+    .choice-btn[aria-pressed="true"] {
+      background-color: #1E242B;
+      color: #FFFFFF;
+      border-color: #1E242B;
+      box-shadow: 0 10px 24px -10px rgba(30, 36, 43, 0.35);
+    }
+    .choice-btn[aria-pressed="true"] .choice-dot {
+      background-color: #E5A910;
+      border-color: #E5A910;
+    }
+  </style>
+</head>
+<body class="bg-snow text-charcoal selection:bg-sungold/30 selection:text-charcoal pb-24 md:pb-0 overflow-x-hidden">
+
+  <!-- Architectural Single-Row Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-[72px] flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2 sm:gap-2.5 shrink-0 whitespace-nowrap group">
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-charcoal flex items-center justify-center shrink-0 transition-colors group-hover:bg-sungold">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-sungold group-hover:text-charcoal transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3z"/>
+            <path d="M5 19h14"/>
+          </svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-display font-bold text-[15px] sm:text-[17px] tracking-tight text-charcoal">Юнифулсервис</span>
+          <span class="text-[10px] sm:text-[11px] font-medium text-slate tracking-wide mt-0.5">Брест · с 2013 года</span>
+        </span>
+      </a>
+
+      <!-- Desktop Single-Row Nav -->
+      <nav aria-label="Основная навигация" class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-slate">
+        <a href="#services" class="whitespace-nowrap hover:text-charcoal transition-colors">Услуги</a>
+        <a href="#selector" class="whitespace-nowrap hover:text-charcoal transition-colors">Подбор заказа</a>
+        <a href="#trust" class="whitespace-nowrap hover:text-charcoal transition-colors">О компании</a>
+        <a href="#blog" class="whitespace-nowrap hover:text-charcoal transition-colors">Блог</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-charcoal transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right Controls: Live Status + Phone + Subtle Monochrome Viber + CTA -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Live Europe/Minsk Status -->
+        <div id="live-status-pill" class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-mist border border-hairline text-[11px] sm:text-[12px] font-semibold text-charcoal whitespace-nowrap">
+          <span id="live-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+          <span id="live-status-text" class="hidden sm:inline">Пн–Пт 09:00–18:00</span>
+          <span id="live-status-short" class="sm:hidden">Открыто</span>
+        </div>
+
+        <!-- Phone (strictly single-line) -->
+        <a href="tel:+375292227373" class="hidden md:inline-flex items-center gap-1.5 text-[14px] font-bold text-charcoal hover:text-sungoldHover transition-colors whitespace-nowrap tabular-nums">
+          <svg class="w-4 h-4 text-sungold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+375 (29) 222-73-73</span>
+        </a>
+
+        <!-- Monochrome Viber Icon (NO loud purple pill) -->
+        <a href="viber://chat?number=%2B375292227373" aria-label="Написать в Viber" title="Написать в Viber" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-lg border border-hairline text-charcoal hover:border-charcoal hover:bg-mist transition-colors shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.4 2C6.4 2 3 5.2 3 9.9c0 2.7 1.1 5 3.1 6.5v3.2c0 .5.6.8 1 .4l2.4-2.1c.6.1 1.3.2 1.9.2 5 0 8.6-3.2 8.6-8.1C20 5.2 16.4 2 11.4 2zm4.3 11.3c-.2.6-1.2 1.1-1.7 1.1-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4-.1.6.4.2.5.7 1.7.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 .9.8 1.7 1.1 2 1.2.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.2.1.7-.1 1.3z"/>
+          </svg>
+        </a>
+
+        <!-- Compact CTA -->
+        <a href="#booking" class="inline-flex items-center justify-center px-3.5 sm:px-4 h-9 rounded-lg bg-charcoal text-white text-[13px] font-semibold hover:bg-sungold hover:text-charcoal transition-colors whitespace-nowrap shrink-0">
+          Заказать
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero: Architectural Statement + 4-Tile Bento Service Preview -->
+    <section class="pt-6 pb-12 sm:pt-10 sm:pb-16 bg-snow border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Top Meta Row -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-5 mb-6 border-b border-hairline text-[12px] sm:text-[13px] text-slate">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+            <span class="inline-flex items-center gap-1.5 font-medium text-charcoal">
+              <svg class="w-4 h-4 text-sungold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              г. Брест, ул. Дмитрия Донского, 12А
+            </span>
+            <span class="inline-flex items-center gap-1.5 font-medium">
+              <span class="text-sungold">★</span>
+              <span class="text-charcoal font-semibold tabular-nums">4.7</span> на Яндекс Картах · 10 отзывов / 21 оценка
+            </span>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-mist border border-hairline text-[11px] font-semibold text-slate">
+            <span class="w-1.5 h-1.5 rounded-full bg-sungold"></span>
+            Концепт главной страницы (WordPress)
+          </span>
+        </div>
+
+        <!-- Statement Headline + Actions -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-8 sm:mb-10">
+          <div class="lg:col-span-7">
+            <h1 class="font-display font-bold text-[26px] sm:text-[42px] lg:text-[48px] leading-[1.14] tracking-tight text-charcoal">
+              Профессиональный клининг, стирка ковров и&nbsp;уход за&nbsp;полами в&nbsp;Бресте
+            </h1>
+          </div>
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <p class="text-[15px] sm:text-[16px] leading-relaxed text-slate">
+              Стираем ковры в цеху с бесплатным вывозом и доставкой, проводим химчистку мебели и авто, убираем квартиры, дома и офисы. Работаем официально с&nbsp;2013&nbsp;года.
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#selector" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sungold hover:bg-sungoldHover text-charcoal font-bold text-[14px] transition-colors shadow-sm">
+                <span>Подобрать услугу за 2 клика</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </a>
+              <a href="tel:+375292227373" class="inline-flex items-center justify-center px-4 py-3 rounded-xl border border-hairline bg-mist/60 hover:bg-mist text-charcoal font-semibold text-[14px] transition-colors tabular-nums">
+                +375 (29) 222-73-73
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Tile Bento Service Preview -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Tile 1 -->
+          <article class="bento-card group relative rounded-2xl overflow-hidden bg-mist border border-hairline flex flex-col">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-charcoal/5">
+              <img src="https://images.unsplash.com/photo-1668016519254-3ced0ab72b16?auto=format&fit=crop&w=1400&q=80" alt="Чистый ковёр в светлой гостиной после профессиональной стирки" class="bento-img w-full h-full object-cover" loading="eager">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur text-[11px] font-bold uppercase tracking-wider text-charcoal">Вывоз и доставка</span>
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white">
+              <div>
+                <h2 class="font-display font-bold text-[17px] leading-snug text-charcoal mb-1.5">Стирка ковров в цеху</h2>
+                <p class="text-[13px] leading-relaxed text-slate">Глубокая стирка на ковромоечной машине, удаление пятен и запахов, деликатная сушка.</p>
+              </div>
+              <button type="button" onclick="openWpModal('Стирка ковров (вывоз и доставка)', 'https://uniful.by/stirka-kovrov.html', 'Стирка ковров с вывозом')" class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-charcoal hover:text-sungoldHover transition-colors text-left">
+                <span>Подробнее об услуге</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Tile 2 -->
+          <article class="bento-card group relative rounded-2xl overflow-hidden bg-mist border border-hairline flex flex-col">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-charcoal/5">
+              <img src="https://images.unsplash.com/photo-1632935190508-bd46801c14af?auto=format&fit=crop&w=1400&q=80" alt="Светлый диван и текстиль в гостиной после химчистки" class="bento-img w-full h-full object-cover" loading="eager">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur text-[11px] font-bold uppercase tracking-wider text-charcoal">Мебель и авто</span>
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white">
+              <div>
+                <h2 class="font-display font-bold text-[17px] leading-snug text-charcoal mb-1.5">Химчистка мягкой мебели</h2>
+                <p class="text-[13px] leading-relaxed text-slate">Диваны, кресла, матрасы, ковры на дому и химчистка салонов авто с выведением запахов.</p>
+              </div>
+              <button type="button" onclick="openWpModal('Химчистка мягкой мебели и авто', 'https://uniful.by/himchistka.html', 'Химчистка мебели')" class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-charcoal hover:text-sungoldHover transition-colors text-left">
+                <span>Подробнее об услуге</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Tile 3 -->
+          <article class="bento-card group relative rounded-2xl overflow-hidden bg-mist border border-hairline flex flex-col">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-charcoal/5">
+              <img src="https://plus.unsplash.com/premium_photo-1663011218145-c1d0c3ba3542?auto=format&fit=crop&w=1200&q=80" alt="Профессиональная уборка квартиры и мойка пола" class="bento-img w-full h-full object-cover" loading="eager">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur text-[11px] font-bold uppercase tracking-wider text-charcoal">Квартиры и офисы</span>
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white">
+              <div>
+                <h2 class="font-display font-bold text-[17px] leading-snug text-charcoal mb-1.5">Комплексный клининг</h2>
+                <p class="text-[13px] leading-relaxed text-slate">Генеральная, ежедневная и послестроительная уборка, а также озонирование помещений.</p>
+              </div>
+              <button type="button" onclick="openWpModal('Клининг помещений и уборка', 'https://uniful.by/klining.html', 'Уборка квартиры / офиса')" class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-charcoal hover:text-sungoldHover transition-colors text-left">
+                <span>Подробнее об услуге</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Tile 4 -->
+          <article class="bento-card group relative rounded-2xl overflow-hidden bg-mist border border-hairline flex flex-col">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-charcoal/5">
+              <img src="https://plus.unsplash.com/premium_photo-1664890289660-789abde22787?auto=format&fit=crop&w=1200&q=80" alt="Уход за деревянным полом и паркетом" class="bento-img w-full h-full object-cover" loading="eager">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur text-[11px] font-bold uppercase tracking-wider text-charcoal">Полы и окна</span>
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white">
+              <div>
+                <h2 class="font-display font-bold text-[17px] leading-snug text-charcoal mb-1.5">Уход за полами и мойка окон</h2>
+                <p class="text-[13px] leading-relaxed text-slate">Шлифовка паркета и бетона, покрытие лаком, мойка окон, витражей, фасадов и крыш.</p>
+              </div>
+              <button type="button" onclick="openWpModal('Реставрация полов и мойка окон', 'https://uniful.by/restavracija-polov.html', 'Уборка квартиры / офиса')" class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-charcoal hover:text-sungoldHover transition-colors text-left">
+                <span>Подробнее об услуге</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive 2-Click Service Selector (Signature Feature #3) -->
+    <section id="selector" class="py-12 sm:py-16 bg-mist border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-hairline p-6 sm:p-8 lg:p-10 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 mb-7 border-b border-hairline">
+            <div>
+              <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-sungoldHover mb-2">Быстрая заявка</span>
+              <h2 class="font-display font-bold text-[24px] sm:text-[30px] leading-tight text-charcoal">
+                Подберите услугу и удобный срок за 2 клика
+              </h2>
+            </div>
+            <p class="text-[13px] sm:text-[14px] text-slate max-w-md">
+              Выбор сразу подставится в форму заявки. Итоговую стоимость рассчитает менеджер по площади, типу ткани или объёму работ.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            <!-- Step 1 -->
+            <div class="lg:col-span-6">
+              <div class="text-[13px] font-bold text-charcoal mb-3 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-sungold text-charcoal inline-flex items-center justify-center text-[12px] font-extrabold">1</span>
+                <span>Что нужно почистить или убрать?</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" role="group" aria-label="Выбор услуги">
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="service" data-value="Стирка ковров с вывозом" aria-pressed="true">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Цех</span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">Стирка ковров с вывозом</div>
+                </button>
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="service" data-value="Химчистка мебели" aria-pressed="false">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Выезд</span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">Химчистка мебели</div>
+                </button>
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="service" data-value="Уборка квартиры / офиса" aria-pressed="false">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Клининг</span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">Уборка квартиры / офиса</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="lg:col-span-6">
+              <div class="text-[13px] font-bold text-charcoal mb-3 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-sungold text-charcoal inline-flex items-center justify-center text-[12px] font-extrabold">2</span>
+                <span>Удобный срок выезда или забора</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" role="group" aria-label="Удобный срок">
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="timing" data-value="На этой неделе" aria-pressed="true">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">На этой неделе</div>
+                </button>
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="timing" data-value="Ближайшие 2–3 дня" aria-pressed="false">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">Ближайшие 2–3 дня</div>
+                </button>
+                <button type="button" class="choice-btn text-left p-3.5 rounded-xl border border-hairline bg-mist/50 hover:border-charcoal transition-all" data-step="timing" data-value="Нужна консультация" aria-pressed="false">
+                  <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="choice-dot w-3.5 h-3.5 rounded-full border-2 border-slate/40 inline-block shrink-0"></span>
+                  </div>
+                  <div class="font-display font-semibold text-[14px] leading-snug">Нужна консультация</div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Bar -->
+          <div class="mt-7 pt-6 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-2 text-[14px]">
+              <span class="text-slate">Выбрано:</span>
+              <span id="selector-summary" class="font-bold text-charcoal bg-mist px-3 py-1 rounded-lg border border-hairline">
+                Стирка ковров с вывозом · На этой неделе
+              </span>
+            </div>
+            <button type="button" onclick="applySelectorToBooking()" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-charcoal hover:bg-sungold text-white hover:text-charcoal font-bold text-[14px] transition-colors shrink-0">
+              <span>Перейти к заявке</span>
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Services Architecture (All Real Directions from uniful.by + Honest WordPress Migration Links) -->
+    <section id="services" class="py-12 sm:py-16 bg-snow">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div>
+            <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-sungoldHover mb-2">Все направления</span>
+            <h2 class="font-display font-bold text-[26px] sm:text-[34px] leading-tight text-charcoal">
+              Полный спектр услуг для дома и бизнеса
+            </h2>
+          </div>
+          <button type="button" onclick="openWpModal('Калькулятор и разделы услуг', 'https://uniful.by/calculator.html', 'Стирка ковров с вывозом')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mist hover:bg-hairline/70 border border-hairline text-[13px] font-bold text-charcoal transition-colors self-start md:self-auto">
+            <svg class="w-4 h-4 text-sungoldHover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <line x1="8" y1="6" x2="16" y2="6"/>
+              <line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/>
+              <line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/>
+              <line x1="8" y1="18" x2="16" y2="18"/>
+            </svg>
+            <span>Калькулятор и акции сайта →</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Column 1: Ковры -->
+          <div class="rounded-2xl border border-hairline bg-mist/40 p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white border border-hairline flex items-center justify-center text-charcoal mb-4">
+                <svg class="w-5 h-5 text-sungoldHover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="M7 5v14M17 5v14"/>
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-[18px] text-charcoal mb-3">Ковры и покрытия</h3>
+              <ul class="space-y-2.5 text-[14px] text-slate">
+                <li>
+                  <button type="button" onclick="openWpModal('Стирка ковров (вывоз–доставка)', 'https://uniful.by/stirka-kovrov.html', 'Стирка ковров с вывозом')" class="hover:text-charcoal hover:underline text-left">Стирка ковров (вывоз–доставка)</button>
+                </li>
+                <li>
+                  <button type="button" onclick="openWpModal('Химчистка ковров на дому', 'https://uniful.by/himchistka/himchistka-kovrov-na-domy.html', 'Стирка ковров с вывозом')" class="hover:text-charcoal hover:underline text-left">Химчистка ковров на дому</button>
+                </li>
+                <li>
+                  <button type="button" onclick="openWpModal('Замена и аренда входных ковриков', 'https://uniful.by/zamena-vhodnih-kovrov.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Замена входных ковриков</button>
+                </li>
+                <li>
+                  <button type="button" onclick="openWpModal('Калькулятор стирки и уборки', 'https://uniful.by/calculator.html', 'Стирка ковров с вывозом')" class="hover:text-charcoal hover:underline text-left">Калькулятор стирки</button>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline text-[12px] text-slate">
+              Расчёт стоимости по факту осмотра и замера площади
+            </div>
+          </div>
+
+          <!-- Column 2: Клининг -->
+          <div class="rounded-2xl border border-hairline bg-mist/40 p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white border border-hairline flex items-center justify-center text-charcoal mb-4">
+                <svg class="w-5 h-5 text-sungoldHover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z"/>
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-[18px] text-charcoal mb-3">Клининг помещений</h3>
+              <ul class="space-y-2.5 text-[14px] text-slate">
+                <li><button type="button" onclick="openWpModal('Генеральная уборка', 'https://uniful.by/klining/yborka-pomeschenii.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Генеральная уборка</button></li>
+                <li><button type="button" onclick="openWpModal('Уборка после ремонта', 'https://uniful.by/klining/yborka-posle-remonta.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Уборка после ремонта</button></li>
+                <li><button type="button" onclick="openWpModal('Ежедневная уборка', 'https://uniful.by/klining/ezhednevnaya-uborka.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Ежедневная уборка офисов</button></li>
+                <li><button type="button" onclick="openWpModal('Озонирование помещений', 'https://uniful.by/klining/ozonirovaniye-pomeshcheniy.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Озонирование помещений</button></li>
+                <li><button type="button" onclick="openWpModal('Мойка окон, фасадов, витражей', 'https://uniful.by/klining/moika-okon.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Мойка окон, фасадов, витражей</button></li>
+                <li><button type="button" onclick="openWpModal('Мойка и покраска крыши', 'https://uniful.by/klining/moika-pokraska-krishi.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Мойка и покраска крыши</button></li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline text-[12px] text-slate">
+              Работаем в Бресте и Брестском районе
+            </div>
+          </div>
+
+          <!-- Column 3: Химчистка -->
+          <div class="rounded-2xl border border-hairline bg-mist/40 p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white border border-hairline flex items-center justify-center text-charcoal mb-4">
+                <svg class="w-5 h-5 text-sungoldHover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 13v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4M5 13a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/>
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-[18px] text-charcoal mb-3">Химчистка и химия</h3>
+              <ul class="space-y-2.5 text-[14px] text-slate">
+                <li><button type="button" onclick="openWpModal('Химчистка мягкой мебели', 'https://uniful.by/himchistka/himchistka-mjagkoi-mebeli.html', 'Химчистка мебели')" class="hover:text-charcoal hover:underline text-left">Химчистка мягкой мебели</button></li>
+                <li><button type="button" onclick="openWpModal('Химчистка салонов авто', 'https://uniful.by/himchistka/himchistka-salonov-avto.html', 'Химчистка мебели')" class="hover:text-charcoal hover:underline text-left">Химчистка салонов авто</button></li>
+                <li><button type="button" onclick="openWpModal('Химчистка ковров на дому', 'https://uniful.by/himchistka/himchistka-kovrov-na-domy.html', 'Стирка ковров с вывозом')" class="hover:text-charcoal hover:underline text-left">Химчистка ковров на дому</button></li>
+                <li><button type="button" onclick="openWpModal('Химия для клининга', 'https://uniful.by/klining/himija-for-klining.html', 'Химчистка мебели')" class="hover:text-charcoal hover:underline text-left">Профессиональная химия для клининга</button></li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline text-[12px] text-slate">
+              Безопасные составы для дома, детей и животных
+            </div>
+          </div>
+
+          <!-- Column 4: Реставрация полов -->
+          <div class="rounded-2xl border border-hairline bg-mist/40 p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-white border border-hairline flex items-center justify-center text-charcoal mb-4">
+                <svg class="w-5 h-5 text-sungoldHover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 17l6-6 4 4 6-6M4 21h16"/>
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-[18px] text-charcoal mb-3">Реставрация полов</h3>
+              <ul class="space-y-2.5 text-[14px] text-slate">
+                <li><button type="button" onclick="openWpModal('Шлифовка бетонных, мраморных полов и гранита', 'https://uniful.by/restavracija-polov/shlifovka-betonnogo-mramornogo-pola-i-granita.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Шлифовка бетонных полов и гранита</button></li>
+                <li><button type="button" onclick="openWpModal('Шлифовка паркета', 'https://uniful.by/restavracija-polov/shlifovka-pola.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Шлифовка паркета</button></li>
+                <li><button type="button" onclick="openWpModal('Снятие старой краски, лака и тонировка', 'https://uniful.by/restavracija-polov/tonirovka.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Снятие старой краски, тонировка, лак</button></li>
+                <li><button type="button" onclick="openWpModal('Укладка паркета и наше оборудование', 'https://uniful.by/restavracija-polov/ykladka-parketa.html', 'Уборка квартиры / офиса')" class="hover:text-charcoal hover:underline text-left">Укладка паркета и парк оборудования</button></li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline text-[12px] text-slate">
+              Работы любой сложности на своём оборудовании
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & Facts Block (Since 2013, NO outdated "более 6 лет") -->
+    <section id="trust" class="py-12 sm:py-16 bg-charcoal text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-6">
+            <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-sungold mb-2">Почему «Юнифулсервис»</span>
+            <h2 class="font-display font-bold text-[26px] sm:text-[34px] leading-tight mb-4">
+              Работаем в Бресте с&nbsp;2013&nbsp;года со своим цехом и парком техники
+            </h2>
+            <p class="text-[15px] leading-relaxed text-white/75 mb-7">
+              Вам не нужно тратить время на контроль уборки — мастер приезжает в согласованное время со всем оборудованием и профессиональной химией. Для постоянных клиентов действуют индивидуальные условия и скидки.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="font-display font-bold text-[22px] text-sungold tabular-nums">С 2013 г.</div>
+                <div class="text-[13px] font-semibold text-white mt-1">Официальный опыт в Бресте</div>
+                <div class="text-[12px] text-white/65 mt-1">ООО «ЮНИФУЛСЕРВИС», УНП 291176656</div>
+              </div>
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="font-display font-bold text-[22px] text-sungold tabular-nums">★ 4.7</div>
+                <div class="text-[13px] font-semibold text-white mt-1">Рейтинг на Яндекс Картах</div>
+                <div class="text-[12px] text-white/65 mt-1">10 отзывов и 21 оценка клиентов</div>
+              </div>
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="font-display font-bold text-[17px] text-white">Проверенный персонал</div>
+                <div class="text-[12px] text-white/65 mt-1">Сотрудники проходят обучение и несут ответственность за результат.</div>
+              </div>
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <div class="font-display font-bold text-[17px] text-white">Гибкий график и скидки</div>
+                <div class="text-[12px] text-white/65 mt-1">Подстраиваемся под время клиента, выгодные условия на аренду ковров и химчистку.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-white/10 h-64 sm:h-80">
+              <img src="https://plus.unsplash.com/premium_photo-1683141114952-91f1915dcc0b?auto=format&fit=crop&w=1200&q=80" alt="Профессиональная мойка окон и стеклянных поверхностей" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-white/10 h-64 sm:h-80 mt-6">
+              <img src="https://plus.unsplash.com/premium_photo-1679920025550-75324e59680f?auto=format&fit=crop&w=1200&q=80" alt="Аккуратный уход за поверхностями и клининг" class="w-full h-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real Blog Preview Section (WordPress Migration Showcase) -->
+    <section id="blog" class="py-12 sm:py-16 bg-mist border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-sungoldHover mb-2">База знаний и статьи</span>
+            <h2 class="font-display font-bold text-[26px] sm:text-[32px] leading-tight text-charcoal">
+              Полезные материалы из вашего блога
+            </h2>
+          </div>
+          <button type="button" onclick="openWpModal('Раздел «Блог» (все статьи)', 'https://uniful.by/blog.html', 'Стирка ковров с вывозом')" class="inline-flex items-center gap-2 text-[14px] font-bold text-charcoal hover:text-sungoldHover transition-colors">
+            <span>Все статьи блога (13+)</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <article class="bg-white rounded-2xl border border-hairline p-5 flex flex-col justify-between hover:border-charcoal transition-colors">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate">Стирка ковров</span>
+              <h3 class="font-display font-bold text-[16px] leading-snug text-charcoal mt-2 mb-2">
+                Важность регулярной стирки ковров: почему и как часто стирать ковры
+              </h3>
+              <p class="text-[13px] text-slate leading-relaxed">
+                Ковры накапливают пыль и микроорганизмы — разбираем оптимальную периодичность профессиональной чистки в цеху.
+              </p>
+            </div>
+            <button type="button" onclick="openWpModal('Важность регулярной стирки ковров', 'https://uniful.by/blog/vazhnost-regulyarnoj-stirki-kovrov.html', 'Стирка ковров с вывозом')" class="mt-4 text-[13px] font-bold text-charcoal hover:text-sungoldHover text-left">
+              Читать статью →
+            </button>
+          </article>
+
+          <article class="bg-white rounded-2xl border border-hairline p-5 flex flex-col justify-between hover:border-charcoal transition-colors">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate">Мягкая мебель</span>
+              <h3 class="font-display font-bold text-[16px] leading-snug text-charcoal mt-2 mb-2">
+                Когда и почему нужно делать химчистку мягкой мебели
+              </h3>
+              <p class="text-[13px] text-slate leading-relaxed">
+                Основные признаки загрязнения обивки, профилактика аллергенов и продление срока службы диванов и кресел.
+              </p>
+            </div>
+            <button type="button" onclick="openWpModal('Когда делать химчистку мягкой мебели', 'https://uniful.by/blog/kogda-delat-himchistku-myagkoj-mebeli.html', 'Химчистка мебели')" class="mt-4 text-[13px] font-bold text-charcoal hover:text-sungoldHover text-left">
+              Читать статью →
+            </button>
+          </article>
+
+          <article class="bg-white rounded-2xl border border-hairline p-5 flex flex-col justify-between hover:border-charcoal transition-colors">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate">Полы и паркет</span>
+              <h3 class="font-display font-bold text-[16px] leading-snug text-charcoal mt-2 mb-2">
+                В чём разница между шлифовкой и циклёвкой пола
+              </h3>
+              <p class="text-[13px] text-slate leading-relaxed">
+                Как правильно подготовить деревянное покрытие к обновлению и убрать царапины без лишнего съёма древесины.
+              </p>
+            </div>
+            <button type="button" onclick="openWpModal('Разница между шлифовкой и циклёвкой пола', 'https://uniful.by/blog/shlifovka-tsiklevka.html', 'Уборка квартиры / офиса')" class="mt-4 text-[13px] font-bold text-charcoal hover:text-sungoldHover text-left">
+              Читать статью →
+            </button>
+          </article>
+
+          <article class="bg-white rounded-2xl border border-hairline p-5 flex flex-col justify-between hover:border-charcoal transition-colors">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate">Фасады</span>
+              <h3 class="font-display font-bold text-[16px] leading-snug text-charcoal mt-2 mb-2">
+                Почему мойка фасадов важна для ухода за зданием
+              </h3>
+              <p class="text-[13px] text-slate leading-relaxed">
+                Защита облицовки от налёта и осадков, а также задачи, которые решаются с помощью промышленного альпинизма.
+              </p>
+            </div>
+            <button type="button" onclick="openWpModal('Почему мойка фасадов важна для ухода за зданием', 'https://uniful.by/blog/vagnost-mojka-fasadov.html', 'Уборка квартиры / офиса')" class="mt-4 text-[13px] font-bold text-charcoal hover:text-sungoldHover text-left">
+              Читать статью →
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form & Contacts Section -->
+    <section id="booking" class="py-12 sm:py-16 bg-snow">
+      <div id="contacts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <!-- Left: Real Contacts -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="inline-block text-[11px] font-bold uppercase tracking-widest text-sungoldHover mb-2">Контакты в Бресте</span>
+              <h2 class="font-display font-bold text-[26px] sm:text-[32px] leading-tight text-charcoal">
+                Свяжитесь удобным способом
+              </h2>
+              <p class="text-[14px] text-slate mt-2">
+                Оставьте заявку онлайн или позвоните — согласуем удобное время выезда мастера или забора ковра.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-mist border border-hairline p-5 sm:p-6 space-y-4">
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate">Телефоны</div>
+                <div class="mt-1 flex flex-col gap-1">
+                  <a href="tel:+375292227373" class="font-display font-bold text-[20px] text-charcoal hover:text-sungoldHover transition-colors tabular-nums">+375 (29) 222-73-73</a>
+                  <a href="tel:+375162534349" class="font-display font-semibold text-[16px] text-slate hover:text-charcoal transition-colors tabular-nums">+375 (162) 53-43-49</a>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-hairline">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate">Адрес и график работы</div>
+                <div class="mt-1 text-[15px] font-semibold text-charcoal">г. Брест, ул. Дмитрия Донского, 12А</div>
+                <div class="text-[13px] text-slate mt-0.5">Пн–Пт 09:00–18:00 · Сб, Вс — выходной</div>
+              </div>
+
+              <div class="pt-3 border-t border-hairline">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate">Почта и мессенджер</div>
+                <div class="mt-1.5 flex flex-wrap items-center gap-3">
+                  <a href="viber://chat?number=%2B375292227373" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-hairline text-[13px] font-bold text-charcoal hover:border-charcoal transition-colors">
+                    Написать в Viber
+                  </a>
+                  <a href="mailto:ufs_brest@mail.ru" class="text-[13px] font-semibold text-slate hover:text-charcoal underline">
+                    ufs_brest@mail.ru
+                  </a>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-hairline text-[12px] text-slate">
+                ООО «ЮНИФУЛСЕРВИС» · УНП 291176656
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Booking Form with RB Закон № 99-З Compliance -->
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl bg-mist/60 border border-hairline p-6 sm:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+                <h3 class="font-display font-bold text-[22px] text-charcoal">Оставить заявку на расчёт</h3>
+                <span id="prefill-badge" class="hidden px-2.5 py-1 rounded-md bg-sungold/25 text-charcoal text-[12px] font-bold"></span>
+              </div>
+
+              <form id="booking-form" class="space-y-4" novalidate>
+                <!-- Honeypot -->
+                <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="f-name" class="block text-[13px] font-semibold text-charcoal mb-1.5">Ваше имя <span class="text-red-600">*</span></label>
+                    <input id="f-name" name="name" type="text" required placeholder="Например, Александр" class="w-full h-11 px-3.5 rounded-xl border border-hairline bg-white text-[14px] focus:outline-none focus:border-charcoal">
+                  </div>
+                  <div>
+                    <label for="f-phone" class="block text-[13px] font-semibold text-charcoal mb-1.5">Телефон <span class="text-red-600">*</span></label>
+                    <input id="f-phone" name="phone" type="tel" required placeholder="+375 (29) 000-00-00" class="w-full h-11 px-3.5 rounded-xl border border-hairline bg-white text-[14px] tabular-nums focus:outline-none focus:border-charcoal">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="f-service" class="block text-[13px] font-semibold text-charcoal mb-1.5">Услуга</label>
+                    <select id="f-service" name="service" class="w-full h-11 px-3.5 rounded-xl border border-hairline bg-white text-[14px] focus:outline-none focus:border-charcoal">
+                      <option value="Стирка ковров с вывозом">Стирка ковров с вывозом</option>
+                      <option value="Химчистка мебели">Химчистка мягкой мебели / авто</option>
+                      <option value="Уборка квартиры / офиса">Уборка квартиры / офиса</option>
+                      <option value="Реставрация полов">Реставрация и шлифовка полов</option>
+                      <option value="Мойка окон и фасадов">Мойка окон, фасадов, крыши</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="f-timing" class="block text-[13px] font-semibold text-charcoal mb-1.5">Удобный срок</label>
+                    <select id="f-timing" name="timing" class="w-full h-11 px-3.5 rounded-xl border border-hairline bg-white text-[14px] focus:outline-none focus:border-charcoal">
+                      <option value="На этой неделе">На этой неделе</option>
+                      <option value="Ближайшие 2–3 дня">Ближайшие 2–3 дня</option>
+                      <option value="Нужна консультация">Нужна консультация</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="f-comment" class="block text-[13px] font-semibold text-charcoal mb-1.5">Комментарий (адрес, площадь или тип ковра)</label>
+                  <textarea id="f-comment" name="comment" rows="2" placeholder="Например: 2 ковра на вывоз, район Ковалёво" class="w-full p-3.5 rounded-xl border border-hairline bg-white text-[14px] focus:outline-none focus:border-charcoal"></textarea>
+                </div>
+
+                <!-- Закон № 99-З Required Consent Checkbox (Unchecked by default) -->
+                <div class="pt-1">
+                  <label class="flex items-start gap-2.5 cursor-pointer text-[12px] sm:text-[13px] leading-snug text-slate">
+                    <input id="f-consent" type="checkbox" required class="mt-0.5 w-4 h-4 rounded border-hairline text-charcoal focus:ring-sungold shrink-0">
+                    <span>
+                      Даю согласие ООО «ЮНИФУЛСЕРВИС» на обработку и трансграничную передачу персональных данных в соответствии с
+                      <button type="button" onclick="openModal('modal-privacy')" class="underline text-charcoal font-semibold hover:text-sungoldHover">Политикой обработки ПД</button>
+                      и
+                      <button type="button" onclick="openModal('modal-consent')" class="underline text-charcoal font-semibold hover:text-sungoldHover">Согласием (Закон РБ № 99-З)</button>.
+                    </span>
+                  </label>
+                </div>
+
+                <div id="form-feedback" class="hidden rounded-xl p-3.5 text-[13px] font-medium"></div>
+
+                <button type="submit" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-sungold hover:bg-sungoldHover text-charcoal font-bold text-[15px] transition-colors shadow-sm">
+                  Отправить заявку
+                </button>
+
+                <!-- ст. 407 ГК РБ -->
+                <p class="text-[11px] leading-relaxed text-slate pt-1">
+                  Информация на сайте носит справочный характер и не является публичной офертой в соответствии со ст.&nbsp;407 Гражданского кодекса Республики Беларусь. Окончательная стоимость услуг согласовывается после уточнения объёма работ.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal text-white/80 py-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+        <div>
+          <div class="font-display font-bold text-[18px] text-white">ООО «ЮНИФУЛСЕРВИС»</div>
+          <div class="text-[13px] text-white/65 mt-1">
+            УНП 291176656 · г. Брест, ул. Дмитрия Донского, 12А · Пн–Пт 09:00–18:00 (Сб, Вс — выходной)
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-[13px]">
+          <button type="button" onclick="openModal('modal-privacy')" class="hover:text-white underline">Политика ПД</button>
+          <button type="button" onclick="openModal('modal-consent')" class="hover:text-white underline">Согласие на обработку ПД</button>
+          <button type="button" onclick="openModal('modal-cookie-settings')" class="hover:text-white underline">Настройки cookie</button>
+        </div>
+      </div>
+      <div class="pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[12px] text-white/55">
+        <div>© 2013–2026 ООО «ЮНИФУЛСЕРВИС». Материалы сайта не являются публичной офертой (ст. 407 ГК РБ).</div>
+        <div>Профессиональный клининг, стирка ковров и уход за полами в Бресте</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App-like Sticky Mobile Dock (Signature Feature #1 — hides automatically while Cookie Banner is visible) -->
+  <nav id="mobile-dock" aria-label="Быстрые действия" class="md:hidden fixed bottom-3 left-3 right-3 z-40 hidden">
+    <div class="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-charcoal/90 backdrop-blur-md border border-white/15 shadow-xl">
+      <a href="tel:+375292227373" class="flex items-center justify-center gap-1.5 h-11 rounded-xl bg-white/10 text-white text-[13px] font-semibold active:scale-95 transition">
+        <svg class="w-4 h-4 text-sungold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375292227373" class="flex items-center justify-center gap-1.5 h-11 rounded-xl bg-white/10 text-white text-[13px] font-semibold active:scale-95 transition">
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="flex items-center justify-center h-11 rounded-xl bg-sungold text-charcoal text-[13px] font-bold active:scale-95 transition">
+        <span>Заказать</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- НЦЗПД Cookie Banner (Two visually equal Accept / Reject buttons) -->
+  <div id="cookie-banner" role="dialog" aria-label="Уведомление о cookie" class="fixed bottom-3 left-3 right-3 z-50 max-w-4xl mx-auto bg-white border border-hairline rounded-2xl shadow-2xl p-4 sm:p-5 hidden">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
+      <div class="text-[12px] sm:text-[13px] leading-relaxed text-slate">
+        <span class="font-bold text-charcoal">Файлы cookie.</span>
+        Мы используем технические cookie для работы формы заявки и с вашего согласия — аналитические cookie.
+        <button type="button" onclick="openModal('modal-cookie-settings')" class="underline font-semibold text-charcoal hover:text-sungoldHover ml-1">Настройки cookie</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 shrink-0 w-full md:w-auto">
+        <button type="button" onclick="setCookieConsent('all')" class="px-3 sm:px-4 py-2.5 rounded-xl border border-charcoal bg-charcoal text-white text-[11px] sm:text-[13px] font-bold hover:opacity-90 transition leading-tight text-center">
+          Принять все
+        </button>
+        <button type="button" onclick="setCookieConsent('essential')" class="px-3 sm:px-4 py-2.5 rounded-xl border border-charcoal bg-white text-charcoal text-[11px] sm:text-[13px] font-bold hover:bg-mist transition leading-tight text-center">
+          Отклонить необязательные
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: WordPress Migration Honest Notice (Tariff 2 Required Feature) -->
+  <div id="modal-wp" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="wp-modal-title">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 border border-hairline shadow-2xl">
+      <div class="flex items-start justify-between gap-4 mb-3">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded bg-sungold/20 text-charcoal text-[11px] font-bold uppercase tracking-wider mb-2">Концепт WordPress</span>
+          <h3 id="wp-modal-title" class="font-display font-bold text-[20px] text-charcoal leading-snug">Раздел сайта</h3>
+        </div>
+        <button type="button" onclick="closeModal('modal-wp')" class="w-8 h-8 rounded-lg hover:bg-mist flex items-center justify-center text-slate font-bold" aria-label="Закрыть">✕</button>
+      </div>
+      <p class="text-[14px] leading-relaxed text-slate mb-3">
+        Это визуальный концепт главной страницы. В боевой версии обновим WordPress с переносом всех разделов услуг и статей блога, сохранением старых URL и настройкой Yoast SEO.
+      </p>
+      <div class="text-[12px] text-slate bg-mist rounded-xl p-3 border border-hairline mb-5">
+        Сохраняемый адрес раздела: <span id="wp-modal-url" class="font-semibold text-charcoal break-all"></span>
+      </div>
+      <div class="flex flex-wrap justify-end gap-2.5">
+        <button type="button" onclick="closeModal('modal-wp')" class="px-4 py-2.5 rounded-xl border border-hairline text-[13px] font-semibold text-charcoal hover:bg-mist">Закрыть</button>
+        <button type="button" id="wp-modal-order-btn" class="px-4 py-2.5 rounded-xl bg-sungold hover:bg-sungoldHover text-charcoal text-[13px] font-bold">Заказать эту услугу</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Политика обработки персональных данных (Закон № 99-З) -->
+  <div id="modal-privacy" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-hairline shadow-2xl">
+      <div class="p-5 border-b border-hairline flex items-center justify-between">
+        <h3 class="font-display font-bold text-[18px] text-charcoal">Политика обработки персональных данных</h3>
+        <button type="button" onclick="closeModal('modal-privacy')" class="w-8 h-8 rounded-lg hover:bg-mist font-bold text-slate">✕</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-[13px] leading-relaxed text-slate space-y-3">
+        <p><strong>1. Оператор:</strong> ООО «ЮНИФУЛСЕРВИС», УНП 291176656, юридический адрес: г. Брест, ул. Дмитрия Донского, 12А, e-mail: ufs_brest@mail.ru.</p>
+        <p><strong>2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+        <p><strong>3. Состав и цели обработки:</strong> Имя, номер телефона, выбранная услуга и комментарий обрабатываются исключительно для связи с клиентом, предварительного расчёта и согласования выезда мастера или забора ковра.</p>
+        <p><strong>4. Срок хранения:</strong> до достижения целей обработки либо до отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> вы вправе отозвать согласие, получать информацию об обработке, требовать уточнения, блокирования или удаления персональных данных, обратившись на ufs_brest@mail.ru или по адресу оператора.</p>
+      </div>
+      <div class="p-4 border-t border-hairline flex justify-end">
+        <button type="button" onclick="closeModal('modal-privacy')" class="px-5 py-2 rounded-xl bg-charcoal text-white text-[13px] font-bold">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Согласие на обработку и трансграничную передачу ПД (ст. 9 Закона № 99-З) -->
+  <div id="modal-consent" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-hairline shadow-2xl">
+      <div class="p-5 border-b border-hairline flex items-center justify-between">
+        <h3 class="font-display font-bold text-[18px] text-charcoal">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" onclick="closeModal('modal-consent')" class="w-8 h-8 rounded-lg hover:bg-mist font-bold text-slate">✕</button>
+      </div>
+      <div class="p-5 overflow-y-auto text-[13px] leading-relaxed text-slate space-y-3">
+        <p>Проставляя отметку в форме заявки, вы свободно, однозначно и информированно даёте согласие ООО «ЮНИФУЛСЕРВИС» (УНП 291176656) на обработку указанных персональных данных (имя, телефон, комментарий к заказу).</p>
+        <p><strong>Трансграничная передача (ст. 9 Закона № 99-З):</strong> уведомляем, что для мгновенной передачи заявок ответственному менеджеру могут использоваться сервисы Telegram и Google Apps Script, серверы которых расположены за пределами Республики Беларусь, в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных.</p>
+        <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> вы имеете право в любое время отозвать настоящее согласие, запросить сведения о ваших данных, потребовать их изменения или удаления путём направления обращения на ufs_brest@mail.ru. При отказе от трансграничной передачи вы можете оформить заказ напрямую по телефону +375 (29) 222-73-73.</p>
+      </div>
+      <div class="p-4 border-t border-hairline flex justify-end">
+        <button type="button" onclick="closeModal('modal-consent')" class="px-5 py-2 rounded-xl bg-charcoal text-white text-[13px] font-bold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Настройки cookie (НЦЗПД) -->
+  <div id="modal-cookie-settings" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 border border-hairline shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display font-bold text-[18px] text-charcoal">Настройки файлов cookie</h3>
+        <button type="button" onclick="closeModal('modal-cookie-settings')" class="w-8 h-8 rounded-lg hover:bg-mist font-bold text-slate">✕</button>
+      </div>
+      <div class="space-y-4 text-[13px]">
+        <div class="p-3.5 rounded-xl bg-mist border border-hairline flex items-center justify-between gap-3">
+          <div>
+            <div class="font-bold text-charcoal">Необходимые cookie</div>
+            <div class="text-[12px] text-slate">Обеспечивают работу форм и сохранение выбора.</div>
+          </div>
+          <span class="text-[11px] font-bold uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Всегда вкл.</span>
+        </div>
+        <label class="p-3.5 rounded-xl bg-white border border-hairline flex items-center justify-between gap-3 cursor-pointer">
+          <div>
+            <div class="font-bold text-charcoal">Аналитические cookie</div>
+            <div class="text-[12px] text-slate">Помогают улучшать удобство разделов сайта.</div>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" class="w-4 h-4 rounded text-charcoal">
+        </label>
+      </div>
+      <div class="mt-5 flex justify-end gap-2.5">
+        <button type="button" onclick="saveCookieModal()" class="px-5 py-2.5 rounded-xl bg-charcoal text-white text-[13px] font-bold">Сохранить выбор</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SITE_CONFIG = {
+      company: 'ООО «ЮНИФУЛСЕРВИС»',
+      unp: '291176656',
+      phone: '+375 (29) 222-73-73',
+      gasEndpoint: '', // Подключается в боевой версии (Google Apps Script -> Telegram)
+      demoMode: true,
+      schedule: {
+        workDays: [1, 2, 3, 4, 5], // Пн-Пт
+        openHour: 9,
+        closeHour: 18
+      }
+    };
+
+    // 1. Live Europe/Minsk Status Indicator
+    function updateMinskStatus() {
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Minsk',
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).formatToParts(now);
+
+      const map = {};
+      parts.forEach(p => { map[p.type] = p.value; });
+      const dayMap = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 };
+      const dayNum = dayMap[map.weekday] || 1;
+      const hour = parseInt(map.hour, 10);
+      const minute = parseInt(map.minute, 10);
+      const currentMinutes = hour * 60 + minute;
+
+      const isWorkDay = SITE_CONFIG.schedule.workDays.includes(dayNum);
+      const isOpen = isWorkDay && currentMinutes >= 9 * 60 && currentMinutes < 18 * 60;
+
+      const dot = document.getElementById('live-status-dot');
+      const text = document.getElementById('live-status-text');
+      const shortText = document.getElementById('live-status-short');
+      if (!dot || !text) return;
+
+      if (isOpen) {
+        dot.className = 'w-2 h-2 rounded-full bg-emerald-500 shrink-0';
+        text.textContent = 'Открыто сейчас · до 18:00';
+        if (shortText) shortText.textContent = 'Открыто';
+      } else {
+        dot.className = 'w-2 h-2 rounded-full bg-sungold shrink-0';
+        text.textContent = isWorkDay && hour < 9 ? 'Ответим с 09:00' : 'Ответим в Пн–Пт 09:00–18:00';
+        if (shortText) shortText.textContent = isWorkDay && hour < 9 ? 'С 09:00' : 'Пн–Пт';
+      }
+    }
+    updateMinskStatus();
+
+    // 2. 2-Click Interactive Selector
+    const selectorState = {
+      service: 'Стирка ковров с вывозом',
+      timing: 'На этой неделе'
+    };
+
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = btn.dataset.step;
+        const val = btn.dataset.value;
+        selectorState[step] = val;
+
+        document.querySelectorAll(`.choice-btn[data-step="${step}"]`).forEach(sibling => {
+          sibling.setAttribute('aria-pressed', sibling === btn ? 'true' : 'false');
+        });
+
+        const summary = document.getElementById('selector-summary');
+        if (summary) {
+          summary.textContent = `${selectorState.service} · ${selectorState.timing}`;
+        }
+        syncSelectorInputs(false);
+      });
+    });
+
+    function syncSelectorInputs(showBadge) {
+      const sSelect = document.getElementById('f-service');
+      const tSelect = document.getElementById('f-timing');
+      const badge = document.getElementById('prefill-badge');
+      if (sSelect) sSelect.value = selectorState.service;
+      if (tSelect) tSelect.value = selectorState.timing;
+      if (badge && showBadge) {
+        badge.textContent = `Выбрано: ${selectorState.service} (${selectorState.timing})`;
+        badge.classList.remove('hidden');
+      }
+    }
+
+    function applySelectorToBooking() {
+      syncSelectorInputs(true);
+      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 3. Modals & WordPress Migration Notice
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+    }
+
+    function openWpModal(title, url, prefillService) {
+      document.getElementById('wp-modal-title').textContent = title;
+      document.getElementById('wp-modal-url').textContent = url;
+      const orderBtn = document.getElementById('wp-modal-order-btn');
+      orderBtn.onclick = () => {
+        closeModal('modal-wp');
+        if (prefillService) {
+          selectorState.service = prefillService;
+          syncSelectorInputs(true);
+        }
+        document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+      };
+      openModal('modal-wp');
+    }
+
+    // Close modals on backdrop click
+    document.querySelectorAll('[role="dialog"][aria-modal="true"]').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal.id);
+      });
+    });
+
+    // 4. НЦЗПД Cookie Banner & Sticky Mobile Dock Sync
+    const COOKIE_KEY = 'uniful_cookie_consent_v1';
+
+    function updateDockAndBannerVisibility() {
+      const banner = document.getElementById('cookie-banner');
+      const dock = document.getElementById('mobile-dock');
+      const saved = localStorage.getItem(COOKIE_KEY);
+
+      if (!saved) {
+        banner.classList.remove('hidden');
+        dock.classList.add('hidden');
+      } else {
+        banner.classList.add('hidden');
+        dock.classList.remove('hidden');
+      }
+    }
+
+    function setCookieConsent(mode) {
+      localStorage.setItem(COOKIE_KEY, JSON.stringify({ mode, ts: Date.now() }));
+      updateDockAndBannerVisibility();
+    }
+
+    function saveCookieModal() {
+      const analytics = document.getElementById('cookie-analytics-toggle')?.checked;
+      setCookieConsent(analytics ? 'all' : 'essential');
+      closeModal('modal-cookie-settings');
+    }
+
+    updateDockAndBannerVisibility();
+
+    // 5. Demo Form Handler (GAS/Telegram + Honeypot + Закон № 99-З check)
+    document.getElementById('booking-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const feedback = document.getElementById('form-feedback');
+
+      if (form.website.value) return; // Honeypot triggered
+
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const consent = document.getElementById('f-consent').checked;
+
+      feedback.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border-red-200', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+
+      if (!name || !phone) {
+        feedback.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+        feedback.textContent = 'Пожалуйста, укажите имя и контактный телефон.';
+        feedback.classList.remove('hidden');
+        return;
+      }
+
+      if (!consent) {
+        feedback.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+        feedback.textContent = 'Для отправки заявки необходимо отметить согласие на обработку персональных данных (Закон РБ № 99-З).';
+        feedback.classList.remove('hidden');
+        return;
+      }
+
+      if (SITE_CONFIG.demoMode || !SITE_CONFIG.gasEndpoint) {
+        feedback.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+        feedback.textContent = `Демо-режим: заявка принята (${form.service.value}, ${form.timing.value}). В боевой версии данные мгновенно отправляются в Telegram и на почту менеджера.`;
+        feedback.classList.remove('hidden');
+        form.reset();
+        return;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ветеринарная клиника «ВетДок» — Гомель, ул. Клёнковская, 68</title>
+  <meta name="description" content="Ветеринарная клиника «ВетДок» в Гомеле (ул. Клёнковская, 68). Терапия, УЗИ, собственная лаборатория, хирургия, кардиология, стоматология. Ежедневно 09:00–21:00." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            olive: {
+              DEFAULT: '#3F5E45',
+              dark: '#2D4532',
+              light: '#EBF0E8',
+              border: '#D5DFD0'
+            },
+            parchment: {
+              DEFAULT: '#F6F4EE',
+              card: '#FCFBF7',
+              warm: '#EFECE3'
+            },
+            ochre: {
+              DEFAULT: '#C78A4F',
+              dark: '#A9713A',
+              light: '#FBF3EA'
+            },
+            forest: {
+              DEFAULT: '#1D2B20',
+              muted: '#536256'
+            }
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'Georgia', 'serif'],
+            sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html, body {
+      overflow-x: hidden;
+      background-color: #F6F4EE;
+      color: #1D2B20;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+    .glass-dock {
+      background: rgba(252, 251, 247, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .service-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: #3F5E45;
+      box-shadow: 0 12px 28px -12px rgba(29, 43, 32, 0.14);
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #EFECE3; }
+    ::-webkit-scrollbar-thumb { background: #B8C4B4; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3F5E45; }
+  </style>
+</head>
+<body class="antialiased selection:bg-olive selection:text-white pb-24 md:pb-0">
+
+  <!-- TOP DEMO CONCEPT STRIP (Static, zero overlap with header or mobile dock) -->
+  <div class="bg-forest text-parchment/90 text-xs py-1.5 px-4 border-b border-olive-dark">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-ochre shrink-0"></span>
+        <span>Визуальный концепт главной страницы для <strong>ЧУП «ВетДокГомель»</strong> · В боевой версии переносится на WordPress с сохранением всех URL и SEO</span>
+      </div>
+      <button type="button" onclick="openWpModal('Архитектура сайта и перенос 25+ страниц на WordPress')" class="text-ochre hover:underline font-medium whitespace-nowrap">
+        О концепте WordPress →
+      </button>
+    </div>
+  </div>
+
+  <!-- SINGLE-ROW STICKY HEADER -->
+  <header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur-md border-b border-olive-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Brand + Live Status -->
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="#top" class="flex items-center gap-2.5 whitespace-nowrap shrink-0 group">
+          <span class="w-9 h-9 rounded-lg bg-olive text-white flex items-center justify-center shadow-sm group-hover:bg-olive-dark transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21s-6.5-4.35-8.5-8.5C1.9 9.2 3.8 5.5 7.2 5.2c2-.2 3.6.9 4.8 2.4 1.2-1.5 2.8-2.6 4.8-2.4 3.4.3 5.3 4 3.7 7.3-2 4.15-8.5 8.5-8.5 8.5z"/>
+              <path d="M12 10v5M9.5 12.5h5"/>
+            </svg>
+          </span>
+          <span class="flex flex-col leading-tight">
+            <span class="font-serif font-bold text-base sm:text-lg text-forest tracking-tight">ВетДок</span>
+            <span class="text-[11px] text-forest-muted font-medium hidden sm:block">Гомель · Клёнковская, 68</span>
+          </span>
+        </a>
+        <!-- Live Europe/Minsk Status -->
+        <div id="live-status-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-olive-light text-olive-dark border border-olive-border whitespace-nowrap shrink-0">
+          <span id="live-status-dot" class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span id="live-status-text">Открыто сейчас · до 21:00</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation (strictly 1 row) -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-forest">
+        <a href="#services" class="hover:text-olive transition-colors whitespace-nowrap">Услуги (16)</a>
+        <a href="#doctors" class="hover:text-olive transition-colors whitespace-nowrap">Врачи</a>
+        <a href="#articles" class="hover:text-olive transition-colors whitespace-nowrap">Статьи</a>
+        <a href="#erip" class="hover:text-olive transition-colors whitespace-nowrap">Оплата ЕРИП</a>
+        <a href="#contacts" class="hover:text-olive transition-colors whitespace-nowrap">Контакты</a>
+      </nav>
+
+      <!-- Right Actions: Phone + Subtle Viber SVG + CTA (all whitespace-nowrap) -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <a href="tel:+375299050300" class="hidden md:inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-olive transition-colors whitespace-nowrap">
+          <svg class="w-4 h-4 text-olive shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+375 (29) 90-50-300</span>
+        </a>
+        <a href="viber://chat?number=%2B375299050300" title="Написать в Viber" aria-label="Написать в Viber" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-lg border border-olive-border bg-parchment-card text-olive hover:bg-olive hover:text-white transition-colors shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+        <a href="#booking" class="inline-flex items-center justify-center px-3.5 sm:px-4 py-2 rounded-lg bg-olive text-white text-xs sm:text-sm font-semibold hover:bg-olive-dark transition-colors whitespace-nowrap shadow-sm">
+          Записаться
+        </a>
+        <button type="button" id="mobile-menu-btn" aria-label="Открыть меню" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-olive-border bg-parchment-card text-forest">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-olive-border bg-parchment-card px-4 py-4 space-y-3">
+      <div class="flex items-center justify-between text-xs text-forest-muted pb-2 border-b border-olive-border">
+        <span id="mobile-status-text" class="font-medium text-olive-dark">● Ежедневно 09:00–21:00</span>
+        <span>ул. Клёнковская, 68</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-sm font-medium">
+        <a href="#services" class="mobile-nav-link py-2 px-3 rounded-lg bg-parchment hover:bg-olive-light">Услуги (16)</a>
+        <a href="#doctors" class="mobile-nav-link py-2 px-3 rounded-lg bg-parchment hover:bg-olive-light">Врачи</a>
+        <a href="#articles" class="mobile-nav-link py-2 px-3 rounded-lg bg-parchment hover:bg-olive-light">Статьи</a>
+        <a href="#erip" class="mobile-nav-link py-2 px-3 rounded-lg bg-parchment hover:bg-olive-light">Оплата ЕРИП</a>
+        <a href="#contacts" class="mobile-nav-link py-2 px-3 rounded-lg bg-parchment hover:bg-olive-light col-span-2">Адрес, транспорт и карта</a>
+      </div>
+      <div class="pt-2 border-t border-olive-border flex flex-col gap-2 text-sm">
+        <a href="tel:+375299050300" class="font-semibold text-olive">+375 (29) 90-50-300</a>
+        <a href="tel:+375291080600" class="font-semibold text-olive">+375 (29) 10-80-600</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- MEDICAL RIBBON HERO + URGENT TRIAGE & 2-CLICK QUICK-BOOK BAR -->
+    <section class="pt-6 sm:pt-10 pb-12 sm:pb-16 border-b border-olive-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Clinical Meta Ribbon -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-6 mb-6 border-b border-olive-border text-xs sm:text-sm">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-forest-muted">
+            <span class="inline-flex items-center gap-1.5 font-medium text-forest">
+              <svg class="w-4 h-4 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              г. Гомель, ул. Клёнковская, д. 68
+            </span>
+            <span class="hidden sm:inline text-olive-border">|</span>
+            <span>Ежедневно 09:00–21:00</span>
+            <span class="hidden sm:inline text-olive-border">|</span>
+            <span>Парковка перед клиникой и за ней</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ochre-light border border-ochre/30 text-forest font-medium text-xs">
+            <span class="text-ochre font-bold">★ 5.0</span>
+            <span>Яндекс Карты · 369 отзывов · 1000+ оценок</span>
+          </div>
+        </div>
+
+        <!-- Editorial Title + Clinical Lead -->
+        <div class="max-w-4xl">
+          <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-3">
+            Ветеринарный центр полного цикла · ЧУП «ВетДокГомель»
+          </p>
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-forest leading-[1.2] tracking-tight">
+            Спокойный приём, точная диагностика и хирургия для ваших питомцев
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-forest-muted max-w-3xl leading-relaxed">
+            В клинике «ВетДок» работают 10 профильных ветеринарных врачей: от первичного осмотра, вакцинации и анализов в собственной лаборатории до УЗИ, кардиологии, стоматологии, эндоскопии и ОРИТ.
+          </p>
+        </div>
+
+        <!-- Urgent Triage Strip + 2-Click Interactive Selector -->
+        <div class="mt-8 bg-parchment-card border border-olive-border rounded-2xl shadow-sm overflow-hidden">
+          <!-- Top Urgent Call Ribbon -->
+          <div class="bg-olive text-white px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-ochre shrink-0"></span>
+              <span class="font-medium">Нужна срочная консультация или экстренный приём?</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 font-semibold">
+              <a href="tel:+375299050300" class="inline-flex items-center gap-1.5 hover:text-ochre-light transition-colors whitespace-nowrap">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+375 (29) 90-50-300</span>
+              </a>
+              <a href="tel:+375291080600" class="inline-flex items-center gap-1.5 hover:text-ochre-light transition-colors whitespace-nowrap">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+375 (29) 10-80-600</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 2-Click Interactive Booking Pre-fill -->
+          <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+            <div class="lg:col-span-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest-muted mb-2.5">
+                1. Направление приёма
+              </p>
+              <div class="flex flex-wrap gap-2" role="group" aria-label="Выбор направления приёма">
+                <button type="button" data-triage-dir="Терапия / вакцинация" class="triage-dir-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive bg-olive text-white transition-colors whitespace-nowrap">
+                  Терапия / вакцинация
+                </button>
+                <button type="button" data-triage-dir="УЗИ / анализы" class="triage-dir-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors whitespace-nowrap">
+                  УЗИ / анализы
+                </button>
+                <button type="button" data-triage-dir="Хирургия / стоматология" class="triage-dir-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors whitespace-nowrap">
+                  Хирургия / стоматология
+                </button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-3">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest-muted mb-2.5">
+                2. Когда удобно приехать
+              </p>
+              <div class="flex flex-wrap gap-1.5" role="group" aria-label="Выбор времени визита">
+                <button type="button" data-triage-time="Сегодня" class="triage-time-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive bg-olive-light text-olive-dark transition-colors">
+                  Сегодня
+                </button>
+                <button type="button" data-triage-time="Завтра" class="triage-time-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors">
+                  Завтра
+                </button>
+                <button type="button" data-triage-time="Плановый визит" class="triage-time-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors">
+                  Планово
+                </button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-2">
+              <button type="button" id="apply-triage-btn" class="w-full px-4 py-2.5 rounded-xl bg-ochre hover:bg-ochre-dark text-white font-semibold text-sm transition-colors shadow-sm whitespace-nowrap">
+                Перейти к записи →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panoramic Hospital Visual + 3 Clinical Pillars -->
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-8 relative rounded-2xl overflow-hidden border border-olive-border bg-parchment-warm min-h-[260px] sm:min-h-[340px]">
+            <img
+              src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1400&q=80"
+              alt="Осмотр собаки ветеринарным врачом в клинике ВетДок"
+              class="w-full h-full object-cover object-center"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/75 via-forest/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-end justify-between gap-3 text-white">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded bg-ochre/90 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+                  Забота · Ответственность · Профессионализм
+                </span>
+                <p class="font-serif text-lg sm:text-xl font-bold">
+                  Собственная лаборатория, УЗИ и хирургический блок в одном здании
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
+            <div class="bg-parchment-card border border-olive-border rounded-2xl p-5 flex flex-col justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-olive">Команда клиники</span>
+              <div class="mt-2">
+                <p class="font-serif text-2xl font-bold text-forest">10 врачей</p>
+                <p class="text-xs sm:text-sm text-forest-muted mt-1">Терапевты, хирурги, кардиологи, анестезиологи, УЗИ-специалисты</p>
+              </div>
+            </div>
+            <div class="bg-parchment-card border border-olive-border rounded-2xl p-5 flex flex-col justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-olive">Диагностика на месте</span>
+              <div class="mt-2">
+                <p class="font-serif text-2xl font-bold text-forest">Лаборатория и УЗИ</p>
+                <p class="text-xs sm:text-sm text-forest-muted mt-1">ОАК и биохимия 16 показателей в кратчайшие сроки, ЭКГ и УЗИ</p>
+              </div>
+            </div>
+            <div class="bg-parchment-card border border-olive-border rounded-2xl p-5 flex flex-col justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-olive">Комплексный чек-ап</span>
+              <div class="mt-2">
+                <p class="font-serif text-2xl font-bold text-forest">от 150 BYN</p>
+                <p class="text-xs sm:text-sm text-forest-muted mt-1">Предоперационный комплекс (150 BYN) и расширенный Чек-Ап (180 BYN)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABBED 16-SERVICE DIRECTORY -->
+    <section id="services" class="py-14 sm:py-20 bg-parchment">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-2">Полный каталог услуг</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest">16 направлений ветеринарной помощи</h2>
+            <p class="mt-2 text-sm sm:text-base text-forest-muted max-w-2xl">
+              Указаны ориентировочные тарифы клиники по прейскуранту. Точная стоимость рассчитывается врачом после осмотра с учётом веса питомца и расходных материалов.
+            </p>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Фильтр категорий услуг">
+            <button type="button" data-service-tab="all" class="service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-olive text-white border border-olive transition-colors">
+              Все 16 услуг
+            </button>
+            <button type="button" data-service-tab="diagnostics" class="service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment-card text-forest border border-olive-border hover:border-olive transition-colors">
+              Приём и диагностика
+            </button>
+            <button type="button" data-service-tab="therapy" class="service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment-card text-forest border border-olive-border hover:border-olive transition-colors">
+              Терапия и уход
+            </button>
+            <button type="button" data-service-tab="surgery" class="service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment-card text-forest border border-olive-border hover:border-olive transition-colors">
+              Хирургия и ОРИТ
+            </button>
+          </div>
+        </div>
+
+        <!-- 16 Services Grid (rendered from structured JS array for cleanliness) -->
+        <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"></div>
+
+        <!-- Complex Check-up & ERIP Banner -->
+        <div id="erip" class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <div class="lg:col-span-7 bg-olive text-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between gap-4">
+            <div>
+              <span class="inline-block px-2.5 py-1 rounded bg-white/15 text-xs font-semibold tracking-wide mb-3">
+                Комплексные программы обследования
+              </span>
+              <h3 class="font-serif text-xl sm:text-2xl font-bold">
+                Предоперационный скрининг и полный Чек-Ап за один визит
+              </h3>
+              <p class="mt-2 text-sm text-white/85 leading-relaxed">
+                Программы объединяют УЗИ сердца (скрининг), УЗИ брюшной полости, ЭКГ, общий и биохимический анализы крови со взятием и расходными материалами.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="bg-white/10 border border-white/15 rounded-xl p-3.5">
+                <p class="text-xs text-white/75">Обследование предоперационное</p>
+                <p class="font-serif text-xl font-bold mt-0.5">150 BYN</p>
+              </div>
+              <div class="bg-white/10 border border-white/15 rounded-xl p-3.5">
+                <p class="text-xs text-white/75">Полный Чек-Ап питомца</p>
+                <p class="font-serif text-xl font-bold mt-0.5">180 BYN</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-parchment-card border border-olive-border rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-2.5 py-1 rounded bg-ochre-light text-ochre-dark text-xs font-semibold tracking-wide mb-3">
+                Оплата через ЕРИП (E-POS)
+              </span>
+              <h3 class="font-serif text-xl font-bold text-forest">
+                Быстрая оплата без очереди у регистратуры
+              </h3>
+              <p class="mt-2 text-sm text-forest-muted leading-relaxed">
+                В дереве ЕРИП выберите сервис «E-POS — оплата товаров и услуг» и введите код клиники:
+              </p>
+              <div class="mt-4 px-4 py-3 rounded-xl bg-parchment border border-olive-border flex items-center justify-between">
+                <span class="text-xs font-medium text-forest-muted">Код услуги E-POS:</span>
+                <span class="font-mono font-bold text-lg text-olive tracking-wide">13970-1-2</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-olive-border flex items-center justify-between text-xs text-forest-muted">
+              <span>QR-код также размещён у регистратуры</span>
+              <button type="button" onclick="openWpModal('Раздел оплаты ЕРИП и инструкция для клиентов')" class="font-semibold text-olive hover:underline">
+                Инструкция →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL DOCTORS SHOWCASE -->
+    <section id="doctors" class="py-14 sm:py-20 bg-parchment-card border-y border-olive-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-2">Врачи клиники</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest">Команда ветеринарных специалистов</h2>
+            <p class="mt-2 text-sm sm:text-base text-forest-muted max-w-2xl">
+              Выпускники Витебской государственной академии ветеринарной медицины (ВГАВМ), постоянные участники профильных конференций и мастер-классов.
+            </p>
+          </div>
+
+          <!-- Doctors Filter -->
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-doc-filter="all" class="doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-olive text-white border border-olive transition-colors">
+              Все врачи (10)
+            </button>
+            <button type="button" data-doc-filter="therapy" class="doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment text-forest border border-olive-border hover:border-olive transition-colors">
+              Терапия, УЗИ и анализы
+            </button>
+            <button type="button" data-doc-filter="surgery" class="doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment text-forest border border-olive-border hover:border-olive transition-colors">
+              Хирургия и ортопедия
+            </button>
+            <button type="button" data-doc-filter="cardio" class="doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment text-forest border border-olive-border hover:border-olive transition-colors">
+              Кардиология и анестезия
+            </button>
+          </div>
+        </div>
+
+        <div id="doctors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- ARTICLES & CLINIC NEWS PREVIEW -->
+    <section id="articles" class="py-14 sm:py-20 bg-parchment">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div>
+            <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-2">База знаний и новости</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest">Полезные статьи для владельцев</h2>
+          </div>
+          <button type="button" onclick="openWpModal('Архив статей и новостей клиники (/stati/ и /novosti/)')" class="text-sm font-semibold text-olive hover:text-olive-dark transition-colors">
+            Все статьи и новости →
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-parchment-card border border-olive-border rounded-2xl overflow-hidden flex flex-col">
+            <div class="h-48 overflow-hidden bg-parchment-warm">
+              <img
+                src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=900&q=80"
+                alt="Обследование собаки у ветеринара"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-ochre-dark">Статья врача</span>
+                <h3 class="font-serif font-bold text-lg text-forest mt-1.5 leading-snug">
+                  Обследование сердца у питомца: когда нужны УЗИ и ЭКГ
+                </h3>
+                <p class="mt-2 text-sm text-forest-muted leading-relaxed">
+                  Одышка после прогулки, быстрая утомляемость и подготовка к наркозу — рассказываем, на что обращают внимание кардиологи «ВетДок».
+                </p>
+              </div>
+              <button type="button" onclick="openWpModal('Статья «Обследование сердца у питомца»')" class="mt-4 inline-flex items-center text-sm font-semibold text-olive hover:underline self-start">
+                Читать статью →
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-parchment-card border border-olive-border rounded-2xl overflow-hidden flex flex-col">
+            <div class="h-48 overflow-hidden bg-parchment-warm">
+              <img
+                src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=80"
+                alt="Кот на профилактическом осмотре"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive">Памятка владельцу</span>
+                <h3 class="font-serif font-bold text-lg text-forest mt-1.5 leading-snug">
+                  Вакцинация и чипирование щенков и котят: схема подготовки
+                </h3>
+                <p class="mt-2 text-sm text-forest-muted leading-relaxed">
+                  Как правильно провести дегельминтизацию за 7–14 дней до прививки, оформить ветеринарный паспорт и зарегистрировать чип в базе.
+                </p>
+              </div>
+              <button type="button" onclick="openWpModal('Страница «Вакцинация и чипирование»')" class="mt-4 inline-flex items-center text-sm font-semibold text-olive hover:underline self-start">
+                Открыть памятку →
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-parchment-card border border-olive-border rounded-2xl overflow-hidden flex flex-col">
+            <div class="h-48 overflow-hidden bg-parchment-warm">
+              <img
+                src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=900&q=80"
+                alt="Питомцы после планового осмотра"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive">Акции и сервис</span>
+                <h3 class="font-serif font-bold text-lg text-forest mt-1.5 leading-snug">
+                  Ежегодные профилактические акции и оплата по ЕРИП
+                </h3>
+                <p class="mt-2 text-sm text-forest-muted leading-relaxed">
+                  В клинике регулярно проходят сезонные программы («Мартовский кот» и дни профилактики), а услуги можно оплатить через E-POS (13970-1-2).
+                </p>
+              </div>
+              <button type="button" onclick="openWpModal('Раздел новостей и акций клиники')" class="mt-4 inline-flex items-center text-sm font-semibold text-olive hover:underline self-start">
+                Подробнее →
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS, MAP & APPOINTMENT BOOKING FORM -->
+    <section id="contacts" class="py-14 sm:py-20 bg-parchment-card border-t border-olive-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Left: Address, Transport, Map -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-2">Как добраться</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest">г. Гомель, ул. Клёнковская, д. 68</h2>
+            <p class="mt-2 text-sm sm:text-base text-forest-muted">
+              Режим работы: <strong>ежедневно с 09:00 до 21:00</strong>. Имеется удобная парковка перед клиникой и за ней.
+            </p>
+          </div>
+
+          <!-- Phones & Email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-parchment border border-olive-border">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest-muted mb-1.5">Телефоны регистратуры</p>
+              <div class="space-y-1">
+                <a href="tel:+375299050300" class="block font-semibold text-base text-olive hover:text-olive-dark whitespace-nowrap">
+                  +375 (29) 90-50-300
+                </a>
+                <a href="tel:+375291080600" class="block font-semibold text-base text-olive hover:text-olive-dark whitespace-nowrap">
+                  +375 (29) 10-80-600
+                </a>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-parchment border border-olive-border">
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest-muted mb-1.5">Мессенджер и почта</p>
+              <div class="space-y-1.5 text-sm">
+                <a href="viber://chat?number=%2B375299050300" class="inline-flex items-center gap-1.5 font-semibold text-olive hover:underline">
+                  Написать в Viber
+                </a>
+                <a href="mailto:gomelvetdoc@gmail.com" class="block text-forest hover:text-olive">
+                  gomelvetdoc@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Public Transport -->
+          <div class="p-5 rounded-2xl bg-parchment border border-olive-border space-y-2.5 text-sm">
+            <p class="font-semibold text-forest">Остановка «ул. Чечерская» (5 минут пешком):</p>
+            <p class="text-forest-muted"><strong class="text-forest">Автобусы:</strong> № 5, № 7а, № 17, № 18, № 18а, № 33, № 33а, № 44</p>
+            <p class="text-forest-muted"><strong class="text-forest">Троллейбусы:</strong> № 9, № 16, № 17, № 25</p>
+            <p class="text-forest-muted"><strong class="text-forest">Маршрутные такси:</strong> № 14, № 17, № 18, № 23, № 25, № 27</p>
+          </div>
+
+          <!-- Yandex Map Embed -->
+          <div class="rounded-2xl overflow-hidden border border-olive-border bg-parchment-warm">
+            <iframe
+              title="Карта проезда: Ветеринарная клиника ВетДок, г. Гомель, ул. Клёнковская, 68"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%93%D0%BE%D0%BC%D0%B5%D0%BB%D1%8C%2C%20%D1%83%D0%BB.%20%D0%9A%D0%BB%D1%91%D0%BD%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%2068&z=16"
+              width="100%"
+              height="270"
+              style="border:0;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div class="px-4 py-2.5 bg-parchment flex flex-wrap items-center justify-between gap-2 text-xs text-forest-muted border-t border-olive-border">
+              <span>★ 5.0 на Яндекс Картах (369 отзывов)</span>
+              <a href="https://yandex.by/maps/?text=Гомель%20улица%20Клёнковская%2068%20ВетДок" target="_blank" rel="noopener noreferrer" class="font-semibold text-olive hover:underline">
+                Построить маршрут →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Appointment Form -->
+        <div id="booking" class="lg:col-span-6 bg-parchment border border-olive-border rounded-2xl p-6 sm:p-8 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.14em] font-semibold text-olive mb-1.5">Онлайн-заявка</p>
+          <h2 class="font-serif text-2xl font-bold text-forest">Записаться на приём в «ВетДок»</h2>
+          <p class="mt-1.5 text-sm text-forest-muted">
+            Администратор перезвонит в рабочее время (09:00–21:00), чтобы подобрать удобное окно у нужного врача.
+          </p>
+
+          <form id="booking-form" class="mt-6 space-y-4" novalidate>
+            <!-- Honeypot field against spam -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="owner-name" class="block text-xs font-semibold text-forest mb-1.5">Ваше имя *</label>
+                <input
+                  id="owner-name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Например, Анна"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+                />
+              </div>
+              <div>
+                <label for="owner-phone" class="block text-xs font-semibold text-forest mb-1.5">Телефон для связи *</label>
+                <input
+                  id="owner-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="+375 (29) ___-__-__"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="pet-info" class="block text-xs font-semibold text-forest mb-1.5">Питомец (вид / возраст)</label>
+                <input
+                  id="pet-info"
+                  name="pet"
+                  type="text"
+                  placeholder="Кот, 4 года / Собака, 12 кг"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+                />
+              </div>
+              <div>
+                <label for="visit-time" class="block text-xs font-semibold text-forest mb-1.5">Желаемый формат визита</label>
+                <select
+                  id="visit-time"
+                  name="timing"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+                >
+                  <option value="Сегодня">Сегодня (ближайшее окно)</option>
+                  <option value="Завтра">Завтра</option>
+                  <option value="Плановый визит">Плановый визит (подберём дату)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="visit-service" class="block text-xs font-semibold text-forest mb-1.5">Направление / услуга</label>
+              <input
+                id="visit-service"
+                name="service"
+                type="text"
+                value="Терапия / вакцинация"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+              />
+            </div>
+
+            <div>
+              <label for="visit-comment" class="block text-xs font-semibold text-forest mb-1.5">Симптомы или комментарий</label>
+              <textarea
+                id="visit-comment"
+                name="comment"
+                rows="3"
+                placeholder="Кратко опишите повод обращения или укажите желаемого врача"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-parchment-card border border-olive-border text-sm text-forest focus:outline-none focus:border-olive"
+              ></textarea>
+            </div>
+
+            <!-- Law No. 99-Z Unchecked Required Consent Checkbox -->
+            <div class="pt-1">
+              <label class="flex items-start gap-2.5 text-xs text-forest-muted cursor-pointer">
+                <input
+                  id="pd-consent"
+                  type="checkbox"
+                  required
+                  class="mt-0.5 w-4 h-4 rounded border-olive-border text-olive focus:ring-olive shrink-0"
+                />
+                <span>
+                  Я даю
+                  <button type="button" onclick="openModal('modal-consent')" class="text-olive underline hover:text-olive-dark font-medium">
+                    согласие на обработку и трансграничную передачу персональных данных
+                  </button>
+                  в соответствии со ст. 9 Закона РБ № 99-З и ознакомлен(а) с
+                  <button type="button" onclick="openModal('modal-privacy')" class="text-olive underline hover:text-olive-dark font-medium">
+                    Политикой обработки ПД
+                  </button>. *
+                </span>
+              </label>
+            </div>
+
+            <div id="form-feedback" class="hidden rounded-xl p-3.5 text-sm"></div>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 px-6 rounded-xl bg-olive hover:bg-olive-dark text-white font-semibold text-sm sm:text-base transition-colors shadow-sm"
+            >
+              Отправить заявку на приём
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER WITH REAL REQUISITES & COMPLIANCE -->
+  <footer class="bg-forest text-parchment/85 py-12 border-t border-olive-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <p class="font-serif text-lg font-bold text-white">Ветеринарная клиника «ВетДок»</p>
+          <p class="mt-2 text-xs sm:text-sm text-parchment/75 leading-relaxed">
+            Частное унитарное предприятие «ВетДокГомель»<br />
+            УНП: 491344784<br />
+            г. Гомель, ул. Клёнковская, д. 68<br />
+            Режим работы: ежедневно с 09:00 до 21:00
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-ochre mb-3">Связь и запись</p>
+          <ul class="space-y-1.5 text-sm">
+            <li><a href="tel:+375299050300" class="hover:text-white transition-colors">+375 (29) 90-50-300</a></li>
+            <li><a href="tel:+375291080600" class="hover:text-white transition-colors">+375 (29) 10-80-600</a></li>
+            <li><a href="mailto:gomelvetdoc@gmail.com" class="hover:text-white transition-colors">gomelvetdoc@gmail.com</a></li>
+            <li><a href="viber://chat?number=%2B375299050300" class="hover:text-white transition-colors">Чат в Viber</a></li>
+            <li class="text-xs text-parchment/65 pt-1">ЕРИП (E-POS): 13970-1-2</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-ochre mb-3">Правовая информация</p>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li>
+              <button type="button" onclick="openModal('modal-privacy')" class="hover:text-white underline text-left">
+                Политика обработки персональных данных
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openModal('modal-consent')" class="hover:text-white underline text-left">
+                Согласие на обработку и трансграничную передачу ПД
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openModal('modal-cookie-settings')" class="hover:text-white underline text-left">
+                Настройки cookie
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openWpModal('Публичный договор и правила обслуживания клиники')" class="hover:text-white underline text-left">
+                Публичный договор и правила обслуживания
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-parchment/65">
+        <p>
+          Информация о стоимости услуг, представленная на сайте, носит справочный характер и не является публичной офертой (ст. 407 ГК РБ).
+        </p>
+        <p class="whitespace-nowrap">© 2020–2026 ЧУП «ВетДокГомель»</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- APP-LIKE STICKY MOBILE DOCK (hidden automatically while cookie banner is open) -->
+  <nav id="mobile-sticky-dock" aria-label="Быстрые действия" class="md:hidden fixed bottom-3 left-3 right-3 z-30 glass-dock border border-olive-border rounded-2xl shadow-lg px-2 py-2 grid grid-cols-3 gap-1.5 transition-all duration-200 hidden">
+    <a href="tel:+375299050300" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-parchment text-forest font-semibold text-xs border border-olive-border">
+      <svg class="w-4 h-4 text-olive shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Позвонить</span>
+    </a>
+    <a href="viber://chat?number=%2B375299050300" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-parchment text-forest font-semibold text-xs border border-olive-border">
+      <svg class="w-4 h-4 text-olive shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span>Viber</span>
+    </a>
+    <a href="#booking" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-olive text-white font-semibold text-xs shadow-sm">
+      <span>Записаться</span>
+    </a>
+  </nav>
+
+  <!-- NCZPD COOKIE BANNER (Two visually equal buttons + Settings) -->
+  <div id="cookie-banner" role="dialog" aria-label="Настройки использования файлов cookie" class="fixed bottom-0 inset-x-0 z-50 bg-parchment-card border-t-2 border-olive shadow-2xl p-4 sm:p-5 hidden">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div class="text-xs sm:text-sm text-forest-muted leading-relaxed max-w-3xl">
+        <p class="font-semibold text-forest mb-1">Использование файлов cookie (требования НЦЗПД РБ)</p>
+        <p>
+          Мы используем необходимые cookie для работы формы записи и аналитические cookie (Яндекс.Метрика) для улучшения работы сайта. Вы можете принять все файлы или отклонить необязательные.
+          <button type="button" onclick="openModal('modal-cookie-settings')" class="text-olive underline font-medium ml-1">
+            Настройки cookie
+          </button>
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
+        <button type="button" onclick="saveCookieChoice('necessary')" class="px-5 py-2.5 rounded-xl border border-olive bg-parchment-card text-olive font-semibold text-xs sm:text-sm hover:bg-olive-light transition-colors whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" onclick="saveCookieChoice('all')" class="px-5 py-2.5 rounded-xl border border-olive bg-olive text-white font-semibold text-xs sm:text-sm hover:bg-olive-dark transition-colors whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TARIFF 2 WORDPRESS HONEST DEMO NOTICE -->
+  <div id="modal-wp-demo" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest/60 backdrop-blur-sm">
+    <div class="bg-parchment-card border border-olive-border rounded-2xl max-w-lg w-full p-6 shadow-xl">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded bg-ochre-light text-ochre-dark text-xs font-semibold mb-2">
+            Демо-концепт · Тариф WordPress
+          </span>
+          <h3 id="wp-modal-title" class="font-serif text-xl font-bold text-forest">Раздел сайта</h3>
+        </div>
+        <button type="button" onclick="closeModal('modal-wp-demo')" aria-label="Закрыть окно" class="text-forest-muted hover:text-forest text-xl leading-none px-2 py-1">×</button>
+      </div>
+      <p class="mt-3 text-sm text-forest-muted leading-relaxed">
+        Это визуальный концепт главной страницы. В боевой версии перенесём все 25+ страниц услуг, профили врачей и статьи на современный WordPress с сохранением всех старых URL и настройкой Yoast SEO.
+      </p>
+      <div class="mt-5 flex flex-wrap justify-end gap-2.5">
+        <button type="button" onclick="closeModal('modal-wp-demo')" class="px-4 py-2 rounded-xl border border-olive-border text-sm font-medium text-forest hover:bg-parchment">
+          Закрыть
+        </button>
+        <a href="#booking" onclick="closeModal('modal-wp-demo')" class="px-4 py-2 rounded-xl bg-olive text-white text-sm font-semibold hover:bg-olive-dark">
+          Записаться на приём
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PRIVACY POLICY (LAW NO. 99-Z) -->
+  <div id="modal-privacy" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest/60 backdrop-blur-sm">
+    <div class="bg-parchment-card border border-olive-border rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-xl">
+      <div class="px-6 py-4 border-b border-olive-border flex items-center justify-between">
+        <h3 class="font-serif text-lg font-bold text-forest">Политика обработки персональных данных</h3>
+        <button type="button" onclick="closeModal('modal-privacy')" aria-label="Закрыть" class="text-forest-muted hover:text-forest text-xl px-2">×</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-forest-muted space-y-3 leading-relaxed">
+        <p><strong class="text-forest">1. Оператор:</strong> Частное унитарное предприятие «ВетДокГомель» (УНП 491344784), адрес: г. Гомель, ул. Клёнковская, д. 68, тел. +375 (29) 90-50-300, e-mail: gomelvetdoc@gmail.com.</p>
+        <p><strong class="text-forest">2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+        <p><strong class="text-forest">3. Состав и цели обработки:</strong> Имя, номер телефона, сведения о питомце и комментарий, указанные пользователем в форме записи, обрабатываются исключительно для связи с клиентом, согласования времени ветеринарного приёма и оказания ветеринарных услуг.</p>
+        <p><strong class="text-forest">4. Срок хранения:</strong> Персональные данные хранятся в течение срока, необходимого для достижения указанных целей, либо до отзыва согласия субъектом персональных данных, если иное не предусмотрено законодательством Республики Беларусь.</p>
+        <p><strong class="text-forest">5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> Вы вправе в любое время отозвать согласие, получить информацию об обработке своих данных, требовать их изменения, блокирования или удаления, обратившись по адресу г. Гомель, ул. Клёнковская, д. 68 или на e-mail gomelvetdoc@gmail.com.</p>
+      </div>
+      <div class="px-6 py-3.5 border-t border-olive-border flex justify-end">
+        <button type="button" onclick="closeModal('modal-privacy')" class="px-4 py-2 rounded-xl bg-olive text-white text-sm font-semibold">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CROSS-BORDER & PD CONSENT (ART. 9 LAW NO. 99-Z) -->
+  <div id="modal-consent" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest/60 backdrop-blur-sm">
+    <div class="bg-parchment-card border border-olive-border rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-xl">
+      <div class="px-6 py-4 border-b border-olive-border flex items-center justify-between">
+        <h3 class="font-serif text-lg font-bold text-forest">Согласие на обработку и трансграничную передачу ПД</h3>
+        <button type="button" onclick="closeModal('modal-consent')" aria-label="Закрыть" class="text-forest-muted hover:text-forest text-xl px-2">×</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-forest-muted space-y-3 leading-relaxed">
+        <p>Настоящим, действуя свободно, своей волей и в своём интересе, я даю согласие <strong class="text-forest">ЧУП «ВетДокГомель» (УНП 491344784)</strong> на обработку моих персональных данных (имя, телефон, информация о питомце и комментарии), передаваемых через форму онлайн-записи на сайте.</p>
+        <p><strong class="text-forest">Трансграничная передача (ст. 9 Закона № 99-З):</strong> Я уведомлён(а) и согласен(а) с тем, что для оперативного уведомления администраторов клиники о заявке переданные данные могут обрабатываться с использованием сервисов Google (Google Apps Script) и мессенджера Telegram, серверы которых расположены в том числе в государствах, не обеспечивающих надлежащий уровень защиты прав субъектов персональных данных.</p>
+        <p><strong class="text-forest">Права субъекта (ст. 10–15 Закона № 99-З):</strong> Мне разъяснены мои права на отзыв согласия, получение информации о предоставлении данных третьим лицам, изменение и удаление данных, а также право на обжалование действий оператора в уполномоченный орган по защите прав субъектов персональных данных (НЦЗПД). Контакт для отзыва согласия: gomelvetdoc@gmail.com.</p>
+      </div>
+      <div class="px-6 py-3.5 border-t border-olive-border flex justify-end">
+        <button type="button" onclick="closeModal('modal-consent')" class="px-4 py-2 rounded-xl bg-olive text-white text-sm font-semibold">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: COOKIE SETTINGS -->
+  <div id="modal-cookie-settings" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest/60 backdrop-blur-sm">
+    <div class="bg-parchment-card border border-olive-border rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-serif text-lg font-bold text-forest">Настройки файлов cookie</h3>
+        <button type="button" onclick="closeModal('modal-cookie-settings')" aria-label="Закрыть" class="text-forest-muted hover:text-forest text-xl px-2">×</button>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div class="p-3.5 rounded-xl bg-parchment border border-olive-border flex items-center justify-between gap-3">
+          <div>
+            <p class="font-semibold text-forest">Технические (обязательные)</p>
+            <p class="text-xs text-forest-muted">Нужны для сохранения выбора cookie и работы формы записи.</p>
+          </div>
+          <span class="text-xs font-semibold text-olive">Всегда активны</span>
+        </div>
+        <label class="p-3.5 rounded-xl bg-parchment border border-olive-border flex items-center justify-between gap-3 cursor-pointer">
+          <div>
+            <p class="font-semibold text-forest">Аналитические cookie</p>
+            <p class="text-xs text-forest-muted">Помогают оценивать посещаемость разделов сайта клиники.</p>
+          </div>
+          <input id="cookie-analytics-toggle" type="checkbox" checked class="w-4 h-4 rounded border-olive-border text-olive focus:ring-olive" />
+        </label>
+      </div>
+      <div class="flex justify-end gap-2.5 pt-2">
+        <button type="button" onclick="saveCookieChoice('necessary'); closeModal('modal-cookie-settings');" class="px-4 py-2 rounded-xl border border-olive text-olive text-sm font-semibold hover:bg-olive-light">
+          Только необходимые
+        </button>
+        <button type="button" onclick="saveCookieChoice(document.getElementById('cookie-analytics-toggle').checked ? 'all' : 'necessary'); closeModal('modal-cookie-settings');" class="px-4 py-2 rounded-xl bg-olive text-white text-sm font-semibold hover:bg-olive-dark">
+          Сохранить выбор
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SITE_CONFIG = {
+      brand: 'Ветеринарная клиника «ВетДок»',
+      legalName: 'ЧУП «ВетДокГомель»',
+      unp: '491344784',
+      city: 'г. Гомель',
+      address: 'ул. Клёнковская, д. 68',
+      schedule: { openHour: 9, closeHour: 21, label: '09:00–21:00' },
+      phones: [
+        { display: '+375 (29) 90-50-300', href: 'tel:+375299050300' },
+        { display: '+375 (29) 10-80-600', href: 'tel:+375291080600' }
+      ],
+      viberUrl: 'viber://chat?number=%2B375299050300',
+      email: 'gomelvetdoc@gmail.com',
+      gasWebhookUrl: '' // Демо-режим (в боевой сборке подключается GAS / Telegram)
+    };
+
+    const SERVICES_DATA = [
+      { title: 'Приём и консультация', group: 'diagnostics', price: 'от 25 BYN', desc: 'Первичный осмотр (35 BYN), повторный приём (25 BYN), консультация по документам.' },
+      { title: 'Вакцинация и чипирование', group: 'therapy', price: 'от 17 BYN', desc: 'Прививки комплексными вакцинами и от бешенства, чипирование с базой, ветпаспорт.' },
+      { title: 'Лабораторные исследования', group: 'diagnostics', price: 'от 10,5 BYN', desc: 'ОАК с лейкограммой (35 BYN), биохимия 16 показателей (46 BYN), микроскопия мазков.' },
+      { title: 'Диагностические исследования', group: 'diagnostics', price: 'от 20 BYN', desc: 'УЗИ брюшной полости (37 BYN), отдельных органов (25 BYN), скрининг сердца и ЭКГ.' },
+      { title: 'Комплексное обследование', group: 'diagnostics', price: 'от 150 BYN', desc: 'Предоперационный комплекс (150 BYN) и расширенный Чек-Ап питомца (180 BYN).' },
+      { title: 'Терапия', group: 'therapy', price: 'от 4 BYN', desc: 'Инъекции, капельные инфузии, гемотрансфузии и терапевтическое родовспоможение.' },
+      { title: 'Анестезия', group: 'surgery', price: 'от 31,5 BYN', desc: 'Анестезиологическое сопровождение операций 1–4 степени риска по шкале ASA.' },
+      { title: 'Стоматология', group: 'surgery', price: 'от 6,5 BYN', desc: 'Профилактический осмотр, удаление молочных и подвижных зубов, лечение полости рта.' },
+      { title: 'Офтальмология', group: 'diagnostics', price: 'от 11 BYN', desc: 'Офтальмоскопия (14 BYN), флуоресцеиновый тест (11 BYN), лечение заболеваний глаз.' },
+      { title: 'Хирургия', group: 'surgery', price: 'от 7,5 BYN', desc: 'Мягкотканные, ортопедические операции и хирургическая помощь животным и птицам.' },
+      { title: 'Кастрация и стерилизация', group: 'surgery', price: 'от 93 BYN', desc: 'Кастрация кота (93 BYN), кобеля (от 147 BYN), бережное выведение из наркоза.' },
+      { title: 'Эндоскопия', group: 'diagnostics', price: 'от 250 BYN', desc: 'Малоинвазивный осмотр внутренних органов и дыхательных путей с камерой.' },
+      { title: 'Кесарево сечение', group: 'surgery', price: 'от 136,5 BYN', desc: 'Помощь при затруднении родов: животные до 10 кг (136,5 BYN), от 10 кг (от 168 BYN).' },
+      { title: 'Гигиенические процедуры', group: 'therapy', price: 'от 7,5 BYN', desc: 'Лечебная обрезка когтей, гигиенический уход для поддержания здоровья питомца.' },
+      { title: 'Стрижка', group: 'therapy', price: 'от 63 BYN', desc: 'Стрижка котов без седации (63 BYN) и при необходимости под мягкой седацией (73 BYN).' },
+      { title: 'Прочие услуги', group: 'therapy', price: 'от 37 BYN', desc: 'Дополнительные ветеринарные процедуры и деликатная паллиативная помощь.' }
+    ];
+
+    const DOCTORS_DATA = [
+      {
+        name: 'Зайцев Илья Игоревич',
+        spec: 'Терапия',
+        group: 'therapy',
+        edu: 'ВГАВМ, выпуск 2018',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2026/08/DSC04318.jpgNOV.jpg'
+      },
+      {
+        name: 'Зайцева Анастасия Николаевна',
+        spec: 'Лабораторная диагностика, Терапия',
+        group: 'therapy',
+        edu: 'ВГАВМ',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/03/IMG_3411-819x1024.jpeg'
+      },
+      {
+        name: 'Сакевич Алина Владимировна',
+        spec: 'Мягкотканная хирургия, Неврология, Ортопедия',
+        group: 'surgery',
+        edu: 'Хирургическое отделение',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/IMG_4610.jpeg'
+      },
+      {
+        name: 'Еников Антон Александрович',
+        spec: 'Анестезия, Кардиология, ОРИТ',
+        group: 'cardio',
+        edu: 'Интенсивная терапия',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/DSC03819.jpgNOVO-1.jpg'
+      },
+      {
+        name: 'Кускова Екатерина Владимировна',
+        spec: 'Кардиология, Терапия, УЗИ-диагностика',
+        group: 'cardio',
+        edu: 'УЗИ и кардиология',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2024/05/IMG_4463.jpeg'
+      },
+      {
+        name: 'Евсеенко Денис Евгеньевич',
+        spec: 'Мягкотканная хирургия, Неврология, Ортопедия',
+        group: 'surgery',
+        edu: 'Хирургическое отделение',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/DSC04686_1.jpgNVO-1.jpg'
+      },
+      {
+        name: 'Траяновская Любовь Евгеньевна',
+        spec: 'Анестезия',
+        group: 'cardio',
+        edu: 'ВГАВМ, 2023',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/IMG_4611.jpeg'
+      },
+      {
+        name: 'Романенко Яна Игоревна',
+        spec: 'Анестезия, Кардиология, ОРИТ',
+        group: 'cardio',
+        edu: 'Интенсивная терапия',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/DSC03798.jpgNVO-1.jpg'
+      },
+      {
+        name: 'Кравцова Анастасия Владимировна',
+        spec: 'Лабораторная диагностика, Терапия',
+        group: 'therapy',
+        edu: 'ВГАВМ',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/IMG_4459.jpeg'
+      },
+      {
+        name: 'Мельникова Елизавета Александровна',
+        spec: 'Ветеринарный врач, Терапия',
+        group: 'therapy',
+        edu: 'ВГАВМ',
+        img: 'https://www.vetdoc.by/wp-content/uploads/2025/01/IMG_4482.jpeg'
+      }
+    ];
+
+    // 1. LIVE EUROPE/MINSK STATUS
+    function updateMinskStatus() {
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Minsk',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).formatToParts(now);
+      const hour = parseInt(parts.find(p => p.type === 'hour').value, 10);
+      const isOpen = hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour;
+
+      const badge = document.getElementById('live-status-badge');
+      const dot = document.getElementById('live-status-dot');
+      const text = document.getElementById('live-status-text');
+      const mobText = document.getElementById('mobile-status-text');
+
+      if (isOpen) {
+        text.textContent = 'Открыто сейчас · до 21:00';
+        dot.className = 'w-2 h-2 rounded-full bg-emerald-600';
+        badge.className = 'hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-olive-light text-olive-dark border border-olive-border whitespace-nowrap shrink-0';
+        if (mobText) mobText.textContent = '● Открыто сейчас · до 21:00';
+      } else {
+        text.textContent = 'Ответим с 09:00';
+        dot.className = 'w-2 h-2 rounded-full bg-ochre';
+        badge.className = 'hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-ochre-light text-ochre-dark border border-ochre/30 whitespace-nowrap shrink-0';
+        if (mobText) mobText.textContent = '● Ответим с 09:00';
+      }
+    }
+
+    // 2. RENDER SERVICES
+    function renderServices(filter = 'all') {
+      const grid = document.getElementById('services-grid');
+      const list = filter === 'all' ? SERVICES_DATA : SERVICES_DATA.filter(s => s.group === filter);
+      grid.innerHTML = list.map(item => `
+        <article class="service-card bg-parchment-card border border-olive-border rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="font-serif font-bold text-base text-forest leading-snug">${item.title}</h3>
+              <span class="px-2 py-0.5 rounded bg-olive-light text-olive-dark text-[11px] font-semibold whitespace-nowrap shrink-0">${item.price}</span>
+            </div>
+            <p class="mt-2.5 text-xs sm:text-sm text-forest-muted leading-relaxed">${item.desc}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-olive-border flex items-center justify-between gap-2 text-xs font-semibold">
+            <button type="button" onclick="selectServiceAndScroll('${item.title.replace(/'/g, "\\'")}')" class="text-olive hover:text-olive-dark transition-colors">
+              Записаться
+            </button>
+            <button type="button" onclick="openWpModal('Страница услуги «${item.title.replace(/'/g, "\\'")}» и полный прайс')" class="text-forest-muted hover:text-forest transition-colors">
+              Подробнее →
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function selectServiceAndScroll(serviceTitle) {
+      const input = document.getElementById('visit-service');
+      if (input) input.value = serviceTitle;
+      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 3. RENDER DOCTORS
+    function renderDoctors(filter = 'all') {
+      const grid = document.getElementById('doctors-grid');
+      const list = filter === 'all' ? DOCTORS_DATA : DOCTORS_DATA.filter(d => d.group === filter);
+      grid.innerHTML = list.map(doc => {
+        const initials = doc.name.split(' ').slice(0, 2).map(w => w[0]).join('');
+        return `
+          <article class="bg-parchment border border-olive-border rounded-2xl overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="aspect-[4/4.3] bg-parchment-warm overflow-hidden relative">
+                <img
+                  src="${doc.img}"
+                  alt="${doc.name}"
+                  referrerpolicy="no-referrer"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                />
+                <div class="hidden w-full h-full flex items-center justify-center bg-olive-light text-olive font-serif text-2xl font-bold">${initials}</div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-serif font-bold text-sm sm:text-base text-forest leading-snug">${doc.name}</h3>
+                <p class="mt-1.5 text-xs text-olive font-semibold">${doc.spec}</p>
+                <p class="mt-1 text-[11px] text-forest-muted">${doc.edu}</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4 pt-2 border-t border-olive-border/60 flex items-center justify-between text-xs font-semibold">
+              <button type="button" onclick="openWpModal('Профиль врача: ${doc.name}')" class="text-olive hover:underline">
+                Профиль и график →
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 4. 2-CLICK TRIAGE BAR
+    let selectedDirection = 'Терапия / вакцинация';
+    let selectedTiming = 'Сегодня';
+
+    document.querySelectorAll('.triage-dir-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedDirection = btn.dataset.triageDir;
+        document.querySelectorAll('.triage-dir-btn').forEach(b => {
+          b.className = 'triage-dir-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors whitespace-nowrap';
+        });
+        btn.className = 'triage-dir-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive bg-olive text-white transition-colors whitespace-nowrap';
+      });
+    });
+
+    document.querySelectorAll('.triage-time-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedTiming = btn.dataset.triageTime;
+        document.querySelectorAll('.triage-time-btn').forEach(b => {
+          b.className = 'triage-time-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive-border bg-parchment text-forest hover:border-olive transition-colors';
+        });
+        btn.className = 'triage-time-btn px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium border border-olive bg-olive-light text-olive-dark transition-colors';
+      });
+    });
+
+    document.getElementById('apply-triage-btn')?.addEventListener('click', () => {
+      const svcInput = document.getElementById('visit-service');
+      const timeSelect = document.getElementById('visit-time');
+      if (svcInput) svcInput.value = selectedDirection;
+      if (timeSelect) timeSelect.value = selectedTiming;
+      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // 5. SERVICE & DOCTOR FILTER TABS
+    document.querySelectorAll('.service-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.service-tab-btn').forEach(b => {
+          b.className = 'service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment-card text-forest border border-olive-border hover:border-olive transition-colors';
+        });
+        btn.className = 'service-tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-olive text-white border border-olive transition-colors';
+        renderServices(btn.dataset.serviceTab);
+      });
+    });
+
+    document.querySelectorAll('.doc-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.doc-filter-btn').forEach(b => {
+          b.className = 'doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-parchment text-forest border border-olive-border hover:border-olive transition-colors';
+        });
+        btn.className = 'doc-filter-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-olive text-white border border-olive transition-colors';
+        renderDoctors(btn.dataset.docFilter);
+      });
+    });
+
+    // 6. MODALS & MOBILE MENU
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+    }
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+    }
+    function openWpModal(label) {
+      const titleEl = document.getElementById('wp-modal-title');
+      if (titleEl) titleEl.textContent = label || 'Раздел сайта';
+      openModal('modal-wp-demo');
+    }
+
+    document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal(modal.id);
+      });
+    });
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // 7. COOKIE BANNER & STICKY MOBILE DOCK COORDINATION
+    const COOKIE_KEY = 'vetdoc_cookie_consent_v1';
+    function syncCookieAndDock() {
+      const choice = localStorage.getItem(COOKIE_KEY);
+      const banner = document.getElementById('cookie-banner');
+      const dock = document.getElementById('mobile-sticky-dock');
+      if (!choice) {
+        banner?.classList.remove('hidden');
+        dock?.classList.add('hidden');
+      } else {
+        banner?.classList.add('hidden');
+        dock?.classList.remove('hidden');
+      }
+    }
+    function saveCookieChoice(choice) {
+      localStorage.setItem(COOKIE_KEY, choice);
+      syncCookieAndDock();
+    }
+
+    // 8. BOOKING FORM (HONEYPOT + DEMO MODE)
+    document.getElementById('booking-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const feedback = document.getElementById('form-feedback');
+      const honeypot = form.querySelector('input[name="website"]').value.trim();
+      if (honeypot) return;
+
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const consent = document.getElementById('pd-consent').checked;
+
+      if (!name || !phone) {
+        feedback.textContent = 'Пожалуйста, укажите имя и контактный телефон для записи.';
+        feedback.className = 'rounded-xl p-3.5 text-sm bg-ochre-light text-ochre-dark border border-ochre/30';
+        return;
+      }
+      if (!consent) {
+        feedback.textContent = 'Для отправки заявки необходимо отметить согласие на обработку персональных данных.';
+        feedback.className = 'rounded-xl p-3.5 text-sm bg-ochre-light text-ochre-dark border border-ochre/30';
+        return;
+      }
+
+      if (!SITE_CONFIG.gasWebhookUrl) {
+        feedback.innerHTML = '<strong>Демо-режим:</strong> заявка для <strong>' + name.replace(/</g, '&lt;') + '</strong> (' + form.service.value.replace(/</g, '&lt;') + ', ' + form.timing.value.replace(/</g, '&lt;') + ') сформирована корректно. В боевой версии данные уйдут напрямую администратору клиники в Telegram и CRM.';
+        feedback.className = 'rounded-xl p-3.5 text-sm bg-olive-light text-olive-dark border border-olive-border';
+        form.reset();
+        document.getElementById('visit-service').value = selectedDirection;
+        return;
+      }
+    });
+
+    // INIT
+    updateMinskStatus();
+    setInterval(updateMinskStatus, 60000);
+    renderServices('all');
+    renderDoctors('all');
+    syncCookieAndDock();
+  </script>
+</body>
+</html>

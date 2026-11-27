@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPA Thai Moon — Тайский спа-салон в Могилёве | Ритуалы и программы</title>
+  <meta name="description" content="SPA Thai Moon в Могилёве (ул. Первомайская, 29): традиционный тайский массаж от мастеров из Таиланда, арома-ритуалы, программы для двоих, хаммам, джакузи и подарочные сертификаты. Ежедневно 11:00–23:00." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: '#3B0B17',
+            espresso: '#21080E',
+            cream: '#FAF5EE',
+            parchment: '#F3EAE0',
+            gold: '#D4AF6A',
+            goldLight: '#E8CFA0',
+            goldDark: '#9D7A3C',
+            ink: '#2A1217',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Infant"', 'Georgia', 'serif'],
+            sans: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            sanctuary: '0 24px 60px -15px rgba(33, 8, 14, 0.28)',
+            goldGlow: '0 0 0 1px rgba(212, 175, 106, 0.35), 0 18px 40px -12px rgba(33, 8, 14, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      background-color: #FAF5EE;
+      color: #2A1217;
+    }
+    .font-serif-display {
+      font-family: 'Cormorant Infant', Georgia, serif;
+    }
+    .gold-hairline {
+      border-color: rgba(212, 175, 106, 0.35);
+    }
+    .hero-vignette {
+      background:
+        radial-gradient(ellipse at center, rgba(33, 8, 14, 0.36) 0%, rgba(33, 8, 14, 0.76) 72%, rgba(25, 5, 10, 0.90) 100%),
+        linear-gradient(180deg, rgba(33, 8, 14, 0.55) 0%, rgba(59, 11, 23, 0.32) 50%, rgba(33, 8, 14, 0.86) 100%);
+    }
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .ornament-divider::before,
+    .ornament-divider::after {
+      content: '';
+      height: 1px;
+      width: 56px;
+      background: linear-gradient(90deg, transparent, #D4AF6A, transparent);
+    }
+    /* Smooth modal backdrop */
+    .modal-backdrop {
+      background: rgba(21, 5, 9, 0.78);
+      backdrop-filter: blur(6px);
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #21080E; }
+    ::-webkit-scrollbar-thumb { background: #6A2B3A; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D4AF6A; }
+  </style>
+</head>
+<body class="bg-cream text-ink antialiased selection:bg-burgundy selection:text-gold pb-20 md:pb-0">
+
+  <!-- Slim Honest Concept Notice Bar (never overlaps header or mobile dock) -->
+  <div class="bg-espresso text-goldLight/90 border-b border-gold/20 text-[11px] sm:text-xs py-1.5 px-3 text-center">
+    <span>
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold align-middle mr-1"></span>
+      Визуальный концепт главной страницы для <strong>SPA Thai Moon</strong> · Боевая версия на WordPress + WooCommerce
+      <button type="button" onclick="openWpModal('Архитектура WordPress + WooCommerce')" class="underline decoration-gold/60 hover:text-gold transition ml-1 font-medium">Подробнее о переносе</button>
+    </span>
+  </div>
+
+  <!-- Single-Row Header -->
+  <header id="siteHeader" class="sticky top-0 z-40 bg-espresso/95 backdrop-blur-md border-b border-gold/20 transition-all overflow-hidden">
+    <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between gap-3">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2 shrink-0 group min-w-0">
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gold/50 flex items-center justify-center bg-burgundy/60 group-hover:border-gold transition shrink-0">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3c2 3.2 4 5.5 4 8.5a4 4 0 1 1-8 0c0-3 2-5.3 4-8.5Z"/>
+            <path d="M6.5 14.5C4.5 13 3.2 10.7 3 8c2.6.5 4.7 1.8 6 3.7"/>
+            <path d="M17.5 14.5C19.5 13 20.8 10.7 21 8c-2.6.5-4.7 1.8-6 3.7"/>
+            <path d="M5 18.5c2.2 1.2 4.6 1.8 7 1.8s4.8-.6 7-1.8"/>
+          </svg>
+        </span>
+        <div class="leading-none">
+          <span class="font-serif-display text-lg sm:text-xl lg:text-2xl tracking-[0.08em] text-cream font-semibold block whitespace-nowrap">THAI MOON</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-gold/80 block mt-0.5 whitespace-nowrap">SPA Sanctuary · Могилёв</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation (single row, whitespace-nowrap) -->
+      <nav class="hidden xl:flex items-center gap-4 2xl:gap-6 text-[13px] font-medium text-cream/85">
+        <a href="#rituals" class="hover:text-gold transition whitespace-nowrap">Ритуалы</a>
+        <a href="#rituals" onclick="switchCatalogTab('programs')" class="hover:text-gold transition whitespace-nowrap">Программы</a>
+        <a href="#rituals" onclick="switchCatalogTab('couple')" class="hover:text-gold transition whitespace-nowrap">Для двоих</a>
+        <a href="#certificates" class="hover:text-gold transition whitespace-nowrap">Сертификаты</a>
+        <a href="#masters" class="hover:text-gold transition whitespace-nowrap">Мастера</a>
+        <a href="#contacts" class="hover:text-gold transition whitespace-nowrap">Контакты</a>
+      </nav>
+
+      <!-- Right Controls: Live Status + Phone + Monochrome/Gold SVG Messenger Icons -->
+      <div class="flex items-center gap-2 lg:gap-3 shrink-0">
+        <!-- Live Status (Europe/Minsk 11:00-23:00) -->
+        <div id="liveStatusBadge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-gold/25 bg-burgundy/40 text-[11px] text-cream/90 whitespace-nowrap">
+          <span id="liveStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="liveStatusText">Открыто · до 23:00</span>
+        </div>
+
+        <!-- Phone (NEVER wraps) -->
+        <a href="tel:+375339134010" class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-medium text-goldLight hover:text-gold transition whitespace-nowrap">
+          <svg class="w-3.5 h-3.5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span class="whitespace-nowrap">+375 (33) 913-40-10</span>
+        </a>
+
+        <!-- Thin Monochrome/Gold SVG Icons (NO loud purple/blue pills!) -->
+        <div class="hidden sm:flex items-center gap-1.5">
+          <a href="viber://chat?number=%2B375339134010" title="Написать в Viber" aria-label="Viber" class="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center text-gold/85 hover:text-gold hover:border-gold hover:bg-burgundy/60 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/>
+              <path d="M9.5 9.2c.2-.3.5-.3.8-.2.4.2 1.1.9 1.2 1.2.1.3 0 .6-.2.8l-.4.4c.5 1 1.3 1.8 2.3 2.3l.4-.4c.2-.2.5-.3.8-.2.3.1 1 .8 1.2 1.2.1.3.1.6-.2.8-.6.6-1.5.7-2.2.4-2.2-.9-4.1-2.8-5-5-.3-.7-.2-1.6.3-2.3Z"/>
+            </svg>
+          </a>
+          <a href="#contacts" title="Instagram и контакты" aria-label="Контакты и соцсети" class="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center text-gold/85 hover:text-gold hover:border-gold hover:bg-burgundy/60 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+
+        <a href="#booking" class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gold text-gold hover:bg-gold hover:text-espresso text-[10px] sm:text-xs font-semibold tracking-wider uppercase transition whitespace-nowrap">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-Bleed Framed Atmospheric Thai Sanctuary Hero -->
+  <section id="top" class="relative min-h-[82vh] flex items-center justify-center overflow-hidden bg-espresso py-10 sm:py-20 px-3 sm:px-4">
+    <!-- Full-bleed background photo -->
+    <img
+      src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1800&q=85"
+      alt="Атмосфера тайского спа-салона SPA Thai Moon в Могилёве"
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-75"
+    />
+    <div class="hero-vignette absolute inset-0"></div>
+
+    <!-- Gold Hairline Framed Sanctuary Box -->
+    <div class="relative z-10 max-w-5xl w-full mx-auto border border-gold/35 p-5 sm:p-10 md:p-14 bg-espresso/40 backdrop-blur-[2px]">
+      <!-- Ornamental Gold Corners -->
+      <span class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-gold"></span>
+      <span class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-gold"></span>
+      <span class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-gold"></span>
+      <span class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-gold"></span>
+
+      <div class="text-center max-w-3xl mx-auto">
+        <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.28em] text-goldLight/90 font-medium mb-4">
+          Тайский спа-салон в центре Могилёва · ул. Первомайская, 29
+        </p>
+
+        <h1 class="font-serif-display text-[32px] sm:text-5xl md:text-6xl lg:text-[64px] font-medium text-cream leading-[1.08] tracking-tight">
+          Королевство покоя,<br class="hidden sm:inline" />
+          где время <em class="italic text-goldLight font-normal">замирает</em>
+        </h1>
+
+        <div class="ornament-divider my-6">
+          <svg class="w-5 h-5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M12 3c2 3.2 4 5.5 4 8.5a4 4 0 1 1-8 0c0-3 2-5.3 4-8.5Z"/>
+            <path d="M6.5 14.5C4.5 13 3.2 10.7 3 8c2.6.5 4.7 1.8 6 3.7"/>
+            <path d="M17.5 14.5C19.5 13 20.8 10.7 21 8c-2.6.5-4.7 1.8-6 3.7"/>
+          </svg>
+        </div>
+
+        <p class="text-sm sm:text-base md:text-lg text-cream/85 font-light leading-relaxed max-w-2xl mx-auto">
+          Традиционные тайские ритуалы и комплексные спа-программы от дипломированных мастеров из Бангкока. Тёплый хаммам, джакузи, травяные мешочки и церемония чаепития после каждого сеанса.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#selector" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gold text-espresso hover:bg-goldLight font-semibold text-xs sm:text-sm uppercase tracking-[0.14em] transition shadow-goldGlow">
+            Подобрать ритуал за 2 клика
+          </a>
+          <a href="#certificates" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-gold/60 text-cream hover:border-gold hover:bg-burgundy/60 font-medium text-xs sm:text-sm uppercase tracking-[0.14em] transition">
+            Подарочный сертификат
+          </a>
+        </div>
+
+        <!-- Trust & Rating Strip -->
+        <div class="mt-10 pt-7 border-t border-gold/25 grid grid-cols-2 md:grid-cols-4 gap-4 text-left sm:text-center">
+          <div>
+            <p class="font-serif-display text-2xl sm:text-3xl text-goldLight font-semibold">★ 5.0</p>
+            <p class="text-[11px] sm:text-xs text-cream/70 mt-0.5">Яндекс Карты · 75+ отзывов / 170 оценок</p>
+          </div>
+          <div>
+            <p class="font-serif-display text-2xl sm:text-3xl text-goldLight font-semibold">Бангкок</p>
+            <p class="text-[11px] sm:text-xs text-cream/70 mt-0.5">4 дипломированных мастера из Таиланда</p>
+          </div>
+          <div>
+            <p class="font-serif-display text-2xl sm:text-3xl text-goldLight font-semibold">11:00–23:00</p>
+            <p class="text-[11px] sm:text-xs text-cream/70 mt-0.5">Ежедневно без выходных</p>
+          </div>
+          <div>
+            <p class="font-serif-display text-2xl sm:text-3xl text-goldLight font-semibold">−20%</p>
+            <p class="text-[11px] sm:text-xs text-cream/70 mt-0.5">Счастливые часы по будням до 15:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature Feature #3: 2-Click Mini-Interactive Ritual Selector -->
+  <section id="selector" class="bg-burgundy text-cream py-14 sm:py-16 border-y border-gold/25">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-[11px] uppercase tracking-[0.26em] text-gold font-medium">Персональный подбор</span>
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-cream mt-1.5">Подберите формат отдыха за 2 клика</h2>
+        <p class="text-xs sm:text-sm text-cream/75 mt-2 max-w-xl mx-auto">Выберите цель визита и удобное время — сразу покажем подходящие программы из меню салона и подставим их в заявку.</p>
+      </div>
+
+      <div class="bg-espresso/75 border border-gold/30 p-5 sm:p-8 shadow-sanctuary">
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Step 1 -->
+          <div>
+            <p class="text-xs uppercase tracking-[0.18em] text-goldLight mb-3 font-semibold">1. Формат визита</p>
+            <div class="grid grid-cols-1 gap-2.5" id="formatOptions">
+              <button type="button" data-format="Тайский массаж" class="selector-format-btn text-left px-4 py-3 border border-gold bg-burgundy/80 text-cream flex items-center justify-between transition">
+                <span class="text-sm font-medium">Тайский массаж</span>
+                <span class="text-[11px] text-goldLight">от 120 BYN</span>
+              </button>
+              <button type="button" data-format="SPA для двоих" class="selector-format-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition">
+                <span class="text-sm font-medium">SPA для двоих</span>
+                <span class="text-[11px] text-goldLight">от 400 BYN</span>
+              </button>
+              <button type="button" data-format="Подарочный сертификат" class="selector-format-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition">
+                <span class="text-sm font-medium">Подарочный сертификат</span>
+                <span class="text-[11px] text-goldLight">150–500 BYN</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div>
+            <p class="text-xs uppercase tracking-[0.18em] text-goldLight mb-3 font-semibold">2. Удобное время</p>
+            <div class="grid grid-cols-1 gap-2.5" id="timeOptions">
+              <button type="button" data-time="Днём 11:00–16:00" class="selector-time-btn text-left px-4 py-3 border border-gold bg-burgundy/80 text-cream flex items-center justify-between transition">
+                <span class="text-sm font-medium">Днём 11:00–16:00</span>
+                <span class="text-[11px] text-goldLight">Будни до 15:00 — −20%</span>
+              </button>
+              <button type="button" data-time="Вечером 16:00–23:00" class="selector-time-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition">
+                <span class="text-sm font-medium">Вечером 16:00–23:00</span>
+                <span class="text-[11px] text-goldLight">После рабочего дня</span>
+              </button>
+              <button type="button" data-time="В выходные" class="selector-time-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition">
+                <span class="text-sm font-medium">В выходные</span>
+                <span class="text-[11px] text-goldLight">Сб–Вс 11:00–23:00</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendation Output -->
+        <div class="mt-6 pt-6 border-t border-gold/25 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.18em] text-gold">Рекомендация SPA Thai Moon</p>
+            <p id="selectorRecommendation" class="font-serif-display text-xl sm:text-2xl text-cream mt-1">
+              Традиционный тайский ритуал (60 мин — 150 BYN) или Арома-ритуал (60 мин — 165 BYN) · Днём действует акция «Счастливые часы −20%» (до 15:00 в будни).
+            </p>
+          </div>
+          <button type="button" onclick="applySelectorToBooking()" class="shrink-0 px-6 py-3 rounded-full bg-gold text-espresso hover:bg-goldLight text-xs font-semibold uppercase tracking-[0.12em] transition">
+            Записаться с выбором →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Services & Prices Menu (Lotus Cream Editorial Sanctuary) -->
+  <section id="rituals" class="py-16 sm:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Меню ритуалов и программ</span>
+          <h2 class="font-serif-display text-3xl sm:text-5xl text-burgundy mt-2">Тайские ритуалы и SPA-программы</h2>
+          <p class="text-sm text-ink/75 mt-2 max-w-2xl">
+            Перед сеансом мастер проводит консультацию, чтобы подобрать оптимальную технику и интенсивность. В стоимость программ включено чаепитие.
+          </p>
+        </div>
+        <button type="button" onclick="openWpModal('Полный каталог 25+ страниц услуг (WordPress)')" class="self-start lg:self-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-burgundy border-b border-burgundy/40 pb-1 hover:text-goldDark hover:border-goldDark transition">
+          Все разделы и описания услуг (WP) →
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap gap-2.5 mb-10" role="tablist" aria-label="Категории услуг">
+        <button type="button" data-tab="rituals" onclick="switchCatalogTab('rituals')" class="catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-burgundy text-goldLight border border-burgundy transition">
+          Тайские ритуалы (8)
+        </button>
+        <button type="button" data-tab="programs" onclick="switchCatalogTab('programs')" class="catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-parchment text-ink border border-goldDark/30 hover:border-burgundy transition">
+          SPA-программы (11)
+        </button>
+        <button type="button" data-tab="couple" onclick="switchCatalogTab('couple')" class="catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-parchment text-ink border border-goldDark/30 hover:border-burgundy transition">
+          SPA для двоих (6)
+        </button>
+        <button type="button" data-tab="zones" onclick="switchCatalogTab('zones')" class="catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-parchment text-ink border border-goldDark/30 hover:border-burgundy transition">
+          Хаммам и джакузи
+        </button>
+      </div>
+
+      <!-- Tab Panel: Thai Rituals -->
+      <div id="tab-rituals" class="catalog-panel grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <article class="bg-white border border-goldDark/25 flex flex-col justify-between shadow-sm hover:shadow-sanctuary transition duration-300">
+          <div>
+            <div class="h-52 overflow-hidden relative bg-espresso">
+              <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80" alt="Традиционный тайский ритуал" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 bg-espresso/85 text-goldLight text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 border border-gold/30">Классика</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Традиционный тайский ритуал</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Проводится в специальной одежде. Акупрессура и мягкая растяжка для гибкости, осанки и снятия мышечных зажимов.</p>
+              <div class="mt-4 pt-3 border-t border-goldDark/15 space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-ink/70">60 минут</span><span class="font-semibold text-burgundy">150 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">90 минут</span><span class="font-semibold text-burgundy">190 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">120 минут</span><span class="font-semibold text-burgundy">230 BYN</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 flex items-center justify-between gap-3">
+            <button type="button" onclick="selectServiceForBooking('Традиционный тайский ритуал (от 150 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Страница услуги: Традиционный тайский ритуал')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Подробнее →</button>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bg-white border border-goldDark/25 flex flex-col justify-between shadow-sm hover:shadow-sanctuary transition duration-300">
+          <div>
+            <div class="h-52 overflow-hidden relative bg-espresso">
+              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80" alt="Арома-ритуал на основе масел" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 bg-espresso/85 text-goldLight text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 border border-gold/30">Релакс</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Арома-ритуал на основе масел</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Натуральные эфирные масла увлажняют кожу, снимают усталость, отёки и восстанавливают нервную систему.</p>
+              <div class="mt-4 pt-3 border-t border-goldDark/15 space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-ink/70">60 минут</span><span class="font-semibold text-burgundy">165 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">90 минут</span><span class="font-semibold text-burgundy">210 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">120 минут</span><span class="font-semibold text-burgundy">250 BYN</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 flex items-center justify-between gap-3">
+            <button type="button" onclick="selectServiceForBooking('Арома-ритуал на основе масел (от 165 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Страница услуги: Арома-ритуал на основе масел')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Подробнее →</button>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bg-white border border-goldDark/25 flex flex-col justify-between shadow-sm hover:shadow-sanctuary transition duration-300">
+          <div>
+            <div class="h-52 overflow-hidden relative bg-espresso">
+              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80" alt="Тайский ритуал с горячими камнями" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 bg-espresso/85 text-goldLight text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 border border-gold/30">Стоун-терапия</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Ритуал с горячими камнями</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Глубокий прогрев природными базальтовыми камнями. Снимает боли в спине, спазмы и нормализует сон.</p>
+              <div class="mt-4 pt-3 border-t border-goldDark/15 space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-ink/70">90 минут</span><span class="font-semibold text-burgundy">235 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">120 минут</span><span class="font-semibold text-burgundy">275 BYN</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 flex items-center justify-between gap-3">
+            <button type="button" onclick="selectServiceForBooking('Тайский ритуал с горячими камнями (от 235 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Страница услуги: Ритуал с горячими камнями')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Подробнее →</button>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="bg-white border border-goldDark/25 flex flex-col justify-between shadow-sm hover:shadow-sanctuary transition duration-300">
+          <div>
+            <div class="h-52 overflow-hidden relative bg-espresso">
+              <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1200&q=80" alt="Тайский ритуал с травяными мешочками" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Ритуал с травяными мешочками</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Горячие льняные мешочки со сборами тайских трав укрепляют иммунитет, улучшают лимфоток и снимают стресс.</p>
+              <div class="mt-4 pt-3 border-t border-goldDark/15 space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-ink/70">90 минут</span><span class="font-semibold text-burgundy">260 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">120 минут</span><span class="font-semibold text-burgundy">290 BYN</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 flex items-center justify-between gap-3">
+            <button type="button" onclick="selectServiceForBooking('Тайский ритуал с травяными мешочками (от 260 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Страница услуги: Травяные мешочки')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Подробнее →</button>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="bg-white border border-goldDark/25 flex flex-col justify-between shadow-sm hover:shadow-sanctuary transition duration-300">
+          <div>
+            <div class="h-52 overflow-hidden relative bg-espresso">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Арома-ритуал в 4 руки" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 bg-espresso/85 text-goldLight text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 border border-gold/30">В 4 руки</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Арома-ритуал на маслах в 4 руки</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Синхронная работа двух дипломированных мастеров из Таиланда для двойного расслабления и восстановления тонуса.</p>
+              <div class="mt-4 pt-3 border-t border-goldDark/15 space-y-1.5 text-xs">
+                <div class="flex justify-between"><span class="text-ink/70">60 минут</span><span class="font-semibold text-burgundy">280 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">90 минут</span><span class="font-semibold text-burgundy">350 BYN</span></div>
+                <div class="flex justify-between"><span class="text-ink/70">120 минут</span><span class="font-semibold text-burgundy">450 BYN</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 flex items-center justify-between gap-3">
+            <button type="button" onclick="selectServiceForBooking('Арома-ритуал в 4 руки (от 280 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Страница услуги: Арома-ритуал в 4 руки')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Подробнее →</button>
+          </div>
+        </article>
+
+        <!-- Card 6 (Compact list of remaining 3 rituals) -->
+        <article class="bg-parchment border border-goldDark/35 p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-goldDark font-semibold">Целевые ритуалы</span>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold mt-1 mb-4">Локальная и глубокая проработка</h3>
+
+            <div class="space-y-4 text-xs">
+              <div class="pb-3 border-b border-goldDark/20">
+                <div class="flex justify-between font-semibold text-burgundy text-sm">
+                  <span>Тайский ритуал для ног</span>
+                  <span>120 BYN</span>
+                </div>
+                <p class="text-ink/70 mt-1">60 минут · Разогрев маслами и воздействие деревянной палочкой на акупунктурные точки стоп.</p>
+              </div>
+
+              <div class="pb-3 border-b border-goldDark/20">
+                <div class="flex justify-between font-semibold text-burgundy text-sm">
+                  <span>Шейно-воротниковая зона</span>
+                  <span>150 BYN</span>
+                </div>
+                <p class="text-ink/70 mt-1">60 минут · Снимает зажимы в шее и плечах, помогает при головных болях и нарушениях сна.</p>
+              </div>
+
+              <div>
+                <div class="flex justify-between font-semibold text-burgundy text-sm">
+                  <span>Глубокая проработка мышц</span>
+                  <span>190 / 240 BYN</span>
+                </div>
+                <p class="text-ink/70 mt-1">60 / 90 минут · Устраняет спазмы и мышечную боль, восстанавливает подвижность суставов.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-5 mt-5 border-t border-goldDark/20 flex items-center justify-between">
+            <button type="button" onclick="selectServiceForBooking('Целевой тайский ритуал (от 120 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight hover:bg-espresso text-xs font-medium transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: Все тайские ритуалы')" class="text-xs text-goldDark hover:text-burgundy underline underline-offset-4">Все описания →</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tab Panel: Individual SPA Programs -->
+      <div id="tab-programs" class="catalog-panel hidden grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Program cards with exact real stages & BYN prices -->
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>120 минут</span><span class="font-semibold text-burgundy text-base">220 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Кокосовый восторг</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Кокосовый скраб — 30 мин</li>
+              <li>Арома-ритуал с кокосовым маслом — 60 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Кокосовый восторг» (220 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Кокосовый восторг»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>135 минут</span><span class="font-semibold text-burgundy text-base">260 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Прикосновение Будды</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Ритуал для всего тела с крем-баттером — 90 мин</li>
+              <li>Анти-стресс (проработка головы) — 15 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Прикосновение Будды» (260 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Прикосновение Будды»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>150 минут</span><span class="font-semibold text-burgundy text-base">280 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Сладкий сон</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Джакузи — 30 мин</li>
+              <li>Скрабирование всего тела — 30 мин</li>
+              <li>Тайский ритуал с травяными мешочками — 60 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Сладкий сон» (280 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Сладкий сон»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>150 минут</span><span class="font-semibold text-burgundy text-base">300 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Сочный манго</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Распаривание в хаммам — 30 мин</li>
+              <li>Кремовый скраб Манго — 30 мин</li>
+              <li>Тайский ритуал с арома-маслом Манго — 60 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Сочный манго» (300 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Сочный манго»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>150 минут</span><span class="font-semibold text-burgundy text-base">300 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Нирвана</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Распаривание в хаммам — 30 мин</li>
+              <li>Тайский ритуал с арома-маслом — 60 мин</li>
+              <li>Тайский ритуал для ног — 30 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Нирвана» (300 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Нирвана»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>150 минут</span><span class="font-semibold text-burgundy text-base">300 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Дух Таиланда</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Тайский традиционный ритуал — 60 мин</li>
+              <li>Тайский ритуал с арома-маслами — 60 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Дух Таиланда» (300 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Дух Таиланда»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>150 минут</span><span class="font-semibold text-burgundy text-base">310 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Детокс Зелёный чай</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Распаривание в хаммам — 30 мин</li>
+              <li>Детокс-скраб с зелёным чаем — 30 мин</li>
+              <li>Арома-ритуал «Зелёный чай» — 60 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Детокс Зелёный чай» (310 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Детокс Зелёный чай»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>180 минут</span><span class="font-semibold text-burgundy text-base">310 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Сила камней</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink/75 list-disc list-inside">
+              <li>Распаривание в джакузи — 30 мин</li>
+              <li>Ритуал с горячими камнями — 90 мин</li>
+              <li>Шейно-воротниковая зона — 30 мин</li>
+              <li>Чаепитие — 30 мин</li>
+            </ul>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA-программа «Сила камней» (310 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('SPA-программа «Сила камней»')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-goldDark uppercase tracking-wider mb-2">
+              <span>180–240 минут</span><span class="font-semibold text-burgundy text-base">340–390 BYN</span>
+            </div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Премиум-уходы</h3>
+            <div class="mt-3 space-y-3 text-xs text-ink/80">
+              <div class="pb-2 border-b border-goldDark/15">
+                <div class="flex justify-between font-semibold text-burgundy"><span>Королевская роскошь (3 ч)</span><span>340 BYN</span></div>
+                <p class="text-ink/70 mt-0.5">Джакузи, гелевый скраб, крем-ритуал, фут-ритуал с камнями, чай.</p>
+              </div>
+              <div class="pb-2 border-b border-goldDark/15">
+                <div class="flex justify-between font-semibold text-burgundy"><span>Райское наслаждение (150 мин)</span><span>360 BYN</span></div>
+                <p class="text-ink/70 mt-0.5">Джакузи, арома-ритуал в 4 руки, фут-ритуал камнями, чай.</p>
+              </div>
+              <div>
+                <div class="flex justify-between font-semibold text-burgundy"><span>Рождение Клеопатры (240 мин)</span><span>390 BYN</span></div>
+                <p class="text-ink/70 mt-0.5">Джакузи 60 мин, скраб, обёртывание, арома-масла 90 мин, чай.</p>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('Премиум SPA-программа (340–390 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium hover:bg-espresso transition">Записаться</button>
+            <button type="button" onclick="openWpModal('Премиум SPA-программы')" class="text-xs text-goldDark underline">Все программы →</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tab Panel: Couple SPA -->
+      <div id="tab-couple" class="catalog-panel hidden grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>120 минут · для двоих</span><span class="font-semibold text-burgundy text-base">400 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Оазис спокойствия</h3>
+            <p class="text-xs text-ink/75 mt-2">Арома-ритуал на основе масел (90 минут) + уютное чаепитие (30 минут).</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Оазис спокойствия» (400 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>120 минут · для двоих</span><span class="font-semibold text-burgundy text-base">420 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Путь расслабления</h3>
+            <p class="text-xs text-ink/75 mt-2">Тайский ритуал с горячими камнями (90 минут) + церемония чаепития (30 минут).</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Путь расслабления» (420 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>195 минут · для двоих</span><span class="font-semibold text-burgundy text-base">520 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Гармония</h3>
+            <p class="text-xs text-ink/75 mt-2">Джакузи 45 мин · Для неё арома-ритуал с горячим маслом 90 мин / для него глубокая проработка мышц 90 мин · Шейная зона 30 мин · Чаепитие 30 мин.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Гармония» (520 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>195 минут · для двоих</span><span class="font-semibold text-burgundy text-base">540 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Инь-Ян</h3>
+            <p class="text-xs text-ink/75 mt-2">Джакузи 45 мин · Скраб всего тела 30 мин · Тайский ритуал с горячими камнями 90 мин · Чаепитие 30 мин.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Инь-Ян» (540 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>195 минут · для двоих</span><span class="font-semibold text-burgundy text-base">560 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Чувственное пробуждение</h3>
+            <p class="text-xs text-ink/75 mt-2">Распаривание в хаммам 45 мин · Проработка шейной зоны 30 мин · Горячие камни 90 мин · Чаепитие 30 мин.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Чувственное пробуждение» (560 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-xs text-goldDark mb-2"><span>195 минут · для двоих</span><span class="font-semibold text-burgundy text-base">580 BYN</span></div>
+            <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Вечерний закат</h3>
+            <p class="text-xs text-ink/75 mt-2">Хаммам 45 мин · Тайский ритуал с травяными мешочками 90 мин · Ритуал для ног 30 мин · Чаепитие 30 мин.</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-goldDark/15 flex justify-between items-center">
+            <button type="button" onclick="selectServiceForBooking('SPA для двоих «Вечерний закат» (580 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+            <button type="button" onclick="openWpModal('Раздел: SPA для двоих')" class="text-xs text-goldDark underline">Подробнее →</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tab Panel: Hammam & Jacuzzi -->
+      <div id="tab-zones" class="catalog-panel hidden grid md:grid-cols-2 gap-6">
+        <article class="bg-white border border-goldDark/25 overflow-hidden grid sm:grid-cols-2">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80" alt="Традиционный хаммам" class="w-full h-56 sm:h-full object-cover" loading="lazy" />
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-goldDark font-semibold">35–50 °C · Пар</span>
+              <h3 class="font-serif-display text-3xl text-burgundy font-semibold mt-1">Хаммам</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Мягкое прогревание на каменном лежаке, раскрытие пор и глубокая релаксация перед массажем.</p>
+              <p class="mt-4 text-sm font-semibold text-burgundy">30 минут — 90 BYN</p>
+            </div>
+            <div class="pt-4 flex items-center justify-between">
+              <button type="button" onclick="selectServiceForBooking('Хаммам 30 минут (90 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+              <button type="button" onclick="openWpModal('Раздел: Хаммам')" class="text-xs text-goldDark underline">Подробнее →</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border border-goldDark/25 overflow-hidden grid sm:grid-cols-2">
+          <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=1200&q=80" alt="Джакузи в спа-салоне" class="w-full h-56 sm:h-full object-cover" loading="lazy" />
+          <div class="p-6 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-goldDark font-semibold">Гидромассаж</span>
+              <h3 class="font-serif-display text-3xl text-burgundy font-semibold mt-1">Джакузи</h3>
+              <p class="text-xs text-ink/75 mt-2 leading-relaxed">Тёплая гидромассажная ванна подготавливает мышцы и суставы. При наличии джакузи в программе возможна замена на хаммам (+40 BYN).</p>
+              <p class="mt-4 text-sm font-semibold text-burgundy">30 минут — 50 BYN</p>
+            </div>
+            <div class="pt-4 flex items-center justify-between">
+              <button type="button" onclick="selectServiceForBooking('Джакузи 30 минут (50 BYN)')" class="px-4 py-2 rounded-full bg-burgundy text-goldLight text-xs font-medium">Записаться</button>
+              <button type="button" onclick="openWpModal('Раздел: Джакузи')" class="text-xs text-goldDark underline">Подробнее →</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift Certificates Showcase (WordPress + WooCommerce Demo) -->
+  <section id="certificates" class="bg-espresso text-cream py-16 sm:py-20 border-y border-gold/25">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6">
+          <div class="relative border border-gold/40 p-3 bg-burgundy/40">
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=1200&q=80" alt="Подарочный сертификат SPA Thai Moon" class="w-full h-72 sm:h-96 object-cover" loading="lazy" />
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-espresso/90 backdrop-blur-sm border border-gold/35 p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.2em] text-gold">Электронный или фирменный</p>
+                <p class="font-serif-display text-lg sm:text-2xl text-cream">Подарочный сертификат Thai Moon</p>
+              </div>
+              <span class="font-serif-display text-lg sm:text-2xl text-goldLight whitespace-nowrap">150–500 BYN</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-gold font-medium">Идеальный подарок · WooCommerce</span>
+          <h2 class="font-serif-display text-3xl sm:text-5xl text-cream mt-2 leading-tight">Подарите близким путешествие в Таиланд</h2>
+          <p class="text-sm text-cream/80 mt-4 leading-relaxed">
+            Выберите электронную подарочную карту на сумму от <strong>150 до 500 BYN</strong> или оформите фирменный конверт в салоне на Первомайской, 29.
+          </p>
+
+          <div class="mt-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-goldLight mb-3">Выберите номинал сертификата:</p>
+            <div class="flex flex-wrap gap-2.5" id="certPills">
+              <button type="button" data-nominal="150 BYN" class="cert-pill px-4 py-2 rounded-full border border-gold bg-gold text-espresso text-xs font-semibold transition">150 BYN</button>
+              <button type="button" data-nominal="250 BYN" class="cert-pill px-4 py-2 rounded-full border border-gold/35 text-cream hover:border-gold text-xs font-medium transition">250 BYN</button>
+              <button type="button" data-nominal="350 BYN" class="cert-pill px-4 py-2 rounded-full border border-gold/35 text-cream hover:border-gold text-xs font-medium transition">350 BYN</button>
+              <button type="button" data-nominal="500 BYN" class="cert-pill px-4 py-2 rounded-full border border-gold/35 text-cream hover:border-gold text-xs font-medium transition">500 BYN</button>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <button type="button" onclick="openWpModal('Оформление сертификата через WooCommerce (' + selectedCertNominal + ')')" class="px-7 py-3.5 rounded-full bg-gold text-espresso hover:bg-goldLight text-xs font-semibold uppercase tracking-[0.14em] transition">
+              Купить сертификат онлайн (<span id="certBtnNominal">150 BYN</span>)
+            </button>
+            <button type="button" onclick="selectServiceForBooking('Подарочный сертификат на ' + selectedCertNominal)" class="px-6 py-3.5 rounded-full border border-gold/50 text-cream hover:border-gold text-xs font-medium uppercase tracking-[0.14em] transition">
+              Заказать через администратора
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Masters from Thailand & Promotions -->
+  <section id="masters" class="py-16 sm:py-24 bg-parchment">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <!-- Masters -->
+        <div class="lg:col-span-7">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Школа Бангкока</span>
+          <h2 class="font-serif-display text-3xl sm:text-4xl text-burgundy mt-1.5">Дипломированные мастера из Таиланда</h2>
+          <p class="text-sm text-ink/75 mt-3 leading-relaxed">
+            Все мастера салона прошли профессиональное обучение в Бангкоке и строгий конкурсный отбор, следуя главному принципу традиционной тайской школы — «не навреди».
+          </p>
+
+          <div class="mt-7 grid sm:grid-cols-2 gap-4">
+            <div class="bg-white border border-goldDark/25 p-5">
+              <p class="text-[10px] uppercase tracking-[0.2em] text-goldDark">Мастер из Таиланда</p>
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold mt-1">Мастер Pim</h3>
+              <p class="text-xs text-ink/70 mt-1.5">Традиционный тайский ритуал, акупрессура и мягкое вытяжение.</p>
+            </div>
+            <div class="bg-white border border-goldDark/25 p-5">
+              <p class="text-[10px] uppercase tracking-[0.2em] text-goldDark">Мастер из Таиланда</p>
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold mt-1">Мастер Golfy</h3>
+              <p class="text-xs text-ink/70 mt-1.5">Арома-ритуалы, глубокая проработка мышц и стоун-терапия.</p>
+            </div>
+            <div class="bg-white border border-goldDark/25 p-5">
+              <p class="text-[10px] uppercase tracking-[0.2em] text-goldDark">Мастер из Таиланда</p>
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold mt-1">Мастер Jae</h3>
+              <p class="text-xs text-ink/70 mt-1.5">Травяные мешочки, фут-ритуал и комплексные SPA-программы.</p>
+            </div>
+            <div class="bg-white border border-goldDark/25 p-5">
+              <p class="text-[10px] uppercase tracking-[0.2em] text-goldDark">Мастер из Таиланда</p>
+              <h3 class="font-serif-display text-2xl text-burgundy font-semibold mt-1">Мастер Fa</h3>
+              <p class="text-xs text-ink/70 mt-1.5">Парные ритуалы в 4 руки, релакс и детокс-уходы.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-4 text-xs">
+            <button type="button" onclick="openWpModal('Раздел: Наши мастера')" class="text-burgundy font-semibold underline underline-offset-4 hover:text-goldDark">Анкеты и дипломы мастеров (WP) →</button>
+            <button type="button" onclick="openWpModal('Раздел: СПА-этикет')" class="text-burgundy font-semibold underline underline-offset-4 hover:text-goldDark">СПА-этикет →</button>
+            <button type="button" onclick="openWpModal('Раздел: Фотогалерея и отзывы')" class="text-burgundy font-semibold underline underline-offset-4 hover:text-goldDark">Фотогалерея и отзывы →</button>
+          </div>
+        </div>
+
+        <!-- Promotions -->
+        <div id="promos" class="lg:col-span-5 bg-burgundy text-cream p-6 sm:p-8 border border-gold/30 shadow-sanctuary">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-gold font-medium">Постоянные предложения</span>
+          <h2 class="font-serif-display text-3xl text-cream mt-1 mb-5">Привилегии и акции</h2>
+
+          <div class="space-y-4 text-xs">
+            <div class="pb-3.5 border-b border-gold/20">
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-goldLight text-sm">Счастливые часы</span>
+                <span class="px-2 py-0.5 rounded bg-gold text-espresso font-bold">−20%</span>
+              </div>
+              <p class="text-cream/75 mt-1">В любой будний день с 11:00 до 15:00 (сеанс должен завершиться до 15:00).</p>
+            </div>
+
+            <div class="pb-3.5 border-b border-gold/20">
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-goldLight text-sm">День рождения в Таиланде</span>
+                <span class="px-2 py-0.5 rounded bg-gold text-espresso font-bold">−20%</span>
+              </div>
+              <p class="text-cream/75 mt-1">На все виды ритуалов в течение 7 дней до и после даты рождения при предъявлении паспорта.</p>
+            </div>
+
+            <div class="pb-3.5 border-b border-gold/20">
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-goldLight text-sm">Медовый месяц</span>
+                <span class="px-2 py-0.5 rounded bg-gold text-espresso font-bold">−25%</span>
+              </div>
+              <p class="text-cream/75 mt-1">Скидка молодожёнам на все парные SPA-программы по свидетельству о браке.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-goldLight text-sm">Акция «1+1» в течение недели</span>
+                <span class="px-2 py-0.5 rounded bg-gold text-espresso font-bold">−50%</span>
+              </div>
+              <p class="text-cream/75 mt-1">Скидка 50% на второй визит на аналогичный ритуал в течение 7 дней.</p>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-cream/60 mt-5">*Скидки по акциям не суммируются и не действуют при оплате сертификатом.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form & Contacts -->
+  <section id="booking" class="py-16 sm:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <!-- Contacts -->
+        <div id="contacts" class="lg:col-span-5 space-y-6">
+          <div>
+            <span class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Ждём вас в Могилёве</span>
+            <h2 class="font-serif-display text-3xl sm:text-5xl text-burgundy mt-1.5">Контакты и визит</h2>
+          </div>
+
+          <div class="bg-white border border-goldDark/25 p-6 space-y-4 text-sm">
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-goldDark font-semibold">Адрес салона</p>
+              <p class="font-medium text-burgundy mt-0.5">г. Могилёв, ул. Первомайская, 29</p>
+              <p class="text-xs text-ink/70">Вход рядом с «Мятой»</p>
+            </div>
+
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-goldDark font-semibold">Режим работы</p>
+              <p class="font-medium text-burgundy mt-0.5">Ежедневно, Пн–Вс: 11:00–23:00 (без выходных)</p>
+            </div>
+
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-goldDark font-semibold">Телефоны для записи</p>
+              <div class="mt-1 space-y-1">
+                <a href="tel:+375339134010" class="block font-semibold text-burgundy hover:text-goldDark transition">+375 (33) 913-40-10</a>
+                <a href="tel:+375447034010" class="block font-semibold text-burgundy hover:text-goldDark transition">+375 (44) 703-40-10</a>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-goldDark font-semibold">Почта и мессенджеры</p>
+              <a href="mailto:spathaimoon@gmail.com" class="block text-ink/85 hover:text-burgundy mt-0.5">spathaimoon@gmail.com</a>
+              <div class="mt-3 flex flex-wrap gap-2.5">
+                <a href="viber://chat?number=%2B375339134010" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-burgundy/30 text-burgundy hover:bg-burgundy hover:text-goldLight text-xs font-medium transition">
+                  Написать в Viber
+                </a>
+                <a href="tel:+375339134010" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-burgundy/30 text-burgundy hover:bg-burgundy hover:text-goldLight text-xs font-medium transition">
+                  Позвонить
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Online Booking Form -->
+        <div class="lg:col-span-7 bg-espresso text-cream p-6 sm:p-10 border border-gold/30 shadow-sanctuary">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-gold font-medium">Онлайн-запись</span>
+          <h3 class="font-serif-display text-3xl sm:text-4xl text-cream mt-1">Забронировать время в SPA Thai Moon</h3>
+          <p class="text-xs sm:text-sm text-cream/75 mt-2">Администратор свяжется с вами для подтверждения мастера и точного времени визита.</p>
+
+          <form id="bookingForm" class="mt-6 space-y-4" novalidate>
+            <!-- Honeypot anti-spam -->
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="clientName" class="block text-xs text-goldLight mb-1.5">Ваше имя *</label>
+                <input id="clientName" name="name" type="text" required placeholder="Например, Анна" class="w-full px-4 py-3 bg-burgundy/50 border border-gold/30 text-cream placeholder:text-cream/40 text-sm focus:outline-none focus:border-gold" />
+              </div>
+              <div>
+                <label for="clientPhone" class="block text-xs text-goldLight mb-1.5">Телефон (Viber / звонок) *</label>
+                <input id="clientPhone" name="phone" type="tel" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 bg-burgundy/50 border border-gold/30 text-cream placeholder:text-cream/40 text-sm focus:outline-none focus:border-gold" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="clientService" class="block text-xs text-goldLight mb-1.5">Ритуал или программа</label>
+                <input id="clientService" name="service" type="text" placeholder="Традиционный тайский ритуал / Для двоих" class="w-full px-4 py-3 bg-burgundy/50 border border-gold/30 text-cream placeholder:text-cream/40 text-sm focus:outline-none focus:border-gold" />
+              </div>
+              <div>
+                <label for="clientTime" class="block text-xs text-goldLight mb-1.5">Удобное время</label>
+                <input id="clientTime" name="time" type="text" placeholder="Например, завтра в 18:00" class="w-full px-4 py-3 bg-burgundy/50 border border-gold/30 text-cream placeholder:text-cream/40 text-sm focus:outline-none focus:border-gold" />
+              </div>
+            </div>
+
+            <!-- Закон № 99-З Required Unchecked Consent -->
+            <div class="pt-2">
+              <label class="flex items-start gap-3 cursor-pointer text-xs text-cream/80 leading-relaxed">
+                <input id="pdConsent" type="checkbox" required class="mt-0.5 w-4 h-4 accent-gold shrink-0 cursor-pointer" />
+                <span>
+                  Я даю <button type="button" onclick="openLegalModal('consentModal')" class="text-gold underline hover:text-goldLight">согласие на обработку и трансграничную передачу персональных данных</button> и ознакомлен(а) с <button type="button" onclick="openLegalModal('privacyModal')" class="text-gold underline hover:text-goldLight">Политикой обработки ПД</button> (Закон РБ № 99-З).
+                </span>
+              </label>
+            </div>
+
+            <div id="formFeedback" class="hidden text-xs p-3 border"></div>
+
+            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gold text-espresso hover:bg-goldLight font-semibold text-xs uppercase tracking-[0.16em] transition">
+              Отправить заявку на запись
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-espresso text-cream/75 border-t border-gold/25 py-10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-gold/15">
+        <div>
+          <p class="font-serif-display text-xl text-cream tracking-wider">SPA THAI MOON</p>
+          <p class="mt-1">ООО «ТайМун» · УНП [УНП] · Зарегистрировано 26.09.2019 Адм. Лен. р-на г. Могилёва</p>
+          <p class="mt-0.5">г. Могилёв, ул. Первомайская, 29 · Режим работы: Пн–Вс 11:00–23:00</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <button type="button" onclick="openLegalModal('privacyModal')" class="hover:text-gold underline underline-offset-4">Политика обработки ПД</button>
+          <button type="button" onclick="openLegalModal('consentModal')" class="hover:text-gold underline underline-offset-4">Согласие на обработку ПД</button>
+          <button type="button" onclick="openLegalModal('cookieSettingsModal')" class="hover:text-gold underline underline-offset-4">Настройки cookie</button>
+        </div>
+      </div>
+
+      <p class="text-[11px] text-cream/55 leading-relaxed">
+        Информация о стоимости и составе программ на сайте носит справочный характер и не является публичной офертой в соответствии со ст. 407 Гражданского кодекса Республики Беларусь. Окончательную стоимость и свободное время уточняйте у администратора салона.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Signature Feature #1: App-like Sticky Mobile Dock (hidden while cookie banner is visible) -->
+  <nav id="mobileDock" class="md:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl bg-espresso/90 backdrop-blur-md border border-gold/35 shadow-goldGlow px-2 py-2 grid grid-cols-3 gap-1.5 transition-all duration-300 hidden" aria-label="Быстрая связь">
+    <a href="tel:+375339134010" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-cream hover:bg-burgundy/60 transition">
+      <svg class="w-4 h-4 text-gold mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="text-[11px] font-medium">Позвонить</span>
+    </a>
+    <a href="viber://chat?number=%2B375339134010" class="flex flex-col items-center justify-center py-1.5 rounded-xl text-cream hover:bg-burgundy/60 transition">
+      <svg class="w-4 h-4 text-gold mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+      <span class="text-[11px] font-medium">Viber</span>
+    </a>
+    <a href="#booking" class="flex flex-col items-center justify-center py-1.5 rounded-xl bg-gold text-espresso font-semibold transition">
+      <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="text-[11px]">Записаться</span>
+    </a>
+  </nav>
+
+  <!-- НЦЗПД Cookie Banner (two visually equal buttons + settings) -->
+  <div id="cookieBanner" class="fixed bottom-0 inset-x-0 z-50 bg-espresso/95 backdrop-blur-md border-t border-gold/40 p-3.5 sm:p-5 shadow-2xl hidden">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      <div class="text-[11px] sm:text-xs text-cream/85 leading-relaxed max-w-3xl">
+        Мы используем файлы cookie для работы сайта и аналитики согласно требованиям НЦЗПД и Закона РБ № 99-З.
+        <button type="button" onclick="openLegalModal('cookieSettingsModal')" class="text-gold underline ml-1 hover:text-goldLight">Настройки cookie</button>
+      </div>
+      <div class="grid grid-cols-2 sm:flex gap-2 shrink-0">
+        <button type="button" onclick="saveCookieChoice(false)" class="px-3 sm:px-5 py-2 rounded-full border border-gold text-cream hover:bg-burgundy/60 text-[11px] sm:text-xs font-medium transition text-center">
+          Отклонить необязательные
+        </button>
+        <button type="button" onclick="saveCookieChoice(true)" class="px-3 sm:px-5 py-2 rounded-full border border-gold text-cream hover:bg-burgundy/60 text-[11px] sm:text-xs font-medium transition text-center">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tariff 2 Honest WordPress + WooCommerce Demo Modal -->
+  <div id="wpModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="wpModalTitle">
+    <div class="bg-cream text-ink max-w-lg w-full border border-goldDark/40 p-6 sm:p-8 shadow-2xl relative">
+      <button type="button" onclick="closeModal('wpModal')" aria-label="Закрыть" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-ink/60 hover:text-burgundy text-xl">&times;</button>
+      <span class="text-[10px] uppercase tracking-[0.24em] text-goldDark font-semibold">Демо-концепт многостраничника</span>
+      <h3 id="wpModalTitle" class="font-serif-display text-2xl sm:text-3xl text-burgundy font-semibold mt-1">Раздел в боевой версии на WordPress</h3>
+      <p id="wpModalContext" class="text-xs text-goldDark font-medium mt-1"></p>
+      <p class="text-sm text-ink/85 mt-4 leading-relaxed">
+        Это визуальный концепт главной страницы. В боевой версии перенесём всё на полноценный WordPress + WooCommerce с сохранением ваших разделов, подарочных сертификатов, всех старых URL и настройкой Yoast SEO.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <button type="button" onclick="closeModal('wpModal'); document.getElementById('booking').scrollIntoView({behavior:'smooth'});" class="px-5 py-2.5 rounded-full bg-burgundy text-goldLight text-xs font-semibold uppercase tracking-wider hover:bg-espresso transition">
+          Перейти к записи
+        </button>
+        <button type="button" onclick="closeModal('wpModal')" class="px-5 py-2.5 rounded-full border border-burgundy/30 text-burgundy text-xs font-medium hover:bg-parchment transition">
+          Понятно
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Политика обработки ПД -->
+  <div id="privacyModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-cream text-ink max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-goldDark/40 p-6 sm:p-8 shadow-2xl relative">
+      <button type="button" onclick="closeModal('privacyModal')" aria-label="Закрыть" class="absolute top-4 right-4 text-2xl text-ink/60 hover:text-burgundy">&times;</button>
+      <h3 class="font-serif-display text-2xl sm:text-3xl text-burgundy font-semibold">Политика обработки персональных данных</h3>
+      <div class="mt-4 space-y-3 text-xs sm:text-sm text-ink/80 leading-relaxed">
+        <p><strong>1. Оператор:</strong> ООО «ТайМун» (УНП [УНП], г. Могилёв, ул. Первомайская, 29, e-mail: spathaimoon@gmail.com).</p>
+        <p><strong>2. Правовые основания:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+        <p><strong>3. Состав и цели:</strong> Имя, номер телефона, выбранный ритуал и желаемое время визита обрабатываются исключительно для связи с гостем и подтверждения записи в SPA-салон (ст. 4–6 Закона № 99-З).</p>
+        <p><strong>4. Срок хранения:</strong> Персональные данные хранятся не дольше, чем этого требуют цели обработки, либо до отзыва согласия субъектом персональных данных.</p>
+        <p><strong>5. Права субъекта (ст. 10–15 Закона № 99-З):</strong> Вы вправе в любое время отозвать согласие, запросить информацию об обработке, потребовать изменения или удаления своих данных, направив обращение на spathaimoon@gmail.com.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Согласие на обработку и трансграничную передачу ПД -->
+  <div id="consentModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-cream text-ink max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-goldDark/40 p-6 sm:p-8 shadow-2xl relative">
+      <button type="button" onclick="closeModal('consentModal')" aria-label="Закрыть" class="absolute top-4 right-4 text-2xl text-ink/60 hover:text-burgundy">&times;</button>
+      <h3 class="font-serif-display text-2xl sm:text-3xl text-burgundy font-semibold">Согласие на обработку и трансграничную передачу ПД</h3>
+      <div class="mt-4 space-y-3 text-xs sm:text-sm text-ink/80 leading-relaxed">
+        <p>Проставляя отметку в форме записи, я свободно, однозначно и информированно даю согласие ООО «ТайМун» на обработку моих персональных данных (имя, телефон, детали записи) в целях подтверждения бронирования и консультации по услугам салона.</p>
+        <p><strong>Трансграничная передача (ст. 9 Закона № 99-З):</strong> При использовании онлайн-уведомлений через мессенджер Telegram и сервисы Google возможна трансграничная передача данных на серверы, расположенные за пределами Республики Беларусь, в том числе в государства с ненадлежащим уровнем защиты прав субъектов персональных данных. Мне разъяснены возможные риски такой передачи.</p>
+        <p><strong>Права по ст. 10–15 Закона № 99-З:</strong> Я уведомлён(а) о праве в любой момент отозвать согласие, получить сведения о своих данных и потребовать их удаления путём обращения по адресу г. Могилёв, ул. Первомайская, 29 или на почту spathaimoon@gmail.com.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Настройки cookie -->
+  <div id="cookieSettingsModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-cream text-ink max-w-md w-full border border-goldDark/40 p-6 shadow-2xl relative">
+      <button type="button" onclick="closeModal('cookieSettingsModal')" aria-label="Закрыть" class="absolute top-4 right-4 text-2xl text-ink/60 hover:text-burgundy">&times;</button>
+      <h3 class="font-serif-display text-2xl text-burgundy font-semibold">Настройки файлов cookie</h3>
+      <div class="mt-4 space-y-3 text-xs text-ink/80">
+        <label class="flex items-center justify-between p-3 bg-parchment border border-goldDark/20">
+          <span><strong>Технические (необходимые)</strong><br/>Отвечают за работу сайта и форм</span>
+          <input type="checkbox" checked disabled class="w-4 h-4 accent-burgundy" />
+        </label>
+        <label class="flex items-center justify-between p-3 bg-white border border-goldDark/20 cursor-pointer">
+          <span><strong>Аналитические cookie</strong><br/>Помогают улучшать разделы сайта</span>
+          <input id="analyticsCookieToggle" type="checkbox" class="w-4 h-4 accent-burgundy" />
+        </label>
+      </div>
+      <div class="mt-5 flex justify-end gap-2">
+        <button type="button" onclick="saveCookieChoice(document.getElementById('analyticsCookieToggle').checked); closeModal('cookieSettingsModal');" class="px-5 py-2.5 rounded-full bg-burgundy text-goldLight text-xs font-semibold">
+          Сохранить выбор
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SITE_CONFIG = {
+      brand: 'SPA Thai Moon',
+      city: 'Могилёв',
+      address: 'г. Могилёв, ул. Первомайская, 29',
+      phonePrimary: '+375 (33) 913-40-10',
+      phoneSecondary: '+375 (44) 703-40-10',
+      schedule: { openHour: 11, closeHour: 23 },
+      demoMode: true,
+      telegramWebhookUrl: '', // В боевой версии подключается GAS / Telegram Bot API
+    };
+
+    // 1. Live Status Indicator (Europe/Minsk 11:00-23:00)
+    function updateLiveStatus() {
+      const dot = document.getElementById('liveStatusDot');
+      const text = document.getElementById('liveStatusText');
+      if (!dot || !text) return;
+      try {
+        const minskParts = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/Minsk',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false,
+        }).formatToParts(new Date());
+        const hour = parseInt(minskParts.find(p => p.type === 'hour').value, 10);
+        if (hour >= SITE_CONFIG.schedule.openHour && hour < SITE_CONFIG.schedule.closeHour) {
+          dot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+          text.textContent = 'Открыто сейчас · до 23:00';
+        } else {
+          dot.className = 'w-2 h-2 rounded-full bg-gold';
+          text.textContent = 'Ответим с 11:00';
+        }
+      } catch (e) {
+        text.textContent = 'Ежедневно 11:00–23:00';
+      }
+    }
+    updateLiveStatus();
+    setInterval(updateLiveStatus, 60000);
+
+    // 2. Two-Click Mini-Interactive Selector
+    let selectedFormat = 'Тайский массаж';
+    let selectedTime = 'Днём 11:00–16:00';
+
+    const RECOMMENDATIONS = {
+      'Тайский массаж': 'Традиционный тайский ритуал (60 мин — 150 BYN) или Арома-ритуал (60 мин — 165 BYN).',
+      'SPA для двоих': 'Программа «Оазис спокойствия» (120 мин — 400 BYN) или «Чувственное пробуждение» с хаммамом (195 мин — 560 BYN).',
+      'Подарочный сертификат': 'Электронный или фирменный подарочный сертификат номиналом от 150 до 500 BYN с доставкой или самовывозом.',
+    };
+
+    function renderSelectorRecommendation() {
+      const box = document.getElementById('selectorRecommendation');
+      if (!box) return;
+      const base = RECOMMENDATIONS[selectedFormat] || '';
+      const timeHint = selectedTime.includes('Днём')
+        ? ' В будни до 15:00 действует акция «Счастливые часы −20%».'
+        : ' Выбранное окно: ' + selectedTime + '.';
+      box.textContent = base + timeHint;
+    }
+
+    document.querySelectorAll('.selector-format-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedFormat = btn.dataset.format;
+        document.querySelectorAll('.selector-format-btn').forEach(b => {
+          b.className = 'selector-format-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition';
+        });
+        btn.className = 'selector-format-btn text-left px-4 py-3 border border-gold bg-burgundy/80 text-cream flex items-center justify-between transition';
+        renderSelectorRecommendation();
+      });
+    });
+
+    document.querySelectorAll('.selector-time-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedTime = btn.dataset.time;
+        document.querySelectorAll('.selector-time-btn').forEach(b => {
+          b.className = 'selector-time-btn text-left px-4 py-3 border border-gold/25 bg-espresso/60 text-cream/85 hover:border-gold/60 flex items-center justify-between transition';
+        });
+        btn.className = 'selector-time-btn text-left px-4 py-3 border border-gold bg-burgundy/80 text-cream flex items-center justify-between transition';
+        renderSelectorRecommendation();
+      });
+    });
+
+    function applySelectorToBooking() {
+      const sInput = document.getElementById('clientService');
+      const tInput = document.getElementById('clientTime');
+      if (sInput) sInput.value = selectedFormat;
+      if (tInput) tInput.value = selectedTime;
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 3. Catalog Tabs & Pre-filling Booking
+    function switchCatalogTab(tabName) {
+      document.querySelectorAll('.catalog-panel').forEach(panel => panel.classList.add('hidden'));
+      const activePanel = document.getElementById('tab-' + tabName);
+      if (activePanel) activePanel.classList.remove('hidden');
+
+      document.querySelectorAll('.catalog-tab').forEach(tab => {
+        if (tab.dataset.tab === tabName) {
+          tab.className = 'catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-burgundy text-goldLight border border-burgundy transition';
+        } else {
+          tab.className = 'catalog-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-parchment text-ink border border-goldDark/30 hover:border-burgundy transition';
+        }
+      });
+    }
+
+    function selectServiceForBooking(serviceLabel) {
+      const sInput = document.getElementById('clientService');
+      if (sInput) sInput.value = serviceLabel;
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 4. Certificate Nominal Selector
+    let selectedCertNominal = '150 BYN';
+    document.querySelectorAll('.cert-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        selectedCertNominal = pill.dataset.nominal;
+        document.getElementById('certBtnNominal').textContent = selectedCertNominal;
+        document.querySelectorAll('.cert-pill').forEach(p => {
+          p.className = 'cert-pill px-4 py-2 rounded-full border border-gold/35 text-cream hover:border-gold text-xs font-medium transition';
+        });
+        pill.className = 'cert-pill px-4 py-2 rounded-full border border-gold bg-gold text-espresso text-xs font-semibold transition';
+      });
+    });
+
+    // 5. Tariff 2 Honest WordPress Modal & Legal Modals
+    function openWpModal(contextText) {
+      const ctx = document.getElementById('wpModalContext');
+      if (ctx) ctx.textContent = contextText ? 'Вы выбрали: ' + contextText : '';
+      const m = document.getElementById('wpModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function openLegalModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeModal(backdrop.id);
+      });
+    });
+
+    // 6. Cookie Banner + Mobile Sticky Dock Coordination (НЦЗПД)
+    const COOKIE_KEY = 'thaimoon_cookie_consent_v1';
+    function syncCookieAndDock() {
+      const banner = document.getElementById('cookieBanner');
+      const dock = document.getElementById('mobileDock');
+      const saved = localStorage.getItem(COOKIE_KEY);
+      if (!saved) {
+        banner.classList.remove('hidden');
+        dock.classList.add('hidden');
+      } else {
+        banner.classList.add('hidden');
+        dock.classList.remove('hidden');
+      }
+    }
+
+    function saveCookieChoice(allowAnalytics) {
+      localStorage.setItem(COOKIE_KEY, JSON.stringify({
+        necessary: true,
+        analytics: !!allowAnalytics,
+        ts: Date.now(),
+      }));
+      syncCookieAndDock();
+    }
+    syncCookieAndDock();
+
+    // 7. Booking Form Demo-Mode Handler with Honeypot
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const honeypot = document.getElementById('website').value.trim();
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const consent = document.getElementById('pdConsent').checked;
+      const fb = document.getElementById('formFeedback');
+
+      if (honeypot !== '') return; // bot caught silently
+
+      if (!name || !phone) {
+        fb.className = 'text-xs p-3 border border-rose-400/60 bg-rose-950/50 text-rose-200';
+        fb.textContent = 'Пожалуйста, укажите ваше имя и номер телефона для связи.';
+        fb.classList.remove('hidden');
+        return;
+      }
+
+      if (!consent) {
+        fb.className = 'text-xs p-3 border border-rose-400/60 bg-rose-950/50 text-rose-200';
+        fb.textContent = 'Необходимо отметить согласие на обработку персональных данных (Закон РБ № 99-З).';
+        fb.classList.remove('hidden');
+        return;
+      }
+
+      fb.className = 'text-xs p-3 border border-gold/60 bg-burgundy/60 text-goldLight';
+      fb.textContent = 'Демо-режим: заявка от «' + name + '» (' + phone + ') сформирована. В боевой версии WordPress она мгновенно уйдёт администратору в Telegram и на почту салона.';
+      fb.classList.remove('hidden');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

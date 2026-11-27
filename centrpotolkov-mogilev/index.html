@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Центр натяжных потолков в Могилёве — Теневые, парящие, световые линии и треки под ключ</title>
+  <meta name="description" content="Центр натяжных потолков в Могилёве и области с 2008 года. Матовые, сатиновые, теневые, парящие потолки, световые линии и магнитные треки. Монтаж по ГОСТ без пыли за 3 часа, рассрочка 0% до 12 мес., бесплатный замер." />
+
+  <!-- Google Fonts: Cormorant Garamond (editorial serif) + Manrope (architectural sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            atelier: {
+              white: '#FFFFFF',
+              plaster: '#F4F3F1',
+              stone: '#EAE7E1',
+              hairline: '#DDD7CE',
+              plum: '#5B1D4A',
+              plumDark: '#431236',
+              plumSoft: '#732A5F',
+              champagne: '#C9A46C',
+              champagneLight: '#E3C99D',
+              ink: '#1A1719',
+              slate: '#5A5357',
+              muted: '#857D82'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFFFF;
+      color: #1A1719;
+      font-family: 'Manrope', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Тонкая архитектурная сетка / текстура штукатурки */
+    .plaster-surface {
+      background-color: #F4F3F1;
+      background-image: radial-gradient(rgba(26, 23, 25, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Плавный масштаб изображений в карточках */
+    .arch-img-zoom {
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .group:hover .arch-img-zoom {
+      transform: scale(1.04);
+    }
+
+    /* Сдержанный скроллбар */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F4F3F1; }
+    ::-webkit-scrollbar-thumb { background: #C9A46C; }
+    ::-webkit-scrollbar-thumb:hover { background: #5B1D4A; }
+
+    /* Чекбокс согласия по Закону № 99-З */
+    .compliance-checkbox {
+      accent-color: #5B1D4A;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-slide-up {
+      animation: fadeSlideUp 0.35s ease forwards;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-atelier-plum selection:text-white">
+
+  <!-- ==================== ЕДИНЫЙ КОНФИГ ПРОЕКТА (SITE_CONFIG) ==================== -->
+  <script>
+    const SITE_CONFIG = {
+      brandName: 'Центр натяжных потолков',
+      city: 'Могилёв',
+      region: 'г. Могилёв и Могилёвская область',
+      unifiedAddress: 'г. Могилёв, ул. Пионерская, 33 — ТЦ «Строймаркет», 1 этаж, пав. 169',
+      addressClarification: '1-я дверь от остановки (вход также со стороны ул. Чайковского, 8)',
+      foundedYear: 2008,
+      primaryPhone: '+375 (33) 390-00-09',
+      primaryTelHref: 'tel:+375333900009',
+      viberHref: 'viber://chat?number=%2B375333900009',
+      telegramUrl: 'https://t.me/centrpotolkov_by',
+      instagramUrl: 'https://www.instagram.com/centrpotolkov_by',
+      vkUrl: 'https://vk.com/centrpotolkovmogilev',
+      yandexMapsUrl: 'https://yandex.ru/maps/org/tsentr_natyazhnykh_potolkov/176803607224/',
+      yandexRating: '5.0',
+      yandexReviewsNote: '65+ отзывов · 130 оценок',
+      // Реальный график: Пн–Вс 09:00–21:00 (сервисная служба 24/7)
+      schedule: {
+        dailyOpen: 9,
+        dailyClose: 21
+      },
+      // Google Apps Script для боевой отправки заявок в Telegram (в демке — честный демо-режим)
+      telegramScriptUrl: 'DEMO_MODE',
+      legalEntityPlaceholder: '[ООО / ЧТУП / ИП]',
+      unnValue: '791081504'
+    };
+  </script>
+
+  <!-- ==================== ШАПКА САЙТА (СТРОГО 1 СТРОКА, БЕЗ ПЕРЕНОСА ТЕЛЕФОНА) ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-atelier-hairline">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+      <!-- Логотип + Город -->
+      <a href="#top" class="flex items-center gap-3 shrink-0 group">
+        <div class="w-9 h-9 border border-atelier-plum flex items-center justify-center shrink-0 transition-colors group-hover:bg-atelier-plum group-hover:text-white text-atelier-plum">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M3 7l9-4 9 4M4 10h16M4 14h16M5 18h14" stroke-linecap="square" />
+          </svg>
+        </div>
+        <div class="leading-tight whitespace-nowrap">
+          <span class="block font-serif text-lg sm:text-xl font-semibold tracking-tight text-atelier-ink">Центр потолков</span>
+          <span class="block text-[10px] uppercase tracking-[0.2em] text-atelier-muted">Могилёв · с 2008</span>
+        </div>
+      </a>
+
+      <!-- Навигация (строго в 1 строку) -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-medium tracking-wide text-atelier-slate">
+        <a href="#solutions" class="whitespace-nowrap hover:text-atelier-plum transition-colors">Решения</a>
+        <a href="#selector" class="whitespace-nowrap hover:text-atelier-plum transition-colors">Подбор</a>
+        <a href="#standards" class="whitespace-nowrap hover:text-atelier-plum transition-colors">Стандарты</a>
+        <a href="#portfolio" class="whitespace-nowrap hover:text-atelier-plum transition-colors">Работы</a>
+        <a href="#contacts" class="whitespace-nowrap hover:text-atelier-plum transition-colors">Шоу-рум</a>
+      </nav>
+
+      <!-- Правая часть: Живой статус (Europe/Minsk) + Телефон (1 раз, без переноса) + Кнопка замера -->
+      <div class="flex items-center gap-3 xl:gap-5 shrink-0">
+        <!-- Живой статус по времени Беларуси -->
+        <div id="liveStatusPill" class="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 bg-atelier-plaster border border-atelier-hairline text-[12px] font-medium text-atelier-ink whitespace-nowrap">
+          <span id="liveStatusDot" class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
+          <span id="liveStatusText">Открыто сейчас</span>
+        </div>
+
+        <!-- Единственный телефон в шапке с монохромной иконкой -->
+        <a href="tel:+375333900009" class="hidden sm:inline-flex items-center gap-2 text-[14px] font-semibold tracking-tight text-atelier-ink hover:text-atelier-plum transition-colors whitespace-nowrap shrink-0">
+          <svg class="w-4 h-4 text-atelier-plum shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <span>+375 (33) 390-00-09</span>
+        </a>
+
+        <!-- Кнопка замера -->
+        <a href="#booking" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 bg-atelier-plum hover:bg-atelier-plumDark text-white text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap shrink-0">
+          Бесплатный замер
+        </a>
+
+        <!-- Мобильный вызов меню -->
+        <button id="mobileMenuBtn" type="button" aria-label="Открыть меню" class="lg:hidden w-10 h-10 border border-atelier-hairline flex items-center justify-center text-atelier-ink hover:border-atelier-plum transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="square" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Мобильный выпадающий ящик -->
+    <div id="mobileDrawer" class="hidden lg:hidden border-t border-atelier-hairline bg-white px-5 py-5 space-y-4">
+      <div class="flex items-center justify-between text-xs text-atelier-slate pb-3 border-b border-atelier-hairline">
+        <span class="inline-flex items-center gap-2">
+          <span id="liveStatusDotMob" class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span id="liveStatusTextMob">Открыто сейчас · 09:00–21:00</span>
+        </span>
+        <span class="text-atelier-plum font-semibold">Сервис 24/7</span>
+      </div>
+      <div class="grid grid-cols-2 gap-3 text-sm font-medium text-atelier-ink">
+        <a href="#solutions" class="py-1.5 mobile-nav-link">Решения 01–06</a>
+        <a href="#selector" class="py-1.5 mobile-nav-link">Подбор за 2 клика</a>
+        <a href="#standards" class="py-1.5 mobile-nav-link">Стандарты ГОСТ</a>
+        <a href="#portfolio" class="py-1.5 mobile-nav-link">Примеры работ</a>
+        <a href="#contacts" class="py-1.5 mobile-nav-link">Шоу-рум и адрес</a>
+        <a href="#booking" class="py-1.5 text-atelier-plum font-semibold mobile-nav-link">Запись на замер</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== HERO: АРХИТЕКТУРНЫЙ ПОЛНОШИРИННЫЙ ИНТЕРЬЕР ==================== -->
+    <section class="relative bg-atelier-plaster border-b border-atelier-hairline">
+      <div class="max-w-[1440px] mx-auto px-0 sm:px-6 lg:px-8 sm:py-6 lg:py-8">
+        <div class="relative min-h-[560px] sm:min-h-[640px] lg:min-h-[700px] flex flex-col justify-between overflow-hidden bg-atelier-ink">
+          <!-- Фоновое фото современного архитектурного потолка и света -->
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85"
+            alt="Современный матовый натяжной потолок со встроенным освещением в интерьере"
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-90"
+          />
+          <!-- Глубокий архитектурный градиент с оттенком сливы для максимальной читаемости -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#181016]/95 via-[#1B1319]/55 to-[#181016]/45"></div>
+
+          <!-- Верхняя деликатная лента акции и замера (вместо китчевого 3D-клипарта) -->
+          <div class="relative z-10 px-5 sm:px-10 lg:px-14 pt-6 sm:pt-9 flex flex-wrap items-center justify-between gap-3">
+            <div class="inline-flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-x-3 gap-y-1 px-4 py-2 bg-[#1A1418]/80 backdrop-blur-md border border-atelier-champagne/45 text-[11px] sm:text-xs tracking-[0.12em] uppercase text-white">
+              <span class="text-atelier-champagneLight font-semibold">Акция −10%*</span>
+              <span class="hidden sm:inline text-white/40">·</span>
+              <span>Бесплатный замер в Могилёве и области</span>
+              <span class="hidden sm:inline text-white/40">·</span>
+              <span class="hidden sm:inline">Рассрочка 0% до 12 мес.</span>
+            </div>
+
+            <a href="https://yandex.ru/maps/org/tsentr_natyazhnykh_potolkov/176803607224/" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 px-3.5 py-2 bg-white/10 backdrop-blur-md border border-white/20 text-xs text-white/90 hover:border-atelier-champagne transition-colors">
+              <span class="text-atelier-champagneLight">★ 5.0</span>
+              <span>Яндекс Карты · 65+ отзывов</span>
+            </a>
+          </div>
+
+          <!-- Нижний редакционный блок заголовка (offset architectural layout) -->
+          <div class="relative z-10 px-5 sm:px-10 lg:px-14 pb-10 sm:pb-12 lg:pb-14 pt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end">
+              <div class="lg:col-span-7">
+                <p class="text-[11px] sm:text-xs uppercase tracking-[0.26em] text-atelier-champagneLight mb-3 sm:mb-4">
+                  Архитектурный потолок · Работаем с 2008 года
+                </p>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-[64px] font-medium text-white leading-[1.03] tracking-tight">
+                  Натяжные потолки, которые формируют интерьер
+                </h1>
+              </div>
+
+              <div class="lg:col-span-5 lg:pl-6 lg:border-l border-white/25 space-y-5">
+                <p class="text-sm sm:text-[15px] leading-relaxed text-white/85 font-light">
+                  Монтаж без пыли и грязи по нормам ГОСТ за 3 часа по всей квартире. Сертифицированные полотна 100% без запаха, теневые и парящие профили, световые линии и магнитные треки.
+                </p>
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                  <a href="#booking" class="inline-flex items-center justify-center px-6 py-3.5 bg-atelier-plum hover:bg-atelier-plumDark text-white text-sm font-medium tracking-wide border border-atelier-champagne/40 transition-colors">
+                    Вызвать замерщика бесплатно
+                  </a>
+                  <a href="#selector" class="inline-flex items-center gap-2 px-5 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white text-sm font-medium border border-white/25 transition-colors">
+                    <span>Подобрать потолок</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Архитектурная лента реальных фактов под Hero -->
+      <div class="bg-white border-t border-atelier-hairline">
+        <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-atelier-hairline">
+          <div class="py-5 pr-4 lg:pr-6">
+            <div class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-plum">11+ лет</div>
+            <div class="text-xs sm:text-sm text-atelier-slate mt-1">Опыт в Могилёве и области · 25 специалистов</div>
+          </div>
+          <div class="py-5 pl-4 lg:px-6">
+            <div class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">30 000 м²</div>
+            <div class="text-xs sm:text-sm text-atelier-slate mt-1">Смонтировано для 1 500+ клиентов</div>
+          </div>
+          <div class="py-5 pr-4 lg:px-6">
+            <div class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">0% · 1–6–12</div>
+            <div class="text-xs sm:text-sm text-atelier-slate mt-1">Рассрочка за 5 минут прямо на замере</div>
+          </div>
+          <div class="py-5 pl-4 lg:pl-6">
+            <div class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">24 / 7</div>
+            <div class="text-xs sm:text-sm text-atelier-slate mt-1">Круглосуточная сервисная служба</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== НУМЕРОВАННЫЕ АРХИТЕКТУРНЫЕ РАЗДЕЛЫ (01–06) ==================== -->
+    <section id="solutions" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Заголовок раздела -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-atelier-hairline mb-12">
+          <div class="max-w-2xl">
+            <p class="text-[11px] uppercase tracking-[0.24em] text-atelier-plum font-semibold mb-3">
+              Каталог решений · Сертификация ЦГЭ
+            </p>
+            <h2 class="font-serif text-3xl sm:text-5xl font-medium text-atelier-ink leading-[1.08]">
+              Фактуры полотен и световые системы под любой проект
+            </h2>
+          </div>
+          <p class="text-sm text-atelier-slate max-w-md leading-relaxed">
+            Все полотна прошли государственную гигиеническую сертификацию — 100% без запаха и вредных веществ. Точную смету рассчитаем на бесплатном замере с учётом освещения и геометрии комнат.
+          </p>
+        </div>
+
+        <!-- 6 нумерованных журнальных секций (сетка 2 колонки с крупными номерами и фото) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+
+          <!-- 01 Матовые -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">01</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Классическая фактура</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1615875474908-f403116f5287?auto=format&fit=crop&w=1000&q=85"
+                alt="Матовые натяжные потолки в светлой гостиной"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Матовые потолки</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Идеально ровная матовая поверхность без стыков и бликов, визуально неотличимая от безупречно отштукатуренного гипсокартона.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Расчёт индивидуально на замере</span>
+              <button type="button" data-prefill="Матовый потолок" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+          <!-- 02 Сатиновые -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">02</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Мягкий перламутр</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1616486701797-0f33f61038ec?auto=format&fit=crop&w=1000&q=85"
+                alt="Сатиновый натяжной потолок с люстрой и точечным светом"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Сатиновые потолки</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Шелковистый перламутровый отлив с деликатным отражением дневного света без резких зеркальных бликов от светильников.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Включая гипоаллергенные Eco Folie 2.0</span>
+              <button type="button" data-prefill="Сатиновый потолок" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+          <!-- 03 Теневые -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">03</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Выбор дизайнеров</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+                alt="Теневой натяжной потолок с чётким зазором по периметру"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Теневые потолки</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Ровный архитектурный зазор вдоль стен без маскировочной ленты и плинтусов. Чёткая геометрия для современных интерьеров.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Специальный теневой профиль</span>
+              <button type="button" data-prefill="Теневой потолок" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+          <!-- 04 Парящие -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">04</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Контурный свет</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=85"
+                alt="Парящий натяжной потолок с мягкой вечерней подсветкой"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Парящие потолки</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Скрытая LED-подсветка по периметру создаёт эффект потолка, не касающегося стен, визуально расширяет комнату и даёт мягкий вечерний свет.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Тёплый, нейтральный или RGB-свет</span>
+              <button type="button" data-prefill="Парящий потолок с подсветкой" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+          <!-- 05 Световые линии -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">05</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Линейный свет</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85"
+                alt="Натяжной потолок со встроенными световыми линиями"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Световые линии</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Встроенные в плоскость полотна профили освещения любой геометрии — как основное освещение без громоздких люстр или зонирование комнат.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Подбор схемы освещения бесплатно</span>
+              <button type="button" data-prefill="Потолок со световыми линиями" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+          <!-- 06 Трековое освещение -->
+          <article class="group flex flex-col border-b border-atelier-hairline pb-8">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-serif text-3xl font-medium text-atelier-champagne">06</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted">Акцентный свет</span>
+            </div>
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-plaster mb-5">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                alt="Натяжной потолок с магнитными трековыми системами и спотами"
+                class="w-full h-full object-cover arch-img-zoom"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Магнитные трековые системы</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed mb-5 flex-1">
+              Встраиваемые шинопроводы, где светильники легко переставлять и направлять под интерьер. Плюс скрытые еврониши под шторы и шумоизоляция.
+            </p>
+            <div class="flex items-center justify-between pt-3 border-t border-atelier-stone text-xs">
+              <span class="text-atelier-muted">Треки + скрытые карнизы под ключ</span>
+              <button type="button" data-prefill="Магнитные треки / трековое освещение" class="text-atelier-plum font-semibold hover:text-atelier-plumDark transition-colors">
+                Запросить смету →
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Дополнительные опции с реального сайта -->
+        <div class="mt-10 p-6 sm:p-8 plaster-surface border border-atelier-hairline flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-atelier-plum font-semibold mb-2">Также в каталоге центра</p>
+            <p class="text-sm text-atelier-ink leading-relaxed">
+              Глянцевые полотна (250+ оттенков) · Двухуровневые конструкции · Потолки с фотопечатью · Гипоаллергенные европейские полотна <span class="font-semibold">Eco Folie 2.0</span> и <span class="font-semibold">Halead</span> · Шумоизоляция и встроенные элементы под ключ.
+            </p>
+          </div>
+          <a href="#booking" class="shrink-0 inline-flex items-center justify-center px-6 py-3 border border-atelier-plum text-atelier-plum hover:bg-atelier-plum hover:text-white text-sm font-medium transition-colors whitespace-nowrap">
+            Смотреть образцы на замере
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ИНТЕРАКТИВНЫЙ ПОДБОР ЗА 2 КЛИКА ==================== -->
+    <section id="selector" class="py-16 sm:py-24 plaster-surface border-y border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-10">
+          <p class="text-[11px] uppercase tracking-[0.24em] text-atelier-plum font-semibold mb-3">
+            Быстрый подбор за 2 клика
+          </p>
+          <h2 class="font-serif text-3xl sm:text-5xl font-medium text-atelier-ink leading-[1.08]">
+            Подготовьте бриф для бесплатного замера
+          </h2>
+          <p class="text-sm text-atelier-slate mt-3 leading-relaxed">
+            Выберите формат потолка и объём помещений — технолог привезёт нужные каталоги фактур, образцы профилей и подготовит расчёт на месте.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Левая часть: 2 простых шага -->
+          <div class="lg:col-span-7 bg-white border border-atelier-hairline p-6 sm:p-8 space-y-8">
+            <!-- Шаг 1 -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs uppercase tracking-[0.2em] text-atelier-muted font-semibold">Шаг 01 · Какой потолок планируете?</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="ceilingTypeGroup">
+                <button type="button" data-ceiling="Матовый / сатиновый" class="selector-ceiling-btn text-left p-4 border transition-all bg-atelier-plum text-white border-atelier-plum">
+                  <span class="block text-sm font-semibold">Матовый / сатиновый</span>
+                  <span class="block text-xs opacity-80 mt-1">Ровная классика или мягкий шёлк</span>
+                </button>
+                <button type="button" data-ceiling="Теневой / парящий" class="selector-ceiling-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum">
+                  <span class="block text-sm font-semibold">Теневой / парящий</span>
+                  <span class="block text-xs text-atelier-slate mt-1">Без плинтуса или с LED-контуром</span>
+                </button>
+                <button type="button" data-ceiling="Световые линии / треки" class="selector-ceiling-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum">
+                  <span class="block text-sm font-semibold">Световые линии / треки</span>
+                  <span class="block text-xs text-atelier-slate mt-1">Современные световые сценарии</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="pt-6 border-t border-atelier-hairline">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs uppercase tracking-[0.2em] text-atelier-muted font-semibold">Шаг 02 · Объём помещения</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="volumeGroup">
+                <button type="button" data-volume="Вся квартира" class="selector-volume-btn text-left p-4 border transition-all bg-atelier-plum text-white border-atelier-plum">
+                  <span class="block text-sm font-semibold">Вся квартира</span>
+                  <span class="block text-xs opacity-80 mt-1">Комплексный монтаж за 3 часа</span>
+                </button>
+                <button type="button" data-volume="1–2 комнаты" class="selector-volume-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum">
+                  <span class="block text-sm font-semibold">1–2 комнаты</span>
+                  <span class="block text-xs text-atelier-slate mt-1">Зал, спальня, кухня или санузел</span>
+                </button>
+                <button type="button" data-volume="Частный дом" class="selector-volume-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum">
+                  <span class="block text-sm font-semibold">Частный дом</span>
+                  <span class="block text-xs text-atelier-slate mt-1">Сложная геометрия и высокие потолки</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая часть: Архитектурная сводка без выдуманных цен -->
+          <div class="lg:col-span-5 bg-white border border-atelier-plum/30 p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-atelier-hairline mb-5">
+                <span class="text-xs uppercase tracking-[0.2em] text-atelier-plum font-semibold">Ваш выбор</span>
+                <span class="px-2.5 py-1 bg-atelier-plaster border border-atelier-champagne/50 text-[11px] font-semibold text-atelier-ink">Акция −10%*</span>
+              </div>
+
+              <div class="space-y-3 mb-6">
+                <div>
+                  <span class="text-xs text-atelier-muted block">Тип решения</span>
+                  <span id="summaryCeiling" class="font-serif text-2xl font-semibold text-atelier-ink">Матовый / сатиновый</span>
+                </div>
+                <div>
+                  <span class="text-xs text-atelier-muted block">Объект</span>
+                  <span id="summaryVolume" class="text-base font-medium text-atelier-plum">Вся квартира</span>
+                </div>
+              </div>
+
+              <p id="summaryAdvice" class="text-xs sm:text-sm text-atelier-slate leading-relaxed p-4 bg-atelier-plaster border-l-2 border-atelier-champagne mb-6">
+                Технолог привезёт образцы матовых и сатиновых полотен (включая гипоаллергенные Eco Folie 2.0), лазерным уровнем снимет точные размеры всех комнат и поможет подобрать схему освещения.
+              </p>
+
+              <ul class="space-y-2 text-xs text-atelier-ink mb-7">
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-atelier-plum shrink-0"></span>
+                  <span>Бесплатный выезд и точная смета по Могилёву и области</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-atelier-plum shrink-0"></span>
+                  <span>Светильники в подарок + бонус на выбор при заказе</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-atelier-plum shrink-0"></span>
+                  <span>Рассрочка 0% на 1, 6 или 12 месяцев прямо на месте</span>
+                </li>
+              </ul>
+            </div>
+
+            <button type="button" id="applySelectionBtn" class="w-full py-3.5 px-6 bg-atelier-plum hover:bg-atelier-plumDark text-white text-sm font-medium tracking-wide transition-colors">
+              Перенести в заявку на замер →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СТАНДАРТЫ РАБОТЫ И БОНУСЫ ==================== -->
+    <section id="standards" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
+          <div class="lg:col-span-5">
+            <p class="text-[11px] uppercase tracking-[0.24em] text-atelier-plum font-semibold mb-3">
+              Стандарты качества · ГОСТ
+            </p>
+            <h2 class="font-serif text-3xl sm:text-5xl font-medium text-atelier-ink leading-[1.08]">
+              Что входит в каждый монтаж «под ключ»
+            </h2>
+          </div>
+          <div class="lg:col-span-7 flex items-end">
+            <p class="text-sm sm:text-base text-atelier-slate leading-relaxed">
+              За 11+ лет работы мы выстроили прозрачный процесс: от замера и расчёта стоимости на месте до чистого монтажа и круглосуточной сервисной поддержки. Работаем с физическими и юридическими лицами.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 sm:p-7 border border-atelier-hairline bg-white hover:border-atelier-plum/50 transition-colors">
+            <span class="text-xs font-semibold tracking-[0.2em] text-atelier-champagne block mb-4">01 / ГОСТ</span>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Чисто за 3 часа</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed">
+              Монтаж всей квартиры без пыли и строительного мусора. Все мастера обучены работе по нормам ГОСТ; ставим освещение, ниши и шумоизоляцию.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-7 border border-atelier-hairline bg-white hover:border-atelier-plum/50 transition-colors">
+            <span class="text-xs font-semibold tracking-[0.2em] text-atelier-champagne block mb-4">02 / ЭКОЛОГИЯ</span>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Сертификаты ЦГЭ</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed">
+              Безопасные полотна без запаха и вредных веществ (Eco Folie 2.0, Halead). Предоставим оригиналы всех документов по вашему требованию.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-7 border border-atelier-hairline bg-white hover:border-atelier-plum/50 transition-colors">
+            <span class="text-xs font-semibold tracking-[0.2em] text-atelier-champagne block mb-4">03 / ОПЛАТА</span>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Рассрочка 0%</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed">
+              Без переплат на 1, 6 или 12 месяцев — оформление за 5 минут прямо на замере. Прямые поставки полотен позволяют держать честные условия.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-7 border border-atelier-plum/30 plaster-surface">
+            <span class="text-xs font-semibold tracking-[0.2em] text-atelier-plum block mb-4">04 / БОНУСЫ</span>
+            <h3 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Подарки к заказу</h3>
+            <p class="text-sm text-atelier-slate leading-relaxed">
+              Светильники в подарок (3 цвета на выбор и подбор схемы освещения), бесплатный карниз, доставка, 3D-дизайн или сервис на 3 года.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ГАЛЕРЕЯ ИНТЕРЬЕРНЫХ РЕШЕНИЙ + ЛАЙТБОКС + ЯНДЕКС ==================== -->
+    <section id="portfolio" class="py-16 sm:py-24 plaster-surface border-t border-atelier-hairline">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.24em] text-atelier-plum font-semibold mb-3">
+              Реализованные пространства · #спасибоцентрпотолков
+            </p>
+            <h2 class="font-serif text-3xl sm:text-5xl font-medium text-atelier-ink leading-[1.08]">
+              Сценарии для каждой комнаты
+            </h2>
+          </div>
+
+          <!-- Фильтр комнат -->
+          <div class="flex flex-wrap gap-2" id="portfolioFilters">
+            <button type="button" data-filter="all" class="filter-btn px-4 py-2 text-xs font-medium bg-atelier-plum text-white border border-atelier-plum transition-colors">
+              Все зоны
+            </button>
+            <button type="button" data-filter="living" class="filter-btn px-4 py-2 text-xs font-medium bg-white text-atelier-ink border border-atelier-hairline hover:border-atelier-plum transition-colors">
+              Зал и гостиная
+            </button>
+            <button type="button" data-filter="bedroom" class="filter-btn px-4 py-2 text-xs font-medium bg-white text-atelier-ink border border-atelier-hairline hover:border-atelier-plum transition-colors">
+              Спальня и детская
+            </button>
+            <button type="button" data-filter="kitchen" class="filter-btn px-4 py-2 text-xs font-medium bg-white text-atelier-ink border border-atelier-hairline hover:border-atelier-plum transition-colors">
+              Кухня и санузел
+            </button>
+          </div>
+        </div>
+
+        <!-- Сетка проектов (без выдуманных цен и отзывов) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="living" data-lightbox-src="https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Гостиная в г. Могилёве: трековая система, люстра, теневой профиль и скрытая еврониша под шторы">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=900&q=85" alt="Зал с теневым профилем и евронишей" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Зал · Теневой профиль</div>
+              <p class="text-sm text-atelier-ink font-medium">Трековая система, люстра и скрытая еврониша для штор</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="bedroom" data-lightbox-src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Спальня: парящий профиль с мягкой подсветкой, еврониша и сертифицированное полотно Halead">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85" alt="Спальня с парящим потолком и евронишей" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Спальня · Парящий контур</div>
+              <p class="text-sm text-atelier-ink font-medium">Полотно Halead, скрытый карниз и вечерняя подсветка</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="kitchen" data-lightbox-src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Кухня с рабочей зоной: трековое освещение, встроенные споты и теневой зазор">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85" alt="Кухня с матовым потолком и рабочим светом" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Кухня · Теневой зазор</div>
+              <p class="text-sm text-atelier-ink font-medium">Акцентный свет над рабочей зоной и точечные споты</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="kitchen" data-lightbox-src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Санузел: влагостойкое матовое полотно, теневой профиль и герметичные точечные споты">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=85" alt="Ванная комната с влагостойким натяжным потолком" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Санузел · Влагостойкость</div>
+              <p class="text-sm text-atelier-ink font-medium">Теневой профиль по периметру и встроенные споты</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="bedroom" data-lightbox-src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Детская комната: гипоаллергенное полотно без запаха, 1 люстра, споты и еврониша">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=85" alt="Детская или светлая спальня с матовым потолком" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Детская · Eco Folie 2.0</div>
+              <p class="text-sm text-atelier-ink font-medium">Гипоаллергенное полотно, споты, центральная люстра</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item group cursor-pointer bg-white border border-atelier-hairline" data-cat="living" data-lightbox-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85" data-lightbox-caption="Прихожая и объединённая гостиная: световые линии и встроенная подсветка">
+            <div class="aspect-[4/3] overflow-hidden bg-atelier-stone">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Прихожая и студия со световыми линиями" class="w-full h-full object-cover arch-img-zoom" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-atelier-plum font-semibold mb-1">Студия · Световые линии</div>
+              <p class="text-sm text-atelier-ink font-medium">Линейное зонирование и ровный матовый фон</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Верифицированный рейтинг Яндекс Карт -->
+        <div class="mt-10 bg-white border border-atelier-hairline p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="px-4 py-2.5 bg-atelier-plum text-white font-serif text-2xl font-semibold shrink-0">
+              ★ 5.0
+            </div>
+            <div>
+              <div class="text-sm sm:text-base font-semibold text-atelier-ink">Высокая оценка на Яндекс Картах</div>
+              <div class="text-xs sm:text-sm text-atelier-slate">65+ реальных отзывов и 130 оценок жителей Могилёва</div>
+            </div>
+          </div>
+          <a href="https://yandex.ru/maps/org/tsentr_natyazhnykh_potolkov/176803607224/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-atelier-plum hover:text-atelier-plumDark transition-colors whitespace-nowrap">
+            <span>Открыть карточку в Яндекс Картах</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ЕДИНЫЙ ШОУ-РУМ И ФОРМА ЗАПИСИ НА ЗАМЕР ==================== -->
+    <section id="contacts" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+          <!-- Левая колонка: Единый понятный адрес шоу-рума и каналы связи -->
+          <div class="lg:col-span-5 space-y-8">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.24em] text-atelier-plum font-semibold mb-3">
+                Шоу-рум и выезд замерщика
+              </p>
+              <h2 class="font-serif text-3xl sm:text-5xl font-medium text-atelier-ink leading-[1.08]">
+                Приходите в шоу-рум или закажите выезд на дом
+              </h2>
+            </div>
+
+            <div class="p-6 sm:p-7 plaster-surface border border-atelier-hairline space-y-5">
+              <div>
+                <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted block mb-1">Единый адрес шоу-рума в Могилёве</span>
+                <p class="text-base sm:text-lg font-semibold text-atelier-ink leading-snug">
+                  ул. Пионерская, 33 — ТЦ «Строймаркет», 1 этаж, пав. 169
+                </p>
+                <p class="text-xs sm:text-sm text-atelier-slate mt-1">
+                  1-я дверь от остановки (вход также со стороны ул. Чайковского, 8). Выезд замерщика — по всему Могилёву и Могилёвской области.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-atelier-hairline">
+                <div>
+                  <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted block mb-1">Телефон</span>
+                  <a href="tel:+375333900009" class="text-base font-semibold text-atelier-plum hover:text-atelier-plumDark whitespace-nowrap">
+                    +375 (33) 390-00-09
+                  </a>
+                </div>
+                <div>
+                  <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted block mb-1">Режим работы</span>
+                  <p class="text-sm font-medium text-atelier-ink">Пн–Вс: 09:00–21:00</p>
+                  <p class="text-xs text-atelier-slate">Сервисная служба 24/7</p>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-atelier-hairline">
+                <span class="text-[11px] uppercase tracking-[0.18em] text-atelier-muted block mb-3">Мессенджеры и соцсети</span>
+                <div class="flex flex-wrap gap-2.5">
+                  <a href="viber://chat?number=%2B375333900009" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-atelier-hairline hover:border-atelier-plum text-xs font-semibold text-atelier-ink transition-colors">
+                    Viber
+                  </a>
+                  <a href="https://t.me/centrpotolkov_by" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-atelier-hairline hover:border-atelier-plum text-xs font-semibold text-atelier-ink transition-colors">
+                    Telegram
+                  </a>
+                  <a href="https://www.instagram.com/centrpotolkov_by" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-atelier-hairline hover:border-atelier-plum text-xs font-semibold text-atelier-ink transition-colors">
+                    Instagram
+                  </a>
+                  <a href="https://vk.com/centrpotolkovmogilev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-atelier-hairline hover:border-atelier-plum text-xs font-semibold text-atelier-ink transition-colors">
+                    ВКонтакте
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма записи на бесплатный замер (Закон № 99-З + Honeypot) -->
+          <div id="booking" class="lg:col-span-7 bg-white border border-atelier-hairline p-6 sm:p-10 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-atelier-hairline mb-6">
+              <div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">Записаться на бесплатный замер</h3>
+                <p class="text-xs sm:text-sm text-atelier-slate mt-1">Технолог приедет в удобное время, привезёт образцы и рассчитает точную смету.</p>
+              </div>
+              <span class="px-3 py-1.5 bg-atelier-plaster border border-atelier-champagne/60 text-xs font-semibold text-atelier-plum whitespace-nowrap">
+                Выезд 0 BYN
+              </span>
+            </div>
+
+            <form id="leadForm" class="space-y-5" novalidate>
+              <!-- Honeypot поле от ботов -->
+              <input type="text" id="company_website" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <!-- Предзаполненный индикатор из мини-интерактива -->
+              <div id="selectedTagBox" class="p-3.5 plaster-surface border border-atelier-hairline flex items-center justify-between gap-3">
+                <div class="text-xs sm:text-sm text-atelier-ink">
+                  <span class="text-atelier-muted">Выбрано:</span>
+                  <span id="selectedTagLabel" class="font-semibold text-atelier-plum ml-1">Матовый / сатиновый · Вся квартира</span>
+                </div>
+                <a href="#selector" class="text-xs text-atelier-plum underline hover:text-atelier-plumDark whitespace-nowrap">Изменить</a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="clientName" class="block text-xs font-semibold uppercase tracking-wider text-atelier-slate mb-1.5">Ваше имя *</label>
+                  <input
+                    type="text"
+                    id="clientName"
+                    name="name"
+                    required
+                    placeholder="Например, Алексей"
+                    class="w-full px-4 py-3 bg-atelier-plaster/60 border border-atelier-hairline focus:border-atelier-plum focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="clientPhone" class="block text-xs font-semibold uppercase tracking-wider text-atelier-slate mb-1.5">Телефон (BY) *</label>
+                  <input
+                    type="tel"
+                    id="clientPhone"
+                    name="phone"
+                    required
+                    placeholder="+375 (33) 000-00-00"
+                    class="w-full px-4 py-3 bg-atelier-plaster/60 border border-atelier-hairline focus:border-atelier-plum focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="clientTask" class="block text-xs font-semibold uppercase tracking-wider text-atelier-slate mb-1.5">Параметры и удобное время замера</label>
+                <textarea
+                  id="clientTask"
+                  name="comment"
+                  rows="3"
+                  placeholder="Укажите район Могилёва (или область), тип потолка и желаемое время звонка"
+                  class="w-full px-4 py-3 bg-atelier-plaster/60 border border-atelier-hairline focus:border-atelier-plum focus:bg-white focus:outline-none text-sm text-atelier-ink transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Обязательный НЕЗАПОЛНЕННЫЙ чекбокс по Закону РБ № 99-З -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    id="pdConsent"
+                    required
+                    class="compliance-checkbox mt-1 w-4 h-4 shrink-0 border-atelier-hairline cursor-pointer"
+                  />
+                  <span class="text-xs leading-relaxed text-atelier-slate">
+                    Я даю <button type="button" data-open-modal="modalConsent" class="text-atelier-plum underline hover:text-atelier-plumDark">согласие на обработку и трансграничную передачу персональных данных</button> (ст. 9 Закона РБ № 99-З) и подтверждаю ознакомление с <button type="button" data-open-modal="modalPrivacy" class="text-atelier-plum underline hover:text-atelier-plumDark">Политикой обработки персональных данных</button>.
+                  </span>
+                </label>
+              </div>
+
+              <div id="formError" class="hidden p-3 bg-red-50 border border-red-200 text-xs text-red-700"></div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                <button
+                  type="submit"
+                  id="submitBtn"
+                  class="px-8 py-4 bg-atelier-plum hover:bg-atelier-plumDark text-white text-sm font-medium tracking-wide transition-colors cursor-pointer"
+                >
+                  Отправить заявку на замер
+                </button>
+                <span class="text-[11px] text-atelier-muted leading-snug">
+                  Перезвоним в рабочее время<br class="hidden sm:inline" /> с 09:00 до 21:00 без спама
+                </span>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== ФУТЕР + РЕКВИЗИТЫ + СТ. 407 ГК РБ ==================== -->
+  <footer class="bg-[#1A1418] text-white/80 pt-14 pb-28 md:pb-12 border-t border-atelier-plum/30">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-white/15">
+        <div class="md:col-span-5 space-y-3">
+          <div class="font-serif text-2xl font-medium text-white">Центр натяжных потолков</div>
+          <p class="text-xs sm:text-sm text-white/65 leading-relaxed max-w-md">
+            Монтаж натяжных потолков по ГОСТ в Могилёве и Могилёвской области с 2008 года. Работа с физическими и юридическими лицами.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2 text-xs sm:text-sm text-white/75">
+          <div class="text-[11px] uppercase tracking-[0.2em] text-atelier-champagneLight mb-2">Реквизиты и адрес</div>
+          <p>[ООО / ЧТУП / ИП] · УНП 791081504</p>
+          <p>г. Могилёв, ул. Пионерская, 33 — ТЦ «Строймаркет», 1 этаж, пав. 169 (ул. Чайковского, 8)</p>
+          <p>[Режим работы: Пн–Вс 09:00–21:00] · Сервис 24/7</p>
+          <p><a href="tel:+375333900009" class="text-white hover:text-atelier-champagneLight font-medium">+375 (33) 390-00-09</a></p>
+        </div>
+
+        <div class="md:col-span-3 space-y-2 text-xs">
+          <div class="text-[11px] uppercase tracking-[0.2em] text-atelier-champagneLight mb-2">Правовая информация (РБ)</div>
+          <ul class="space-y-2">
+            <li><button type="button" data-open-modal="modalPrivacy" class="hover:text-white underline text-left">Политика обработки ПД (№ 99-З)</button></li>
+            <li><button type="button" data-open-modal="modalConsent" class="hover:text-white underline text-left">Согласие на обработку и трансграничную передачу</button></li>
+            <li><button type="button" data-open-modal="modalCookies" class="hover:text-white underline text-left">Настройки cookie (<span id="cookieStatusLabel">Не выбран</span>)</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row justify-between gap-4 text-[11px] text-white/50 leading-relaxed">
+        <div>
+          © 2008–2026 Центр натяжных потолков. Информация на сайте носит ознакомительный характер и не является публичной офертой (ст. 407 ГК РБ). Окончательная стоимость определяется после бесплатного замера.
+        </div>
+        <div class="shrink-0">
+          Боевая версия размещается на хостинге в РБ (Указ № 60).
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== APP-LIKE STICKY MOBILE DOCK (СКРЫВАЕТСЯ ПРИ COOKIE-БАННЕРЕ) ==================== -->
+  <div id="mobileStickyDock" class="hidden md:hidden fixed bottom-3 inset-x-3 z-40">
+    <div class="bg-white/90 backdrop-blur-md border border-atelier-plum/25 shadow-lg px-2 py-2 grid grid-cols-3 gap-2">
+      <a href="tel:+375333900009" class="flex items-center justify-center gap-1.5 py-2.5 bg-atelier-plaster text-atelier-ink text-xs font-semibold border border-atelier-hairline">
+        <svg class="w-3.5 h-3.5 text-atelier-plum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        <span>Позвонить</span>
+      </a>
+      <a href="viber://chat?number=%2B375333900009" class="flex items-center justify-center gap-1.5 py-2.5 bg-atelier-plaster text-atelier-plum text-xs font-semibold border border-atelier-hairline">
+        <span>Viber</span>
+      </a>
+      <a href="#booking" class="flex items-center justify-center py-2.5 bg-atelier-plum text-white text-xs font-semibold">
+        <span>Записаться</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== COOKIE-БАННЕР (НЦЗПД РБ, РАВНОЗНАЧНЫЕ КНОПКИ) ==================== -->
+  <div id="cookieBanner" class="hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-atelier-plum/30 shadow-2xl">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div class="text-xs sm:text-[13px] text-atelier-slate leading-relaxed max-w-3xl">
+        <span class="font-semibold text-atelier-ink">Использование файлов cookie:</span> мы применяем технические cookie для корректной работы формы и интерфейса, а с вашего согласия — аналитические cookie. Вы можете изменить выбор в любое время в разделе <button type="button" data-open-modal="modalCookies" class="text-atelier-plum underline font-medium">Настройки cookie</button>.
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2.5 shrink-0">
+        <button type="button" id="cookieRejectBtn" class="px-5 py-2.5 text-xs font-semibold border border-atelier-plum text-atelier-plum bg-white hover:bg-atelier-plaster transition-colors whitespace-nowrap">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="cookieAcceptBtn" class="px-5 py-2.5 text-xs font-semibold border border-atelier-plum bg-atelier-plum text-white hover:bg-atelier-plumDark transition-colors whitespace-nowrap">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛЬНЫЕ ОКНА (ЛАЙТБОКС, КОМПЛАЕНС РБ, УСПЕХ) ==================== -->
+
+  <!-- Лайтбокс -->
+  <div id="lightboxModal" data-modal class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-white p-2 sm:p-4">
+      <button type="button" data-close-modal aria-label="Закрыть" class="absolute -top-11 right-0 text-white hover:text-atelier-champagneLight text-sm font-medium">Закрыть ✕</button>
+      <div class="relative aspect-[16/10] bg-atelier-ink overflow-hidden">
+        <img id="lightboxImg" alt="" class="w-full h-full object-contain" />
+        <button type="button" id="lightboxPrev" aria-label="Предыдущее фото" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-atelier-plum text-white flex items-center justify-center">←</button>
+        <button type="button" id="lightboxNext" aria-label="Следующее фото" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-atelier-plum text-white flex items-center justify-center">→</button>
+      </div>
+      <p id="lightboxCaption" class="text-xs sm:text-sm text-atelier-ink pt-3 px-1"></p>
+    </div>
+  </div>
+
+  <!-- Политика обработки ПД (Закон РБ № 99-З) -->
+  <div id="modalPrivacy" data-modal class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 border border-atelier-hairline">
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-atelier-hairline mb-5">
+        <h4 class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">Политика обработки персональных данных</h4>
+        <button type="button" data-close-modal class="text-atelier-muted hover:text-atelier-ink text-lg">✕</button>
+      </div>
+      <div class="space-y-3 text-xs sm:text-sm text-atelier-slate leading-relaxed">
+        <p><strong>1. Оператор:</strong> [ООО / ЧТУП / ИП] («Центр натяжных потолков»), УНП 791081504, адрес: г. Могилёв, ул. Пионерская, 33, ТЦ «Строймаркет», пав. 169.</p>
+        <p><strong>2. Правовое основание:</strong> Закон Республики Беларусь от 07.05.2021 № 99-З «О защите персональных данных».</p>
+        <p><strong>3. Перечень и цели обработки:</strong> имя, номер телефона и комментарий к заявке обрабатываются исключительно для связи с клиентом, согласования бесплатного замера, подготовки расчёта и исполнения договора подряда.</p>
+        <p><strong>4. Сроки хранения:</strong> до достижения цели обработки или отзыва согласия субъектом, но не дольше сроков, предусмотренных законодательством РБ.</p>
+        <p><strong>5. Права субъекта ПД (ст. 10–15 Закона № 99-З):</strong> вы вправе в любое время отозвать согласие, запросить информацию о своих данных, потребовать их изменения, блокирования или удаления по телефону +375 (33) 390-00-09 либо письменно по адресу шоу-рума.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Согласие на обработку и трансграничную передачу ПД (ст. 9 Закона № 99-З) -->
+  <div id="modalConsent" data-modal class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 border border-atelier-hairline">
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-atelier-hairline mb-5">
+        <h4 class="font-serif text-2xl sm:text-3xl font-semibold text-atelier-ink">Согласие на обработку и трансграничную передачу ПД</h4>
+        <button type="button" data-close-modal class="text-atelier-muted hover:text-atelier-ink text-lg">✕</button>
+      </div>
+      <div class="space-y-3 text-xs sm:text-sm text-atelier-slate leading-relaxed">
+        <p>Проставляя отметку в форме обратной связи на сайте, я свободно, однозначно и информированно даю согласие оператору ([ООО / ЧТУП / ИП], УНП 791081504) на обработку моих персональных данных (имя, телефон, комментарий к заказу) в целях записи на замер и консультации.</p>
+        <p><strong>Уведомление по ст. 9 Закона РБ № 99-З (трансграничная передача):</strong> для мгновенной доставки заявки менеджеру данные в боевой версии сайта могут передаваться через инфраструктуру Google Apps Script (Google LLC) и мессенджер Telegram (Telegram Messenger Inc.), серверы которых расположены в государствах, где может не обеспечиваться надлежащий уровень защиты прав субъектов персональных данных. В связи с этим существуют риски доступа третьих лиц на территории иностранных государств.</p>
+        <p><strong>Права субъекта (ст. 10–15 Закона № 99-З):</strong> согласие действует до момента его отзыва. Вы можете отозвать согласие, получить сведения об обработке, уточнить или удалить данные, обратившись к оператору в любое время. В случае несогласия с трансграничной передачей вы всегда можете оформить замер напрямую по телефону +375 (33) 390-00-09 без использования веб-формы.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Настройки cookie -->
+  <div id="modalCookies" data-modal class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+    <div class="bg-white max-w-lg w-full p-6 sm:p-8 border border-atelier-hairline">
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-atelier-hairline mb-5">
+        <h4 class="font-serif text-2xl font-semibold text-atelier-ink">Настройки cookie</h4>
+        <button type="button" data-close-modal class="text-atelier-muted hover:text-atelier-ink text-lg">✕</button>
+      </div>
+      <div class="space-y-4 text-xs sm:text-sm text-atelier-slate mb-6">
+        <div class="p-3.5 bg-atelier-plaster border border-atelier-hairline flex items-center justify-between gap-3">
+          <div>
+            <div class="font-semibold text-atelier-ink">Технические (обязательные)</div>
+            <div class="text-xs text-atelier-slate">Обеспечивают работу формы заявки и сохранение вашего выбора.</div>
+          </div>
+          <span class="text-xs font-semibold text-atelier-plum whitespace-nowrap">Всегда вкл.</span>
+        </div>
+        <div class="p-3.5 border border-atelier-hairline">
+          <div class="font-semibold text-atelier-ink">Аналитические и функциональные</div>
+          <div class="text-xs text-atelier-slate mt-1">Помогают оценивать посещаемость страниц и удобство подбора потолков.</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button type="button" id="modalCookieRejectBtn" class="py-2.5 px-4 text-xs font-semibold border border-atelier-plum text-atelier-plum bg-white hover:bg-atelier-plaster transition-colors">
+          Отклонить необязательные
+        </button>
+        <button type="button" id="modalCookieAcceptBtn" class="py-2.5 px-4 text-xs font-semibold border border-atelier-plum bg-atelier-plum text-white hover:bg-atelier-plumDark transition-colors">
+          Принять все
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка успешной отправки заявки -->
+  <div id="modalSuccess" data-modal class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full p-6 sm:p-8 border border-atelier-plum/40">
+      <div class="w-10 h-10 bg-atelier-plum text-white flex items-center justify-center mb-4">✓</div>
+      <h4 class="font-serif text-2xl font-semibold text-atelier-ink mb-2">Заявка сформирована</h4>
+      <p id="modalSuccessDesc" class="text-xs sm:text-sm text-atelier-slate leading-relaxed mb-4"></p>
+      <pre id="modalSuccessPreview" class="hidden text-xs bg-atelier-plaster border border-atelier-hairline p-3.5 text-atelier-ink whitespace-pre-wrap mb-5 font-sans"></pre>
+      <button type="button" data-close-modal class="w-full py-3 bg-atelier-plum text-white text-sm font-medium hover:bg-atelier-plumDark transition-colors">
+        Понятно
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== СКРИПТЫ ИНТЕРАКТИВА, СТАТУСА И КОМПЛАЕНСА ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Живой статус работы в Минском часовом поясе (Europe/Minsk)
+      function updateLiveStatus() {
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/Minsk',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        const parts = formatter.formatToParts(now);
+        const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '12', 10);
+        const isOpen = hour >= SITE_CONFIG.schedule.dailyOpen && hour < SITE_CONFIG.schedule.dailyClose;
+
+        const dot = document.getElementById('liveStatusDot');
+        const text = document.getElementById('liveStatusText');
+        const dotMob = document.getElementById('liveStatusDotMob');
+        const textMob = document.getElementById('liveStatusTextMob');
+
+        if (isOpen) {
+          if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-600 shrink-0';
+          if (text) text.textContent = 'Открыто сейчас · до 21:00';
+          if (dotMob) dotMob.className = 'w-2 h-2 rounded-full bg-emerald-600';
+          if (textMob) textMob.textContent = 'Открыто сейчас · 09:00–21:00';
+        } else {
+          if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-500 shrink-0';
+          if (text) text.textContent = 'Ответим с 09:00';
+          if (dotMob) dotMob.className = 'w-2 h-2 rounded-full bg-amber-500';
+          if (textMob) textMob.textContent = 'Ответим с 09:00 · Сервис 24/7';
+        }
+      }
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 60000);
+
+      // 2. Мобильное меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileDrawer.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+        });
+      }
+
+      // 3. Мини-интерактив за 2 клика + предзаполнение формы
+      let chosenCeiling = 'Матовый / сатиновый';
+      let chosenVolume = 'Вся квартира';
+
+      const adviceMap = {
+        'Матовый / сатиновый': 'Технолог привезёт образцы матовых и сатиновых полотен (включая гипоаллергенные Eco Folie 2.0), лазерным уровнем снимет точные размеры и поможет подобрать схему освещения.',
+        'Теневой / парящий': 'На замере покажем профиль теневого примыкания (без вставки по периметру) и варианты парящей LED-подсветки с учётом особенностей стен.',
+        'Световые линии / треки': 'Подберём ширину и геометрию световых линий или магнитных треков, рассчитаем оптимальную мощность освещения под план расстановки мебели.'
+      };
+
+      const summaryCeiling = document.getElementById('summaryCeiling');
+      const summaryVolume = document.getElementById('summaryVolume');
+      const summaryAdvice = document.getElementById('summaryAdvice');
+      const selectedTagLabel = document.getElementById('selectedTagLabel');
+      const clientTaskInput = document.getElementById('clientTask');
+
+      function syncSelectorOutput(writeToTextarea = false) {
+        if (summaryCeiling) summaryCeiling.textContent = chosenCeiling;
+        if (summaryVolume) summaryVolume.textContent = chosenVolume;
+        if (summaryAdvice) summaryAdvice.textContent = adviceMap[chosenCeiling] || adviceMap['Матовый / сатиновый'];
+        const label = `${chosenCeiling} · ${chosenVolume}`;
+        if (selectedTagLabel) selectedTagLabel.textContent = label;
+        if (writeToTextarea && clientTaskInput) {
+          clientTaskInput.value = `Интересует: ${chosenCeiling}. Объём: ${chosenVolume}. Прошу связаться для согласования бесплатного замера.`;
+        }
+      }
+
+      const ceilingBtns = document.querySelectorAll('.selector-ceiling-btn');
+      ceilingBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          chosenCeiling = btn.getAttribute('data-ceiling') || chosenCeiling;
+          ceilingBtns.forEach((b) => {
+            const active = b === btn;
+            b.className = active
+              ? 'selector-ceiling-btn text-left p-4 border transition-all bg-atelier-plum text-white border-atelier-plum'
+              : 'selector-ceiling-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum';
+            const sub = b.querySelector('span:last-child');
+            if (sub) sub.className = active ? 'block text-xs opacity-80 mt-1' : 'block text-xs text-atelier-slate mt-1';
+          });
+          syncSelectorOutput(false);
+        });
+      });
+
+      const volumeBtns = document.querySelectorAll('.selector-volume-btn');
+      volumeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          chosenVolume = btn.getAttribute('data-volume') || chosenVolume;
+          volumeBtns.forEach((b) => {
+            const active = b === btn;
+            b.className = active
+              ? 'selector-volume-btn text-left p-4 border transition-all bg-atelier-plum text-white border-atelier-plum'
+              : 'selector-volume-btn text-left p-4 border transition-all bg-white text-atelier-ink border-atelier-hairline hover:border-atelier-plum';
+            const sub = b.querySelector('span:last-child');
+            if (sub) sub.className = active ? 'block text-xs opacity-80 mt-1' : 'block text-xs text-atelier-slate mt-1';
+          });
+          syncSelectorOutput(false);
+        });
+      });
+
+      const applySelectionBtn = document.getElementById('applySelectionBtn');
+      if (applySelectionBtn) {
+        applySelectionBtn.addEventListener('click', () => {
+          syncSelectorOutput(true);
+          document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Кнопки «Запросить смету» в нумерованных карточках 01-06
+      document.querySelectorAll('[data-prefill]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-prefill');
+          if (selectedTagLabel && val) selectedTagLabel.textContent = `${val} · Бесплатный замер`;
+          if (clientTaskInput && val) {
+            clientTaskInput.value = `Интересует расчёт стоимости: ${val}. Прошу связаться для согласования замера.`;
+          }
+          document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // 4. Фильтр портфолио + Лайтбокс
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+      let visibleItems = [...portfolioItems];
+      let currentLightboxIdx = 0;
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filterBtns.forEach((b) => {
+            const active = b === btn;
+            b.className = active
+              ? 'filter-btn px-4 py-2 text-xs font-medium bg-atelier-plum text-white border border-atelier-plum transition-colors'
+              : 'filter-btn px-4 py-2 text-xs font-medium bg-white text-atelier-ink border border-atelier-hairline hover:border-atelier-plum transition-colors';
+          });
+          visibleItems = [];
+          portfolioItems.forEach((item) => {
+            const show = filter === 'all' || item.getAttribute('data-cat') === filter;
+            item.classList.toggle('hidden', !show);
+            if (show) {
+              item.classList.add('fade-slide-up');
+              visibleItems.push(item);
+            }
+          });
+        });
+      });
+
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      function showLightboxAt(index) {
+        if (!visibleItems.length) return;
+        currentLightboxIdx = (index + visibleItems.length) % visibleItems.length;
+        const item = visibleItems[currentLightboxIdx];
+        lightboxImg.src = item.getAttribute('data-lightbox-src') || '';
+        lightboxImg.alt = item.querySelector('img')?.alt || '';
+        lightboxCaption.textContent = item.getAttribute('data-lightbox-caption') || '';
+        openModal('lightboxModal');
+      }
+
+      portfolioItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const idx = visibleItems.indexOf(item);
+          showLightboxAt(idx >= 0 ? idx : 0);
+        });
+      });
+
+      document.getElementById('lightboxPrev')?.addEventListener('click', () => showLightboxAt(currentLightboxIdx - 1));
+      document.getElementById('lightboxNext')?.addEventListener('click', () => showLightboxAt(currentLightboxIdx + 1));
+
+      // 5. Единое управление модалками
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeAllModals() {
+        document.querySelectorAll('[data-modal]').forEach((m) => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.getAttribute('data-open-modal')));
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+      });
+      document.querySelectorAll('[data-modal]').forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAllModals();
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllModals();
+        if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') showLightboxAt(currentLightboxIdx - 1);
+          if (e.key === 'ArrowRight') showLightboxAt(currentLightboxIdx + 1);
+        }
+      });
+
+      // 6. Cookie-баннер (НЦЗПД РБ) + автоматическое скрытие Sticky Mobile Dock
+      const COOKIE_KEY = 'centrpotolkov_mogilev_cookie_choice';
+      const cookieBanner = document.getElementById('cookieBanner');
+      const mobileStickyDock = document.getElementById('mobileStickyDock');
+      const cookieStatusLabel = document.getElementById('cookieStatusLabel');
+
+      function updateCookieUI() {
+        let saved = null;
+        try {
+          saved = localStorage.getItem(COOKIE_KEY);
+        } catch (_) {}
+
+        if (cookieStatusLabel) {
+          cookieStatusLabel.textContent =
+            saved === 'all' ? 'Приняты все' :
+            saved === 'essential' ? 'Только необходимые' :
+            'Не выбран';
+        }
+
+        const bannerVisible = !saved;
+        if (cookieBanner) cookieBanner.classList.toggle('hidden', !bannerVisible);
+        if (mobileStickyDock) mobileStickyDock.classList.toggle('hidden', bannerVisible);
+      }
+
+      function saveCookieChoice(choice) {
+        try {
+          localStorage.setItem(COOKIE_KEY, choice);
+        } catch (_) {}
+        updateCookieUI();
+        closeAllModals();
+      }
+
+      document.getElementById('cookieAcceptBtn')?.addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('cookieRejectBtn')?.addEventListener('click', () => saveCookieChoice('essential'));
+      document.getElementById('modalCookieAcceptBtn')?.addEventListener('click', () => saveCookieChoice('all'));
+      document.getElementById('modalCookieRejectBtn')?.addEventListener('click', () => saveCookieChoice('essential'));
+      updateCookieUI();
+
+      // 7. Отправка формы (GAS -> Telegram + Honeypot + Демо-режим)
+      const leadForm = document.getElementById('leadForm');
+      const formError = document.getElementById('formError');
+      const submitBtn = document.getElementById('submitBtn');
+      const modalSuccessDesc = document.getElementById('modalSuccessDesc');
+      const modalSuccessPreview = document.getElementById('modalSuccessPreview');
+
+      if (leadForm) {
+        leadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (formError) {
+            formError.classList.add('hidden');
+            formError.textContent = '';
+          }
+
+          const hp = document.getElementById('company_website');
+          if (hp && hp.value.trim() !== '') return;
+
+          const name = (document.getElementById('clientName')?.value || '').trim();
+          const phone = (document.getElementById('clientPhone')?.value || '').trim();
+          const comment = (document.getElementById('clientTask')?.value || '').trim();
+          const consent = document.getElementById('pdConsent')?.checked;
+
+          if (!name || phone.length < 7) {
+            formError.textContent = 'Пожалуйста, укажите ваше имя и корректный номер телефона.';
+            formError.classList.remove('hidden');
+            return;
+          }
+          if (!consent) {
+            formError.textContent = 'Отметьте согласие на обработку и трансграничную передачу персональных данных (Закон РБ № 99-З).';
+            formError.classList.remove('hidden');
+            return;
+          }
+
+          const payload = {
+            brand: SITE_CONFIG.brandName,
+            city: SITE_CONFIG.city,
+            name,
+            phone,
+            selection: selectedTagLabel?.textContent || '',
+            comment,
+            timestamp: new Date().toISOString()
+          };
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправляем...';
+          }
+
+          try {
+            if (!SITE_CONFIG.telegramScriptUrl || SITE_CONFIG.telegramScriptUrl === 'DEMO_MODE') {
+              modalSuccessDesc.textContent = 'Это демонстрационный прототип сайта. В боевой версии заявка на замер мгновенно приходит вам в Telegram через Google Apps Script:';
+              modalSuccessPreview.textContent =
+                `Компания: ${payload.brand}\nИмя: ${payload.name}\nТелефон: ${payload.phone}\nПодбор: ${payload.selection}\nКомментарий: ${payload.comment || 'Запись на бесплатный замер'}`;
+              modalSuccessPreview.classList.remove('hidden');
+              openModal('modalSuccess');
+              leadForm.reset();
+              syncSelectorOutput(false);
+            } else {
+              await fetch(SITE_CONFIG.telegramScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              modalSuccessDesc.textContent = 'Спасибо! Менеджер «Центра натяжных потолков» перезвонит вам и согласует удобное время бесплатного замера.';
+              modalSuccessPreview.classList.add('hidden');
+              openModal('modalSuccess');
+              leadForm.reset();
+              syncSelectorOutput(false);
+            }
+          } catch (_) {
+            formError.textContent = 'Не удалось отправить заявку автоматически. Пожалуйста, позвоните нам: +375 (33) 390-00-09.';
+            formError.classList.remove('hidden');
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Отправить заявку на замер';
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
